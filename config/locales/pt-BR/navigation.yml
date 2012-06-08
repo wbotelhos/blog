@@ -1,0 +1,8 @@
+pt-BR:
+  navigation:
+    admin:  "Admin"
+    dashboard: "Painel de Controle"
+    logout: "Sair"
+    login:  "Login"
+    new_article: "Criar"
+    about: "Sobre"

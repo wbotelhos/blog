@@ -1,0 +1,9 @@
+<h2><%= t("article.title") %></h2>
+
+<ul id="recents">
+  <% articles.each do |article| %>
+    <li>
+      <%= link_to article.title, article_path(article) %>
+    </li>
+  <% end %>
+</ul>

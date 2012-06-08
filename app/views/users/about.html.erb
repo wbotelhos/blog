@@ -1,0 +1,9 @@
+<div id="about">
+  <div id="bio">
+    <%= simple_format @author.bio %>
+  </div>
+
+  <div id="photo">
+    <%= gravatar @author.email, { :alt => "", :heigth => 160, :size => 160, :title => t("user.author"), :width => 160 } %>
+  </div>
+</div>

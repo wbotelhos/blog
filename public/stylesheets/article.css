@@ -1,0 +1,103 @@
+/* Body */
+#main .article { float: left; margin-bottom: 17px; position: relative; width: 858px } /* same the main */
+#main .article + .article { border-top: 1px solid #DDD; padding-top: 5px; }
+#main .article .body { color: #222; margin-top: 12px; padding-left: 10px; }
+#main .article .body p { margin-bottom: 10px; }
+#main .article .body p.read-more { margin-top: 25px; text-align: center; width: 100%; }
+#main .article .body p.read-more a { background-color: #AF81C3; border-radius: 3px; color: #FFF; padding: 7px 30px; text-align: center; text-shadow: none; }
+#main .article .body p.read-more a:hover { background-color: #8D50A7; }
+
+/* Title */
+#main .article h2 { margin-left: 33px; margin-top: 12px; }
+#main .article h2 a { color: #444; font-size: 22px; }
+#main .article h2 a:hover { color: #85B839; }
+
+/* Author */
+#author { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: 93px; margin: 25px auto 0; padding-left: 7px; padding-top: 12px; width: 770px; }
+#author img { background-color: #EEE; float: left; height: 80px; width: 80px; }
+#author .biography { color: #555; float: left; font: 12px/1.5 arial; letter-spacing: 0.3px; margin-top: 4px; padding-left: 10px; width: 650px; }
+#author .social { float: right; margin-right: 7px; width: 16px; }
+#author .social a { background-color: #EEE; background-repeat: no-repeat; border-radius: 3px; display: block; height: 16px; margin-bottom: 5px; width: 16px; }
+#author .social a.facebook { background-image: url('../images/facebook.png') }
+#author .social a.github { background-image: url('../images/github.png') }
+#author .social a.linkedin { background-image: url('../images/linkedin.png') }
+#author .social a.twitter { background-image: url('../images/twitter.png') }
+
+/* Links */
+#main .article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
+#main .article .links li { float: left; font-size: 12px; line-height: 23px; padding-right: 10px; }
+#main .article .links li:after { content: '|'; padding-left: 10px; }
+#main .article .links .comments { background: url('../images/comment.png') 0px 4px no-repeat; padding-left: 20px; }
+#main .article .links .edit { background: url('../images/edit.png') 0px 3px no-repeat; padding-left: 23px; }
+#main .article .links .permalink { background: url('../images/link.png') 0px 4px no-repeat; padding-left: 22px; }
+#main .article .links .published { background: url('../images/calendar.png') 0px 4px no-repeat; padding-left: 22px; }
+#main .article .date { background: url('../images/balloon.png') 1px 0 no-repeat; font-family: arial; font-weight: bold; height: 54px; left: -47px; position: absolute; text-align: center; width: 74px; }
+#main .article .date .number { font-size: 13px; position: relative; top: 7px; }
+#main .article .date .month { display: block; font-size: 13px; text-transform: uppercase; }
+
+/* Footer */
+#main .article .footer { height: 40px; margin-top: 15px; }
+#main .article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; padding-top: 3px; }
+
+/* Comments */
+#main #comments { background: url('../images/comment-big.png') no-repeat 0 4px; clear: both; float: left; font: bold 21px verdana; height: 30px; margin-bottom: 20px; margin-left: 10px; margin-top: 25px; padding-left: 35px; }
+
+#main .comment { border: 1px solid #EAEAEA; border-radius: 2px; clear: both; float: right; margin-bottom: 10px; padding: 10px; width: 835px; }
+#main .comment .photo { float: left; }
+#main .comment .photo img { background-color: #EEE; float: left; height: 80px; margin-right: 7px; width: 80px; }
+#main .comment .name-date { height: 25px; width: 740px }
+#main .comment .name-date span { background: url('../images/clock.png') no-repeat; display: inline-block; float: right; font-size: 11px; height: 16px; margin-top: 3px; opacity: .3; padding-left: 21px; }
+#main .comment .name-date .anchors { float: left; }
+#main .comment .name-date .anchors div { color: #999; display: inline; font: 12px verdana; margin-left: 10px; width: 99px; }
+#main .comment .body { float: left; margin-left: 5px; }
+#main .comment .reply-link { display: block; font-weight: bold; margin-bottom: 10px; }
+#main .comment .body .text { clear: both; color: #444; font-size: 12px; width: 740px; }
+#main .comment .body .text pre { padding-left: 15px; }
+#main .comment form { margin-left: 6px; }
+#main .comment form input[type="text"] { color: #111; margin-bottom: 7px; margin-right: 6px; padding: 2px; width: 233px; }
+#main .comment form input[type="submit"] { float: right; margin-right: 7px; margin-top: 6px; }
+#main .comment form textarea { color: #111; width: 721px; }
+
+#main .comment.author { background-color: #FFE; }
+
+#main .comment.level-1 { width: 820px; }
+#main .comment.level-1 .name-date { width: 725px }
+#main .comment.level-1 .text { width: 725px; }
+#main .comment.level-1 form { margin-left: 4px; width: 724px; }
+#main .comment.level-1 form input[type="text"] { width: 229px; }
+#main .comment.level-1 form textarea { width: 710px; }
+
+#main .comment.level-2 { width: 805px; }
+#main .comment.level-2 .name-date { width: 710px }
+#main .comment.level-2 .text { width: 710px; }
+#main .comment.level-2 form { width: 707px; }
+#main .comment.level-2 form input[type="text"] { width: 223px; }
+#main .comment.level-2 form textarea { width: 691px; }
+
+#main .comment.level-3 { width: 790px; }
+#main .comment.level-3 .name-date { width: 695px }
+#main .comment.level-3 .text { width: 695px; }
+#main .comment.level-3 form { margin-left: 3px; width: 692px; }
+#main .comment.level-3 form input[type="text"] { width: 218px; }
+#main .comment.level-3 form textarea { width: 677px; }
+
+#main .comment.level-4 { width: 775px; }
+#main .comment.level-4 .name-date { width: 680px }
+#main .comment.level-4 .text { width: 680px; }
+#main .comment.level-4 form { width: 677px; }
+#main .comment.level-4 form input[type="text"] { width: 213px; }
+#main .comment.level-4 form textarea { width: 661px; }
+
+#main .comment.level-5 { width: 760px; }
+#main .comment.level-5 .name-date { width: 665px }
+#main .comment.level-5 .text { width: 665px; }
+#main .comment.level-5 form { margin-left: 8px; width: 656px; }
+#main .comment.level-5 form input[type="text"] { width: 206px; }
+#main .comment.level-5 form textarea { width: 640px; }
+
+#main .comment-create { clear: both; margin: 0 auto 50px; padding-top: 15px; width: 525px; }
+#main .comment-create #replying-to { color: #444; margin-left: 1px; }
+#main .comment-create input[type="text"] { color: #BBB; margin-bottom: 7px; padding: 2px; width: 165px; }
+#main .comment-create textarea { color: #BBB; height: 150px; margin-bottom: 7px; padding: 2px; width: 515px; }
+#main .comment-create input[type="submit"] { float: right; margin-right: 4px; }
+#main .comment-create #markdown-reference { color: #777; font: 11px verdana; margin-left: 3px; margin-top: -8px; }

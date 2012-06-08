@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Washington Botelho | Admin</title>
+    <%= javascript_include_tag "jquery-1.7.2.min", "jquery.taby.min" %>
+    <%= stylesheet_link_tag "stylesheet" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="top">
+        <%= render "shared/header" %>
+        <%= render "shared/flash_messages" %>
+      </div>
+
+      <div id="content">
+        <aside id="sidebar-admin">
+          <h2><%= t("article.title") %></h2>
+
+          <ul>
+             <li><%= link_to t("navigation.new_article"), new_article_path %></li>
+          </ul>
+        </aside>
+
+        <section id="admin">
+          <%= yield %>
+        </section>
+      </div>
+
+      <footer id="footer">
+        <%= render "shared/footer" %>
+      </footer>
+    </div>
+  </body>
+</html>

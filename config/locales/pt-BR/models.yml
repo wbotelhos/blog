@@ -1,0 +1,18 @@
+pt-BR:
+  activerecord:
+    attributes:
+      user:
+        name: "Nome completo"
+        email: "E-mail"
+        password: "Senha"
+
+      article:
+        title: "Título"
+        body: "Corpo"
+        category_id: "Categoria"
+
+      comment:
+          name: "Nome *"
+          email: "E-mail *"
+          url: "URL"
+          body: "Seu comentário *\n\n```python\ndef cute_code:\n    print 'Hello Markdown!'\n```"

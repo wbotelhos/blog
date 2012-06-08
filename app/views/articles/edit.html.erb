@@ -1,0 +1,43 @@
+<h2><%= t("article.edit") %></h2>
+
+<%= form_for @article, :url => update_article_path do |f| %>
+  <div id="fields">
+    <p>
+      <%= f.text_field :title %>
+      <%= error_for @article, :title %>
+    </p>
+
+    <p>
+      <%= f.text_area :body %>
+      <%= error_for @article, :body %>
+    </p>
+  </div>
+
+  <div id="controls">
+    <div id="publish">
+      <h3><%= t("article.publish") %></h3>
+
+      <%= f.submit t("article.update"), :class => "publish-update" %>
+    </div>
+
+    <div id="categories">
+      <h3><%= t("category.title") %></h3>
+
+      <ul>
+        <% categories.each do |category| %>
+          <li>
+            <input id="category-<%= category.id %>" type="checkbox" name="article[category_ids][]" value="<%= category.id %>" <%= check_category?(@article, category) %> />
+            <label for="category-<%= category.id %>"><%= category.name %></label>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('#article_title').focus();
+    $('#article_body').taby();
+  });
+</script>

@@ -1,0 +1,31 @@
+<div id="logo">
+  <h1><%= link_to t("user.author"), root_path %></h2>
+	<h3><%= t("logo.description") %></h3>
+</div>
+
+<nav>
+  <ul>
+    <li><%= link_to t("navigation.sobre"), about_path %></li>
+    <% if is_logged? %>
+      <li><%= link_to t("navigation.logout"), logout_path %></li>
+      <li><%= link_to t("navigation.admin"), admin_path %></li>
+    <% end %>
+  </ul>
+</nav>
+
+<div id="social">
+  <ul>
+    <li>
+      <%= link_to image_tag("feed-big.png"), feed_path, { :target => "_blank" } %>
+    </li>
+    <li>
+      <%= link_to image_tag("linkedin-big.png"), "http://linkedin.com/in/wbotelhos", { :target => "_blank" } %>
+    </li>
+    <li>
+      <%= link_to image_tag("twitter-big.png"), "http://twitter.com/wbotelhos", { :target => "_blank" } %>
+    </li>
+    <li>
+      <%= link_to image_tag("github-big.png"), "http://github.com/wbotelhos", { :target => "_blank" } %>
+    </li>
+  </ul>
+</div>

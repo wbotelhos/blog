@@ -1,0 +1,21 @@
+pt-BR:
+  form:
+    buttons:
+      login: "Acessar"
+      search: "Ok"
+
+    labels:
+      search: "Pesquisar"
+
+  helpers:
+    submit:
+      article:
+        create: "Salvar"
+        update: "Atualizar"
+
+      comment:
+          create: "Comentar"
+
+  errors:
+    messages:
+      blank: "Este campo deve ser preenchido!"

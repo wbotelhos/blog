@@ -1,0 +1,59 @@
+<div id="comment-form" class="comment-create">
+  <%= render "shared/error_messages", :entity => comment %>
+
+  <div id="replying-to" style="display: none;">
+    <%= t("comment.replying_to") %>
+    <strong></strong>
+    <%= link_to "(#{t('comment.undo')})", "javascript:void(0);", { :onclick => "removeReply();" } %>
+  </div>
+
+  <%= form_for comment, :url => new_comment_path(article) do |f| %>
+    <%= f.hidden_field :comment_id %>
+
+    <% if is_logged? %>
+        <%= f.hidden_field :name, :value => user_session.name %>
+        <%= f.hidden_field :email, :value => user_session.email %>
+        <%= f.hidden_field :url, :value => user_session.url %>
+    <% else %>
+      <p>
+        <%= f.text_field :name, :value => t("activerecord.attributes.comment.name"), :title => t("activerecord.attributes.comment.name") %>
+        <%= error_for comment, :name %>
+
+        <%= f.text_field :email, :value => t("activerecord.attributes.comment.email"), :title => t("activerecord.attributes.comment.email") %>
+        <%= error_for comment, :email %>
+
+        <%= f.text_field :url, :value => t("activerecord.attributes.comment.url"), :title => t("activerecord.attributes.comment.url") %>
+        <%= error_for comment, :url %>
+      </p>
+    <% end %>
+
+    <p>
+      <%= f.text_area :body, :value => t("activerecord.attributes.comment.body"), :title => t("activerecord.attributes.comment.body") %>
+      <%= error_for comment, :body %>
+      <div id="markdown-reference">
+        Para formatar o seu <strong>código</strong> utilize a sintaxe do
+        <%= link_to "Markdown", "http://daringfireball.net/projects/markdown/syntax", { :title => "Markdown", :target => "_blank" } %>.
+      </div>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  function removeReply() {
+    $('#replying-to').hide();
+    $('#comment_comment_id').val('');
+    $('#comment_body').val('').blur().focus();
+  }
+
+  $(function() {
+    $('#comment_name').on('focus', focusLabel).on('blur', blurLabel);
+    $('#comment_email').on('focus', focusLabel).on('blur', blurLabel);
+    $('#comment_url').on('focus', focusLabel).on('blur', blurLabel);
+    $('#comment_body').on('focus', focusLabel).on('blur', blurLabel);
+  });
+</script>

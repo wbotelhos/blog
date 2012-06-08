@@ -1,0 +1,7 @@
+<% unless entity.errors.empty? %>
+  <dl class="error-messages">
+    <% entity.errors.full_messages.each do |message| %>
+      <dd><%= message %></dd>
+    <% end %>
+  </dl>
+<% end %>

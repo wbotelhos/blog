@@ -1,0 +1,23 @@
+pt-BR:
+  flash:
+    articles:
+      create:
+        notice: "Artigo criado com sucesso!"
+      search:
+        alert: "A busca foi desabilitada por um momento. Tente mais tarde! (:"
+
+    auth:
+      alert: "Você precisa estar logado!"
+
+    comments:
+      create:
+        alert: "Escreva o seu comentário!"
+        notice: "Seu comentário foi adicionado!"
+
+      update:
+        alert: "Erro ao salvar o comentário!"
+        notice: "Comentário atualizado!"
+
+    sessions:
+      create:
+        alert: "E-mail ou senha inválida!"

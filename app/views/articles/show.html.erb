@@ -1,0 +1,65 @@
+<article class="article">
+  <div class="date">
+    <span class="number"><%= t("article.published_at", :time => l(@article.created_at, :format => :day)) %></span>
+    <span class="month"><%= t("article.published_at", :time => l(@article.created_at, :format => :month)) %></span>
+  </div>
+
+  <h2><%= link_to @article.title, article_path(@article) %></h2>
+
+  <ul class="links">
+    <li class="permalink"><%= link_to t("article.permalink"), article_path(@article) %></li>
+    <li class="comments"><%= link_to t("article.comments_count_html", :count => @article.comments_count), article_path(@article, :anchor => "comments") %></a></li>
+    <li class="published"><%= link_to t("article.published_at", :time => l(@article.created_at)), "javascript:void(0);" %></a></li>
+    <% if is_logged? %>
+      <li class="edit"><%=link_to t("article.edit"), edit_article_path(@article) %></a></li>
+    <% end %>
+  </ul>
+
+  <div class="body">
+    <%= markdown @article.formatted %>
+  </div>
+
+  <div class="footer">
+    <div class="tags">
+      <%= t("article.tags") %>
+
+      <% @article.categories.each do |category| %>
+        <%= link_to category.name, "javascript:void(0);" %><%= "," unless category == @article.categories.last %>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="author">
+    <%= author @article.user %>
+  </div>
+</article>
+
+<h3 id="comments">
+  <%= t("comment.count_html", :count => @article.comments_count) %>
+  <%= link_to "#", article_path(@article, :anchor => "comment-form") %>
+</h3>
+
+<%= render_comments @article %>
+
+<%= render @comment_form.partial %>
+
+<script type="text/javascript">
+  function replyComment(id, name) {
+    $('#replying-to').show().children('strong').html('<a href="<%= request.fullpath %>#comment-' + id + '">#' + id + '</a> ' + name);
+    $('#comment_body').val('Oi ' + name + ',\n\n').blur().focus();
+    $('#comment_comment_id').val(id);
+  };
+
+  $(function() {
+
+    $('textarea').taby();
+
+    $('.text').on('dblclick', function() {
+      var thiz = $(this).hide();
+
+      thiz.prev('div').hide()
+      thiz.next('form').show().find('input:eq(2)').focus();
+    });
+
+  });
+</script>

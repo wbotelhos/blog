@@ -1,0 +1,63 @@
+/** IE HTML 5 **/
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+a img { border: none; }
+
+/* Commons */
+body { background: url('../images/background.png') #E7E7E7; font: normal 13px 'Lucida Grande', Helvetica, arial, sans-serif; line-height: 1.6; }
+
+a { color: #277DA8; text-decoration: none; }
+a:hover { color: #48A5D4; }
+
+h1, h2, h3 { font-family: 'helvetica', arial, sans-serif }
+
+pre { background-color: #F8F8F8; border: 1px solid #DDDDDD; border-radius: 3px; color: #393939; font-size: 12px; line-height: 1.6; margin-bottom: 15px; margin-top: 15px; overflow: auto; padding: 10px 10px; text-shadow: none; }
+
+textarea { background-color: #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #111; font: 12px verdana; letter-spacing: .3px; padding: 3px; resize: vertical; }
+textarea:hover, input[type="text"]:hover, input[type="search"]:hover { border: 1px solid #BDBDBD !important; }
+textarea:focus, input[type="text"]:focus, input[type="search"]:focus { border: 1px solid #95BDD4 !important; }
+
+input[type="text"], input[type="email"], input[type="password"] { background-color: #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #111; font: 12px verdana; height: 25px; letter-spacing: .3px; padding: 3px; }
+input[type="submit"], input[type="button"] { background-color: #AF81C3; border: none; border-radius: 3px; color: #FFF; cursor: pointer; font: 12px verdana; letter-spacing: .4px; padding: 7px 30px; }
+input[type="submit"]:hover, input[type="button"]:hover { background-color: #8D50A7; }
+
+/* Top */
+#top > p { clear: both; float: right; font: 14px verdana; padding-bottom: 5px; }
+#top > p.notice { color: #85B839; }
+#top > p.alert { color: #F00; }
+
+/* Footer */
+#footer { margin: 0 auto; overflow: auto; padding-bottom: 15px; padding-top: 15px; text-align: center; width: 1100px; }
+#footer #copy { margin: 20px auto; text-align: center; width: 1100px; }
+
+/* Sidebar */
+#sidebar { float: right; padding: 10px; width: 200px; } /* 220px = 200 + 10 + 10 */
+#sidebar .search { margin-bottom: 25px; }
+#sidebar .search input[type="submit"] { display: none; }
+#sidebar .search input[type="search"] { background: url('../images/search.png') no-repeat 4px 5px #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #000; font-size: 13px; height: 24px; opacity: .7; padding-left: 25px; width: 173px; }
+#sidebar h2 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; font: bold 14px verdana; margin-bottom: 2px; padding-bottom: 7px; padding-top: 7px; }
+#sidebar ul { margin-bottom: 28px; }
+#sidebar ul li { border-bottom: 1px dotted #F1F1F1; padding: 4px 0; }
+#sidebar ul li strong { background-color: #AF81C3; border-radius: 4px; color: #FFF; display: inline-block; font-size: 8px; padding: 1px 4px; text-shadow: none; }
+
+/* wrapper */
+#wrapper { margin: 0 auto; width: 1100px; }
+#wrapper #content { background-color: #FFF; border: 1px solid #DDD; box-shadow: 0 1px 3px rgba(150, 150, 150, 0.3); float: left; width: 1100px; }
+#wrapper #content #main { float: left; border-right: 2px solid #DDD; padding: 10px; width: 858px; } /* 880 = 5 + 10 + 10 = 220px */
+#wrapper #content #main #search-description { background-color: #FEFEFE; border: 1px solid #EFEFEF; border-radius: 3px; font: 12px verdana; margin-bottom: 5px; padding: 5px; }
+
+/* Paginaty */
+.paginaty { margin: 0 auto; padding-bottom: 5px; width: 350px; }
+.paginaty li { display: inline; padding: 0 3px; }
+.paginaty li a { border-radius: 3px; background: #FBFBFB; border: 1px solid #EEE; color: #277DA8; font: bold 14px arial; letter-spacing: .4px; padding: 4px 8px; text-align: center; text-shadow: 1px 1px 1px #FFF; }
+.paginaty li a:hover { color: #85B839; }
+.paginaty li span { border-radius: 3px; background: #FBFBFB; border: 1px solid #EEE; color: #277DA8; font: bold 14px arial; letter-spacing: .4px; padding: 4px 8px; text-align: center; text-shadow: 1px 1px 1px #FFF; }
+.paginaty.disabled { display: none; }
+.paginaty li.page span { color: #888; }
+.paginaty li.disabled span { color: #EEE; }
+
+/* About */
+#about { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: 173px; margin: 50px auto 0; padding: 12px; width: 800px; }
+#about #bio { float: left; font: 14px/2 verdana; margin-left: 10px; margin-top: 29px; }
+#about #photo { float: right; margin-top: 5px; margin-right: 10px; }
+#about #photo img { background-color: #EEE; border-radius: 2px; display: block; height: 160px; width: 160px; }

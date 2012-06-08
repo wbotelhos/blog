@@ -1,0 +1,25 @@
+pt-BR:
+  article:
+    comments_count_html:
+      zero: "<span>Nenhum comentário, seja o primeiro! (:</span>"
+      one: "<span>1 comentário</span>"
+      other: "<span>%{count} comentários</span>"
+
+    created_at: "escrito em %{time}"
+
+    edit: "Editar"
+    permalink: "Permalink"
+
+    publish: "Publicar"
+    published_at: "%{time}"
+
+    read_more: "Leia mais..."
+
+    search:
+      description_html: "Resultados para <strong>%{query}</strong>"
+
+    tags: "Tags:"
+    title: "Artigos"
+    new: "Novo Artigo"
+    edit: "Editar Artigo"
+    update: "Atualizar"

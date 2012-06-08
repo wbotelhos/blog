@@ -1,0 +1,33 @@
+/* Sidebar */
+#sidebar-admin { float: left; padding: 10px; width: 130px; }
+#sidebar-admin h2 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; font: bold 14px verdana; margin-bottom: 2px; padding-bottom: 7px; padding-top: 7px; }
+#sidebar-admin ul { margin-bottom: 28px; }
+#sidebar-admin ul li { border-bottom: 1px dotted #F1F1F1; padding: 4px 0; }
+#sidebar-admin ul li strong { background-color: #AF81C3; border-radius: 4px; color: #FFF; display: inline-block; font-size: 8px; padding: 1px 4px; text-shadow: none; }
+
+/* Content */
+#admin { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 10px; width: 928px; }
+#admin h2 { color: #464646; font: 23px 'Helvetica Neue', sans-serif; margin-bottom: 20px; }
+
+/* Article */
+#admin h2 { background: url('../images/pin.png') no-repeat; float: left; padding-left: 35px; padding-top: 3px; width: 633px; }
+#admin #fields { float: left; width: 715px; }
+#admin #fields #article_title { width: 700px; }
+#admin #fields #article_body { margin-top: 10px; min-height: 450px; width: 700px; }
+
+#admin #publish .save { margin-left: 49px; }
+#admin #publish .publish { background-color: #FF4D4D; font: 11px arial; letter-spacing: 1px; margin-left: 72px; margin-top: 8px; padding: 4px; }
+#admin #publish .publish:hover { background-color: #F00; }
+#admin #publish .publish-update { margin-left: 35px; }
+
+#admin #controls { float: right; margin-bottom: 20px; padding-left: 5px; padding-right: 5px; width: 200px; }
+#admin #controls h3 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; font: bold 14px verdana; margin-bottom: 10px; padding-bottom: 7px; padding-top: 7px; }
+#admin #controls #categories { margin-top: 11px; }
+#admin #controls #categories ul li input { cursor: pointer; }
+#admin #controls #categories ul li label { cursor: pointer; }
+#admin #controls #categories ul li label:hover { color: #8D50A7; }
+
+/* Index */
+#admin #welcome { margin: 170px auto 0; overflow: auto; width: 500px; }
+#admin #welcome h1 { font: bold 30px verdana; margin: 0 auto; text-align: center; width: 400px; }
+#admin #welcome p { font: 15px verdana; margin: 10px auto 0; text-align: center; width: 300px; }

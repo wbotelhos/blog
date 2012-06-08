@@ -1,0 +1,7 @@
+#login { margin: 0 auto; margin-bottom: 120px; margin-top: 120px; width: 320px; }
+#login form { background-color: #FFF; border: 1px solid #E5E5E5; box-shadow: 0 4px 10px -1px rgba(200, 200, 200, 0.7); height: 175px; overflow: auto; padding: 26px; }
+#login form label { color: #777; display: block; font: 14px verdana; padding-bottom: 4px; }
+#login form p { margin-bottom: 12px; }
+#login form input[type="email"], #login form input[type="password"] { padding: 2px; width: 258px; }
+#login form input[type="submit"] { float: right; margin-top: 10px; }
+#login .alert { background-color: #FFF5F5; border: 1px solid; border-radius: 2px; color: #F00; margin-bottom: 5px; padding-bottom: 6px; padding-top: 6px; text-align: center; text-shadow: none; }

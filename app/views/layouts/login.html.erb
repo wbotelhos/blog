@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Washington Botelho | Login</title>
+    <%= javascript_include_tag "jquery-1.7.2.min" %>
+    <%= stylesheet_link_tag "stylesheet" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="top">
+        <div id="logo">
+          <h1><%= link_to "Washington Botelho", root_path %></h2>
+        	<h3><%= t("logo.description") %></h3>
+        </div>
+
+        <% if is_logged? %>
+          <nav>
+            <ul>
+                <li><%= link_to t("navigation.logout"), logout_path %></li>
+                <li><%= link_to t("navigation.admin"), admin_path %></li>
+            </ul>
+          </nav>
+        <% end %>
+      </div>
+
+      <div id="login">
+        <%= render "shared/flash_messages" %>
+        <%= yield %>
+      </div>
+
+      <footer id="footer">
+        <%= render "shared/footer" %>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      $(function() {
+        $('#email').focus().select();
+      });
+    </script>
+  </body>
+</html>
