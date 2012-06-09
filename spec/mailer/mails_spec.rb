@@ -7,28 +7,20 @@ describe Mailer do
   let!(:comment)      { FactoryGirl.create(:comment) }
   let(:mailer)        { Mailer.comment(article, new_comment, comment) }
 
-  context "build" do
+  context "configurations" do
+    it { mailer.should_not be_multipart }
+
     it "should queue email" do
       lambda { mailer.deliver }.should change(ActionMailer::Base.deliveries, :size).by(1)
     end
-  end
 
-  context "configurations" do
-    it { mailer.should_not be_multipart }
   end
 
   context "informations" do
-    it "should have the right to" do
-      mailer.to.first.should eql(comment.email)
-    end
-
-    it "should have the right subject" do
-      mailer.subject.should eql("Artigo respondido")
-    end
-
-    it "should have the right from" do
-      mailer.from.should include("noreply@wbotelhos.com.br")
-    end
+    it { mailer.to.first.should eql(comment.email) }
+    it { mailer.from.first.should eql("noreply@wbotelhos.com.br") }
+    it { mailer.bcc.first.should eql("wbotelhos@gmail.com") }
+    it { mailer.subject.should eql("Artigo respondido") }
   end
 
   context "content" do
