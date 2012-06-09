@@ -1,5 +1,4 @@
 # coding: utf-8
-
 require "spec_helper"
 
 describe "top" do
@@ -10,7 +9,7 @@ describe "top" do
 
     it "should show logo data" do
       page.should have_content(CONFIG["author"])
-      page.should have_content("Se você não tem dom, tenha vontade!")
+      page.should have_content(CONFIG["description"])
     end    
   end
 
