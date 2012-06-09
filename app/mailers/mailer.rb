@@ -7,7 +7,8 @@ class Mailer < ActionMailer::Base
     @new_comment = new_comment
     @comment = comment
 
-    mail :to => comment[:email], :subject => t("mail.comment.responded"), :bcc => "wbotelhos@gmail.com" do |format|
+    mail :to => comment.email, :subject => "Artigo respondido", :bcc => "wbotelhos@gmail.com" do |format|
+      format.html
       format.text
     end
   end
