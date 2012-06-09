@@ -2,7 +2,7 @@ xml.instruct!
 
 xml.rss :version => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
   xml.channel do
-    xml.title "Washington Botelho"
+    xml.title CONFIG["author"]
     xml.description "Se você não tem dom, tenha vontade!"
     xml.language I18n.locale.to_s
     xml.link articles_url

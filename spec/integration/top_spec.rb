@@ -9,7 +9,7 @@ describe "top" do
     end
 
     it "should show logo data" do
-      page.should have_content("Washington Botelho")
+      page.should have_content(CONFIG["author"])
       page.should have_content("Se você não tem dom, tenha vontade!")
     end    
   end
