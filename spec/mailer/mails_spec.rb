@@ -1,34 +1,44 @@
-# -*- encoding: utf-8 -*-
-
+# coding: utf-8
 require "spec_helper"
 
-# mailcatcher -f
-
 describe Mailer do
+  let!(:article)      { FactoryGirl.create(:article) }
+  let!(:new_comment)  { FactoryGirl.create(:comment) }
+  let!(:comment)      { FactoryGirl.create(:comment) }
+  let(:mailer)        { Mailer.comment(article, new_comment, comment) }
 
-  describe "#comment" do
-    let!(:mail) {
-      Mailer.comment({
-        :name => "Botelho",
-        :email => "botelho@gmail.com",
-        :url => "http://wbotelhos.com.br/article#comment"
-      })
-    }
+  context "build" do
+    it "should queue email" do
+      lambda { mailer.deliver }.should change(ActionMailer::Base.deliveries, :size).by(1)
+    end
+  end
 
-    subject { mail }
+  context "configurations" do
+    it { mailer.should_not be_multipart }
+  end
 
-    it { should_not be_multipart }
+  context "informations" do
+    it "should have the right to" do
+      mailer.to.first.should eql(comment.email)
+    end
 
-    its(:subject) { should eql("Artigo respondido") }
-    its(:from) { should include("noreply@wbotelhos.com.br") }
+    it "should have the right subject" do
+      mailer.subject.should eql("Artigo respondido")
+    end
 
-    #context "text mail" do
-    #  subject { mail.parts.first }
+    it "should have the right from" do
+      mailer.from.should include("noreply@wbotelhos.com.br")
+    end
+  end
 
-    #  its(:body) { should have_content("Olá Washington Botelho,") }
-    #  its(:body) { should have_content("Artigo respondido") }
-    #  its(:body) { should have_content("noreply@wbotelhos.com.br") }
-    #end
+  context "content" do
+    it "should have the hello message" do
+      mail = mailer.deliver
+
+      mail.body.should include("Olá #{comment.name},")
+      mail.body.should include(%[O article "#{article.title}" no qual você participou foi respondido por #{new_comment.name}.])
+      mail.body.should include(%[Não perca a discussão, visite: http://wbotelhos.com.br/articles/#{article.id}#comment-#{new_comment.id}])
+    end
   end
 
 end

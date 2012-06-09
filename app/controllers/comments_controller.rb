@@ -9,11 +9,10 @@ class CommentsController < ApplicationController
     comment.author = is_logged?
     comment.comment = Comment.find(params[:comment_id]) unless params[:comment_id].nil?
 
-    mailer = CommentMailer.new(comment, article_path(article))
-
     if comment.save
+      CommentMailer.new(article, comment).send
+
       flash[:notice] = t("flash.comments.create.notice")
-      mailer.send
     else
       flash[:alert] = t("flash.comments.create.alert")
     end

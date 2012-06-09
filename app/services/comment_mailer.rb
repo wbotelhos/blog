@@ -1,15 +1,15 @@
 class CommentMailer
 
-  def initialize(comment, url)
-    @comment = comment
-    @url = url
+  def initialize(article, new_comment)
+    @article = article
+    @new_comment = new_comment
   end
 
   def send
-    options = @comment.article.unique_comments
+    comments = @article.unique_comments
 
-    options.each do |option|
-      Mailer.comment(option).deliver
+    comments.each do |comment|
+      Mailer.comment(@article, @new_comment, comment).deliver
     end
   end
 

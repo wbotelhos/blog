@@ -1,7 +1,9 @@
-Olá <%= @option[:name] %>,
+Olá <%= @comment.name %>,
 
-O article no qual você participou foi respondido.
+O article "<%= @article.title %>" no qual você participou foi respondido por <%= @new_comment.name %>.
 
-Visite o artigo: <%= "http://wbotelhos.com.br#{@option[:url]}#comments" %>
+Não perca a discussão, visite: <%= article_url(@article, :anchor => "comment-#{@new_comment.id}") %>
 
+---
+Washington Botelho
 http://wbotelhos.com.br
