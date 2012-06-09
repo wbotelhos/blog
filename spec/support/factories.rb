@@ -24,11 +24,11 @@ FactoryGirl.define do
   end
 
   factory :comment do
-    name "name"
-    sequence(:email) { |i| "email#{i}@mail.com" }
-    url "http://url.com"
-    body "body"
-    association :article
+    sequence(:name)     { |i| "name-#{i}" }
+    sequence(:email)    { |i| "email#{i}@mail.com" }
+    url                 "http://url.com"
+    body                "body"
+    association         :article
   end
 
   preload do
