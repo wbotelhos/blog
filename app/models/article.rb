@@ -20,11 +20,7 @@ class Article < ActiveRecord::Base
 
   def unique_comments
     self.comments.all(:group => "email")
-  end  
-
-  def unique_comments
-    self.comments.all(:group => "email")
-  end  
+  end
 
   define_index do
     set_property :delta => true
