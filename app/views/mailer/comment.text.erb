@@ -1,6 +1,6 @@
 Olá <%= @comment.name %>,
 
-O article "<%= @article.title %>" no qual você participou foi respondido por <%= @new_comment.name %>.
+O artigo "<%= @article.title %>" no qual você participou foi respondido por <%= @new_comment.name %>.
 
 Não perca a discussão, visite: <%= article_url(@article, :anchor => "comment-#{@new_comment.id}") %>
 
