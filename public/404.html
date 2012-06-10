@@ -9,7 +9,7 @@
     <div id="wrapper">
       <div id="top">
         <div id="logo">
-          <h1><a href="http://wbotelhos.com.br"><%= CONFIG["author"] %></a></h1>
+          <h1><%= link_to CONFIG["author"], CONFIG["url_http"] %></h1>
           <h3><%= CONFIG["description"] %></h3>
         </div>
       </div>
@@ -18,11 +18,11 @@
         <h1>404</h1>
         <h2>Página não encontrada.</h2>
         <h3>É uma cilada Bino!</h3>
-        <p>Tente <strong><a href="http://wbotelhos.com.br">voltar para o blog</a></strong></p>
+        <p>Tente <strong><%= link_to "voltar para o blog", CONFIG["url_http"] %></strong></p>
       </div>
 
       <footer id="footer">
-        &copy; <%= CONFIG["year"] %> <a target="_blank" href="http://wbotelhos.com.br">wbotelhos.com.br</a>
+        &copy; <%= CONFIG["year"] %> <%= link_to CONFIG["url"], CONFIG["url_http"] %>
       </footer>
     </div>
   </body>
