@@ -1,5 +1,4 @@
-# Load the rails application
+# Developed by Washington Botelho
 require File.expand_path('../application', __FILE__)
 
-# Initialize the rails application
 Blog::Application.initialize!
