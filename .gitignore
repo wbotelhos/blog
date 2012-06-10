@@ -28,6 +28,7 @@ log/*
 /bin
 /.bundle
 /config/*.sphinx.conf
+/db/sphinx
 /tmp
 
 # Python
