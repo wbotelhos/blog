@@ -12,7 +12,7 @@
       <div id="top">
         <div id="logo">
           <h1><%= link_to CONFIG["author"], root_path %></h2>
-        	<h3><%= t("logo.description") %></h3>
+        	<h3><%= CONFIG["description"] %></h3>
         </div>
 
         <% if is_logged? %>
