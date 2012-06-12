@@ -1,11 +1,6 @@
-# -*- encoding: utf-8 -*-
+# coding: utf-8
 
 module ApplicationHelper
-
-  def error_for(entity, attribute)
-    message = entity.errors[attribute].first
-    content_tag :span, message, :class => "error" if message
-  end
 
   def author(user)
     "".html_safe.tap do |html|

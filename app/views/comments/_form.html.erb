@@ -17,23 +17,18 @@
     <% else %>
       <p>
         <%= f.text_field :name, :value => t("activerecord.attributes.comment.name"), :title => t("activerecord.attributes.comment.name") %>
-        <%= error_for comment, :name %>
-
         <%= f.text_field :email, :value => t("activerecord.attributes.comment.email"), :title => t("activerecord.attributes.comment.email") %>
-        <%= error_for comment, :email %>
-
         <%= f.text_field :url, :value => t("activerecord.attributes.comment.url"), :title => t("activerecord.attributes.comment.url") %>
-        <%= error_for comment, :url %>
       </p>
     <% end %>
 
     <p>
       <%= f.text_area :body, :value => t("activerecord.attributes.comment.body"), :title => t("activerecord.attributes.comment.body") %>
-      <%= error_for comment, :body %>
-      <div id="markdown-reference">
-        Para formatar o seu <strong>código</strong> utilize a sintaxe do
-        <%= link_to "Markdown", "http://daringfireball.net/projects/markdown/syntax", { :title => "Markdown", :target => "_blank" } %>.
-      </div>
+    </p>
+
+    <p id="markdown-reference">
+      Para formatar o seu <strong>código</strong> utilize a sintaxe do
+      <%= link_to "Markdown", "http://daringfireball.net/projects/markdown/syntax", { :title => "Markdown", :target => "_blank" } %>.
     </p>
 
     <p>

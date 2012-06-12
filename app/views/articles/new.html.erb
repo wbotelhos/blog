@@ -1,15 +1,15 @@
 <h2><%= t("article.new") %></h2>
 
+<%= render "shared/error_messages", :entity => @article %>
+
 <%= form_for @article, :url => create_article_path do |f| %>
   <div id="fields">
     <p>
       <%= f.text_field :title %>
-      <%= error_for @article, :title %>
     </p>
 
     <p>
       <%= f.text_area :body %>
-      <%= error_for @article, :body %>
     </p>
   </div>
 
