@@ -2,7 +2,7 @@ pt-BR:
   flash:
     articles:
       create:
-        notice: "Artigo criado com sucesso!"
+        notice: "Rascunho salvo com sucesso!"
       search:
         alert: "A busca foi desabilitada por um momento. Tente mais tarde! (:"
 
