@@ -2,7 +2,7 @@ class CreateArticles < ActiveRecord::Migration
   def up
     create_table :articles do |t|
       t.string :title, :null => false
-      t.text :body, :null => false
+      t.text :body
       t.datetime :published_at
 
       t.references :user, :null => false

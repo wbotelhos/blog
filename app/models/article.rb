@@ -8,7 +8,7 @@ class Article < ActiveRecord::Base
 
   scope :recents, limit(10).order("published_at desc")
 
-  validates :title, :body, :user, :categories, :presence => true
+  validates :title, :user, :categories, :presence => true
 
   def formatted
     self.body.gsub(/\s{1}<!--more-->/, "")
