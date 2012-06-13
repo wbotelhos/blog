@@ -29,6 +29,9 @@ input[type="submit"]:hover, input[type="button"]:hover { background-color: #8D50
 /* Credits */
 #credits { color: #555; float: right; font: italic 10px verdana; margin-top: 5px; text-shadow: 2px 2px #EFEFEF; }
 
+/* Error */
+.error-messages { background-color: #F2DEDE; border-radius: 4px; color: #B94A48; margin-bottom: 10px; margin-top: 10px; padding: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); max-width: 100%; }
+
 /* Footer */
 #footer { margin: 0 auto; overflow: auto; padding-bottom: 15px; padding-top: 10px; text-align: center; width: 1100px; }
 

@@ -7,13 +7,13 @@
 
 /* Content */
 #admin { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 10px; width: 928px; }
-#admin h2 { color: #464646; font: 23px 'Helvetica Neue', sans-serif; margin-bottom: 20px; }
 
 /* Article */
-#admin h2 { background: url('../images/pin.png') no-repeat; float: left; padding-left: 35px; padding-top: 3px; width: 633px; }
-#admin #fields { float: left; width: 715px; }
-#admin #fields #article_title { width: 700px; }
-#admin #fields #article_body { margin-top: 10px; min-height: 450px; width: 700px; }
+#admin h2 { background: url('../images/pin.png') no-repeat; color: #464646; font: 23px 'Helvetica Neue', sans-serif; padding-left: 35px; padding-top: 3px; width: 633px; }
+#admin #new_article { margin-top: 20px; }
+#admin #new_article #fields { float: left; width: 715px; }
+#admin #new_article #fields #article_title { width: 700px; }
+#admin #new_article #fields #article_body { margin-top: 10px; min-height: 450px; width: 700px; }
 
 #admin #publish .save { margin-left: 49px; }
 #admin #publish .publish { background-color: #FF4D4D; font: 11px arial; letter-spacing: 1px; margin-left: 72px; margin-top: 8px; padding: 4px; }
