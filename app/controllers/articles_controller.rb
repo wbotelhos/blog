@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to edit_article_path(@article), :notice => t("flash.articles.create.notice")
     else
-      render :new
+      render :new, :layout => "admin"
     end
   end
 
