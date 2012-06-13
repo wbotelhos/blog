@@ -52,11 +52,12 @@ describe Article do
       end
 
       it "should renders form page again" do
-        current_path.should eql(new_article_path)
+        current_path.should eql(create_article_path) # TODO: why not /new on render :new?
       end
 
-      it "should display error message" do
-        page.should have_content("Informe o título do artigo!")
+      it "should display field validation messages" do
+        page.should have_content("Título deve ser preenchido!")
+        page.should have_content("Categoria deve ser preenchido!")
       end
     end
   end

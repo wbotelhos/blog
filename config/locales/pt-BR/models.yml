@@ -9,7 +9,7 @@ pt-BR:
       article:
         title: "Título"
         body: "Corpo"
-        category_id: "Categoria"
+        categories: "Categoria"
 
       comment:
           name: "Nome *"
