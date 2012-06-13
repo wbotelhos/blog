@@ -14,7 +14,7 @@ describe "top" do
   end
 
   context "when logged" do
-    let!(:user) { users(:user) }
+    let!(:user) { FactoryGirl.create(:user) }
 
     before do
       login :with => user.email
@@ -22,7 +22,7 @@ describe "top" do
 
     it "should show menu" do
       page.should have_content("Sobre")
-      page.should have_content("Admin!")
+      page.should have_content("Admin")
       page.should have_content("Sair")
     end
   end

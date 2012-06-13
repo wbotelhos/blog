@@ -2,8 +2,8 @@ require "spec_helper"
 
 describe "Logout" do
 
-  context "when logged in" do
-    let!(:user) { users(:user) }
+  context "when logout" do
+    let!(:user) { FactoryGirl.create(:user) }
 
     before do
       login :with => user.email
@@ -11,26 +11,11 @@ describe "Logout" do
       click_link "Sair"
     end
 
-    it "redirects to the home page" do
-      current_path.should eql(root_path)
-    end
-
-    it "omits the admin menu" do
-      page.should_not have_content("Admin!")
-    end
-  end
-
-  context "when unlogged" do
-    before do
-      visit logout_path
-    end
+    it { page.should_not have_content("Admin") }
+    it { page.should_not have_content("Sair") }
 
     it "redirects to the home page" do
       current_path.should eql(root_path)
-    end
-
-    it "should hide sair link" do
-      page.should_not have_content("Sair")
     end
   end
 
