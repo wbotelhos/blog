@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = ArticleSearch.search(params)
+    @articles = Article.search(params[:query], { :page => params[:page], :per_page => Paginaty::LIMIT })
   end
 
   def new
