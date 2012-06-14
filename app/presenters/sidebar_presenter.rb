@@ -5,27 +5,21 @@ class SidebarPresenter
   end
 
   def articles
-    articles ||= Article.select("id, title").all
+    articles = Article.select("id, title").all
 
-    if articles.size > 0
-      { :partial => "sidebar/articles", :locals => { :articles => articles } }
-    end
+    { :partial => "sidebar/articles", :locals => { :articles => articles } }
   end
 
   def categories
-    categories ||= Category.scoped
+    categories = Category.scoped
 
-    if categories.size > 0
-      { :partial => "sidebar/categories", :locals => { :categories => categories } }
-    end
+    { :partial => "sidebar/categories", :locals => { :categories => categories } }
   end
 
   def links
-    links ||= Link.scoped
+    links = Link.scoped
 
-    if links.size > 0
-      { :partial => "sidebar/links", :locals => { :links => links } }
-    end
+    { :partial => "sidebar/links", :locals => { :links => links } }
   end
 
 end
