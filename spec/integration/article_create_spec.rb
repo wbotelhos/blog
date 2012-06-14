@@ -1,7 +1,7 @@
 # coding: utf-8
 require "spec_helper"
 
-describe Article do
+describe Article, "Create" do
 
   context "when logged" do
     let!(:user) { FactoryGirl.create(:user) }

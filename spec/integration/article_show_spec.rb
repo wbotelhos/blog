@@ -1,7 +1,7 @@
 # coding: utf-8
 require "spec_helper"
 
-describe "Article show" do
+describe Article, "Show" do
   let!(:article) { articles(:article) }
 
   before do
