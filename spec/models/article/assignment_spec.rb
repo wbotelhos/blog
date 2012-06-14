@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Article, "assignment" do
-  let!(:category) { categories(:category) }
+  let!(:category) { FactoryGirl.create(:category) }
 
   subject {
     Article.new({

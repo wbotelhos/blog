@@ -2,7 +2,7 @@
 require "spec_helper"
 
 describe Article, "Show" do
-  let!(:article) { articles(:article) }
+  let!(:article) { FactoryGirl.create(:article) }
 
   before do
     visit article_path(article)

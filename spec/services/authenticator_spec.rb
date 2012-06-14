@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Authenticator do
-  let!(:user) { users(:user) }
+  let!(:user) { FactoryGirl.create(:user) }
 
   context "with valid credentials" do
     it "returns user" do

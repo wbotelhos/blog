@@ -2,7 +2,7 @@
 require "spec_helper"
 
 describe "Login" do
-  let!(:user) { users(:user) }
+  let!(:user) { FactoryGirl.create(:user) }
 
   before do
     visit login_path

@@ -2,6 +2,7 @@
 require "spec_helper"
 
 describe "About" do
+  let!(:user) { FactoryGirl.create(:user, :id => 1) }
 
   context "profile display" do
     before do
@@ -12,7 +13,7 @@ describe "About" do
       current_path.should eql(about_path)
     end
 
-     xit "should show the author's bio" do
+     it "should show the author's bio" do
        page.should have_content("Desenvolvedor Java, Ruby e Python no Portal <a href=\"http://r7.com\" target=\"_blank\">R7.com</a>.")
      end
   end

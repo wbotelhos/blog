@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "index" do
-  let(:article) { articles(:article) }
+  let!(:article) { FactoryGirl.create(:article) }
 
   before do
     visit "/"
@@ -14,13 +14,13 @@ describe "index" do
   end
 
   context "click read more" do
-    it "redirects to the article page" do
+    it "should redirects to the article page" do
       click_link "Leia mais..."
       current_path.should eql(article_path(article))
     end    
   end
 
-  context "click artigo title" do
+  context "should click artigo title" do
     xit "redirects to the article page" do
       find(".article").find("h2").click
       current_path.should eql(article_path(article))
