@@ -1,10 +1,9 @@
-# -*- encoding: utf-8 -*-
-
+# coding: utf-8
 require "spec_helper"
 
-describe "Add comment" do
-  let!(:user) { users(:user) }
-  let!(:article) { articles(:article) }
+describe Comment, "Create" do
+  let!(:user) { FactoryGirl.create(:user, :id => 1) }
+  let!(:article) { FactoryGirl.create(:article, :id => 1) }
 
   context "when logged in" do
     before do
@@ -14,10 +13,7 @@ describe "Add comment" do
 
     context "with valid data" do
       before do
-        fill_in "comment_name", :with => "name"
-        fill_in "comment_email", :with => "email@mail.com"
-        fill_in "comment_url", :with => "http://url.com"
-        fill_in "comment_body", :with => "comment"
+        fill_in "comment_body",   :with => "comment"
         click_button "Comentar"
       end
 
