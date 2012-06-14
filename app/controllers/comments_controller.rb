@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
       flash[:alert] = t("flash.comments.create.alert")
     end
 
-    redirect_to article_path(article, :anchor => "comments")
+    redirect_to article_path(article)
   end
 
   def update
