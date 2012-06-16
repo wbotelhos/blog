@@ -29,8 +29,8 @@ Blog::Application.routes.draw do
   end
 
   controller :sessions do
-    get "/login",   :action => :new, :layout => :login
-    post "/login",  :action => :create, :as => false
+    get "/login",   :action => :new,    :as => :login
+    post "/login",  :action => :create, :as => false # TODO: what is the rule to avoid alias?
     get "/logout",  :action => :destroy
   end
 
