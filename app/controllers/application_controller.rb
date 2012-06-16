@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
   def user_session
     @user_session ||= session[:user_id] && User.find_by_id(session[:user_id])
   end
