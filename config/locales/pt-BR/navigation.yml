@@ -1,6 +1,6 @@
 pt-BR:
   navigation:
-    admin:  "Admin"
+    admin: "Admin!"
     dashboard: "Painel de Controle"
     logout: "Sair"
     login:  "Login"

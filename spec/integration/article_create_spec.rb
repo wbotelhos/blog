@@ -9,7 +9,7 @@ describe Article, "Create" do
 
     before do
       login :with => user.email
-      click_link "Admin"
+      click_link "Admin!"
       click_link "Criar"
     end
 

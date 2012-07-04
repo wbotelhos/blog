@@ -14,7 +14,7 @@ describe "Logout" do
       current_path.should eql(root_path)
     end
 
-    it { page.should_not have_content("Admin") }
+    it { page.should_not have_content("Admin!") }
     it { page.should_not have_content("Sair") }
   end
 

@@ -22,7 +22,7 @@ describe "top" do
 
     it "should show menu" do
       page.should have_content("Sobre")
-      page.should have_content("Admin")
+      page.should have_content("Admin!")
       page.should have_content("Sair")
     end
   end
