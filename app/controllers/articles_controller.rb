@@ -20,7 +20,11 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id], :include => [:comments, :user])
+    # TODO: ignore the time and get only by date.
+    published_at = Date.new(params[:year], params[:month], params[:day])
+
+    @article = Article.where("slug = ?", params[:slug])
+
     comment = Comment.new
     @comment_form = CommentFormPresenter.new(@article, comment)
   end
@@ -40,6 +44,8 @@ class ArticlesController < ApplicationController
     params[:article][:category_ids] ||= []
 
     @article = user_session.articles.new(params[:article])
+
+    @article.slug = @article.slug_it
 
     if @article.save
       redirect_to edit_article_path(@article), :notice => t("flash.articles.create.notice")

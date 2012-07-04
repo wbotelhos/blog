@@ -12,10 +12,11 @@ FactoryGirl.define do
   end
 
   factory :article do
-    title       "title"
-    body        "body <!--more--> body"
-    association :user
-    categories  { |categories| [categories.association(:category)] }
+    sequence(:title)  { |i| "title #{i}" }
+    sequence(:slug)   { |i| "title-#{i}" }
+    body              "body <!--more--> body"
+    association       :user
+    categories        { |categories| [categories.association(:category)] }
   end
 
   factory :article_category do

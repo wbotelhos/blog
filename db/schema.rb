@@ -15,7 +15,8 @@ ActiveRecord::Schema.define(:version => 20120523200743) do
 
   create_table "articles", :force => true do |t|
     t.string   "title",                            :null => false
-    t.text     "body",                             :null => false
+    t.text     "body"
+    t.string   "slug",                             :null => false
     t.datetime "published_at"
     t.integer  "user_id",                          :null => false
     t.integer  "comments_count", :default => 0
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20120523200743) do
     t.datetime "updated_at",                       :null => false
   end
 
+  add_index "articles", ["slug"], :name => "index_articles_on_slug", :unique => true
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
 
   create_table "articles_categories", :force => true do |t|

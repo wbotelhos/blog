@@ -5,8 +5,7 @@ class SidebarPresenter
   end
 
   def articles
-    articles = Article.select("id, title").all
-
+    articles = Article.select("id, title, published_at, slug").all
     { :partial => "sidebar/articles", :locals => { :articles => articles } }
   end
 

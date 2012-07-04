@@ -3,6 +3,7 @@ class CreateArticles < ActiveRecord::Migration
     create_table :articles do |t|
       t.string :title, :null => false
       t.text :body
+      t.string :slug, :null => false
       t.datetime :published_at
 
       t.references :user, :null => false
@@ -13,6 +14,7 @@ class CreateArticles < ActiveRecord::Migration
     end
 
     add_index :articles, :user_id
+    add_index :articles, :slug, :unique => true
   end
 
   def down

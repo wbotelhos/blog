@@ -32,7 +32,7 @@ user = User.create({
   :password_confirmation  => "test"
 })
 
-article = user.articles.create({
+article = user.articles.new({
   :title  => "First Steps",
   :body   => %[
 Hi! My name is **Washington Botelho** and this article is an example to introduce how it works.
@@ -80,6 +80,7 @@ This blog is free under the MIT License, then be nice and keep the author's cred
 See you and your blog soon!
 
 ]})
+article.slug = "first-steps"
 article.categories = categories
 article.save
 
