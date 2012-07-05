@@ -15,6 +15,8 @@ FactoryGirl.define do
     sequence(:title)  { |i| "title #{i}" }
     sequence(:slug)   { |i| "title-#{i}" }
     body              "body <!--more--> body"
+    created_at        Time.now
+    published_at      Time.now
     association       :user
     categories        { |categories| [categories.association(:category)] }
   end

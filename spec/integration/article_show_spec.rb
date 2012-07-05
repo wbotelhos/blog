@@ -5,7 +5,7 @@ describe Article, "Show" do
   let!(:article) { FactoryGirl.create(:article) }
 
   before do
-    visit article_path(article)
+    visit slug_article_path(article.year, article.month, article.day, article.slug)
   end
 
   it "should redirects to show page" do

@@ -8,7 +8,7 @@ describe Comment, "Create" do
   context "when logged" do
     before do
       login :with => user.email
-      visit article_path(article)
+      visit slug_article_path(article.year, article.month, article.day, article.slug)
     end
 
     context "form with valid data" do
@@ -18,7 +18,7 @@ describe Comment, "Create" do
       end
 
       it "should redirects to the article page" do
-        current_path.should eql(article_path(article))
+        current_path.should eql(slug_article_path(article.year, article.month, article.day, article.slug))
       end
 
        it "should displays success message" do
@@ -36,7 +36,7 @@ describe Comment, "Create" do
       end
 
       it "redirects to the article page" do
-        current_path.should eql(article_path(article))
+        current_path.should eql(slug_article_path(article.year, article.month, article.day, article.slug))
       end
 
       it "displays error message" do
@@ -50,7 +50,7 @@ describe Comment, "Create" do
       end
 
       it "redirects to the article page" do
-        current_path.should eql(article_path(article))
+        current_path.should eql(slug_article_path(article.year, article.month, article.day, article.slug))
       end
 
       it "displays error message" do
@@ -61,7 +61,7 @@ describe Comment, "Create" do
 
   context "when unlogged" do
     before do
-      visit article_path(article)
+      visit slug_article_path(article.year, article.month, article.day, article.slug)
     end
 
     context "form with valid data" do
@@ -74,7 +74,7 @@ describe Comment, "Create" do
       end
 
       it "redirects to the article page" do
-        current_path.should eql(article_path(article))
+        current_path.should eql(slug_article_path(article.year, article.month, article.day, article.slug))
       end
 
        it "displays success message" do
@@ -93,7 +93,7 @@ describe Comment, "Create" do
       end
 
       it "redirects to the article page" do
-        current_path.should eql(article_path(article))
+        current_path.should eql(slug_article_path(article.year, article.month, article.day, article.slug))
       end
 
       it "displays error message" do
@@ -109,7 +109,7 @@ describe Comment, "Create" do
       end
 
       it "redirects to the article page" do
-        current_path.should eql(article_path(article))
+        current_path.should eql(slug_article_path(article.year, article.month, article.day, article.slug))
       end
 
       it "displays error message" do

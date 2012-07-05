@@ -22,19 +22,21 @@ class CommentsController < ApplicationController
       flash[:alert] = t("flash.comments.create.alert")
     end
 
-    redirect_to article_path(@article)
+    redirect_to slug_article_path(@article.year, @article.month, @article.day, @article.slug)
   end
 
   def update
-    comment = Comment.find(params[:id])
+    @article = Article.find(params[:article_id])
 
-    if comment.update_attributes(params[:comment])
+    @comment = @articles.comments.find(params[:id])
+
+    if @comment.update_attributes(params[:comment])
       flash[:notice] = t("flash.comments.update.notice")
     else
       flash[:alert] = t("flash.comments.update.alert")
     end
 
-    redirect_to article_path(params[:article_id])
+    redirect_to slug_article_path(@article.year, @article.month, @article.day, @article.slug)
   end
 
 end
