@@ -20,10 +20,10 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    # TODO: ignore the time and get only by date.
-    published_at = Date.new(params[:year], params[:month], params[:day])
+    # TODO: apply query to check only Date and ignore Time.
+    published_at = Date.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)
 
-    @article = Article.where("slug = ?", params[:slug])
+    @article = Article.where("slug = ?", params[:slug]).first
 
     comment = Comment.new
     @comment_form = CommentFormPresenter.new(@article, comment)
