@@ -4,7 +4,7 @@
     <span class="month"><%= t("article.published_at", :time => l(@article.created_at, :format => :month)) %></span>
   </div>
 
-  <h2><%= link_to @article.title, article_path(@article) %></h2>
+  <h2><%= link_to @article.title, slug_article_path(@article.year, @article.month, @article.day, @article.slug) %></h2>
 
   <ul class="links">
     <li class="permalink"><%= link_to t("article.permalink"), slug_article_path(@article.year, @article.month, @article.day, @article.slug) %></li>
