@@ -2,7 +2,7 @@
 
 class Article < ActiveRecord::Base
   attr_readonly :user_id
-  attr_accessible :title, :body, :category_ids, :published_at
+  attr_accessible :title, :slug, :body, :category_ids, :published_at
 
   belongs_to :user, :counter_cache => true
   has_many :comments, :dependent => :destroy
@@ -12,7 +12,7 @@ class Article < ActiveRecord::Base
   scope :published, where('published_at is not null and published_at <= ?', Time.now)
   scope :unpublished, where('published_at is null or published_at > ?', Time.now)
 
-  validates :title, :user, :categories, :presence => true
+  validates :title, :slug, :user, :categories, :presence => true
 
   def formatted
     self.body.gsub(/\s{1}<!--more-->/, "")
@@ -26,22 +26,18 @@ class Article < ActiveRecord::Base
     self.comments.all(:group => "email")
   end
 
-  # TODO: to use like slug.downcase! changes the title. Why?
-  def slug_it
-    slug = self.title
-
-    slug = slug.downcase
-    slug = slug.gsub(/\s-\s/, '-')
-    slug = slug.gsub(/\s/, '-')
+  def slug_it(text)
+    text = text.downcase
+    text = text.gsub(/\s-\s/, '-')
+    text = text.gsub(/\s/, '-')
 
     from  = "áàãâäèéêëìíîïõòóôöùúûüç"
     to    = "aaaaaeeeeiiiiooooouuuuc"
 
-    slug = slug.tr(from, to)
-    
-    slug = slug.gsub(/[^\w-]/, '')
+    text = text.tr(from, to)
+    text = text.gsub(/[^\w-]/, '')
 
-    slug
+    text
   end
 
   def day

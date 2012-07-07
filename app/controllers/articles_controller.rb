@@ -36,6 +36,9 @@ class ArticlesController < ApplicationController
 
   def update
     article = Article.find(params[:id])
+
+    params[:article][:slug] = article.slug_it(params[:article][:title])
+
     article.update_attributes(params[:article])
     redirect_to slug_article_path(article.year, article.month, article.day, article.slug), :notice => t("flash.articles.create.notice")
   end
@@ -45,7 +48,7 @@ class ArticlesController < ApplicationController
 
     @article = user_session.articles.new(params[:article])
 
-    @article.slug = @article.slug_it
+    @article.slug = @article.slug_it(@article.title)
 
     if @article.save
       redirect_to edit_article_path(@article), :notice => t("flash.articles.create.notice")

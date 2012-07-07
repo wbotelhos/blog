@@ -7,11 +7,13 @@ describe Article, "assignment" do
     Article.new({
       :title => "title",
       :body => "body",
+      :slug => "slug",
       :category_ids => [category.id]
     })
   }
 
   its(:title) { should eql("title") }
   its(:body) { should eql("body") }
+  its(:slug) { should eql("slug") }
 
 end
