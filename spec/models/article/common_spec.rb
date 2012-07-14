@@ -33,7 +33,7 @@ describe Article do
   end
 
   describe "slug title" do
-    subject { article.slug_it }
+    subject { article.slug_it(article.title) }
 
     it "should slug letter and spaces" do
       should eql("city-sao-joao-del-rey-alive")
