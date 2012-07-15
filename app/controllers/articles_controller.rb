@@ -40,7 +40,10 @@ class ArticlesController < ApplicationController
     params[:article][:slug] = article.slug_it(params[:article][:title])
 
     article.update_attributes(params[:article])
-    redirect_to slug_article_path(article.year, article.month, article.day, article.slug), :notice => t("flash.articles.create.notice")
+
+    redirect_to edit_article_path(article), :notice => t("flash.articles.update.notice")
+    #redirect_to slug_article_path(article.year, article.month, article.day, article.slug), :notice => t("flash.articles.create.notice")
+  end
   end
 
   def create

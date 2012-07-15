@@ -20,7 +20,7 @@
 #admin #publish .save { margin-left: 49px; }
 #admin #publish .publish { background-color: #FF4D4D; font: 11px arial; letter-spacing: 1px; margin-left: 72px; margin-top: 8px; padding: 4px; }
 #admin #publish .publish:hover { background-color: #F00; }
-#admin #publish .publish-update { margin-left: 35px; }
+#admin #publish .update { margin-left: 35px; }
 
 #admin #controls { float: right; margin-bottom: 20px; padding-left: 5px; padding-right: 5px; width: 200px; }
 #admin #controls h3 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; font: bold 14px verdana; margin-bottom: 10px; padding-bottom: 7px; padding-top: 7px; }

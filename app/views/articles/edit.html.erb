@@ -24,7 +24,11 @@
     <div id="publish">
       <h3><%= t("article.publish") %></h3>
 
-      <%= f.submit t("article.update"), :class => "publish-update" %>
+      <%= f.submit t("article.update"), :class => "update" %>
+
+      <% if @article.published_at.nil? %>
+        <input type="button" value="<%= t("article.publish") %>" class="publish" />
+      <% end %>
     </div>
 
     <div id="categories">

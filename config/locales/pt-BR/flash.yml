@@ -3,6 +3,10 @@ pt-BR:
     articles:
       create:
         notice: "Rascunho salvo com sucesso!"
+      publish:
+        notice: "Artigo publicado com sucesso!"
+      update:
+        notice: "Artigo atualizado com sucesso!"
       search:
         alert: "A busca foi desabilitada por um momento. Tente mais tarde! (:"
 
