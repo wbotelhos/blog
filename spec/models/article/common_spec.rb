@@ -66,4 +66,41 @@ describe Article do
     end
   end
 
+  describe "status" do
+    subject { article }
+
+    context "when article is new" do
+      before do
+        article.created_at = nil
+        article.published_at = nil
+      end
+
+      it "return 'Novo'" do
+        article.status.should == "Novo"
+      end
+    end
+
+    context "when article is a draft" do
+      before do
+        article.created_at = Time.now
+        article.published_at = nil
+      end
+
+      it "return 'Rascunho'" do
+        article.status.should == "Rascunho"
+      end
+    end
+
+    context "when article is published" do
+      before do
+        article.created_at = Time.now
+        article.published_at = Time.now
+      end
+
+      it "return 'Publicado'" do
+        article.status.should == "Publicado"
+      end
+    end
+  end
+
 end

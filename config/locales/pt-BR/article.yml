@@ -23,3 +23,7 @@ pt-BR:
     new: "Novo Artigo"
     edit: "Editar Artigo"
     update: "Atualizar"
+    status:
+      new: "Novo"
+      draft: "Rascunho"
+      published: "Publicado"

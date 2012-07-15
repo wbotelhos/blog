@@ -1,4 +1,11 @@
-<h2><%= t("article.edit") %></h2>
+<div id="title">
+  <h2><%= t("article.edit") %></h2>
+
+  <div id="status">
+    <%= @article.status %>
+  </div>
+</div>
+
 
 <%= render "shared/error_messages", :entity => @article %>
 

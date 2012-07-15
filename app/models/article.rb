@@ -71,4 +71,14 @@ class Article < ActiveRecord::Base
     indexes body
   end
 
+  def status
+    if created_at.nil?
+      I18n.t("article.status.new")
+    elsif published_at.nil?
+      I18n.t("article.status.draft")
+    else
+      I18n.t("article.status.published")
+    end
+  end
+
 end

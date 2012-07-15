@@ -9,7 +9,9 @@
 #admin { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 10px; width: 928px; }
 
 /* Article */
-#admin h2 { background: url('../images/pin.png') no-repeat; color: #464646; font: 23px 'Helvetica Neue', sans-serif; padding-left: 35px; padding-top: 3px; width: 633px; }
+#admin #title { height: 40px; }
+#admin #title h2 { background: url('../images/pin.png') no-repeat; color: #464646; float: left; font: 23px 'Helvetica Neue', sans-serif; padding-left: 35px; padding-top: 3px; }
+#admin #title #status { background-color: #999; border-radius: 5px; color: #FFF; float: left; font: bold 12px helvetica; margin-left: 25px; margin-top: 7px; padding: 5px 15px; text-align: center; width: 54px; }
 #admin .new_article, #admin .edit_article { margin-top: 20px; }
 #admin #fields { float: left; width: 715px; }
 #admin #fields #article_title { width: 700px; }

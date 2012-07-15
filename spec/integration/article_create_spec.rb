@@ -1,7 +1,7 @@
 # coding: utf-8
 require "spec_helper"
 
-describe Article, "Create" do
+describe Article, "#create" do
 
   context "when logged" do
     let!(:user) { FactoryGirl.create(:user) }
@@ -29,7 +29,7 @@ describe Article, "Create" do
       end
     end
 
-    context "save with valid data" do
+    context "with valid data" do
       before do
         fill_in "article_title", :with => "some title"
         fill_in "article_body", :with => "some text"
@@ -37,25 +37,25 @@ describe Article, "Create" do
         click_button "Salvar"
       end
 
-      it "should redirects to edit" do
+      it "redirects to edit" do
         current_path.should match(%r[/articles/\d+/edit])
       end
 
-      it "should displays success message" do
+      it "displays success message" do
         page.should have_content("Rascunho salvo com sucesso!")
       end
     end
 
-    context "save with invalid data" do
+    context "with invalid data" do
       before do
         click_button "Salvar"
       end
 
-      it "should renders form page again" do
+      it "renders form page again" do
         current_path.should eql(create_article_path) # TODO: why not /new on render :new?
       end
 
-      it "should display field validation messages" do
+      it "display field validation messages" do
         page.should have_content("Título deve ser preenchido!")
         page.should have_content("Categoria deve ser preenchido!")
       end
@@ -67,11 +67,11 @@ describe Article, "Create" do
       visit new_article_path
     end
 
-    it "should redirects to the login page" do
+    it "redirects to the login page" do
       current_path.should eql(login_path)
     end
 
-    it "should displays error message" do
+    it "displays error message" do
       page.should have_content("Você precisa estar logado!")
     end
   end
