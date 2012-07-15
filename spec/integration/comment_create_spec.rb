@@ -2,8 +2,8 @@
 require "spec_helper"
 
 describe Comment, "#create" do
-  let!(:user) { FactoryGirl.create(:user, :id => 1) }
-  let!(:article) { FactoryGirl.create(:article, :id => 1) }
+  let!(:user) { FactoryGirl.create(:user, { :id => 1 }) }
+  let!(:article) { FactoryGirl.create(:article_published, { :id => 1 }) }
 
   context "when logged" do
     before do

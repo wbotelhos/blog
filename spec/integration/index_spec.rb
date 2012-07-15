@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "index" do
-  let!(:article) { FactoryGirl.create(:article) }
+  let!(:article) { FactoryGirl.create(:article_published) }
 
   before do
     visit "/"

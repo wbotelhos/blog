@@ -2,7 +2,7 @@
 require "spec_helper"
 
 describe Mailer do
-  let!(:article)      { FactoryGirl.create(:article) }
+  let!(:article)      { FactoryGirl.create(:article_published) }
   let!(:new_comment)  { FactoryGirl.create(:comment) }
   let!(:comment)      { FactoryGirl.create(:comment) }
   let(:mailer)        { Mailer.comment(article, new_comment, comment) }

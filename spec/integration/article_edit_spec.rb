@@ -3,12 +3,8 @@ require "spec_helper"
 
 describe Article, "#create" do
   let!(:user) { FactoryGirl.create(:user) }
-  let!(:article_draft) {
-    FactoryGirl.create(:article, { :created_at => Time.now, :published_at => nil })
-  }
-  let!(:article_published) {
-    FactoryGirl.create(:article, { :created_at => Time.now, :published_at => Time.now })
-  }
+  let!(:article_draft) { FactoryGirl.create(:article_draft) }
+  let!(:article_published) { FactoryGirl.create(:article_published) }
 
   before do
     login :with => user.email
