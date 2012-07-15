@@ -10,7 +10,7 @@ class Article < ActiveRecord::Base
 
   scope :recents, limit(10).order("published_at desc")
   scope :published, where('published_at is not null and published_at <= ?', Time.now)
-  scope :unpublished, where('published_at is null or published_at > ?', Time.now)
+  scope :drafts, where('published_at is null or published_at > ?', Time.now)
 
   validates :title, :slug, :user, :categories, :presence => true
 

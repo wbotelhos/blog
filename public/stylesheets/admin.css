@@ -17,6 +17,22 @@
 #admin #fields #article_title { width: 700px; }
 #admin #fields #article_body { margin-top: 10px; min-height: 350px; width: 700px; }
 
+#admin #drafts .article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
+#admin #drafts .article .links li { float: left; font-size: 12px; line-height: 23px; padding-right: 10px; }
+#admin #drafts .article .links .edit { background: url('../images/edit.png') 0px 3px no-repeat; padding-left: 23px; }
+
+#admin #drafts .article h2 { margin-left: 10px; margin-top: 12px; }
+#admin #drafts .article h2 a { color: #444; font-size: 22px; }
+#admin #drafts .article h2 a:hover { color: #85B839; }
+
+#admin #drafts .article { float: left; margin-bottom: 17px; position: relative; width: 858px } /* same the main */
+#admin #drafts .article + .article { border-top: 1px solid #DDD; padding-top: 5px; }
+#admin #drafts .article .body { color: #222; margin-top: 12px; padding-left: 10px; }
+#admin #drafts .article .body p { margin-bottom: 10px; }
+
+#admin #drafts .article .footer { height: 40px; margin-top: 15px; }
+#admin #drafts .article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; padding-top: 3px; }
+
 #admin #publish .save { margin-left: 49px; }
 #admin #publish .publish { background-color: #FF4D4D; font: 11px arial; letter-spacing: 1px; margin-left: 72px; margin-top: 8px; padding: 4px; }
 #admin #publish .publish:hover { background-color: #F00; }

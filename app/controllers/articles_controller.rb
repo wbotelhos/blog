@@ -1,9 +1,14 @@
 class ArticlesController < ApplicationController
-  before_filter :require_login, :only => [:new, :create, :edit, :update]
+  before_filter :require_login, :only => [:new, :create, :edit, :update, :drafts]
   helper_method :categories, :check_category?, :markdown
 
   rescue_from Riddle::ConnectionError do
     redirect_to root_path, :alert => t("flash.articles.search.alert" )
+  end
+
+  def drafts
+    @articles = Article.drafts
+    render :layout => "admin"
   end
 
   def index

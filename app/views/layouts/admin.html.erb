@@ -19,7 +19,8 @@
           <h2><%= t("article.title") %></h2>
 
           <ul>
-             <li><%= link_to t("navigation.new_article"), new_article_path %></li>
+             <li><%= link_to t("navigation.article.new"), new_article_path %></li>
+             <li><%= link_to t("navigation.article.drafts"), drafts_articles_path %></li>
           </ul>
         </aside>
 
