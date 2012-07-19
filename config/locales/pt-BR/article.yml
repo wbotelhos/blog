@@ -8,6 +8,7 @@ pt-BR:
     created_at: "escrito em %{time}"
 
     edit: "Editar"
+    no_article: "Nenhum artigo publicado!"
     permalink: "Permalink"
 
     publish: "Publicar"

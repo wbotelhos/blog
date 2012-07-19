@@ -1,3 +1,4 @@
+# coding: utf-8
 require "spec_helper"
 
 describe "index" do
@@ -7,20 +8,26 @@ describe "index" do
     visit "/"
   end
 
-  context "listing articles" do
-    it "should have read more button" do
+  context "when listing articles" do
+    it "have read more button" do
       page.should have_content("Leia mais")
+    end
+
+    context "with no one to show" do
+      it "hide page controls" do
+        page.should_not have_selector("span", :text => "Página 1")
+      end
     end
   end
 
-  context "click read more" do
-    it "should redirects to the article page" do
+  context "when click read more" do
+    it "redirects to the article page" do
       click_link "Leia mais..."
       current_path.should eql(slug_article_path(article.year, article.month, article.day, article.slug))
     end    
   end
 
-  context "should click artigo title" do
+  context "when click artigo title" do
     xit "redirects to the article page" do
       find(".article").find("h2").click
       current_path.should eql(slug_article_path(article.year, article.month, article.day, article.slug))
