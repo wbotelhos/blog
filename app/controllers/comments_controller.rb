@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
   def update
     @article = Article.find(params[:article_id])
 
-    @comment = @articles.comments.find(params[:id])
+    @comment = @article.comments.find(params[:id])
 
     if @comment.update_attributes(params[:comment])
       flash[:notice] = t("flash.comments.update.notice")
