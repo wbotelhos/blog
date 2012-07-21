@@ -14,7 +14,7 @@ class Article < ActiveRecord::Base
 
   validates :title, :slug, :user, :categories, :presence => true
 
-  def body
+  def text
     self.body.gsub(/\s{1}<!--more-->/, "")
   end
 
