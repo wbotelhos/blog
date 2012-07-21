@@ -1,7 +1,7 @@
 <div id="drafts">
   <% @articles.each do |article| %>
     <article class="article">
-      <h2><%= link_to article.title, edit_article_path(article) %></h2>
+      <h2 class="title"><%= link_to article.title, edit_article_path(article) %></h2>
 
       <ul class="links">
         <li class="edit"><%=link_to t("article.edit"), edit_article_path(article) %></a></li>      
