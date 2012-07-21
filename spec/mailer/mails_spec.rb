@@ -24,7 +24,7 @@ describe Mailer do
   end
 
   context "content parts" do
-    it "should have the text body" do
+    it "should have the html body" do
       body = mailer.parts.first.body
 
       body.should match(%r[<title>#{CONFIG["author"]}</title>])
@@ -38,7 +38,7 @@ describe Mailer do
       body.should match(%r[<div style="font-size: 11px;">#{CONFIG['description']}</div>])
     end
 
-    it "should have the html body" do
+    it "should have the text body" do
       body = mailer.parts.last.body
 
       body.should include(%[Olá #{comment.name},])
