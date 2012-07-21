@@ -54,6 +54,7 @@
 #main .comment .reply-link { display: block; font-weight: bold; margin-bottom: 10px; }
 #main .comment .body .text { clear: both; color: #444; font-size: 12px; width: 740px; }
 #main .comment .body .text pre { padding-left: 15px; }
+#main .comment .body .text p { margin-top: 10px; }
 #main .comment form { margin-left: 6px; }
 #main .comment form input[type="text"] { color: #111; margin-bottom: 7px; margin-right: 6px; padding: 2px; width: 233px; }
 #main .comment form input[type="submit"] { float: right; margin-right: 7px; margin-top: 6px; }
