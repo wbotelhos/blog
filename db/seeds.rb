@@ -1,26 +1,26 @@
 # coding: utf-8
 
 categories = []
-categories << Category.create({ :name => "Awesome Print" })
-categories << Category.create({ :name => "Capistrano" })
-categories << Category.create({ :name => "Capybara" })
-categories << Category.create({ :name => "FactoryGirl" })
-categories << Category.create({ :name => "Mail Catcher" })
-categories << Category.create({ :name => "Pry" })
-categories << Category.create({ :name => "Pygments" })
-categories << Category.create({ :name => "Rails" })
-categories << Category.create({ :name => "Redcarpet" })
-categories << Category.create({ :name => "Rspec" })
-categories << Category.create({ :name => "Ruby" })
-categories << Category.create({ :name => "Sphinx" })
-categories << Category.create({ :name => "Unicorn" })
+categories << Category.create!({ :name => "Awesome Print" })
+categories << Category.create!({ :name => "Capistrano" })
+categories << Category.create!({ :name => "Capybara" })
+categories << Category.create!({ :name => "FactoryGirl" })
+categories << Category.create!({ :name => "Mail Catcher" })
+categories << Category.create!({ :name => "Pry" })
+categories << Category.create!({ :name => "Pygments" })
+categories << Category.create!({ :name => "Rails" })
+categories << Category.create!({ :name => "Redcarpet" })
+categories << Category.create!({ :name => "Rspec" })
+categories << Category.create!({ :name => "Ruby" })
+categories << Category.create!({ :name => "Sphinx" })
+categories << Category.create!({ :name => "Unicorn" })
 
-Link.create({ :name => "jIntegrity",              :url => "http://jintegrity.com" })
-Link.create({ :name => "Mockr.me",                :url => "http://mockr.me" })
-Link.create({ :name => "Washington Botelho [US]", :url => "http://wbotelhos.com" })
-Link.create({ :name => "yLabs",                   :url => "http://wbotelhos.com/labs" })
+Link.create!({ :name => "jIntegrity",              :url => "http://jintegrity.com" })
+Link.create!({ :name => "Mockr.me",                :url => "http://mockr.me" })
+Link.create!({ :name => "Washington Botelho [US]", :url => "http://wbotelhos.com" })
+Link.create!({ :name => "yLabs",                   :url => "http://wbotelhos.com/labs" })
 
-user = User.create({
+user = User.create!({
   :name                   => "Washington Botelho",
   :email                  => "wbotelhos@gmail.com",
   :bio                    => "Desenvolvedor Java, Ruby e Python no Portal <a href=\"http://r7.com\" target=\"_blank\">R7.com</a>.\nÉ Baicharel em Sistemas de Informação e certificado OCJA 1.0 e OCJP 6.\nAjudante e aprendiz da comunidade open source e metido a designer.\n Além disso é apaixonado pela dança, skate, jiu-jitsu e Counter Strike Source. (:",
@@ -83,9 +83,9 @@ See you and your blog soon!
 ]})
 article.slug = "first-steps"
 article.categories = categories
-article.save
+article.save!
 
-comment1 = article.comments.create({
+comment1 = article.comments.create!({
   :name   => "Gabriel Benz",
   :email  => "glbenz@gmail.com",
   :url    => "http://http://gabrielbenz.com",
@@ -100,16 +100,16 @@ comment1 = article.comments.create({
     :comment_id => comment1.id
   })
   response1.author = true
-  response1.save
+  response1.save!
 
-comment2 = article.comments.create({
+comment2 = article.comments.create!({
   :name   => "Daniel Faria",
   :email  => "danielfariati@gmail.com",
   :url    => "http://danielfariati.com.br",
   :body   => "Hi Washington,\nI would like to contribute to the blog, you agree Pull Requests?"
 })
 
-  response2 = article.comments.create({
+  response2 = article.comments.create!({
     :name       => "Washington Botelho",
     :email      => "wbotelhos@gmail.com",
     :url        => "http://wbotelhos.com.br",
@@ -117,9 +117,9 @@ comment2 = article.comments.create({
     :comment_id => comment2.id
   })
   response2.author = true
-  response2.save
+  response2.save!
 
-    article.comments.create({
+    article.comments.create!({
       :name       => "Daniel Faria",
       :email      => "danielfariati@gmail.com",
       :url        => "http://danielfariati.com.br",
