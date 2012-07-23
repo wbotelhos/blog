@@ -13,6 +13,8 @@ describe User, "validations" do
   it { should allow("linkedin").for(:linkedin) }
   it { should allow("twitter").for(:twitter) }
   it { should allow("facebook").for(:facebook) }
+  it { should allow("password").for(:password) }
+  it { should allow("password").for(:password_confirmation) }
 
   context "e-mail uniqueness" do
     let!(:user) {
