@@ -5,6 +5,10 @@ pt-BR:
     article:
       new: "Criar"
       drafts: "Rascunhos"
+      title: "Artigos"
     dashboard: "Painel de Controle"
     login:  "Login"
     logout: "Sair"
+    user:
+      new: "Criar"
+      title: "Usuários"

@@ -1,0 +1,7 @@
+/* Admin */
+#admin #new_user #fields { float: left; width: 715px; }
+#admin #new_user #fields label { display: block; font: bold 13px helvetica; margin-bottom: 3px; margin-left: 1px; margin-top: 10px; width: 100%; }
+#admin #new_user #fields p input { width: 700px; }
+#admin #new_user #fields textarea { min-height: 313px; width: 700px; }
+
+#admin #create .save { margin-left: 50px; }

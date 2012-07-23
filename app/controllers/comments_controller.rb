@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     @comment.comment = Comment.find(params[:comment_id]) unless params[:comment_id].nil?
 
     if @comment.save
-      CommentMailer.new(@article, @comment).send
+      #CommentMailer.new(@article, @comment).send
 
       flash[:notice] = t("flash.comments.create.notice")
     else

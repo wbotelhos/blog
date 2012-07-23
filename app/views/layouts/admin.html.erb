@@ -16,11 +16,17 @@
 
       <div id="content">
         <aside id="sidebar-admin">
-          <h2><%= t("article.title") %></h2>
+          <h2><%= t("navigation.article.title") %></h2>
 
           <ul>
              <li><%= link_to t("navigation.article.new"), new_article_path %></li>
              <li><%= link_to t("navigation.article.drafts"), drafts_articles_path %></li>
+          </ul>
+
+          <h2><%= t("navigation.user.title") %></h2>
+
+          <ul>
+             <li><%= link_to t("navigation.user.new"), new_user_path %></li>
           </ul>
         </aside>
 

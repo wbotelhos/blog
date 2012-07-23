@@ -20,7 +20,6 @@ pt-BR:
       description_html: "Resultados para <strong>%{query}</strong>"
 
     tags: "Tags:"
-    title: "Artigos"
     new: "Novo Artigo"
     edit: "Editar Artigo"
     update: "Atualizar"
