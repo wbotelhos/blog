@@ -63,18 +63,36 @@ namespace :app do
 end
 
 namespace :sphinx do
+  desc "Execute all Sphinx tasks"
+  task :all do
+    config
+    stop
+    start
+    rebuild
+  end
+
   desc "Regenerate Sphinx configuration"
   task :config do
-    run "cd #{current} && bundle exec rake ts:config"
+    run "cd #{current} && sudo bundle exec rake ts:config"
+  end
+
+  desc "Stopt the Sphinx"
+  task :stop do
+    run "cd #{current} && sudo bundle exec rake ts:stop"
+  end
+
+  desc "Start the Sphinx"
+  task :start do
+    run "cd #{current} && sudo bundle exec rake ts:start"
   end
 
   desc "Rebuild index"
   task :rebuild do
-    run "cd #{current} && bundle exec rake ts:reindex"
+    run "cd #{current} && sudo bundle exec rake ts:reindex"
   end
 
   desc "Index pending delta"
   task :index do
-    run "cd #{current} && bundle exec rake ts:index"
+    run "cd #{current} && sudo bundle exec rake ts:index"
   end
 end
