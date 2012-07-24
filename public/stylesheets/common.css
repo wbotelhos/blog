@@ -3,9 +3,6 @@ audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 a img { border: none; }
 
 /* Commons */
-blockquote { background-color: #FDFDFD; border: 1px solid #EAEAEA; margin-bottom: 10px; margin-top: 10px; }
-blockquote p { margin-bottom: 0 !important; margin-top: 0 !important; padding: 5px 10px; }
-
 body { background: url('../images/background.png') #E7E7E7; font: normal 13px 'Lucida Grande', Helvetica, arial, sans-serif; line-height: 1.6; }
 
 a { color: #277DA8; text-decoration: none; }
