@@ -12,10 +12,10 @@ module ApplicationHelper
 
   def author_social(user)
     "".tap do |html|
-      html << link_to("", user.github, :title => user.github, :target => "_blank", :class => "github") unless user.github.empty?
-      html << link_to("", user.linkedin, :title => user.linkedin, :target => "_blank", :class => "linkedin") unless user.linkedin.empty?
-      html << link_to("", user.twitter, :title => user.twitter, :target => "_blank", :class => "twitter") unless user.twitter.empty?
-      html << link_to("", user.facebook, :title => user.facebook, :target => "_blank", :class => "facebook") unless user.facebook.empty?
+      html << link_to("", user.github, :title => user.github, :target => "_blank", :class => "github") unless user.github.nil? || user.github.empty?
+      html << link_to("", user.linkedin, :title => user.linkedin, :target => "_blank", :class => "linkedin") unless user.linkedin.nil? || user.linkedin.empty?
+      html << link_to("", user.twitter, :title => user.twitter, :target => "_blank", :class => "twitter") unless user.twitter.nil? || user.twitter.empty?
+      html << link_to("", user.facebook, :title => user.facebook, :target => "_blank", :class => "facebook") unless user.facebook.nil? || user.facebook.empty?
     end    
   end
 
