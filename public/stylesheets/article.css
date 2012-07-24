@@ -109,10 +109,10 @@
 #admin #title h2 { background: url('../images/pin.png') no-repeat; color: #464646; float: left; font: 23px 'Helvetica Neue', sans-serif; padding-left: 35px; padding-top: 3px; }
 #admin #title #status { background-color: #999; border-radius: 5px; color: #FFF; float: left; font: bold 12px helvetica; margin-left: 25px; margin-top: 7px; padding: 5px 15px; text-align: center; width: 54px; }
 
-#admin #new_article, #admin .edit_article { margin-top: 20px; }
-#admin #new_article #fields { float: left; width: 715px; }
-#admin #new_article #fields #article_title { width: 700px; }
-#admin #new_article #fields #article_body { margin-top: 10px; min-height: 350px; width: 700px; }
+#admin .article-form { margin-top: 20px; }
+#admin .article-form #fields { float: left; width: 715px; }
+#admin .article-form #fields #article_title { width: 700px; }
+#admin .article-form #fields #article_body { margin-top: 10px; min-height: 350px; width: 700px; }
 
 #admin #drafts .article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
 #admin #drafts .article .links li { float: left; font-size: 12px; line-height: 23px; padding-right: 10px; }
