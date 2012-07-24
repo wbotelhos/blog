@@ -1,0 +1,72 @@
+<div id="title">
+  <h2><%= t("user.new") %></h2>
+</div>
+
+<%= render "shared/error_messages", :entity => @user %>
+
+<%= form_for @user, :url => create_user_path do |f| %>
+  <div id="fields">
+    <p>
+      <%= f.label "#{:name} *" %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label "#{:email} *" %>
+      <%= f.email_field :email %>
+    </p>
+
+    <p>
+      <%= f.label "#{:password} *" %>
+      <%= f.password_field :password %>
+    </p>
+
+    <p>
+      <%= f.label "#{:password_confirmation} *" %>
+      <%= f.password_field :password_confirmation %>
+    </p>
+
+    <p>
+      <%= f.label :url %>
+      <%= f.text_field :url %>
+    </p>
+
+    <p>
+      <%= f.label :github %>
+      <%= f.text_field :github %>
+    </p>
+
+    <p>
+      <%= f.label :linkedin %>
+      <%= f.text_field :linkedin %>
+    </p>
+
+    <p>
+      <%= f.label :twitter %>
+      <%= f.text_field :twitter %>
+    </p>
+
+    <p>
+      <%= f.label :facebook %>
+      <%= f.text_field :facebook %>
+    </p>
+
+    <p>
+      <%= f.label :bio %>
+      <%= f.text_area :bio %>
+    </p>
+  </div>
+
+  <div id="controls">
+    <div id="create">
+      <h3><%= t("user.create") %></h3>
+      <%= f.submit :class => "save" %>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('#user_name').focus();
+  });
+</script>

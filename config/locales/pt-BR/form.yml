@@ -16,6 +16,9 @@ pt-BR:
       comment:
           create: "Comentar"
 
+      user:
+        create: "Salvar"
+
   errors:
     messages:
       blank: "Este campo deve ser preenchido!"

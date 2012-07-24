@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-set :application, "ec2-177-71-153-95.sa-east-1.compute.amazonaws.com"
+set :application, "ec2-177-71-137-127.sa-east-1.compute.amazonaws.com"
 
 set :keep_releases, 3
 
@@ -9,7 +9,7 @@ set :ssh_options, {:forward_agent => true}
 set :use_sudo, false
 
 set :scm, :git
-set :repository, "git@github.com:wbotelhos/blog.git"
+set :repository, "git@github.com:wbotelhos/wbotelhos-com-br.git"
 set :branch, "master"
 
 set :user, "ubuntu"
@@ -17,7 +17,7 @@ set :runner, "ubuntu"
 set :group, "ubuntu"
 set :use_sudo, false
 
-set :deploy_to, "/home/ubuntu/www/wbotelhos-br"
+set :deploy_to, "/var/www/wbotelhos-br"
 set :current, "#{deploy_to}/current"
 
 role :web, application
@@ -26,7 +26,7 @@ role :db,  application, :primary => true
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
-ssh_options[:keys] = "/Users/wbotelhos/ubuntu.pem"
+ssh_options[:keys] = "~/.ssh/blogbr.pem"
 
 after :deploy, "deploy:cleanup"
 after :deploy, "app:setup"

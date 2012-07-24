@@ -37,7 +37,11 @@ Blog::Application.routes.draw do
   end
 
   controller :users do
-    get   "/sobre", :action => :about, :as => :about
+    get   "/about",           :action => :about,  :as => :about
+    get   "/users",           :action => :index,  :as => :users
+    post  "/users",           :action => :create, :as => :create_user
+    get   "/users/new",       :action => :new,    :as => :new_user
+    get   "/users/:id/edit",  :action => :edit,   :as => :edit_user
   end
 
 end

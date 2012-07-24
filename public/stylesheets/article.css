@@ -14,15 +14,15 @@
 #main .article h2.title a:hover { color: #85B839; }
 
 /* Author */
-#author { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: 93px; margin: 25px auto 0; padding-left: 7px; padding-top: 12px; width: 770px; }
-#author img { background-color: #EEE; float: left; height: 80px; width: 80px; }
-#author .biography { color: #555; float: left; font: 12px/1.5 arial; letter-spacing: 0.3px; margin-top: 4px; padding-left: 10px; width: 650px; }
-#author .social { float: right; margin-right: 7px; width: 16px; }
-#author .social a { background-color: #EEE; background-repeat: no-repeat; border-radius: 3px; display: block; height: 16px; margin-bottom: 5px; width: 16px; }
-#author .social a.facebook { background-image: url('../images/facebook.png') }
-#author .social a.github { background-image: url('../images/github.png') }
-#author .social a.linkedin { background-image: url('../images/linkedin.png') }
-#author .social a.twitter { background-image: url('../images/twitter.png') }
+.author { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: 93px; margin: 25px auto 0; padding-left: 7px; padding-top: 12px; width: 770px; }
+.author img { background-color: #EEE; float: left; height: 80px; width: 80px; }
+.author .biography { color: #555; float: left; font: 12px/1.5 arial; letter-spacing: 0.3px; margin-top: 4px; padding-left: 10px; width: 650px; }
+.author .social { float: right; margin-right: 7px; width: 16px; }
+.author .social a { background-color: #EEE; background-repeat: no-repeat; border-radius: 3px; display: block; height: 16px; margin-bottom: 5px; width: 16px; }
+.author .social a.facebook { background-image: url('../images/facebook.png') }
+.author .social a.github { background-image: url('../images/github.png') }
+.author .social a.linkedin { background-image: url('../images/linkedin.png') }
+.author .social a.twitter { background-image: url('../images/twitter.png') }
 
 /* Links */
 #main .article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
@@ -103,3 +103,41 @@
 #main .comment-create textarea { color: #BBB; height: 150px; margin-bottom: 7px; padding: 2px; width: 515px; }
 #main .comment-create input[type="submit"] { float: right; margin-right: 4px; }
 #main .comment-create #markdown-reference { color: #777; font: 11px verdana; margin-left: 3px; margin-top: -8px; }
+
+/* Admin */
+#admin #title { height: 40px; }
+#admin #title h2 { background: url('../images/pin.png') no-repeat; color: #464646; float: left; font: 23px 'Helvetica Neue', sans-serif; padding-left: 35px; padding-top: 3px; }
+#admin #title #status { background-color: #999; border-radius: 5px; color: #FFF; float: left; font: bold 12px helvetica; margin-left: 25px; margin-top: 7px; padding: 5px 15px; text-align: center; width: 54px; }
+
+#admin #new_article, #admin .edit_article { margin-top: 20px; }
+#admin #new_article #fields { float: left; width: 715px; }
+#admin #new_article #fields #article_title { width: 700px; }
+#admin #new_article #fields #article_body { margin-top: 10px; min-height: 350px; width: 700px; }
+
+#admin #drafts .article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
+#admin #drafts .article .links li { float: left; font-size: 12px; line-height: 23px; padding-right: 10px; }
+#admin #drafts .article .links .edit { background: url('../images/edit.png') 0px 3px no-repeat; padding-left: 23px; }
+
+#admin #drafts .article h2 { margin-left: 10px; margin-top: 12px; }
+#admin #drafts .article h2 a { color: #444; font-size: 22px; }
+#admin #drafts .article h2 a:hover { color: #85B839; }
+
+#admin #drafts .article { float: left; margin-bottom: 17px; position: relative; width: 858px } /* same the main */
+#admin #drafts .article + .article { border-top: 1px solid #DDD; padding-top: 5px; }
+#admin #drafts .article .body { color: #222; margin-top: 12px; padding-left: 10px; }
+#admin #drafts .article .body p { margin-bottom: 10px; }
+
+#admin #drafts .article .footer { height: 40px; margin-top: 15px; }
+#admin #drafts .article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; padding-top: 3px; }
+
+#admin #publish .save { margin-left: 49px; }
+#admin #publish .publish { background-color: #FF4D4D; font: 11px arial; letter-spacing: 1px; margin-left: 72px; margin-top: 8px; padding: 4px; }
+#admin #publish .publish:hover { background-color: #F00; }
+#admin #publish .update { margin-left: 35px; }
+
+#admin #controls { float: right; margin-bottom: 20px; padding-left: 5px; padding-right: 5px; width: 200px; }
+#admin #controls h3 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; font: bold 14px verdana; margin-bottom: 10px; padding-bottom: 7px; padding-top: 7px; }
+#admin #controls #categories { margin-top: 11px; }
+#admin #controls #categories ul li input { cursor: pointer; }
+#admin #controls #categories ul li label { cursor: pointer; }
+#admin #controls #categories ul li label:hover { color: #8D50A7; }

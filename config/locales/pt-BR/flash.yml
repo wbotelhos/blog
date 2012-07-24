@@ -2,10 +2,13 @@ pt-BR:
   flash:
     articles:
       create:
+        alert: "Erro ao criar o artigo!"
         notice: "Rascunho salvo com sucesso!"
       publish:
+        alert: "Erro ao publicar o artigo!"
         notice: "Artigo publicado com sucesso!"
       update:
+        alert: "Erro ao atualizar o artigo!"
         notice: "Artigo atualizado com sucesso!"
       search:
         alert: "A busca foi desabilitada por um momento. Tente mais tarde! (:"
@@ -25,3 +28,8 @@ pt-BR:
     sessions:
       create:
         alert: "E-mail ou senha inválida!"
+
+    users:
+      create:
+        notice: "Usuário criado com sucesso!"
+        alert: "Erro ao criar o usuário!"
