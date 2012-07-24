@@ -10,5 +10,6 @@ pt-BR:
     login:  "Login"
     logout: "Sair"
     user:
+      list: "Listar"
       new: "Criar"
       title: "Usuários"

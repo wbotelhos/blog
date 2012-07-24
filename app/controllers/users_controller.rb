@@ -16,6 +16,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.all
+    render :layout => "admin"
+  end
+
   def new
     @user = User.new
     render :layout => "admin"

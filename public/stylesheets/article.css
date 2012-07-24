@@ -14,15 +14,15 @@
 #main .article h2.title a:hover { color: #85B839; }
 
 /* Author */
-#author { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: 93px; margin: 25px auto 0; padding-left: 7px; padding-top: 12px; width: 770px; }
-#author img { background-color: #EEE; float: left; height: 80px; width: 80px; }
-#author .biography { color: #555; float: left; font: 12px/1.5 arial; letter-spacing: 0.3px; margin-top: 4px; padding-left: 10px; width: 650px; }
-#author .social { float: right; margin-right: 7px; width: 16px; }
-#author .social a { background-color: #EEE; background-repeat: no-repeat; border-radius: 3px; display: block; height: 16px; margin-bottom: 5px; width: 16px; }
-#author .social a.facebook { background-image: url('../images/facebook.png') }
-#author .social a.github { background-image: url('../images/github.png') }
-#author .social a.linkedin { background-image: url('../images/linkedin.png') }
-#author .social a.twitter { background-image: url('../images/twitter.png') }
+.author { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: 93px; margin: 25px auto 0; padding-left: 7px; padding-top: 12px; width: 770px; }
+.author img { background-color: #EEE; float: left; height: 80px; width: 80px; }
+.author .biography { color: #555; float: left; font: 12px/1.5 arial; letter-spacing: 0.3px; margin-top: 4px; padding-left: 10px; width: 650px; }
+.author .social { float: right; margin-right: 7px; width: 16px; }
+.author .social a { background-color: #EEE; background-repeat: no-repeat; border-radius: 3px; display: block; height: 16px; margin-bottom: 5px; width: 16px; }
+.author .social a.facebook { background-image: url('../images/facebook.png') }
+.author .social a.github { background-image: url('../images/github.png') }
+.author .social a.linkedin { background-image: url('../images/linkedin.png') }
+.author .social a.twitter { background-image: url('../images/twitter.png') }
 
 /* Links */
 #main .article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
