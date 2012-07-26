@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-set :application, "ec2-177-71-137-127.sa-east-1.compute.amazonaws.com"
+set :application, "177.71.251.75"
 
 set :keep_releases, 3
 
