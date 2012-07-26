@@ -64,7 +64,7 @@
 #main .comment form input[type="submit"] { float: right; margin-right: 7px; margin-top: 6px; }
 #main .comment form textarea { color: #111; width: 721px; }
 
-#main .comment.author { background-color: #FFE; }
+#main .comment.authored { background-color: #FFE; }
 
 #main .comment.level-1 { width: 820px; }
 #main .comment.level-1 .name-date { width: 725px }
