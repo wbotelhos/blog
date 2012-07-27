@@ -4,8 +4,15 @@
   <div id="status">
     <%= @article.status %>
   </div>
-</div>
 
+  <div id="url">
+    <% if @article.published_at.nil? %>
+      <%= link_to t("article.preview"), article_path(@article), { :class => "draft" } %>
+    <% else %>
+      <%= link_to @article.slug, slug_article_path(@article.year, @article.month, @article.day, @article.slug), { :class => "link" } %>
+     <% end %>
+  </div>
+</div>
 
 <%= render "shared/error_messages", :entity => @article %>
 

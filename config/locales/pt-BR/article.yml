@@ -5,12 +5,11 @@ pt-BR:
       one: "<span>1 comentário</span>"
       other: "<span>%{count} comentários</span>"
 
-    created_at: "escrito em %{time}"
-
     edit: "Editar"
     no_article: "Nenhum artigo publicado!"
     permalink: "Permalink"
 
+    preview: "Visualizar"
     publish: "Publicar"
     published_at: "%{time}"
 

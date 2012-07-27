@@ -111,7 +111,12 @@
 /* Admin */
 #admin #title { height: 40px; }
 #admin #title h2 { background: url('../images/pin.png') no-repeat; color: #464646; float: left; font: 23px 'Helvetica Neue', sans-serif; padding-left: 35px; padding-top: 3px; }
-#admin #title #status { background-color: #999; border-radius: 5px; color: #FFF; float: left; font: bold 12px helvetica; margin-left: 25px; margin-top: 7px; padding: 5px 15px; text-align: center; width: 54px; }
+#admin #title #status { background-color: #999; border-radius: 5px; color: #FFF; float: left; font: bold 12px helvetica; margin-left: 25px; margin-top: 4px; padding: 5px 15px; text-align: center; }
+#admin #title #url { float: left; margin-left: 20px; margin-top: 7px; }
+#admin #title #url a { color: #444; font: 15px arial; letter-spacing: 1px; }
+#admin #title #url a:hover { color: #85B839; }
+#admin #title #url a.draft { background: url('../images/draft.png') no-repeat 0 1px; padding-left: 22px; }
+#admin #title #url a.link { background: url('../images/link.png') no-repeat 0 1px; padding-left: 22px; }
 
 #admin .article-form { margin-top: 20px; }
 #admin .article-form #fields { float: left; width: 715px; }

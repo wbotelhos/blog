@@ -18,6 +18,10 @@ describe Article, "#create" do
     it "display draft indicator" do
       page.should have_selector("div#status", :text => "Rascunho")
     end
+
+    it "show preview link" do
+      page.should_not have_selector("div#url a", :text => "Visualizar")
+    end
   end
 
   context "when article is published" do
@@ -31,6 +35,10 @@ describe Article, "#create" do
 
     it "hide publish button" do
       page.should_not have_button("Publicar")
+    end
+
+    it "show slug link" do
+      page.should_not have_selector("div#url a", :text => article_published.slug)
     end
   end
 

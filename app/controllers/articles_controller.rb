@@ -15,6 +15,10 @@ class ArticlesController < ApplicationController
     @paginaty = Paginaty.filter({ :request => request, :entity => Article, :params => params, :order => "desc" })
   end
 
+  def preview
+    @article = Article.find(params[:id])
+  end
+
   def search
     @articles = Article.search(params[:query], { :page => params[:page], :per_page => Paginaty::LIMIT })
   end

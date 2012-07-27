@@ -10,15 +10,15 @@ Blog::Application.routes.draw do
   end
 
   controller :articles do
-    get   "/articles",                :action => :index,  :as => :articles
-    post  "/articles",                :action => :create, :as => :create_article
-    get   "/articles/drafts",         :action => :drafts, :as => :drafts_articles
-    get   "/articles/new",            :action => :new,    :as => :new_article
-    get   "/articles/search",         :action => :search, :as => :search_articles
-    get   "/articles/:id",            :action => :show,   :as => :article
-    put   "/articles/:id",            :action => :update, :as => :update_article
-    get   "/articles/:id/edit",       :action => :edit,   :as => :edit_article
-    get   "/:year/:month/:day/:slug", :action => :show,   :as => :slug_article
+    get   "/articles",                :action => :index,    :as => :articles
+    post  "/articles",                :action => :create,   :as => :create_article
+    get   "/articles/drafts",         :action => :drafts,   :as => :drafts_articles
+    get   "/articles/new",            :action => :new,      :as => :new_article
+    get   "/articles/search",         :action => :search,   :as => :search_articles
+    get   "/articles/:id",            :action => :preview,  :as => :preview_article
+    put   "/articles/:id",            :action => :update,   :as => :update_article
+    get   "/articles/:id/edit",       :action => :edit,     :as => :edit_article
+    get   "/:year/:month/:day/:slug", :action => :show,     :as => :slug_article
   end
 
   controller :categories do
