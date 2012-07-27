@@ -7,7 +7,7 @@
 #main .article .body p.read-more a { background-color: #AF81C3; border-radius: 3px; color: #FFF; padding: 7px 30px; text-align: center; text-shadow: none; }
 #main .article .body p.read-more a:hover { background-color: #8D50A7; }
 #main .article .body h3 { font-size: 16px; letter-spacing: .5px; margin-bottom: 5px; margin-top: 12px; }
-#main .article .body blockquote { background-color: #FDFDFD; border: 1px solid #EAEAEA; margin-bottom: 10px; margin-top: 10px; }
+#main .article .body blockquote { background: url('../images/quote.gif') no-repeat; background-color: #FDFDFD; border-radius: 4px; margin-bottom: 10px; margin-top: 10px; text-indent: 21px; }
 #main .article .body blockquote p { margin-bottom: 0 !important; margin-top: 0 !important; padding: 5px 10px; }
 #main .article .body ul { margin-bottom: 10px; }
 #main .article .body ul li { list-style: inside; margin-left: 5px; }
