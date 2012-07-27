@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
       flash[:alert] = t("flash.comments.create.alert")
     end
 
-    redirect_to slug_article_path(@article.year, @article.month, @article.day, @article.slug)
+    redirect_to article_path(@article.year, @article.month, @article.day, @article.slug)
   end
 
   def update
@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
       flash[:alert] = t("flash.comments.update.alert")
     end
 
-    redirect_to slug_article_path(@article.year, @article.month, @article.day, @article.slug)
+    redirect_to article_path(@article.year, @article.month, @article.day, @article.slug)
   end
 
 end

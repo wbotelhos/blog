@@ -7,7 +7,7 @@ describe Article, "#show" do
   }
 
   before do
-    visit slug_article_path(article.year, article.month, article.day, article.slug)
+    visit article_path(article.year, article.month, article.day, article.slug)
   end
 
   it "redirects to show page" do

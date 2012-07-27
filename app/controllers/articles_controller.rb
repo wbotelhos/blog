@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_filter :require_login, :only => [:new, :create, :edit, :update, :drafts]
+  before_filter :require_login, :only => [:new, :create, :edit, :preview, :update, :drafts]
   helper_method :categories, :check_category?, :markdown
 
   rescue_from Riddle::ConnectionError do
@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
     article.update_attributes(params[:article])
 
     redirect_to edit_article_path(article), :notice => t("flash.articles.update.notice")
-    #redirect_to slug_article_path(article.year, article.month, article.day, article.slug), :notice => t("flash.articles.create.notice")
+    #redirect_to article_path(article.year, article.month, article.day, article.slug), :notice => t("flash.articles.create.notice")
   end
 
   def publish
@@ -62,7 +62,7 @@ class ArticlesController < ApplicationController
 
     article.update_attributes(params[:article])
 
-    redirect_to slug_article_path(article.year, article.month, article.day, article.slug), :notice => t("flash.articles.publish.notice")
+    redirect_to article_path(article.year, article.month, article.day, article.slug), :notice => t("flash.articles.publish.notice")
   end
 
   def create

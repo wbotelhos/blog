@@ -18,7 +18,7 @@ Blog::Application.routes.draw do
     get   "/articles/:id",            :action => :preview,  :as => :preview_article
     put   "/articles/:id",            :action => :update,   :as => :update_article
     get   "/articles/:id/edit",       :action => :edit,     :as => :edit_article
-    get   "/:year/:month/:day/:slug", :action => :show,     :as => :slug_article
+    get   "/:year/:month/:day/:slug", :action => :show,     :as => :article
   end
 
   controller :categories do

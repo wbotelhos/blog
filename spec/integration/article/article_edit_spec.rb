@@ -64,7 +64,7 @@ describe Article, "#create" do
     end
 
     xit "redirects to the article page" do
-      current_path.should eql(slug_article_path(article_draft.year, article_draft.month, article_draft.day, article_draft.slug))
+      current_path.should eql(article_path(article_draft.year, article_draft.month, article_draft.day, article_draft.slug))
     end
 
     xit "displays success message" do
