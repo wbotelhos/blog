@@ -11,6 +11,9 @@
 #main .article .body blockquote p { margin-bottom: 0 !important; margin-top: 0 !important; padding: 5px 10px; }
 #main .article .body ul { margin-bottom: 10px; }
 #main .article .body ul li { list-style: inside; margin-left: 5px; }
+#main .article .body .align-center { display: block; margin: 0 auto; }
+#main .article .body .align-left { display: inline; float: left; margin: 0 7px 2px 0; padding: 4px; }
+#main .article .body .align-right { display: inline; float: right; margin: 0 0 2px 7px; padding: 4px; }
 
 /* Title */
 #main .article h2.title { letter-spacing: .5px; margin-left: 33px; margin-top: 12px; }
