@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @paginaty = Paginaty.filter({ :request => request, :entity => Article, :params => params, :order => "desc" })
+    @paginaty = Paginaty.filter({ :request => request, :entity => Article, :params => params })
   end
 
   def preview

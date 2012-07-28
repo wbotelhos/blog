@@ -8,7 +8,9 @@ class Article < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_and_belongs_to_many :categories
 
-  scope :recents, limit(10).order("published_at desc")
+  default_scope order("published_at desc")
+
+  scope :recents, limit(10)
   scope :published, where('published_at is not null and published_at <= ?', Time.now)
   scope :drafts, where('published_at is null or published_at > ?', Time.now)
 

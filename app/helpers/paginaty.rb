@@ -9,7 +9,6 @@ class Paginaty
     offset = (page - 1) * LIMIT
 
     elements = options[:entity].offset(offset).limit(LIMIT + 1)
-    elements = elements.order("published_at " + options[:order]) unless options[:order].nil?
     elements = elements.published
 
     has_back = page > 1
