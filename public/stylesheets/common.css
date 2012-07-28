@@ -10,7 +10,7 @@ a:hover { color: #48A5D4; }
 
 h1, h2, h3 { font-family: 'helvetica', arial, sans-serif }
 
-pre { background-color: #F8F8F8; border: 1px solid #DDDDDD; border-radius: 3px; color: #393939; font-size: 12px; line-height: 1.6; margin-bottom: 15px; margin-top: 15px; overflow: auto; padding: 10px 10px; text-shadow: none; }
+pre { background-color: #F8F8F8; border: 1px solid #EAEAEA; border-radius: 3px; color: #393939; font-size: 12px; line-height: 1.6; margin-bottom: 15px; margin-top: 15px; overflow: auto; padding: 10px 10px; text-shadow: none; }
 
 textarea { background-color: #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #111; font: 12px verdana; letter-spacing: .3px; padding: 3px; resize: vertical; }
 textarea:hover, input[type="text"]:hover, input[type="search"]:hover { border: 1px solid #BDBDBD !important; }
