@@ -7,9 +7,6 @@
 #main .article .body p.read-more a { background-color: #AF81C3; border-radius: 3px; color: #FFF; padding: 7px 30px; text-align: center; text-shadow: none; }
 #main .article .body p.read-more a:hover { background-color: #8D50A7; }
 #main .article .body h3 { font-size: 16px; letter-spacing: .5px; margin-bottom: 5px; margin-top: 12px; }
-#main .article .body code { background-color: #F8F8F8; border: 1px solid #EAEAEA; border-radius: 3px; margin: 0 2px; padding: 1px 5px; white-space: nowrap; }
-#main .article .body blockquote { background: url('../images/quote.gif') no-repeat; background-color: #FDFDFD; border-radius: 4px; margin-bottom: 10px; margin-top: 10px; text-indent: 21px; }
-#main .article .body blockquote p { margin-bottom: 0 !important; margin-top: 0 !important; padding: 5px 10px; }
 #main .article .body ul { margin-bottom: 10px; }
 #main .article .body ul li { list-style: inside; margin-left: 5px; }
 #main .article .body .align-center { display: block; margin: 0 auto; }
@@ -58,22 +55,22 @@
 #main .comment .name-date span { background: url('../images/clock.png') no-repeat; display: inline-block; float: right; font-size: 11px; height: 16px; margin-top: 3px; opacity: .3; padding-left: 21px; }
 #main .comment .name-date .anchors { float: left; }
 #main .comment .name-date .anchors div { color: #999; display: inline; font: 12px verdana; margin-left: 10px; width: 99px; }
-#main .comment .body { float: left; margin-left: 5px; }
+#main .comment .body { float: left; margin-left: 8px; }
 #main .comment .reply-link { display: block; font-weight: bold; margin-bottom: 10px; }
 #main .comment .body .text { clear: both; color: #444; font-size: 12px; width: 740px; }
 #main .comment .body .text pre { padding-left: 15px; }
 #main .comment .body .text p { margin-top: 10px; }
-#main .comment form { margin-left: 6px; }
-#main .comment form input[type="text"] { color: #111; margin-bottom: 7px; margin-right: 6px; padding: 2px; width: 233px; }
+#main .comment form input[type="text"] { color: #111; margin-bottom: 7px; margin-right: 6px; padding: 2px; width: 234px; }
 #main .comment form input[type="submit"] { float: right; margin-right: 7px; margin-top: 6px; }
-#main .comment form textarea { color: #111; width: 721px; }
+#main .comment form textarea { color: #111; width: 725px; }
+#main .comment form .close { display: block; font-weight: bold; margin-bottom: 10px; }
 
 #main .comment.authored { background-color: #FFE; }
 
 #main .comment.level-1 { width: 820px; }
 #main .comment.level-1 .name-date { width: 725px }
 #main .comment.level-1 .text { width: 725px; }
-#main .comment.level-1 form { margin-left: 4px; width: 724px; }
+#main .comment.level-1 form { width: 724px; }
 #main .comment.level-1 form input[type="text"] { width: 229px; }
 #main .comment.level-1 form textarea { width: 710px; }
 
@@ -87,7 +84,7 @@
 #main .comment.level-3 { width: 790px; }
 #main .comment.level-3 .name-date { width: 695px }
 #main .comment.level-3 .text { width: 695px; }
-#main .comment.level-3 form { margin-left: 3px; width: 692px; }
+#main .comment.level-3 form { width: 692px; }
 #main .comment.level-3 form input[type="text"] { width: 218px; }
 #main .comment.level-3 form textarea { width: 677px; }
 
@@ -101,7 +98,7 @@
 #main .comment.level-5 { width: 760px; }
 #main .comment.level-5 .name-date { width: 665px }
 #main .comment.level-5 .text { width: 665px; }
-#main .comment.level-5 form { margin-left: 8px; width: 656px; }
+#main .comment.level-5 form { width: 656px; }
 #main .comment.level-5 form input[type="text"] { width: 206px; }
 #main .comment.level-5 form textarea { width: 640px; }
 

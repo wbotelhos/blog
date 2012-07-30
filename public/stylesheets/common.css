@@ -40,10 +40,11 @@ input[type="submit"]:hover, input[type="button"]:hover { background-color: #8D50
 #sidebar .search { margin-bottom: 25px; }
 #sidebar .search input[type="submit"] { display: none; }
 #sidebar .search input[type="search"] { background: url('../images/search.png') no-repeat 4px 5px #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #000; font-size: 13px; height: 24px; opacity: .7; padding-left: 25px; width: 173px; }
-#sidebar h2 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; font: bold 14px verdana; margin-bottom: 2px; padding-bottom: 7px; padding-top: 7px; }
+#sidebar h2 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; font: bold 14px arial; margin-bottom: 2px; padding-bottom: 7px; padding-top: 7px; }
 #sidebar ul { margin-bottom: 28px; }
 #sidebar ul li { border-bottom: 1px dotted #F1F1F1; padding: 4px 0; }
 #sidebar ul li strong { background-color: #AF81C3; border-radius: 4px; color: #FFF; display: inline-block; font-size: 8px; padding: 1px 4px; text-shadow: none; }
+#sidebar ul li a { font: 11px arial; }
 
 /* wrapper */
 #wrapper { margin: 0 auto; width: 1100px; }

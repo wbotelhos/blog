@@ -1,3 +1,7 @@
+blockquote { background: url('../images/quote.gif') no-repeat; background-color: #FDFDFD; border-radius: 4px; margin-bottom: 10px; margin-top: 10px; text-indent: 21px; }
+blockquote p { margin-bottom: 0 !important; margin-top: 0 !important; padding: 5px 10px; }
+code { background-color: #F8F8F8; border: 1px solid #EAEAEA; border-radius: 3px; margin: 0 2px; padding: 1px 5px; white-space: nowrap; }
+
 .highlight .nd { color: #707a7c } /* Name.Decorator */
 .highlight .c1 { color: #228B22 } /* Comment.Single */
 

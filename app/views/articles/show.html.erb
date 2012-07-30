@@ -44,6 +44,13 @@
 <%= render @comment_form.partial %>
 
 <script type="text/javascript">
+  function closeComment(id) {
+    var comment = $('#comment-' + id);
+
+    comment.find('form').hide();
+    comment.find('.text').show();
+  };
+
   function replyComment(id, name) {
     $('#replying-to').show().children('strong').html('<a href="<%= request.fullpath %>#comment-' + id + '">#' + id + '</a> ' + name);
     $('#comment_body').val('Oi ' + name + ',\n\n').blur().focus();

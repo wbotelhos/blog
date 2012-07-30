@@ -1,5 +1,6 @@
 pt-BR:
   comment:
+    close: "Fechar"
     count_html:
       zero: "Nenhum comentário, seja o primeiro! (:"
       one: "1 comentário"

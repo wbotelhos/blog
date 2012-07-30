@@ -80,6 +80,10 @@ module ApplicationHelper
     html <<       %[</p>]
 
     html <<       %[<p>]
+    html <<         (link_to I18n.t("comment.close"), "javascript:void(0);", { :class => "close", :onclick => "closeComment(#{comment.id});" })
+    html <<       %[</p>]
+
+    html <<       %[<p>]
     html <<         %[<input type="submit" value="#{I18n.t('comment.update')}" />]
     html <<       %[</p>]
     html <<     %[</form>]
