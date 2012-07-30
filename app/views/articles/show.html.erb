@@ -61,12 +61,15 @@
 
     $('textarea').taby();
 
-    $('.text').on('dblclick', function() {
-      var thiz = $(this).hide();
+    if ('<%= is_logged? %>' === 'true') {
+      $('.text').on('dblclick', function() {
+        console.log(<%= is_logged? %>)
+        var thiz = $(this).hide();
 
-      thiz.prev('div').hide()
-      thiz.next('form').show().find('input:eq(2)').focus();
-    });
+        thiz.prev('div').hide()
+        thiz.next('form').show().find('input:eq(2)').focus();
+      });
+    }
 
   });
 </script>
