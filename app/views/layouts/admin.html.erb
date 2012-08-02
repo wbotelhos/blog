@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 
-<html>
+<html dir="ltr" lang="pt">
   <head>
     <title><%= CONFIG["author"] %> | Admin</title>
-    <%= javascript_include_tag "jquery-1.7.2.min", "jquery.taby.min", "javascript" %>
     <%= stylesheet_link_tag "stylesheet" %>
+    <%= javascript_include_tag "jquery-1.7.2.min", "jquery.taby.min", "javascript" %>
     <%= csrf_meta_tags %>
+
+    <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico" />
+
+    <meta name="author" content="Washington Botelho" />
+    <meta name="description" content="Blog do Washington Botelho" />
+    <meta name="keywords" content="blog,washington,botelho,java,ruby,rails,python,tutorial,howto" />
   </head>
   <body>
     <div id="wrapper">
