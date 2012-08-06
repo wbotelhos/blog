@@ -1,11 +1,11 @@
 require "bundler/capistrano"
 
-set :application, "177.71.251.75"
+set :application, "wbotelhos.com.br"
 
 set :keep_releases, 3
 
 default_run_options[:pty] = true
-set :ssh_options, {:forward_agent => true}
+set :ssh_options, { :forward_agent => true }
 set :use_sudo, false
 
 set :scm, :git
@@ -29,11 +29,21 @@ ssh_options[:forward_agent] = true
 ssh_options[:keys] = "~/.ssh/blogbr.pem"
 
 after :deploy, "deploy:cleanup"
-after :deploy, "app:setup"
 after :deploy, "sphinx:config"
+after :deploy, "sphinx:rebuild"
 
 namespace :deploy do
   task :start do
+    %w[
+      config/database.yml
+      config/sphinx.yml
+    ].each do |path|
+      from = "#{deploy_to}/#{path}"
+      to = "#{current}/#{path}"
+
+      run "if [ -f '#{to}' ]; then rm '#{to}'; fi; ln -s #{from} #{to}"
+    end
+
     run "cd #{current} && RAILS_ENV=production && GEM_HOME=/opt/local/ruby/gems && bundle exec unicorn_rails -c #{deploy_to}/config/unicorn.rb -D"
   end
 
@@ -63,14 +73,6 @@ namespace :app do
 end
 
 namespace :sphinx do
-  desc "Execute all Sphinx tasks"
-  task :all do
-    config
-    stop
-    start
-    rebuild
-  end
-
   desc "Regenerate Sphinx configuration"
   task :config do
     run "cd #{current} && sudo bundle exec rake ts:config"
