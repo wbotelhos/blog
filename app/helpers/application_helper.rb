@@ -60,7 +60,7 @@ module ApplicationHelper
     html <<       %[<span>#{t("comment.created_at", :time => time_ago_in_words(comment.created_at))}</span>]
     html <<     %[</div>]
 
-    html <<     (link_to I18n.t("comment.reply"), "#{request.fullpath}#comment-form", { :class => "reply-link", :onclick => "replyComment(#{comment.id}, '#{comment.name}');" })
+    html <<     (link_to I18n.t("comment.reply"), "#{request.fullpath}#comment-form", { :class => "reply-link" })
 
     html <<     %[<div class="text">#{markdown comment.body}</div>]
 
@@ -80,7 +80,7 @@ module ApplicationHelper
     html <<       %[</p>]
 
     html <<       %[<p>]
-    html <<         (link_to I18n.t("comment.close"), "javascript:void(0);", { :class => "close", :onclick => "closeComment(#{comment.id});" })
+    html <<         (link_to I18n.t("comment.close"), "javascript:void(0);", { :class => "close" })
     html <<       %[</p>]
 
     html <<       %[<p>]
