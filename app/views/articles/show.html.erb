@@ -51,23 +51,36 @@
     comment.find('.text').show();
   };
 
-  function replyComment(id, name) {
-    $('#replying-to').show().children('strong').html('<a href="<%= request.fullpath %>#comment-' + id + '">#' + id + '</a> ' + name);
-    $('#comment_body').val('Oi ' + name + ',\n\n').blur().focus();
-    $('#comment_comment_id').val(id);
-  };
-
   $(function() {
 
     $('textarea').taby();
 
+    $('.reply-link').on('click', function() {
+      var self  = $(this),
+          id    = self.closest('.comment').attr('id').split('-')[1],
+          name  = self.siblings('form').find('input[name="comment[name]"]').val();
+
+          $('#replying-to').show().children('strong').html('<a href="<%= request.fullpath %>#comment-' + id + '">#' + id + '</a> ' + name);
+          $('#comment_body').val('Oi ' + name + ',\n\n').blur().focus();
+          $('#comment_comment_id').val(id);
+    });
+
+    $('.close').on('click', function() {
+      var self  = $(this);
+
+      self
+        .closest('form').hide()
+        .siblings('.text').show();
+
+        window.getSelection().removeAllRanges();
+    });
+
     if ('<%= is_logged? %>' === 'true') {
       $('.text').on('dblclick', function() {
-        console.log(<%= is_logged? %>)
-        var thiz = $(this).hide();
+        var self = $(this).hide();
 
-        thiz.prev('div').hide()
-        thiz.next('form').show().find('input:eq(2)').focus();
+        self.prev('div').hide()
+        self.next('form').show().find('input:eq(2)').focus();
       });
     }
 

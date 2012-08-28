@@ -51,7 +51,6 @@ class ArticlesController < ApplicationController
     article.update_attributes(params[:article])
 
     redirect_to edit_article_path(article), :notice => t("flash.articles.update.notice")
-    #redirect_to article_path(article.year, article.month, article.day, article.slug), :notice => t("flash.articles.create.notice")
   end
 
   def publish
