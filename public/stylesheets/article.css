@@ -132,7 +132,7 @@
 #admin #drafts .article h2 a { color: #444; font-size: 22px; }
 #admin #drafts .article h2 a:hover { color: #85B839; }
 
-#admin #drafts .article { float: left; margin-bottom: 17px; position: relative; width: 858px } /* same the main */
+#admin #drafts .article { float: left; margin-bottom: 17px; position: relative; width: 928px; } /* same the main + 70 */
 #admin #drafts .article + .article { border-top: 1px solid #DDD; padding-top: 5px; }
 #admin #drafts .article .body { color: #222; margin-top: 12px; padding-left: 10px; }
 #admin #drafts .article .body p { margin-bottom: 10px; }
