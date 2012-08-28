@@ -5,3 +5,4 @@
 #login form input[type="email"], #login form input[type="password"] { padding: 2px; width: 258px; }
 #login form input[type="submit"] { float: right; margin-top: 10px; }
 #login .alert { background-color: #FFF5F5; border: 1px solid; border-radius: 2px; color: #F00; margin-bottom: 5px; padding-bottom: 6px; padding-top: 6px; text-align: center; text-shadow: none; }
+#login .notice { background-color: #DFF0D8; border: 1px solid; border-radius: 2px; color: #468847; margin-bottom: 5px; padding-bottom: 6px; padding-top: 6px; text-align: center; text-shadow: none; }

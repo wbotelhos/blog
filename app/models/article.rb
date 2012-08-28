@@ -44,25 +44,19 @@ class Article < ActiveRecord::Base
 
   def day
     return "00" if published_at.nil?
-
     day = self.published_at.day
-
     (day < 10) ? "0#{day}" : day
   end
 
   def month
     return "00" if published_at.nil?
-
     month = self.published_at.month
-
     (month < 10) ? "0#{month}" : month
   end
 
   def year
     return "0000" if published_at.nil?
-
     year = self.published_at.year
-
     (year < 10) ? "0#{year}" : year
   end
 

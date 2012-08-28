@@ -5,6 +5,7 @@
 #admin .user-form #fields textarea { min-height: 313px; width: 700px; }
 
 #admin #create .save { margin-left: 50px; }
+#admin #update .update { margin-left: 35px; }
 
 #admin #users .user h2.name { margin-left: 10px; margin-top: 12px; }
 #admin #users .user h2.name a { color: #444; font-size: 22px; }

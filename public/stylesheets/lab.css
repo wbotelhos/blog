@@ -1,0 +1,22 @@
+/* Admin */
+#admin .lab-form #fields { float: left; width: 715px; }
+#admin .lab-form #fields label { display: block; font: bold 13px helvetica; margin-bottom: 3px; margin-left: 1px; margin-top: 10px; width: 100%; }
+#admin .lab-form #fields p input { width: 700px; }
+#admin .lab-form #fields textarea { min-height: 313px; width: 700px; }
+
+#admin #create .save { margin-left: 50px; }
+#admin #update .update { margin-left: 35px; }
+
+#admin #labs .lab h2.name { margin-left: 10px; margin-top: 12px; }
+#admin #labs .lab h2.name a { color: #444; font-size: 22px; }
+#admin #labs .lab h2.name a:hover { color: #85B839; }
+
+#admin #labs .lab { float: left; margin-bottom: 17px; position: relative; width: 928px; } /* same the main + 70 */
+#admin #labs .lab + .lab { border-top: 1px solid #DDD; padding-top: 5px; }
+
+#admin #labs .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
+#admin #labs .links li { float: left; font-size: 12px; line-height: 23px; padding-right: 10px; }
+#admin #labs .links li:after { content: '|'; padding-left: 10px; }
+#admin #labs .links .edit { background: url('../images/edit.png') 0px 3px no-repeat; padding-left: 23px; }
+
+#admin #labs .lab .description { margin-left: 10px; margin-top: 10px; }

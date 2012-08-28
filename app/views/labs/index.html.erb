@@ -1,0 +1,13 @@
+<div id="labs">
+  <% @labs.each do |lab| %>
+    <div class="lab">
+      <h2 class="name"><%= link_to lab.name, lab.slug %></h2>
+
+      <ul class="links">
+        <li class="edit"><%=link_to t("lab.edit"), edit_lab_path(lab) %></a></li>
+      </ul>
+
+      <div class="description"><%= lab.description %></div>
+    </div>
+  <% end %>
+</div>

@@ -16,8 +16,13 @@ pt-BR:
       comment:
           create: "Comentar"
 
+      lab:
+        create: "Criar"
+        update: "Atualizar"
+
       user:
         create: "Salvar"
+        update: "Atualizar"
 
   errors:
     messages:

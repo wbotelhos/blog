@@ -1,0 +1,38 @@
+<div id="title">
+  <h2><%= t("lab.new") %></h2>
+</div>
+
+<%= render "shared/error_messages", :entity => @lab %>
+
+<%= form_for @lab, :url => create_lab_path, :html => { :class => "lab-form" } do |f| %>
+  <div id="fields">
+    <p>
+      <%= f.label "#{:name} *" %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label "#{:slug} *" %>
+      <%= f.text_field :slug %>
+    </p>
+
+    <p>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </p>
+  </div>
+
+  <div id="controls">
+    <div id="create">
+      <h3><%= t("lab.create") %></h3>
+      <%= f.submit :class => "save" %>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('#lab_name').focus();
+    $('#lab_body').taby();
+  });
+</script>
