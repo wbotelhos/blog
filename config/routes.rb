@@ -30,6 +30,14 @@ Blog::Application.routes.draw do
     put   "/articles/:article_id/comments/:id",   :action => :update, :as => :update_comment
   end
 
+  controller :labs do
+    get   "/labs",            :action => :index,  :as => :labs
+    post  "/labs",            :action => :create, :as => :create_lab
+    get   "/labs/new",        :action => :new,    :as => :new_lab
+    put   "/labs/:id",        :action => :update, :as => :update_lab
+    get   "/labs/:id/edit",   :action => :edit,   :as => :edit_lab
+  end
+
   controller :sessions do
     get   "/login",   :action => :new,    :as => :login
     post  "/login",   :action => :create, :as => false # TODO: what is the rule to avoid alias?

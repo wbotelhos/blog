@@ -34,3 +34,7 @@ log/*
 # Python
 .Python
 *.pyc
+
+# Labs
+/public/raty
+

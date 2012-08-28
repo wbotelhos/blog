@@ -32,6 +32,18 @@ user = User.create!({
   :password_confirmation  => "test"
 })
 
+Lab.create!({
+  :name         => "jQuery Raty",
+  :slug         => "raty",
+  :description  => "jQuery Raty - A Star Rating Plugin"
+})
+
+Lab.create!({
+  :name         => "jQuery Gridy",
+  :slug         => "gridy",
+  :description  => "jQuery Gridy - A Grid Plugin"
+})
+
 article = user.articles.new({
   :title        => "First Steps",
   :published_at => Time.now,

@@ -7,6 +7,10 @@ pt-BR:
       drafts: "Rascunhos"
       title: "Artigos"
     dashboard: "Painel de Controle"
+    lab:
+      list: "Listar"
+      new: "Criar"
+      title: "Labs"
     login:  "Login"
     logout: "Sair"
     user:
