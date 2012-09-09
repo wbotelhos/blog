@@ -9,11 +9,11 @@ describe Lab, "validations" do
   it { should allow("description").for(:description) }
 
   context "uniqueness name" do
-    let!(:plugin) {
+    let!(:lab) {
       Lab.create!({ :name => "name", :slug => "slug" })
     }
 
-    it { should_not allow(plugin.name).for(:name) }
-    it { should_not allow(plugin.slug).for(:slug) }
+    it { should_not allow(lab.name).for(:name) }
+    it { should_not allow(lab.slug).for(:slug) }
   end
 end

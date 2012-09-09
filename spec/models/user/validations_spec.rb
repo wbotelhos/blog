@@ -5,9 +5,9 @@ describe User, "validations" do
   it { should_not allow("invalid", nil).for(:email) }
   it { should_not allow(nil).for(:password) }
 
-  it { should allow("Washington Botelho").for(:name) }
-  it { should allow("wbotelhos@gmail.com").for(:email) }
-  it { should allow("test").for(:password) }
+  it { should allow("name").for(:name) }
+  it { should allow("email@email.com").for(:email) }
+  it { should allow("password").for(:password) }
   it { should allow("bio").for(:bio) }
   it { should allow("github").for(:github) }
   it { should allow("linkedin").for(:linkedin) }
@@ -19,13 +19,24 @@ describe User, "validations" do
   context "e-mail uniqueness" do
     let!(:user) {
       User.create!({
-        :name => "Washington Botelho",
-        :email => "wbotelhos@gmail.com",
-        :password => "test",
-        :password_confirmation => "test"
+        :name => "name",
+        :email => "email@email.com",
+        :password => "password",
+        :password_confirmation => "password"
         })
     }
 
     it { should_not allow(user.email).for(:email) }
+  end
+
+  context "confirming password" do
+    it "has a invalid one" do
+      User.new({
+        :name => "name",
+        :email => "email@email.com",
+        :password => "password",
+        :password_confirmation => "password_invalid"
+      }).should_not be_valid
+    end
   end
 end

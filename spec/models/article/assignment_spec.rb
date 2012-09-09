@@ -15,5 +15,5 @@ describe Article, "assignment" do
   its(:title) { should eql("title") }
   its(:body) { should eql("body") }
   its(:slug) { should eql("slug") }
-
+  its(:category_ids) { should eql([category.id]) }
 end

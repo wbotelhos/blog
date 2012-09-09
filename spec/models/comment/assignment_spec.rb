@@ -1,7 +1,6 @@
 require "spec_helper"
 
 describe Comment, "assignment" do
-
   subject {
     Comment.new({
       :name => "name",
@@ -17,5 +16,4 @@ describe Comment, "assignment" do
   its(:body) { should eql("body") }
   its(:article_id) { should eql(1) }
   its(:comment_id) { should eql(1) }
-
 end
