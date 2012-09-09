@@ -10,7 +10,7 @@ describe Lab, "validations" do
 
   context "uniqueness name" do
     let!(:plugin) {
-      Plugin.create!({ :name => "name", :slug => "slug" })
+      Lab.create!({ :name => "name", :slug => "slug" })
     }
 
     it { should_not allow(plugin.name).for(:name) }
