@@ -4,6 +4,7 @@ class CreateLabs < ActiveRecord::Migration
       t.string  :name, :null => false
       t.string  :slug, :null => false
       t.string  :description
+      t.datetime :published_at
 
       t.timestamps
     end

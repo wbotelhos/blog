@@ -8,7 +8,7 @@ pt-BR:
       title: "Artigos"
     dashboard: "Painel de Controle"
     lab:
-      list: "Listar"
+      drafts: "Rascunhos"
       new: "Criar"
       title: "Labs"
     login:  "Login"

@@ -1,28 +1,26 @@
 require "spec_helper"
 
 describe LabsController do
-
-  context "accessing the labs" do
+  context "GET #drafts" do
     context "when unlogged" do
-      it "redirect to the page" do
-        get :index
-        response.should redirect_to(labs_path)
+      it "redirect to login page" do
+        get :drafts
+        response.should redirect_to(login_path)
       end
+
+      it "shows mandatory login message"
     end
 
     context "when logged" do
-      let!(:user) { FactoryGirl.create(:user) }
-
       before do
-        login :with => user.email
+        @user = mock("user")
+        @user.stub(:id).and_return(1)
       end
 
-      it "redirect to the page" do
-        get :index
+      xit "redirect to the page" do
+        get :drafts, {}, { :user_id => @user.id }
         assert_response :success
-        assert_not_nil assigns(:preys)
       end
     end
   end
-
 end

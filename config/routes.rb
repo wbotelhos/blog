@@ -5,10 +5,6 @@ Blog::Application.routes.draw do
     get   "/admin", :action => :index
   end
 
-  controller :feed do
-    get   "/feed", :action => :feed, :as => :feed
-  end
-
   controller :articles do
     get   "/articles",                :action => :index,    :as => :articles
     post  "/articles",                :action => :create,   :as => :create_article
@@ -30,9 +26,14 @@ Blog::Application.routes.draw do
     put   "/articles/:article_id/comments/:id",   :action => :update, :as => :update_comment
   end
 
+  controller :feed do
+    get   "/feed", :action => :feed, :as => :feed
+  end
+
   controller :labs do
     get   "/labs",            :action => :index,  :as => :labs
     post  "/labs",            :action => :create, :as => :create_lab
+    get   "/labs/drafts",     :action => :drafts, :as => :drafts_labs
     get   "/labs/new",        :action => :new,    :as => :new_lab
     put   "/labs/:id",        :action => :update, :as => :update_lab
     get   "/labs/:id/edit",   :action => :edit,   :as => :edit_lab

@@ -55,11 +55,12 @@ ActiveRecord::Schema.define(:version => 20120807192839) do
   add_index "comments", ["article_id"], :name => "index_comments_on_article_id"
 
   create_table "labs", :force => true do |t|
-    t.string   "name",        :null => false
-    t.string   "slug",        :null => false
+    t.string   "name",         :null => false
+    t.string   "slug",         :null => false
     t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "published_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   add_index "labs", ["name"], :name => "index_labs_on_name", :unique => true

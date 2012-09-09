@@ -1,5 +1,5 @@
 class LabsController < ApplicationController
-  before_filter :require_login, :only => [:new, :create, :edit, :update]
+  before_filter :require_login, :only => [:drafts, :edit, :create, :new, :update]
 
   def create
     @lab = Lab.new(params[:lab])
@@ -12,14 +12,18 @@ class LabsController < ApplicationController
     end
   end
 
+  def drafts
+    @labs = Lab.drafts
+    render :layout => "admin"
+  end
+
   def edit
     @lab = Lab.find(params[:id])
     render :layout => "admin"
   end
 
   def index
-    @labs = Lab.all
-    render :layout => "admin"
+    @labs = Lab.published
   end
 
   def new
