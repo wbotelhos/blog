@@ -20,7 +20,7 @@ describe Article, "#create" do
     end
 
     it "show preview link" do
-      page.should_not have_selector("div#url a", :text => "Visualizar")
+      page.should have_selector("div#url a", :text => "Visualizar")
     end
   end
 
@@ -38,7 +38,7 @@ describe Article, "#create" do
     end
 
     it "show slug link" do
-      page.should_not have_selector("div#url a", :text => article_published.slug)
+      page.should have_selector("div#url a", :text => article_published.slug)
     end
   end
 

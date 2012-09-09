@@ -10,7 +10,7 @@ describe User, "#create" do
     before do
       login :with => user.email
       click_link "Admin!"
-      click_link "/users/new"
+      click_link "new-user"
     end
 
     it "redirects to new page" do
