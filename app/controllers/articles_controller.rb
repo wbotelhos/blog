@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
 
     @article = Article.where("slug = ?", params[:slug]).first
 
-    comment = Comment.new
+    comment = Comment.new # TODO: should I assign with @ just for test here?
     @comment_form = CommentFormPresenter.new(@article, comment)
   end
 
