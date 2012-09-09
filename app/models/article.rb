@@ -21,7 +21,11 @@ class Article < ActiveRecord::Base
   end
 
   def resume
-    "#{self.body.split("<!--more-->")[0]}..." unless self.body.nil?
+    if self.body.nil? or self.body.index("<!--more-->").nil?
+      self.body
+    else
+      "#{self.body.split("<!--more-->")[0]}..."
+    end
   end
 
   def unique_comments
