@@ -3,7 +3,7 @@ require "spec_helper"
 
 describe Article, "#show" do
   let!(:article) {
-    FactoryGirl.create(:article, { :published_at => Date.new(2012, 10, 23) })
+    FactoryGirl.create(:article_published)
   }
 
   before do
@@ -11,7 +11,7 @@ describe Article, "#show" do
   end
 
   it "redirects to show page" do
-    current_path.should match(%r[/2012/10/23/title-1])
+    current_path.should match(%r[/#{article.year}/#{article.month}/#{article.day}/#{article.slug}])
   end
 
   context "displaying the resume" do
