@@ -1,5 +1,4 @@
 module IntegrationHelper
-
   def login(options)
     visit login_path
 
@@ -8,9 +7,8 @@ module IntegrationHelper
 
     click_button "Acessar"
   end
-
 end
 
-RSpec.configure do |config  |
+RSpec.configure do |config|
   config.include(IntegrationHelper, :type => :request)
 end
