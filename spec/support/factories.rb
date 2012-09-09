@@ -24,8 +24,8 @@ FactoryGirl.define do
     end
 
     factory :article_published do
-      created_at        Time.now
-      published_at      Time.now
+      created_at        Date.new(1984, 10, 23)
+      published_at      Date.new(1984, 10, 23)
     end
   end
 
@@ -35,11 +35,21 @@ FactoryGirl.define do
   end
 
   factory :comment do
-    sequence(:name)     { |i| "name-#{i}" }
-    sequence(:email)    { |i| "email#{i}@mail.com" }
-    url                 "http://url.com"
-    body                "body"
-    association         :article
+    sequence(:name)   { |i| "name #{i}" }
+    sequence(:email)  { |i| "email#{i}@mail.com" }
+    url               "http://url.com"
+    body              "body"
+    association       :article
+  end
+
+  factory :lab do
+    sequence(:name) { |i| "name #{i}" }
+    sequence(:slug) { |i| "name-#{i}" }
+  end
+
+  factory :link do
+    sequence(:name) { |i| "name #{i}" }
+    url             "http://url.com"
   end
 
 end

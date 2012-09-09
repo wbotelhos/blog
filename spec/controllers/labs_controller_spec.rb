@@ -14,15 +14,13 @@ describe LabsController do
       let!(:user) { FactoryGirl.create(:user) }
 
       before do
-        @user = mock("user")
-        @user.stub :email => "wbotelhos@gmail.com"
-        @user.stub :password => "test"
-        login :with => @user.email
+        login :with => user.email
       end
 
       it "redirect to the page" do
         get :index
-        response.should redirect_to(labs_path)
+        assert_response :success
+        assert_not_nil assigns(:preys)
       end
     end
   end

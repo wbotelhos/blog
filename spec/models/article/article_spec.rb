@@ -1,47 +1,50 @@
 # coding: utf-8
-
 require "spec_helper"
 
 describe Article do
+  it "has a valid factory" do
+    FactoryGirl.build(:article).should be_valid
+  end
+
   let!(:article) { Article.new({ :title => %[City - São João del-rey ('!@#$\alive%ˆ&*~^)], :body => "my text" }) }
   let!(:article_more) { Article.new({ :title => "City - São João del-rey", :body => "my <!--more--> text" }) }
 
-  describe "resume function" do
-    context "when more tag is present" do
+  describe "resuming the article" do
+    context "when the tag more is present" do
       subject { article_more.resume }
 
-      it "should resume the text" do
+      it "resume the text" do
         should eql("my ...")
       end
 
-      it "should append the reticence -" do
+      it "append the reticence -" do
         should eql("my ...")
       end
     end
 
-    context "when more tag is missing" do
+    context "when the tag more is missing" do
       subject { article.resume }
 
-      it "should resume the text -" do
-        should eql("my text...")
+      it "not resume the text" do
+        should eql("my text")
       end
 
-      it "should to keep the original text" do
-        should eql("my text...")
+      it "not append reticence" do
+        should eql("my text")
       end
     end
   end
 
-  describe "slug title" do
+  describe "slugging the title" do
     subject { article.slug_it(article.title) }
 
-    it "should slug letter and spaces" do
+    it "replace white spaces" do
       should eql("city-sao-joao-del-rey-alive")
     end
   end
 
-  describe "slug date" do
-    context "when it is a draft yet" do
+  describe "building the date uri" do
+    context "when it is a draft" do
       before do
         article.published_at = nil
       end
@@ -66,7 +69,7 @@ describe Article do
     end
   end
 
-  describe "status" do
+  describe "getting the status" do
     subject { article }
 
     context "when article is new" do
@@ -75,29 +78,29 @@ describe Article do
         article.published_at = nil
       end
 
-      it "return 'Novo'" do
+      it "return the text 'Novo'" do
         article.status.should == "Novo"
       end
     end
 
-    context "when article is a draft" do
+    context "when it is a draft" do
       before do
         article.created_at = Time.now
         article.published_at = nil
       end
 
-      it "return 'Rascunho'" do
+      it "return the text 'Rascunho'" do
         article.status.should == "Rascunho"
       end
     end
 
-    context "when article is published" do
+    context "when it is published" do
       before do
         article.created_at = Time.now
         article.published_at = Time.now
       end
 
-      it "return 'Publicado'" do
+      it "return the text 'Publicado'" do
         article.status.should == "Publicado"
       end
     end

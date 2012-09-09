@@ -11,18 +11,9 @@ describe AdminController do
     end
 
     context "when logged" do
-      let!(:user) { FactoryGirl.create(:user) }
-
-      before do
-        @user = mock("user")
-        @user.stub :email => "wbotelhos@gmail.com"
-        @user.stub :password => "test"
-        login :with => @user.email
-      end
-
       it "redirect to the login page" do
-        get :index
-        response.should redirect_to(admin_path)
+        get :index, :id => 1
+        assert_response :success
       end
     end
   end
