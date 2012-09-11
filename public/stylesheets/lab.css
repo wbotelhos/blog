@@ -7,16 +7,24 @@
 #admin #create .save { margin-left: 50px; }
 #admin #update .update { margin-left: 35px; }
 
+#admin #labs .lab { float: left; margin-bottom: 17px; position: relative; width: 928px; } /* same the main + 70 */
+#admin #labs .lab + .lab { border-top: 1px solid #DDD; padding-top: 5px; }
+
 #admin #labs .lab h2.name { margin-left: 10px; margin-top: 12px; }
 #admin #labs .lab h2.name a { color: #444; font-size: 22px; }
 #admin #labs .lab h2.name a:hover { color: #85B839; }
-
-#admin #labs .lab { float: left; margin-bottom: 17px; position: relative; width: 928px; } /* same the main + 70 */
-#admin #labs .lab + .lab { border-top: 1px solid #DDD; padding-top: 5px; }
+#admin #labs .lab .description { margin-left: 10px; margin-top: 10px; }
 
 #admin #labs .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
 #admin #labs .links li { float: left; font-size: 12px; line-height: 23px; padding-right: 10px; }
 #admin #labs .links li:after { content: '|'; padding-left: 10px; }
 #admin #labs .links .edit { background: url('../images/edit.png') 0px 3px no-repeat; padding-left: 23px; }
 
-#admin #labs .lab .description { margin-left: 10px; margin-top: 10px; }
+#main #labs .lab { border: 1px solid #EEE; border-radius: 3px; float: left; margin: 10px 5px 15px 8px; padding: 10px; width: 392px; }
+#main #labs .lab .image { float: left; width: 150px; }
+#main #labs .lab .info { float: left; margin-top: 15px; width: 242px; }
+#main #labs .lab .info h2.name { margin-left: 10px; }
+#main #labs .lab .info h2.name a { color: #444; font-size: 22px; }
+#main #labs .lab .info h2.name a:hover { color: #85B839; }
+#main #labs .lab .info .description { margin-left: 10px; margin-top: 10px; }
+#main #labs .lab .info .socialy { float: right; margin-right: 10px; margin-top: 10px; }
