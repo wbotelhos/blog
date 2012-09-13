@@ -35,13 +35,15 @@ user = User.create!({
 Lab.create!({
   :name         => "jQuery Raty",
   :slug         => "raty",
-  :description  => "jQuery Raty - A Star Rating Plugin"
+  :description  => "jQuery Raty - A Star Rating Plugin",
+  :image        => "raty.png"
 })
 
 Lab.create!({
   :name         => "jQuery Gridy",
   :slug         => "gridy",
-  :description  => "jQuery Gridy - A Grid Plugin"
+  :description  => "jQuery Gridy - A Grid Plugin",
+  :image        => "gridy.png"
 })
 
 article = user.articles.new({

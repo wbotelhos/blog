@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20120807192839) do
     t.string   "name",         :null => false
     t.string   "slug",         :null => false
     t.string   "description"
+    t.string   "image"
     t.datetime "published_at"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false

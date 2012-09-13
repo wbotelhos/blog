@@ -7,6 +7,7 @@ describe Lab, "validations" do
   it { should allow("name").for(:name) }
   it { should allow("slug").for(:slug) }
   it { should allow("description").for(:description) }
+  it { should allow("description", nil).for(:image) }
 
   context "uniqueness name" do
     let!(:lab) {
