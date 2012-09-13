@@ -9,6 +9,7 @@ pt-BR:
     dashboard: "Painel de Controle"
     lab:
       drafts: "Rascunhos"
+      edit: "Editar"
       new: "Criar"
       title: "Labs"
     login:  "Login"
