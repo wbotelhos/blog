@@ -6,8 +6,12 @@ describe Article do
     FactoryGirl.build(:article).should be_valid
   end
 
-  let!(:article) { Article.new({ :title => %[City - São João del-rey ('!@#$\alive%ˆ&*~^)], :body => "my text" }) }
+  let!(:article) { FactoryGirl.create(:article, { :title => %[City - São João del-rey ('!@#$\alive%ˆ&*~^)], :body => "my text" }) }
   let!(:article_more) { Article.new({ :title => "City - São João del-rey", :body => "my <!--more--> text" }) }
+  let!(:comment_1) { FactoryGirl.create(:comment, { :email => "email1@email.com", :article => article }) }
+  let!(:comment_2) { FactoryGirl.create(:comment, { :email => "email2@email.com", :article => article }) }
+  let!(:comment_3) { FactoryGirl.create(:comment, { :email => "email1@email.com", :article => article }) }
+  let!(:comment_4_author) { FactoryGirl.create(:comment_author, { :article => article }) }
 
   describe "resuming the article" do
     context "when the tag more is present" do
@@ -41,6 +45,25 @@ describe Article do
     it "replace white spaces" do
       should eql("city-sao-joao-del-rey-alive")
     end
+  end
+
+  describe "Article#unique_comments" do
+    it "remove all author's e-mail" do
+      article.unique_comments.should_not include(comment_4_author)
+    end
+
+    it "returns a list of unique comment of an article based on email" do
+      article.unique_comments.should have(2).comments
+    end
+
+    it "include the notifier e-mail" do
+      article.unique_comments.should_not include(comment_4_author)
+    end
+
+  end
+
+  describe "Article#unique_comments_without" do
+    it "returns a list of unique comment of an article based on email without a choosen one"
   end
 
   describe "building the date uri" do

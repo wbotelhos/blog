@@ -29,7 +29,7 @@ class Article < ActiveRecord::Base
   end
 
   def unique_comments
-    self.comments.all(:group => "email")
+    self.comments.all(:group => "email").reject {|comment| comment.author == true }
   end
 
   def slug_it(text)

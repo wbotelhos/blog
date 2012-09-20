@@ -40,6 +40,11 @@ FactoryGirl.define do
     url               "http://url.com"
     body              "body"
     association       :article
+
+    factory :comment_author do
+      author          true
+      email           "author@email.com"
+    end
   end
 
   factory :lab do
