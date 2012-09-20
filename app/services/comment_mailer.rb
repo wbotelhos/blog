@@ -1,16 +1,14 @@
 class CommentMailer
-
   def initialize(article, new_comment)
     @article = article
     @new_comment = new_comment
   end
 
   def send
-    comments = @article.unique_comments
-
-    comments.each do |comment|
+    @article.unique_comments.each do |comment|
       Mailer.comment(@article, @new_comment, comment).deliver
     end
-  end
 
+    Mailer.comment_notify(@article, @new_comment).deliver
+  end
 end

@@ -8,6 +8,9 @@ pt-BR:
 
     created_at: "%{time} atrás"
 
+    email_not_verified: "E-mail não autorizado para recepção de mensagem!"
+    notice_email_not_sent: "Seu comentário foi adicionado! Porém ninguém foi notificado."
+
     reply: "Responder"
     reply_to: "Resposta ao comentário "
     replying_to: "Respondendo "

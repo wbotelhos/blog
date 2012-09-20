@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_filter :require_login, :only => [:update]
 
   def create
-    @article = Article.find(params[:article_id])
+    @article = Article.includes(:user).find(params[:article_id])
 
     params[:comment][:name] = nil if params[:comment][:name] == I18n.t("activerecord.attributes.comment.name")
     params[:comment][:email] = nil if params[:comment][:email] == I18n.t("activerecord.attributes.comment.email")
@@ -15,9 +15,12 @@ class CommentsController < ApplicationController
     @comment.comment = Comment.find(params[:comment_id]) unless params[:comment_id].nil?
 
     if @comment.save
-      #CommentMailer.new(@article, @comment).send
-
-      flash[:notice] = t("flash.comments.create.notice")
+      begin
+        CommentMailer.new(@article, @comment).send
+        flash[:notice] = t("flash.comments.create.notice")
+     rescue
+        flash[:notice] = t("comment.notice_email_not_sent")
+      end
     else
       flash[:alert] = t("flash.comments.create.alert")
     end

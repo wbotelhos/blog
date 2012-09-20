@@ -25,6 +25,7 @@ pt-BR:
       create:
         alert: "Escreva o seu comentário!"
         notice: "Seu comentário foi adicionado!"
+        not: "Seu comentário foi adicionado! Só que não!"
 
       update:
         alert: "Erro ao salvar o comentário!"
