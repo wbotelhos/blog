@@ -35,6 +35,7 @@
 </article>
 
 <h3 id="comments">
+  <i class="icon-comments-alt icon-large"></i>
   <%= t("comment.count_html", :count => @article.comments_count) %>
   <%= link_to "#", article_path(@article.year, @article.month, @article.day, @article.slug, :anchor => "comment-form") %>
 </h3>

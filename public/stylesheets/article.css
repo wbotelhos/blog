@@ -46,7 +46,7 @@
 #main .article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; padding-top: 3px; }
 
 /* Comments */
-#main #comments { background: url('../images/comment-big.png') no-repeat 0 4px; clear: both; float: left; font: bold 21px verdana; height: 30px; margin-bottom: 20px; margin-left: 10px; margin-top: 25px; padding-left: 35px; }
+#main #comments { float: left; font: bold 20px verdana; margin-bottom: 20px; margin-left: 20px; margin-top: 25px; }
 
 #main .comment { border: 1px solid #EAEAEA; border-radius: 2px; clear: both; float: right; height: auto; margin-bottom: 10px; padding: 10px; width: 835px; }
 #main .comment .photo { float: left; }

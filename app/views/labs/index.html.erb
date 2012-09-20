@@ -1,13 +1,37 @@
 <div id="labs">
   <% @labs.each do |lab| %>
     <div class="lab">
-      <h2 class="name"><%= link_to lab.name, lab.slug %></h2>
+      <div class="image">
+        <%= link_to image_tag(lab.image, { :alt => "", :height => 120, :width => 160 }), "#{CONFIG["url_http"]}/#{lab.slug}", { :target => "_blank" } %>
+      </div>
 
-      <ul class="links">
-        <li class="edit"><%=link_to t("lab.edit"), edit_lab_path(lab) %></a></li>
-      </ul>
+      <div class="info">
+        <h2 class="name"><%= link_to lab.name, lab.slug %></h2>
+        <div class="description"><%= lab.description %></div>
+        <div id="repository-<%= lab.slug %>" class="github-info">
+          <span><%= t("lab.loading") %></span>
+        </div>
 
-      <div class="description"><%= lab.description %></div>
+        <div class="links">
+          <%= link_to("", "#{CONFIG["url_http"]}/#{lab.slug}", { :title => "Demo", :target => "_blank", :class => "demo" }) %>
+          <%= link_to("", "http://github.com/wbotelhos/#{lab.slug}", { :title => "Github", :target => "_blank", :class => "github" }) %>
+          <% if is_logged? %>
+            <%= link_to("", edit_lab_path(lab), { :title => t("navigation.lab.edit"), :class => "edit" }) %>
+          <% end %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  $(function() {
+
+    $('#repository-raty').socialy({
+      app         : 'github',
+      username    : 'wbotelhos',
+      repository  : 'raty'
+    });
+
+  });
+</script>

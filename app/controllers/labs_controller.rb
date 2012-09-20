@@ -6,7 +6,7 @@ class LabsController < ApplicationController
 
     if @lab.save
       flash[:notice] = t("flash.labs.create.notice")
-      redirect_to labs_path
+      redirect_to drafts_labs_path
     else
       render :new, :layout => "admin"
     end
@@ -14,7 +14,7 @@ class LabsController < ApplicationController
 
   def drafts
     @labs = Lab.drafts
-    render :layout => "admin"
+    render :index, :layout => "admin"
   end
 
   def edit

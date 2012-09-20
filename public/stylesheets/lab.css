@@ -7,16 +7,22 @@
 #admin #create .save { margin-left: 50px; }
 #admin #update .update { margin-left: 35px; }
 
-#admin #labs .lab h2.name { margin-left: 10px; margin-top: 12px; }
-#admin #labs .lab h2.name a { color: #444; font-size: 22px; }
-#admin #labs .lab h2.name a:hover { color: #85B839; }
-
-#admin #labs .lab { float: left; margin-bottom: 17px; position: relative; width: 928px; } /* same the main + 70 */
-#admin #labs .lab + .lab { border-top: 1px solid #DDD; padding-top: 5px; }
-
-#admin #labs .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
-#admin #labs .links li { float: left; font-size: 12px; line-height: 23px; padding-right: 10px; }
-#admin #labs .links li:after { content: '|'; padding-left: 10px; }
-#admin #labs .links .edit { background: url('../images/edit.png') 0px 3px no-repeat; padding-left: 23px; }
-
-#admin #labs .lab .description { margin-left: 10px; margin-top: 10px; }
+/* index */
+#labs .lab { border: 1px solid #EEE; border-radius: 3px; float: left; margin: 10px 5px 15px 8px; min-height: 122px; padding: 10px; width: 392px; }
+#labs .lab .image { float: left; width: 160px; }
+#labs .lab .image a { background-color: #EEE; border-radius: 3px; display: block; height: 120px; width: 160px; }
+#labs .lab .info { float: left; margin-top: 15px; width: 230px; }
+#labs .lab .info h2.name { margin-left: 10px; }
+#labs .lab .info h2.name a { color: #444; font-size: 22px; }
+#labs .lab .info h2.name a:hover { color: #85B839; }
+#labs .lab .info .github-info { float: left; margin-left: 15px; margin-top: 20px; }
+#labs .lab .info .github-info span { font: 10px helvetica; }
+#labs .lab .info .github-info a { color: #444; margin-right: 12px; }
+#labs .lab .info .github-info a:hover { color: #666; }
+#labs .lab .info .github-info a i { margin-right: 4px; }
+#labs .lab .info .description { margin-left: 10px; margin-top: 10px; }
+#labs .lab .info .links { float: right; margin-right: 10px; margin-top: 20px; }
+#labs .lab .info .links a { background-repeat: no-repeat; border-radius: 3px; display: block; float: right; height: 16px; margin-bottom: 5px; margin-left: 10px; width: 16px; }
+#labs .lab .info .links a.github { background-image: url("../images/github.png"); }
+#labs .lab .info .links a.demo { background-image: url("../images/demo.png"); }
+#labs .lab .info .links a.edit { background-image: url("../images/edit.png"); }
