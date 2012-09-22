@@ -62,10 +62,6 @@ describe Article do
 
   end
 
-  describe "Article#unique_comments_without" do
-    it "returns a list of unique comment of an article based on email without a choosen one"
-  end
-
   describe "building the date uri" do
     context "when it is a draft" do
       before do
