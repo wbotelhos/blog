@@ -1,11 +1,13 @@
 class CommentMailer
-  def initialize(article, new_comment)
-    @article = article
-    @new_comment = new_comment
+  def initialize(article, new_comment, logger)
+    @article, @new_comment, @logger = article, new_comment, logger
   end
 
   def send
-    @article.unique_comments.each do |comment|
+    comments = @article.unique_comments
+    @logger.info "Sending mail to: [#{comments.map(&:email).to_sentence}]"
+
+    comments.each do |comment|
       Mailer.comment(@article, @new_comment, comment).deliver
     end
 
