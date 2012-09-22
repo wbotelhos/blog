@@ -10,13 +10,11 @@ class SidebarPresenter
 
   def categories
     categories = Category.scoped
-
     { :partial => "sidebar/categories", :locals => { :categories => categories } }
   end
 
   def links
     links = Link.scoped
-
     { :partial => "sidebar/links", :locals => { :links => links } }
   end
 end
