@@ -1,3 +1,4 @@
+# coding: utf-8
 class Mailer < ActionMailer::Base
   default :from => CONFIG["email"]
 
@@ -16,8 +17,6 @@ class Mailer < ActionMailer::Base
     @article = article
     @comment = comment
 
-    mail :to => article.user.email, :subject => "Artigo respondido" do |format|
-      format.text
-    end
+    mail :to => article.user.email, :subject => "Comentário pendente no blog!"
   end
 end
