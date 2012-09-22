@@ -16,10 +16,11 @@ class CommentsController < ApplicationController
 
     if @comment.save
       begin
-        CommentMailer.new(@article, @comment).send
+        CommentMailer.new(@article, @comment, logger).send
         flash[:notice] = t("flash.comments.create.notice")
-     rescue
-        flash[:notice] = t("comment.notice_email_not_sent")
+     rescue Exception => e
+       logger.error "Was not possible to send mail: #{e}"
+       flash[:notice] = t("comment.email_not_sent")
       end
     else
       flash[:alert] = t("flash.comments.create.alert")
