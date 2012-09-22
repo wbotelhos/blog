@@ -108,6 +108,8 @@
 #main .comment-create textarea { color: #BBB; height: 150px; margin-bottom: 7px; padding: 2px; width: 515px; }
 #main .comment-create input[type="submit"] { float: right; margin-right: 4px; }
 #main .comment-create #markdown-reference { color: #777; font: 11px verdana; margin-left: 3px; margin-top: -8px; }
+#main .comment-create #comment-submit { text-align: right; }
+#main .comment-create #comment-submit i { color: #222; margin-right: 6px; }
 
 /* Admin */
 #admin #title { height: 40px; }
