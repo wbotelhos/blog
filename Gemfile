@@ -1,28 +1,28 @@
 source :rubygems
 
-gem "rails", "3.2.6"
-gem "mysql2"
-gem "thinking-sphinx"
-gem "redcarpet"
-gem "pygments.rb"
+gem 'mysql2'
+gem 'pygments.rb'
+gem 'rails'
+gem 'redcarpet'
+gem 'thinking-sphinx'
 
 group :development do
-  gem "pry", :require => false
-  gem "awesome_print", :require => false
-  gem "mailcatcher"
-  gem "capistrano"
+  gem 'awesome_print',  :require => false
+  gem 'capistrano'
+  gem 'mailcatcher'
+  gem 'pry',            :require => false
 end
 
 group :development, :test do
-  gem "rspec-rails"
-  gem "capybara"
-  gem "database_cleaner"
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'rspec-rails'
 end
 
 group :test do
-  gem "factory_girl"
+  gem 'factory_girl'
 end
 
 group :production do
-  gem "unicorn"
+  gem 'unicorn'
 end
