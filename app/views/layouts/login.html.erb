@@ -3,41 +3,41 @@
 <html dir="ltr" lang="pt">
   <head>
     <title>Washington Botelho | Login</title>
-    <%= stylesheet_link_tag "stylesheet" %>
-    <%= javascript_include_tag "jquery-1.7.2.min" %>
+    <%= stylesheet_link_tag 'stylesheet' %>
+    <%= javascript_include_tag 'jquery-1.8.2.min' %>
     <%= csrf_meta_tags %>
 
     <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico" />
 
     <meta name="author" content="Washington Botelho" />
     <meta name="description" content="Blog do Washington Botelho" />
-    <meta name="keywords" content="blog,washington,botelho,java,ruby,rails,python,tutorial,howto" />    
+    <meta name="keywords" content="blog,washington,botelho,java,ruby,rails,python,tutorial,howto" />
   </head>
   <body>
     <div id="wrapper">
       <div id="top">
         <div id="logo">
-          <h1><%= link_to CONFIG["author"], root_path %></h2>
-        	<h3><%= CONFIG["description"] %></h3>
+          <h1><%= link_to CONFIG['author'], root_path %></h2>
+        	<h3><%= CONFIG['description'] %></h3>
         </div>
 
         <% if is_logged? %>
           <nav>
             <ul>
-                <li><%= link_to t("navigation.logout"), logout_path %></li>
-                <li><%= link_to t("navigation.admin"), admin_path %></li>
+                <li><%= link_to t('navigation.logout'), logout_path %></li>
+                <li><%= link_to t('navigation.admin'), admin_path %></li>
             </ul>
           </nav>
         <% end %>
       </div>
 
       <div id="login">
-        <%= render "shared/flash_messages" %>
+        <%= render 'shared/flash_messages' %>
         <%= yield %>
       </div>
 
       <footer id="footer">
-        <%= render "shared/footer" %>
+        <%= render 'shared/footer' %>
       </footer>
     </div>
   </body>

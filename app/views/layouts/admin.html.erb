@@ -2,9 +2,9 @@
 
 <html dir="ltr" lang="pt">
   <head>
-    <title><%= CONFIG["author"] %> | Admin</title>
-    <%= stylesheet_link_tag "stylesheet" %>
-    <%= javascript_include_tag "jquery-1.7.2.min", "jquery.taby.min", "jquery.socialy.min", "javascript" %>
+    <title><%= CONFIG['author'] %> | Admin</title>
+    <%= stylesheet_link_tag 'stylesheet' %>
+    <%= javascript_include_tag 'jquery-1.8.2.min', 'jquery.taby.min', 'jquery.socialy.min', 'javascript' %>
     <%= csrf_meta_tags %>
 
     <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico" />
@@ -16,40 +16,40 @@
   <body>
     <div id="wrapper">
       <div id="top">
-        <%= render "shared/header" %>
-        <%= render "shared/flash_messages" %>
+        <%= render 'shared/header' %>
+        <%= render 'shared/flash_messages' %>
       </div>
 
       <div id="content">
         <aside id="sidebar-admin">
           <h2>
             <i class="icon-file icon-large"></i>
-            <%= t("navigation.article.title") %>
+            <%= t('navigation.article.title') %>
           </h2>
 
           <ul>
-             <li><%= link_to t("navigation.article.new"), new_article_path, { :id => "new-article" } %></li>
-             <li><%= link_to t("navigation.article.drafts"), drafts_articles_path %></li>
+             <li><%= link_to t('navigation.article.new'), new_article_path, { id: 'new-article' } %></li>
+             <li><%= link_to t('navigation.article.drafts'), drafts_articles_path %></li>
           </ul>
 
           <h2>
             <i class="icon-user icon-large"></i>
-            <%= t("navigation.user.title") %>
+            <%= t('navigation.user.title') %>
           </h2>
 
           <ul>
-             <li><%= link_to t("navigation.user.new"), new_user_path, { :id => "new-user" } %></li>
-             <li><%= link_to t("navigation.user.list"), users_path %></li>
+             <li><%= link_to t('navigation.user.new'), new_user_path, { id: 'new-user' } %></li>
+             <li><%= link_to t('navigation.user.list'), users_path %></li>
           </ul>
 
           <h2>
             <i class="icon-beaker icon-large"></i>
-            <%= t("navigation.lab.title") %>
+            <%= t('navigation.lab.title') %>
           </h2>
 
           <ul>
-             <li><%= link_to t("navigation.lab.new"), new_lab_path %></li>
-             <li><%= link_to t("navigation.lab.drafts"), drafts_labs_path %></li>
+             <li><%= link_to t('navigation.lab.new'), new_lab_path %></li>
+             <li><%= link_to t('navigation.lab.drafts'), drafts_labs_path %></li>
           </ul>
         </aside>
 
@@ -61,7 +61,7 @@
       <div id="credits">Developed by Washington Botelho</div>
 
       <footer id="footer">
-        <%= render "shared/footer" %>
+        <%= render 'shared/footer' %>
       </footer>
     </div>
   </body>
