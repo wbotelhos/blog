@@ -1,22 +1,21 @@
 # coding: utf-8
 
 module ApplicationHelper
-
   def author(user)
-    "".html_safe.tap do |html|
-      html << gravatar(user.email, { :alt => "", :title => user.name })
-      html << (content_tag :div, simple_format(user.bio.html_safe), :class => "biography" if user.bio)
-      html << (content_tag :div, author_social(user).html_safe, :class => "social")
+    ''.html_safe.tap do |html|
+      html << gravatar(user.email, { alt: '', title: user.name })
+      html << (content_tag :div, simple_format(user.bio.html_safe), class: 'biography' if user.bio)
+      html << (content_tag :div, author_social(user).html_safe, class: 'social')
     end
   end
 
   def author_social(user)
-    "".tap do |html|
-      html << link_to("", user.github, :title => user.github, :target => "_blank", :class => "github") unless user.github.nil? || user.github.empty?
-      html << link_to("", user.linkedin, :title => user.linkedin, :target => "_blank", :class => "linkedin") unless user.linkedin.nil? || user.linkedin.empty?
-      html << link_to("", user.twitter, :title => user.twitter, :target => "_blank", :class => "twitter") unless user.twitter.nil? || user.twitter.empty?
-      html << link_to("", user.facebook, :title => user.facebook, :target => "_blank", :class => "facebook") unless user.facebook.nil? || user.facebook.empty?
-    end    
+    ''.tap do |html|
+      html << social_link_for(user.github, 'github')
+      html << social_link_for(user.linkedin, 'linkedin')
+      html << social_link_for(user.twitter, 'twitter')
+      html << social_link_for(user.facebook, 'facebook')
+    end
   end
 
   def gravatar(email, options = {})
@@ -29,7 +28,7 @@ module ApplicationHelper
   end
 
   def render_comments(article)
-    html = ""
+    html = ''
 
     article.comments.each do |comment|
       if comment.comment.nil?
@@ -40,35 +39,35 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def render_comment(article, comment, level = 0, html = "")
+  def render_comment(article, comment, level = 0, html = '')
     anchor = "comment-#{comment.id}"
     anchor_full = "#{request.fullpath}##{anchor}"
 
     html <<  %[<div id="#{anchor}" class="comment#{' authored' if comment.author}#{' level-' + level.to_s unless level == 0}">]
-    html <<   %[<div class="photo">]
-    html <<     (gravatar(comment.email, { :alt => "", :title => comment.name }))
+    html <<   %[<div class='photo'>]
+    html <<     (gravatar(comment.email, { alt: '', title: comment.name }))
     html <<   %[</div>]
 
     html <<   %[<div class="body">]
     html <<     %[<div class="name-date">]
     html <<       %[<div class="anchors">]
-    html <<         (link_to "##{comment.id}", anchor_full, { :title => "#{I18n.t('comment.shortcut_to_this_comment')}" })
-    html <<         %[ #{link_to comment.name, comment.url, { :target => "_blank" }}]
-    html <<         %[<div>#{I18n.t("comment.reply_to")} #{link_to "##{comment.comment.id}", "#{request.fullpath}#comment-#{comment.comment.id}", { :title => "#{I18n.t('comment.shortcut_to_this_comment')}" }}</div>] unless comment.comment.nil?
+    html <<         (link_to "##{comment.id}", anchor_full, { title: "#{I18n.t('comment.shortcut_to_this_comment')}" })
+    html <<         %[ #{link_to comment.name, comment.url, { target: '_blank' }}]
+    html <<         %[<div>#{I18n.t('comment.reply_to')} #{link_to "##{comment.comment.id}", "#{request.fullpath}#comment-#{comment.comment.id}", { title: "#{I18n.t('comment.shortcut_to_this_comment')}" }}</div>] unless comment.comment.nil?
     html <<       %[</div>]
 
-    html <<       %[<span>#{t("comment.created_at", :time => time_ago_in_words(comment.created_at))}</span>]
+    html <<       %[<span>#{t('comment.created_at', time: time_ago_in_words(comment.created_at))}</span>]
     html <<     %[</div>]
 
-    html <<     (link_to I18n.t("comment.reply"), "#{request.fullpath}#comment-form", { :class => "reply-link" })
+    html <<     (link_to I18n.t('comment.reply'), "#{request.fullpath}#comment-form", { class: 'reply-link' })
 
     html <<     %[<div class="text">#{markdown comment.body}</div>]
 
-    html <<     %[<form action="#{update_comment_path(article, comment, { :anchor => anchor })}" method="post" style="display: none;">]
+    html <<     %[<form action="#{update_comment_path(article, comment, { anchor: anchor })}" method="post" style="display: none;">]
     html <<       %[<input type="hidden" name="_method" value="put" />]
     html <<       %[<input type="hidden" name="utf8" value="✓">]
     html <<       %[<input type="hidden" name="authenticity_token" value="#{form_authenticity_token.to_s}">]
-    
+
     html <<       %[<p>]
     html <<         %[<input type="text" name="comment[name]" value="#{comment.name}" />]
     html <<         %[<input type="text" name="comment[email]" value="#{comment.email}" />]
@@ -80,7 +79,7 @@ module ApplicationHelper
     html <<       %[</p>]
 
     html <<       %[<p>]
-    html <<         (link_to I18n.t("comment.close"), "javascript:void(0);", { :class => "close" })
+    html <<         (link_to I18n.t('comment.close'), 'javascript:void(0);', { class: 'close' })
     html <<       %[</p>]
 
     html <<       %[<p>]
@@ -100,5 +99,11 @@ module ApplicationHelper
     end
 
     html
+  end
+
+  private
+
+  def social_link_for(social, name)
+    (!social.nil? && !social.empty?) ? link_to('', social, title: social, target: '_blank', class: name) : ''
   end
 end
