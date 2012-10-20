@@ -27,8 +27,8 @@ class Article < ActiveRecord::Base
     (body && body.index(MORE_TAG)) ? "#{body.split(MORE_TAG)[0]}..." : body
   end
 
-  def unique_comments
-    self.comments.all(group: 'email').reject { |comment| comment.author }
+  def comments_to_mail
+    comments.where('author = false').all(group: 'email')
   end
 
   def day

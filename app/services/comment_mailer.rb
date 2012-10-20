@@ -4,7 +4,7 @@ class CommentMailer
   end
 
   def send
-    comments = @article.unique_comments
+    comments = @article.comments_to_mail
     @logger.info "Sending mail to: [#{comments.map(&:email).to_sentence}]"
 
     comments.each do |comment|

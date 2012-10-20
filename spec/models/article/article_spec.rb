@@ -6,7 +6,7 @@ describe Article do
     FactoryGirl.build(:article).should be_valid
   end
 
-  let(:article) { FactoryGirl.create :article, title: "City - São João del-rey ('!@#$\alive%ˆ&*~^)", body: 'my text' }
+  let!(:article) { FactoryGirl.create :article, title: "City - São João del-rey ('!@#$\alive%ˆ&*~^]}", body: 'some body' }
 
   describe "#slug_id" do
     context "on save" do
@@ -64,24 +64,26 @@ describe Article do
     end
   end
 
-  let(:article_more) { FactoryGirl.build :article, title: 'City - São João del-rey', body: "my #{Article::MORE_TAG} text" }
+  describe "with resuming text" do
+    let(:article_more) { FactoryGirl.build :article, title: 'City - São João del-rey', body: "some #{Article::MORE_TAG} body" }
 
-  describe "#text" do
-    it "returns :body without #{Article::MORE_TAG} tag" do
-      article_more.text.should == 'my text'
-    end
-  end
-
-  describe "#resume" do
-    context "when #{Article::MORE_TAG} is present" do
-      it "resume the text" do
-        article_more.resume.should == 'my ...'
+    describe "#text" do
+      it "returns :body without #{Article::MORE_TAG} tag" do
+        article_more.text.should == 'some body'
       end
     end
 
-    context "when #{Article::MORE_TAG} is missing" do
-      it "not resume the text" do
-        article.resume.should == 'my text'
+    describe "#resume" do
+      context "when #{Article::MORE_TAG} is present" do
+        it "resume the text" do
+          article_more.resume.should == 'some ...'
+        end
+      end
+
+      context "when #{Article::MORE_TAG} is missing" do
+        it "not resume the text" do
+          article.resume.should == 'some body'
+        end
       end
     end
   end
@@ -106,22 +108,26 @@ describe Article do
     end
   end
 
-  let(:comment_1) { FactoryGirl.create :comment, email: 'email1@email.com', article: article }
-  let(:comment_2) { FactoryGirl.create :comment, email: 'email2@email.com', article: article }
-  let(:comment_3) { FactoryGirl.create :comment, email: 'email1@email.com', article: article }
-  let(:comment_4_author) { FactoryGirl.create :comment_author, article: article }
-
-  describe "#unique_comments" do
-    it "remove all author's e-mail" do
-      article.unique_comments.should_not include comment_4_author
+  describe "#comments_to_mail" do
+    before do
+      FactoryGirl.create :comment, email: 'email1@email.com', article: article
+      FactoryGirl.create :comment, email: 'email2@email.com', article: article
     end
 
-    it "returns a list of unique comment of an article based on email" do
-      article.unique_comments.should have(2).comments
+    context "with duplicated e-mails" do
+      before { FactoryGirl.create :comment, email: 'email1@email.com', article: article }
+
+      it "returns distinct e-mails" do
+        article.comments_to_mail.should have(2).comments
+      end
     end
 
-    it "include the notifier e-mail" do
-      article.unique_comments.should_not include comment_4_author
+    context "with author's comment included" do
+      let!(:author_comment) { FactoryGirl.create :comment_with_author, article: article }
+
+      it "remove his comment" do
+        article.comments_to_mail.should_not include author_comment
+      end
     end
   end
 end
