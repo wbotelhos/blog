@@ -44,7 +44,7 @@ module ApplicationHelper
     anchor_full = "#{request.fullpath}##{anchor}"
 
     html <<  %[<div id="#{anchor}" class="comment#{' authored' if comment.author}#{' level-' + level.to_s unless level == 0}">]
-    html <<   %[<div class='photo'>]
+    html <<   %[<div class="photo">]
     html <<     (gravatar(comment.email, { alt: '', title: comment.name }))
     html <<   %[</div>]
 

@@ -26,23 +26,25 @@ class Paginaty
     page_label = I18n.t('paginaty.page', page: page)
 
     paginaty =  %[<ul class="paginaty">]
-
-    if has_back
-      paginaty << %[<li class="next-page"><a href="#{back_url}" title="#{back_label}">#{back_label}</a></li>]
-    else
-      paginaty << %[<li class="next-page disabled"><span title="#{back_label}">#{back_label}</a></li>]
-    end
-
-    paginaty << %[<li class="page"><span>#{page_label}</span></li>]
-
-    if has_next
-      paginaty << %[<li class="back-page"><a href="#{next_url}" title="#{next_label}">#{next_label}</a></li>]
-    else
-      paginaty << %[<li class="back-page disabled"><span title="#{next_label}">#{next_label}</span></li>]
-    end
-
+    paginaty << (has_back ? li(link(back_url, back_label), 'back-page') : li(span(back_label), 'back-page disabled'))
+    paginaty << li(span(page_label), 'page')
+    paginaty << (has_next ? li(link(next_url, next_label), 'next-page') : li(span(next_label), 'next-page disabled'))
     paginaty << %[</ul>]
 
     { elements: elements, pager: paginaty.html_safe }
+  end
+
+  private
+
+  def self.li(element, clazz)
+    %(<li class="#{clazz}">#{element}</li>)
+  end
+
+  def self.link(url, label)
+    %(<a href="#{url}" title="#{label}">#{label}</a>)
+  end
+
+  def self.span(label)
+    %(<span title="#{label}">#{label}</span>)
   end
 end
