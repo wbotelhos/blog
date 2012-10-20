@@ -4,7 +4,7 @@
 
 ## Usage
 
-```shell
+```bash
 git clone https://github.com/wbotelhos/wbotelhos-com-br.git
 cd wbotelhos-com-br
 bundle install

@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound do
     case request.format.symbol
     when :html
-      render :file => Rails.root.join("public/404.html"), :layout => false, :status => 404
+      render file: Rails.root.join('public/404.html'), layout: false, status: 404
     when :json
-      render :json => { :error => I18n.t("article.no_result") }, :status => 404
+      render json: { error: t('article.no_result') }, status: 404
     end
   end
 
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    redirect_to login_path, :alert => t("flash.auth.alert") unless is_logged?
+    redirect_to login_path, alert: t('flash.auth.alert') unless is_logged?
   end
 
   def sidebar

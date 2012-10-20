@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  layout "login"
+  layout 'login'
 
   def new
   end
@@ -7,13 +7,13 @@ class SessionsController < ApplicationController
   def create
     reset_session
 
-    user = Authenticator.authenticate(params[:email], params[:password])
+    user = Authenticator.authenticate params[:email], params[:password]
 
     if user
       session[:user_id] = user.id
       redirect_to root_path
     else
-      flash.now[:alert] = t("flash.sessions.create.alert")
+      flash.now[:alert] = t('flash.sessions.create.alert')
       render :new
     end
   end
@@ -22,5 +22,4 @@ class SessionsController < ApplicationController
     reset_session
     redirect_to root_path
   end
-
 end

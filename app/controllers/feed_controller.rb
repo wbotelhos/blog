@@ -6,5 +6,4 @@ class FeedController < ApplicationController
   def feed
     @articles = Article.recents
   end
-
 end

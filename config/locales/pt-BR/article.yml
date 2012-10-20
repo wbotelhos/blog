@@ -1,28 +1,28 @@
 pt-BR:
   article:
     comments_count_html:
-      zero: "<span>Nenhum comentário, seja o primeiro! (:</span>"
-      one: "<span>1 comentário</span>"
+      zero: '<span>Nenhum comentário, seja o primeiro! (:</span>'
+      one: '<span>1 comentário</span>'
       other: "<span>%{count} comentários</span>"
 
-    edit: "Editar"
-    no_article: "Nenhum artigo publicado!"
-    permalink: "Permalink"
+    edit: 'Editar'
+    no_article: 'Nenhum artigo publicado!'
+    permalink: 'Permalink'
 
-    preview: "Visualizar"
-    publish: "Publicar"
+    preview: 'Visualizar'
+    publish: 'Publicar'
     published_at: "%{time}"
 
-    read_more: "Leia mais..."
+    read_more: 'Leia mais...'
 
     search:
       description_html: "Resultados para <strong>%{query}</strong>"
 
-    tags: "Tags:"
-    new: "Novo Artigo"
-    edit: "Editar Artigo"
-    update: "Atualizar"
+    tags: 'Tags:'
+    new: 'Novo Artigo'
+    edit: 'Editar Artigo'
+    update: 'Atualizar'
     status:
-      new: "Novo"
-      draft: "Rascunho"
-      published: "Publicado"
+      new: 'Novo'
+      draft: 'Rascunho'
+      published: 'Publicado'

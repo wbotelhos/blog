@@ -1,15 +1,15 @@
 # coding: utf-8
-require "spec_helper"
+require 'spec_helper'
 
 describe Article, "#drafts" do
-  let!(:article_draft) { FactoryGirl.create(:article_draft) }
-  let!(:article_published) { FactoryGirl.create(:article_published) }
+  let(:article_draft) { FactoryGirl.create(:article_draft) }
+  let(:article_published) { FactoryGirl.create(:article_published) }
 
   context "when logged" do
-    let!(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user) }
 
     before do
-      login :with => user.email
+      login with: user.email
       click_link "Admin!"
       click_link "Rascunhos"
     end

@@ -4,6 +4,6 @@ class CommentFormPresenter
   end
 
   def partial
-    { :partial => "comments/form", :locals => { :article => @article, :comment => @comment } }
+    { partial: 'comments/form', locals: { article: @article, comment: @comment } }
   end
 end

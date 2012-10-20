@@ -4,7 +4,7 @@
       <h2 class="title"><%= link_to article.title, edit_article_path(article) %></h2>
 
       <ul class="links">
-        <li class="edit"><%=link_to t("article.edit"), edit_article_path(article) %></a></li>
+        <li class="edit"><%=link_to t('article.edit'), edit_article_path(article) %></a></li>
       </ul>
 
       <div class="body">
@@ -13,10 +13,10 @@
 
       <div class="footer">
         <div class="tags">
-          <%= t("article.tags") %>
+          <%= t('article.tags') %>
 
           <% article.categories.each do |category| %>
-            <%= link_to category.name, "javascript:void(0);" %><%= "," unless category == article.categories.last %>
+            <%= link_to category.name, 'javascript:void(0);' %><%= ',' unless category == article.categories.last %>
           <% end %>
         </div>
       </div>

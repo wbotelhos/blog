@@ -1,13 +1,13 @@
 # coding: utf-8
-require "spec_helper"
+require 'spec_helper'
 
 describe Article, "#create" do
-  let!(:user) { FactoryGirl.create(:user) }
-  let!(:article_draft) { FactoryGirl.create(:article_draft) }
-  let!(:article_published) { FactoryGirl.create(:article_published) }
+  let(:user) { FactoryGirl.create(:user) }
+  let(:article_draft) { FactoryGirl.create(:article_draft) }
+  let(:article_published) { FactoryGirl.create(:article_published) }
 
   before do
-    login :with => user.email
+    login with: user.email
   end
 
   context "when article is draft" do

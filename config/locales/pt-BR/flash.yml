@@ -2,40 +2,40 @@ pt-BR:
   flash:
     articles:
       create:
-        alert: "Erro ao criar o artigo!"
-        notice: "Rascunho salvo com sucesso!"
+        alert: 'Erro ao criar o artigo!'
+        notice: 'Rascunho salvo com sucesso!'
       update:
-        alert: "Erro ao atualizar o artigo!"
-        notice: "Artigo atualizado com sucesso!"
+        alert: 'Erro ao atualizar o artigo!'
+        notice: 'Artigo atualizado com sucesso!'
       search:
-        alert: "A busca foi desabilitada por um momento. Tente mais tarde! (:"
+        alert: 'A busca foi desabilitada por um momento. Tente mais tarde! (:'
 
     labs:
       create:
-        alert: "Erro ao criar o projeto!"
-        notice: "Projeto salvo com sucesso!"
+        alert: 'Erro ao criar o projeto!'
+        notice: 'Projeto salvo com sucesso!'
       update:
-        alert: "Erro ao atualizar o projeto!"
-        notice: "Projeto atualizado com sucesso!"
+        alert: 'Erro ao atualizar o projeto!'
+        notice: 'Projeto atualizado com sucesso!'
 
     auth:
-      alert: "Você precisa estar logado!"
+      alert: 'Você precisa estar logado!'
 
     comments:
       create:
-        alert: "Escreva o seu comentário!"
-        notice: "Seu comentário foi adicionado!"
-        not: "Seu comentário foi adicionado! Só que não!"
+        alert: 'Escreva o seu comentário!'
+        notice: 'Seu comentário foi adicionado!'
+        not: 'Seu comentário foi adicionado! Só que não!'
 
       update:
-        alert: "Erro ao salvar o comentário!"
-        notice: "Comentário atualizado!"
+        alert: 'Erro ao salvar o comentário!'
+        notice: 'Comentário atualizado!'
 
     sessions:
       create:
-        alert: "E-mail ou senha inválida!"
+        alert: 'E-mail ou senha inválida!'
 
     users:
       create:
-        notice: "Usuário criado com sucesso!"
-        alert: "Erro ao criar o usuário!"
+        notice: 'Usuário criado com sucesso!'
+        alert: 'Erro ao criar o usuário!'

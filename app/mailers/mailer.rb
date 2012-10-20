@@ -1,22 +1,20 @@
 # coding: utf-8
+
 class Mailer < ActionMailer::Base
-  default :from => CONFIG["email"]
+  default from: CONFIG['email']
 
   def comment(article, new_comment, comment)
-    @article = article
-    @new_comment = new_comment
-    @comment = comment
+    @article, @new_comment, @comment = article, new_comment, comment
 
-    mail :to => comment.email, :subject => "Artigo respondido" do |format|
+    mail to: comment.email, subject: 'Artigo respondido' do |format|
       format.html
       format.text
     end
   end
 
   def comment_notify(article, comment)
-    @article = article
-    @comment = comment
+    @article, @comment = article, comment
 
-    mail :to => article.user.email, :subject => "Comentário pendente no blog!"
+    mail to: article.user.email, subject: 'Comentário pendente no blog!'
   end
 end

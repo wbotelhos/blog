@@ -21,9 +21,9 @@ class Paginaty
     back_url = url + (page - 1).to_s
     next_url = url + (page + 1).to_s
 
-    back_label = I18n.t("paginaty.previous")
-    next_label = I18n.t("paginaty.next")
-    page_label = I18n.t("paginaty.page", :page => page)
+    back_label = I18n.t('paginaty.previous')
+    next_label = I18n.t('paginaty.next')
+    page_label = I18n.t('paginaty.page', page: page)
 
     paginaty =  %[<ul class="paginaty">]
 
@@ -43,7 +43,6 @@ class Paginaty
 
     paginaty << %[</ul>]
 
-    { :elements => elements, :pager => paginaty.html_safe }
+    { elements: elements, pager: paginaty.html_safe }
   end
-
 end

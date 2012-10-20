@@ -1,11 +1,11 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe LabsController do
   context "GET #drafts" do
     context "when unlogged" do
       it "redirect to login page" do
         get :drafts
-        response.should redirect_to(login_path)
+        response.should redirect_to login_path
       end
 
       it "shows mandatory login message"
@@ -13,7 +13,7 @@ describe LabsController do
 
     context "when logged" do
       before do
-        @user = mock("user")
+        @user = mock_model User
         @user.stub(:id).and_return(1)
       end
 

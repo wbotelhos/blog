@@ -1,14 +1,13 @@
-namespace "app:counter_cache" do
+namespace 'app:counter_cache' do
+  desc 'Update all counter caches'
+  task all: [:environment, :articles, :users]
 
-  desc "Update all counter caches"
-  task :all => [:environment, :articles, :users]
-
-  desc "Update articles counter cache"
+  desc 'Update articles counter cache'
   task :articles do
     update Article, :comments
   end
 
-  desc "Update users counter cache"
+  desc 'Update users counter cache'
   task :users do
     update User, :articles
   end
@@ -20,6 +19,4 @@ namespace "app:counter_cache" do
       end
     end
   end
-
 end
-

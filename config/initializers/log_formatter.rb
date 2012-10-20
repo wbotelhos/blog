@@ -7,16 +7,16 @@ class Logger::SimpleFormatter
 
   def severity_color(severity)
     case severity
-    when "DEBUG"
-      format("0;36m", :DEBUG)
-    when "INFO"
-      format("0;33m", :INFO)
-    when "WARN"
-      format("1;33m", :WARNING)
-    when "ERROR"
-      format("41;1;37m", :ERROR)
-    when "FATAL"
-      format("41;1;37m", :FATAL)
+    when 'DEBUG'
+      format('0;36m', :DEBUG)
+    when 'INFO'
+      format('0;33m', :INFO)
+    when 'WARN'
+      format('1;33m', :WARNING)
+    when 'ERROR'
+      format('41;1;37m', :ERROR)
+    when 'FATAL'
+      format('41;1;37m', :FATAL)
     else
       "[#{severity}]"
     end

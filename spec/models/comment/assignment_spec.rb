@@ -1,9 +1,9 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe Comment, "assignment" do
   subject {
     Comment.new({
-      :name => "name",
+      name: "name",
       :email => "email@email.com",
       :body => "body",
       :article_id => 1,

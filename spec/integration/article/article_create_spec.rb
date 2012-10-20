@@ -1,40 +1,39 @@
 # coding: utf-8
-require "spec_helper"
+require 'spec_helper'
 
 describe Article, "#create" do
-
   context "when logged" do
-    let!(:user) { FactoryGirl.create(:user) }
-    let!(:category) { FactoryGirl.create(:category) }
+    let(:user) { FactoryGirl.create :user }
+    let(:category) { FactoryGirl.create :category }
 
     before do
-      login :with => user.email
-      click_link "Admin!"
-      click_link "Criar"
+      login with: user.email
+      click_link 'Admin!'
+      click_link 'Criar'
     end
 
     context "the categories" do
-      let!(:category1) { FactoryGirl.create(:category, { :name => "category-1" }) }
-      let!(:category2) { FactoryGirl.create(:category, { :name => "category-2" }) }
-      let!(:category3) { FactoryGirl.create(:category, { :name => "category-3" }) }
+      let(:category1) { FactoryGirl.create(:category, { name: 'category-1' }) }
+      let(:category2) { FactoryGirl.create(:category, { name: 'category-2' }) }
+      let(:category3) { FactoryGirl.create(:category, { name: 'category-3' }) }
 
       before do
         visit new_article_path
       end
 
       it "should display the list" do
-        page.should have_content(category1.name)
-        page.should have_content(category2.name)
-        page.should have_content(category3.name)
+        page.should have_content category1.name
+        page.should have_content category2.name
+        page.should have_content category3.name
       end
     end
 
     context "with valid data" do
       before do
-        fill_in "article_title", :with => "some title"
-        fill_in "article_body", :with => "some text"
+        fill_in 'article_title', with: 'some title'
+        fill_in 'article_body', with: 'some text'
         check "category-#{category.id.to_s}"
-        click_button "Salvar"
+        click_button 'Salvar'
       end
 
       it "redirects to edit" do
@@ -42,13 +41,13 @@ describe Article, "#create" do
       end
 
       it "displays success message" do
-        page.should have_content("Rascunho salvo com sucesso!")
+        page.should have_content('Rascunho salvo com sucesso!')
       end
     end
 
     context "with invalid data" do
       before do
-        click_button "Salvar"
+        click_button 'Salvar'
       end
 
       it "renders form page again" do
@@ -56,8 +55,8 @@ describe Article, "#create" do
       end
 
       it "display field validation messages" do
-        page.should have_content("Título deve ser preenchido!")
-        page.should have_content("Categoria deve ser preenchido!")
+        page.should have_content('Título deve ser preenchido!')
+        page.should have_content('Categoria deve ser preenchido!')
       end
     end
   end
@@ -72,8 +71,7 @@ describe Article, "#create" do
     end
 
     it "displays error message" do
-      page.should have_content("Você precisa estar logado!")
+      page.should have_content('Você precisa estar logado!')
     end
   end
-
 end

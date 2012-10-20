@@ -1,5 +1,5 @@
 # coding: utf-8
-require "spec_helper"
+require 'spec_helper'
 
 describe "index" do
   context "without register on database" do
@@ -15,7 +15,7 @@ describe "index" do
   end
 
   context "with register on database" do
-    let!(:article) { FactoryGirl.create(:article_published) }
+    let(:article) { FactoryGirl.create(:article_published) }
 
     before do
       visit "/"
@@ -35,7 +35,7 @@ describe "index" do
       it "redirects to the article page" do
         click_link "Leia mais..."
         current_path.should eql(article_path(article.year, article.month, article.day, article.slug))
-      end    
+      end
     end
 
     context "when click artigo title" do

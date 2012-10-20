@@ -1,10 +1,10 @@
 <div id="title">
-  <h2><%= t("lab.edit") %></h2>
+  <h2><%= t('lab.edit') %></h2>
 </div>
 
-<%= render "shared/error_messages", :entity => @lab %>
+<%= render 'shared/error_messages', entity: @lab %>
 
-<%= form_for @lab, :url => update_lab_path, :html => { :class => "lab-form" } do |f| %>
+<%= form_for @lab, url: update_lab_path, html: { class: 'lab-form' } do |f| %>
   <div id="fields">
     <p>
       <%= f.label "#{:name} *" %>
@@ -29,8 +29,8 @@
 
   <div id="controls">
     <div id="update">
-      <h3><%= t("lab.update") %></h3>
-      <%= f.submit :class => "update" %>
+      <h3><%= t('lab.update') %></h3>
+      <%= f.submit class: 'update' %>
     </div>
   </div>
 <% end %>

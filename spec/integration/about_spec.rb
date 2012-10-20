@@ -1,8 +1,8 @@
 # coding: utf-8
-require "spec_helper"
+require 'spec_helper'
 
 describe "About" do
-  let!(:user) { FactoryGirl.create(:user, :id => 1) }
+  let(:user) { FactoryGirl.create(:user, id: 1) }
 
   context "profile display" do
     before do

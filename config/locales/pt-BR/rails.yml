@@ -54,32 +54,32 @@ pt-BR:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: "1 hora"
+        one: '1 hora'
         other: "%{count} horas"
       about_x_months:
-        one: "1 mês"
+        one: '1 mês'
         other: "%{count} meses"
       about_x_years:
-        one: "1 ano"
+        one: '1 ano'
         other: "%{count} anos"
       almost_x_years:
-        one: "1 ano"
+        one: '1 ano'
         other: "%{count} anos"
-      half_a_minute: "meio minuto"
+      half_a_minute: 'meio minuto'
       less_than_x_minutes:
-        one: "menos de um minuto"
+        one: 'menos de um minuto'
         other: "menos de %{count} minutos"
       less_than_x_seconds:
-        one: "menos de 1 segundo"
+        one: 'menos de 1 segundo'
         other: "menos de %{count} segundos"
       over_x_years:
-        one: "mais de 1 ano"
+        one: 'mais de 1 ano'
         other: "mais de %{count} anos"
       x_days:
-        one: "1 dia"
+        one: '1 dia'
         other: ! "%{count} dias"
       x_minutes:
-        one: 1 minuto
+        one: '1 minuto'
         other: ! "%{count} minutos"
       x_months:
         one: "1 mês"
@@ -98,7 +98,7 @@ pt-BR:
     format: ! '%{attribute} %{message}'
     messages:
       accepted: deve ser aceito
-      blank: "deve ser preenchido!"
+      blank: 'deve ser preenchido!'
       confirmation: não está de acordo com a confirmação
       empty: não pode ficar vazio
       equal_to: deve ser igual a %{count}

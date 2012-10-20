@@ -1,8 +1,8 @@
 # coding: utf-8
-require "spec_helper"
+require 'spec_helper'
 
 describe Article, "#show" do
-  let!(:article) {
+  let(:article) {
     FactoryGirl.create(:article_published)
   }
 

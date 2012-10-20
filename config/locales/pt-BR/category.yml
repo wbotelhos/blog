@@ -1,9 +1,9 @@
 pt-BR:
   category:
     count_html:
-      one: "<strong>1</strong>"
+      one: '<strong>1</strong>'
       other: "<strong>%{count}</strong>"
 
     created_at: "comentado em %{time}"
 
-    title: "Categorias"
+    title: 'Categorias'

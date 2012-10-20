@@ -1,7 +1,7 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe Category, "assignment" do
-  subject { Category.new({ :name => "name" }) }
+  subject { Category.new({ name: "name" }) }
 
   its(:name) { should eql("name") }
 end

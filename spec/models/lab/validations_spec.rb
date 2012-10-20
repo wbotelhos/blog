@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe Lab, "validations" do
   it { should_not allow(nil).for(:name) }
@@ -10,8 +10,8 @@ describe Lab, "validations" do
   it { should allow("description", nil).for(:image) }
 
   context "uniqueness name" do
-    let!(:lab) {
-      Lab.create!({ :name => "name", :slug => "slug" })
+    let(:lab) {
+      Lab.create!({ name: "name", :slug => "slug" })
     }
 
     it { should_not allow(lab.name).for(:name) }

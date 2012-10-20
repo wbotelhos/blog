@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe User, "validations" do
   it { should_not allow(nil).for(:name) }
@@ -17,9 +17,9 @@ describe User, "validations" do
   it { should allow("password").for(:password_confirmation) }
 
   context "e-mail uniqueness" do
-    let!(:user) {
+    let(:user) {
       User.create!({
-        :name => "name",
+        name: "name",
         :email => "email@email.com",
         :password => "password",
         :password_confirmation => "password"
@@ -32,7 +32,7 @@ describe User, "validations" do
   context "confirming password" do
     it "has a invalid one" do
       User.new({
-        :name => "name",
+        name: "name",
         :email => "email@email.com",
         :password => "password",
         :password_confirmation => "password_invalid"

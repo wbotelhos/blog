@@ -1,10 +1,10 @@
 <div id="title">
-  <h2><%= t("article.new") %></h2>
+  <h2><%= t('article.new') %></h2>
 </div>
 
-<%= render "shared/error_messages", :entity => @article %>
+<%= render 'shared/error_messages', entity: @article %>
 
-<%= form_for @article, :url => create_article_path, :html => { :class => "article-form" } do |f| %>
+<%= form_for @article, url: create_article_path, html: { class: 'article-form' } do |f| %>
   <div id="fields">
     <p>
       <%= f.text_field :title %>
@@ -17,14 +17,14 @@
 
   <div id="controls">
     <div id="publish">
-      <h3><%= t("article.publish") %></h3>
+      <h3><%= t('article.publish') %></h3>
 
-      <%= f.submit :class => "save" %>
-      <input type="button" value="<%= t("article.publish") %>" class="publish" />
+      <%= f.submit class: 'save' %>
+      <input type="button" value="<%= t('article.publish') %>" class="publish" />
     </div>
 
     <div id="categories">
-      <h3><%= t("category.title") %></h3>
+      <h3><%= t('category.title') %></h3>
 
       <ul>
         <% categories.each do |category| %>

@@ -1,23 +1,23 @@
 pt-BR:
   comment:
-    close: "Fechar"
+    close: 'Fechar'
     count_html:
-      zero: "Nenhum comentário, seja o primeiro! (:"
-      one: "1 comentário"
+      zero: 'Nenhum comentário, seja o primeiro! (:'
+      one: '1 comentário'
       other: "%{count} comentários"
 
     created_at: "%{time} atrás"
 
-    email_not_verified: "E-mail não autorizado para recepção de mensagem!"
-    email_not_sent: "Seu comentário foi adicionado! Porém ninguém foi notificado."
+    email_not_verified: 'E-mail não autorizado para recepção de mensagem!'
+    email_not_sent: 'Seu comentário foi adicionado! Porém ninguém foi notificado.'
 
-    sending: "Enviando..."
+    sending: 'Enviando...'
 
-    reply: "Responder"
-    reply_to: "Resposta ao comentário "
-    replying_to: "Respondendo "
+    reply: 'Responder'
+    reply_to: 'Resposta ao comentário '
+    replying_to: 'Respondendo '
 
-    shortcut_to_this_comment: "Atalho para este comentário"
+    shortcut_to_this_comment: 'Atalho para este comentário'
 
-    undo: "Desfazer"
-    update: "Atualizar"
+    undo: 'Desfazer'
+    update: 'Atualizar'

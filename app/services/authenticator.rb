@@ -1,7 +1,6 @@
 class Authenticator
-
   def self.authenticate(email, password)
-    user = User.find_by_email(email)
+    user = User.find_by_email email
 
     return unless user
 
@@ -9,5 +8,4 @@ class Authenticator
 
     return user if user.password_hash == actual_hash
   end
-
 end

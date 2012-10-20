@@ -1,14 +1,14 @@
 class CommentsController < ApplicationController
-  before_filter :require_login, :only => [:update]
+  before_filter :require_login, only: [:update]
 
   def create
-    @article = Article.includes(:user).find(params[:article_id])
+    @article = Article.includes(:user).find params[:article_id]
 
-    comment = clear_form(params[:comment])
+    comment = clear_form params[:comment]
 
-    @comment = @article.comments.new(comment)
+    @comment = @article.comments.new comment
     @comment.author = is_logged?
-    @comment.comment = Comment.find(params[:comment_id]) unless params[:comment_id].nil?
+    @comment.comment = Comment.find params[:comment_id] unless params[:comment_id].nil?
 
     if @comment.save
       send_mail
@@ -20,11 +20,11 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @article = Article.find(params[:article_id])
+    @article = Article.find params[:article_id]
 
-    @comment = @article.comments.find(params[:id])
+    @comment = @article.comments.find params[:id]
 
-    if @comment.update_attributes(params[:comment])
+    if @comment.update_attributes params[:comment]
       flash[:notice] = t("flash.comments.update.notice")
     else
       flash[:alert] = t("flash.comments.update.alert")
@@ -53,4 +53,3 @@ class CommentsController < ApplicationController
      end
   end
 end
- 

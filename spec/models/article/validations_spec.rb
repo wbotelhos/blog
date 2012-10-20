@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe Article, "validations" do
   it { should_not allow(nil).for(:title) }

@@ -1,5 +1,5 @@
 # coding: utf-8
-require "spec_helper"
+require 'spec_helper'
 
 describe "top" do
   context "static data" do
@@ -10,14 +10,14 @@ describe "top" do
     it "should show logo data" do
       page.should have_content(CONFIG["author"])
       page.should have_content(CONFIG["description"])
-    end    
+    end
   end
 
   context "when logged" do
-    let!(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user) }
 
     before do
-      login :with => user.email
+      login with: user.email
     end
 
     it "should show menu" do

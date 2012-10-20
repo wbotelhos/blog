@@ -1,8 +1,8 @@
-<%= form_tag search_articles_path, :method => :get, :class => "search" do %>
+<%= form_tag search_articles_path, method: :get, class: 'search' do %>
   <p>
     <%= search_field_tag :query %>
-    <%= submit_tag t("form.buttons.search") %>
+    <%= submit_tag t('form.buttons.search') %>
   </p>
 <% end %>
 
-<%= link_to "buy me a coffee", "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=wbotelhos.com.br", { :id => "coffee", :target => "_blank" } %>
+<%= link_to 'buy me a coffee', 'https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=wbotelhos.com.br', { id: 'coffee', target: '_blank' } %>

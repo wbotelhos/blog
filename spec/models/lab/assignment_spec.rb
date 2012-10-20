@@ -1,8 +1,8 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe Lab, "assignment" do
   subject {
-    Lab.new({ :name => "name", :slug => "slug", :description => "description", :image => "image.png" })
+    Lab.new({ name: "name", :slug => "slug", :description => "description", :image => "image.png" })
   }
 
   its(:name) { should eql("name") }

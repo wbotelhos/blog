@@ -1,11 +1,11 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe "Logout" do
-  let!(:user) { FactoryGirl.create(:user, :id => 1) }
+  let(:user) { FactoryGirl.create(:user, id: 1) }
 
   context "when logout" do
     before do
-      login :with => user.email
+      login with: user.email
       visit "/"
       click_link "Sair"
     end

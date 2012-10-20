@@ -1,5 +1,5 @@
 pt-BR:
   paginaty:
-    previous: "< Mais recentes"
+    previous: '< Mais recentes'
     page: "Página %{page}"
-    next: "Mais antigos >"
+    next: 'Mais antigos >'

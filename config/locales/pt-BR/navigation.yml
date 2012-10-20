@@ -1,20 +1,20 @@
 pt-BR:
   navigation:
-    about: "Sobre"
-    admin: "Admin!"
+    about: 'Sobre'
+    admin: 'Admin!'
     article:
-      new: "Criar"
-      drafts: "Rascunhos"
-      title: "Artigos"
-    dashboard: "Painel de Controle"
+      new: 'Criar'
+      drafts: 'Rascunhos'
+      title: 'Artigos'
+    dashboard: 'Painel de Controle'
     lab:
-      drafts: "Rascunhos"
-      edit: "Editar"
-      new: "Criar"
-      title: "Labs"
-    login:  "Login"
-    logout: "Sair"
+      drafts: 'Rascunhos'
+      edit: 'Editar'
+      new: 'Criar'
+      title: 'Labs'
+    login:  'Login'
+    logout: 'Sair'
     user:
-      list: "Listar"
-      new: "Criar"
-      title: "Usuários"
+      list: 'Listar'
+      new: 'Criar'
+      title: 'Usuários'

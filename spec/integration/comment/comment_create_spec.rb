@@ -1,19 +1,19 @@
 # coding: utf-8
-require "spec_helper"
+require 'spec_helper'
 
 describe Comment, "#create" do
-  let!(:user) { FactoryGirl.create(:user, { :id => 1 }) }
-  let!(:article) { FactoryGirl.create(:article_published, { :id => 1 }) }
+  let(:user) { FactoryGirl.create(:user, { id: 1 }) }
+  let(:article) { FactoryGirl.create(:article_published, { id: 1 }) }
 
   context "when logged" do
     before do
-      login :with => user.email
+      login with: user.email
       visit article_path(article.year, article.month, article.day, article.slug)
     end
 
     context "with valid data" do
       before do
-        fill_in "comment_body", :with => "comment"
+        fill_in "comment_body", with: "comment"
         click_button "Comentar"
       end
 
@@ -41,7 +41,7 @@ describe Comment, "#create" do
 
       it "displays error message" do
         page.should have_content("Escreva o seu comentário!")
-      end 
+      end
     end
 
     context "with shadow data" do
@@ -55,7 +55,7 @@ describe Comment, "#create" do
 
       xit "displays error message" do
         page.should have_content("Comentário deve ser preenchido!")
-      end 
+      end
     end
   end
 
@@ -66,10 +66,10 @@ describe Comment, "#create" do
 
     context "with valid data" do
       before do
-        fill_in "comment_name",   :with => "some name"
-        fill_in "comment_email",  :with => "some_email@email.com"
-        fill_in "comment_url",    :with => "http://some_url.com"
-        fill_in "comment_body",   :with => "some comment"
+        fill_in "comment_name",   with: "some name"
+        fill_in "comment_email",  with: "some_email@email.com"
+        fill_in "comment_url",    with: "http://some_url.com"
+        fill_in "comment_body",   with: "some comment"
         click_button "Comentar"
       end
 
@@ -100,7 +100,7 @@ describe Comment, "#create" do
         page.should have_content("Nome deve ser preenchido!")
         page.should have_content("E-mail deve ser preenchido!")
         page.should have_content("Comentário deve ser preenchido!")
-      end 
+      end
     end
 
     context "with shadow data" do
@@ -116,7 +116,7 @@ describe Comment, "#create" do
         page.should have_content("Nome deve ser preenchido!")
         page.should have_content("E-mail deve ser preenchido!")
         page.should have_content("Comentário deve ser preenchido!")
-      end 
+      end
     end
   end
 end

@@ -1,18 +1,17 @@
 # coding: utf-8
-require "spec_helper"
+require 'spec_helper'
 
 describe Mailer do
-  let!(:article)      { FactoryGirl.create(:article_published) }
-  let!(:new_comment)  { FactoryGirl.create(:comment) }
-  let!(:comment)      { FactoryGirl.create(:comment) }
-  let!(:mailer)       { Mailer.comment(article, new_comment, comment) }
-  let!(:slug_title)   { "#{article.year}/#{article.month}/#{article.day}/#{article.slug}" }
+  let(:article)      { FactoryGirl.create(:article_published) }
+  let(:new_comment)  { FactoryGirl.create(:comment) }
+  let(:comment)      { FactoryGirl.create(:comment) }
+  let(:mailer)       { Mailer.comment(article, new_comment, comment) }
+  let(:slug_title)   { "#{article.year}/#{article.month}/#{article.day}/#{article.slug}" }
 
   context "during the configuration" do
     it { mailer.should be_multipart }
     it { mailer.to.first.should eql(comment.email) }
-    it { mailer.from.first.should eql("noreply@#{CONFIG["url"]}") }
-    it { mailer.bcc.first.should eql(CONFIG["email"]) }
+    it { mailer.from.first.should eql(CONFIG["email"]) }
     it { mailer.subject.should eql("Artigo respondido") }
 
     it "queue the email" do

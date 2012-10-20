@@ -1,10 +1,24 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe ArticlesController do
+  let(:drafts) { FactoryGirl.create_list(:article, 3, published_at: nil) }
+
   describe "GET #drafts" do
-    it "assigns the unpublisheds articles to @articles"
+    before do
+      Article.stub(:drafts).and_return(drafts)
+    end
+
+    xit "assigns the unpublished articles to @articles" do
+      assigns(:articles).should == drafts
+    end
+
     it "renders the :draft view"
-    it "renders with :admin template"
+
+    it "renders with :admin template" do
+      get 'drafts'
+      #response.should render_template :admin
+      response.should be_successful
+    end
   end
 
   describe "GET #index" do
@@ -18,8 +32,8 @@ describe ArticlesController do
 
   describe "GET #search" do
     xit "receives the params" do
-      controller.should_receive(:search).with(:query => "query")
-      get :search, :query => "query"
+      controller.should_receive(:search).with(query: 'query')
+      get :search, query: 'query'
     end
 
     context "with no query describe" do
@@ -74,6 +88,14 @@ describe ArticlesController do
 
   describe "POST #create" do
     context "with valid attributes" do
+      let(:category) { FactoryGirl.create(:category) }
+
+      xit "creates a new article" do
+        expect {
+          post :create, article: { title: article.title, body: article.body, category_ids: [category.id] }
+        }.to change(Article, :count).by(1)
+      end
+
       it "assigns the new attributes to an user's article to @article"
       it "slug the title"
       it "saves the article"

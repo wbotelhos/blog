@@ -7,10 +7,10 @@ gem 'redcarpet'
 gem 'thinking-sphinx'
 
 group :development do
-  gem 'awesome_print',  :require => false
+  gem 'awesome_print', require: false
   gem 'capistrano'
   gem 'mailcatcher'
-  gem 'pry',            :require => false
+  gem 'pry',           require: false
 end
 
 group :development, :test do

@@ -1,5 +1,5 @@
 <% if @paginaty[:elements].empty? %>
-  <div id="no-article"><%= I18n.t("article.no_article") %></div>
+  <div id="no-article"><%= I18n.t('article.no_article') %></div>
 <% else %>
   <%= render @paginaty[:elements] %>
   <%= @paginaty[:pager] %>

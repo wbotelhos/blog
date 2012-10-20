@@ -1,5 +1,5 @@
 <div id="title">
-  <h2><%= t("article.edit") %></h2>
+  <h2><%= t('article.edit') %></h2>
 
   <div id="status">
     <%= @article.status %>
@@ -7,16 +7,16 @@
 
   <div id="url">
     <% if @article.published_at.nil? %>
-      <%= link_to t("article.preview"), preview_article_path(@article), { :target => "_blank", :class => "draft" } %>
+      <%= link_to t('article.preview'), preview_article_path(@article), { target: '_blank', class: 'draft' } %>
     <% else %>
-      <%= link_to @article.slug, article_path(@article.year, @article.month, @article.day, @article.slug), { :target => "_blank", :class => "link" } %>
+      <%= link_to @article.slug, article_path(@article.year, @article.month, @article.day, @article.slug), { target: '_blank', class: 'link' } %>
      <% end %>
   </div>
 </div>
 
-<%= render "shared/error_messages", :entity => @article %>
+<%= render 'shared/error_messages', entity: @article %>
 
-<%= form_for @article, :url => update_article_path, :html => { :class => "article-form" } do |f| %>
+<%= form_for @article, url: update_article_path, html: { class: 'article-form' } do |f| %>
   <div id="fields">
     <p>
       <%= f.text_field :title %>
@@ -29,17 +29,17 @@
 
   <div id="controls">
     <div id="publish">
-      <h3><%= t("article.publish") %></h3>
+      <h3><%= t('article.publish') %></h3>
 
-      <%= f.submit t("article.update"), :class => "update" %>
+      <%= f.submit t('article.update'), class: 'update' %>
 
       <% if @article.published_at.nil? %>
-        <input type="button" value="<%= t("article.publish") %>" class="publish" />
+        <input type="button" value="<%= t('article.publish') %>" class="publish" />
       <% end %>
     </div>
 
     <div id="categories">
-      <h3><%= t("category.title") %></h3>
+      <h3><%= t('category.title') %></h3>
 
       <ul>
         <% categories.each do |category| %>

@@ -1,8 +1,8 @@
 class CreateLabs < ActiveRecord::Migration
   def up
     create_table :labs do |t|
-      t.string  :name, :null => false
-      t.string  :slug, :null => false
+      t.string  :name, null: false
+      t.string  :slug, null: false
       t.string  :description
       t.string  :image
       t.datetime :published_at
@@ -10,7 +10,7 @@ class CreateLabs < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :labs, :name, :unique => true
+    add_index :labs, :name, unique: true
   end
 
   def down

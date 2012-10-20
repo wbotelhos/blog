@@ -1,17 +1,17 @@
 # coding: utf-8
-require "spec_helper"
+require 'spec_helper'
 
 describe Article do
   it "has a valid factory" do
     FactoryGirl.build(:article).should be_valid
   end
 
-  let!(:article) { FactoryGirl.create(:article, { :title => %[City - São João del-rey ('!@#$\alive%ˆ&*~^)], :body => "my text" }) }
-  let!(:article_more) { Article.new({ :title => "City - São João del-rey", :body => "my <!--more--> text" }) }
-  let!(:comment_1) { FactoryGirl.create(:comment, { :email => "email1@email.com", :article => article }) }
-  let!(:comment_2) { FactoryGirl.create(:comment, { :email => "email2@email.com", :article => article }) }
-  let!(:comment_3) { FactoryGirl.create(:comment, { :email => "email1@email.com", :article => article }) }
-  let!(:comment_4_author) { FactoryGirl.create(:comment_author, { :article => article }) }
+  let(:article) { FactoryGirl.create(:article, { :title => %[City - São João del-rey ('!@#$\alive%ˆ&*~^)], :body => "my text" }) }
+  let(:article_more) { Article.new({ :title => "City - São João del-rey", :body => "my <!--more--> text" }) }
+  let(:comment_1) { FactoryGirl.create(:comment, { :email => "email1@email.com", :article => article }) }
+  let(:comment_2) { FactoryGirl.create(:comment, { :email => "email2@email.com", :article => article }) }
+  let(:comment_3) { FactoryGirl.create(:comment, { :email => "email1@email.com", :article => article }) }
+  let(:comment_4_author) { FactoryGirl.create(:comment_author, { :article => article }) }
 
   describe "resuming the article" do
     context "when the tag more is present" do

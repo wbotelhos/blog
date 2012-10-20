@@ -1,4 +1,4 @@
-require "rubygems"
+require 'rubygems'
 
 ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
 

@@ -1,4 +1,4 @@
-require "net/smtp"
+require 'net/smtp'
 
 module Net
   class SMTP

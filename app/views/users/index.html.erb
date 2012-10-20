@@ -1,7 +1,7 @@
 <div id="users">
   <% @users.each do |user| %>
     <div class="user">
-      <h2 class="name"><%= link_to user.name, "javascript:void(0);" %></h2>
+      <h2 class="name"><%= link_to user.name, 'javascript:void(0);' %></h2>
 
       <div class="author">
         <%= author user %>

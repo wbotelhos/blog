@@ -1,6 +1,6 @@
 pt-BR:
   lab:
-    new: "Novo Projeto"
-    create: "Criar"
-    loading: "Loading Github info..."
-    update: "Atualizar"
+    new: 'Novo Projeto'
+    create: 'Criar'
+    loading: 'Loading Github info...'
+    update: 'Atualizar'

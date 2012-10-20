@@ -1,9 +1,9 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe User, "assignment" do
   subject {
     User.new({
-      :name => "name",
+      name: "name",
       :email => "email@email.com",
       :password => "password",
       :password_confirmation => "password"

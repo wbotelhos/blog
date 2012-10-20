@@ -1,25 +1,24 @@
 class LabsController < ApplicationController
-  before_filter :require_login, :only => [:drafts, :edit, :create, :new, :update]
+  before_filter :require_login, only: [:drafts, :edit, :create, :new, :update]
 
   def create
-    @lab = Lab.new(params[:lab])
+    @lab = Lab.new params[:lab]
 
     if @lab.save
-      flash[:notice] = t("flash.labs.create.notice")
-      redirect_to drafts_labs_path
+      redirect_to drafts_labs_path, notice: t('flash.labs.create.notice')
     else
-      render :new, :layout => "admin"
+      render :new, layout: 'admin'
     end
   end
 
   def drafts
     @labs = Lab.drafts
-    render :index, :layout => "admin"
+    render :index, layout: 'admin'
   end
 
   def edit
-    @lab = Lab.find(params[:id])
-    render :layout => "admin"
+    @lab = Lab.find params[:id]
+    render layout: 'admin'
   end
 
   def index
@@ -28,14 +27,14 @@ class LabsController < ApplicationController
 
   def new
     @lab = Lab.new
-    render :layout => "admin"
+    render layout: 'admin'
   end
 
   def update
-    lab = Lab.find(params[:id])
+    lab = Lab.find params[:id]
 
-    lab.update_attributes(params[:lab])
+    lab.update_attributes params[:lab]
 
-    redirect_to edit_lab_path(lab), :notice => t("flash.labs.update.notice")
+    redirect_to edit_lab_path(lab), notice: t('flash.labs.update.notice')
   end
 end

@@ -2,18 +2,18 @@ pt-BR:
   activerecord:
     attributes:
       user:
-        name: "Nome"
-        email: "E-mail"
-        password: "Senha"
-        password_confirmation: "Confirmação de senha *"
+        name: 'Nome'
+        email: 'E-mail'
+        password: 'Senha'
+        password_confirmation: 'Confirmação de senha *'
 
       article:
-        title: "Título"
-        body: "Corpo"
-        categories: "Categoria"
+        title: 'Título'
+        body: 'Corpo'
+        categories: 'Categoria'
 
       comment:
-          name: "Nome *"
-          email: "E-mail *"
-          url: "URL"
+          name: 'Nome *'
+          email: 'E-mail *'
+          url: 'URL'
           body: "Seu comentário *\n\n```python\ndef cute:\n    print 'Hello Markdown!'\n```"

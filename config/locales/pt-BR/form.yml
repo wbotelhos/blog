@@ -1,29 +1,29 @@
 pt-BR:
   form:
     buttons:
-      login: "Acessar"
-      search: "Ok"
+      login: 'Acessar'
+      search: 'Ok'
 
     labels:
-      search: "Pesquisar"
+      search: 'Pesquisar'
 
   helpers:
     submit:
       article:
-        create: "Salvar"
-        update: "Atualizar"
+        create: 'Salvar'
+        update: 'Atualizar'
 
       comment:
-          create: "Comentar"
+          create: 'Comentar'
 
       lab:
-        create: "Criar"
-        update: "Atualizar"
+        create: 'Criar'
+        update: 'Atualizar'
 
       user:
-        create: "Salvar"
-        update: "Atualizar"
+        create: 'Salvar'
+        update: 'Atualizar'
 
   errors:
     messages:
-      blank: "Este campo deve ser preenchido!"
+      blank: 'Este campo deve ser preenchido!'
