@@ -1,6 +1,8 @@
 # coding: utf-8
 
 class Article < ActiveRecord::Base
+  MORE_TAG = '<!--more-->'
+
   attr_readonly :user_id
   attr_accessible :title, :slug, :body, :category_ids, :published_at
 
@@ -18,15 +20,11 @@ class Article < ActiveRecord::Base
   validates :title, :slug, :user, :categories, presence: true
 
   def text
-    self.body.gsub(/\s{1}<!--more-->/, '')
+    self.body.gsub(/\s{1}#{MORE_TAG}/, '')
   end
 
   def resume
-    if self.body.nil? or self.body.index('<!--more-->').nil?
-      self.body
-    else
-      "#{self.body.split('<!--more-->')[0]}..."
-    end
+    (body && body.index(MORE_TAG)) ? "#{body.split(MORE_TAG)[0]}..." : body
   end
 
   def unique_comments
