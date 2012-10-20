@@ -20,8 +20,8 @@ describe User, "validations" do
     let(:user) {
       User.create!({
         name: "name",
-        :email => "email@email.com",
-        :password => "password",
+        email: "email@email.com",
+        password: "password",
         :password_confirmation => "password"
         })
     }
@@ -33,8 +33,8 @@ describe User, "validations" do
     it "has a invalid one" do
       User.new({
         name: "name",
-        :email => "email@email.com",
-        :password => "password",
+        email: "email@email.com",
+        password: "password",
         :password_confirmation => "password_invalid"
       }).should_not be_valid
     end

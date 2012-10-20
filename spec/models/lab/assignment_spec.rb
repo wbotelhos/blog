@@ -1,12 +1,17 @@
 require 'spec_helper'
 
 describe Lab, "assignment" do
-  subject {
-    Lab.new({ name: "name", :slug => "slug", :description => "description", :image => "image.png" })
-  }
+  subject do
+    Lab.new(
+      name: 'name',
+      slug: 'slug',
+      description: 'description',
+      image: 'image.png'
+    )
+  end
 
-  its(:name) { should eql("name") }
-  its(:slug) { should eql("slug") }
-  its(:description) { should eql("description") }
-  its(:image) { should eql("image.png") }
+  its(:name) { should == 'name' }
+  its(:slug) { should == 'slug' }
+  its(:description) { should == 'description' }
+  its(:image) { should == 'image.png' }
 end
