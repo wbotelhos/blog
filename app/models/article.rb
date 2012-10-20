@@ -14,6 +14,7 @@ class Article < ActiveRecord::Base
   scope :published, where('published_at is not null and published_at <= ?', Time.zone.now)
   scope :drafts, where('published_at is null or published_at > ?', Time.zone.now)
 
+  before_save :slug_it
   validates :title, :slug, :user, :categories, presence: true
 
   def text
@@ -30,20 +31,6 @@ class Article < ActiveRecord::Base
 
   def unique_comments
     self.comments.all(group: 'email').reject { |comment| comment.author }
-  end
-
-  def slug_it(text)
-    text = text.downcase
-    text = text.gsub(/\s-\s/, '-')
-    text = text.gsub(/\s/, '-')
-
-    from  = 'áàãâäèéêëìíîïõòóôöùúûüç'
-    to    = 'aaaaaeeeeiiiiooooouuuuc'
-
-    text = text.tr(from, to)
-    text = text.gsub(/[^\w-]/, '')
-
-    text
   end
 
   def day
@@ -78,6 +65,17 @@ class Article < ActiveRecord::Base
   end
 
   private
+
+  def slug_it
+    from  = 'áàãâäèéêëìíîïõòóôöùúûüç'
+    to    = 'aaaaaeeeeiiiiooooouuuuc'
+
+    title.downcase!
+    title.gsub!(/\s-\s/, '-')
+    title.gsub!(/\s/, '-')
+    title.tr!(from, to)
+    title.gsub!(/[^\w-]/, '')
+  end
 
   def with_zero
     return '00' if published_at.nil?

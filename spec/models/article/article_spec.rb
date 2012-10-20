@@ -6,22 +6,38 @@ describe Article do
     FactoryGirl.build(:article).should be_valid
   end
 
-  let(:article) { FactoryGirl.create(:article, { :title => %[City - São João del-rey ('!@#$\alive%ˆ&*~^)], :body => "my text" }) }
-  let(:article_more) { Article.new({ :title => "City - São João del-rey", :body => "my <!--more--> text" }) }
-  let(:comment_1) { FactoryGirl.create(:comment, { :email => "email1@email.com", :article => article }) }
-  let(:comment_2) { FactoryGirl.create(:comment, { :email => "email2@email.com", :article => article }) }
-  let(:comment_3) { FactoryGirl.create(:comment, { :email => "email1@email.com", :article => article }) }
-  let(:comment_4_author) { FactoryGirl.create(:comment_author, { :article => article }) }
+  let(:article) { FactoryGirl.create :article, title: "City - São João del-rey ('!@#$\alive%ˆ&*~^)", body: 'my text' }
+  let(:article_more) { FactoryGirl.build :article, title: 'City - São João del-rey', body: 'my <!--more--> text' }
+  let(:comment_1) { FactoryGirl.create :comment, email: 'email1@email.com', article: article }
+  let(:comment_2) { FactoryGirl.create :comment, email: 'email2@email.com', article: article }
+  let(:comment_3) { FactoryGirl.create :comment, email: 'email1@email.com', article: article }
+  let(:comment_4_author) { FactoryGirl.create :comment_author, article: article }
 
-  describe "resuming the article" do
+  describe "#slug_id" do
+    context "on save" do
+      it "should sanitize as slug style" do
+        article.title.should == 'city-sao-joao-del-rey-alive'
+      end
+    end
+
+    context "on update" do
+      before do
+        article.title = "New City - Aimorés-MG"
+        article.save
+      end
+
+      it "should sanitize as slug style" do
+        article.title.should == 'new-city-aimores-mg'
+      end
+    end
+  end
+
+
+  describe "#resume" do
     context "when the tag more is present" do
       subject { article_more.resume }
 
       it "resume the text" do
-        should eql("my ...")
-      end
-
-      it "append the reticence -" do
         should eql("my ...")
       end
     end
@@ -30,22 +46,12 @@ describe Article do
       subject { article.resume }
 
       it "not resume the text" do
-        should eql("my text")
-      end
-
-      it "not append reticence" do
-        should eql("my text")
+        should == 'my text'
       end
     end
   end
 
-  describe "slugging the title" do
-    subject { article.slug_it(article.title) }
 
-    it "replace white spaces" do
-      should eql("city-sao-joao-del-rey-alive")
-    end
-  end
 
   describe "Article#unique_comments" do
     it "remove all author's e-mail" do
@@ -124,5 +130,4 @@ describe Article do
       end
     end
   end
-
 end
