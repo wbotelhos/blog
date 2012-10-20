@@ -1,16 +1,14 @@
 require 'spec_helper'
 
 describe CommentFormPresenter do
-  let(:article) { mock("article") }
-  let(:comment) { mock("comment") }
+  let(:article) { mock_model Article }
+  let(:comment) { mock_model Comment }
 
-  context "show form" do
-    subject {
-      CommentFormPresenter.new(article, comment)
-    }
+  subject { CommentFormPresenter.new(article, comment) }
 
+  context "showing form" do
     its(:partial) {
-      should eql(:partial => "comments/form", :locals => { :article => article, :comment => comment })
+      should eql(partial: 'comments/form', locals: { article: article, comment: comment })
     }
   end
 end
