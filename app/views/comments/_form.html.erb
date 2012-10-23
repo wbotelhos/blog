@@ -51,7 +51,7 @@
     $('#comment_url').on('focus', focusLabel).on('blur', blurLabel);
     $('#comment_body').on('focus', focusLabel).on('blur', blurLabel);
     $('#comment-submit input').on('click', function() {
-      $(this).hide().parent().append("<i><%= I18n.t('comment.sending') %><i>");
+      $(this).hide().parent().append("<i><%= t('comment.sending') %><i>");
     });
   });
 </script>
