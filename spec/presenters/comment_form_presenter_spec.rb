@@ -7,8 +7,6 @@ describe CommentFormPresenter do
   subject { CommentFormPresenter.new(article, comment) }
 
   context "showing form" do
-    its(:partial) {
-      should eql(partial: 'comments/form', locals: { article: article, comment: comment })
-    }
+    its(:partial) { should eql(partial: 'comments/form', locals: { article: article, comment: comment }) }
   end
 end

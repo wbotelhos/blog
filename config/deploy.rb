@@ -22,6 +22,7 @@ role :app, application
 role :db,  application, primary: true
 
 default_run_options[:pty] = true
+
 ssh_options[:forward_agent] = true
 ssh_options[:keys] = '~/.ssh/blogbr.pem'
 

@@ -28,8 +28,8 @@ user = User.create!({
   twitter:                'http://twitter.com/wbotelhos',
   linkedin:               'http://linkedin.com/in/wbotelhos',
   facebook:               'http://facebook.com/wbotelhos',
-  password:               'segredo',
-  password_confirmation:  'segredo'
+  password:               'password',
+  password_confirmation:  'password'
 })
 
 Lab.create!({
@@ -93,7 +93,6 @@ We using the Capistrano to do it, then check the deploy.rb file to configure you
 This blog is free under the MIT License, then be nice and keep the author's credits. (:
 
 See you and your blog soon!
-
 ]})
 article.slug = 'first-steps'
 article.categories = categories

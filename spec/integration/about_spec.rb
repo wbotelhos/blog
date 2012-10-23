@@ -17,5 +17,4 @@ describe "About" do
        page.should have_content("Desenvolvedor Java, Ruby e Python no Portal <a href=\"http://r7.com\" target=\"_blank\">R7.com</a>.")
      end
   end
-
 end

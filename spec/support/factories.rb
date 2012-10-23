@@ -1,20 +1,19 @@
 FactoryGirl.define do
-
   factory :user do
-    name                  "Washington Botelho"
+    name                  'Washington Botelho'
     sequence(:email)      { |i| "wbotelhos#{i}@gmail.com" }
-    password              "test"
-    password_confirmation "test"
+    password              'password'
+    password_confirmation 'password'
   end
 
   factory :category do
-    name "name"
+    name 'name'
   end
 
   factory :article do
     sequence(:title)  { |i| "title #{i}" }
     sequence(:slug)   { |i| "title-#{i}" }
-    body              "body <!--more--> body"
+    body              'body <!--more--> body'
     association       :user
     categories        { |categories| [categories.association(:category)] }
 
@@ -37,13 +36,13 @@ FactoryGirl.define do
   factory :comment do
     sequence(:name)   { |i| "name #{i}" }
     sequence(:email)  { |i| "email#{i}@mail.com" }
-    url               "http://url.com"
-    body              "body"
+    url               'http://url.com'
+    body              'body'
     association       :article
 
-    factory :comment_author do
+    factory :comment_with_author do
       author          true
-      email           "author@email.com"
+      email           'author@email.com'
     end
   end
 
@@ -54,7 +53,6 @@ FactoryGirl.define do
 
   factory :link do
     sequence(:name) { |i| "name #{i}" }
-    url             "http://url.com"
+    url             'http://url.com'
   end
-
 end
