@@ -25,11 +25,11 @@ class Paginaty
     next_label = I18n.t('paginaty.next')
     page_label = I18n.t('paginaty.page', page: page)
 
-    paginaty =  %[<ul class="paginaty">]
-    paginaty << (has_back ? li(link(back_url, back_label), 'back-page') : li(span(back_label), 'back-page disabled'))
-    paginaty << li(span(page_label), 'page')
-    paginaty << (has_next ? li(link(next_url, next_label), 'next-page') : li(span(next_label), 'next-page disabled'))
-    paginaty << %[</ul>]
+    paginaty =  '<ul class="paginaty">'
+    paginaty <<   (has_back ? li(link(back_url, back_label), 'back-page') : li(span(back_label), 'back-page disabled'))
+    paginaty <<   li(span(page_label), 'page')
+    paginaty <<   (has_next ? li(link(next_url, next_label), 'next-page') : li(span(next_label), 'next-page disabled'))
+    paginaty << '</ul>'
 
     { elements: elements, pager: paginaty.html_safe }
   end
