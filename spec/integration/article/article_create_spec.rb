@@ -2,76 +2,49 @@
 require 'spec_helper'
 
 describe Article, "#create" do
-  context "when logged" do
-    let(:user) { FactoryGirl.create :user }
-    let(:category) { FactoryGirl.create :category }
+  let(:user) { FactoryGirl.create :user }
+  let!(:category) { FactoryGirl.create :category }
 
+  before do
+    login with: user.email
+    visit new_article_path
+  end
+
+  context "submit with valid data" do
     before do
-      login with: user.email
-      click_link 'Admin!'
-      click_link 'Criar'
+      fill_in 'article_title', with: 'title'
+      fill_in 'article_body', with: 'body'
+      check "category-#{category.id.to_s}"
+      click_button 'Salvar'
     end
 
-    context "the categories" do
-      let(:category1) { FactoryGirl.create(:category, { name: 'category-1' }) }
-      let(:category2) { FactoryGirl.create(:category, { name: 'category-2' }) }
-      let(:category3) { FactoryGirl.create(:category, { name: 'category-3' }) }
-
-      before do
-        visit new_article_path
-      end
-
-      it "should display the list" do
-        page.should have_content category1.name
-        page.should have_content category2.name
-        page.should have_content category3.name
-      end
+    it "redirects to edit page" do
+      current_path.should match %r(/articles/\d+/edit)
     end
 
-    context "with valid data" do
-      before do
-        fill_in 'article_title', with: 'some title'
-        fill_in 'article_body', with: 'some text'
-        check "category-#{category.id.to_s}"
-        click_button 'Salvar'
-      end
-
-      it "redirects to edit" do
-        current_path.should match(%r[/articles/\d+/edit])
-      end
-
-      it "displays success message" do
-        page.should have_content('Rascunho salvo com sucesso!')
-      end
-    end
-
-    context "with invalid data" do
-      before do
-        click_button 'Salvar'
-      end
-
-      it "renders form page again" do
-        current_path.should eql(create_article_path) # TODO: why not /new on render :new?
-      end
-
-      it "display field validation messages" do
-        page.should have_content('Título deve ser preenchido!')
-        page.should have_content('Categoria deve ser preenchido!')
-      end
+    it "displays success message" do
+      page.should have_content 'Rascunho salvo com sucesso!'
     end
   end
 
-  context "when unlogged" do
+  context "with invalid data" do
     before do
-      visit new_article_path
+      fill_in 'article_title', with: ''
+      check "category-#{category.id.to_s}"
+      click_button 'Salvar'
     end
 
-    it "redirects to the login page" do
-      current_path.should eql(login_path)
+    it "renders form page again" do
+      current_path.should == create_article_path
     end
 
-    it "displays error message" do
-      page.should have_content('Você precisa estar logado!')
+    it "display field validation messages" do
+      page.should have_content 'Título deve ser preenchido!'
+      page.should have_content 'Categoria deve ser preenchido!'
+    end
+
+    it "the chosen category keeps checked" do
+      page.should have_checked_field "category-#{category.id.to_s}"
     end
   end
 end

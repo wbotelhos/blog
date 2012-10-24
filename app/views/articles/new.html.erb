@@ -4,7 +4,7 @@
 
 <%= render 'shared/error_messages', entity: @article %>
 
-<%= form_for @article, url: create_article_path, html: { class: 'article-form' } do |f| %>
+<%= form_for @article, html: { class: 'article-form' } do |f| %>
   <div id="fields">
     <p>
       <%= f.text_field :title %>
@@ -29,7 +29,7 @@
       <ul>
         <% categories.each do |category| %>
           <li>
-            <input id="category-<%= category.id %>" type="checkbox" name="article[category_ids][]" value="<%= category.id %>" />
+            <input id="category-<%= category.id %>" type="checkbox" name="article[category_ids][]" value="<%= category.id %>" <%= check_category?(@article, category) %> />
             <label for="category-<%= category.id %>"><%= category.name %></label>
           </li>
         <% end %>
