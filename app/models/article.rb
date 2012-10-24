@@ -16,11 +16,12 @@ class Article < ActiveRecord::Base
   scope :published, where('published_at is not null and published_at <= ?', Time.zone.now)
   scope :drafts, where('published_at is null or published_at > ?', Time.zone.now)
 
-  before_save :slug_it
+  before_validation :slug_it, if: -> e { e.title }
+
   validates :title, :slug, :user, :categories, presence: true
 
   def text
-    self.body.gsub(/\s{1}#{MORE_TAG}/, '')
+    body.gsub(/\s{1}#{MORE_TAG}/, '')
   end
 
   def resume
@@ -68,11 +69,14 @@ class Article < ActiveRecord::Base
     from  = 'áàãâäèéêëìíîïõòóôöùúûüç'
     to    = 'aaaaaeeeeiiiiooooouuuuc'
 
-    title.downcase!
-    title.gsub!(/\s-\s/, '-')
-    title.gsub!(/\s/, '-')
-    title.tr!(from, to)
-    title.gsub!(/[^\w-]/, '')
+    slug = title.downcase
+
+    slug.gsub!(/\s-\s/, '-')
+    slug.gsub!(/\s/, '-')
+    slug.tr!(from, to)
+    slug.gsub!(/[^\w-]/, '')
+
+    write_attribute(:slug, slug)
   end
 
   def with_zero
