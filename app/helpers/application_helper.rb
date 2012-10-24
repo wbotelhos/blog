@@ -44,51 +44,44 @@ module ApplicationHelper
     anchor_full = "#{request.fullpath}##{anchor}"
 
     html <<  %[<div id="#{anchor}" class="comment#{' authored' if comment.author}#{' level-' + level.to_s unless level == 0}">]
-    html <<   %[<div class="photo">]
+    html <<   '<div class="photo">'
     html <<     (gravatar(comment.email, { alt: '', title: comment.name }))
-    html <<   %[</div>]
+    html <<   '</div>'
 
-    html <<   %[<div class="body">]
-    html <<     %[<div class="name-date">]
-    html <<       %[<div class="anchors">]
+    html <<   '<div class="body">'
+    html <<     '<div class="name-date">'
+    html <<       '<div class="anchors">'
     html <<         (link_to "##{comment.id}", anchor_full, { title: "#{I18n.t('comment.shortcut_to_this_comment')}" })
-    html <<         %[ #{link_to comment.name, comment.url, { target: '_blank' }}]
+    html <<         link(comment.url, comment.name, '_blank')
     html <<         %[<div>#{I18n.t('comment.reply_to')} #{link_to "##{comment.comment.id}", "#{request.fullpath}#comment-#{comment.comment.id}", { title: "#{I18n.t('comment.shortcut_to_this_comment')}" }}</div>] unless comment.comment.nil?
-    html <<       %[</div>]
+    html <<       '</div>'
 
     html <<       %[<span>#{t('comment.created_at', time: time_ago_in_words(comment.created_at))}</span>]
-    html <<     %[</div>]
+    html <<     '</div>'
 
-    html <<     (link_to I18n.t('comment.reply'), "#{request.fullpath}#comment-form", { class: 'reply-link' })
+    html <<     link("#{request.fullpath}#comment-form", I18n.t('comment.reply'), 'reply-link')
 
     html <<     %[<div class="text">#{markdown comment.body}</div>]
 
     html <<     %[<form action="#{update_comment_path(article, comment, { anchor: anchor })}" method="post" style="display: none;">]
-    html <<       %[<input type="hidden" name="_method" value="put" />]
-    html <<       %[<input type="hidden" name="utf8" value="✓">]
-    html <<       %[<input type="hidden" name="authenticity_token" value="#{form_authenticity_token.to_s}">]
+    html <<       input('hidden', '_method', 'put')
+    html <<       input('hidden', 'utf8', '✓')
+    html <<       input('hidden', 'authenticity_token', form_authenticity_token.to_s)
 
-    html <<       %[<p>]
-    html <<         %[<input type="text" name="comment[name]" value="#{comment.name}" />]
-    html <<         %[<input type="text" name="comment[email]" value="#{comment.email}" />]
-    html <<         %[<input type="text" name="comment[url]" value="#{comment.url}" />]
-    html <<       %[</p>]
+    html <<       '<p>'
+    html <<         input('text', 'comment[name]', comment.name)
+    html <<         input('text', 'comment[email]', comment.email)
+    html <<         input('text', 'comment[url]', comment.url)
+    html <<       '</p>'
 
-    html <<       %[<p>]
-    html <<         %[<textarea name="comment[body]" rows="20" cols="30">#{comment.body}</textarea>]
-    html <<       %[</p>]
+    html <<       pe(%[<textarea name="comment[body]" rows="20" cols="30">#{comment.body}</textarea>])
 
-    html <<       %[<p>]
-    html <<         (link_to I18n.t('comment.close'), 'javascript:void(0);', { class: 'close' })
-    html <<       %[</p>]
+    html <<       pe(link('javascript:void(0);', I18n.t('comment.close'), 'close'))
 
-    html <<       %[<p>]
-    html <<         %[<input type="submit" value="#{I18n.t('comment.update')}" />]
-    html <<       %[</p>]
-    html <<     %[</form>]
-
-    html <<   %[</div>]
-    html << %[</div>]
+    html <<       pe(input('submit', '', I18n.t('comment.update')))
+    html <<     '</form>'
+    html <<   '</div>'
+    html << '</div>'
 
     if !comment.comments.nil? && comment.comments.size > 0
       level += 1
@@ -102,6 +95,18 @@ module ApplicationHelper
   end
 
   private
+
+  def link(url, label, target = '_self', clazz = '')
+    %(<a href="#{url}" title="#{label}" target="#{target}" class="#{clazz}">#{label}</a>)
+  end
+
+  def input(type, name, value)
+    %(<input type="#{type}" name="#{name}" value="#{value}" />)
+  end
+
+  def pe(content)
+    "<p>#{content}</p>"
+  end
 
   def social_link_for(social, name)
     (!social.nil? && !social.empty?) ? link_to('', social, title: social, target: '_blank', class: name) : ''
