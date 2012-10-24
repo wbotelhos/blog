@@ -11,7 +11,7 @@ describe Article do
   describe "#slug_id" do
     context "on save" do
       it "should sanitize as slug style" do
-        article.title.should == 'city-sao-joao-del-rey-alive'
+        article.slug.should == 'city-sao-joao-del-rey-alive'
       end
     end
 
@@ -22,7 +22,8 @@ describe Article do
       end
 
       it "should sanitize as slug style" do
-        article.title.should == 'new-city-aimores-mg'
+        p article
+        article.slug.should == 'new-city-aimores-mg'
       end
     end
   end
