@@ -48,7 +48,7 @@ class CommentsController < ApplicationController
        CommentMailer.new(@article, @comment, logger).send
        flash[:notice] = t('flash.comments.create.notice')
     rescue Exception => e
-      logger.error `Was not possible to send mail: #{e}"
+      logger.error "Was not possible to send mail: #{e}"
       flash[:notice] = t('comment.email_not_sent')
      end
   end
