@@ -38,13 +38,45 @@ describe Article, "#create" do
       current_path.should == create_article_path
     end
 
-    it "display field validation messages" do
-      page.should have_content 'Título deve ser preenchido!'
-      page.should have_content 'Categoria deve ser preenchido!'
-    end
-
     it "the chosen category keeps checked" do
       page.should have_checked_field "category-#{category.id.to_s}"
+    end
+
+    context "blank title" do
+      before do
+        fill_in 'article_title', with: ''
+        check "category-#{category.id.to_s}"
+        click_button 'Salvar'
+      end
+
+      it { page.should have_content 'Título deve ser preenchido!' }
+    end
+
+    context "blank category" do
+      before do
+        fill_in 'article_title', with: 'title'
+        uncheck "category-#{category.id.to_s}"
+        click_button 'Salvar'
+      end
+
+      it { page.should have_content 'Categoria deve ser preenchido!' }
+    end
+
+    context "blank body" do
+      before do
+        fill_in 'article_title', with: 'title'
+        fill_in 'article_body', with: ''
+        check "category-#{category.id.to_s}"
+        click_button 'Salvar'
+      end
+
+      it "redirects to edit page" do
+        current_path.should match %r(/articles/\d+/edit)
+      end
+
+      it "displays success message" do
+        page.should have_content 'Rascunho salvo com sucesso!'
+      end
     end
   end
 end
