@@ -9,7 +9,7 @@
   <ul class="links">
     <li class="permalink"><%= link_to t('article.permalink'), article_path(@article.year, @article.month, @article.day, @article.slug) %></li>
     <li class="comments"><%= link_to t('article.comments_count_html', count: @article.comments_count), article_path(@article.year, @article.month, @article.day, @article.slug, anchor: 'comments') %></a></li>
-    <li class="published"><%= link_to t('article.published_at', time: l(@article.created_at)), 'javascript:void(0);' %></a></li>
+    <li class="published"><%= link_to t('article.published_at', time: l(@article.published_at)), 'javascript:void(0);' %></a></li>
     <% if is_logged? %>
       <li class="edit"><%=link_to t('article.edit'), edit_article_path(@article) %></a></li>
     <% end %>
