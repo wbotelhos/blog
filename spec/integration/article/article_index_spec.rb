@@ -59,11 +59,46 @@ describe Article, "#index" do
 
       it "display comments link" do
         page.should have_selector 'li.comments a', href: "#{path}#comments"
-        page.should have_selector 'li.comments a span', text: "a"
       end
 
-      it "display published information" do
-        page.should have_selector 'li.published a'
+      context "comment numbers" do
+        context "with zero comments" do
+          it "show no one text" do
+            find('li.comments a span').text.should == 'Nenhum comentário, seja o primeiro! (:'
+          end
+        end
+
+        context "with one comment" do
+          before do
+            FactoryGirl.create :comment, article: article_published
+            visit articles_path
+          end
+
+          it "show the number of comments" do
+            find('li.comments a span').text.should == '1 comentário'
+          end
+
+          context "with two comment" do
+            before do
+              FactoryGirl.create :comment, article: article_published
+              visit articles_path
+            end
+
+            it "show the number of comments" do
+              find('li.comments a span').text.should == '2 comentários'
+            end
+          end
+        end
+      end
+
+      context ":published_at" do
+        it "show as link" do
+          page.should have_selector 'li.published a'
+        end
+
+        it "format as pt_BR" do
+          find('li.published a').text.should == '23/10/84 às 00:00'
+        end
       end
 
       context "without pagination" do
