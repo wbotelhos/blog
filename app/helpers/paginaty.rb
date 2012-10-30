@@ -8,8 +8,7 @@ class Paginaty
 
     offset = (page - 1) * LIMIT
 
-    elements = options[:entity].offset(offset).limit(LIMIT + 1)
-    elements = elements.published
+    elements = options[:entity].offset(offset).limit(LIMIT + 1).published
 
     has_back = page > 1
     has_next = elements.size > LIMIT
