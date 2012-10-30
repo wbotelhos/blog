@@ -15,11 +15,11 @@ describe Article, "#drafts" do
     end
 
     it "redirects to the drafts page" do
-      current_path.should match %r(/articles/drafts)
+      current_path.should == '/articles/drafts'
     end
 
     it "do not display published record" do
-      page.should have_content article_draft.title
+      page.should_not have_content article_published.title
     end
 
     it "display the draft record" do
