@@ -30,7 +30,7 @@ describe Article, "#update" do
     end
 
     it { find_field('article_title').value.should == 'title-new' }
-    it { find_field('article_body').value.should == "\nbody-new" } # why \n on begin?
+    it { find_field('article_body').value.should == 'body-new' }
     it { find_field("category-#{category_2.id.to_s}").should be_checked }
   end
 
