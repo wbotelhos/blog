@@ -15,7 +15,7 @@ describe Article, "#new" do
     context "form" do
       before { visit new_article_path }
 
-      it { current_path.should match %r(/articles/new) }
+      it { current_path.should == '/articles/new' }
 
       it { page.should have_field 'article_title' }
       it { page.should have_field 'article_body' }
