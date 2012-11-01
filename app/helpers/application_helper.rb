@@ -43,7 +43,7 @@ module ApplicationHelper
     anchor = "comment-#{comment.id}"
     anchor_full = "#{request.fullpath}##{anchor}"
 
-    html <<  %[<div id="#{anchor}" class="comment#{' authored' if comment.author}#{' level-' + level.to_s unless level == 0}">]
+    html <<  %(<div id="#{anchor}" class="comment#{' authored' if comment.author}#{' level-' + level.to_s unless level == 0}">)
     html <<   '<div class="photo">'
     html <<     (gravatar(comment.email, { alt: '', title: comment.name }))
     html <<   '</div>'
@@ -56,14 +56,14 @@ module ApplicationHelper
     html <<         %[<div>#{I18n.t('comment.reply_to')} #{link_to "##{comment.comment.id}", "#{request.fullpath}#comment-#{comment.comment.id}", { title: "#{I18n.t('comment.shortcut_to_this_comment')}" }}</div>] unless comment.comment.nil?
     html <<       '</div>'
 
-    html <<       %[<span>#{t('comment.created_at', time: time_ago_in_words(comment.created_at))}</span>]
+    html <<       %(<span>#{t('comment.created_at', time: time_ago_in_words(comment.created_at))}</span>)
     html <<     '</div>'
 
-    html <<     link("#{request.fullpath}#comment-form", I18n.t('comment.reply'), 'reply-link')
+    html <<     link("#{request.fullpath}#comment-form", I18n.t('comment.reply'), '_self', 'reply-link')
 
-    html <<     %[<div class="text">#{markdown comment.body}</div>]
+    html <<     %(<div class="text">#{markdown comment.body}</div>)
 
-    html <<     %[<form action="#{update_comment_path(article, comment, { anchor: anchor })}" method="post" style="display: none;">]
+    html <<     %(<form action="#{update_comment_path(article, comment, { anchor: anchor })}" method="post" style="display: none;">)
     html <<       input('hidden', '_method', 'put')
     html <<       input('hidden', 'utf8', '✓')
     html <<       input('hidden', 'authenticity_token', form_authenticity_token.to_s)
@@ -74,7 +74,7 @@ module ApplicationHelper
     html <<         input('text', 'comment[url]', comment.url)
     html <<       '</p>'
 
-    html <<       pe(%[<textarea name="comment[body]" rows="20" cols="30">#{comment.body}</textarea>])
+    html <<       pe(%(<textarea name="comment[body]" rows="20" cols="30">#{comment.body}</textarea>))
 
     html <<       pe(link('javascript:void(0);', I18n.t('comment.close'), 'close'))
 
