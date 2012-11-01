@@ -4,11 +4,11 @@
 
 ## Usage
 
-# Install MySQL
+### Install MySQL
 
 [Instalando e Configurando o MySQL](http://wbotelhos.com/2012/10/17/instalando-e-configurando-o-mysql)
 
-# Clone and prepare the database
+### Clone and prepare the database
 
 ```bash
 git clone https://github.com/wbotelhos/wbotelhos-com-br.git
@@ -18,7 +18,7 @@ rake db:create:all; rake db:migrate; rake db:setup
 open http://localhost:3000
 ```
 
-# Run the tests
+### Run the tests
 
 ```bash
 rake db:test:prepare
