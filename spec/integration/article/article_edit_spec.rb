@@ -13,7 +13,7 @@ describe Article, "#edit" do
     context "form" do
       before { visit edit_article_path article_published }
 
-      it { current_path.should match %r(/articles/#{article_published.id}/edit) }
+      it { current_path.should == "/articles/#{article_published.id}/edit" }
 
       it { page.should have_field 'article_title', text: article_published.title }
       it { page.should have_field 'article_body', text: article_published.body }

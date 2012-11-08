@@ -22,7 +22,7 @@ describe Article, "#update" do
     end
 
     it "redirects to edit page" do
-      current_path.should match %r(/articles/#{article.id}/edit)
+      current_path.should == "/articles/#{article.id}/edit"
     end
 
     it "displays success message" do
