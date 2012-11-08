@@ -96,8 +96,11 @@ module ApplicationHelper
 
   private
 
-  def link(url, label, target = '_self', clazz = '')
-    %(<a href="#{url}" title="#{label}" target="#{target}" class="#{clazz}">#{label}</a>)
+  def link(url, label, target = '', clazz = '')
+    target = (target.empty? || target == '_self') ? '' : %( target="#{target}")
+    clazz = %( class="#{clazz}") unless clazz.empty?
+
+    %(<a href="#{url}" title="#{label}"#{target}#{clazz}>#{label}</a>)
   end
 
   def input(type, name, value)
