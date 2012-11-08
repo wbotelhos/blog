@@ -8,20 +8,58 @@ describe Article, "#show" do
 
   before { visit path }
 
-  it "display name field" do
-    find_field('comment_name').should be_visible
-  end
+  context "fields" do
+    context "render" do
+      it "display name" do
+        find_field('comment_name').should be_visible
+      end
 
-  it "display e-mail field" do
-    find_field('comment_email').should be_visible
-  end
+      it "display e-mail" do
+        find_field('comment_email').should be_visible
+      end
 
-  it "display URL field" do
-    find_field('comment_url').should be_visible
-  end
+      it "display URL" do
+        find_field('comment_url').should be_visible
+      end
 
-  it "display body field" do
-    find_field('comment_body').should be_visible
+      it "display body" do
+        find_field('comment_body').should be_visible
+      end
+    end
+
+    context "labels" do
+      it "display on name" do
+        find_field('comment_name').value.should == 'Nome *'
+      end
+
+      it "display on e-mail" do
+        find_field('comment_email').value.should == 'E-mail *'
+      end
+
+      it "display on URL" do
+        find_field('comment_url').value.should == 'URL'
+      end
+
+      it "display on body" do
+        find_field('comment_body').value.should == "Seu comentário *\n\n```python\ndef cute:\n  print 'Hello Markdown!'\n```"
+      end
+
+      # TODO: Jasmine
+      context "on focus" do
+        it "display blank on name"
+        it "display blank on e-mail"
+        it "display blank on URL"
+        it "display blank on body"
+      end
+
+      # TODO: Jasmine
+      context "on blur" do
+        it "display label on name"
+        it "display label on e-mail"
+        it "display label on URL"
+        it "display label on body"
+      end
+    end
   end
 
   context "comment numbers" do

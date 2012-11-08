@@ -16,4 +16,4 @@ pt-BR:
           name: 'Nome *'
           email: 'E-mail *'
           url: 'URL'
-          body: "Seu comentário *\n\n```python\ndef cute:\n    print 'Hello Markdown!'\n```"
+          body: "Seu comentário *\n\n```python\ndef cute:\n  print 'Hello Markdown!'\n```"
