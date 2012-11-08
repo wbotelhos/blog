@@ -28,5 +28,4 @@ class ApplicationController < ActionController::Base
   def sidebar
     @sidebar ||= SidebarPresenter.new
   end
-
 end
