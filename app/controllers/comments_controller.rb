@@ -36,10 +36,12 @@ class CommentsController < ApplicationController
   private
 
   def clear_form(comment)
+    body = I18n.t('activerecord.attributes.comment.body')
+
     comment[:name]  = nil if comment[:name]   == t('activerecord.attributes.comment.name')
     comment[:email] = nil if comment[:email]  == t('activerecord.attributes.comment.email')
     comment[:url]   = nil if comment[:url]    == t('activerecord.attributes.comment.url')
-    comment[:body]  = nil if comment[:body]   == "\n#{I18n.t('activerecord.attributes.comment.body')}" # TODO: why :comment:body preppend one \n?
+    comment[:body]  = nil if comment[:body]   == body || "\n#{body}" # TODO: why :comment:body preppend one \n?
     comment
   end
 
