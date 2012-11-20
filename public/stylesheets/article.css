@@ -104,6 +104,7 @@
 #main .comment.level-5 form textarea { width: 640px; }
 
 #main .comment-create { clear: both; margin: 0 auto 50px; padding-top: 15px; width: 525px; }
+#main .comment-create #human { color: #888; float: left; font: 11px verdana; margin-left: 3px; margin-top: 6px; }
 #main .comment-create #replying-to { color: #444; margin-left: 1px; }
 #main .comment-create input[type="text"] { color: #BBB; margin-bottom: 7px; padding: 2px; width: 165px; }
 #main .comment-create textarea { color: #BBB; height: 150px; margin-bottom: 7px; padding: 2px; width: 515px; }

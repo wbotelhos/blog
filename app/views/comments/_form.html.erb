@@ -7,7 +7,7 @@
     <%= link_to "(#{t('comment.undo')})", 'javascript:void(0);', { onclick: 'removeReply();' } %>
   </div>
 
-  <%= form_for comment, url: new_comment_path(article) do |f| %>
+  <%= form_for comment, url: new_comment_path(article), html: { onsubmit: 'return false;' } do |f| %>
     <%= f.hidden_field :comment_id %>
 
     <% if is_logged? %>
@@ -31,10 +31,14 @@
       <%= link_to 'Markdown', 'http://daringfireball.net/projects/markdown/syntax', { title: 'Markdown', target: '_blank' } %>.
     </p>
 
+    <p id="human">
+      <%= label_tag :bot, 'Bot?' %>
+      <%= check_box_tag :bot, :true %>
+    </p>
+
     <p id="comment-submit">
       <%= f.submit %>
     </p>
-
   <% end %>
 </div>
 
@@ -46,12 +50,25 @@
   }
 
   $(function() {
+    var form    = $('#new_comment'),
+        botBox  = $('#human input');
+
     $('#comment_name').on('focus', focusLabel).on('blur', blurLabel);
     $('#comment_email').on('focus', focusLabel).on('blur', blurLabel);
     $('#comment_url').on('focus', focusLabel).on('blur', blurLabel);
     $('#comment_body').on('focus', focusLabel).on('blur', blurLabel);
     $('#comment-submit input').on('click', function() {
-      $(this).hide().parent().append("<i><%= t('comment.sending') %><i>");
+      if (!botBox.is(':checked')) {
+        $(this).hide().parent().append("<i><%= t('comment.sending') %><i>");
+      }
+    });
+
+    $('#human input').on('change', function(evt) {
+      if (botBox.is(':checked')) {
+        form.attr('onsubmit', 'return false;');
+      } else {
+        form.removeAttr('onsubmit');
+      }
     });
   });
 </script>
