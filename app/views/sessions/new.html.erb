@@ -21,7 +21,7 @@
     $('#email').focus().select();
 
     $('input[name="commit"]').on('click', function(evt) {
-      if (!$('#human').is(':checked')) {
+      if ($('#human').is(':checked')) {
         evt.preventDefault();
       }
     });
