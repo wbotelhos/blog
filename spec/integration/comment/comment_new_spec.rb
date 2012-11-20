@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'spec_helper'
 
-describe Article, "#show" do
+describe Comment, "#show" do
   let(:user) { FactoryGirl.create :user }
   let(:article) { FactoryGirl.create :article_published }
   let(:path) { article_path(article.year, article.month, article.day, article.slug) }
