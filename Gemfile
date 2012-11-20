@@ -2,7 +2,7 @@ source :rubygems
 
 gem 'mysql2'
 gem 'pygments.rb'
-gem 'rails'
+gem 'rails', '3.2.9'
 gem 'redcarpet'
 gem 'thinking-sphinx'
 
