@@ -32,8 +32,8 @@
     </p>
 
     <p id="human">
-      <%= label_tag :bot, 'Bot?' %>
-      <input id="bot" type="checkbox" value="true" checked="checked" />
+      <%= label_tag :bot, 'b0t?' %>
+      <%= check_box_tag :bot, :true, :true %>
     </p>
 
     <p id="comment-submit">
@@ -63,8 +63,8 @@
       }
     });
 
-    $('#human input').on('change', function(evt) {
-      if (botBox.is(':checked')) {
+    botBox.on('change', function(evt) {
+      if ($(this).is(':checked')) {
         form.attr('onsubmit', 'return false;');
       } else {
         form.removeAttr('onsubmit');

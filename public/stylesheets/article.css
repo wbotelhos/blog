@@ -65,6 +65,8 @@
 #main .comment form input[type="submit"] { float: right; margin-right: 7px; }
 #main .comment form textarea { color: #111; width: 725px; }
 #main .comment form .close { display: block; font-weight: bold; margin-bottom: 10px; }
+#main .comment form .human { float: left; margin-top: 3px; }
+#main .comment form .human label { color: #777; font: 11px verdana; padding-right: 3px; padding-top: 3px; }
 
 #main .comment.authored { background-color: #FFE; }
 
@@ -104,7 +106,8 @@
 #main .comment.level-5 form textarea { width: 640px; }
 
 #main .comment-create { clear: both; margin: 0 auto 50px; padding-top: 15px; width: 525px; }
-#main .comment-create #human { color: #888; float: left; font: 11px verdana; margin-left: 3px; margin-top: 6px; }
+#main .comment-create #human { float: left; margin-left: 3px; margin-top: 4px; }
+#main .comment-create #human label { color: #888; font: 11px verdana; }
 #main .comment-create #replying-to { color: #444; margin-left: 1px; }
 #main .comment-create input[type="text"] { color: #BBB; margin-bottom: 7px; padding: 2px; width: 165px; }
 #main .comment-create textarea { color: #BBB; height: 150px; margin-bottom: 7px; padding: 2px; width: 515px; }

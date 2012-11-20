@@ -5,12 +5,13 @@
   </p>
 
   <p>
-     <%= label_tag :password, t('activerecord.attributes.user.password') %>
+    <%= label_tag :password, t('activerecord.attributes.user.password') %>
     <%= password_field_tag :password %>
   </p>
 
-  <p>
-    <%= check_box_tag :human, :true %>
+  <p id="human">
+    <%= label_tag :bot, 'b0t?' %>
+    <%= check_box_tag :bot, :true, :true %>
   </p>
 
   <%= submit_tag t('form.buttons.login') %>
@@ -22,7 +23,7 @@
 
     $('#email').focus().select();
 
-    $('#human').on('change', function(evt) {
+    $('#human input').on('change', function(evt) {
       if ($(this).is(':checked')) {
         form.attr('onsubmit', 'return false;');
       } else {

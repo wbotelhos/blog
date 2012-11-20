@@ -85,5 +85,15 @@
       });
     }
 
+    $('.human input').on('change', function(evt) {
+      var self  = $(this),
+          form  = self.closest('form');
+
+      if (self.is(':checked')) {
+        form.attr('onsubmit', 'return false;');
+      } else {
+        form.removeAttr('onsubmit');
+      }
+    });
   });
 </script>
