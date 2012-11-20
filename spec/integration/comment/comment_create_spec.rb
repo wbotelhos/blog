@@ -45,10 +45,9 @@ describe Comment, "#create" do
   end
 
   context "when unlogged" do
-    before { visit path }
-
     context "with valid data" do
       before do
+        visit path
         fill_in 'comment_name',   with: 'some name'
         fill_in 'comment_email',  with: 'some_email@email.com'
         fill_in 'comment_url',    with: 'http://some_url.com'
@@ -71,16 +70,64 @@ describe Comment, "#create" do
     end
 
     context "with invalid data" do
-      before { click_button 'Comentar' }
+      before { visit path }
 
-      it "redirects to the article page" do
-        current_path.should == path
+      context "given empty name" do
+        before do
+          fill_in 'comment_email',  with: 'some_email@email.com'
+          fill_in 'comment_body',   with: 'some comment'
+          uncheck 'bot'
+          click_button 'Comentar'
+        end
+
+        it "redirects to the article page" do
+          current_path.should == path
+        end
+
+        it "displays error message" do
+          page.should have_content 'Escreva o seu comentário!'
+          #page.should have_content 'Nome deve ser preenchido!'
+        end
       end
 
-      it "displays error message" do
-        page.should have_content 'Nome deve ser preenchido!'
-        page.should have_content 'E-mail deve ser preenchido!'
-        page.should have_content 'Comentário deve ser preenchido!'
+      context "given empty email" do
+        before do
+          fill_in 'comment_name',   with: 'some name'
+          fill_in 'comment_body',   with: 'some comment'
+          uncheck 'bot'
+          click_button 'Comentar'
+        end
+
+        it "redirects to the article page" do
+          current_path.should == path
+        end
+
+        it "displays error message" do
+          page.should have_content 'Escreva o seu comentário!'
+          #page.should have_content 'E-mail deve ser preenchido!'
+        end
+      end
+
+      context "given empty body" do
+        before do
+          fill_in 'comment_name',   with: 'some name'
+          fill_in 'comment_email',  with: 'some_email@email.com'
+          uncheck 'bot'
+          click_button 'Comentar'
+        end
+
+        it "redirects to the article page" do
+          current_path.should == path
+        end
+
+        it "displays error message" do
+          page.should have_content 'Escreva o seu comentário!'
+          #page.should have_content 'Comentário deve ser preenchido!'
+        end
+      end
+
+      # TODO: Jasmine
+      context "with anti bot checked" do
       end
     end
   end
