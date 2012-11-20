@@ -9,11 +9,21 @@
     <%= password_field_tag :password %>
   </p>
 
+  <p>
+    <%= check_box_tag :human %>
+  </p>
+
   <%= submit_tag t('form.buttons.login') %>
 <% end %>
 
 <script type="text/javascript">
   $(function() {
     $('#email').focus().select();
+
+    $('input[name="commit"]').on('click', function(evt) {
+      if (!$('#human').is(':checked')) {
+        evt.preventDefault();
+      }
+    });
   });
 </script>
