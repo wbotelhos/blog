@@ -4,6 +4,7 @@ module IntegrationHelper
 
     fill_in 'E-mail', with: options[:with]
     fill_in 'Senha', with: 'password'
+    uncheck 'bot'
 
     click_button 'Acessar'
   end
