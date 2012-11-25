@@ -1,12 +1,11 @@
+# coding: utf-8
+
 class CommentsController < ApplicationController
   before_filter :require_login, only: [:update]
 
   def create
     @article = Article.includes(:user).find params[:article_id]
-
-    comment = clear_form params[:comment]
-
-    @comment = @article.comments.new comment
+    @comment = @article.comments.new sanitize_comment
     @comment.author = is_logged?
     @comment.comment = Comment.find params[:comment_id] unless params[:comment_id].nil?
 
@@ -35,18 +34,18 @@ class CommentsController < ApplicationController
 
   private
 
-  def clear_form(comment)
+  def sanitize_comment(comment = params[:comment])
     body = I18n.t('activerecord.attributes.comment.body')
 
     comment[:name]  = nil if comment[:name]   == t('activerecord.attributes.comment.name')
     comment[:email] = nil if comment[:email]  == t('activerecord.attributes.comment.email')
     comment[:url]   = nil if comment[:url]    == t('activerecord.attributes.comment.url')
-    comment[:body]  = nil if comment[:body]   == body || "\n#{body}" # TODO: why :comment:body preppend one \n?
+    comment[:body]  = nil if comment[:body] && comment[:body].include?('Seu comentário *')
     comment
   end
 
   def send_mail
-     begin
+    begin
        CommentMailer.new(@article, @comment, logger).send
        flash[:notice] = t('flash.comments.create.notice')
     rescue Exception => e

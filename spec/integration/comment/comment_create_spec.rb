@@ -15,6 +15,7 @@ describe Comment, "#create" do
     context "with valid data" do
       before do
         fill_in 'comment_body', with: 'comment'
+        uncheck 'bot'
         click_button 'Comentar'
       end
 
@@ -32,7 +33,10 @@ describe Comment, "#create" do
     end
 
     context "with shadow data" do
-      before { click_button 'Comentar' }
+      before do
+        uncheck 'bot'
+        click_button 'Comentar'
+      end
 
       it "redirects to the article page" do
         current_path.should == path
@@ -52,6 +56,7 @@ describe Comment, "#create" do
         fill_in 'comment_email',  with: 'some_email@email.com'
         fill_in 'comment_url',    with: 'http://some_url.com'
         fill_in 'comment_body',   with: 'some comment'
+        uncheck 'bot'
         click_button 'Comentar'
       end
 
