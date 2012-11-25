@@ -8,10 +8,12 @@ require 'rspec/rails'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
+DatabaseCleaner.strategy = :truncation, { pre_count: true }
+
 RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 
-  config.before :suite do
-    DatabaseCleaner.strategy = :truncation
+  config.before do
+    DatabaseCleaner.clean
   end
 end
