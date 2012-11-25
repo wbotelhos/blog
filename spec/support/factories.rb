@@ -19,6 +19,7 @@ FactoryGirl.define do
 
     factory :article_draft do
       created_at    Time.now
+      updated_at    Time.now
       published_at  nil
     end
 
