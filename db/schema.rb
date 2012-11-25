@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(:version => 20120807192839) do
     t.datetime "updated_at",                    :null => false
   end
 
+  add_index "categories", ["name"], :name => "index_categories_on_name", :unique => true
+
   create_table "comments", :force => true do |t|
     t.string   "name",                          :null => false
     t.string   "email",                         :null => false

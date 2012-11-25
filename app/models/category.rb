@@ -6,4 +6,5 @@ class Category < ActiveRecord::Base
   default_scope order 'name asc'
 
   validates :name, presence: true
+  validates :name, uniqueness: true
 end

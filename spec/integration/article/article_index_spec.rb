@@ -17,15 +17,10 @@ describe Article, "#index" do
 
     context "with records" do
       let!(:article_draft) { FactoryGirl.create :article_draft }
-      let!(:article_published) { FactoryGirl.create :article_published }
+      let!(:article_published) { FactoryGirl.create :article_published, category_ids: [FactoryGirl.create(:category).id, FactoryGirl.create(:category).id] }
       let(:path) { article_path(article_published.year, article_published.month, article_published.day, article_published.slug) }
 
-      before do
-        article_published.categories << FactoryGirl.create(:category, name: 'name-2' )
-        article_published.save!
-
-        visit articles_path
-      end
+      before { visit articles_path }
 
       it "access index page" do
         current_path.should == '/articles'
