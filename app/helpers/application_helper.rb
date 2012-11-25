@@ -78,7 +78,7 @@ module ApplicationHelper
 
     html <<       pe(link('javascript:void(0);', I18n.t('comment.close'), '', 'close'))
 
-    html <<       '<p class="human"><label for="bot">b0t?</label><input id="bot" type="checkbox" checked="checked"></p>'
+    html <<       '<p class="human"><label for="bot-edit">b0t?</label><input id="bot-edit" type="checkbox" checked="checked"></p>'
 
     html <<       pe(input('submit', '', I18n.t('comment.update')))
     html <<     '</form>'
