@@ -15,7 +15,8 @@ class CommentsController < ApplicationController
       flash[:alert] = get_errors
     end
 
-    redirect_to article_path(@article.year, @article.month, @article.day, @article.slug)
+    # TODO: how to keep the value of filled fields on dispatcher?
+    redirect_to article_path(@article.year, @article.month, @article.day, @article.slug, anchor: 'comment-form')
   end
 
   def update

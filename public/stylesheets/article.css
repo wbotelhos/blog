@@ -105,7 +105,8 @@
 #main .comment.level-5 form input[type="text"] { width: 206px; }
 #main .comment.level-5 form textarea { width: 640px; }
 
-#main .comment-create { clear: both; margin: 0 auto 50px; padding-top: 15px; width: 525px; }
+#main .comment-create { clear: both; margin: 0 auto 50px; padding-top: 15px; width: 521px; }
+#main .comment-create .alert { background-color: #F2DEDE; border-radius: 4px; color: #B94A48; margin-bottom: 5px; padding: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
 #main .comment-create #human { float: left; margin-left: 3px; margin-top: 4px; }
 #main .comment-create #human label { color: #888; font: 11px verdana; }
 #main .comment-create #replying-to { color: #444; margin-left: 1px; }

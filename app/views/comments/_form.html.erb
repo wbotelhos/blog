@@ -1,5 +1,7 @@
 <div id="comment-form" class="comment-create">
+  <!-- TODO: how to include error on redirect? -->
   <%= render 'shared/error_messages', entity: comment %>
+  <%= render 'shared/flash_messages' %>
 
   <div id="replying-to" style="display: none;">
     <%= t('comment.replying_to') %>
