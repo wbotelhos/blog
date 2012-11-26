@@ -22,7 +22,7 @@ describe Article, "#show" do
   end
 
   it "not display edit link" do
-    page.should_not have_link 'Editar Artigo'
+    page.should have_no_link 'Editar Artigo'
   end
 
   it "display permalink" do

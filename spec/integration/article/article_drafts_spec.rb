@@ -19,7 +19,7 @@ describe Article, "#drafts" do
     end
 
     it "do not display published record" do
-      page.should_not have_content article_published.title
+      page.should have_no_content article_published.title
     end
 
     it "display the draft record" do

@@ -34,7 +34,7 @@ describe User, 'session#new' do
     end
 
     it "displays error message" do
-      page.should_not have_content 'E-mail ou senha inválida!'
+      page.should have_no_content 'E-mail ou senha inválida!'
     end
   end
 

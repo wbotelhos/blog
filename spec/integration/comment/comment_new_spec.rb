@@ -134,9 +134,9 @@ describe Comment, "#show" do
       visit path
     end
 
-    it { page.should_not have_field 'comment_name' }
-    it { page.should_not have_field 'comment_email' }
-    it { page.should_not have_field 'comment_url' }
+    it { page.should have_no_field 'comment_name' }
+    it { page.should have_no_field 'comment_email' }
+    it { page.should have_no_field 'comment_url' }
     it { page.should have_field 'comment_body' }
   end
 end

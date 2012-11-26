@@ -50,7 +50,7 @@ describe Article, "#edit" do
       end
 
       it "hide publish button" do
-        page.should_not have_button 'Publicar'
+        page.should have_no_button 'Publicar'
       end
 
       it "show slug link" do

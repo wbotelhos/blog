@@ -22,7 +22,6 @@ describe Article do
       end
 
       it "should sanitize as slug style" do
-        p article
         article.slug.should == 'new-city-aimores-mg'
       end
     end

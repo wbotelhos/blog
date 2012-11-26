@@ -27,7 +27,7 @@ describe Article, "#index" do
       end
 
       it "do not display draft record" do
-        page.should_not have_content article_draft.title
+        page.should have_no_content article_draft.title
       end
 
       it "display the draft record" do
@@ -127,7 +127,7 @@ describe Article, "#index" do
           end
 
           it "show enabled next page" do
-            page.should_not have_selector 'li.next-page.disabled'
+            page.should have_no_selector 'li.next-page.disabled'
             page.should have_selector 'li.next-page'
           end
         end
@@ -140,12 +140,12 @@ describe Article, "#index" do
           end
 
           it "show enabled back page" do
-            page.should_not have_selector 'li.back-page.disabled'
+            page.should have_no_selector 'li.back-page.disabled'
             page.should have_selector 'li.back-page'
           end
 
           it "show enabled next page" do
-            page.should_not have_selector 'li.next-page.disabled'
+            page.should have_no_selector 'li.next-page.disabled'
             page.should have_selector 'li.next-page'
           end
 
@@ -157,7 +157,7 @@ describe Article, "#index" do
             end
 
             it "show enabled back page" do
-              page.should_not have_selector 'li.back-page.disabled'
+              page.should have_no_selector 'li.back-page.disabled'
               page.should have_selector 'li.back-page'
             end
 
@@ -199,7 +199,7 @@ describe Article, "#index" do
     end
 
     it "hide edit link" do
-      page.should_not have_link 'Editar Artigo'
+      page.should have_no_link 'Editar Artigo'
     end
   end
 end
