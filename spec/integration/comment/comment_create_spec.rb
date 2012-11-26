@@ -31,21 +31,6 @@ describe Comment, "#create" do
         page.should have_content 'comment'
       end
     end
-
-    context "with shadow data" do
-      before do
-        uncheck 'bot'
-        click_button 'Comentar'
-      end
-
-      it "redirects to the article page" do
-        current_path.should == path
-      end
-
-      it "displays error message" do
-        page.should have_content 'Escreva o seu comentário!'
-      end
-    end
   end
 
   context "when unlogged" do
@@ -90,8 +75,7 @@ describe Comment, "#create" do
         end
 
         it "displays error message" do
-          page.should have_content 'Escreva o seu comentário!'
-          #page.should have_content 'Nome deve ser preenchido!'
+          page.should have_content 'O campo "Nome" deve ser preenchido!'
         end
       end
 
@@ -108,8 +92,7 @@ describe Comment, "#create" do
         end
 
         it "displays error message" do
-          page.should have_content 'Escreva o seu comentário!'
-          #page.should have_content 'E-mail deve ser preenchido!'
+          page.should have_content 'O "E-mail" digitado é inválido!'
         end
       end
 
@@ -126,13 +109,13 @@ describe Comment, "#create" do
         end
 
         it "displays error message" do
-          page.should have_content 'Escreva o seu comentário!'
-          #page.should have_content 'Comentário deve ser preenchido!'
+          page.should have_content 'O campo "Comentário" deve ser preenchido!'
         end
       end
 
       # TODO: Jasmine
       context "with anti bot checked" do
+        it "keeps the form with submit false"
       end
     end
   end

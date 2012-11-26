@@ -23,7 +23,3 @@ pt-BR:
       user:
         create: 'Salvar'
         update: 'Atualizar'
-
-  errors:
-    messages:
-      blank: 'Este campo deve ser preenchido!'

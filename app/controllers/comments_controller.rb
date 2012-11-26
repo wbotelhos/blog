@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     if @comment.save
       send_mail
     else
-      flash[:alert] = t('flash.comments.create.alert')
+      flash[:alert] = get_errors
     end
 
     redirect_to article_path(@article.year, @article.month, @article.day, @article.slug)
@@ -33,6 +33,16 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def get_errors
+    error = ''
+
+    @comment.errors.messages.each do |message|
+      error += message[1][0] + "<br />"
+    end
+
+    error.html_safe
+  end
 
   def sanitize_comment(comment = params[:comment])
     comment[:name]  = nil if comment[:name]   == t('activerecord.attributes.comment.name')

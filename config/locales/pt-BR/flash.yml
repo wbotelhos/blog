@@ -23,7 +23,6 @@ pt-BR:
 
     comments:
       create:
-        alert: 'Escreva o seu comentário!'
         notice: 'Seu comentário foi adicionado!'
         not: 'Seu comentário foi adicionado! Só que não!'
 

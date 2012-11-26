@@ -17,3 +17,15 @@ pt-BR:
           email: 'E-mail *'
           url: 'URL'
           body: "Seu comentário *\n\n```python\ndef cute:\n  print 'Hello Markdown!'\n```"
+
+    errors:
+      models:
+        comment:
+          attributes:
+            name:
+              blank: 'O campo "Nome" deve ser preenchido!'
+            email:
+              blank: 'O campo "E-mail" deve ser preenchido!'
+              invalid: 'O "E-mail" digitado é inválido!'
+            body:
+              blank: 'O campo "Comentário" deve ser preenchido!'
