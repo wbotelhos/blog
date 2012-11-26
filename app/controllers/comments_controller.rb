@@ -35,8 +35,6 @@ class CommentsController < ApplicationController
   private
 
   def sanitize_comment(comment = params[:comment])
-    body = I18n.t('activerecord.attributes.comment.body')
-
     comment[:name]  = nil if comment[:name]   == t('activerecord.attributes.comment.name')
     comment[:email] = nil if comment[:email]  == t('activerecord.attributes.comment.email')
     comment[:url]   = nil if comment[:url]    == t('activerecord.attributes.comment.url')
