@@ -13,14 +13,11 @@ group :development do
   gem 'pry',           require: false
 end
 
-group :development, :test do
+group :test do
   gem 'capybara', '~> 1.1.3'
   gem 'database_cleaner'
-  gem 'rspec-rails', '~> 2.12.0'
-end
-
-group :test do
   gem 'factory_girl', '~> 4.1.0'
+  gem 'rspec-rails', '~> 2.12.0'
 end
 
 group :production do
