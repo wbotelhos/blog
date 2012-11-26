@@ -19,6 +19,8 @@ pt-BR:
           body: "Seu comentário *\n\n```python\ndef cute:\n  print 'Hello Markdown!'\n```"
 
     errors:
+      messages:
+        blank: 'O campo "%{attribute}" deve ser preenchido!'
       models:
         comment:
           attributes:
