@@ -7,7 +7,7 @@ FactoryGirl.define do
   end
 
   factory :category do
-    name 'name'
+    sequence(:name) { |i| "category-#{i}" }
   end
 
   factory :article do
