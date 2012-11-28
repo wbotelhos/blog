@@ -3,9 +3,9 @@ require 'spec_helper'
 
 describe Comment, "Article#show" do
   let(:user) { FactoryGirl.create :user }
-  let(:article) { FactoryGirl.create :article_published, user: user }
+  let!(:article) { FactoryGirl.create :article_published, user: user }
   let(:path) { article_path(article.year, article.month, article.day, article.slug) }
-  let(:comment) { FactoryGirl.create :comment, article: article }
+  let!(:comment) { FactoryGirl.create :comment, article: article }
 
   before { visit path }
 
@@ -15,20 +15,74 @@ describe Comment, "Article#show" do
       visit path
     end
 
-    it "edit fields are hidden"
+    context "edit form" do
+      context "on viewing" do
+        it "hide fields" do
+          within '.content' do
+            find_field('comment[name]').should_not be_visible
+            find_field('comment[email]').should_not be_visible
+            find_field('comment[url]').should_not be_visible
+            find_field('comment[body]').should_not be_visible
+            find_field('bot-edit').should_not be_visible
+          end
+        end
 
-    context "when double click on comment" do
-      it "show fields form"
+        it "hide update button" do
+          find_button('Atualizar').should_not be_visible
+        end
+
+        it "hide close link" do
+          find_link('Fechar').should_not be_visible
+        end
+      end
+
+      context "on edition", js: true do
+        before { page.execute_script("$('.text:first').dblclick();") }
+
+        it "display fields" do
+          within '.content' do
+            find_field('comment[name]').should be_visible
+            find_field('comment[email]').should be_visible
+            find_field('comment[url]').should be_visible
+            find_field('comment[body]').should be_visible
+            find_field('bot-edit').should be_visible
+          end
+        end
+
+        it "display update button" do
+          find_button('Atualizar').should be_visible
+        end
+
+        it "display close link" do
+          find_link('Fechar').should be_visible
+        end
+      end
     end
   end
 
   context "when unlogged" do
     before { visit path }
 
-    it "edit fields are hidden"
+    context "on try edition", js: true do
+      before { page.execute_script("$('.text:first').dblclick();") }
 
-    context "when double click on comment" do
-      it "do not show fields form"
+      it "not show fields" do
+        within '.content' do
+          find_field('comment[name]').should_not be_visible
+          find_field('comment[email]').should_not be_visible
+          find_field('comment[url]').should_not be_visible
+          find_field('comment[body]').should_not be_visible
+          find_field('bot-edit').should_not be_visible
+        end
+      end
+
+      it "not show update button" do
+        find_button('Atualizar').should_not be_visible
+      end
+
+      it "not show close link" do
+        find_link('Fechar').should_not be_visible
+      end
     end
   end
 end
