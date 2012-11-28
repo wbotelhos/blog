@@ -9,7 +9,7 @@
     <%= link_to "(#{t('comment.undo')})", 'javascript:void(0);', { onclick: 'removeReply();' } %>
   </div>
 
-  <%= form_for comment, url: new_comment_path(article), html: { onsubmit: 'return false;' } do |f| %>
+  <%= form_for comment, url: new_comment_path(article), html: { onsubmit: 'return l00s3r("bot");' } do |f| %>
     <%= f.hidden_field :comment_id %>
 
     <% if is_logged? %>
@@ -65,12 +65,6 @@
       }
     });
 
-    botBox.on('change', function(evt) {
-      if ($(this).is(':checked')) {
-        form.attr('onsubmit', 'return false;');
-      } else {
-        form.removeAttr('onsubmit');
-      }
-    });
+    initAntiBot('#bot')
   });
 </script>

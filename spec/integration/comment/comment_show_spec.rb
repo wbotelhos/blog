@@ -23,7 +23,7 @@ describe Comment, "Article#show" do
             find_field('comment[email]').should_not be_visible
             find_field('comment[url]').should_not be_visible
             find_field('comment[body]').should_not be_visible
-            find_field('bot-edit').should_not be_visible
+            find_field("bot-#{comment.id}").should_not be_visible
           end
         end
 
@@ -45,7 +45,7 @@ describe Comment, "Article#show" do
             find_field('comment[email]').should be_visible
             find_field('comment[url]').should be_visible
             find_field('comment[body]').should be_visible
-            find_field('bot-edit').should be_visible
+            find_field("bot-#{comment.id}").should be_visible
           end
         end
 
@@ -55,6 +55,42 @@ describe Comment, "Article#show" do
 
         it "display close link" do
           find_link('Fechar').should be_visible
+        end
+      end
+
+      context "anti bot", js: true do
+        before { page.execute_script("$('.text:first').dblclick();") }
+
+        it 'starts checked' do
+          find("#bot-#{comment.id}").should be_checked
+        end
+
+        it 'starts with bot log' do
+          find(%(label[for="bot-#{comment.id}"])).text.should == 'b0t?'
+        end
+
+        context "on uncheck" do
+          before { uncheck "bot-#{comment.id}" }
+
+          it 'log human message' do
+            find(%(label[for="bot-#{comment.id}"])).text.should == 'human! <3'
+          end
+
+          context "on check" do
+            before { check "bot-#{comment.id}" }
+
+            it 'log human message' do
+              find(%(label[for="bot-#{comment.id}"])).text.should == 'stupid! :/'
+            end
+
+            context "and submit" do
+              before { click_button 'Atualizar' }
+
+              it 'the form is blocked and log looser message' do
+                find(%(label[for="bot-#{comment.id}"])).text.should == 'b0t? l00s3r!'
+              end
+            end
+          end
         end
       end
     end
@@ -72,7 +108,7 @@ describe Comment, "Article#show" do
           find_field('comment[email]').should_not be_visible
           find_field('comment[url]').should_not be_visible
           find_field('comment[body]').should_not be_visible
-          find_field('bot-edit').should_not be_visible
+          find_field("bot-#{comment.id}").should_not be_visible
         end
       end
 

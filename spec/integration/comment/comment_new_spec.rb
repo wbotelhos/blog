@@ -156,6 +156,40 @@ describe Comment, "Article#show" do
     end
   end
 
+  context "anti bot", js: true do
+    it 'starts checked' do
+      find('#bot').should be_checked
+    end
+
+    it 'starts with bot log' do
+      find('#human label').text.should == 'b0t?'
+    end
+
+    context "on uncheck" do
+      before { uncheck 'bot' }
+
+      it 'log human message' do
+        find('#human label').text.should == 'human! <3'
+      end
+
+      context "on check" do
+        before { check 'bot' }
+
+        it 'log human message' do
+          find('#human label').text.should == 'stupid! :/'
+        end
+
+        context "and submit" do
+          before { click_button 'Comentar' }
+
+          it 'blocks and log looser message' do
+            find('#human label').text.should == 'b0t? l00s3r!'
+          end
+        end
+      end
+    end
+  end
+
   context "when logged" do
     before do
       login with: user.email

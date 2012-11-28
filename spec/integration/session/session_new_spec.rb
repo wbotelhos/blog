@@ -10,6 +10,7 @@ describe User, 'session#new' do
     before do
       fill_in 'email', with: 'invalid@mail.com'
       fill_in 'password', with: 'wrong-password'
+      uncheck 'bot'
       click_button 'Acessar'
     end
 
@@ -26,15 +27,46 @@ describe User, 'session#new' do
     before do
       fill_in 'email', with: user.email
       fill_in 'password', with: user.password
+      uncheck 'bot'
       click_button 'Acessar'
     end
 
-    it 'redirects to the same page' do
+    it 'redirects to index page' do
       current_path.should == root_path
     end
+  end
 
-    it "displays error message" do
-      page.should have_no_content 'E-mail ou senha inválida!'
+  context "anti bot", js: true do
+    it 'starts checked' do
+      find('#bot').should be_checked
+    end
+
+    it 'starts with bot log' do
+      find('#human label').text.should == 'b0t?'
+    end
+
+    context "on uncheck" do
+      before { uncheck 'bot' }
+
+      it 'log human message' do
+        find('#human label').text.should == 'human! <3'
+      end
+
+      context "on check" do
+        before { check 'bot' }
+
+        it 'log human message' do
+          find('#human label').text.should == 'stupid! :/'
+        end
+
+        context "and submit" do
+          before { click_button 'Acessar' }
+
+          it 'blocks and log looser message' do
+            find('#human label').text.should == 'b0t? l00s3r!'
+          end
+        end
+      end
     end
   end
 
