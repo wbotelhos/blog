@@ -2,6 +2,8 @@
 require 'spec_helper'
 
 describe User, 'session#new' do
+  let(:user) { FactoryGirl.create :user }
+
   before { visit login_path }
 
   context "with wrong password" do
@@ -21,8 +23,6 @@ describe User, 'session#new' do
   end
 
   context "with right password" do
-    let(:user) { FactoryGirl.create :user }
-
     before do
       fill_in 'email', with: user.email
       fill_in 'password', with: user.password
@@ -38,7 +38,16 @@ describe User, 'session#new' do
     end
   end
 
-  # TODO: Jasmine
-  context "with anti bot checked" do
+  context "when logged" do
+    before do
+      login with: user.email
+      visit login_path
+    end
+
+    context "and visit login page" do
+      it 'redirects to index page' do
+        current_path.should == root_path
+      end
+    end
   end
 end
