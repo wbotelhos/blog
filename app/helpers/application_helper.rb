@@ -48,7 +48,7 @@ module ApplicationHelper
     html <<     (gravatar(comment.email, { alt: '', title: comment.name }))
     html <<   '</div>'
 
-    html <<   '<div class="body">'
+    html <<   '<div class="content">'
     html <<     '<div class="name-date">'
     html <<       '<div class="anchors">'
     html <<         (link_to "##{comment.id}", anchor_full, { title: "#{I18n.t('comment.shortcut_to_this_comment')}" })

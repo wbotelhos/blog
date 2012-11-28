@@ -56,11 +56,11 @@
 #main .comment .name-date .anchors { float: left; }
 #main .comment .name-date .anchors a { margin-right: 5px; }
 #main .comment .name-date .anchors div { color: #999; display: inline; font: 12px verdana; margin-left: 10px; width: 99px; }
-#main .comment .body { float: left; margin-left: 8px; }
+#main .comment .content { float: left; margin-left: 8px; }
+#main .comment .content .text { clear: both; color: #444; font-size: 12px; width: 740px; }
+#main .comment .content .text pre { padding-left: 15px; }
+#main .comment .content .text p { margin-top: 10px; }
 #main .comment .reply-link { display: block; font-weight: bold; margin-bottom: 10px; }
-#main .comment .body .text { clear: both; color: #444; font-size: 12px; width: 740px; }
-#main .comment .body .text pre { padding-left: 15px; }
-#main .comment .body .text p { margin-top: 10px; }
 #main .comment form input[type="text"] { color: #111; margin-bottom: 7px; margin-right: 6px; padding: 2px; width: 234px; }
 #main .comment form input[type="submit"] { float: right; margin-right: 7px; }
 #main .comment form textarea { color: #111; width: 725px; }
