@@ -46,44 +46,44 @@ describe Comment, "Article#show" do
 
       context "on focus", js: true do
         it "display blank on name" do
-          page.execute_script("$('#comment_name').focus()")
+          page.execute_script("$('#comment_name').focus();")
           find_field('comment_name').value.should be_empty
         end
 
         it "display blank on e-mail" do
-          page.execute_script("$('#comment_email').focus()")
+          page.execute_script("$('#comment_email').focus();")
           find_field('comment_email').value.should be_empty
         end
 
         it "display blank on URL" do
-          page.execute_script("$('#comment_url').focus()")
+          page.execute_script("$('#comment_url').focus();")
           find_field('comment_url').value.should be_empty
         end
 
         it "display blank on body" do
-          page.execute_script("$('#comment_body').focus()")
+          page.execute_script("$('#comment_body').focus();")
           find_field('comment_body').value.should be_empty
         end
       end
 
       context "on blur", js: true do
         it "display label on name" do
-          page.execute_script("$('#comment_name').focus().blur()")
+          page.execute_script("$('#comment_name').focus().blur();")
           find_field('comment_name').value.should == 'Nome *'
         end
 
         it "display label on e-mail" do
-          page.execute_script("$('#comment_email').focus().blur()")
+          page.execute_script("$('#comment_email').focus().blur();")
           find_field('comment_email').value.should == 'E-mail *'
         end
 
         it "display label on URL" do
-          page.execute_script("$('#comment_url').focus().blur()")
+          page.execute_script("$('#comment_url').focus().blur();")
           find_field('comment_url').value.should == 'URL'
         end
 
         it "display label on body" do
-          page.execute_script("$('#comment_body').focus().blur()")
+          page.execute_script("$('#comment_body').focus().blur();")
           find_field('comment_body').value.should == "Seu comentário *\n\n```python\ndef cute:\n  print 'Hello Markdown!'\n```"
         end
       end
