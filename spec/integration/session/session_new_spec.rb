@@ -42,28 +42,28 @@ describe User, 'session#new' do
     end
 
     it 'starts with bot log' do
-      find('#human label').text.should == 'b0t?'
+      find('#human label').should have_content 'b0t?'
     end
 
     context "on uncheck" do
       before { uncheck 'bot' }
 
       it 'log human message' do
-        find('#human label').text.should == 'human! <3'
+        find('#human label').should have_content 'human! <3'
       end
 
       context "on check" do
         before { check 'bot' }
 
         it 'log human message' do
-          find('#human label').text.should == 'stupid! :/'
+          find('#human label').should have_content 'stupid! :/'
         end
 
         context "and submit" do
           before { click_button 'Acessar' }
 
           it 'blocks and log looser message' do
-            find('#human label').text.should == 'b0t? l00s3r!'
+            find('#human label').should have_content 'b0t? l00s3r!'
           end
         end
       end

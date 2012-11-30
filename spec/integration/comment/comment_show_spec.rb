@@ -66,28 +66,28 @@ describe Comment, "Article#show" do
         end
 
         it 'starts with bot log' do
-          find(%(label[for="bot-#{comment.id}"])).text.should == 'b0t?'
+          find(%(label[for="bot-#{comment.id}"])).should have_content 'b0t?'
         end
 
         context "on uncheck" do
           before { uncheck "bot-#{comment.id}" }
 
           it 'log human message' do
-            find(%(label[for="bot-#{comment.id}"])).text.should == 'human! <3'
+            find(%(label[for="bot-#{comment.id}"])).should have_content 'human! <3'
           end
 
           context "on check" do
             before { check "bot-#{comment.id}" }
 
             it 'log human message' do
-              find(%(label[for="bot-#{comment.id}"])).text.should == 'stupid! :/'
+              find(%(label[for="bot-#{comment.id}"])).should have_content 'stupid! :/'
             end
 
             context "and submit" do
               before { click_button 'Atualizar' }
 
               it 'the form is blocked and log looser message' do
-                find(%(label[for="bot-#{comment.id}"])).text.should == 'b0t? l00s3r!'
+                find(%(label[for="bot-#{comment.id}"])).should have_content 'b0t? l00s3r!'
               end
             end
           end

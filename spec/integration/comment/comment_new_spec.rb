@@ -93,7 +93,7 @@ describe Comment, "Article#show" do
   context "comment numbers" do
     context "with zero comments" do
       it "show no one text" do
-        find('.comments').text.should == 'Nenhum comentário, seja o primeiro! (:'
+        find('.comments').should have_content 'Nenhum comentário, seja o primeiro! (:'
       end
     end
 
@@ -103,7 +103,7 @@ describe Comment, "Article#show" do
       before { visit path }
 
       it "show the number of comments" do
-        find('.comments').text.should == '1 comentário'
+        find('.comments').should have_content '1 comentário'
       end
 
       it "show the number" do
@@ -115,7 +115,7 @@ describe Comment, "Article#show" do
       end
 
       it "show the time" do
-        find('.name-date span').text.should == 'menos de um minuto atrás'
+        find('.name-date span').should have_content 'menos de um minuto atrás'
       end
 
       it "show body" do
@@ -132,7 +132,7 @@ describe Comment, "Article#show" do
         before { visit path }
 
         it "show the number of comments" do
-          find('.comments').text.should == '2 comentários'
+          find('.comments').should have_content '2 comentários'
         end
 
         it "show response link" do
@@ -162,28 +162,28 @@ describe Comment, "Article#show" do
     end
 
     it 'starts with bot log' do
-      find('#human label').text.should == 'b0t?'
+      find('#human label').should have_content 'b0t?'
     end
 
     context "on uncheck" do
       before { uncheck 'bot' }
 
       it 'log human message' do
-        find('#human label').text.should == 'human! <3'
+        find('#human label').should have_content 'human! <3'
       end
 
       context "on check" do
         before { check 'bot' }
 
         it 'log human message' do
-          find('#human label').text.should == 'stupid! :/'
+          find('#human label').should have_content 'stupid! :/'
         end
 
         context "and submit" do
           before { click_button 'Comentar' }
 
           it 'blocks and log looser message' do
-            find('#human label').text.should == 'b0t? l00s3r!'
+            find('#human label').should have_content 'b0t? l00s3r!'
           end
         end
       end

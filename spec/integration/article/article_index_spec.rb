@@ -59,7 +59,8 @@ describe Article, "#index" do
       context "comment numbers" do
         context "with zero comments" do
           it "show no one text" do
-            find('li.comments a span').text.should == 'Nenhum comentário, seja o primeiro! (:'
+            find('li.comments a span').should have_content 'Nenhum comentário, seja o primeiro! (:'
+            find('li.comments a span').should have_content 'Nenhum comentário, seja o primeiro! (:'
           end
         end
 
@@ -70,7 +71,7 @@ describe Article, "#index" do
           end
 
           it "show the number of comments" do
-            find('li.comments a span').text.should == '1 comentário'
+            find('li.comments a span').should have_content '1 comentário'
           end
 
           context "with two comment" do
@@ -80,7 +81,7 @@ describe Article, "#index" do
             end
 
             it "show the number of comments" do
-              find('li.comments a span').text.should == '2 comentários'
+              find('li.comments a span').should have_content '2 comentários'
             end
           end
         end
@@ -92,7 +93,7 @@ describe Article, "#index" do
         end
 
         it "format as pt_BR" do
-          find('li.published a').text.should == '23/10/84 às 00:00'
+          find('li.published a').should have_content '23/10/84 às 00:00'
         end
       end
 

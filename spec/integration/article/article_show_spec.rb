@@ -42,7 +42,7 @@ describe Article, "#show" do
   context "comment numbers" do
     context "with zero comments" do
       it "show no one text" do
-        find('li.comments a span').text.should == 'Nenhum comentário, seja o primeiro! (:'
+        find('li.comments a span').should have_content 'Nenhum comentário, seja o primeiro! (:'
       end
     end
 
@@ -53,7 +53,7 @@ describe Article, "#show" do
       end
 
       it "show the number of comments" do
-        find('li.comments a span').text.should == '1 comentário'
+        find('li.comments a span').should have_content '1 comentário'
       end
 
       context "with two comment" do
@@ -63,7 +63,7 @@ describe Article, "#show" do
         end
 
         it "show the number of comments" do
-          find('li.comments a span').text.should == '2 comentários'
+          find('li.comments a span').should have_content '2 comentários'
         end
       end
     end
