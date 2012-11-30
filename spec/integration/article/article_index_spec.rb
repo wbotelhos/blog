@@ -99,7 +99,7 @@ describe Article, "#index" do
 
       context "without pagination" do
         it "show page indicator" do
-          page.should have_selector 'span', text: 'Página 1'
+          page.find('li.page').should have_content 'Página 1'
         end
 
         it "show disabled back page" do
@@ -120,7 +120,7 @@ describe Article, "#index" do
 
         context "first page" do
           it "show page indicator" do
-            page.should have_selector 'span', text: 'Página 1'
+            page.find('li.page').should have_content 'Página 1'
           end
 
           it "show disabled back page" do
@@ -137,7 +137,7 @@ describe Article, "#index" do
           before { click_link 'Mais antigos >' }
 
           it "show page indicator" do
-            page.should have_selector 'span', text: 'Página 2'
+            page.find('li.page').should have_content 'Página 2'
           end
 
           it "show enabled back page" do
@@ -154,7 +154,7 @@ describe Article, "#index" do
             before { click_link 'Mais antigos >' }
 
             it "show page indicator" do
-              page.should have_selector 'span', text: 'Página 3'
+              page.find('li.page').should have_content 'Página 3'
             end
 
             it "show enabled back page" do
