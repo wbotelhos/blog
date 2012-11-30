@@ -1,5 +1,4 @@
 function initAntiBot(selector) {
-  console.log(selector);
   $(selector).on('change', function() {
       var self  = $(this),
           form  = self.closest('form');
