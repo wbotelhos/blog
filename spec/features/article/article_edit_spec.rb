@@ -22,8 +22,8 @@ describe Article, "#edit" do
       it { page.should have_checked_field "category-#{category.id}" }
       it { page.should have_field 'article_body', text: article_published.body }
       it { page.should have_field "category-#{category.id}" }
-      # @quarantine: just do not pass, but 'title-1' is setted on field.
-      xit { page.should have_field 'article_title', text: article_published.title }
+      # TODO: using `page.should have_field 'article_title', text: article_published.title` does not work.
+      it { page.find('#article_title').value.should == article_published.title }
     end
 
     context "while draft" do
