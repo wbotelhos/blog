@@ -2,6 +2,8 @@
   <h2><%= t('article.new') %></h2>
 </div>
 
+<div class="clear"></div>
+
 <%= render 'shared/error_messages', entity: @article %>
 
 <%= form_for @article, html: { class: 'article-form' } do |f| %>

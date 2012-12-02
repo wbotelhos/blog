@@ -111,15 +111,15 @@
 #main .comment-create #human label { color: #888; font: 11px verdana; }
 #main .comment-create #replying-to { color: #444; margin-left: 1px; }
 #main .comment-create input[type="text"] { color: #BBB; margin-bottom: 7px; padding: 2px; width: 165px; }
-#main .comment-create textarea { color: #BBB; height: 150px; margin-bottom: 7px; padding: 2px; width: 515px; }
+#main .comment-create textarea { color: #BBB; height: 150px; width: 515px; }
 #main .comment-create input[type="submit"] { float: right; margin-right: 4px; }
-#main .comment-create #markdown-reference { color: #777; font: 11px verdana; margin-left: 3px; margin-top: -8px; }
+#main .comment-create #markdown-reference { color: #777; font: 11px verdana; margin-left: 3px; margin-top: -12px; }
 #main .comment-create #comment-submit { text-align: right; }
 #main .comment-create #comment-submit i { color: #222; margin-right: 6px; }
 
 /* Admin */
 #admin #title { height: 40px; }
-#admin #title h2 { background: url('../images/pin.png') no-repeat; color: #464646; float: left; font: 23px 'Helvetica Neue', sans-serif; padding-left: 35px; padding-top: 3px; }
+#admin #title h2 { background: url('../images/pin.png') no-repeat; color: #464646; float: left; font-size: 23px; padding-left: 35px; padding-top: 3px; }
 #admin #title #status { background-color: #999; border-radius: 5px; color: #FFF; float: left; font: bold 12px helvetica; margin-left: 25px; margin-top: 4px; padding: 5px 15px; text-align: center; }
 #admin #title #url { float: left; margin-left: 20px; margin-top: 7px; }
 #admin #title #url a { color: #444; font: 15px arial; letter-spacing: 1px; }
@@ -127,7 +127,6 @@
 #admin #title #url a.draft { background: url('../images/draft.png') no-repeat 0 1px; padding-left: 22px; }
 #admin #title #url a.link { background: url('../images/link.png') no-repeat 0 1px; padding-left: 22px; }
 
-#admin .article-form { margin-top: 20px; }
 #admin .article-form #fields { float: left; width: 715px; }
 #admin .article-form #fields #article_title { width: 700px; }
 #admin .article-form #fields #article_body { margin-top: 10px; min-height: 350px; width: 700px; }
