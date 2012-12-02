@@ -27,8 +27,8 @@
             <%= t('navigation.article.title') %>
           </h2>
 
-          <ul>
-             <li><%= link_to t('navigation.article.new'), new_article_path, { id: 'new-article' } %></li>
+          <ul class="article-menu">
+             <li><%= link_to t('navigation.article.new'), new_article_path %></li>
              <li><%= link_to t('navigation.article.drafts'), drafts_articles_path %></li>
           </ul>
 
@@ -37,8 +37,8 @@
             <%= t('navigation.user.title') %>
           </h2>
 
-          <ul>
-             <li><%= link_to t('navigation.user.new'), new_user_path, { id: 'new-user' } %></li>
+          <ul class="user-menu">
+             <li><%= link_to t('navigation.user.new'), new_user_path %></li>
              <li><%= link_to t('navigation.user.list'), users_path %></li>
           </ul>
 
@@ -47,7 +47,7 @@
             <%= t('navigation.lab.title') %>
           </h2>
 
-          <ul>
+          <ul class="lab-menu">
              <li><%= link_to t('navigation.lab.new'), new_lab_path %></li>
              <li><%= link_to t('navigation.lab.drafts'), drafts_labs_path %></li>
           </ul>
