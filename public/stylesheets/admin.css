@@ -6,9 +6,9 @@
 #sidebar-admin ul li strong { background-color: #AF81C3; border-radius: 4px; color: #FFF; display: inline-block; font-size: 8px; padding: 1px 4px; text-shadow: none; }
 
 /* Content */
-#admin { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 10px; width: 928px; }
+#content-admin { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 10px; width: 928px; }
 
 /* Index */
-#admin #welcome { margin: 170px auto 0; overflow: auto; width: 500px; }
-#admin #welcome h1 { font: bold 30px verdana; margin: 0 auto; text-align: center; width: 400px; }
-#admin #welcome p { font: 15px verdana; margin: 10px auto 0; text-align: center; width: 300px; }
+#content-admin #welcome { margin: 170px auto 0; overflow: auto; width: 500px; }
+#content-admin #welcome h1 { font: bold 30px verdana; margin: 0 auto; text-align: center; width: 400px; }
+#content-admin #welcome p { font: 15px verdana; margin: 10px auto 0; text-align: center; width: 300px; }
