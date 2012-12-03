@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  <%= t('navigation.about') %>
+<% end %>
+
 <div id="about">
   <div id="bio">
     <%= simple_format @author.bio %>

@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  <%= @article.title %>
+<% end %>
+
 <article class="article">
   <div class="date">
     <span class="number"><%= t('article.published_at', time: l(@article.published_at, format: :day)) %></span>
