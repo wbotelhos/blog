@@ -4,6 +4,8 @@ a:hover { color: #48A5D4; }
 
 body { background: url('../images/background.png') #E7E7E7; font: normal 13px 'Lucida Grande', Helvetica, arial, sans-serif; line-height: 1.6; }
 
+footer { margin: 0 auto; overflow: auto; padding-bottom: 15px; padding-top: 10px; text-align: center; width: 1100px; }
+
 h1, h2, h3 { font-family: 'helvetica', arial, sans-serif }
 
 input[type="submit"], input[type="button"] { background-color: #AF81C3; border: none; border-radius: 3px; color: #FFF; cursor: pointer; font: 12px verdana; letter-spacing: .4px; padding: 7px 30px; }
@@ -34,9 +36,6 @@ ul { list-style: none; padding-left: 0; }
 
 /* Error */
 .error-messages { background-color: #F2DEDE; border-radius: 4px; color: #B94A48; margin-bottom: 10px; margin-top: 10px; padding: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); max-width: 100%; }
-
-/* Footer */
-#footer { margin: 0 auto; overflow: auto; padding-bottom: 15px; padding-top: 10px; text-align: center; width: 1100px; }
 
 /* Sidebar */
 #sidebar #coffee { background: url("../images/coffee.png") no-repeat scroll 6px 2px #DDCC55; border: 1px solid #D9C640; border-radius: 4px; color: #FFF; display: block; float: right; font: bold 10px helvetica; letter-spacing: 0.9px; margin-bottom: 10px; margin-right: 36px; padding: 7px 5px 4px 28px; text-decoration: none; }
