@@ -1,6 +1,7 @@
 # coding: utf-8
 
 class CommentsController < ApplicationController
+  before_filter :check_csrf, only: [:create, :update]
   before_filter :require_login, only: [:update]
 
   def create
@@ -61,5 +62,10 @@ class CommentsController < ApplicationController
       logger.error "Was not possible to send mail: #{e}"
       flash[:notice] = t('comment.email_not_sent')
      end
+  end
+
+  def check_csrf
+    logger.warn 'B0T attacking, doing nothing...'
+    render nothing: true
   end
 end
