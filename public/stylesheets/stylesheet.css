@@ -2,12 +2,8 @@
 
 @IMPORT url('normalize.css');
 @IMPORT url('common.css');
-@IMPORT url('article.css');
-@IMPORT url('pygments.css');
 @IMPORT url('top.css');
-@IMPORT url('login.css');
-@IMPORT url('error.css');
-@IMPORT url('admin.css');
-@IMPORT url('user.css');
-@IMPORT url('lab.css');
+@IMPORT url('pygments.css');
 @IMPORT url('font-awesome.css');
+@IMPORT url('error.css');
+@IMPORT url('lab.css');
