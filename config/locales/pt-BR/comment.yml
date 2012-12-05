@@ -11,6 +11,7 @@ pt-BR:
     email_not_verified: 'E-mail não autorizado para recepção de mensagem!'
     email_not_sent: 'Seu comentário foi adicionado! Porém ninguém foi notificado.'
 
+    other: 'Comentários'
     sending: 'Enviando...'
 
     reply: 'Responder'
