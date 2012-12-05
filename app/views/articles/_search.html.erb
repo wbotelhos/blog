@@ -1,6 +1,7 @@
 <%= form_tag search_articles_path, method: :get, class: 'search' do %>
   <p>
     <%= search_field_tag :query %>
+    <%= label_tag :query %>
     <%= submit_tag t('form.buttons.search') %>
   </p>
 <% end %>
