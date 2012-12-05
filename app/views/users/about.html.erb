@@ -1,11 +1,6 @@
 <% content_for :title do %><%= t('navigation.about') %><% end %>
 
 <div id="about">
-  <div id="bio">
-    <%= simple_format @author.bio %>
-  </div>
-
-  <div id="photo">
-    <%= gravatar @author.email, { alt: '', heigth: 160, size: 160, title: @author.name, width: 160 } %>
-  </div>
+  <%= simple_format @author.bio %>
+  <%= gravatar @author.email, { alt: '', heigth: 160, size: 160, title: @author.name, width: 160 } %>
 </div>
