@@ -1,6 +1,6 @@
 <div id="drafts">
   <% @articles.each do |article| %>
-    <article class="article">
+    <article>
       <h2 class="title"><%= link_to article.title, edit_article_path(article) %></h2>
 
       <ul class="links">

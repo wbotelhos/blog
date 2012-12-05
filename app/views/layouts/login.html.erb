@@ -17,7 +17,7 @@
   </head>
   <body>
     <div id="wrapper">
-      <div id="top">
+      <header>
         <div id="logo">
           <h1><%= link_to CONFIG['author'], root_path %></h2>
         	<h3><%= CONFIG['description'] %></h3>
@@ -31,7 +31,7 @@
             </ul>
           </nav>
         <% end %>
-      </div>
+      </header>
 
       <div id="container-login">
         <%= render 'shared/flash_messages' %>

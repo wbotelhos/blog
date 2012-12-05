@@ -1,27 +1,79 @@
-/* Sidebar */
-#sidebar-admin { float: left; padding: 10px; width: 130px; }
-#sidebar-admin h2 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; color: #333; font: bold 14px verdana; margin-bottom: 2px; padding-bottom: 7px; padding-top: 7px; }
-#sidebar-admin ul { margin-bottom: 28px; }
-#sidebar-admin ul li { border-bottom: 1px dotted #F1F1F1; padding: 4px 0; }
-#sidebar-admin ul li strong { background-color: #AF81C3; border-radius: 4px; color: #FFF; display: inline-block; font-size: 8px; padding: 1px 4px; text-shadow: none; }
+/* sidebar */
+aside { float: left; padding: 10px; width: 130px; }
+aside h2 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; color: #333; font: bold 14px verdana; margin-bottom: 2px; padding-bottom: 7px; padding-top: 7px; }
+aside ul { margin-bottom: 28px; }
+aside ul li { border-bottom: 1px dotted #F1F1F1; padding: 4px 0; }
+aside ul li strong { background-color: #AF81C3; border-radius: 4px; color: #FFF; display: inline-block; font-size: 8px; padding: 1px 4px; text-shadow: none; }
 
-/* Content */
-#content-admin { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 10px; width: 928px; }
+/* content */
+section { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 10px; width: 928px; }
 
-/* Index */
-#content-admin #welcome { margin: 170px auto 0; overflow: auto; width: 500px; }
-#content-admin #welcome h1 { font: bold 30px verdana; margin: 0 auto; text-align: center; width: 400px; }
-#content-admin #welcome p { font: 15px verdana; margin: 10px auto 0; text-align: center; width: 300px; }
+/* index */
+#welcome { margin: 170px auto 0; overflow: auto; width: 500px; }
+#welcome h1 { font: bold 30px verdana; margin: 0 auto; text-align: center; width: 400px; }
+#welcome p { font: 15px verdana; margin: 10px auto 0; text-align: center; width: 300px; }
 
-/* User */
-#content-admin .user-form #fields { float: left; width: 715px; }
-#content-admin .user-form #fields label { display: block; font: bold 13px helvetica; margin-bottom: 3px; margin-left: 1px; margin-top: 10px; width: 100%; }
-#content-admin .user-form #fields p input { width: 700px; }
-#content-admin .user-form #fields textarea { min-height: 313px; width: 700px; }
+/* new: user */
+.user-form #fields { float: left; width: 715px; }
+.user-form #fields label { display: block; font: bold 13px helvetica; margin-bottom: 3px; margin-left: 1px; margin-top: 10px; width: 100%; }
+.user-form #fields p input { width: 700px; }
+.user-form #fields textarea { min-height: 313px; width: 700px; }
 
-#content-admin #create .save { margin-left: 50px; }
-#content-admin #update .update { margin-left: 35px; }
+#controls .save { margin-left: 50px; }
+#controls .publish { background-color: #FF4D4D; font: 11px arial; letter-spacing: 1px; margin-left: 72px; margin-top: 8px; padding: 4px; }
+#controls .publish:hover { background-color: #F00; }
 
-#content-admin #users .user h2.name { margin-left: 10px; margin-top: 12px; }
-#content-admin #users .user h2.name a { color: #444; font-size: 22px; }
-#content-admin #users .user h2.name a:hover { color: #85B839; }
+/* index: user */
+#authors h2 { margin-left: 10px; }
+#authors h2 a { color: #444; font-size: 22px; }
+#authors h2 a:hover { color: #85B839; }
+
+/* edit: article */
+#title { height: 40px; }
+#title h2 { background: url('../images/pin.png') no-repeat; color: #464646; float: left; font-size: 23px; padding-left: 35px; padding-top: 3px; }
+
+/* edit: article - status url */
+#title a { background: url('../images/link.png') no-repeat 0 1px; color: #444; float: left; font: 15px arial; letter-spacing: 1px; margin-left: 20px; margin-top: 30px; padding-left: 22px; }
+#title a:hover { color: #85B839; }
+#title a.draft { background: url('../images/draft.png') no-repeat 0 1px; padding-left: 22px; }
+#title #status { background-color: #999; border-radius: 5px; color: #FFF; float: left; font: bold 12px helvetica; margin-left: 25px; margin-top: 27px; padding: 5px 15px; text-align: center; }
+
+/* new: article */
+.article-form #fields { float: left; width: 715px; }
+.article-form #fields #article_title { width: 700px; }
+.article-form #fields #article_body { margin-top: 10px; min-height: 350px; width: 700px; }
+
+/* new, edit: article; */
+#controls { float: right; margin-bottom: 20px; padding-left: 5px; padding-right: 5px; width: 200px; }
+#controls h3 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; font: bold 14px verdana; margin-bottom: 10px; padding-bottom: 7px; padding-top: 7px; }
+#controls #categories { margin-top: 11px; }
+#controls #categories ul li input { cursor: pointer; }
+#controls #categories ul li label { cursor: pointer; }
+#controls #categories ul li label:hover { color: #8D50A7; }
+
+/* new: article, user */
+#controls .save { margin-left: 49px; }
+
+/* edit: article */
+#controls .update { margin-left: 40px; }
+
+/* draft: article */
+#drafts article h2 { margin-left: 10px; margin-top: 12px; }
+#drafts article h2 a { color: #444; font-size: 22px; }
+#drafts article h2 a:hover { color: #85B839; }
+
+#drafts article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
+#drafts article .links li { float: left; font-size: 12px; line-height: 23px; padding-right: 10px; }
+#drafts article .links .edit { background: url('../images/edit.png') 0px 3px no-repeat; padding-left: 23px; }
+
+#drafts article { float: left; margin-bottom: 17px; position: relative; width: 928px; } /* same the main + 70 */
+#drafts article + article { border-top: 1px solid #DDD; padding-top: 5px; }
+#drafts article .body { color: #222; margin-top: 12px; padding-left: 10px; }
+#drafts article .body p { margin-bottom: 10px; }
+
+#drafts article .footer { height: 40px; margin-top: 15px; }
+#drafts article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; padding-top: 3px; }
+
+#about { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: 173px; margin: 50px auto 0; padding: 12px; width: 800px; }
+#about p { float: left; font: 14px/2 verdana; margin-left: 10px; margin-top: 25px; }
+#about img { background-color: #EEE; border-radius: 2px; display: block; float: right; height: 160px; margin-right: 10px; margin-top: 5px; width: 160px; }

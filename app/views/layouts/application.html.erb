@@ -20,17 +20,17 @@
   </head>
   <body>
     <div id="wrapper">
-      <div id="top">
+      <header>
         <%= render 'shared/header' %>
         <%= render 'shared/flash_messages' %>
-      </div>
+      </header>
 
       <div id="container">
-        <section id="content">
+        <section>
           <%= yield %>
         </section>
 
-        <aside id="sidebar">
+        <aside>
           <%= render 'articles/search' %>
           <%= render sidebar.articles %>
           <%= render sidebar.categories %>
