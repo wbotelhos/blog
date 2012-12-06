@@ -98,9 +98,9 @@ module ApplicationHelper
 
   def logo
     h1 = content_tag :h1, link_to(CONFIG['author'], root_path)
-    h3 = content_tag :h3, CONFIG['description']
+    pe = content_tag :p, CONFIG['description']
 
-    content_tag :div, h1 + h3, id: 'logo'
+    content_tag :div, h1 + pe, id: 'logo'
   end
 
   private
