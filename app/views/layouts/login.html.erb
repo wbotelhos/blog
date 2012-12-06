@@ -22,15 +22,6 @@
           <h1><%= link_to CONFIG['author'], root_path %></h2>
         	<h3><%= CONFIG['description'] %></h3>
         </div>
-
-        <% if is_logged? %>
-          <nav>
-            <ul>
-                <li><%= link_to t('navigation.logout'), logout_path %></li>
-                <li><%= link_to t('navigation.admin'), admin_path %></li>
-            </ul>
-          </nav>
-        <% end %>
       </header>
 
       <div id="container-login">
