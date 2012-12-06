@@ -13,17 +13,9 @@
 
 <div id="social">
   <ul>
-    <li>
-      <%= link_to image_tag('feed-big.png'), feed_path, { target: '_blank' } %>
-    </li>
-    <li>
-      <%= link_to image_tag('linkedin-big.png'), 'http://linkedin.com/in/wbotelhos', { target: '_blank' } %>
-    </li>
-    <li>
-      <%= link_to image_tag('twitter-big.png'), 'http://twitter.com/wbotelhos', { target: '_blank' } %>
-    </li>
-    <li>
-      <%= link_to image_tag('github-big.png'), 'http://github.com/wbotelhos', { target: '_blank' } %>
-    </li>
+    <li><%= link_to image_tag('feed-big.png'), feed_path, target: '_blank' %></li>
+    <li><%= link_to image_tag('linkedin-big.png'), "http://linkedin.com/in/#{CONFIG['nick']}", target: '_blank' %></li>
+    <li><%= link_to image_tag('twitter-big.png'), "http://twitter.com/#{CONFIG['nick']}", target: '_blank' %></li>
+    <li><%= link_to image_tag('github-big.png'), "http://github.com/#{CONFIG['nick']}", target: '_blank' %></li>
   </ul>
 </div>
