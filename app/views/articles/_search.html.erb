@@ -1,4 +1,4 @@
-<%= form_tag search_articles_path, method: :get, class: 'search' do %>
+<%= form_tag search_articles_path, method: :get, class: 'search', role: 'search' do %>
   <p>
     <%= search_field_tag :query %>
     <%= label_tag :query %>

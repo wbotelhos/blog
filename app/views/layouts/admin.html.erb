@@ -17,17 +17,17 @@
   </head>
   <body>
     <div id="wrapper">
-      <header>
+      <header role="banner">
         <%= render 'shared/header' %>
         <%= render 'shared/flash_messages' %>
       </header>
 
       <div id="container">
-        <aside>
+        <aside role="complementary">
           <%= render sidebar.administrator %>
         </aside>
 
-        <section>
+        <section role="main">
           <%= yield %>
         </section>
       </div>
