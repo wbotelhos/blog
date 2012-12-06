@@ -17,6 +17,10 @@ describe SidebarPresenter do
     its(:admin) { should eql(partial: 'sidebar/admin') }
   end
 
+  context "showing administrator bar" do
+    its(:administrator) { should eql(partial: 'sidebar/administrator') }
+  end
+
   context "showing articles bar" do
      its(:articles) { should eql(partial: 'sidebar/articles', locals: { articles: articles }) }
   end
