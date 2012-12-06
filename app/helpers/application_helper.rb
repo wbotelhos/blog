@@ -96,6 +96,13 @@ module ApplicationHelper
     html
   end
 
+  def logo
+    h1 = content_tag :h1, link_to(CONFIG['author'], root_path)
+    h3 = content_tag :h3, CONFIG['description']
+
+    content_tag :div, h1 + h3, id: 'logo'
+  end
+
   private
 
   def link(url, label, target = '', clazz = '')
