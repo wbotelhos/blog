@@ -1,9 +1,9 @@
 <h2>
   <i class="icon-link icon-large"></i>
-  <%= t('link.title') %>
+  <%= t 'link.title' %>
 </h2>
 
-<ul id="links">
+<ul>
   <% links.each do |link| %>
     <li>
       <%= link_to link.name, link.url, { target: '_blank' } %>
