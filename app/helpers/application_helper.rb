@@ -96,6 +96,11 @@ module ApplicationHelper
     html
   end
 
+
+  def article_slug(article = article)
+    article_path(article.year, article.month, article.day, article.slug)
+  end
+
   private
 
   def link(url, label, target = '', clazz = '')
