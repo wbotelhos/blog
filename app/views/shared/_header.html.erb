@@ -2,12 +2,12 @@
 
 <nav role="navigation">
   <ul>
-    <% if is_logged? %>
-      <li><%= link_to t('navigation.logout'), logout_path %></li>
-      <li><%= link_to t('navigation.admin'), admin_path %></li>
-    <% end %>
-    <li><%= link_to t('navigation.about'), about_path %></li>
     <li><%= link_to t('navigation.lab.title'), labs_path %></li>
+    <li><%= link_to t('navigation.about'), about_path %></li>
+    <% if is_logged? %>
+      <li><%= link_to t('navigation.admin'), admin_path %></li>
+      <li><%= link_to t('navigation.logout'), logout_path %></li>
+    <% end %>
   </ul>
 </nav>
 

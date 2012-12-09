@@ -7,7 +7,7 @@ header #logo p { color: #999; font: bold 15px arial; margin-top: -2px; text-shad
 
 header nav { float: right; margin-top: 20px; }
 header nav ul { border-bottom: 1px solid #D7D7D7; border-top: 1px solid #D7D7D7; height: 33px; overflow: visible; padding-top: 6px; text-shadow: 0 1px 0 #FFF; }
-header nav ul li { float: right; padding-left: 10px; padding-right: 10px; }
+header nav ul li { display: inline; padding-left: 10px; padding-right: 10px; }
 header nav ul li a { font: bold 14px arial; letter-spacing: 0.4px; text-align: center; text-shadow: 1px 1px 1px #FFF; text-transform: uppercase; }
 header nav ul li a.selected { color: #1982B3; border-bottom: 3px solid #1982B3; }
 
