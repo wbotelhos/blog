@@ -3,25 +3,29 @@
 <html>
   <head>
     <title>HTTP 500 :(</title>
-    <link type="text/css" href="/stylesheets/stylesheet.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="/stylesheets/application.css" />
+    <link type="text/css" rel="stylesheet" href="/stylesheets/public.css" />
+    <link type="text/css" rel="stylesheet" href="/stylesheets/error.css" />
   </head>
   <body>
     <div id="wrapper">
-      <div id="top">
+      <header role="banner">
         <div id="logo">
           <h1><a href="http://wbotelhos.com.br">Washington Botelho</a></h1>
-          <h3>Se voc&ecirc; n&atilde;o tem dom, tenha vontade!</h3>
+          <p>Se voc&ecirc; n&atilde;o tem dom, tenha vontade!</p>
         </div>
+      </header>
+
+      <div id="error">
+        <section role="main">
+          <div>500</div>
+          <h2>Ocorreu um erro, mas na minha m&aacute;quina funciona.</h2>
+          <h3>&Eacute; uma cilada Bino!</h3>
+          <p>Tente <strong><a href="http://wbotelhos.com.br">voltar para o blog</a></strong></p>
+        </section>
       </div>
 
-      <div id="content-error">
-        <h1>500</h1>
-        <h2>Ocorreu um erro, mas na minha m&aacute;quina funciona.</h2>
-        <h3>&Eacute; uma cilada Bino!</h3>
-        <p>Tente <strong><a href="http://wbotelhos.com.br">voltar para o blog</a></strong></p>
-      </div>
-
-      <footer id="footer">
+      <footer>
         &copy; 2012 <a href="http://wbotelhos.com.br">Washington Botelho</a>
       </footer>
     </div>

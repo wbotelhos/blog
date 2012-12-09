@@ -1,5 +1,5 @@
 /* content */
-section { float: left; border-right: 2px solid #DDD; padding: 10px; width: 858px; }
+#container section { float: left; border-right: 2px solid #DDD; padding: 10px; width: 858px; }
 
 /* result */
 #no-article { color: #777; font: bold 20px verdana; margin: 170px auto 0; overflow: auto; width: 300px; }
