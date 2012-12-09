@@ -10,12 +10,12 @@ article { float: left; margin-bottom: 17px; position: relative; width: 858px }
 article + article { border-top: 1px solid #DDD; padding-top: 5px; }
 
 /* index, show: body */
-article .body { color: #222; margin-top: 12px; padding-left: 10px; }
-article .body p { margin-bottom: 10px; }
+article .body { color: #202020; margin-top: 12px; padding-left: 10px; }
+article .body p { font-size: 14px; margin-bottom: 10px; }
 article .body p.read-more { margin-top: 25px; text-align: center; width: 100%; }
-article .body p.read-more a { background-color: #AF81C3; border-radius: 3px; color: #FFF; padding: 7px 30px; text-align: center; text-shadow: none; }
+article .body p.read-more a { background-color: #AF81C3; border-radius: 3px; color: #FFF; font-size: 12px; padding: 7px 30px; }
 article .body p.read-more a:hover { background-color: #8D50A7; }
-article .body h3 { font-size: 16px; letter-spacing: .5px; margin-bottom: 5px; margin-top: 12px; }
+article .body h3 { font-size: 16px; letter-spacing: .5px; margin-bottom: 0; }
 article .body ul { margin-bottom: 10px; }
 article .body ul li { list-style: inside; margin-left: 5px; }
 article .body .align-center { display: block; margin: 0 auto; }
@@ -23,13 +23,13 @@ article .body .align-left { display: inline; float: left; margin: 0 7px 2px 0; p
 article .body .align-right { display: inline; float: right; margin: 0 0 2px 7px; padding: 4px; }
 
 /* index, show: title */
-article h2.title { letter-spacing: .5px; margin-left: 33px; margin-top: 12px; }
-article h2.title a { color: #444; font-size: 22px; }
+article h2.title { letter-spacing: .5px; margin-left: 33px; margin-top: 10px; }
+article h2.title a { color: #444; }
 article h2.title a:hover { color: #85B839; }
 
 /* index, show: links */
 article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
-article .links li { float: left; font-size: 12px; line-height: 23px; padding-right: 10px; }
+article .links li { float: left; font-size: 13px; line-height: 23px; padding-right: 10px; }
 article .links li:after { content: '|'; padding-left: 10px; }
 article .links .comments { background: url('../images/comment.png') 0px 4px no-repeat; padding-left: 20px; }
 article .links .edit { background: url('../images/edit.png') 0px 3px no-repeat; padding-left: 23px; }
@@ -38,15 +38,15 @@ article .links .published { background: url('../images/calendar.png') 0px 4px no
 
 /* index, show: cloud */
 article .date { background: url('../images/balloon.png') 1px 0 no-repeat; font-family: arial; font-weight: bold; height: 54px; left: -47px; position: absolute; text-align: center; width: 74px; }
-article .date .number { font-size: 13px; position: relative; top: 7px; }
-article .date .month { display: block; font-size: 13px; text-transform: uppercase; }
+article .date .number { font-size: 13px; position: relative; top: 4px; }
+article .date .month { display: block; font-size: 12px; position: relative; text-transform: uppercase; top: -3px; }
 
 /* show: footer */
 article .footer { height: 40px; margin-top: 15px; }
-article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; padding-top: 3px; }
+article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; font-size: 12px; padding-top: 3px; }
 
 /* show: comment header */
-#comments { float: left; font: bold 20px verdana; margin-bottom: 20px; margin-left: 20px; margin-top: 25px; }
+#comments { float: left; font: bold 19px verdana; margin-bottom: 33px; margin-left: 20px; }
 
 /* show: comment */
 .comment { border: 1px solid #EAEAEA; border-radius: 2px; clear: both; float: right; height: auto; margin-bottom: 10px; padding: 10px; width: 835px; }
@@ -107,7 +107,7 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .comment.level-5 form textarea { width: 640px; }
 
 /* show: comment form */
-.comment-create { clear: both; margin: 0 auto 50px; padding-top: 15px; width: 527px; }
+.comment-create { clear: both; margin: 0 auto 50px; padding-top: 4px; width: 527px; }
 .comment-create .alert { background-color: #F2DEDE; border-radius: 4px; color: #B94A48; margin-bottom: 5px; padding: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
 .comment-create #human { float: left; margin-left: 3px; margin-top: 4px; }
 .comment-create #human label { color: #888; font: 11px verdana; }
@@ -131,13 +131,8 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 
 /* sidebar */
 aside { float: right; padding: 10px; width: 200px; }
-aside h2 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; clear: both; color: #333; font: bold 14px arial; margin-bottom: 2px; padding-bottom: 7px; padding-top: 9px; }
-aside ul { margin-bottom: 28px; }
-aside ul li { border-bottom: 1px dotted #F1F1F1; padding: 4px 0; }
-aside ul li a { font: 12px arial; }
-aside ul li strong { background-color: #AF81C3; border-radius: 4px; color: #FFF; display: inline-block; font-size: 8px; padding: 1px 4px; text-shadow: none; }
 
-aside #coffee { background: url("../images/coffee.png") no-repeat scroll 6px 2px #DDCC55; border: 1px solid #D9C640; border-radius: 4px; color: #FFF; display: block; float: right; font: bold 10px helvetica; letter-spacing: 0.9px; margin-bottom: 10px; margin-right: 36px; padding: 7px 5px 4px 28px; text-decoration: none; }
+aside #coffee { background: url("../images/coffee.png") no-repeat scroll 6px 2px #DDCC55; border: 1px solid #D9C640; border-radius: 4px; color: #FFF; display: block; float: right; font: bold 10px helvetica; letter-spacing: 0.9px; margin-bottom: 17px; margin-right: 36px; padding: 7px 5px 4px 28px; text-decoration: none; }
 
 aside .search { margin-bottom: 10px; }
 aside .search input[type="search"] { background: url('../images/search.png') no-repeat 4px 5px #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #000; font-size: 13px; height: 24px; opacity: .7; padding-left: 25px; width: 173px; }

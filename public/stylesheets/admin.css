@@ -1,9 +1,5 @@
 /* sidebar */
 aside { float: left; padding: 10px; width: 130px; }
-aside h2 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; color: #333; font: bold 14px verdana; margin-bottom: 2px; padding-bottom: 7px; padding-top: 7px; }
-aside ul { margin-bottom: 28px; }
-aside ul li { border-bottom: 1px dotted #F1F1F1; padding: 4px 0; }
-aside ul li strong { background-color: #AF81C3; border-radius: 4px; color: #FFF; display: inline-block; font-size: 8px; padding: 1px 4px; text-shadow: none; }
 
 /* content */
 section { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 10px; width: 928px; }
@@ -15,12 +11,12 @@ section { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 
 
 /* new: user */
 .user-form #fields { float: left; width: 715px; }
-.user-form #fields label { display: block; font: bold 13px helvetica; margin-bottom: 3px; margin-left: 1px; margin-top: 10px; width: 100%; }
+.user-form #fields label { color: #AAA; font-family: helvetica; font-size: 14px; margin-left: 6px; margin-top: 7px; position: absolute; }
 .user-form #fields p input { width: 700px; }
 .user-form #fields textarea { min-height: 313px; width: 700px; }
 
 #controls .save { margin-left: 50px; }
-#controls .publish { background-color: #FF4D4D; font: 11px arial; letter-spacing: 1px; margin-left: 72px; margin-top: 8px; padding: 4px; }
+#controls .publish { background-color: #FF4D4D; font: 11px arial; letter-spacing: 1px; margin-left: 72px; margin-top: 8px; padding: 6px 9px 4px; }
 #controls .publish:hover { background-color: #F00; }
 
 /* index: user */
@@ -29,7 +25,7 @@ section { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 
 #authors h2 a:hover { color: #85B839; }
 
 /* edit: article */
-#title { height: 40px; }
+#title { height: 78px; }
 #title h2 { background: url('../images/pin.png') no-repeat; color: #464646; float: left; font-size: 23px; padding-left: 35px; padding-top: 3px; }
 
 /* edit: article - status url */
@@ -47,8 +43,10 @@ section { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 
 #controls { float: right; margin-bottom: 20px; padding-left: 5px; padding-right: 5px; width: 200px; }
 #controls h3 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; font: bold 14px verdana; margin-bottom: 10px; padding-bottom: 7px; padding-top: 7px; }
 #controls #categories { margin-top: 11px; }
-#controls #categories ul li input { cursor: pointer; }
-#controls #categories ul li label { cursor: pointer; }
+#controls #categories ul li { padding-left: 3px; padding-top: 2px; }
+#controls #categories ul li:hover { border-radius: 4px; background-color: #EEE; }
+#controls #categories ul li input { cursor: pointer; float: left; margin-right: 5px; margin-top: 2px; padding-top: 5px; }
+#controls #categories ul li label { cursor: pointer; display: block; font-size: 12px; padding-bottom: 2px; }
 #controls #categories ul li label:hover { color: #8D50A7; }
 
 /* new: article, user */
