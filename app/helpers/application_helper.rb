@@ -96,6 +96,12 @@ module ApplicationHelper
     html
   end
 
+  def logo
+    h1 = content_tag :h1, link_to(CONFIG['author'], root_path)
+    pe = content_tag :p, CONFIG['description']
+
+    content_tag :div, h1 + pe, id: 'logo'
+  end
 
   def article_slug(article = article)
     article_path(article.year, article.month, article.day, article.slug)

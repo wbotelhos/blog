@@ -3,6 +3,10 @@ class SidebarPresenter
     { partial: 'sidebar/admin' }
   end
 
+  def administrator
+    { partial: 'sidebar/administrator' }
+  end
+
   def articles
     articles = Article.select('id, title, published_at, slug').published
     { partial: 'sidebar/articles', locals: { articles: articles } }

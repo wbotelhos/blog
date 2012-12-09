@@ -1,9 +1,9 @@
 <h2>
   <i class="icon-tags icon-large"></i>
-  <%= t('category.title') %>
+  <%= t 'category.title' %>
 </h2>
 
-<ul id="categories">
+<ul>
   <% categories.each do |category| %>
     <li>
       <%= link_to category.name, 'javascript:void(0);' %>
