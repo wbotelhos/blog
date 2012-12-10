@@ -132,7 +132,9 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 /* sidebar */
 aside { float: right; padding: 10px; width: 200px; }
 
-aside #coffee { background: url("../images/coffee.png") no-repeat scroll 6px 2px #DDCC55; border: 1px solid #D9C640; border-radius: 4px; color: #FFF; display: block; float: right; font: bold 10px helvetica; letter-spacing: 0.9px; margin-bottom: 17px; margin-right: 36px; padding: 7px 5px 4px 28px; text-decoration: none; }
+aside #donate { background-color: #D7D7D7; border-radius: 4px; color: #333; display: block; font: 15px helvetica; letter-spacing: .4px; margin: 0 auto; padding: 1px 0 0 15px; width: 86px; }
+aside #donate:hover { background-color: #BBB; color: #333; }
+aside #donate i { font-size: 18px; left: -4px; position: relative; top: 2px; }
 
 aside .search { margin-bottom: 10px; }
 aside .search input[type="search"] { background: url('../images/search.png') no-repeat 4px 5px #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #000; font-size: 13px; height: 24px; opacity: .7; padding-left: 25px; width: 173px; }

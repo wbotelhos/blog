@@ -2,18 +2,22 @@ pt-BR:
   navigation:
     about: 'Sobre'
     admin: 'Admin!'
-    article:
-      new: 'Criar'
-      drafts: 'Rascunhos'
-      title: 'Artigos'
     dashboard: 'Painel de Controle'
+    donate: 'Donate'
+    login:  'Login'
+    logout: 'Sair'
+
+    article:
+      drafts: 'Rascunhos'
+      new: 'Criar'
+      title: 'Artigos'
+
     lab:
       drafts: 'Rascunhos'
       edit: 'Editar'
       new: 'Criar'
       title: 'Labs'
-    login:  'Login'
-    logout: 'Sair'
+
     user:
       list: 'Listar'
       new: 'Criar'

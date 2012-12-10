@@ -2,7 +2,7 @@
 a { color: #277DA8; text-decoration: none; }
 a:hover { color: #48A5D4; }
 
-body { background: url('../images/background.png') #E7E7E7; font: normal 100% 'Lucida Grande', Helvetica, arial, sans-serif; line-height: 1.6; }
+body { background: url('../images/background.png') #E7E7E7; font: normal 100%/1.6 'Lucida Grande', Helvetica, arial, sans-serif; }
 
 footer { font-size: 13px; margin: 0 auto; overflow: auto; padding-bottom: 15px; padding-top: 10px; text-align: center; width: 1100px; }
 
@@ -54,7 +54,7 @@ header p.notice { background-color: #DFF0D8; color: #468847; }
 .author .social a.twitter { background-image: url('../images/twitter.png') }
 
 /* sidebar */
-aside h2 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; clear: both; color: #333; font: bold 15px arial; margin-bottom: 2px; padding-bottom: 6px; padding-top: 9px; }
+aside h2 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; clear: both; color: #333; font: bold 15px arial; margin-top: 18px; margin-bottom: 2px; padding-bottom: 6px; padding-top: 9px; }
 aside ul { margin-bottom: 28px; margin-top: 0; }
 aside ul li { border-bottom: 1px dotted #F1F1F1; padding: 4px 0; }
 aside ul li a { font: 13px arial; }

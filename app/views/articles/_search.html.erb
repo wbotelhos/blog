@@ -6,4 +6,4 @@
   </p>
 <% end %>
 
-<%= link_to 'buy me a coffee', 'https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=wbotelhos.com.br', { id: 'coffee', target: '_blank' } %>
+<%= link_to content_tag(:i, '', class: 'icon-heart-empty icon-large') + I18n.t('navigation.donate'), 'https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=wbotelhos.com.br', { id: 'donate', target: '_blank' } %>
