@@ -4,6 +4,4 @@ pt-BR:
       one: '<strong>1</strong>'
       other: "<strong>%{count}</strong>"
 
-    created_at: "comentado em %{time}"
-
-    title: 'Categorias'
+    other: 'Categorias'
