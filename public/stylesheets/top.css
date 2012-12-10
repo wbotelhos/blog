@@ -3,7 +3,7 @@ header #logo { float: left; margin-bottom: 20px; margin-left: 10px; margin-top: 
 header #logo h1 { font-size: 1em; }
 header #logo h1 a { color: #333; font-size: 47px; letter-spacing: -3px; line-height: 1; text-shadow: 2px 2px #FFF; }
 header #logo h1 a:hover { color: #000; }
-header #logo p { color: #999; font: bold 15px arial; margin-top: -2px; text-shadow: 1px 1px 1px #FFF; width: 385px; }
+header #logo p { color: #999; font: bold 15px arial; margin-top: -10px; text-shadow: 1px 1px 1px #FFF; width: 385px; }
 
 header nav { float: right; margin-top: 20px; }
 header nav ul { border-bottom: 1px solid #D7D7D7; border-top: 1px solid #D7D7D7; height: 33px; overflow: visible; padding-top: 6px; text-shadow: 0 1px 0 #FFF; }
