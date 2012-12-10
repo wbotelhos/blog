@@ -42,7 +42,7 @@ article .date .number { font-size: 13px; position: relative; top: 4px; }
 article .date .month { display: block; font-size: 12px; position: relative; text-transform: uppercase; top: -3px; }
 
 /* show: footer */
-article .footer { height: 40px; margin-top: 15px; }
+article .footer { height: 33px; margin-top: 25px; }
 article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; font-size: 12px; padding-top: 3px; }
 
 /* show: comment header */
@@ -120,7 +120,7 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .comment-create #comment-submit i { color: #222; margin-right: 6px; }
 
 /* index: paginaty */
-.paginaty { margin: 0 auto; padding-bottom: 5px; width: 355px; }
+.paginaty { margin: 0 auto; padding-bottom: 10px; width: 355px; }
 .paginaty li { display: inline; padding: 0 3px; }
 .paginaty li a { border-radius: 3px; background: #FBFBFB; border: 1px solid #EEE; color: #277DA8; font: bold 14px arial; letter-spacing: .4px; padding: 4px 8px; text-align: center; text-shadow: 1px 1px 1px #FFF; }
 .paginaty li a:hover { color: #85B839; }
