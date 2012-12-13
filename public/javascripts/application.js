@@ -1,17 +1,19 @@
-function initAntiBot(selector) {
-  $(selector).on('change', function() {
-      var self  = $(this),
-          form  = self.closest('form');
+AntiBot = {
+  init: function(selector) {
+    $(selector).on('change', function() {
+        var self  = $(this),
+            form  = self.closest('form');
 
-    if (self.is(':checked')) {
-      form.attr('onsubmit', form.data('onsubmit'));
-      self.prev('label').text('stupid! :/')
-    } else {
-      form.data('onsubmit', form.attr('onsubmit'));
-      form.removeAttr('onsubmit');
-      self.prev('label').text('human! <3')
-    }
-  });
+      if (self.is(':checked')) {
+        form.attr('onsubmit', form.data('onsubmit'));
+        self.prev('label').text('stupid! :/')
+      } else {
+        form.data('onsubmit', form.attr('onsubmit'));
+        form.removeAttr('onsubmit');
+        self.prev('label').text('human! <3')
+      }
+    });
+  }
 };
 
 function blurLabel() {
