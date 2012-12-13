@@ -36,7 +36,7 @@ describe Article, "#edit" do
       end
 
       it "show preview link" do
-        page.find('div#url a').should have_content 'Visualizar'
+        page.find('a#draft').should have_content 'Visualizar'
       end
     end
 
@@ -44,7 +44,7 @@ describe Article, "#edit" do
       before { visit edit_article_path article_published }
 
       it "displays published indicator" do
-        page.find('div#status').should have_content 'Publicado'
+        page.find('a#published').should have_content 'Publicado'
       end
 
       it "hide publish button" do
@@ -52,7 +52,7 @@ describe Article, "#edit" do
       end
 
       it "show slug link" do
-        page.find('div#url a').should have_content article_published.slug
+        page.find('a#published').should have_content article_published.slug
       end
     end
   end

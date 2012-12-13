@@ -6,9 +6,9 @@
   </div>
 
   <% if @article.published_at.nil? %>
-    <%= link_to t('article.preview'), preview_article_path(@article), { target: '_blank', class: 'draft' } %>
+    <%= link_to t('article.preview'), preview_article_path(@article), { target: '_blank', id: 'draft' } %>
   <% else %>
-    <%= link_to @article.slug, article_path(@article.year, @article.month, @article.day, @article.slug), { target: '_blank', class: 'link' } %>
+    <%= link_to @article.slug, article_path(@article.year, @article.month, @article.day, @article.slug), { target: '_blank', id: 'published' } %>
    <% end %>
 </div>
 

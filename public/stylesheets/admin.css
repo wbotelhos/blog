@@ -29,9 +29,10 @@ section { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 
 #title h2 { background: url('../images/pin.png') no-repeat; color: #464646; float: left; font-size: 23px; padding-left: 35px; padding-top: 3px; }
 
 /* edit: article - status url */
-#title a { background: url('../images/link.png') no-repeat 0 1px; color: #444; float: left; font: 15px arial; letter-spacing: 1px; margin-left: 20px; margin-top: 30px; padding-left: 22px; }
+#title a { color: #444; float: left; font: 15px arial; letter-spacing: 1px; margin-left: 20px; margin-top: 30px; padding-left: 23px; }
 #title a:hover { color: #85B839; }
-#title a.draft { background: url('../images/draft.png') no-repeat 0 1px; padding-left: 22px; }
+#title a#draft { background: url('../images/draft.png') no-repeat 0 1px; }
+#title a#published { background: url('../images/link.png') no-repeat 0 2px; }
 #title #status { background-color: #999; border-radius: 5px; color: #FFF; float: left; font: bold 12px helvetica; margin-left: 25px; margin-top: 27px; padding: 5px 15px; text-align: center; }
 
 /* new, edit: article */

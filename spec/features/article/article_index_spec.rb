@@ -171,7 +171,7 @@ describe Article, "#index" do
 
       context "when click on article title" do
         it "redirects to the article page" do
-          find('.article h2.title').click_link article_published.title
+          find('h2.title').click_link article_published.title
           current_path.should == article_path(article_published.year, article_published.month, article_published.day, article_published.slug)
         end
       end
