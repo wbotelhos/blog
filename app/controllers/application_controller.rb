@@ -28,4 +28,12 @@ class ApplicationController < ActionController::Base
   def sidebar
     @sidebar ||= SidebarPresenter.new
   end
+
+  protected
+
+  def handle_unverified_request
+    reset_session
+    logger.warn 'B0T attacking, doing nothing...'
+    render nothing: true
+  end
 end
