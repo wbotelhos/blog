@@ -44,7 +44,7 @@ describe Article, "#edit" do
       before { visit edit_article_path article_published }
 
       it "displays published indicator" do
-        page.find('a#published').should have_content 'Publicado'
+        page.find('div#status').should have_content 'Publicado'
       end
 
       it "hide publish button" do

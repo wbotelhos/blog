@@ -8,7 +8,7 @@ describe "Logout" do
       before do
         login with: user.email
         visit root_path
-        find('#top nav ul').click_link 'Sair'
+        find('header nav ul').click_link 'Sair'
       end
 
       it "redirects to the home page" do
@@ -23,7 +23,7 @@ describe "Logout" do
       before do
         login with: user.email
         visit root_path
-        find('#administration').click_link 'Sair'
+        find('aside ul:last li:last').click_link 'Sair'
       end
 
       it "redirects to the home page" do
