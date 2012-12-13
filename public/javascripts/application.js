@@ -35,38 +35,6 @@ function l00s3r(selector) {
   return false;
 };
 
-Flury = {
-  init: function(selector) {
-    var fields = $(selector);
-
-    this.clear(fields);
-    this.bind(fields)
-  },
-
-  bind: function(fields) {
-    fields.on('focus blur', function(evt) {
-      var self  = $(this),
-          label = self.prev('label');
-
-      if (evt.type == 'focus') {
-        label.hide()
-      } else if (self.val() == '') {
-        label.show();
-      }
-    });
-  },
-
-  clear: function(fields) {
-    fields.each(function() {
-      var self = $(this);
-
-      if (self.val() != '') {
-        self.prev('label').hide()
-      }
-    });
-  }
-};
-
 $(function() {
   $('#social img').on('mouseover', function() {
     $(this).animate({ 'opacity': 1 }, { duration: 100, queue: false });

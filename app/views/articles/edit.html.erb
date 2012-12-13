@@ -19,10 +19,12 @@
 <%= form_for @article, url: update_article_path, html: { class: 'article-form' } do |f| %>
   <div id="fields">
     <p>
+      <%= f.label :title %>
       <%= f.text_field :title %>
     </p>
 
     <p>
+      <%= f.label :body %>
       <%= f.text_area :body %>
     </p>
   </div>
@@ -53,6 +55,7 @@
 
 <script type="text/javascript">
   $(function() {
+    $('.article-form').flury();
     $('#article_title').focus();
     $('#article_body').taby();
   });
