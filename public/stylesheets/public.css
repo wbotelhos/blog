@@ -15,6 +15,7 @@ article .body p { font-size: 14px; margin-bottom: 10px; }
 article .body p.read-more { margin-top: 25px; text-align: center; width: 100%; }
 article .body p.read-more a { background-color: #AF81C3; border-radius: 3px; color: #FFF; font-size: 12px; padding: 7px 30px; }
 article .body p.read-more a:hover { background-color: #8D50A7; }
+article .body h2 { margin-bottom: 0; }
 article .body h3 { font-size: 16px; letter-spacing: .5px; margin-bottom: 0; }
 article .body ul { margin-bottom: 10px; }
 article .body ul li { list-style: inside; margin-left: 5px; }
@@ -50,24 +51,27 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 
 /* show: comment */
 .comment { border: 1px solid #EAEAEA; border-radius: 2px; clear: both; float: right; height: auto; margin-bottom: 10px; padding: 10px; width: 835px; }
-.comment .photo { float: left; }
-.comment .photo img { background-color: #EEE; float: left; height: 80px; margin-right: 7px; width: 80px; }
-.comment .name-date { height: 25px; width: 740px }
-.comment .name-date span { background: url('../images/clock.png') no-repeat; display: inline-block; float: right; font-size: 11px; height: 16px; margin-top: 3px; opacity: .3; padding-left: 21px; }
-.comment .name-date .anchors { float: left; }
-.comment .name-date .anchors a { margin-right: 5px; }
-.comment .name-date .anchors div { color: #999; display: inline; font: 12px verdana; margin-left: 10px; width: 99px; }
-.comment .content { float: left; margin-left: 8px; }
-.comment .content .text { clear: both; color: #444; font-size: 12px; width: 740px; }
-.comment .content .text pre { padding-left: 15px; }
-.comment .content .text p { margin-top: 10px; }
-.comment .reply-link { display: block; font-weight: bold; margin-bottom: 10px; }
-.comment form input[type="text"] { color: #111; margin-bottom: 7px; margin-right: 6px; padding: 2px; width: 234px; }
 .comment form input[type="submit"] { float: right; margin-right: 7px; }
+.comment form input[type="text"] { color: #111; margin-bottom: 7px; margin-right: 6px; padding: 2px; width: 234px; }
 .comment form textarea { color: #111; width: 725px; }
-.comment form .close { display: block; font-weight: bold; margin-bottom: 10px; }
-.comment form .human { float: left; margin-top: 3px; }
+.comment form .close { font-size: 13px; font-weight: bold; margin-bottom: 5px; margin-top: 5px; }
 .comment form .human label { color: #777; font: 11px verdana; padding-right: 3px; padding-top: 3px; }
+.comment form .human { float: left; margin-top: 3px; }
+.comment .content .text p { margin-top: 10px; }
+.comment .content .text pre { padding-left: 15px; }
+.comment .content .text { clear: both; color: #444; font-size: 12px; width: 740px; }
+.comment .content form p { margin: 0px; }
+.comment .content form { margin-top: 10px; }
+.comment .content { float: left; margin-left: 8px; }
+.comment .name-date .anchors a.name { color: #555; letter-spacing: 1px; margin-left: 5px; }
+.comment .name-date .anchors a:hover.name { color: #000; }
+.comment .name-date .anchors div { color: #999; display: inline; font: 12px verdana; margin-left: 10px; width: 99px; }
+.comment .name-date .anchors { float: left; font-family: arial; font-size: 14px; }
+.comment .name-date span { background: url('../images/clock.png') no-repeat; float: right; font-size: 11px; height: 16px; opacity: .3; text-indent: 21px; }
+.comment .name-date { height: 25px; width: 740px }
+.comment .photo img { background-color: #EEE; float: left; height: 80px; margin-right: 7px; width: 80px; }
+.comment .photo { float: left; }
+.comment .reply-link { font-size: 11px; font-weight: bold; }
 
 .comment.authored { background-color: #FFE; }
 
@@ -107,17 +111,20 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .comment.level-5 form textarea { width: 640px; }
 
 /* show: comment form */
-.comment-create { clear: both; margin: 0 auto 50px; padding-top: 4px; width: 527px; }
-.comment-create .alert { background-color: #F2DEDE; border-radius: 4px; color: #B94A48; margin-bottom: 5px; padding: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
-.comment-create #human { float: left; margin-left: 3px; margin-top: 4px; }
+.comment-create { clear: both; margin: 0 auto 50px; font-size: 13px; padding-top: 4px; width: 523px; }
+.comment-create p.alert, .comment-create p.notice { border-radius: 4px; color: #B94A48; margin-bottom: 5px; padding: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
+.comment-create p.alert { background-color: #F2DEDE }
+.comment-create p.notice { background-color: #DFF0D8 }
+
+.comment-create #human { float: left; margin-top: 4px; }
 .comment-create #human label { color: #888; font: 11px verdana; }
-.comment-create #replying-to { color: #444; margin-left: 1px; }
+.comment-create #replying-to { color: #444; font-size: 13px; margin-left: 1px; }
 .comment-create input[type="text"] { color: #BBB; margin-bottom: 7px; padding: 2px; width: 165px; }
-.comment-create textarea { color: #BBB; height: 150px; width: 515px; }
-.comment-create input[type="submit"] { float: right; margin-right: 4px; }
-.comment-create #markdown-reference { color: #777; font: 11px verdana; margin-left: 3px; margin-top: -12px; }
-.comment-create #comment-submit { text-align: right; }
-.comment-create #comment-submit i { color: #222; margin-right: 6px; }
+.comment-create textarea { color: #BBB; height: 150px; margin-top: 4px; width: 515px; }
+.comment-create input[type="submit"] { float: right; }
+.comment-create #markdown-reference { color: #777; font: 11px verdana; margin-bottom: 8px; margin-top: 1px; }
+.comment-create p { margin: 0; }
+.comment-create p i { color: #999; float: right; font-size: 12px; margin-right: 28px; margin-top: 6px; }
 
 /* index: paginaty */
 .paginaty { margin: 0 auto; padding-bottom: 10px; width: 355px; }

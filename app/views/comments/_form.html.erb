@@ -38,7 +38,7 @@
       <%= check_box_tag :bot, :true, :true %>
     </p>
 
-    <p id="comment-submit">
+    <p>
       <%= f.submit %>
     </p>
   <% end %>
@@ -59,9 +59,9 @@
     $('#comment_email').on('focus', focusLabel).on('blur', blurLabel);
     $('#comment_url').on('focus', focusLabel).on('blur', blurLabel);
     $('#comment_body').on('focus', focusLabel).on('blur', blurLabel);
-    $('#comment-submit input').on('click', function() {
+    $('#new_comment :submit').on('click', function() {
       if (!botBox.is(':checked')) {
-        $(this).hide().parent().append("<i><%= t('comment.sending') %><i>");
+        $(this).hide().parent().append("<i><%= t('comment.sending') %></i>");
       }
     });
 

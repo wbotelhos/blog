@@ -52,7 +52,7 @@ module ApplicationHelper
     html <<     '<div class="name-date">'
     html <<       '<div class="anchors">'
     html <<         (link_to "##{comment.id}", anchor_full, { title: "#{I18n.t('comment.shortcut_to_this_comment')}" })
-    html <<         link(comment.url, comment.name, '_blank')
+    html <<         link(comment.url, comment.name, '_blank', 'name')
     html <<         %(<div>#{I18n.t('comment.reply_to')} #{link_to "##{comment.comment.id}", "#{request.fullpath}#comment-#{comment.comment.id}", { title: "#{I18n.t('comment.shortcut_to_this_comment')}" }}</div>) unless comment.comment.nil?
     html <<       '</div>'
 
