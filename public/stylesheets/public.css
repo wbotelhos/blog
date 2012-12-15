@@ -58,13 +58,13 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .comment form .human label { color: #777; font: 11px verdana; padding-right: 3px; padding-top: 3px; }
 .comment form .human { float: left; margin-top: 3px; }
 .comment .content .text p { margin-top: 10px; }
-.comment .content .text pre { padding-left: 15px; }
+.comment .content .text pre { font-size: 12px; padding-left: 15px; }
 .comment .content .text { clear: both; color: #444; font-size: 12px; width: 740px; }
 .comment .content form p { margin: 0px; }
 .comment .content form { margin-top: 10px; }
 .comment .content { float: left; margin-left: 8px; }
-.comment .name-date .anchors a.name { color: #555; letter-spacing: 1px; margin-left: 5px; }
-.comment .name-date .anchors a:hover.name { color: #000; }
+.comment .name-date .anchors a.name { color: #369; font-size: 13px; font-weight: bold; letter-spacing: 1px; margin-left: 5px; }
+.comment .name-date .anchors a:hover.name { color: #538CC6; }
 .comment .name-date .anchors div { color: #999; display: inline; font: 12px verdana; margin-left: 10px; width: 99px; }
 .comment .name-date .anchors { float: left; font-family: arial; font-size: 14px; }
 .comment .name-date span { background: url('../images/clock.png') no-repeat; float: right; font-size: 11px; height: 16px; opacity: .3; text-indent: 21px; }
