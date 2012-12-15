@@ -5,6 +5,7 @@ gem 'pygments.rb'
 gem 'rails', '3.2.9'
 gem 'redcarpet'
 gem 'thinking-sphinx'
+gem 'rake'
 
 group :development do
   gem 'awesome_print', require: false
