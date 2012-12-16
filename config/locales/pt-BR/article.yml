@@ -16,7 +16,7 @@ pt-BR:
     read_more: 'Leia mais...'
 
     search:
-      description_html: "Resultados para <strong>%{query}</strong>"
+      description_html: 'Resultados para "<strong>%{query}</strong>"'
 
     tags: 'Tags:'
     new: 'Novo Artigo'
