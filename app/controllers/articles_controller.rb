@@ -12,11 +12,11 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @paginaty = Paginaty.filter({ request: request, entity: Article, params: params })
+    @paginaty = Paginaty.filter request: request, entity: Article, params: params
   end
 
   def preview
-    @article = Article.find(params[:id])
+    @article = Article.find params[:id]
   end
 
   def search
@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
   def update
     article = Article.find params[:id]
     article.update_attributes params[:article]
-    redirect_to edit_article_path(article), notice: t('flash.articles.update.notice')
+    redirect_to articles_edit_path(article), notice: t('flash.articles.update.notice')
   end
 
   def publish
@@ -63,7 +63,7 @@ class ArticlesController < ApplicationController
     @article = user_session.articles.new params[:article]
 
     if @article.save
-      redirect_to edit_article_path(@article), notice: t('flash.articles.create.notice')
+      redirect_to articles_edit_path(@article), notice: t('flash.articles.create.notice')
     else
       render :new, layout: 'admin'
     end

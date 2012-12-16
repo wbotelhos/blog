@@ -4,8 +4,8 @@
 </h2>
 
 <ul class="article-menu">
-   <li><%= link_to t('navigation.article.new'), new_article_path %></li>
-   <li><%= link_to t('navigation.article.drafts'), drafts_articles_path %></li>
+   <li><%= link_to t('navigation.article.new'), articles_new_path %></li>
+   <li><%= link_to t('navigation.article.drafts'), articles_drafts_path %></li>
 </ul>
 
 <h2>
@@ -14,7 +14,7 @@
 </h2>
 
 <ul class="user-menu">
-   <li><%= link_to t('navigation.user.new'), new_user_path %></li>
+   <li><%= link_to t('navigation.user.new'), users_new_path %></li>
    <li><%= link_to t('navigation.user.list'), users_path %></li>
 </ul>
 
@@ -24,6 +24,6 @@
 </h2>
 
 <ul class="lab-menu">
-   <li><%= link_to t('navigation.lab.new'), new_lab_path %></li>
-   <li><%= link_to t('navigation.lab.drafts'), drafts_labs_path %></li>
+   <li><%= link_to t('navigation.lab.new'), labs_new_path %></li>
+   <li><%= link_to t('navigation.lab.drafts'), labs_drafts_path %></li>
 </ul>

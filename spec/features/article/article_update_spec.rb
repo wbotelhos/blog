@@ -9,7 +9,7 @@ describe Article, "#update" do
 
   before do
     login with: user.email
-    visit edit_article_path(article)
+    visit articles_edit_path(article)
   end
 
   context "with valid data" do
@@ -41,7 +41,7 @@ describe Article, "#update" do
     end
 
     it "renders edit form page again" do
-      current_path.should == edit_article_path(article)
+      current_path.should == articles_edit_path(article)
     end
 
     it "the chosen category keeps checked" do

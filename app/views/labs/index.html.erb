@@ -18,7 +18,7 @@
           <%= link_to('', "#{CONFIG['url_http']}/#{lab.slug}", { title: 'Demo', target: '_blank', class: 'demo' }) %>
           <%= link_to('', "http://github.com/wbotelhos/#{lab.slug}", { title: 'Github', target: '_blank', class: 'github' }) %>
           <% if is_logged? %>
-            <%= link_to('', edit_lab_path(lab), { title: t('navigation.lab.edit'), class: 'edit' }) %>
+            <%= link_to('', labs_edit_path(lab), { title: t('navigation.lab.edit'), class: 'edit' }) %>
           <% end %>
         </div>
       </div>

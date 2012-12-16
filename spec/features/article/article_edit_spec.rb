@@ -11,7 +11,7 @@ describe Article, "#edit" do
     before { login with: user.email }
 
     context "form" do
-      before { visit edit_article_path article_published }
+      before { visit articles_edit_path article_published }
 
       it { current_path.should == "/articles/#{article_published.id}/edit" }
 
@@ -29,7 +29,7 @@ describe Article, "#edit" do
     context "while draft" do
       let!(:article_draft) { FactoryGirl.create :article, categories: [category] }
 
-      before { visit edit_article_path article_draft }
+      before { visit articles_edit_path article_draft }
 
       it "display draft indicator" do
         page.find('div#status').should have_content 'Rascunho'
@@ -41,7 +41,7 @@ describe Article, "#edit" do
     end
 
     context "while published" do
-      before { visit edit_article_path article_published }
+      before { visit articles_edit_path article_published }
 
       it "displays published indicator" do
         page.find('div#status').should have_content 'Publicado'
@@ -58,7 +58,7 @@ describe Article, "#edit" do
   end
 
   context "when unlogged" do
-    before { visit edit_article_path article_published.id }
+    before { visit articles_edit_path article_published.id }
 
     it "redirects to the login page" do
       current_path.should == login_path

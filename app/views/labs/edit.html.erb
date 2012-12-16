@@ -4,7 +4,7 @@
 
 <%= render 'shared/error_messages', entity: @lab %>
 
-<%= form_for @lab, url: update_lab_path, html: { class: 'lab-form' } do |f| %>
+<%= form_for @lab, url: labs_update_path, html: { class: 'lab-form' } do |f| %>
   <div id="fields">
     <p>
       <%= f.label "#{:name} *" %>

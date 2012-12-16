@@ -34,7 +34,7 @@ describe Article, "#drafts" do
   end
 
   context "when unlogged" do
-    before { visit drafts_articles_path }
+    before { visit articles_drafts_path }
 
     it "redirects to the login page" do
       current_path.should == login_path

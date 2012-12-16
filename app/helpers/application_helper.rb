@@ -63,7 +63,7 @@ module ApplicationHelper
 
     html <<     %(<div class="text">#{markdown comment.body}</div>)
 
-    html <<     %(<form action="#{update_comment_path(article, comment, anchor: anchor )}" method="post" onsubmit="return l00s3r('bot-#{comment.id}');" style="display: none;">)
+    html <<     %(<form action="#{comments_update_path(article, comment, anchor: anchor )}" method="post" onsubmit="return l00s3r('bot-#{comment.id}');" style="display: none;">)
     html <<       input('hidden', '_method', 'put')
     html <<       input('hidden', 'utf8', '✓')
     html <<       input('hidden', 'authenticity_token', form_authenticity_token.to_s)

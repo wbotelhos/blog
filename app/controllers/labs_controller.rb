@@ -5,7 +5,7 @@ class LabsController < ApplicationController
     @lab = Lab.new params[:lab]
 
     if @lab.save
-      redirect_to drafts_labs_path, notice: t('flash.labs.create.notice')
+      redirect_to labs_drafts_path, notice: t('flash.labs.create.notice')
     else
       render :new, layout: 'admin'
     end
@@ -33,6 +33,6 @@ class LabsController < ApplicationController
   def update
     lab = Lab.find params[:id]
     lab.update_attributes params[:lab]
-    redirect_to edit_lab_path(lab), notice: t('flash.labs.update.notice')
+    redirect_to labs_edit_path(lab), notice: t('flash.labs.update.notice')
   end
 end

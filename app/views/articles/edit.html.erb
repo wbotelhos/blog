@@ -6,7 +6,7 @@
   </div>
 
   <% if @article.published_at.nil? %>
-    <%= link_to t('article.preview'), preview_article_path(@article), { target: '_blank', id: 'draft' } %>
+    <%= link_to t('article.preview'), articles_preview_path(@article), { target: '_blank', id: 'draft' } %>
   <% else %>
     <%= link_to @article.slug, article_path(@article.year, @article.month, @article.day, @article.slug), { target: '_blank', id: 'published' } %>
    <% end %>
@@ -16,7 +16,7 @@
 
 <%= render 'shared/error_messages', entity: @article %>
 
-<%= form_for @article, url: update_article_path, html: { class: 'article-form' } do |f| %>
+<%= form_for @article, url: articles_update_path, html: { class: 'article-form' } do |f| %>
   <div id="fields">
     <p>
       <%= f.label :title %>

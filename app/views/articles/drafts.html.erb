@@ -1,10 +1,10 @@
 <div id="drafts">
   <% @articles.each do |article| %>
     <article>
-      <h2 class="title"><%= link_to article.title, edit_article_path(article) %></h2>
+      <h2 class="title"><%= link_to article.title, articles_edit_path(article) %></h2>
 
       <ul class="links">
-        <li class="edit"><%=link_to t('article.edit'), edit_article_path(article) %></li>
+        <li class="edit"><%=link_to t('article.edit'), articles_edit_path(article) %></li>
       </ul>
 
       <div class="body">
