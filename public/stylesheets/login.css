@@ -6,5 +6,6 @@
 #container-login form input[type="submit"] { float: right; margin-top: 10px; }
 #container-login #human { float: left; margin-left: 3px; margin-top: 12px; }
 #container-login #human label { float: left; font: 11px verdana; padding-right: 6px; padding-top: 7px; }
-#container-login .alert { background-color: #FFF5F5; border: 1px solid; border-radius: 2px; color: #F00; margin-bottom: 5px; padding-bottom: 6px; padding-top: 6px; text-align: center; text-shadow: none; }
-#container-login .notice { background-color: #DFF0D8; border: 1px solid; border-radius: 2px; color: #468847; margin-bottom: 5px; padding-bottom: 6px; padding-top: 6px; text-align: center; text-shadow: none; }
+#container-login > p { border: 1px solid; border-radius: 2px; font-size: 13px; margin-bottom: 5px; padding-bottom: 6px; padding-top: 6px; text-align: center; text-shadow: none; }
+#container-login p.alert { background-color: #FFF5F5; color: #F00; }
+#container-login p.notice { background-color: #DFF0D8; color: #468847;}
