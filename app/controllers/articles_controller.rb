@@ -20,7 +20,8 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = Article.search(params[:query], { page: params[:page], per_page: Paginaty::LIMIT })
+    @articles = Article.search params[:query], page: params[:page], per_page: Paginaty::LIMIT
+    @articles.delete_if { |article| article.published_at.nil? }
   end
 
   def new

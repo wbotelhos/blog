@@ -1,7 +1,11 @@
 require 'spec_helper'
 
 describe ArticlesController do
-  let(:drafts) { FactoryGirl.create_list(:article, 3, published_at: nil) }
+  let(:article_draft) { FactoryGirl.create :article_draft, title: 'title-0' }
+  let(:article_1) { FactoryGirl.create :article_published, title: 'title-1' }
+  let(:article_2) { FactoryGirl.create :article_published, title: 'title-2' }
+  let(:article_3) { FactoryGirl.create :article_published, title: 'title-3' }
+  let(:published_articles) { [article_draft, article_1, article_2, article_3] }
 
   describe "GET #drafts" do
     before do
@@ -31,19 +35,32 @@ describe ArticlesController do
   end
 
   describe "GET #search" do
-    xit "receives the params" do
-      controller.should_receive(:search).with(query: 'query')
+    before do
+      Article.stub(:search).and_return published_articles.append(article_draft)
+    end
+
+    it "receives the params" do
+      Article.should_receive(:search).with('query', { page: nil, per_page: 10 })
       get :search, query: 'query'
     end
 
     context "with no query describe" do
-      it "returns all records"
+      it "returns all published records" do
+        get :search
+        assigns(:articles).should == published_articles
+      end
     end
 
     context "with query describe" do
-      it "returns all records"
-      it "returns one record"
-      it "returns no records"
+      xit "returns one record" do
+        get :search, query: 'title-1'
+        assigns(:articles).should == [article_1]
+      end
+
+      xit "returns no records" do
+        get :search, query: 'inexistent'
+        assigns(:articles).should be_empty
+      end
     end
   end
 
