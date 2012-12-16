@@ -19,7 +19,6 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl', '~> 4.1.0'
   gem 'rspec-rails', '~> 2.12.0'
-  gem 'selenium-webdriver'
 end
 
 group :production do
