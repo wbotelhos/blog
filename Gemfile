@@ -3,9 +3,10 @@ source :rubygems
 gem 'mysql2'
 gem 'pygments.rb'
 gem 'rails', '3.2.9'
-gem 'redcarpet'
-gem 'thinking-sphinx'
 gem 'rake'
+gem 'redcarpet'
+gem 'rspec-rails', '~> 2.12.0'
+gem 'thinking-sphinx'
 
 group :development do
   gem 'awesome_print', require: false
@@ -18,7 +19,6 @@ group :test do
   gem 'capybara', '~> 2.0.1'
   gem 'database_cleaner'
   gem 'factory_girl', '~> 4.1.0'
-  gem 'rspec-rails', '~> 2.12.0'
 end
 
 group :production do
