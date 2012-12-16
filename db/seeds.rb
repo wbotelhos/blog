@@ -23,7 +23,7 @@ Link.create!({ name: 'yLabs',                   url: 'http://wbotelhos.com/labs'
 user = User.create!({
   name:                   'Washington Botelho',
   email:                  'wbotelhos@gmail.com',
-  bio:                    %[Desenvolvedor Java, Ruby e Python no Portal <a href="http://r7.com" target="_blank">R7.com</a>.\nÉ Bacharel em Sistemas de Informação e certificado OCJA 1.0 e OCJP 6.\nAjudante e aprendiz da comunidade open source e metido a designer.\n Além disso é apaixonado pela dança, skate, jiu-jitsu e Counter Strike Source. (:],
+  bio:                    %(Desenvolvedor Java, Ruby e Python no Portal <a href="http://r7.com" target="_blank">R7.com</a>.\nÉ Bacharel em Sistemas de Informação e certificado OCJA 1.0 e OCJP 6.\nAjudante e aprendiz da comunidade open source e metido a designer.\n Além disso é apaixonado pela dança, skate, jiu-jitsu e Counter Strike Source. (:)),
   github:                 'http://github.com/wbotelhos',
   twitter:                'http://twitter.com/wbotelhos',
   linkedin:               'http://linkedin.com/in/wbotelhos',
@@ -52,7 +52,7 @@ article = user.articles.new({
   body:         %[
 Hi! My name is **Washington Botelho** and this article is an example to introduce how it works.
 
-**Article**
+### Article
 
 We are using the [Markdown](http://daringfireball.net/projects/markdown/ "Markdown") syntaxe with help of the [Redcarpet](https://github.com/tanoku/redcarpet "Redcarpet") and [Pygments.rb](https://github.com/tmm1/pygments.rb "Pygments.rb") to make it colorized.
 
@@ -80,15 +80,15 @@ class Hello {
 }
 ```
 
-**Credentials**
+### Credentials
 
 By default my credentials is written here, but wit you will run this blog, just edit the file `config/config.yml` and set your data.
 
-**Deploy**
+### Deploy
 
 We using the Capistrano to do it, then check the deploy.rb file to configure your settings.
 
-**License**
+### License
 
 This blog is free under the MIT License, then be nice and keep the author's credits. (:
 

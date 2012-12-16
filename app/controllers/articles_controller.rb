@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :require_login, only: [:new, :create, :edit, :preview, :update, :drafts]
-  helper_method :categories, :check_category?, :markdown
+  helper_method :categories, :check_category?
 
   rescue_from Riddle::ConnectionError do
     redirect_to root_path, alert: t('flash.articles.search.alert' )
@@ -70,27 +70,6 @@ class ArticlesController < ApplicationController
   end
 
   private
-
-  class HTMLwithPygments < Redcarpet::Render::HTML
-    def block_code(code, language)
-      Pygments.highlight(code, lexer: language, options: { encoding: 'utf-8' })
-    end
-  end
-
-  def markdown(content)
-    renderer = HTMLwithPygments.new(hard_wrap: true) # filter_html: true
-
-    options = {
-      autolink:           true,
-      no_intra_emphasis:  true,
-      fenced_code_blocks: true,
-      lax_html_blocks:    true,
-      strikethrough:      true,
-      superscript:        true
-    }
-
-    Redcarpet::Markdown.new(renderer, options).render(content).html_safe
-  end
 
   def categories
     @categories ||= Category.scoped

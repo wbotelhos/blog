@@ -5,7 +5,7 @@ xml.rss version: '2.0', 'xmlns:dc' => 'http://purl.org/dc/elements/1.1/' do
     xml.title CONFIG['author']
     xml.description CONFIG['description']
     xml.language I18n.locale.to_s
-    xml.link articles_url
+    xml.link CONFIG['url_http']
 
     @articles.each do |article|
       xml.item do
@@ -16,7 +16,7 @@ xml.rss version: '2.0', 'xmlns:dc' => 'http://purl.org/dc/elements/1.1/' do
         xml.creator article.user.name
 
         xml.description do
-          xml.cdata! simple_format(article.resume)
+          xml.cdata! markdown article.resume
         end
       end
     end
