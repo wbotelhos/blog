@@ -2,6 +2,8 @@
 
 [http://wbotelhos.com.br](http://wbotelhos.com.br) on Rails.
 
+![Travis CI status](https://travis-ci.org/wbotelhos/wbotelhos-com-br.png?branch=master "Travis CI status")
+
 ## Usage
 
 ### Install MySQL
