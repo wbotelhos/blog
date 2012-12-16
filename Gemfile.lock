@@ -201,5 +201,6 @@ DEPENDENCIES
   rake
   redcarpet
   rspec-rails (~> 2.12.0)
+  selenium-webdriver
   thinking-sphinx
   unicorn
