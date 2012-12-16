@@ -1,40 +1,5 @@
-# Eclipse
-build
-target
-
-# Global
-*.log
-*.swp
-*.zip
-
-# jQuery
-doc.txt
-test/runner.htm
-
-# Mac
 .DS_Store
-
-# NetBeans
-dist
-
-# Java
-*.class
-*.war
-
-# Ruby
-*.sqlite3
-database.yml
-log/*
-/bin
-/.bundle
 /config/*.sphinx.conf
 /db/sphinx
 /tmp
-
-# Python
-.Python
-*.pyc
-
-# Labs
-/public/raty
-
+log/*
