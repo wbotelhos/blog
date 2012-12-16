@@ -4,6 +4,6 @@ class FeedController < ApplicationController
   end
 
   def feed
-    @articles = Article.recents
+    @articles = Article.published.recents
   end
 end
