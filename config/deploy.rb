@@ -27,7 +27,6 @@ ssh_options[:forward_agent] = true
 ssh_options[:keys] = '~/.ssh/blogbr.pem'
 
 after :deploy, 'deploy:cleanup'
-after :deploy, 'sphinx:config'
 after :deploy, 'sphinx:rebuild'
 
 namespace :deploy do
@@ -65,28 +64,8 @@ namespace :app do
 end
 
 namespace :sphinx do
-  desc 'Regenerate Sphinx configuration'
-  task :config do
-    run "cd #{current} && sudo bundle exec rake ts:config"
-  end
-
-  desc 'Stopt the Sphinx'
-  task :stop do
-    run "cd #{current} && sudo bundle exec rake ts:stop"
-  end
-
-  desc 'Start the Sphinx'
-  task :start do
-    run "cd #{current} && sudo bundle exec rake ts:start"
-  end
-
-  desc 'Rebuild index'
+  desc '[ts:rebuild] stop, config, index and start'
   task :rebuild do
-    run "cd #{current} && sudo bundle exec rake ts:reindex"
-  end
-
-  desc 'Index pending delta'
-  task :index do
-    run "cd #{current} && sudo bundle exec rake ts:index"
+    run "cd #{current} && sudo bundle exec rake ts:rebuild"
   end
 end
