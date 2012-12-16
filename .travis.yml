@@ -1,3 +1,9 @@
 language: ruby
-rvm:      1.9.3
-script:   'bundle exec rake'
+rvm: 1.9.3
+
+before_script:
+  - rake db:create:all
+  - rake db:migrate
+  - rake db:test:prepare
+
+script: RAILS_ENV=test bundle exec rake spec
