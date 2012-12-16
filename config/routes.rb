@@ -22,8 +22,8 @@ Blog::Application.routes.draw do
   end
 
   controller :comments do
-    post  '/articles/:article_id/comments/new',   action: :create, as: :new_comment
-    put   '/articles/:article_id/comments/:id',   action: :update, as: :update_comment
+    post  '/articles/:article_id/comments',     action: :create, as: :create_comment
+    put   '/articles/:article_id/comments/:id', action: :update, as: :update_comment
   end
 
   controller :feed do
