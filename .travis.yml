@@ -2,9 +2,9 @@ language: ruby
 rvm: 1.9.3
 
 before_script:
-  - rake db:drop:all
   - rake db:create:all
   - rake db:migrate
   - rake db:test:prepare
+  - sh -e /etc/init.d/xvfb start
 
 script: RAILS_ENV=test bundle exec rake spec
