@@ -21,6 +21,7 @@ pt-BR:
     errors:
       messages:
         blank: 'O campo "%{attribute}" deve ser preenchido!'
+        record_invalid: "Erro de validação: %{errors}"
       models:
         comment:
           attributes:
