@@ -35,7 +35,7 @@ describe Article, "#create" do
     end
 
     it "renders form page again" do
-      current_path.should == create_article_path
+      current_path.should == articles_path
     end
 
     it "the chosen category keeps checked" do
