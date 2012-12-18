@@ -34,6 +34,6 @@ class ApplicationController < ActionController::Base
   def handle_unverified_request
     reset_session
     logger.warn 'B0T attacking, doing nothing...'
-    render status: 404
+    render nothing: true, status: 404
   end
 end
