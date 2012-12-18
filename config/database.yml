@@ -9,7 +9,7 @@ default: &defaults
 
 development:
   <<: *defaults
-  database: wbotelhos_development
+  database: wbotelhos
 
 test:
   <<: *defaults
