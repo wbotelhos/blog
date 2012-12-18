@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
 
   def show
     # TODO: apply query to check only Date and ignore Time.
-    published_at = Date.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)
+    published_at = Time.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)
 
     @article = Article.where('slug = ?', params[:slug]).first
 
@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
 
   def publish
     article = Article.find params[:id]
-    params[:article][:published_at] = Time.now
+    params[:article][:published_at] = Time.zone.now
     article.update_attributes params[:article]
     redirect_to article_path(article.year, article.month, article.day, article.slug), notice: t('flash.articles.publish.notice')
   end

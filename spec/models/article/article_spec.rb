@@ -43,7 +43,7 @@ describe Article do
 
     context "when it is a draft" do
       before do
-        article.created_at = Time.now
+        article.created_at = Time.zone.now
         article.published_at = nil
       end
 
@@ -54,8 +54,8 @@ describe Article do
 
     context "when it is published" do
       before do
-        article.created_at = Time.now
-        article.published_at = Time.now
+        article.created_at = Time.zone.now
+        article.published_at = Time.zone.now
       end
 
       it "return the text 'Publicado'" do
@@ -100,7 +100,7 @@ describe Article do
     end
 
     context "when it is published" do
-      before { article.published_at = Date.new(1984, 10, 23) }
+      before { article.published_at = Time.new(1984, 10, 23) }
 
       its(:day) { should eql 23 }
       its(:month) { should eql 10 }

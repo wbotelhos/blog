@@ -13,8 +13,8 @@ class Article < ActiveRecord::Base
   default_scope order 'published_at desc'
 
   scope :recents, limit(10)
-  scope :published, where('published_at is not null and published_at <= ?', Time.now)
-  scope :drafts, where('published_at is null or published_at > ?', Time.now)
+  scope :published, where('published_at is not null and published_at <= ?', Time.zone.now)
+  scope :drafts, where('published_at is null or published_at > ?', Time.zone.now)
 
   before_validation :slug_it, if: -> e { e.title }
 

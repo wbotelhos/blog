@@ -18,15 +18,15 @@ FactoryGirl.define do
     categories        { |categories| [categories.association(:category)] }
 
     factory :article_draft do
-      created_at    Time.now
-      updated_at    Time.now
+      created_at    Time.zone.now
+      updated_at    Time.zone.now
       published_at  nil
     end
 
     factory :article_published do
-      created_at    Date.new(1984, 10, 23)
-      published_at  Date.new(1984, 10, 23)
-      updated_at    Date.new(1984, 10, 23)
+      created_at    Time.new(1984, 10, 23)
+      published_at  Time.new(1984, 10, 23)
+      updated_at    Time.new(1984, 10, 23)
     end
   end
 

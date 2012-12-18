@@ -48,7 +48,7 @@ Lab.create!(
 
 article = user.articles.new(
   title:        'First Steps',
-  published_at: Time.now,
+  published_at: Time.zone.now,
   body:         %[
 Hi! My name is **Washington Botelho** and this article is an example to introduce how it works.
 
