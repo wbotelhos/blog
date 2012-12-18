@@ -11,7 +11,7 @@ section { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 
 
 /* new: user */
 .user-form #fields { float: left; width: 715px; }
-.user-form #fields label { color: #AAA; font-family: helvetica; font-size: 14px; margin-left: 6px; margin-top: 7px; position: absolute; }
+.user-form #fields label { color: #AAA; font-family: helvetica;  margin-left: 6px; margin-top: 7px; position: absolute; }
 .user-form #fields p input { width: 700px; }
 .user-form #fields textarea { min-height: 313px; width: 700px; }
 
@@ -44,12 +44,12 @@ section { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 
 /* new, edit: article; */
 #controls { float: right; margin-bottom: 20px; padding-left: 5px; padding-right: 5px; width: 200px; }
 #controls h3 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; font: bold 14px verdana; margin-bottom: 10px; padding-bottom: 7px; padding-top: 7px; }
-#controls #categories { margin-top: 11px; }
-#controls #categories ul li { padding-left: 3px; padding-top: 2px; }
-#controls #categories ul li:hover { border-radius: 4px; background-color: #EEE; }
-#controls #categories ul li input { cursor: pointer; float: left; margin-right: 5px; margin-top: 2px; padding-top: 5px; }
-#controls #categories ul li label { cursor: pointer; display: block; font-size: 12px; padding-bottom: 2px; }
-#controls #categories ul li label:hover { color: #8D50A7; }
+  #categories { margin-top: 11px; }
+  #categories ul li { padding-left: 3px; padding-top: 2px; }
+  #categories ul li:hover { border-radius: 4px; background-color: #EEE; }
+  #categories ul li input { cursor: pointer; float: left; margin-right: 5px; margin-top: 2px; padding-top: 5px; }
+  #categories ul li label { cursor: pointer; display: block; font-size: 12px; padding-bottom: 2px; }
+  #categories ul li label:hover { color: #8D50A7; }
 
 /* new: article, user */
 #controls .save { margin-left: 49px; }
@@ -58,21 +58,20 @@ section { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 
 #controls .update { margin-left: 40px; }
 
 /* draft: article */
-#drafts article h2 { margin-left: 10px; margin-top: 12px; }
-#drafts article h2 a { color: #444; font-size: 22px; }
-#drafts article h2 a:hover { color: #85B839; }
+article h2 { margin-left: 10px; margin-top: 12px; }
+article h2 a { color: #444; font-size: 22px; }
+article h2 a:hover { color: #85B839; }
 
-#drafts article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
-#drafts article .links li { float: left; font-size: 12px; line-height: 23px; padding-right: 10px; }
-#drafts article .links .edit { background: url('../images/edit.png') 0px 3px no-repeat; padding-left: 23px; }
+article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
+article .links li { float: left; font-size: 12px; line-height: 23px; padding-right: 10px; }
+article .links .edit { background: url('../images/edit.png') 0px 3px no-repeat; padding-left: 23px; }
 
-#drafts article { float: left; margin-bottom: 17px; position: relative; width: 928px; } /* same the main + 70 */
-#drafts article + article { border-top: 1px solid #DDD; padding-top: 5px; }
-#drafts article .body { color: #222; margin-top: 12px; padding-left: 10px; }
-#drafts article .body p { margin-bottom: 10px; }
-
-#drafts article .footer { height: 40px; margin-top: 15px; }
-#drafts article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; padding-top: 3px; }
+article { float: left; margin-bottom: 17px; position: relative; width: 928px; } /* same the main + 70 */
+article + article { border-top: 1px solid #DDD; padding-top: 5px; }
+article .body { color: #222; margin-top: 12px; padding-left: 10px; }
+article .body p { font-size: 14px; margin-bottom: 10px; }
+article .footer { height: 33px; margin-top: 25px; }
+article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; font-size: 12px; padding-top: 3px; }
 
 #about { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: 173px; margin: 50px auto 0; padding: 12px; width: 800px; }
 #about p { float: left; font: 14px/2 verdana; margin-left: 10px; margin-top: 25px; }
