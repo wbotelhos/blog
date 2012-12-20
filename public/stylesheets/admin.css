@@ -17,7 +17,7 @@ section { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 
 
 /* new: user */
 #controls .save { margin-left: 50px; }
-#controls .publish { background-color: #FF4D4D; font: 11px arial; letter-spacing: 1px; margin-left: 72px; margin-top: 8px; padding: 6px 9px 4px; }
+#controls .publish { background-color: #FF4D4D; font: 11px arial; letter-spacing: 1px; margin-left: 67px; margin-top: 8px; padding: 6px 9px 4px; }
 #controls .publish:hover { background-color: #F00; }
 
 /* index: user */
