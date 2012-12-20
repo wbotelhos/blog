@@ -7,7 +7,6 @@ class LabsController < ApplicationController
     if @lab.save
       redirect_to labs_drafts_path, notice: t('flash.labs.draft.notice')
     else
-      flash[:alert] = get_errors @lab
       render :new, layout: 'admin'
     end
   end
