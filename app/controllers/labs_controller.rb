@@ -5,8 +5,9 @@ class LabsController < ApplicationController
     @lab = Lab.new params[:lab]
 
     if @lab.save
-      redirect_to labs_drafts_path, notice: t('flash.labs.create.notice')
+      redirect_to labs_drafts_path, notice: t('flash.labs.draft.notice')
     else
+      flash[:alert] = get_errors
       render :new, layout: 'admin'
     end
   end
@@ -34,5 +35,17 @@ class LabsController < ApplicationController
     lab = Lab.find params[:id]
     lab.update_attributes params[:lab]
     redirect_to labs_edit_path(lab), notice: t('flash.labs.update.notice')
+  end
+
+  private
+
+  def get_errors
+    error = ''
+
+    @lab.errors.messages.each do |message|
+      error += message[1][0] + "<br />"
+    end
+
+    error.html_safe
   end
 end

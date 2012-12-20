@@ -11,9 +11,9 @@ pt-BR:
         alert: 'A busca foi desabilitada por um momento. Tente mais tarde! (:'
 
     labs:
-      create:
+      draft:
         alert: 'Erro ao criar o projeto!'
-        notice: 'Projeto salvo com sucesso!'
+        notice: 'Rascunho salvo com sucesso!'
       update:
         alert: 'Erro ao atualizar o projeto!'
         notice: 'Projeto atualizado com sucesso!'

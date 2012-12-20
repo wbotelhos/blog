@@ -1,12 +1,6 @@
 pt-BR:
   activerecord:
     attributes:
-      user:
-        name: 'Nome *'
-        email: 'E-mail *'
-        password: 'Senha *'
-        password_confirmation: 'Confirmação de senha *'
-
       article:
         title: 'Título *'
         body: 'Conteúdo'
@@ -17,6 +11,18 @@ pt-BR:
           email: 'E-mail *'
           url: 'URL'
           body: "Seu comentário *\n\n```python\ndef cute:\n  print 'Hello Markdown!'\n```"
+
+      lab:
+          name: 'Nome *'
+          slug: 'Slug *'
+          description: 'Descrição'
+          image: 'Imagem'
+
+      user:
+        name: 'Nome *'
+        email: 'E-mail *'
+        password: 'Senha *'
+        password_confirmation: 'Confirmação de senha *'
 
     errors:
       messages:

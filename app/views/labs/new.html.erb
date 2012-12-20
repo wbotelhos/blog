@@ -7,12 +7,12 @@
 <%= form_for @lab, html: { class: 'lab-form' } do |f| %>
   <div id="fields">
     <p>
-      <%= f.label "#{:name} *" %>
+      <%= f.label :name %>
       <%= f.text_field :name %>
     </p>
 
     <p>
-      <%= f.label "#{:slug} *" %>
+      <%= f.label :slug %>
       <%= f.text_field :slug %>
     </p>
 
