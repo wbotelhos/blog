@@ -2,19 +2,17 @@
 require 'spec_helper'
 
 describe "About" do
-  let(:user) { FactoryGirl.create(:user, id: 1) }
+  let!(:user) { FactoryGirl.create :user, bio: 'A cool guy!' }
 
   context "profile display" do
-    before do
-      visit about_path
+    before { visit about_path }
+
+    it "redirects to the about page" do
+      current_path.should == about_path
     end
 
-    it "should redirects to the about page" do
-      current_path.should eql(about_path)
-    end
-
-     xit "should show the author's bio" do
-       page.should have_content("Desenvolvedor Java, Ruby e Python no Portal <a href=\"http://r7.com\" target=\"_blank\">R7.com</a>.")
+     it "shows the author's bio" do
+       page.should have_content 'A cool guy!'
      end
   end
 end
