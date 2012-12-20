@@ -11,6 +11,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def get_errors(model)
+    error = ''
+
+    model.errors.messages.each do |message|
+      error += message[1][0] + "<br />"
+    end
+
+    error.html_safe
+  end
+
   private
 
   def user_session

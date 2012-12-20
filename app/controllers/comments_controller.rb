@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     if @comment.save
       send_mail
     else
-      flash[:alert] = get_errors
+      flash[:alert] = get_errors @comment
     end
 
     # TODO: how to keep the value of filled fields on dispatcher?
@@ -34,16 +34,6 @@ class CommentsController < ApplicationController
   end
 
   private
-
-  def get_errors
-    error = ''
-
-    @comment.errors.messages.each do |message|
-      error += message[1][0] + "<br />"
-    end
-
-    error.html_safe
-  end
 
   def sanitize_comment(comment = params[:comment])
     comment[:name]  = nil if comment[:name]   == t('activerecord.attributes.comment.name')
