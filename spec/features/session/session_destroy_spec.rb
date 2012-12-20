@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Logout" do
+describe User do
   let(:user) { FactoryGirl.create :user }
 
   context "when logout" do
