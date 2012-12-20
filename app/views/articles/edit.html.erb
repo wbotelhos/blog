@@ -9,7 +9,7 @@
     <%= link_to t('article.preview'), articles_preview_path(@article), { target: '_blank', id: 'draft' } %>
   <% else %>
     <%= link_to @article.slug, article_path(@article.year, @article.month, @article.day, @article.slug), { target: '_blank', id: 'published' } %>
-   <% end %>
+  <% end %>
 </div>
 
 <div class="clear"></div>
