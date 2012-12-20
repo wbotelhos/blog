@@ -28,8 +28,6 @@ describe Article do
   end
 
   describe "getting the status" do
-    subject { article }
-
     context "when article is new" do
       before do
         article.created_at = nil
