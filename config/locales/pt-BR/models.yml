@@ -8,7 +8,7 @@ pt-BR:
         password_confirmation: 'Confirmação de senha *'
 
       article:
-        title: 'Título'
+        title: 'Título *'
         body: 'Conteúdo'
         categories: 'Categoria'
 

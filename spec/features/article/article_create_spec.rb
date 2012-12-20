@@ -49,7 +49,7 @@ describe Article, "#create" do
         click_button 'Salvar'
       end
 
-      it { page.should have_content 'O campo "Título" deve ser preenchido!' }
+      it { page.should have_content 'O campo "Título *" deve ser preenchido!' }
     end
 
     context "blank category" do
