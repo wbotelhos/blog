@@ -63,7 +63,7 @@ class ArticlesController < ApplicationController
     @article = user_session.articles.new params[:article]
 
     if @article.save
-      redirect_to articles_edit_path(@article), notice: t('flash.articles.create.notice')
+      redirect_to articles_edit_path(@article), notice: t('flash.articles.draft.notice')
     else
       render :new, layout: 'admin'
     end

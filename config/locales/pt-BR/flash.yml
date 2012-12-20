@@ -1,7 +1,7 @@
 pt-BR:
   flash:
     articles:
-      create:
+      draft:
         alert: 'Erro ao criar o artigo!'
         notice: 'Rascunho salvo com sucesso!'
       update:
