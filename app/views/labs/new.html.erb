@@ -28,15 +28,14 @@
   </div>
 
   <div id="controls">
-    <div id="create">
-      <h3><%= t('lab.create') %></h3>
-      <%= f.submit class: 'save' %>
-    </div>
+    <h3><%= t('lab.create') %></h3>
+    <%= f.submit class: 'save' %>
   </div>
 <% end %>
 
 <script type="text/javascript">
   $(function() {
+    $('.lab-form').flury();
     $('#lab_name').focus();
     $('#lab_body').taby();
   });
