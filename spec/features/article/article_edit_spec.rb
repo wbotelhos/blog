@@ -24,6 +24,7 @@ describe Article, "#edit" do
       it { page.should have_field "category-#{category.id}" }
       # TODO: using `page.should have_field 'article_title', text: article_published.title` does not work.
       it { page.find('#article_title').value.should == article_published.title }
+      it { page.should have_button 'Atualizar' }
     end
 
     context "while draft" do

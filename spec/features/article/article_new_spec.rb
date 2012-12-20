@@ -8,9 +8,7 @@ describe Article, "#new" do
     let!(:category_2) { FactoryGirl.create :category, name: 'category-2' }
     let!(:category_3) { FactoryGirl.create :category, name: 'category-3' }
 
-    before do
-      login with: user.email
-    end
+    before { login with: user.email }
 
     context "form" do
       before { visit articles_new_path }
@@ -22,6 +20,8 @@ describe Article, "#new" do
       it { page.should have_field "category-#{category_1.id}" }
       it { page.should have_field "category-#{category_2.id}" }
       it { page.should have_field "category-#{category_3.id}" }
+      it { page.should have_button 'Salvar' }
+      it { page.should have_button 'Publicar' }
 
       it "displays all categories" do
         page.should have_content category_1.name
