@@ -147,3 +147,8 @@ aside .search { margin-bottom: 10px; }
 aside .search input[type="search"] { background: url('../images/search.png') no-repeat 4px 5px #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #000; font-size: 13px; height: 24px; opacity: .7; padding-left: 25px; width: 173px; }
 aside .search input[type="submit"] { display: none; }
 aside .search label { display: none; }
+
+/* about */
+#about { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: 173px; margin: 50px auto 0; padding: 12px; width: 800px; }
+#about p { float: left; font: 14px/2 verdana; margin-left: 10px; margin-top: 25px; }
+#about img { background-color: #EEE; border-radius: 2px; display: block; float: right; height: 160px; margin-right: 10px; margin-top: 5px; width: 160px; }

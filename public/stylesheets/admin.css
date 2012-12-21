@@ -68,6 +68,3 @@ article .body p { font-size: 14px; margin-bottom: 10px; }
 article .footer { height: 33px; margin-top: 25px; }
 article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; font-size: 12px; padding-top: 3px; }
 
-#about { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: 173px; margin: 50px auto 0; padding: 12px; width: 800px; }
-#about p { float: left; font: 14px/2 verdana; margin-left: 10px; margin-top: 25px; }
-#about img { background-color: #EEE; border-radius: 2px; display: block; float: right; height: 160px; margin-right: 10px; margin-top: 5px; width: 160px; }
