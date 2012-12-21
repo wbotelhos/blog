@@ -1,9 +1,7 @@
 <div id="title">
   <h2><%= t('article.edit') %></h2>
 
-  <div id="status">
-    <%= @article.status %>
-  </div>
+  <div id="status"><%= @article.status %></div>
 
   <% if @article.published_at.nil? %>
     <%= link_to t('article.preview'), articles_preview_path(@article), { target: '_blank', id: 'draft' } %>
