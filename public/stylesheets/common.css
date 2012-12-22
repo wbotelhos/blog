@@ -60,3 +60,26 @@ aside ul { margin-bottom: 28px; margin-top: 0; }
 aside ul li { border-bottom: 1px dotted #F1F1F1; padding: 4px 0; }
 aside ul li a { font: 13px arial; }
 aside ul li strong { background-color: #AF81C3; border-radius: 4px; color: #FFF; display: inline-block; font-size: 8px; padding: 1px 4px; text-shadow: none; }
+
+/* index: lab */
+.lab { border: 1px solid #EEE; border-radius: 3px; float: left; margin: 5px 5px 5px 9px; min-height: 122px; padding: 10px; width: 392px; }
+.lab .image { float: left; width: 160px; }
+.lab .image a { background-color: #EEE; border-radius: 3px; display: block; height: 120px; width: 160px; }
+.lab .info { float: right; width: 230px; }
+.lab .info h2.name { margin-left: 10px; margin-bottom: 1px; margin-top: 0; }
+.lab .info h2.name a { color: #444; font-size: 22px; }
+.lab .info h2.name a:hover { color: #85B839; }
+.lab .info .github-info { float: left; margin-left: 15px; margin-top: 13px; }
+.lab .info .github-info p { color: #BBB; font: 12px helvetica; margin: 0; padding-top: 10px; }
+.lab .info .github-info a { color: #444; font-size: 13px; margin-right: 12px; }
+.lab .info .github-info a:hover { color: #666; }
+.lab .info .github-info a i { margin-right: 4px; }
+.lab .info .description { color: #444; font-size: 13px; margin-left: 10px; min-height: 42px; }
+.lab .info .links { float: right; margin-right: 10px; margin-top: 15px; }
+.lab .info .links a { background-repeat: no-repeat; display: inline-block; height: 16px; margin-left: 7px; width: 16px; }
+.lab .info .links a.github { background-image: url("../images/github.png"); }
+.lab .info .links a.demo { background-image: url("../images/demo.png"); }
+.lab .info .links a.edit { background-image: url("../images/edit.png"); }
+
+/* result */
+#none { color: #777; font: bold 20px verdana; margin: 170px auto 0; overflow: auto; width: 310px; }

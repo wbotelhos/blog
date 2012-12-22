@@ -2,7 +2,6 @@
 #container section { float: left; border-right: 2px solid #DDD; padding: 10px; width: 858px; }
 
 /* result */
-#no-article { color: #777; font: bold 20px verdana; margin: 170px auto 0; overflow: auto; width: 300px; }
 #search-description { background-color: #FEFEFE; border: 1px solid #EFEFEF; border-radius: 3px; font: 12px verdana; margin-bottom: 5px; padding: 5px; }
 
 /* index, show: article box */
