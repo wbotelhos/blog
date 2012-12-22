@@ -37,7 +37,7 @@ describe Article, "#index" do
       end
 
       it "show read more buttons" do
-        page.should have_link 'Leia mais...', href: path
+        find('.read-more').should have_link 'Leia mais...', href: path
       end
 
       it "show tags with commas" do
@@ -45,7 +45,7 @@ describe Article, "#index" do
       end
 
       it "display edit link" do
-        page.should have_link 'Editar', href: "/articles/#{article_published.id}/edit"
+        find('.links .edit').should have_link 'Editar', href: "/articles/#{article_published.id}/edit"
       end
 
       it "display permalink" do
@@ -59,7 +59,6 @@ describe Article, "#index" do
       context "comment numbers" do
         context "with zero comments" do
           it "show no one text" do
-            find('li.comments a span').should have_content 'Nenhum comentário, seja o primeiro! (:'
             find('li.comments a span').should have_content 'Nenhum comentário, seja o primeiro! (:'
           end
         end

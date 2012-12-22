@@ -21,12 +21,12 @@ describe Article, "#show" do
     page.should have_content article.categories.to_a.map(&:name).join ', '
   end
 
-  it "not display edit link" do
-    page.should have_no_link 'Editar Artigo'
+  it "not display edit link", js: true do
+    page.should_not have_link 'Editar', href: "/articles/#{article.id}/edit"
   end
 
   it "display permalink" do
-    page.should have_link 'Permalink', href: path
+    find('.links .permalink').should have_link 'Permalink', href: path
   end
 
   it "display comments link" do
@@ -75,8 +75,8 @@ describe Article, "#show" do
       visit path
     end
 
-    it "display edit link" do
-      page.should have_link 'Editar', href: "/articles/#{article.id}/edit"
+    it "not display edit link" do
+      find('.links .edit').should have_link 'Editar', href: "/articles/#{article.id}/edit"
     end
   end
 end
