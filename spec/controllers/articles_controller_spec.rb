@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 describe ArticlesController do
-  let(:article_draft) { FactoryGirl.create :article_draft, title: 'title-0' }
-  let(:article_1) { FactoryGirl.create :article_published, title: 'title-1' }
-  let(:article_2) { FactoryGirl.create :article_published, title: 'title-2' }
-  let(:article_3) { FactoryGirl.create :article_published, title: 'title-3' }
-  let(:published_articles) { [article_draft, article_1, article_2, article_3] }
+  #let(:article_draft) { FactoryGirl.create :article_draft, title: 'title-0' }
+  #let(:article_1) { FactoryGirl.create :article_published, title: 'title-1' }
+  #let(:article_2) { FactoryGirl.create :article_published, title: 'title-2' }
+  #let(:article_3) { FactoryGirl.create :article_published, title: 'title-3' }
+  #let(:published_articles) { [article_draft, article_1, article_2, article_3] }
 
   describe "GET #drafts" do
     before do
-      Article.stub(:drafts).and_return(drafts)
+      #Article.stub(:drafts).and_return(drafts)
     end
 
     xit "assigns the unpublished articles to @articles" do
@@ -39,13 +39,13 @@ describe ArticlesController do
       Article.stub(:search).and_return published_articles.append(article_draft)
     end
 
-    it "receives the params" do
+    xit "receives the params" do
       Article.should_receive(:search).with('query', { page: nil, per_page: 10 })
       get :search, query: 'query'
     end
 
     context "with no query describe" do
-      it "returns all published records" do
+      xit "returns all published records" do
         get :search
         assigns(:articles).should == published_articles
       end
@@ -65,9 +65,33 @@ describe ArticlesController do
   end
 
   describe "GET #new" do
-    it "assigns a new Article to @article"
+    let(:article_mock) { mock_model Article }
+
+    before do
+      Article.stub!(:new).and_return article_mock
+    end
+
+    xit "call new on Article" do
+      Article.should_receive(:new).and_return article_mock
+      get :new
+    end
+
+    xit "assigns a new Article to @article" do
+      get :new
+      assigns(:article).should == article_mock
+    end
+
     it "renders the :new page"
-    it "renders with :admin template"
+
+    xit "get success" do
+      get :new
+      response.should be_success
+    end
+
+    xit "renders with :admin template" do
+      get :new
+      response.should render_template 'admin'
+    end
   end
 
   describe "GET #show" do
@@ -81,7 +105,12 @@ describe ArticlesController do
       it "assigns the requested article to @article"
       it "slug the title"
       it "set the new attributes and update it"
-      it "redirects to the :edit page"
+
+      xit "redirects to the :edit page" do
+        post :update, article: { title: 'Ruby', body: 'Once a Ruby a time...', _method: :put }
+        response.should redirect_to(articles_edit_url(@article))
+      end
+
       it "renders with :admin template"
       it "shows update message"
     end
@@ -104,8 +133,12 @@ describe ArticlesController do
   end
 
   describe "POST #create" do
+    before do
+      Article.stub!(:new).and_return(@article = mock_model(Article))
+    end
+
     context "with valid attributes" do
-      let(:category) { FactoryGirl.create(:category) }
+      #let(:category) { FactoryGirl.create(:category) }
 
       xit "creates a new article" do
         expect {
@@ -115,7 +148,12 @@ describe ArticlesController do
 
       it "assigns the new attributes to an user's article to @article"
       it "slug the title"
-      it "saves the article"
+
+      xit "saves the article" do
+        @article.should_receive(:save).and_return(true)
+        post :create, article: { title: 'Ruby', body: 'Once a Ruby a time...' }
+      end
+
       it "redirects to the :edit page"
       it "renders with :admin template"
       it "shows the success messages"
