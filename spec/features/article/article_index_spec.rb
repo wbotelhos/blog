@@ -10,7 +10,7 @@ describe Article, "#index" do
     context "without record" do
       before { visit articles_path }
 
-      it "show read more buttons" do
+      it "show no result message" do
         page.should have_content 'Nenhum artigo publicado!'
       end
     end
@@ -30,7 +30,7 @@ describe Article, "#index" do
         page.should have_no_content article_draft.title
       end
 
-      it "display the draft record" do
+      it "display the published record" do
         page.should have_content article_published.title
         page.should have_content article_published.resume
         page.should have_content article_published.categories.first.name
@@ -45,7 +45,7 @@ describe Article, "#index" do
       end
 
       it "display edit link" do
-        page.should have_link 'Editar Artigo', href: "/articles/#{article_published.id}/edit"
+        page.should have_link 'Editar', href: "/articles/#{article_published.id}/edit"
       end
 
       it "display permalink" do

@@ -29,7 +29,7 @@ describe Article, "#drafts" do
     end
 
     it "display edit link" do
-      page.should have_link 'Editar Artigo', href: "/articles/#{article_draft.id}/edit"
+      page.should have_link 'Editar', href: "/articles/#{article_draft.id}/edit"
     end
   end
 

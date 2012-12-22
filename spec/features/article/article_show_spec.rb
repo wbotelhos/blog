@@ -76,7 +76,7 @@ describe Article, "#show" do
     end
 
     it "display edit link" do
-      page.should have_link 'Editar Artigo', href: "/articles/#{article.id}/edit"
+      page.should have_link 'Editar', href: "/articles/#{article.id}/edit"
     end
   end
 end
