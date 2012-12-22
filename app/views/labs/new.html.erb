@@ -28,8 +28,10 @@
   </div>
 
   <div id="controls">
-    <h3><%= t('lab.create') %></h3>
+    <h3><%= t 'lab.publish' %></h3>
+
     <%= f.submit class: 'save' %>
+    <input type="button" value="<%= t 'lab.publish' %>" class="publish" />
   </div>
 <% end %>
 

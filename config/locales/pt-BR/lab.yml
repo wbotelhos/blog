@@ -1,10 +1,10 @@
 pt-BR:
   lab:
-    create: 'Criar'
     edit: 'Editar Projeto'
     loading: 'Loading informations...'
     new: 'Novo Projeto'
     none: 'Nenhum projeto publicado!'
+    publish: 'Publicar'
     update: 'Atualizar'
     status:
       new: 'Novo'
