@@ -6,4 +6,22 @@ class Lab < ActiveRecord::Base
 
   validates :name, :slug, presence: true
   validates :name, :slug, uniqueness: true
+
+  def status
+    if created_at.nil?
+      I18n.t('lab.status.new')
+    elsif published_at.nil?
+      I18n.t('lab.status.draft')
+    else
+      I18n.t('lab.status.published')
+    end
+  end
+
+  def github
+    "http://github.com/wbotelhos/#{slug}"
+  end
+
+  def site
+    "http://wbotelhos.com/#{slug}"
+  end
 end
