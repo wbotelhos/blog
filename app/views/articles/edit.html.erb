@@ -1,5 +1,5 @@
 <div id="title">
-  <h2><%= t('article.edit') %></h2>
+  <h2><%= t 'article.edit' %></h2>
 
   <div id="status"><%= @article.status %></div>
 
@@ -28,16 +28,16 @@
   </div>
 
   <div id="controls">
-    <h3><%= t('article.publish') %></h3>
+    <h3><%= t 'article.publish' %></h3>
 
     <%= f.submit t('article.update'), class: 'update' %>
 
     <% if @article.published_at.nil? %>
-      <input type="button" value="<%= t('article.publish') %>" class="publish" />
+      <input type="button" value="<%= t 'article.publish' %>" class="publish" />
     <% end %>
 
     <div id="categories">
-      <h3><%= t('category.other') %></h3>
+      <h3><%= t 'category.other' %></h3>
 
       <ul>
         <% categories.each do |category| %>

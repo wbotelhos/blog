@@ -1,7 +1,7 @@
-<% content_for :title do %><%= t('navigation.lab.title') %><% end %>
+<% content_for :title do %><%= t 'navigation.lab.title' %><% end %>
 
 <% if @labs.empty? %>
-  <div id="none"><%= t('lab.none') %></div>
+  <div id="none"><%= t 'lab.none' %></div>
 <% else %>
   <%= render @labs %>
 <% end %>

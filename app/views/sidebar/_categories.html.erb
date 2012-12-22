@@ -7,7 +7,7 @@
   <% categories.each do |category| %>
     <li>
       <%= link_to category.name, 'javascript:void(0);' %>
-      <%= t('category.count_html', count: category.articles.size) %>
+      <%= t 'category.count_html', count: category.articles.size %>
     </li>
   <% end %>
 </ul>

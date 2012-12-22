@@ -1,7 +1,7 @@
 <article class="article">
   <div class="date">
-    <span class="number"><%= t('article.published_at', time: l(@article.updated_at, format: :day)) %></span>
-    <span class="month"><%= t('article.published_at', time: l(@article.updated_at, format: :month)) %></span>
+    <span class="number"><%= t 'article.published_at', time: l(@article.updated_at, format: :day) %></span>
+    <span class="month"><%= t 'article.published_at', time: l(@article.updated_at, format: :month) %></span>
   </div>
 
   <h2 class="title"><%= link_to @article.title, articles_preview_path(@article) %></h2>
@@ -16,7 +16,7 @@
 
   <div class="footer">
     <div class="tags">
-      <%= t('article.tags') %>
+      <%= t 'article.tags' %>
 
       <% @article.categories.each do |category| %>
         <%= link_to category.name, 'javascript:void(0);' %><%= ',' unless category == @article.categories.last %>
