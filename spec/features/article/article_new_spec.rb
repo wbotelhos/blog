@@ -10,6 +10,14 @@ describe Article, "#new" do
 
     before { login with: user.email }
 
+    context "page" do
+      before { visit articles_new_path }
+
+      it "display title" do
+        page.find('#title h2').should have_content 'Novo Artigo'
+      end
+    end
+
     context "form" do
       before { visit articles_new_path }
 

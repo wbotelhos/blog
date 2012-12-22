@@ -10,6 +10,14 @@ describe Article, "#edit" do
 
     before { login with: user.email }
 
+    context "page" do
+      before { visit articles_edit_path article_published }
+
+      it "display title" do
+        page.find('#title h2').should have_content 'Editar'
+      end
+    end
+
     context "form" do
       before { visit articles_edit_path article_published }
 
