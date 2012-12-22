@@ -1,6 +1,12 @@
 pt-BR:
   lab:
-    new: 'Novo Projeto'
     create: 'Criar'
-    loading: 'Loading Github info...'
+    edit: 'Editar Projeto'
+    loading: 'Loading informations...'
+    new: 'Novo Projeto'
+    none: 'Nenhum projeto publicado!'
     update: 'Atualizar'
+    status:
+      new: 'Novo'
+      draft: 'Rascunho'
+      published: 'Publicado'

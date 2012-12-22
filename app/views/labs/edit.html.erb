@@ -1,18 +1,26 @@
 <div id="title">
   <h2><%= t('lab.edit') %></h2>
+
+  <div id="status"><%= @lab.status %></div>
+
+  <% if @lab.published_at.present? %>
+    <%= link_to @lab.site, @lab.site, { target: '_blank', id: 'published' } %>
+  <% end %>
 </div>
+
+<div class="clear"></div>
 
 <%= render 'shared/error_messages', entity: @lab %>
 
 <%= form_for @lab, url: labs_update_path, html: { class: 'lab-form' } do |f| %>
   <div id="fields">
     <p>
-      <%= f.label "#{:name} *" %>
+      <%= f.label :name %>
       <%= f.text_field :name %>
     </p>
 
     <p>
-      <%= f.label "#{:slug} *" %>
+      <%= f.label :slug %>
       <%= f.text_field :slug %>
     </p>
 
@@ -28,15 +36,14 @@
   </div>
 
   <div id="controls">
-    <div id="update">
-      <h3><%= t('lab.update') %></h3>
-      <%= f.submit class: 'update' %>
-    </div>
+    <h3><%= t('lab.update') %></h3>
+    <%= f.submit class: 'update' %>
   </div>
 <% end %>
 
 <script type="text/javascript">
   $(function() {
+    $('.lab-form').flury();
     $('#lab_description').focus();
     $('#lab_body').taby();
   });

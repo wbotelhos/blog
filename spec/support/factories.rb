@@ -51,6 +51,18 @@ FactoryGirl.define do
   factory :lab do
     sequence(:name) { |i| "name #{i}" }
     sequence(:slug) { |i| "name-#{i}" }
+
+    factory :lab_draft do
+      created_at    Time.zone.now
+      published_at  nil
+      updated_at    Time.zone.now
+    end
+
+    factory :lab_published do
+      created_at    Time.new(1984, 10, 23)
+      published_at  Time.new(1984, 10, 23)
+      updated_at    Time.new(1984, 10, 23)
+    end
   end
 
   factory :link do
