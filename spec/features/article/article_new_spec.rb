@@ -11,7 +11,12 @@ describe Article, "#new" do
     before { login with: user.email }
 
     context "page" do
-      before { visit articles_new_path }
+      before do
+        visit admin_path
+        find('.article-menu').click_link 'Criar'
+      end
+
+      it { current_path.should == '/articles/new' }
 
       it "display title" do
         page.find('#title h2').should have_content 'Novo Artigo'

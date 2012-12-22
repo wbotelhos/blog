@@ -29,7 +29,7 @@ describe SidebarPresenter do
     its(:categories) { should eql(partial: 'sidebar/categories', locals: { categories: categories }) }
   end
 
-  context "showing admin bar" do
+  context "showing links bar" do
     its(:links) { should eql(partial: 'sidebar/links', locals: { links: links }) }
   end
 end

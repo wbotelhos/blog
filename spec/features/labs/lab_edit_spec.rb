@@ -12,6 +12,8 @@ describe Lab, "#edit" do
     context "page" do
       before { visit labs_edit_path lab_published }
 
+      it { current_path.should == "/labs/#{lab_published.id}/edit" }
+
       it "display title" do
         page.find('#title h2').should have_content 'Editar Projeto'
       end
@@ -19,8 +21,6 @@ describe Lab, "#edit" do
 
     context "form" do
       before { visit labs_edit_path lab_published }
-
-      it { current_path.should == "/labs/#{lab_published.id}/edit" }
 
       # TODO: why should have_field with text: does not work?
       it { page.find('#lab_name').value.should == lab_published.name }

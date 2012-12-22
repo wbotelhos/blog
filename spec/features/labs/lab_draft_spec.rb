@@ -1,13 +1,19 @@
 # coding: utf-8
 require 'spec_helper'
 
-describe Lab, "#index" do
+describe Lab, "#drafts" do
   let(:user) { FactoryGirl.create :user }
 
   context "when logged" do
-    before do
-      login with: user.email
-      visit labs_drafts_path
+    before { login with: user.email }
+
+    context "page" do
+      before do
+        visit admin_path
+        find('.lab-menu').click_link 'Rascunhos'
+      end
+
+      it { current_path.should == '/labs/drafts' }
     end
 
     context "with record" do

@@ -8,21 +8,20 @@ describe Article, "#edit" do
   context "when logged" do
     let(:user) { FactoryGirl.create :user }
 
-    before { login with: user.email }
+    before do
+      login with: user.email
+      visit articles_edit_path article_published
+    end
 
     context "page" do
-      before { visit articles_edit_path article_published }
+      it { current_path.should == "/articles/#{article_published.id}/edit" }
 
       it "display title" do
-        page.find('#title h2').should have_content 'Editar'
+        page.find('#title h2').should have_content 'Editar Artigo'
       end
     end
 
     context "form" do
-      before { visit articles_edit_path article_published }
-
-      it { current_path.should == "/articles/#{article_published.id}/edit" }
-
       it "displays all categories" do
         page.should have_content category.name
       end
@@ -50,8 +49,6 @@ describe Article, "#edit" do
     end
 
     context "while published" do
-      before { visit articles_edit_path article_published }
-
       it "displays published indicator" do
         page.find('div#status').should have_content 'Publicado'
       end

@@ -10,12 +10,12 @@ describe Article, "#drafts" do
 
     before do
       login with: user.email
-      click_link 'Admin!'
+      visit admin_path
       find('.article-menu').click_link 'Rascunhos'
     end
 
-    it "redirects to the drafts page" do
-      current_path.should == '/articles/drafts'
+    context "page" do
+      it { current_path.should == '/articles/drafts' }
     end
 
     it "do not display published record" do

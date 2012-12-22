@@ -9,7 +9,7 @@ describe Article, "#update" do
 
   before do
     login with: user.email
-    visit articles_edit_path(article)
+    visit articles_edit_path article
   end
 
   context "with valid data" do
