@@ -23,7 +23,7 @@ Link.create! name: 'yLabs',                   url: 'http://wbotelhos.com/labs'
 user = User.create!(
   name:                   'Washington Botelho',
   email:                  'wbotelhos@gmail.com',
-  bio:                    %(Desenvolvedor Java, Ruby e Python no Portal <a href="http://r7.com" target="_blank">R7.com</a>.\nÉ Bacharel em Sistemas de Informação e certificado OCJA 1.0 e OCJP 6.\nAjudante e aprendiz da comunidade open source e metido a designer.\n Além disso é apaixonado pela dança, skate, jiu-jitsu e Counter Strike Source. (:),
+  bio:                    %[Desenvolvedor Java, Ruby e Python no Portal <a href="http://r7.com" target="_blank">R7.com</a>.\nÉ Bacharel em Sistemas de Informação e certificado OCJA 1.0 e OCJP 6.\nAjudante e aprendiz da comunidade open source e metido a designer.\n Além disso é apaixonado pela dança, skate, jiu-jitsu e Counter Strike Source. (:],
   github:                 'http://github.com/wbotelhos',
   twitter:                'http://twitter.com/wbotelhos',
   linkedin:               'http://linkedin.com/in/wbotelhos',
