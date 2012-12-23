@@ -17,7 +17,7 @@ article .body p.read-more a:hover { background-color: #8D50A7; }
 article .body h2 { margin-bottom: 0; }
 article .body h3 { font-size: 16px; letter-spacing: .5px; margin-bottom: 0; }
 article .body ul { margin-bottom: 10px; }
-article .body ul li { list-style: inside; margin-left: 5px; }
+article .body ul li { font-size: 14px; list-style: inside; margin-left: 5px; }
 article .body .align-center { display: block; margin: 0 auto; }
 article .body .align-left { display: inline; float: left; margin: 0 7px 2px 0; padding: 4px; }
 article .body .align-right { display: inline; float: right; margin: 0 0 2px 7px; padding: 4px; }
