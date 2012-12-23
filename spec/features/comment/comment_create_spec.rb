@@ -75,7 +75,7 @@ describe Comment, "#create" do
         end
 
         it "displays error message" do
-          page.should have_content 'O campo "Nome" deve ser preenchido!'
+          page.should have_content 'O campo "Nome *" deve ser preenchido!'
         end
       end
 
@@ -92,7 +92,7 @@ describe Comment, "#create" do
         end
 
         it "displays error message" do
-          page.should have_content 'O "E-mail" digitado é inválido!'
+          page.should have_content 'O campo "E-mail *" deve ser preenchido!'
         end
       end
 
