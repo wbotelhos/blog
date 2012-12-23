@@ -2,7 +2,9 @@
 
 [http://wbotelhos.com.br](http://wbotelhos.com.br) on Rails.
 
-![Travis CI status](https://travis-ci.org/wbotelhos/wbotelhos-com-br.png?branch=master "Travis CI status")
+![Travis CI status](https://travis-ci.org/wbotelhos/wbotelhos-com-br.png?branch=master "Travis CI")
+
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/wbotelhos/wbotelhos-com-br "Code Climate")
 
 ## Usage
 
@@ -39,6 +41,6 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## Buy me a coffee
+## Donate
 
 You can do it by [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=Blog-BR). Thanks! (:
