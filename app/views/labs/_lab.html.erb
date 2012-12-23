@@ -1,6 +1,6 @@
 <div class="lab">
   <div class="image">
-    <%= link_to image_tag(lab.image, alt: '', height: 120, width: 160), "#{CONFIG['url_http']}/#{lab.slug}", target: '_blank' %>
+    <%= link_to lab.image.present? ? image_tag(lab.image, alt: lab.name, height: 120, width: 160) : '', "#{CONFIG['url_http']}/#{lab.slug}", target: '_blank' %>
   </div>
 
   <div class="info">
