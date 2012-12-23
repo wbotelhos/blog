@@ -139,3 +139,21 @@ comment2 = article.comments.create!(
       body:       "Yeah! I'll pull it soon.",
       comment_id: response2.id
     )
+
+Donator.create!(
+  name:     'Madson Cardoso',
+  email:    'madsonmac@gmail.com',
+  amount:   60.0,
+  url:      'http://madsonmac.com',
+  country:  'Macapá',
+  message:  'Good job on blog and the jQuery plugins. Thanks for your work!'
+)
+
+Donator.create!(
+  name:     'Lenon Marcelo',
+  email:    'lenon.marcel@gmail.com',
+  amount:   30.0,
+  url:      'http://lenonmarcel.com.br',
+  country:  'Gaúcho',
+  message:  'Nonononon. Thanks!'
+)

@@ -10,6 +10,14 @@ pt-BR:
       search:
         alert: 'A busca foi desabilitada por um momento. Tente mais tarde! (:'
 
+    donators:
+      create:
+        alert: 'Erro ao criar o doador!'
+        notice: 'Doador criado com sucesso!'
+      update:
+        alert: 'Erro ao atualizar o doador!'
+        notice: 'Doador atualizado com sucesso!'
+
     labs:
       draft:
         alert: 'Erro ao criar o projeto!'

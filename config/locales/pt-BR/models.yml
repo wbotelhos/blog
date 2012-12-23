@@ -12,6 +12,15 @@ pt-BR:
           url: 'URL'
           body: "Seu comentário *\n\n```python\ndef cute:\n  print 'Hello Markdown!'\n```"
 
+      donator:
+        about: 'Sobre'
+        amount: 'Valor *'
+        country: 'País'
+        email: 'E-mail *'
+        message: 'Mensagem'
+        name: 'Nome *'
+        url: 'URL'
+
       lab:
           name: 'Nome *'
           slug: 'Slug *'
@@ -26,16 +35,13 @@ pt-BR:
 
     errors:
       messages:
+        not_a_number: 'O valor "%{value}" não é um número válido para o campo "%{attribute}"!'
         blank: 'O campo "%{attribute}" deve ser preenchido!'
         record_invalid: "Erro de validação: %{errors}!"
         taken: 'O valor "%{value}" para o campo "%{attribute}" já esta em uso!'
+        invalid: 'O valor "%{value}" para o campo "%{attribute}" é inválido!'
       models:
         comment:
-          attributes:
-            name:
-              blank: 'O campo "Nome" deve ser preenchido!'
-            email:
-              blank: 'O campo "E-mail" deve ser preenchido!'
-              invalid: 'O "E-mail" digitado é inválido!'
-            body:
-              blank: 'O campo "Comentário" deve ser preenchido!'
+            attributes:
+              body:
+                blank: 'O campo "Comentário" deve ser preenchido!'

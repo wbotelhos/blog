@@ -69,4 +69,10 @@ FactoryGirl.define do
     sequence(:name) { |i| "name #{i}" }
     url             'http://url.com'
   end
+
+  factory :donator do
+    name              'Donator'
+    sequence(:email)  { |i| "donator#{i}@mail.com" }
+    amount            10.00
+  end
 end

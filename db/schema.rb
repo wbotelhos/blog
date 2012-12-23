@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807192839) do
+ActiveRecord::Schema.define(:version => 20121222234809) do
 
   create_table "articles", :force => true do |t|
     t.string   "title",                            :null => false
@@ -55,6 +55,18 @@ ActiveRecord::Schema.define(:version => 20120807192839) do
   end
 
   add_index "comments", ["article_id"], :name => "index_comments_on_article_id"
+
+  create_table "donators", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "email",      :null => false
+    t.string   "url"
+    t.float    "amount"
+    t.string   "about"
+    t.string   "country"
+    t.string   "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "labs", :force => true do |t|
     t.string   "name",         :null => false

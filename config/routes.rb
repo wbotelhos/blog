@@ -30,6 +30,14 @@ Blog::Application.routes.draw do
     put   '/articles/:article_id/comments/:id', action: :update, as: :comments_update
   end
 
+  controller :donators do
+    get   '/donators',            action: :index
+    post  '/donators',            action: :create
+    get   '/donators/new',        action: :new
+    put   '/donators/:id',        action: :update, as: :donators_update
+    get   '/donators/:id/edit',   action: :edit,   as: :donators_edit
+  end
+
   controller :feed do
     get   '/feed', action: :feed
   end

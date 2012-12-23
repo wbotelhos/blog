@@ -37,9 +37,9 @@ article .links .permalink { background: url('../images/link.png') 0px 4px no-rep
 article .links .published { background: url('../images/calendar.png') 0px 4px no-repeat; padding-left: 22px; }
 
 /* index, show: cloud */
-article .date { background: url('../images/balloon.png') 1px 0 no-repeat; font-family: arial; font-weight: bold; height: 54px; left: -47px; position: absolute; text-align: center; width: 74px; }
-article .date .number { font-size: 13px; position: relative; top: 4px; }
-article .date .month { display: block; font-size: 12px; position: relative; text-transform: uppercase; top: -3px; }
+article div.date { background: url('../images/balloon.png') 1px 0 no-repeat; font-family: arial; font-weight: bold; height: 54px; left: -47px; position: absolute; text-align: center; width: 74px; }
+article div.date .number { font-size: 13px; position: relative; top: 4px; }
+article div.date .month { display: block; font-size: 12px; position: relative; text-transform: uppercase; top: -3px; }
 
 /* show: footer */
 article .footer { height: 33px; margin-top: 25px; }
@@ -86,14 +86,14 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .comment.level-2 .name-date { width: 710px }
 .comment.level-2 .text { width: 710px; }
 .comment.level-2 form { width: 707px; }
-.comment.level-2 form input[type="text"] { width: 223px; }
+.comment.level-2 form input[type='text'] { width: 223px; }
 .comment.level-2 form textarea { width: 691px; }
 
 .comment.level-3 { width: 790px; }
 .comment.level-3 .name-date { width: 695px }
 .comment.level-3 .text { width: 695px; }
 .comment.level-3 form { width: 692px; }
-.comment.level-3 form input[type="text"] { width: 218px; }
+.comment.level-3 form input[type='text'] { width: 218px; }
 .comment.level-3 form textarea { width: 677px; }
 
 .comment.level-4 { width: 775px; }
@@ -139,7 +139,7 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 /* sidebar */
 aside { float: right; padding: 10px; width: 200px; }
 
-aside #donate { background-color: #D7D7D7; border-radius: 4px; color: #333; display: block; font: 15px helvetica; letter-spacing: .4px; margin: 0 auto; padding: 1px 0 0 15px; width: 86px; }
+aside #donate { background-color: #D7D7D7; border-radius: 4px; color: #333; display: block; font: 15px helvetica; letter-spacing: .4px; margin: 0 auto; padding: 5px 0 3px 14px; width: 77px; }
 aside #donate:hover { background-color: #BBB; color: #333; }
 aside #donate i { font-size: 18px; left: -4px; position: relative; top: 2px; }
 
@@ -152,3 +152,20 @@ aside .search label { display: none; }
 #about { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: 173px; margin: 50px auto 0; padding: 12px; width: 800px; }
 #about p { float: left; font: 14px/2 verdana; margin-left: 10px; margin-top: 25px; }
 #about img { background-color: #EEE; border-radius: 2px; display: block; float: right; height: 160px; margin-right: 10px; margin-top: 5px; width: 160px; }
+
+/* index: donator */
+#donations h2 { color: #464646; float: left; font-size: 33px; margin-top: 15px; padding-left: 25px; }
+#donations table { width: 100%; }
+#donations table tr.odd { background-color: #F2F4F9; }
+#donations table tr td { color: #444; font: 12px arial; padding: 5px 5px 4px; text-align: center; }
+#donations table tr td img { border-radius: 3px; box-shadow: 1px 1px 3px #DDD; }
+#donations table tr td.amount { font: bold 15px helvetica; width: 7%; }
+#donations table tr td.country { width: 9%; }
+#donations table tr td.date { width: 13%; }
+#donations table tr td.edit { width: 3%; }
+#donations table tr td.edit a { background: url('../images/edit.png') no-repeat; display: block; height: 16px; width: 16px; }
+#donations table tr td.image { width: 5%; }
+#donations table tr td.message { text-align: left; width: 37%; }
+#donations table tr td.name { font: 15px arial; text-align: left; width: 20%; }
+#donations table tr td.plan span { background-color: #369; border-radius: 7px; color: white; font-size: 12px; padding: 3px 10px; }
+#donations table tr td.plan { width: 6%; }

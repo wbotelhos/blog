@@ -19,6 +19,7 @@ pt-BR:
       default: ! "%d/%m/%y às %H:%M"
       day: ! "%d"
       month: ! "%b"
+      donation: ! "%b %d, %Y"
   datetime:
     distance_in_words:
       about_x_hours:

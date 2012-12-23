@@ -1,0 +1,58 @@
+<div id="title">
+  <h2><%= t 'donator.new' %></h2>
+</div>
+
+<div class="clear"></div>
+
+<%= render 'shared/error_messages', entity: @donator %>
+
+<%= form_for @donator, html: { class: 'donator-form' } do |f| %>
+  <div id="fields">
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </p>
+
+    <p>
+      <%= f.label :amount %>
+      <%= f.text_field :amount %>
+    </p>
+
+    <p>
+      <%= f.label :about %>
+      <%= f.text_field :about %>
+    </p>
+
+    <p>
+      <%= f.label :url %>
+      <%= f.text_field :url %>
+    </p>
+
+    <p>
+      <%= f.label :country %>
+      <%= f.text_field :country %>
+    </p>
+
+    <p>
+      <%= f.label :message %>
+      <%= f.text_field :message %>
+    </p>
+  </div>
+
+  <div id="controls">
+    <h3><%= t 'donator.create' %></h3>
+    <%= f.submit class: 'save' %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('.donator-form').flury();
+    $('#donator_name').focus();
+  });
+</script>

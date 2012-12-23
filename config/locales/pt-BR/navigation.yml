@@ -13,6 +13,11 @@ pt-BR:
       edit: 'Editar'
       title: 'Artigos'
 
+    donator:
+      edit: 'Editar'
+      new: 'Criar'
+      title: 'Donators'
+
     lab:
       drafts: 'Rascunhos'
       edit: 'Editar'
