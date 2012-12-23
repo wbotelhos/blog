@@ -18,9 +18,27 @@ textarea { background-color: #FBFBFB; border: 1px solid #999; border-radius: 2px
 textarea:focus, input[type="text"]:focus, input[type="search"]:focus { border: 1px solid #95BDD4 !important; }
 textarea:hover, input[type="text"]:hover, input[type="search"]:hover { border: 1px solid #BDBDBD !important; }
 
-ul { list-style: none; padding-left: 0; }
+ul { list-style: none; margin: 0; padding-left: 0; }
 
 .clear { clear: both; }
+
+/* top */
+header { height: 176px; width: 1100px; }
+header #logo { float: left; margin-bottom: 20px; margin-left: 10px; margin-top: 20px; }
+header #logo h1 { font-size: 1em; }
+header #logo h1 a { color: #333; font-size: 47px; letter-spacing: -3px; line-height: 1; text-shadow: 2px 2px #FFF; }
+header #logo h1 a:hover { color: #000; }
+header #logo p { color: #999; font: bold 15px arial; margin-top: -10px; text-shadow: 1px 1px 1px #FFF; width: 385px; }
+
+header nav { float: right; margin-top: 20px; }
+header nav ul { border-bottom: 1px solid #D7D7D7; border-top: 1px solid #D7D7D7; height: 33px; overflow: visible; padding-top: 6px; text-shadow: 0 1px 0 #FFF; }
+header nav ul li { display: inline; padding-left: 10px; padding-right: 10px; }
+header nav ul li a { font: bold 14px arial; letter-spacing: 0.4px; text-align: center; text-shadow: 1px 1px 1px #FFF; text-transform: uppercase; }
+header nav ul li a.selected { color: #1982B3; border-bottom: 3px solid #1982B3; }
+
+header #social { clear: both; float: right; }
+header #social ul li { display: inline-block; padding-left: 2px; }
+header #social ul li img { opacity: .6 }
 
 /* font awesome */
 .icon-large { color: #444; padding-right: 3px; }
