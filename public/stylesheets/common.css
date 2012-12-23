@@ -30,7 +30,7 @@ header #logo h1 a { color: #333; font-size: 47px; letter-spacing: -3px; line-hei
 header #logo h1 a:hover { color: #000; }
 header #logo p { color: #999; font: bold 15px arial; margin-top: -10px; text-shadow: 1px 1px 1px #FFF; width: 385px; }
 
-header nav { float: right; margin-top: 20px; }
+header nav { float: right; margin-top: 36px; }
 header nav ul { border-bottom: 1px solid #D7D7D7; border-top: 1px solid #D7D7D7; height: 33px; overflow: visible; padding-top: 6px; text-shadow: 0 1px 0 #FFF; }
 header nav ul li { display: inline; padding-left: 10px; padding-right: 10px; }
 header nav ul li a { font: bold 14px arial; letter-spacing: 0.4px; text-align: center; text-shadow: 1px 1px 1px #FFF; text-transform: uppercase; }
