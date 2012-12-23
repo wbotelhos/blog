@@ -79,6 +79,7 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .comment.level-1 .text { width: 725px; }
 .comment.level-1 form { width: 724px; }
 .comment.level-1 form input[type="text"] { width: 229px; }
+.comment.level-1 form input[type='text'] { width: 229px; }
 .comment.level-1 form textarea { width: 710px; }
 
 .comment.level-2 { width: 805px; }
