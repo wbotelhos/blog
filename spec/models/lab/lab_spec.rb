@@ -44,4 +44,15 @@ describe Lab do
       end
     end
   end
+
+  describe ':scope' do
+    context 'when listing' do
+      let!(:lab_1) { FactoryGirl.create :lab, created_at: Date.new(2000, 01, 01) }
+      let!(:lab_2) { FactoryGirl.create :lab, created_at: Date.new(2000, 01, 02) }
+
+      it "sort by desc :create_at" do
+        Lab.all.to_a.should == [lab_2, lab_1]
+      end
+    end
+  end
 end
