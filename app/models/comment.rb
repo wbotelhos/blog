@@ -8,6 +8,6 @@ class Comment < ActiveRecord::Base
 
   default_scope order 'id desc'
 
-  validates :email,                         format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
-  validates :name, :email, :body, :article, presence: true
+  validates :name, :body, :article, presence: true
+  validates :email,                 presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
 end
