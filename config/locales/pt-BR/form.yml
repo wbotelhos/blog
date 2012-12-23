@@ -17,7 +17,7 @@ pt-BR:
           create: 'Comentar'
 
       lab:
-        create: 'Criar'
+        create: 'Salvar'
         update: 'Atualizar'
 
       user:
