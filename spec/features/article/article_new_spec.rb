@@ -19,7 +19,7 @@ describe Article, "#new" do
       it { current_path.should == '/articles/new' }
 
       it "display title" do
-        page.find('#title h2').should have_content 'Novo Artigo'
+        find('#title h2').should have_content 'Novo Artigo'
       end
     end
 

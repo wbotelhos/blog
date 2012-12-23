@@ -18,7 +18,7 @@ describe Lab, "#new" do
       it { current_path.should == '/labs/new' }
 
       it "display title" do
-        page.find('#title h2').should have_content 'Novo Projeto'
+        find('#title h2').should have_content 'Novo Projeto'
       end
     end
 

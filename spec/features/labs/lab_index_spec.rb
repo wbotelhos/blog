@@ -15,17 +15,17 @@ describe Lab, "#index" do
     end
 
     it "display the published record" do
-      page.find('.name').should have_link lab_published.name, href: lab_published.site
-      page.find('.description').should have_content lab_published.description
-      page.find('.image a img').should have_content lab_published.image
+      find('.name').should have_link lab_published.name, href: lab_published.site
+      find('.description').should have_content lab_published.description
+      find('.image a img').should have_content lab_published.image
     end
 
     it "show github's link" do
-      page.find('.links').should have_link '', href: lab_published.github
+      find('.links').should have_link '', href: lab_published.github
     end
 
     it "show site's link" do
-      page.find('.links').should have_link '', href: lab_published.site
+      find('.links').should have_link '', href: lab_published.site
     end
 
     context "when logged" do
@@ -35,7 +35,7 @@ describe Lab, "#index" do
       end
 
       it "show edit link" do
-        page.find('.links').should have_link '', href: labs_edit_path(lab_published)
+        find('.links').should have_link '', href: labs_edit_path(lab_published)
       end
     end
 

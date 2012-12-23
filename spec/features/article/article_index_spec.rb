@@ -45,7 +45,7 @@ describe Article, "#index" do
       end
 
       it "display edit link" do
-        find('.links .edit').should have_link 'Editar', href: "/articles/#{article_published.id}/edit"
+        find('.edit').should have_link 'Editar', href: "/articles/#{article_published.id}/edit"
       end
 
       it "display permalink" do
@@ -98,7 +98,7 @@ describe Article, "#index" do
 
       context "without pagination" do
         it "show page indicator" do
-          page.find('li.page').should have_content 'Página 1'
+          find('li.page').should have_content 'Página 1'
         end
 
         it "show disabled back page" do
@@ -119,7 +119,7 @@ describe Article, "#index" do
 
         context "first page" do
           it "show page indicator" do
-            page.find('li.page').should have_content 'Página 1'
+            find('li.page').should have_content 'Página 1'
           end
 
           it "show disabled back page" do
@@ -136,7 +136,7 @@ describe Article, "#index" do
           before { click_link 'Mais antigos >' }
 
           it "show page indicator" do
-            page.find('li.page').should have_content 'Página 2'
+            find('li.page').should have_content 'Página 2'
           end
 
           it "show enabled back page" do
@@ -153,7 +153,7 @@ describe Article, "#index" do
             before { click_link 'Mais antigos >' }
 
             it "show page indicator" do
-              page.find('li.page').should have_content 'Página 3'
+              find('li.page').should have_content 'Página 3'
             end
 
             it "show enabled back page" do

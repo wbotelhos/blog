@@ -15,7 +15,7 @@ describe Lab, "#edit" do
       it { current_path.should == "/labs/#{lab_published.id}/edit" }
 
       it "display title" do
-        page.find('#title h2').should have_content 'Editar Projeto'
+        find('#title h2').should have_content 'Editar Projeto'
       end
     end
 
@@ -23,10 +23,10 @@ describe Lab, "#edit" do
       before { visit labs_edit_path lab_published }
 
       # TODO: why should have_field with text: does not work?
-      it { page.find('#lab_name').value.should == lab_published.name }
-      it { page.find('#lab_slug').value.should == lab_published.slug }
-      it { page.find('#lab_description').value.should == lab_published.description }
-      it { page.find('#lab_image').value.should == lab_published.image }
+      it { find('#lab_name').value.should == lab_published.name }
+      it { find('#lab_slug').value.should == lab_published.slug }
+      it { find('#lab_description').value.should == lab_published.description }
+      it { find('#lab_image').value.should == lab_published.image }
       it { page.should have_button 'Atualizar' }
     end
 
@@ -36,7 +36,7 @@ describe Lab, "#edit" do
       before { visit labs_edit_path lab_draft }
 
       it "display draft indicator" do
-        page.find('#status').should have_content 'Rascunho'
+        find('#status').should have_content 'Rascunho'
       end
     end
 
@@ -44,7 +44,7 @@ describe Lab, "#edit" do
       before { visit labs_edit_path lab_published }
 
       it "displays published indicator" do
-        page.find('div#status').should have_content 'Publicado'
+        find('div#status').should have_content 'Publicado'
       end
 
       it "hide publish button" do
@@ -52,7 +52,7 @@ describe Lab, "#edit" do
       end
 
       it "shows the site url" do
-        page.find('a#published').should have_content lab_published.site
+        find('a#published').should have_content lab_published.site
       end
     end
   end

@@ -27,21 +27,21 @@ describe Lab, "#drafts" do
       end
 
       it "display the draft record" do
-        page.find('.name').should have_link lab_draft.name, href: lab_draft.site
-        page.find('.description').should have_content lab_draft.description
-        page.find('.image a img').should have_content lab_draft.image
+        find('.name').should have_link lab_draft.name, href: lab_draft.site
+        find('.description').should have_content lab_draft.description
+        find('.image a img').should have_content lab_draft.image
       end
 
       it "show github's link" do
-        page.find('.links').should have_link '', href: lab_draft.github
+        find('.links').should have_link '', href: lab_draft.github
       end
 
       it "show site's link" do
-        page.find('.links').should have_link '', href: lab_draft.site
+        find('.links').should have_link '', href: lab_draft.site
       end
 
       it "show edit link" do
-        page.find('.links').should have_link '', href: labs_edit_path(lab_draft)
+        find('.links').should have_link '', href: labs_edit_path(lab_draft)
       end
     end
 
