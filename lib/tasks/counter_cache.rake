@@ -1,4 +1,4 @@
-namespace 'app:counter_cache' do
+namespace 'counter_cache' do
   desc 'Update all counter caches'
   task all: [:environment, :articles, :users]
 
