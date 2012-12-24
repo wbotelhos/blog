@@ -43,7 +43,7 @@ module CommentHelper
     html <<   '</div>'
     html << '</div>'
 
-    if comment.comments.any? && comment.comments.size > 0
+    if comment.comments.any?
       level += 1
       comment.comments.each { |child| render_comment(article, child, level, html) }
     end
