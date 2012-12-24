@@ -28,7 +28,7 @@ module CommentHelper
 
     html <<     link("#{request.fullpath}#comment-form", I18n.t('comment.reply'), '_self', 'reply-link')
 
-    html <<     %(<div class="text">#{markdown comment.body}</div>)
+    html <<     content_tag(:div, markdown(comment.body), class: 'text')
 
     html <<     %(<form action="#{comments_update_path(article, comment, anchor: anchor )}" method="post" onsubmit="return l00s3r('bot-#{comment.id}');" style="display: none;">)
     html <<       input('hidden', '_method', 'put')
