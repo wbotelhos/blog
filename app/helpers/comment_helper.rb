@@ -31,17 +31,8 @@ module CommentHelper
     html <<     content_tag(:div, markdown(comment.body), class: 'text')
 
     html <<     %(<form action="#{comments_update_path(article, comment, anchor: anchor )}" method="post" onsubmit="return l00s3r('bot-#{comment.id}');" style="display: none;">)
-    html <<       input('hidden', '_method', 'put')
-    html <<       input('hidden', 'utf8', '✓')
-    html <<       input('hidden', 'authenticity_token', form_authenticity_token.to_s)
-
-    html <<       pe(
-                    input('text', 'comment[name]', comment.name) +
-                    input('text', 'comment[email]', comment.email) +
-                    input('text', 'comment[url]', comment.url)
-                  )
-
-    html <<       pe(%(<textarea name="comment[body]" rows="20" cols="30">#{comment.body}</textarea>))
+    html <<       hidden_fields
+    html <<       fields(comment)
 
     html <<       pe(link('javascript:void(0);', I18n.t('comment.close'), '', 'close'))
 
@@ -60,14 +51,9 @@ module CommentHelper
     html
   end
 
+
+
   private
-
-  def link(url, text, target = '', clazz = '')
-    target = (target.empty? || target == '_self') ? '' : %( target="#{target}")
-    clazz = %( class="#{clazz}") unless clazz.empty?
-
-    %(<a href="#{url}" title="#{text}"#{target}#{clazz}>#{text}</a>)
-  end
 
   def input(type, name, value)
     tag :input, type: type, name: name, value: value
@@ -77,12 +63,28 @@ module CommentHelper
     content_tag :p, content
   end
 
-  def social_link_for(social, name)
-    (!social.nil? && !social.empty?) ? link_to('', social, title: social, target: '_blank', class: name) : ''
+  def hidden_fields
+    pe(
+      input('hidden', '_method', 'put') +
+      input('hidden', 'utf8', '✓') +
+      input('hidden', 'authenticity_token', form_authenticity_token.to_s)
+    )
+  end
+
+  def fields(comment)
+    pe(
+      input('text', 'comment[name]',  comment.name) +
+      input('text', 'comment[email]', comment.email) +
+      input('text', 'comment[url]',   comment.url)
+    ) +
+
+    pe(content_tag :textarea, comment.body, name: 'comment[body]', rows: 20, cols: 30)
   end
 
   def photo(comment)
-    %(<div class="photo">#{gravatar(comment.email, alt: '', title: comment.name)}</div>)
+    content_tag :div, gravatar(comment.email, alt: '', title: comment.name), class: 'photo'
+  end
+
   def anchor(comment)
     "comment-#{comment.id}"
   end
@@ -94,4 +96,19 @@ module CommentHelper
   def comment_number(comment)
     link_to "##{comment.id}", url_anchor(comment), title: I18n.t('comment.shortcut_to_this_comment')
   end
+
+
+
+  def link(url, text, target = '', clazz = '')
+    target = (target.empty? || target == '_self') ? '' : %( target="#{target}")
+    clazz = %( class="#{clazz}") unless clazz.empty?
+
+    %(<a href="#{url}" title="#{text}"#{target}#{clazz}>#{text}</a>)
+  end
+
+  def social_link_for(social, name)
+    (!social.nil? && !social.empty?) ? link_to('', social, title: social, target: '_blank', class: name) : ''
+  end
+
+
 end
