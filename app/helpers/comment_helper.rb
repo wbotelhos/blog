@@ -10,8 +10,8 @@ module CommentHelper
   end
 
   def render_comment(article, comment, level = 0, html = '')
-    anchor = "comment-#{comment.id}"
     anchor_full = "#{request.fullpath}##{anchor}"
+    anchor = anchor(comment)
 
     html <<  %(<div id="#{anchor}" class="comment#{' authored' if comment.author}#{' level-' + level.to_s unless level == 0}">)
     html <<   photo(comment)
@@ -84,5 +84,9 @@ module CommentHelper
 
   def photo(comment)
     %(<div class="photo">#{gravatar(comment.email, alt: '', title: comment.name)}</div>)
+  def anchor(comment)
+    "comment-#{comment.id}"
+  end
+
   end
 end
