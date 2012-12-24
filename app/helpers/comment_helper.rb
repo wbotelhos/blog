@@ -10,7 +10,6 @@ module CommentHelper
   end
 
   def render_comment(article, comment, level = 0, html = '')
-    anchor_full = "#{request.fullpath}##{anchor}"
     anchor = anchor(comment)
 
     html <<  %(<div id="#{anchor}" class="comment#{' authored' if comment.author}#{' level-' + level.to_s unless level == 0}">)
@@ -19,7 +18,7 @@ module CommentHelper
     html <<   '<div class="content">'
     html <<     '<div class="name-date">'
     html <<       '<div class="anchors">'
-    html <<         (link_to "##{comment.id}", anchor_full, { title: "#{I18n.t('comment.shortcut_to_this_comment')}" })
+    html <<         comment_number(comment)
     html <<         link(comment.url, comment.name, '_blank', 'name')
     html <<         %(<div>#{I18n.t('comment.reply_to')} #{link_to "##{comment.comment.id}", "#{request.fullpath}#comment-#{comment.comment.id}", { title: "#{I18n.t('comment.shortcut_to_this_comment')}" }}</div>) unless comment.comment.nil?
     html <<       '</div>'
@@ -88,5 +87,11 @@ module CommentHelper
     "comment-#{comment.id}"
   end
 
+  def url_anchor(comment)
+    "#{request.fullpath}##{anchor(comment)}"
+  end
+
+  def comment_number(comment)
+    link_to "##{comment.id}", url_anchor(comment), title: I18n.t('comment.shortcut_to_this_comment')
   end
 end
