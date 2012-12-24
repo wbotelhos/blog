@@ -61,7 +61,7 @@ header p.notice { background-color: #DFF0D8; color: #468847; }
 #wrapper #container { background-color: #FFF; border: 1px solid #DDD; box-shadow: 0 1px 3px rgba(150, 150, 150, 0.3); float: left; width: 1100px; }
 
 /* show: public, index: user admin */
-.author { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: 93px; margin: 25px auto 0; padding-left: 10px; padding-top: 12px; width: 770px; }
+.author { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; min-height: 93px; margin: 25px auto 0; overflow: auto; padding-bottom: 8px; padding-left: 10px; padding-top: 19px; width: 770px; }
 .author img { background-color: #EEE; float: left; height: 80px; width: 80px; }
 .author .biography { color: #555; float: left; font: 12px/1.5 arial; letter-spacing: 0.3px; margin-top: 4px; padding-left: 10px; width: 650px; }
 .author .biography p { margin: 0; }
