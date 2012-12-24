@@ -59,7 +59,7 @@ class CommentsController < ApplicationController
        flash[:notice] = t('flash.comments.create.notice')
     rescue Exception => e
       logger.error "Was not possible to send mail: #{e}"
-      flash[:notice] = t('comment.email_not_sent')
+      flash[:notice] = t('comment.email.not_sent')
      end
   end
 end
