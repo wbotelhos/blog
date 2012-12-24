@@ -63,11 +63,11 @@ module CommentHelper
 
   private
 
-  def link(url, label, target = '', clazz = '')
+  def link(url, text, target = '', clazz = '')
     target = (target.empty? || target == '_self') ? '' : %( target="#{target}")
     clazz = %( class="#{clazz}") unless clazz.empty?
 
-    %(<a href="#{url}" title="#{label}"#{target}#{clazz}>#{label}</a>)
+    %(<a href="#{url}" title="#{text}"#{target}#{clazz}>#{text}</a>)
   end
 
   def input(type, name, value)
