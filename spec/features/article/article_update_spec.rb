@@ -47,50 +47,5 @@ describe Article, "#update" do
     it "the chosen category keeps checked" do
       page.should have_checked_field "category-#{category_1.id}"
     end
-
-    context "given blank title" do
-      before do
-        fill_in 'article_title', with: ''
-        click_button 'Atualizar'
-      end
-
-      it "displays success message" do
-        page.should have_content 'Artigo atualizado com sucesso!'
-      end
-
-      it "keeps the original one by validation" do
-        find_field('article_title').value.should == article.title
-      end
-    end
-
-    context "given blank category" do
-      before do
-        uncheck "category-#{category_1.id}"
-        click_button 'Atualizar'
-      end
-
-      it "displays success message" do
-        page.should have_content 'Artigo atualizado com sucesso!'
-      end
-
-      it "keeps the original one by validation" do
-        find_field("category-#{category_1.id}").should be_checked
-      end
-    end
-
-    context "given blank body" do
-      before do
-        fill_in 'article_body', with: ''
-        click_button 'Atualizar'
-      end
-
-      it "displays success message" do
-        page.should have_content 'Artigo atualizado com sucesso!'
-      end
-
-      it "set the blank value" do
-        find_field('article_body').value.should be_empty
-      end
-    end
   end
 end
