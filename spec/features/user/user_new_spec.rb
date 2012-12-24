@@ -23,8 +23,6 @@ describe User, "#new" do
     context "form" do
       before { visit users_new_path }
 
-      it { current_path.should == '/users/new' }
-
       it { page.should have_field 'user_name' }
       it { page.should have_field 'user_email' }
       it { page.should have_field 'user_bio' }
