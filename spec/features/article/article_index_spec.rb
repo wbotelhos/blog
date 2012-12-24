@@ -92,7 +92,7 @@ describe Article, "#index" do
         end
 
         it "format as pt_BR" do
-          find('li.published a').should have_content '23/10/84 às 00:00'
+          find('li.published a').text.should match %r(\d\d\/\d\d\/\d\d às \d\d:\d\d)
         end
       end
 
