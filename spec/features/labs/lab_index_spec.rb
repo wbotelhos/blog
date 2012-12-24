@@ -4,8 +4,8 @@ require 'spec_helper'
 describe Lab, "#index" do
   let(:user) { FactoryGirl.create :user }
 
-  context "with records" do
-    let!(:lab_published) { FactoryGirl.create :lab_published }
+  context "with records without image" do
+    let!(:lab_published) { FactoryGirl.create :lab_published, image: nil }
     let!(:lab_draft) { FactoryGirl.create :lab_draft }
 
     before { visit labs_path }
@@ -17,7 +17,8 @@ describe Lab, "#index" do
     it "display the published record" do
       find('.name').should have_link lab_published.name, href: lab_published.site
       find('.description').should have_content lab_published.description
-      find('.image a img').should have_content lab_published.image
+      find('.image a').should have_content lab_published.image
+      find('.image a').should_not have_selector 'img'
     end
 
     it "show github's link" do
@@ -43,6 +44,16 @@ describe Lab, "#index" do
       it "hide edit link" do
         page.should have_no_selector '.lab:first .info .links .edit'
       end
+    end
+  end
+
+  context "with record with image" do
+    let!(:lab) { FactoryGirl.create :lab_published, image: 'http://url.com/image.jpg' }
+
+    before { visit labs_path }
+
+    it "display a imagem" do
+      find('.image a img')['src'].should == lab.image
     end
   end
 

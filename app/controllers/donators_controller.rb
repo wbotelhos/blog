@@ -28,6 +28,6 @@ class DonatorsController < ApplicationController
   def update
     donator = Donator.find params[:id]
     donator.update_attributes params[:donator]
-    redirect_to donators_path(donator), notice: t('flash.donators.update.notice')
+    redirect_to donators_path, notice: t('flash.donators.update.notice')
   end
 end
