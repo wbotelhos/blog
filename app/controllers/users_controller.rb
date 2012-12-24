@@ -9,11 +9,15 @@ class UsersController < ApplicationController
     @user = User.new params[:user]
 
     if @user.save
-      flash[:notice] = t('flash.users.create.notice')
-      redirect_to login_path
+      redirect_to users_path, notice: t('flash.users.create.notice')
     else
       render :new, layout: 'admin'
     end
+  end
+
+  def edit
+    @user = User.find params[:id]
+    render layout: 'admin'
   end
 
   def index

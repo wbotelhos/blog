@@ -62,6 +62,7 @@ Blog::Application.routes.draw do
     get   '/users',           action: :index
     post  '/users',           action: :create
     get   '/users/new',       action: :new
-    get   '/users/:id/edit',  action: :edit
+    put   '/users/:id',       action: :update, as: :users_update
+    get   '/users/:id/edit',  action: :edit,   as: :users_edit
   end
 end
