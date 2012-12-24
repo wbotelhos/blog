@@ -1,4 +1,5 @@
 pt-BR:
   user:
-    new: 'Novo Usuário'
     create: 'Criar'
+    edit: 'Editar Usuário'
+    new: 'Novo Usuário'
