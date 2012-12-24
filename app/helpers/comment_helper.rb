@@ -2,15 +2,11 @@
 
 module CommentHelper
   def render_comments(article)
-    html = ''
-
-    article.comments.each do |comment|
-      if comment.comment.nil?
-        html << render_comment(article, comment)
+    ''.tap do |html|
+      article.comments.each do |comment|
+        html << render_comment(article, comment) if comment.comment.nil?
       end
-    end
-
-    html.html_safe
+    end.html_safe
   end
 
   def render_comment(article, comment, level = 0, html = '')
