@@ -1,5 +1,5 @@
 class Donator < ActiveRecord::Base
-  attr_accessible :name, :email, :url, :amount, :about, :country, :message, :created_at
+  attr_accessible :name, :email, :url, :amount, :about, :country, :message
 
   default_scope order 'created_at desc'
 
