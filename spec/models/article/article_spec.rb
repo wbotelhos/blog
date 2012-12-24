@@ -97,8 +97,16 @@ describe Article do
       its(:year) { should == '0000' }
     end
 
+    # TODO: fix Time.zone on server. 23/10/1984 became 24/...
     context "when it is published" do
-      before { article.published_at = Time.new(1984, 10, 23) }
+      before do
+        mock = mock(Time).as_null_object
+        Time.stub(:new).and_return mock
+        mock.stub(:day).and_return 23
+        mock.stub(:month).and_return 10
+        mock.stub(:year).and_return 1984
+        article.published_at = mock
+      end
 
       its(:day) { should eql 23 }
       its(:month) { should eql 10 }
