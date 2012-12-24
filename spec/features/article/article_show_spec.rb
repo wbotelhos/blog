@@ -21,7 +21,7 @@ describe Article, "#show" do
     page.should have_content article.categories.to_a.map(&:name).join ', '
   end
 
-  it "not display edit link", js: true do
+  it "not display edit link" do
     page.should_not have_link 'Editar', href: "/articles/#{article.id}/edit"
   end
 

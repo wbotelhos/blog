@@ -27,7 +27,7 @@ describe Article, "#create" do
       page.should have_content 'Usuário criado com sucesso!'
     end
 
-    context "doing login with new user", js: true do
+    context "doing login with new user" do
       before do
         visit root_path
         find('header nav ul').click_link 'Sair'

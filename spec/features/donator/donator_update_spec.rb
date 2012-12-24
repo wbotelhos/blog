@@ -10,7 +10,7 @@ describe Donator, "#update" do
     visit donators_edit_path donator
   end
 
-  context "with valid data", js: true do
+  context "with valid data" do
     before do
       fill_in 'donator_name', with: 'name-new'
       fill_in 'donator_amount', with: 20

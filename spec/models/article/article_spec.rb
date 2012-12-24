@@ -100,12 +100,12 @@ describe Article do
     # TODO: fix Time.zone on server. 23/10/1984 became 24/...
     context "when it is published" do
       before do
-        mock = mock(Time).as_null_object
-        Time.stub(:new).and_return mock
-        mock.stub(:day).and_return 23
-        mock.stub(:month).and_return 10
-        mock.stub(:year).and_return 1984
-        article.published_at = mock
+        time = mock(Time).as_null_object
+        Time.stub(:new).and_return time
+        time.stub(:day).and_return 23
+        time.stub(:month).and_return 10
+        time.stub(:year).and_return 1984
+        article.published_at = time
       end
 
       its(:day) { should eql 23 }
