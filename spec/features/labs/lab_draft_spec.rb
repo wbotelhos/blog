@@ -16,9 +16,9 @@ describe Lab, "#drafts" do
       it { current_path.should == '/labs/drafts' }
     end
 
-    context "with record" do
+    context "with record without image" do
       let!(:lab_published) { FactoryGirl.create :lab_published }
-      let!(:lab_draft) { FactoryGirl.create :lab_draft }
+      let!(:lab_draft) { FactoryGirl.create :lab_draft, image: nil }
 
       before { visit labs_drafts_path }
 
@@ -29,7 +29,7 @@ describe Lab, "#drafts" do
       it "display the draft record" do
         find('.name').should have_link lab_draft.name, href: lab_draft.site
         find('.description').should have_content lab_draft.description
-        find('.image a img').should have_content lab_draft.image
+        find('.image a').should_not have_selector 'img'
       end
 
       it "show github's link" do
@@ -42,6 +42,16 @@ describe Lab, "#drafts" do
 
       it "show edit link" do
         find('.links').should have_link '', href: labs_edit_path(lab_draft)
+      end
+    end
+
+    context "with record with image" do
+      let!(:lab) { FactoryGirl.create :lab_draft, image: 'http://url.com/image.jpg' }
+
+      before { visit labs_drafts_path }
+
+      it "display a imagem" do
+        find('.image a img')['src'].should == lab.image
       end
     end
 
