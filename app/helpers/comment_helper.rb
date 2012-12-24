@@ -75,7 +75,7 @@ module CommentHelper
   end
 
   def pe(content)
-    "<p>#{content}</p>"
+    content_tag :p, content
   end
 
   def social_link_for(social, name)
