@@ -71,7 +71,7 @@ module CommentHelper
   end
 
   def input(type, name, value)
-    %(<input type="#{type}" name="#{name}" value="#{value}" />)
+    tag :input, type: type, name: name, value: value
   end
 
   def pe(content)
