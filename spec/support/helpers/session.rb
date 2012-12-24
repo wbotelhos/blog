@@ -3,7 +3,7 @@ module SessionHelper
     visit login_path unless current_path == login_path
 
     fill_in 'E-mail', with: options[:with]
-    fill_in 'Senha', with: 'password'
+    fill_in 'Senha', with: options[:password] || 'password'
     uncheck 'bot'
 
     click_button 'Acessar'
