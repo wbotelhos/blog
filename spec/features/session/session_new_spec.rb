@@ -31,8 +31,8 @@ describe User, 'session#new' do
       click_button 'Acessar'
     end
 
-    it 'redirects to index page' do
-      current_path.should == root_path
+    it 'redirects to admin page' do
+      current_path.should == admin_path
     end
   end
 

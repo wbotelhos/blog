@@ -3,6 +3,7 @@ require 'spec_helper'
 
 describe Article, "#create" do
   let(:user) { FactoryGirl.create :user }
+  let(:user_new) { User.new(name: 'name', email: 'email2@mail.com', password: 'password', password_confirmation: 'password') }
 
   before do
     login with: user.email
@@ -11,10 +12,10 @@ describe Article, "#create" do
 
   context "submit with valid data" do
     before do
-      fill_in 'user_name', with: 'name'
-      fill_in 'user_email', with: 'email2@mail.com'
-      fill_in 'user_password', with: 'password'
-      fill_in 'user_password_confirmation', with: 'password'
+      fill_in 'user_name', with: user_new.name
+      fill_in 'user_email', with: user_new.email
+      fill_in 'user_password', with: user_new.password
+      fill_in 'user_password_confirmation', with: user_new.password_confirmation
       click_button 'Salvar'
     end
 
@@ -24,6 +25,18 @@ describe Article, "#create" do
 
     it "displays success message" do
       page.should have_content 'Usuário criado com sucesso!'
+    end
+
+    context "doing login with new user", js: true do
+      before do
+        visit root_path
+        find('header nav ul').click_link 'Sair'
+        login with: user.email, password: user.password
+      end
+
+      it "redirects to admin page" do
+        current_path.should == '/admin'
+      end
     end
   end
 
@@ -40,9 +53,9 @@ describe Article, "#create" do
     context "blank name" do
       before do
         fill_in 'user_name', with: ''
-        fill_in 'user_email', with: 'email2@mail.com'
-        fill_in 'user_password', with: 'password'
-        fill_in 'user_password_confirmation', with: 'password'
+        fill_in 'user_email', with: user_new.email
+        fill_in 'user_password', with: user_new.password
+        fill_in 'user_password_confirmation', with: user_new.password_confirmation
         click_button 'Salvar'
       end
 
@@ -51,10 +64,10 @@ describe Article, "#create" do
 
     context "blank e-mail" do
       before do
-        fill_in 'user_name', with: 'name'
+        fill_in 'user_name', with: user_new.name
         fill_in 'user_email', with: ''
-        fill_in 'user_password', with: 'password'
-        fill_in 'user_password_confirmation', with: 'password'
+        fill_in 'user_password', with: user_new.password
+        fill_in 'user_password_confirmation', with: user_new.password_confirmation
         click_button 'Salvar'
       end
 
@@ -63,10 +76,10 @@ describe Article, "#create" do
 
     context "invalid e-mail" do
       before do
-        fill_in 'user_name', with: 'name'
+        fill_in 'user_name', with: user_new.name
         fill_in 'user_email', with: 'invalid'
-        fill_in 'user_password', with: 'password'
-        fill_in 'user_password_confirmation', with: 'password'
+        fill_in 'user_password', with: user_new.password
+        fill_in 'user_password_confirmation', with: user_new.password_confirmation
         click_button 'Salvar'
       end
 
@@ -75,10 +88,10 @@ describe Article, "#create" do
 
     context "password blank" do
       before do
-        fill_in 'user_name', with: 'name'
-        fill_in 'user_email', with: 'email2@mail.com'
+        fill_in 'user_name', with: user_new.name
+        fill_in 'user_email', with: user_new.email
         fill_in 'user_password', with: ''
-        fill_in 'user_password_confirmation', with: 'password'
+        fill_in 'user_password_confirmation', with: user_new.password_confirmation
         click_button 'Salvar'
       end
 
@@ -87,9 +100,9 @@ describe Article, "#create" do
 
     context "password_confirmation blank" do
       before do
-        fill_in 'user_name', with: 'name'
-        fill_in 'user_email', with: 'email2@mail.com'
-        fill_in 'user_password', with: 'password'
+        fill_in 'user_name', with: user_new.name
+        fill_in 'user_email', with: user_new.email
+        fill_in 'user_password', with: user_new.password
         fill_in 'user_password_confirmation', with: ''
         click_button 'Salvar'
       end
@@ -99,9 +112,9 @@ describe Article, "#create" do
 
     context "password_confirmation different of the password" do
       before do
-        fill_in 'user_name', with: 'name'
-        fill_in 'user_email', with: 'email2@mail.com'
-        fill_in 'user_password', with: 'password'
+        fill_in 'user_name', with: user_new.name
+        fill_in 'user_email', with: user_new.email
+        fill_in 'user_password', with: user_new.password
         fill_in 'user_password_confirmation', with: 'different'
         click_button 'Salvar'
       end

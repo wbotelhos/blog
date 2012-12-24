@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      redirect_to root_path
+      redirect_to admin_path
     else
       flash.now[:alert] = t('flash.sessions.create.alert')
       render :new
