@@ -25,16 +25,7 @@ module CommentHelper
 
     html <<     content(comment)
 
-    html <<     %(<form action="#{comments_update_path(article, comment, anchor: anchor )}" method="post" onsubmit="return l00s3r('bot-#{comment.id}');" style="display: none;">)
-    html <<       hidden_fields
-    html <<       fields(comment)
-
-    html <<       form_closer(comment)
-
-    html <<       anti_bot(comment)
-
-    html <<       submit_button
-    html <<     '</form>'
+    html <<     form(article, comment)
     html <<   '</div>'
     html << '</div>'
 
@@ -54,14 +45,6 @@ module CommentHelper
 
   def pe(content)
     content_tag :p, content
-  end
-
-  def hidden_fields
-    pe(
-      input('hidden', '_method', 'put') +
-      input('hidden', 'utf8', '✓') +
-      input('hidden', 'authenticity_token', form_authenticity_token.to_s)
-    )
   end
 
   def fields(comment)
@@ -124,6 +107,17 @@ module CommentHelper
   def anti_bot(comment)
     id = "bot-#{comment.id}"
     content_tag :p, label_tag(id, 'b0t?') + check_box_tag(id, nil, true), class: 'human'
+  end
+
+  def form(article, comment)
+    anchor    = anchor(comment)
+    onsubmit  = "return l00s3r('bot-#{comment.id}');"
+    style     = 'display: none;'
+    url       = comments_update_path(article, comment, anchor: anchor)
+
+    form_tag(url, method: :put, onsubmit: onsubmit, style: style) do
+      fields(comment) << form_closer(comment) << anti_bot(comment) << submit_button
+    end
   end
 
   def submit_button
