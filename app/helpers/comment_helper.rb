@@ -129,11 +129,4 @@ module CommentHelper
   def submit_button
     content_tag :p, submit_tag(t('comment.update'))
   end
-
-  def link(url, text, target = '', clazz = '')
-    target = (target.empty? || target == '_self') ? '' : %( target="#{target}")
-    clazz = %( class="#{clazz}") unless clazz.empty?
-
-    %(<a href="#{url}" title="#{text}"#{target}#{clazz}>#{text}</a>)
-  end
 end
