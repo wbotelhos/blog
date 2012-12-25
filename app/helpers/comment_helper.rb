@@ -10,17 +10,7 @@ module CommentHelper
   end
 
   def render_comment(article, comment, level = 0, html = '')
-    anchor = anchor(comment)
-
-    html <<  %(<div id="#{anchor}" class="comment#{' authored' if comment.author}#{' level-' + level.to_s unless level == 0}">)
-    html <<   photo(comment)
-
-    html <<   '<div class="content">'
-    html <<     header(comment)
-    html <<     content(comment)
-    html <<     form(article, comment)
-    html <<   '</div>'
-    html << '</div>'
+    html << comment_box(article, comment, level)
 
     if comment.comments.any?
       level += 1
@@ -32,28 +22,6 @@ module CommentHelper
 
   private
 
-  def input(type, name, value)
-    tag :input, type: type, name: name, value: value
-  end
-
-  def pe(content)
-    content_tag :p, content
-  end
-
-  def fields(comment)
-    pe(
-      input('text', 'comment[name]',  comment.name) +
-      input('text', 'comment[email]', comment.email) +
-      input('text', 'comment[url]',   comment.url)
-    ) +
-
-    pe(content_tag :textarea, comment.body, name: 'comment[body]', rows: 20, cols: 30)
-  end
-
-  def photo(comment)
-    content_tag :div, gravatar(comment.email, alt: '', title: comment.name), class: 'photo'
-  end
-
   def anchor(comment)
     "comment-#{comment.id}"
   end
@@ -62,8 +30,20 @@ module CommentHelper
     "#{request.fullpath}##{anchor(comment)}"
   end
 
+  def input(type, name, value)
+    tag :input, type: type, name: name, value: value
+  end
+
+  def photo(comment)
+    content_tag :div, gravatar(comment.email, alt: '', title: comment.name), class: 'photo'
+  end
+
   def comment_number(comment)
     link_to "##{comment.id}", url_anchor(comment), title: t('comment.shortcut_link')
+  end
+
+  def commenter_name(comment)
+    link_to comment.name, comment.url, target: '_blank', class: 'name'
   end
 
   def response_description(comment)
@@ -74,13 +54,6 @@ module CommentHelper
     content_tag(:p, t('comment.reply_to')) + link
   end
 
-  def anchors(comment)
-    content_tag(:div,
-      comment_number(comment) +
-      link_to(comment.name, comment.url, target: '_blank', class: 'name') +
-      response_description(comment), class: 'anchors')
-  end
-
   def date(comment)
     content_tag :span , t('comment.created_at', time: time_ago_in_words(comment.created_at))
   end
@@ -89,8 +62,28 @@ module CommentHelper
     link_to t('comment.reply'), "#{request.fullpath}#comment-form", target: '_self', class: 'reply-link'
   end
 
-  def content(comment)
+  def anchors(comment)
+    content_tag :div, comment_number(comment) + commenter_name(comment) + response_description(comment), class: 'anchors'
+  end
+
+  def header(comment)
+    content_tag(:div, anchors(comment) + date(comment), class: 'name-date') + response_link(comment)
+  end
+
+  def body(comment)
     content_tag :div, markdown(comment.body), class: 'text'
+  end
+
+  def fields(comment)
+    content_tag(:p,
+      input('text', 'comment[name]',  comment.name) +
+      input('text', 'comment[email]', comment.email) +
+      input('text', 'comment[url]',   comment.url)
+    ) +
+
+    content_tag(:p,
+      content_tag(:textarea, comment.body, name: 'comment[body]', rows: 20, cols: 30)
+    )
   end
 
   def form_closer(comment)
@@ -100,6 +93,10 @@ module CommentHelper
   def anti_bot(comment)
     id = "bot-#{comment.id}"
     content_tag :p, label_tag(id, 'b0t?') + check_box_tag(id, nil, true), class: 'human'
+  end
+
+  def submit_button
+    content_tag :p, submit_tag(t('comment.update'))
   end
 
   def form(article, comment)
@@ -113,11 +110,16 @@ module CommentHelper
     end
   end
 
-  def submit_button
-    content_tag :p, submit_tag(t('comment.update'))
+  def content(article, comment)
+    content_tag :div, header(comment) + body(comment) + form(article, comment), class: 'content'
   end
 
-  def header(comment)
-    content_tag(:div, anchors(comment) + date(comment), class: 'name-date') + response_link(comment)
+  def comment_box(article, comment, level)
+    clazz = ['comment']
+    clazz << 'authored' if comment.author
+    clazz << ('level-' + level.to_s) unless level == 0
+    clazz = clazz.join(' ')
+
+    content_tag :div, photo(comment) + content(article, comment), id: anchor(comment), class: clazz
   end
 end
