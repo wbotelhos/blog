@@ -135,8 +135,12 @@ describe Comment, "Article#show" do
           find('.comments').should have_content '2 comentários'
         end
 
-        it "show response link" do
-          find('.anchors div').text.strip.squeeze(' ').should == "Resposta ao comentário ##{comment_1.id}"
+        it "show response description" do
+          find('.anchors p').text.should == "Resposta ao comentário"
+        end
+
+        it "show parent comment link" do
+          find('.level-1 .anchors').should have_link "##{comment_1.id}", href: "#{path}#comment-#{comment_1.id}"
         end
 
         it "formats first level" do
