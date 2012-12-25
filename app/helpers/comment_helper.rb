@@ -29,7 +29,7 @@ module CommentHelper
     html <<       hidden_fields
     html <<       fields(comment)
 
-    html <<       pe(link('javascript:void(0);', t('comment.close'), '', 'close'))
+    html <<       form_closer(comment)
 
     html <<       %(<p class="human"><label for="bot-#{comment.id}">b0t?</label><input id="bot-#{comment.id}" type="checkbox" checked="checked"></p>)
 
@@ -115,6 +115,10 @@ module CommentHelper
 
   def content(comment)
     content_tag :div, markdown(comment.body), class: 'text'
+  end
+
+  def form_closer(comment)
+    content_tag :p, link_to(t('comment.close'), 'javascript:void(0);', class: 'close')
   end
 
   def link(url, text, target = '', clazz = '')
