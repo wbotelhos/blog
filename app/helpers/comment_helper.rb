@@ -33,7 +33,7 @@ module CommentHelper
 
     html <<       anti_bot(comment)
 
-    html <<       pe(input('submit', '', t('comment.update')))
+    html <<       submit_button
     html <<     '</form>'
     html <<   '</div>'
     html << '</div>'
@@ -124,6 +124,10 @@ module CommentHelper
   def anti_bot(comment)
     id = "bot-#{comment.id}"
     content_tag :p, label_tag(id, 'b0t?') + check_box_tag(id, nil, true), class: 'human'
+  end
+
+  def submit_button
+    content_tag :p, input('submit', '', t('comment.update'))
   end
 
   def link(url, text, target = '', clazz = '')
