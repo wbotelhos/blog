@@ -16,15 +16,8 @@ module CommentHelper
     html <<   photo(comment)
 
     html <<   '<div class="content">'
-    html <<     '<div class="name-date">'
-    html <<       anchors(comment)
-    html <<       date(comment)
-    html <<     '</div>'
-
-    html <<     response_link(comment)
-
+    html <<     header(comment)
     html <<     content(comment)
-
     html <<     form(article, comment)
     html <<   '</div>'
     html << '</div>'
@@ -122,5 +115,9 @@ module CommentHelper
 
   def submit_button
     content_tag :p, submit_tag(t('comment.update'))
+  end
+
+  def header(comment)
+    content_tag(:div, anchors(comment) + date(comment), class: 'name-date') + response_link(comment)
   end
 end
