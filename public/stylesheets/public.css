@@ -54,7 +54,7 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .comment form input[type="text"] { color: #111; margin-bottom: 7px; margin-right: 6px; padding: 2px; width: 234px; }
 .comment form textarea { color: #111; width: 725px; }
 .comment form .close { font-size: 13px; font-weight: bold; margin-bottom: 5px; margin-top: 5px; }
-.comment form .human label { color: #777; font: 11px verdana; padding-right: 3px; padding-top: 3px; }
+.comment form .human label { color: #777; font: 11px verdana; padding-right: 5px; padding-top: 3px; }
 .comment form .human { float: left; margin-top: 3px; }
 .comment .content .text p { margin-top: 10px; }
 .comment .content .text pre { font-size: 12px; padding-left: 15px; }

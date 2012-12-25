@@ -31,7 +31,7 @@ module CommentHelper
 
     html <<       form_closer(comment)
 
-    html <<       %(<p class="human"><label for="bot-#{comment.id}">b0t?</label><input id="bot-#{comment.id}" type="checkbox" checked="checked"></p>)
+    html <<       anti_bot(comment)
 
     html <<       pe(input('submit', '', t('comment.update')))
     html <<     '</form>'
@@ -119,6 +119,11 @@ module CommentHelper
 
   def form_closer(comment)
     content_tag :p, link_to(t('comment.close'), 'javascript:void(0);', class: 'close')
+  end
+
+  def anti_bot(comment)
+    id = "bot-#{comment.id}"
+    content_tag :p, label_tag(id, 'b0t?') + check_box_tag(id, nil, true), class: 'human'
   end
 
   def link(url, text, target = '', clazz = '')
