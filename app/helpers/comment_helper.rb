@@ -23,7 +23,7 @@ module CommentHelper
 
     html <<     response_link(comment)
 
-    html <<     content_tag(:div, markdown(comment.body), class: 'text')
+    html <<     content(comment)
 
     html <<     %(<form action="#{comments_update_path(article, comment, anchor: anchor )}" method="post" onsubmit="return l00s3r('bot-#{comment.id}');" style="display: none;">)
     html <<       hidden_fields
@@ -111,6 +111,10 @@ module CommentHelper
 
   def response_link(comment)
     link_to t('comment.reply'), "#{request.fullpath}#comment-form", target: '_self', class: 'reply-link'
+  end
+
+  def content(comment)
+    content_tag :div, markdown(comment.body), class: 'text'
   end
 
   def link(url, text, target = '', clazz = '')
