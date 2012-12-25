@@ -17,12 +17,7 @@ module CommentHelper
 
     html <<   '<div class="content">'
     html <<     '<div class="name-date">'
-    html <<       '<div class="anchors">'
-    html <<         comment_number(comment)
-    html <<         link(comment.url, comment.name, '_blank', 'name')
-    html <<         response_description(comment)
-
-    html <<       '</div>'
+    html <<       anchors(comment)
 
     html <<       %(<span>#{t('comment.created_at', time: time_ago_in_words(comment.created_at))}</span>)
     html <<     '</div>'
@@ -51,8 +46,6 @@ module CommentHelper
 
     html
   end
-
-
 
   private
 
@@ -101,11 +94,17 @@ module CommentHelper
   def response_description(comment)
     return '' if comment.comment.nil?
 
-    link = link_to("##{comment.comment.id}", url_anchor(comment.comment), title: I18n.t('comment.go_to_parent'))
+    link = link_to("##{comment.comment.id}", url_anchor(comment.comment), title: I18n.t('comment.go_to_parent'), class: 'parent-anchor')
 
-    content_tag :p, "#{I18n.t('comment.reply_to')} #{link}".html_safe
+    content_tag(:p, I18n.t('comment.reply_to')) + link
   end
 
+  def anchors(comment)
+    content_tag(:div,
+      comment_number(comment) +
+      link_to(comment.name, comment.url, target: '_blank', class: 'name') +
+      response_description(comment), class: 'anchors')
+  end
 
   def link(url, text, target = '', clazz = '')
     target = (target.empty? || target == '_self') ? '' : %( target="#{target}")
@@ -113,10 +112,4 @@ module CommentHelper
 
     %(<a href="#{url}" title="#{text}"#{target}#{clazz}>#{text}</a>)
   end
-
-  def social_link_for(social, name)
-    (!social.nil? && !social.empty?) ? link_to('', social, title: social, target: '_blank', class: name) : ''
-  end
-
-
 end
