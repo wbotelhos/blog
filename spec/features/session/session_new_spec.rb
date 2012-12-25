@@ -36,7 +36,7 @@ describe User, 'session#new' do
     end
   end
 
-  context "anti bot" do
+  context "anti bot", js: true do
     it 'starts checked' do
       find('#bot').should be_checked
     end
