@@ -127,7 +127,7 @@ module CommentHelper
   end
 
   def submit_button
-    content_tag :p, input('submit', '', t('comment.update'))
+    content_tag :p, submit_tag(t('comment.update'))
   end
 
   def link(url, text, target = '', clazz = '')
