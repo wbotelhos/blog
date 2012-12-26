@@ -1,11 +1,11 @@
 # coding: utf-8
 require 'spec_helper'
 
-describe Donator, "#edit" do
+describe Donator, '#edit' do
   let!(:category) { FactoryGirl.create :category }
   let!(:donator) { FactoryGirl.create :donator }
 
-  context "when logged" do
+  context 'when logged' do
     let(:user) { FactoryGirl.create :user }
 
     before do
@@ -13,15 +13,15 @@ describe Donator, "#edit" do
       visit donators_edit_path donator
     end
 
-    context "page" do
+    context 'page' do
       it { current_path.should == "/donators/#{donator.id}/edit" }
 
-      it "display title" do
+      it 'display title' do
         find('#title h2').should have_content 'Editar Doador'
       end
     end
 
-    context "form" do
+    context 'form' do
       # TODO: should have_field, text: xpto not work!
       it { find('#donator_name').value.should == donator.name }
       it { find('#donator_email').value.should == donator.email }
@@ -34,14 +34,14 @@ describe Donator, "#edit" do
     end
   end
 
-  context "when unlogged" do
+  context 'when unlogged' do
     before { visit donators_edit_path donator.id }
 
-    it "redirects to the login page" do
+    it 'redirects to the login page' do
       current_path.should == login_path
     end
 
-    it "displays error message" do
+    it 'displays error message' do
       page.should have_content 'Você precisa estar logado!'
     end
   end

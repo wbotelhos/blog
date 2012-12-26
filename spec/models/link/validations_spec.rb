@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Link, "validations" do
+describe Link, 'validations' do
   it { should_not allow(nil).for :name }
   it { should_not allow(nil).for :url }
 

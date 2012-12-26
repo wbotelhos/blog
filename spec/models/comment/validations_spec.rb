@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Comment, "validations" do
+describe Comment, 'validations' do
   it { should_not allow(nil).for :name }
   it { should_not allow(nil).for :email }
   it { should_not allow(nil).for :body }

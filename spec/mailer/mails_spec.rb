@@ -7,7 +7,7 @@ describe Mailer do
   let(:comment)      { FactoryGirl.create :comment }
   let(:slug_title)   { "#{article.year}/#{article.month}/#{article.day}/#{article.slug}" }
 
-  describe "comment" do
+  describe 'comment' do
     let(:mailer) { Mailer.comment(article, new_comment, comment) }
 
     it { mailer.should be_multipart }
@@ -15,14 +15,14 @@ describe Mailer do
     it { mailer.from.first.should == CONFIG['email'] }
     it { mailer.subject.should == 'Artigo respondido' }
 
-    context "on sending" do
-      it "queue the email" do
+    context 'on sending' do
+      it 'queue the email' do
         -> { mailer.deliver }.should change(ActionMailer::Base.deliveries, :size).by(1)
       end
     end
 
-    context "html type" do
-      it "has the right content" do
+    context 'html type' do
+      it 'has the right content' do
         body = mailer.parts.first.body
 
         body.should match %r(<title>#{CONFIG['author']}</title>)
@@ -36,8 +36,8 @@ describe Mailer do
       end
     end
 
-    context "text type" do
-      it "has the right content" do
+    context 'text type' do
+      it 'has the right content' do
         body = mailer.parts.last.body
 
         body.should include %(Olá #{comment.name},)
@@ -50,7 +50,7 @@ describe Mailer do
     end
   end
 
-  describe "notification" do
+  describe 'notification' do
     let(:mailer) { Mailer.comment_notify(article, comment) }
 
     it { mailer.should_not be_multipart }
@@ -58,14 +58,14 @@ describe Mailer do
     it { mailer.from.first.should == CONFIG['email'] }
     it { mailer.subject.should == 'Comentário pendente no blog!' }
 
-    context "on sending" do
-      it "queue the email" do
+    context 'on sending' do
+      it 'queue the email' do
         -> { mailer.deliver }.should change(ActionMailer::Base.deliveries, :size).by(1)
       end
     end
 
-    context "text type" do
-      it "has the right content" do
+    context 'text type' do
+      it 'has the right content' do
         body = mailer.body
 
         body.should include %(Olá #{article.user.name},)

@@ -41,7 +41,7 @@ describe Donator do
       let!(:donator_1) { FactoryGirl.create :donator, created_at: Date.new(2000, 01, 01) }
       let!(:donator_2) { FactoryGirl.create :donator, created_at: Date.new(2000, 01, 02) }
 
-      it "sort by desc :create_at" do
+      it 'sort by desc :create_at' do
         Donator.all.to_a.should == [donator_2, donator_1]
       end
     end

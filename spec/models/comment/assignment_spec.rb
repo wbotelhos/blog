@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Comment, "assignment" do
+describe Comment, 'assignment' do
   subject do
     Comment.new(
       name: 'name',

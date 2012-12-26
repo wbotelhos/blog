@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Lab, "assignment" do
+describe Lab, 'assignment' do
   subject do
     Lab.new(
       name: 'name',

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CommentsController do
-  context "create comment" do
+  context 'create comment' do
     let(:article) { mock_model(Article) }
     let(:comment) { Comment.new }
 
@@ -11,7 +11,7 @@ describe CommentsController do
       comment.stub save: true
     end
 
-    xit "redirects to the article page" do
+    xit 'redirects to the article page' do
       post :create, article_id: article.id
       response.should redirect_to article_path(article.id)
     end

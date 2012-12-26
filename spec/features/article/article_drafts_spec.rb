@@ -1,11 +1,11 @@
 # coding: utf-8
 require 'spec_helper'
 
-describe Article, "#drafts" do
+describe Article, '#drafts' do
   let!(:article_draft) { FactoryGirl.create :article_draft }
   let!(:article_published) { FactoryGirl.create :article_published }
 
-  context "when logged" do
+  context 'when logged' do
     let(:user) { FactoryGirl.create :user }
 
     before do
@@ -14,33 +14,33 @@ describe Article, "#drafts" do
       find('.article-menu').click_link 'Rascunhos'
     end
 
-    context "page" do
+    context 'page' do
       it { current_path.should == '/articles/drafts' }
     end
 
-    it "do not display published record" do
+    it 'do not display published record' do
       page.should have_no_content article_published.title
     end
 
-    it "display the draft record" do
+    it 'display the draft record' do
       page.should have_content article_draft.title
       page.should have_content article_draft.body
       page.should have_content article_draft.categories.first.name
     end
 
-    it "display edit link" do
+    it 'display edit link' do
       page.should have_link 'Editar', href: "/articles/#{article_draft.id}/edit"
     end
   end
 
-  context "when unlogged" do
+  context 'when unlogged' do
     before { visit articles_drafts_path }
 
-    it "redirects to the login page" do
+    it 'redirects to the login page' do
       current_path.should == login_path
     end
 
-    it "displays error message" do
+    it 'displays error message' do
       page.should have_content 'Você precisa estar logado!'
     end
   end

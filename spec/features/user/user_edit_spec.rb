@@ -1,8 +1,8 @@
 # coding: utf-8
 require 'spec_helper'
 
-describe User, "#edit" do
-  context "when logged" do
+describe User, '#edit' do
+  context 'when logged' do
     let(:user) { FactoryGirl.create :user, name: 'name', email: 'email@mail.com', bio: 'bio', url: 'url', github: 'github', linkedin: 'linkedin', twitter: 'twitter', facebook: 'facebook', password: 'password', password_confirmation: 'password' }
 
     before do
@@ -10,15 +10,15 @@ describe User, "#edit" do
       visit users_edit_path user
     end
 
-    context "page" do
+    context 'page' do
       it { current_path.should == "/users/#{user.id}/edit" }
 
-      it "display title" do
+      it 'display title' do
         find('#title h2').should have_content 'Editar Usuário'
       end
     end
 
-    context "form" do
+    context 'form' do
       before { visit users_edit_path user }
 
       it { find('#user_name').value.should == user.name }
@@ -34,14 +34,14 @@ describe User, "#edit" do
     end
   end
 
-  context "when unlogged" do
+  context 'when unlogged' do
     before { visit users_new_path }
 
-    it "redirects to the login page" do
+    it 'redirects to the login page' do
       current_path.should == login_path
     end
 
-    it "displays error message" do
+    it 'displays error message' do
       page.should have_content 'Você precisa estar logado!'
     end
   end

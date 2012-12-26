@@ -1,8 +1,8 @@
 # coding: utf-8
 require 'spec_helper'
 
-describe Lab, "#new" do
-  context "when logged" do
+describe Lab, '#new' do
+  context 'when logged' do
     let(:user) { FactoryGirl.create :user }
     let!(:category_1) { FactoryGirl.create :category, name: 'category-1' }
     let!(:category_2) { FactoryGirl.create :category, name: 'category-2' }
@@ -14,15 +14,15 @@ describe Lab, "#new" do
       find('.lab-menu').click_link 'Criar'
     end
 
-    context "page" do
+    context 'page' do
       it { current_path.should == '/labs/new' }
 
-      it "display title" do
+      it 'display title' do
         find('#title h2').should have_content 'Novo Projeto'
       end
     end
 
-    context "form" do
+    context 'form' do
       it { current_path.should == '/labs/new' }
 
       it { page.should have_field 'lab_name' }
@@ -34,14 +34,14 @@ describe Lab, "#new" do
     end
   end
 
-  context "when unlogged" do
+  context 'when unlogged' do
     before { visit labs_new_path }
 
-    it "redirects to the login page" do
+    it 'redirects to the login page' do
       current_path.should == login_path
     end
 
-    it "displays error message" do
+    it 'displays error message' do
       page.should have_content 'Você precisa estar logado!'
     end
   end

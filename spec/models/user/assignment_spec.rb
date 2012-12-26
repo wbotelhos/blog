@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User, "assignment" do
+describe User, 'assignment' do
   subject do
     User.new(
       name: 'name',

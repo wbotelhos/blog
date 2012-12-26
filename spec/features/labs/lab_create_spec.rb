@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'spec_helper'
 
-describe Lab, "#create" do
+describe Lab, '#create' do
   let(:user) { FactoryGirl.create :user }
 
   before do
@@ -9,7 +9,7 @@ describe Lab, "#create" do
     visit labs_new_path
   end
 
-  context "submit with valid data" do
+  context 'submit with valid data' do
     before do
       fill_in 'lab_name', with: 'name'
       fill_in 'lab_slug', with: 'slug'
@@ -18,44 +18,44 @@ describe Lab, "#create" do
       click_button 'Salvar'
     end
 
-    it "redirects to drafts page" do
+    it 'redirects to drafts page' do
       current_path.should == '/labs/drafts'
     end
 
-    it "displays success message" do
+    it 'displays success message' do
       page.should have_content 'Rascunho salvo com sucesso!'
     end
   end
 
-  context "with invalid data" do
-    context "blank name" do
+  context 'with invalid data' do
+    context 'blank name' do
       before do
         fill_in 'lab_name', with: ''
         click_button 'Salvar'
       end
 
-      it "renders form page again" do
+      it 'renders form page again' do
         current_path.should == labs_path
       end
 
       it { page.should have_content 'O campo "Nome *" deve ser preenchido!' }
     end
 
-    context "blank slug" do
+    context 'blank slug' do
       before do
         fill_in 'lab_name', with: 'name'
         fill_in 'lab_slug', with: ''
         click_button 'Salvar'
       end
 
-      it "renders form page again" do
+      it 'renders form page again' do
         current_path.should == labs_path
       end
 
       it { page.should have_content 'O campo "Slug *" deve ser preenchido!' }
     end
 
-    context "Name already taken" do
+    context 'Name already taken' do
       let!(:lab) { FactoryGirl.create :lab }
 
       before do
@@ -64,7 +64,7 @@ describe Lab, "#create" do
         click_button 'Salvar'
       end
 
-      it "renders form page again" do
+      it 'renders form page again' do
         current_path.should == labs_path
       end
 

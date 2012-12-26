@@ -6,7 +6,7 @@ describe User, 'session#new' do
 
   before { visit login_path }
 
-  context "with wrong password" do
+  context 'with wrong password' do
     before do
       fill_in 'email', with: 'invalid@mail.com'
       fill_in 'password', with: 'wrong-password'
@@ -18,12 +18,12 @@ describe User, 'session#new' do
       current_path.should == login_path
     end
 
-    it "displays error message" do
+    it 'displays error message' do
       page.should have_content 'E-mail ou senha inválida!'
     end
   end
 
-  context "with right password" do
+  context 'with right password' do
     before do
       fill_in 'email', with: user.email
       fill_in 'password', with: user.password
@@ -36,7 +36,7 @@ describe User, 'session#new' do
     end
   end
 
-  context "anti bot", js: true do
+  context 'anti bot', js: true do
     it 'starts checked' do
       find('#bot').should be_checked
     end
@@ -45,21 +45,21 @@ describe User, 'session#new' do
       find('#human label').should have_content 'b0t?'
     end
 
-    context "on uncheck" do
+    context 'on uncheck' do
       before { uncheck 'bot' }
 
       it 'log human message' do
         find('#human label').should have_content 'human! <3'
       end
 
-      context "on check" do
+      context 'on check' do
         before { check 'bot' }
 
         it 'log human message' do
           find('#human label').should have_content 'stupid! :/'
         end
 
-        context "and submit" do
+        context 'and submit' do
           before { click_button 'Acessar' }
 
           it 'blocks and log looser message' do
@@ -70,13 +70,13 @@ describe User, 'session#new' do
     end
   end
 
-  context "when logged" do
+  context 'when logged' do
     before do
       login with: user.email
       visit login_path
     end
 
-    context "and visit login page" do
+    context 'and visit login page' do
       it 'redirects to index page' do
         current_path.should == root_path
       end

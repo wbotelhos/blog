@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Article, "validations" do
+describe Article, 'validations' do
   it { should_not allow(nil).for :title }
   it { should_not allow([]).for :categories }
   it { should_not allow(nil).for :user }

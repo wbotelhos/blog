@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Article, "assignment" do
+describe Article, 'assignment' do
   let(:category) { FactoryGirl.create :category }
 
   subject do
