@@ -7,7 +7,7 @@
   <h2 class="title"><%= link_to article.title, article_path(article.year, article.month, article.day, article.slug) %></h2>
 
   <ul class="links">
-    <li class="permalink"><%= link_to t('article.permalink'), article_slug(article), title: article_slug(article) %></li>
+    <li class="permalink"><%= link_to t('article.permalink'), article_slug(article), title: article_slug_url(article) %></li>
     <li class="comments"><%= link_to t("article.comments_count_html", count: article.comments_count), article_path(article.year, article.month, article.day, article.slug, anchor: 'comments'), title: t('comment.other') %></a></li>
     <li class="published"><%= link_to t('article.published_at', time: l(article.published_at)), 'javascript:void(0);' %></a></li>
     <% if is_logged? %>

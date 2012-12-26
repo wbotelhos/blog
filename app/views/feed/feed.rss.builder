@@ -11,8 +11,8 @@ xml.rss version: '2.0', 'xmlns:dc' => 'http://purl.org/dc/elements/1.1/' do
       xml.item do
         xml.title article.title
         xml.pubDate article.published_at.to_s(:rfc822)
-        xml.link article_slug article
-        xml.guid article_slug(article), isPermalink: true
+        xml.link article_slug_url article
+        xml.guid article_url(article), isPermalink: true
         xml.creator article.user.name
 
         xml.description do
