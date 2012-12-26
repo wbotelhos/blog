@@ -2,8 +2,8 @@
 
 <nav role="navigation">
   <ul>
-    <li><%= link_to t('navigation.lab.title'), labs_path %></li>
-    <li><%= link_to t('navigation.donator.title'), donators_path %></li>
+    <li><%= link_to t('lab.other'), labs_path %></li>
+    <li><%= link_to t('donator.other'), donators_path %></li>
     <li><%= link_to t('navigation.about'), about_path %></li>
     <% if is_logged? %>
       <li><%= link_to t('navigation.admin'), admin_path %></li>
