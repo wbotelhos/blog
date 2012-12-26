@@ -44,9 +44,17 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    article = Article.find params[:id]
-    article.update_attributes params[:article]
-    redirect_to articles_edit_path(article), notice: t('flash.articles.update.notice')
+    article = params[:article]
+
+    article[:category_ids] = [] if article[:category_ids].nil?
+
+    @article = Article.find params[:id]
+
+    if @article.update_attributes article
+      redirect_to articles_edit_path(@article), notice: t('flash.articles.update.notice')
+    else
+      render :edit, layout: 'admin'
+    end
   end
 
   def publish

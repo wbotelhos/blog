@@ -61,22 +61,5 @@ describe Article, '#create' do
 
       it { page.should have_content 'O campo "Categoria" deve ser preenchido!' }
     end
-
-    context 'blank body' do
-      before do
-        fill_in 'article_title', with: 'title'
-        fill_in 'article_body', with: ''
-        check "category-#{category.id}"
-        click_button 'Salvar'
-      end
-
-      it 'redirects to edit page' do
-        current_path.should match %r(/articles/\d+/edit)
-      end
-
-      it 'displays success message' do
-        page.should have_content 'Rascunho salvo com sucesso!'
-      end
-    end
   end
 end
