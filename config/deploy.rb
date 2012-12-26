@@ -2,8 +2,6 @@ require 'bundler/capistrano'
 
 set :application, 'wbotelhos.com.br'
 
-set :keep_releases, 3
-
 set :scm, :git
 set :repository, 'git@github.com:wbotelhos/wbotelhos-com-br.git'
 set :branch, 'master'
