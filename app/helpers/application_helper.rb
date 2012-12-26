@@ -1,5 +1,3 @@
-# coding: utf-8
-
 module ApplicationHelper
   def author(user)
     ''.html_safe.tap do |html|
@@ -32,10 +30,6 @@ module ApplicationHelper
     pe = content_tag :p, CONFIG['description']
 
     content_tag :div, h1 + pe, id: 'logo'
-  end
-
-  def article_slug(article = article)
-    article_path(article.year, article.month, article.day, article.slug)
   end
 
   def markdown(content)
