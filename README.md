@@ -2,7 +2,7 @@
 
 [http://wbotelhos.com.br](http://wbotelhos.com.br) on Rails.
 
-![Travis CI status](https://travis-ci.org/wbotelhos/wbotelhos-com-br.png?branch=master "Travis CI")
+[![Travis CI status](https://travis-ci.org/wbotelhos/wbotelhos-com-br.png?branch=master)](https://travis-ci.org/wbotelhos/wbotelhos-com-br "Travis CI")
 
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/wbotelhos/wbotelhos-com-br "Code Climate")
 
