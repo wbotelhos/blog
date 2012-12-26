@@ -102,7 +102,7 @@ describe Article, "#index" do
         end
 
         it "show disabled back page" do
-          page.should have_selector 'li.back-page.disabled'
+          page.should have_selector 'li.previous-page.disabled'
         end
 
         it "show disabled next page" do
@@ -112,7 +112,7 @@ describe Article, "#index" do
 
       context "with pagination" do
         before do
-          stub_const('Paginaty::LIMIT', 1)
+          stub_const('Pager::LIMIT', 1)
           2.times.each { FactoryGirl.create :article_published }
           visit articles_path
         end
@@ -123,7 +123,7 @@ describe Article, "#index" do
           end
 
           it "show disabled back page" do
-            page.should have_selector 'li.back-page.disabled'
+            page.should have_selector 'li.previous-page.disabled'
           end
 
           it "show enabled next page" do
@@ -133,15 +133,15 @@ describe Article, "#index" do
         end
 
         context "second page" do
-          before { click_link 'Mais antigos >' }
+          before { click_link 'Próxima >' }
 
           it "show page indicator" do
             find('li.page').should have_content 'Página 2'
           end
 
           it "show enabled back page" do
-            page.should have_no_selector 'li.back-page.disabled'
-            page.should have_selector 'li.back-page'
+            page.should have_no_selector 'li.previous-page.disabled'
+            page.should have_selector 'li.previous-page'
           end
 
           it "show enabled next page" do
@@ -150,15 +150,15 @@ describe Article, "#index" do
           end
 
           context "third page" do
-            before { click_link 'Mais antigos >' }
+            before { click_link 'Próxima >' }
 
             it "show page indicator" do
               find('li.page').should have_content 'Página 3'
             end
 
             it "show enabled back page" do
-              page.should have_no_selector 'li.back-page.disabled'
-              page.should have_selector 'li.back-page'
+              page.should have_no_selector 'li.previous-page.disabled'
+              page.should have_selector 'li.previous-page'
             end
 
             it "show disabled next page" do

@@ -1,6 +1,8 @@
-<% if @paginaty[:elements].empty? %>
-  <div id="none"><%= t 'article.none' %></div>
+<% result = paginate(Article) { |model| model.published } %>
+
+<% if result[:items].present? %>
+  <%= render result[:items] %>
+  <%= result[:navigator] %>
 <% else %>
-  <%= render @paginaty[:elements] %>
-  <%= @paginaty[:pager] %>
+  <div id="none"><%= t 'article.none' %></div>
 <% end %>

@@ -26,7 +26,7 @@ describe ArticlesController do
   end
 
   describe "GET #index" do
-    it "populates the elements of paginaty"
+    it "populates the elements of pager"
     it "renders the :index view"
   end
 

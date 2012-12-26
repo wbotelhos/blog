@@ -129,15 +129,15 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .comment-create p { margin: 0; }
 .comment-create p i { color: #999; float: right; font-size: 12px; margin-right: 28px; margin-top: 6px; }
 
-/* index: paginaty */
-.paginaty { margin: 0 auto; padding-bottom: 10px; width: 355px; }
-.paginaty li { display: inline; padding: 0 3px; }
-.paginaty li a { border-radius: 3px; background: #FBFBFB; border: 1px solid #EEE; color: #277DA8; font: bold 14px arial; letter-spacing: .4px; padding: 4px 8px; text-align: center; text-shadow: 1px 1px 1px #FFF; }
-.paginaty li a:hover { color: #85B839; }
-.paginaty li span { border-radius: 3px; background: #FBFBFB; border: 1px solid #EEE; color: #277DA8; font: bold 14px arial; letter-spacing: .4px; padding: 4px 8px; text-align: center; text-shadow: 1px 1px 1px #FFF; }
-.paginaty li.disabled span { color: #EEE; }
-.paginaty li.page span { color: #888; }
-.paginaty.disabled { display: none; }
+/* index: pager */
+.pager { margin: 0 auto; padding-bottom: 10px; text-align: center; width: 280px; }
+.pager li { display: inline; padding: 0 3px; }
+.pager li a { border-radius: 3px; background: #FBFBFB; border: 1px solid #EEE; color: #277DA8; font: bold 14px arial; letter-spacing: .4px; padding: 4px 8px; text-align: center; text-shadow: 1px 1px 1px #FFF; }
+.pager li a:hover { color: #85B839; }
+.pager li span { border-radius: 3px; background: #FBFBFB; border: 1px solid #EEE; color: #277DA8; font: bold 14px arial; letter-spacing: .4px; padding: 4px 8px; text-align: center; text-shadow: 1px 1px 1px #FFF; }
+.pager li.disabled span { color: #EEE; }
+.pager li.page span { color: #888; }
+.pager.disabled { display: none; }
 
 /* sidebar */
 aside { float: right; padding: 10px; width: 200px; }

@@ -12,7 +12,6 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @paginaty = Paginaty.filter request: request, entity: Article, params: params
   end
 
   def preview
@@ -20,7 +19,7 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = Article.search params[:query], page: params[:page], per_page: Paginaty::LIMIT
+    @articles = Article.search params[:query], page: params[:page]
     @articles.delete_if { |article| article.published_at.nil? }
   end
 
