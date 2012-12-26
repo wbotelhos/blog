@@ -4,7 +4,7 @@
   <div id="status"><%= @article.status %></div>
 
   <% if @article.published_at.nil? %>
-    <%= link_to t('article.preview'), articles_preview_path(@article), { target: '_blank', id: 'draft' } %>
+    <%= link_to t('article.preview'), articles_preview_path(@article), id: 'draft', target: '_blank' %>
   <% else %>
     <%= link_to @article.slug, article_path(@article.year, @article.month, @article.day, @article.slug), { target: '_blank', id: 'published' } %>
   <% end %>

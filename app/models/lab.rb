@@ -23,7 +23,7 @@ class Lab < ActiveRecord::Base
     "http://github.com/wbotelhos/#{slug}"
   end
 
-  def site
+  def url
     "http://wbotelhos.com/#{slug}"
   end
 end

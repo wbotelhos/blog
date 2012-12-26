@@ -1,10 +1,10 @@
 <div class="lab">
   <div class="image">
-    <%= link_to lab.image.present? ? image_tag(lab.image, alt: lab.name, height: 120, width: 160) : '', lab.site, target: '_blank' %>
+    <%= link_to lab.image.present? ? image_tag(lab.image, alt: lab.name, height: 120, width: 160) : '', lab.url, target: '_blank' %>
   </div>
 
   <div class="info">
-    <h2 class="name"><%= link_to lab.name, lab.site %></h2>
+    <h2 class="name"><%= link_to lab.name, lab.url %></h2>
     <div class="description"><%= lab.description %></div>
     <div id="repository-<%= lab.slug %>" class="github-info">
       <p><%= t 'lab.loading' %></p>
@@ -15,7 +15,7 @@
         <%= link_to('', labs_edit_path(lab), title: t('navigation.lab.edit'), class: 'edit') %>
       <% end %>
       <%= link_to('', lab.github, title: 'Github', target: '_blank', class: 'github') %>
-      <%= link_to('', lab.site, title: 'Demo', target: '_blank', class: 'demo') %>
+      <%= link_to('', lab.url, title: 'Demo', target: '_blank', class: 'demo') %>
     </div>
   </div>
 </div>

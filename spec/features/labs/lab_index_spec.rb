@@ -15,7 +15,7 @@ describe Lab, '#index' do
     end
 
     it 'display the published record' do
-      find('.name').should have_link lab_published.name, href: lab_published.site
+      find('.name').should have_link lab_published.name, href: lab_published.url
       find('.description').should have_content lab_published.description
       find('.image a').should have_content lab_published.image
       find('.image a').should_not have_selector 'img'
@@ -25,8 +25,8 @@ describe Lab, '#index' do
       find('.links').should have_link '', href: lab_published.github
     end
 
-    it 'show site link' do
-      find('.links').should have_link '', href: lab_published.site
+    it 'show url link' do
+      find('.links').should have_link '', href: lab_published.url
     end
 
     context 'when logged' do

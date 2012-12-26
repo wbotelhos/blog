@@ -51,8 +51,8 @@ describe Lab, '#edit' do
         page.should have_no_button 'Publicar'
       end
 
-      it 'shows the site url' do
-        find('#published').should have_content lab_published.site
+      it 'shows the url' do
+        find('#published').should have_content lab_published.url
       end
     end
   end

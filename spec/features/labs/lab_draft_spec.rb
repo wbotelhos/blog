@@ -27,7 +27,7 @@ describe Lab, '#drafts' do
       end
 
       it 'display the draft record' do
-        find('.name').should have_link lab_draft.name, href: lab_draft.site
+        find('.name').should have_link lab_draft.name, href: lab_draft.url
         find('.description').should have_content lab_draft.description
         find('.image a').should_not have_selector 'img'
       end
@@ -37,7 +37,7 @@ describe Lab, '#drafts' do
       end
 
       it 'show site link' do
-        find('.links').should have_link '', href: lab_draft.site
+        find('.links').should have_link '', href: lab_draft.url
       end
 
       it 'show edit link' do

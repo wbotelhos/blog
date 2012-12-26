@@ -4,7 +4,7 @@
   <div id="status"><%= @lab.status %></div>
 
   <% if @lab.published_at.present? %>
-    <%= link_to @lab.site, @lab.site, { target: '_blank', id: 'published' } %>
+    <%= link_to @lab.url, @lab.url, id: 'published', target: '_blank' %>
   <% end %>
 </div>
 

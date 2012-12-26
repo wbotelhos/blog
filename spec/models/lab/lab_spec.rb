@@ -29,10 +29,10 @@ describe Lab do
     end
   end
 
-  describe ':site' do
+  describe ':url' do
     context 'when it is published' do
-      it 'return the online url of the site' do
-        lab_published.site.should == "http://wbotelhos.com/#{lab_published.slug}"
+      it 'return the online url of the url' do
+        lab_published.url.should == "http://wbotelhos.com/#{lab_published.slug}"
       end
     end
   end
