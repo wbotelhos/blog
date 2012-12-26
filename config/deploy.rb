@@ -74,6 +74,6 @@ end
 namespace :counter_cache do
   desc '[counter_cache] updates all counter cache'
   task :all do
-    run "cd #{current} && bundle exec rake app:counter_cache"
+    run "cd #{current} && bundle exec rake counter_cache:all"
   end
 end
