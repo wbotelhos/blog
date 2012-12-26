@@ -50,13 +50,22 @@ describe Article, '#update' do
 
     context 'blank title' do
       before do
-        visit articles_edit_path article
         fill_in 'article_title', with: ''
         check "category-#{category_1.id}"
         click_button 'Atualizar'
       end
 
       it { page.should have_content 'O campo "Título *" deve ser preenchido!' }
+    end
+
+    context 'with blank title the slug message validation is skipped' do
+      before do
+        fill_in 'article_title', with: ''
+        check "category-#{category_1.id}"
+        click_button 'Atualizar'
+      end
+
+      it { page.should_not have_content 'O campo "Slug" deve ser preenchido!' }
     end
 
     context 'blank category' do

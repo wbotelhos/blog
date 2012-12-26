@@ -52,6 +52,16 @@ describe Article, '#create' do
       it { page.should have_content 'O campo "Título *" deve ser preenchido!' }
     end
 
+    context 'with blank title the slug message validation is skipped' do
+      before do
+        fill_in 'article_title', with: ''
+        check "category-#{category.id}"
+        click_button 'Salvar'
+      end
+
+      it { page.should_not have_content 'O campo "Slug" deve ser preenchido!' }
+    end
+
     context 'blank category' do
       before do
         fill_in 'article_title', with: 'title'
