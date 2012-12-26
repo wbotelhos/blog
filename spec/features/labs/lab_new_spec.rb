@@ -4,9 +4,6 @@ require 'spec_helper'
 describe Lab, '#new' do
   context 'when logged' do
     let(:user) { FactoryGirl.create :user }
-    let!(:category_1) { FactoryGirl.create :category, name: 'category-1' }
-    let!(:category_2) { FactoryGirl.create :category, name: 'category-2' }
-    let!(:category_3) { FactoryGirl.create :category, name: 'category-3' }
 
     before do
       login with: user.email

@@ -14,7 +14,7 @@ describe Lab, '#create' do
       fill_in 'lab_name', with: 'name'
       fill_in 'lab_slug', with: 'slug'
       fill_in 'lab_description', with: 'description'
-      fill_in 'lab_image', with: 'image'
+      fill_in 'lab_image', with: 'image.jpg'
       click_button 'Salvar'
     end
 

@@ -31,8 +31,12 @@ class LabsController < ApplicationController
   end
 
   def update
-    lab = Lab.find params[:id]
-    lab.update_attributes params[:lab]
-    redirect_to labs_edit_path(lab), notice: t('flash.labs.update.notice')
+    @lab = Lab.find params[:id]
+
+    if @lab.update_attributes params[:lab]
+      redirect_to labs_path, notice: t('flash.labs.update.notice')
+    else
+      render :edit, layout: 'admin'
+    end
   end
 end
