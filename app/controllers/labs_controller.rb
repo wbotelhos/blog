@@ -1,5 +1,5 @@
 class LabsController < ApplicationController
-  before_filter :require_login, only: [:drafts, :edit, :create, :new, :update]
+  before_filter :require_login, except: :index
 
   def create
     @lab = Lab.new params[:lab]
