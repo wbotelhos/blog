@@ -38,6 +38,13 @@ module ApplicationHelper
     Redcarpet::Markdown.new(renderer, options).render(content).html_safe
   end
 
+  def title(section = nil)
+    section = " | #{content_for :title}" if content_for? :title
+    section = " | #{section}" if section
+
+    "#{CONFIG['author']}#{section}"
+  end
+
   private
 
   class HTMLwithPygments < Redcarpet::Render::HTML
