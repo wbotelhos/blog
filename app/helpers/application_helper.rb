@@ -7,15 +7,6 @@ module ApplicationHelper
     end
   end
 
-  def author_social(user)
-    ''.tap do |html|
-      html << social_link_for(user.github, 'github')
-      html << social_link_for(user.linkedin, 'linkedin')
-      html << social_link_for(user.twitter, 'twitter')
-      html << social_link_for(user.facebook, 'facebook')
-    end
-  end
-
   def gravatar(email, options = {})
     hash = Digest::MD5.hexdigest(email)
 
@@ -48,10 +39,6 @@ module ApplicationHelper
   end
 
   private
-
-  def social_link_for(social, name)
-    (!social.nil? && !social.empty?) ? link_to('', social, title: social, target: '_blank', class: name) : ''
-  end
 
   class HTMLwithPygments < Redcarpet::Render::HTML
     def block_code(code, language)
