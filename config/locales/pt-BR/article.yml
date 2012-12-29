@@ -9,6 +9,7 @@ pt-BR:
     publish: 'Publicar'
     published_at: "%{time}"
     read_more: 'Leia mais...'
+    read_more_about_html: 'Leia mais sobre %{text}'
     tags: 'Tags:'
     update: 'Atualizar'
     comments_count_html:
