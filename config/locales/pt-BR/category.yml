@@ -1,7 +1,11 @@
 pt-BR:
   category:
+    edit: 'Editar Categoria'
+    new: 'Nova Categoria'
+    other: 'Categorias'
+    update: 'Atualizar'
     count_html:
       one: '<strong>1</strong>'
       other: "<strong>%{count}</strong>"
 
-    other: 'Categorias'
+

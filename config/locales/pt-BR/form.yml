@@ -16,6 +16,10 @@ pt-BR:
       comment:
           create: 'Comentar'
 
+      category:
+        create: 'Salvar'
+        update: 'Atualizar'
+
       donator:
         create: 'Salvar'
         update: 'Atualizar'

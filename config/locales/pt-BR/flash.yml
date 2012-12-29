@@ -10,6 +10,14 @@ pt-BR:
       search:
         alert: 'A busca foi desabilitada por um momento. Tente mais tarde! (:'
 
+    categories:
+      create:
+        alert: 'Erro ao criar a categoria!'
+        notice: 'Categoria criada com sucesso!'
+      update:
+        alert: 'Erro ao atualizar a categoria!'
+        notice: 'Categoria atualizada com sucesso!'
+
     donators:
       create:
         alert: 'Erro ao criar o doador!'

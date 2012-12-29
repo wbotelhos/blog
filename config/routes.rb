@@ -22,7 +22,11 @@ Blog::Application.routes.draw do
   end
 
   controller :categories do
-    get   '/category/:id', action: :show
+    get   '/categories',            action: :index
+    post  '/categories',            action: :create
+    get   '/categories/new',        action: :new
+    put   '/categories/:id',        action: :update, as: :categories_update
+    get   '/categories/:id/edit',   action: :edit,   as: :categories_edit
   end
 
   controller :comments do

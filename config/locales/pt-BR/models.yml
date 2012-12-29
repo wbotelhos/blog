@@ -2,15 +2,18 @@ pt-BR:
   activerecord:
     attributes:
       article:
-        title: 'Título *'
         body: 'Conteúdo'
         categories: 'Categoria'
+        title: 'Título *'
+
+      category:
+        name: 'Nome *'
 
       comment:
-          name: 'Nome *'
-          email: 'E-mail *'
-          url: 'URL'
-          body: "Seu comentário *\n\n```python\ndef cute:\n  print 'Hello Markdown!'\n```"
+        name: 'Nome *'
+        email: 'E-mail *'
+        url: 'URL'
+        body: "Seu comentário *\n\n```python\ndef cute:\n  print 'Hello Markdown!'\n```"
 
       donator:
         about: 'Sobre'
@@ -22,14 +25,14 @@ pt-BR:
         url: 'URL'
 
       lab:
-          name: 'Nome *'
-          slug: 'Slug *'
-          description: 'Descrição'
-          image: 'Imagem'
+        description: 'Descrição'
+        image: 'Imagem'
+        name: 'Nome *'
+        slug: 'Slug *'
 
       user:
-        name: 'Nome *'
         email: 'E-mail *'
+        name: 'Nome *'
         password: 'Senha *'
         password_confirmation: 'Confirmação de senha *'
 

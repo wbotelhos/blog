@@ -12,6 +12,10 @@ pt-BR:
       new: 'Criar'
       edit: 'Editar'
 
+    category:
+      edit: 'Editar'
+      new: 'Criar'
+
     donator:
       edit: 'Editar'
       new: 'Criar'

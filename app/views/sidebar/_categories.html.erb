@@ -6,8 +6,9 @@
 <ul>
   <% categories.each do |category| %>
     <li>
-      <%= link_to category.name, 'javascript:void(0);' %>
       <%= t 'category.count_html', count: category.articles.size %>
+      <%= link_to category.name, 'javascript:void(0);' %>
+      <span><%= link_to t('navigation.category.edit'), categories_edit_path(category.id) %></span>
     </li>
   <% end %>
 </ul>

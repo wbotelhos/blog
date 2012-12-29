@@ -1,0 +1,27 @@
+<div id="title">
+  <h2><%= t 'category.edit' %></h2>
+</div>
+
+<%= render 'shared/error_messages', entity: @category %>
+
+<%= form_for @category, url: categories_update_path, html: { class: 'category-form' } do |f| %>
+  <div id="fields">
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+  </div>
+
+  <div id="controls">
+    <h3><%= t 'category.update' %></h3>
+
+    <%= f.submit class: :update %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('.category-form').flury();
+    $('#category_name').focus();
+  });
+</script>
