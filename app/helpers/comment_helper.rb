@@ -96,7 +96,7 @@ module CommentHelper
   end
 
   def submit_button
-    content_tag :p, submit_tag(t('comment.update'))
+    content_tag :p, submit_tag(t('comment.update'), name: nil)
   end
 
   def form(article, comment)
