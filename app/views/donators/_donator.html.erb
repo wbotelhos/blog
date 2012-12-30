@@ -1,4 +1,4 @@
-<tr class="<%= cycle('even', 'odd') %>">
+<tr class="<%= cycle(:even, :odd) %>">
   <td class="image"><%= gravatar(donator.email, { alt: '', title: donator.name, size: 30 }) %></td>
   <td class="name"><%= link_to(donator.name, donator.url, target: '_blank') %></td>
   <td class="amount"><%= number_to_currency(donator.amount, precision: 0) %></td>
