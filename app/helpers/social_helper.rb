@@ -8,6 +8,10 @@ module SocialHelper
     end
   end
 
+  def social_icon(icon, title, path)
+    link_to image_tag(icon, alt: title, title: title), path, target: '_blank'
+  end
+
   private
 
   def social_link_for(social, clazz)
