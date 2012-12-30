@@ -1,6 +1,7 @@
 pt-BR:
   flash:
     articles:
+      not_found_html: 'O artigo "<strong>%{uri}</strong>" não foi encontrado!'
       draft:
         alert: 'Erro ao criar o artigo!'
         notice: 'Rascunho salvo com sucesso!'

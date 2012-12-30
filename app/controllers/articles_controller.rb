@@ -30,12 +30,17 @@ class ArticlesController < ApplicationController
 
   def show
     # TODO: apply query to check only Date and ignore Time.
-    published_at = Time.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)
+    # published_at = Time.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)
 
     @article = Article.where('slug = ?', params[:slug]).first
 
-    comment = Comment.new # TODO: should I assign with @ just for test here?
-    @comment_form = CommentFormPresenter.new(@article, comment)
+    if @article.present?
+      comment = Comment.new # TODO: should I assign with @ just for test here?
+      @comment_form = CommentFormPresenter.new(@article, comment)
+    else
+      uri = "/#{params[:year]}/#{params[:month]}/#{params[:day]}/#{params[:slug]}"
+      redirect_to root_path, alert: t('flash.articles.not_found_html', uri: uri).html_safe
+    end
   end
 
   def edit

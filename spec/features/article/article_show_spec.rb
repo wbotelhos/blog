@@ -69,6 +69,14 @@ describe Article, '#show' do
     end
   end
 
+  context "trying to access a inexistent record" do
+    before { visit article_path 2000, '01', '01', 'slug' }
+
+    it 'display not found message' do
+      find('.alert').should have_content 'O artigo "/2000/01/01/slug" não foi encontrado!'
+    end
+  end
+
   context 'when logged' do
     before do
       login with: user.email
