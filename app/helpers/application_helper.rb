@@ -39,8 +39,11 @@ module ApplicationHelper
   end
 
   def title(section = nil)
-    section = " | #{content_for :title}" if content_for? :title
-    section = " | #{section}" if section
+    if content_for? :title
+      section = " | #{content_for :title}"
+    elsif section
+      section = " | #{section}"
+    end
 
     "#{CONFIG['author']}#{section}"
   end
