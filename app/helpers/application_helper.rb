@@ -39,7 +39,7 @@ module ApplicationHelper
   end
 
   def title(section = nil)
-    if content_for? :title
+    if content_for?(:title).present?
       section = " | #{content_for :title}"
     elsif section
       section = " | #{section}"
