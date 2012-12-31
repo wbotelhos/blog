@@ -8,10 +8,13 @@
 
 <script type="text/javascript">
   $(function() {
-    $('#repository-capty').socialy({ app: 'github', username: 'wbotelhos', repository: 'capty' });
-    $('#repository-chrony').socialy({ app: 'github', username: 'wbotelhos', repository: 'chrony' });
-    $('#repository-flury').socialy({ app: 'github', username: 'wbotelhos', repository: 'flury' });
-    $('#repository-raty').socialy({ app: 'github', username: 'wbotelhos', repository: 'raty' });
-    $('#repository-stepy').socialy({ app: 'github', username: 'wbotelhos', repository: 'stepy' });
+    $.fn.socialy.defaults.app = 'github';
+    $.fn.socialy.defaults.username = 'wbotelhos';
+
+    $('#repository-capty').socialy({ repository: 'capty' });
+    $('#repository-chrony').socialy({ repository: 'chrony' });
+    $('#repository-flury').socialy({ repository: 'flury' });
+    $('#repository-raty').socialy({ repository: 'raty' });
+    $('#repository-stepy').socialy({ repository: 'stepy' });
   });
 </script>
