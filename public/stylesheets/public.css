@@ -2,7 +2,7 @@
 #container section { float: left; border-right: 2px solid #DDD; padding: 10px; width: 858px; }
 
 /* result */
-#search-description { background-color: #FEFEFE; border: 1px solid #EFEFEF; border-radius: 3px; font: 12px verdana; margin-bottom: 5px; padding: 5px; }
+#search-term { color: #333; font: 25px verdana; margin-bottom: 5px; margin-top: 10px; text-align: center; }
 
 /* index, show: article box */
 article { float: left; margin-bottom: 17px; position: relative; width: 858px }
@@ -148,7 +148,7 @@ aside #donate i { font-size: 18px; left: -4px; position: relative; top: 2px; }
 
 aside .search { margin-bottom: 10px; }
 aside .search input[type="search"] { background: url('../images/search.png') no-repeat 4px 5px #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #000; font-size: 13px; height: 24px; opacity: .7; padding-left: 25px; width: 173px; }
-aside .search input[type="submit"] { display: none; }
+aside .search input[type="submit"] { display: none; margin-left: 36px; margin-top: 5px; }
 aside .search label { display: none; }
 
 /* about */

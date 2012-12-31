@@ -2,10 +2,10 @@ pt-BR:
   form:
     buttons:
       login: 'Acessar'
-      search: 'Ok'
+      search: 'Pesquisar'
 
     labels:
-      search: 'Pesquisar'
+      query: 'Pesquisar'
 
   helpers:
     submit:

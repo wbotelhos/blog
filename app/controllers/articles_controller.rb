@@ -19,8 +19,11 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = Article.search params[:query], page: params[:page]
-    @articles.delete_if { |article| article.published_at.nil? }
+    if params[:query].present?
+      @articles = Article.published.search params[:query], page: params[:page]
+    else
+      redirect_to root_path
+    end
   end
 
   def new

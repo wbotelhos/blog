@@ -16,8 +16,6 @@ pt-BR:
       zero: '<span>Nenhum comentário, seja o primeiro! (:</span>'
       one: '<span>1 comentário</span>'
       other: "<span>%{count} comentários</span>"
-    search:
-      description_html: 'Resultados para "<strong>%{query}</strong>"'
     status:
       new: 'Novo'
       draft: 'Rascunho'

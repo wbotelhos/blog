@@ -1,5 +1,6 @@
-<div id="search-description">
-  <%= t 'article.search.description_html', query: params[:query] %>:
+<div id="search-term">
+  <i class="icon-search icon-large"></i>
+  "<%= params[:query] %>"
 </div>
 
 <%= render @articles %>

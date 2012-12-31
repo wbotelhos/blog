@@ -1,7 +1,7 @@
 <%= form_tag articles_search_path, method: :get, class: 'search', role: 'search' do %>
   <p>
     <%= search_field_tag :query %>
-    <%= label_tag :query %>
+    <%= label_tag :query, t('form.labels.query') %>
     <%= submit_tag t('form.buttons.search'), name: nil %>
   </p>
 <% end %>
