@@ -1,7 +1,7 @@
 module ApplicationHelper
   def author(user)
     ''.html_safe.tap do |html|
-      html << gravatar(user.email, { alt: '', title: user.name })
+      html << gravatar(user.email, alt: '', title: user.name)
       html << (content_tag :div, simple_format(user.bio.html_safe), class: 'biography' if user.bio)
       html << (content_tag :div, author_social(user).html_safe, class: 'social')
     end
@@ -11,7 +11,7 @@ module ApplicationHelper
     hash = Digest::MD5.hexdigest(email)
 
     url = "http://www.gravatar.com/avatar/#{hash}?d=mm"
-    url << "&s=#{options[:size]}" unless options[:size].nil?
+    url << "&s=#{options[:size]}" if options[:size]
 
     image_tag url, options
   end
@@ -24,7 +24,7 @@ module ApplicationHelper
   end
 
   def markdown(content)
-    renderer = HTMLwithPygments.new(hard_wrap: true) # filter_html: true
+    renderer = HTMLwithPygments.new hard_wrap: true # filter_html: true
 
     options = {
       autolink:           true,
