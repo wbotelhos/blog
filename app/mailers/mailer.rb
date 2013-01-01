@@ -6,7 +6,7 @@ class Mailer < ActionMailer::Base
   def comment(article, new_comment, comment)
     @article, @new_comment, @comment = article, new_comment, comment
 
-    mail to: comment.email, subject: 'Artigo respondido' do |format|
+    mail to: comment.email, subject: "Artigo respondido por #{new_comment.name}" do |format|
       format.html
       format.text
     end
@@ -15,6 +15,6 @@ class Mailer < ActionMailer::Base
   def comment_notify(article, comment)
     @article, @comment = article, comment
 
-    mail to: article.user.email, subject: 'Comentário pendente no blog!'
+    mail to: article.user.email, subject: "Comentário do #{comment.name} pendente no blog!"
   end
 end

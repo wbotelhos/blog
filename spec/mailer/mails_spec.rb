@@ -13,7 +13,7 @@ describe Mailer do
     it { mailer.should be_multipart }
     it { mailer.to.first.should == comment.email }
     it { mailer.from.first.should == CONFIG['email'] }
-    it { mailer.subject.should == 'Artigo respondido' }
+    it { mailer.subject.should == "Artigo respondido por #{new_comment.name}" }
 
     context 'on sending' do
       it 'queue the email' do
@@ -56,7 +56,7 @@ describe Mailer do
     it { mailer.should_not be_multipart }
     it { mailer.to.first.should == article.user.email }
     it { mailer.from.first.should == CONFIG['email'] }
-    it { mailer.subject.should == 'Comentário pendente no blog!' }
+    it { mailer.subject.should == "Comentário do #{comment.name} pendente no blog!" }
 
     context 'on sending' do
       it 'queue the email' do
