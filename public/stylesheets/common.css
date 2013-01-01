@@ -41,7 +41,7 @@ header #social ul li { display: inline-block; padding-left: 2px; }
 header #social ul li img { opacity: .6 }
 
 /* font awesome */
-.icon-large { color: #444; padding-right: 3px; }
+.icon-large { color: #444; height: 26px; padding-right: 3px; }
 
 /* top */
 header p { border-radius: 4px; float: right; font: 13px verdana; margin: 0; padding: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); width: 1080px; }
@@ -95,11 +95,9 @@ aside ul li:hover span { display: block; }
 .lab .info .github-info a:hover { color: #666; }
 .lab .info .github-info a i { margin-right: 4px; }
 .lab .info .description { color: #444; font-size: 13px; margin-left: 10px; min-height: 42px; }
-.lab .info .links { float: right; margin-right: 10px; margin-top: 15px; }
-.lab .info .links a { background-repeat: no-repeat; display: inline-block; height: 16px; margin-left: 7px; width: 16px; }
-.lab .info .links a.github { background-image: url('../images/github.png'); }
-.lab .info .links a.demo { background-image: url('../images/demo.png'); }
-.lab .info .links a.edit { background-image: url('../images/edit.png'); }
+.lab .info .links { float: right; margin-top: 12px; }
+.lab .info .links a { margin-right: 7px; }
+.lab .info .links a:hover i { color: #277DA8; }
 
 /* result */
 #none { color: #777; font: bold 20px verdana; margin: 170px auto 0; overflow: auto; width: 325px; }

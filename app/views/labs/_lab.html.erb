@@ -12,10 +12,10 @@
 
     <div class="links">
       <% if is_logged? %>
-        <%= link_to('', labs_edit_path(lab), title: t('navigation.lab.edit'), class: 'edit') %>
+        <%= link_to content_tag(:i, nil, class: 'icon-edit icon-large'), labs_edit_path(lab), title: t('navigation.lab.edit') %>
       <% end %>
-      <%= link_to('', lab.github, title: 'Github', target: '_blank', class: 'github') %>
-      <%= link_to('', lab.url, title: 'Demo', target: '_blank', class: 'demo') %>
+      <%= link_to content_tag(:i, nil, class: 'icon-github icon-large'), lab.github, title: 'Github', target: '_blank' %>
+      <%= link_to content_tag(:i, nil, class: 'icon-play icon-large'), lab.url, title: 'Demo', target: '_blank' %>
     </div>
   </div>
 </div>
