@@ -11,7 +11,7 @@
   <div class="body">
     <%= markdown article.resume %>
 
-    <p class="read-more"><%= link_to t('article.read_more'), article_path(article.year, article.month, article.day, article.slug), title: t('article.read_more_about_html', text: article.title) %></p>
+    <p class="read-more"><%= link_to t('article.read_more'), article_slug(article), title: t('article.read_more_about_html', text: article.title) %></p>
   </div>
 
   <div class="footer">

@@ -6,7 +6,7 @@
 <nav role="navigation">
   <ul>
     <% articles.each do |article| %>
-      <li><%= link_to article.title, article_path(article.year, article.month, article.day, article.slug) %></li>
+      <li><%= link_to article.title, article_slug(article) %></li>
     <% end %>
   </ul>
 </nav>
