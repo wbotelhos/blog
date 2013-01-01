@@ -1,12 +1,13 @@
 <% content_for :title do %><%= @article.title %><% end %>
 
 <article class="article">
+
   <div class="date">
     <span class="number"><%= t 'article.published_at', time: l(@article.published_at, format: :day) %></span>
     <span class="month"><%= t 'article.published_at', time: l(@article.published_at, format: :month) %></span>
   </div>
 
-  <h2 class="title"><%= link_to @article.title, article_path(@article.year, @article.month, @article.day, @article.slug) %></h2>
+  <h2 class="title"><%= link_to @article.title, article_slug(@article) %></h2>
 
   <ul class="links">
     <li class="permalink"><%= link_to t('article.permalink'), article_path(@article.year, @article.month, @article.day, @article.slug), title: t('article.permalink') %></li>
@@ -39,7 +40,7 @@
 <h3 id="comments">
   <i class="icon-comments-alt icon-large"></i>
   <%= t 'comment.count_html', count: @article.comments_count %>
-  <%= link_to '#', article_path(@article.year, @article.month, @article.day, @article.slug, anchor: 'comment-form') %>
+  <%= link_to '#', article_slug(@article, 'comment-form') %>
 </h3>
 
 <%= render_comments @article %>
