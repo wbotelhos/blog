@@ -43,7 +43,7 @@ article .footer { height: 33px; margin-top: 25px; }
 article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; font-size: 12px; padding-top: 3px; }
 
 /* show: comment header */
-#comments { float: left; font: bold 19px verdana; margin-bottom: 33px; margin-left: 20px; }
+#comments { float: left; font: bold 19px verdana; margin-bottom: 25px; margin-left: 20px; }
 
 /* show: comment */
 .comment { border: 1px solid #EAEAEA; border-radius: 2px; clear: both; float: right; height: auto; margin-bottom: 10px; padding: 10px; width: 835px; }
