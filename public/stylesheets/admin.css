@@ -57,9 +57,7 @@ article h2 { margin-left: 10px; margin-top: 12px; }
 article h2 a { color: #444; font-size: 22px; }
 article h2 a:hover { color: #85B839; }
 
-article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
-article .links li { float: left; font-size: 12px; line-height: 23px; padding-right: 10px; }
-article .links .edit { background: url('../images/edit.png') 0px 3px no-repeat; padding-left: 23px; }
+article .links li:after { content: ''; }
 
 article { float: left; margin-bottom: 17px; position: relative; width: 928px; } /* same the main + 70 */
 article + article { border-top: 1px solid #DDD; padding-top: 5px; }

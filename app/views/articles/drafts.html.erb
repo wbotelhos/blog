@@ -4,7 +4,10 @@
       <h2 class="title"><%= link_to article.title, articles_edit_path(article) %></h2>
 
       <ul class="links">
-        <li class="edit"><%=link_to t('navigation.article.edit'), articles_edit_path(article) %></li>
+        <li>
+          <i class="icon-edit icon-large"></i>
+          <%= link_to t('navigation.article.edit'), articles_edit_path(article) %>
+        </li>
       </ul>
 
       <div class="body">

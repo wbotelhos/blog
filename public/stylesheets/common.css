@@ -41,7 +41,7 @@ header #social ul li { display: inline-block; padding-left: 2px; }
 header #social ul li img { opacity: .6 }
 
 /* font awesome */
-.icon-large { color: #444; height: 26px; padding-right: 3px; }
+.icon-large { color: #444; max-height: 26px; padding-right: 3px; }
 
 /* top */
 header p { border-radius: 4px; float: right; font: 13px verdana; margin: 0; padding: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); width: 1080px; }
@@ -101,3 +101,9 @@ aside ul li:hover span { display: block; }
 
 /* result */
 #none { color: #777; font: bold 20px verdana; margin: 170px auto 0; overflow: auto; width: 325px; }
+
+/* index, show: article, drafts: article admin */
+article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
+article .links li { float: left; font-size: 13px; line-height: 23px; padding-right: 8px; }
+article .links li:after { content: '|'; padding-left: 10px; }
+article .links li a { margin-left: 12px; }

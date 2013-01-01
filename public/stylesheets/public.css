@@ -27,12 +27,6 @@ article h2.title { letter-spacing: .5px; margin-left: 33px; margin-top: 10px; }
 article h2.title a { color: #444; }
 article h2.title a:hover { color: #85B839; }
 
-/* index, show: links */
-article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
-article .links li a { margin-left: 12px; }
-article .links li { float: left; font-size: 13px; line-height: 23px; padding-right: 8px; }
-article .links li:after { content: '|'; padding-left: 10px; }
-
 /* index, show: cloud */
 article div.date { background: url('../images/balloon.png') 1px 0 no-repeat; font-family: arial; font-weight: bold; height: 54px; left: -47px; position: absolute; text-align: center; width: 74px; }
 article div.date .number { font-size: 13px; position: relative; top: 4px; }
@@ -157,13 +151,13 @@ aside .search label { display: none; }
 #donations h2 { color: #464646; float: left; font-size: 33px; margin-top: 15px; padding-left: 25px; }
 #donations table { width: 100%; }
 #donations table tr.odd { background-color: #F2F4F9; }
-#donations table tr td { color: #444; font: 12px arial; padding: 5px 5px 4px; text-align: center; }
-#donations table tr td img { border-radius: 3px; box-shadow: 1px 1px 3px #DDD; }
+#donations table tr td { color: #444; font: 12px arial; height: 33px; padding: 5px 5px 4px; text-align: center; }
+#donations table tr td img { background-color: #C4C4C4; display: block; border-radius: 3px; box-shadow: 1px 1px 3px #DDD; height: 30px; width: 30px; }
 #donations table tr td.amount { font: bold 15px helvetica; width: 7%; }
 #donations table tr td.country { width: 9%; }
 #donations table tr td.date { width: 13%; }
 #donations table tr td.edit { width: 3%; }
-#donations table tr td.edit a { background: url('../images/edit.png') no-repeat; display: block; height: 16px; width: 16px; }
+#donations table tr td.edit a:hover i { color: #277DA8; }
 #donations table tr td.image { width: 5%; }
 #donations table tr td.message { text-align: left; width: 37%; }
 #donations table tr td.name { font: 15px arial; text-align: left; width: 20%; }
