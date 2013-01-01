@@ -1,7 +1,7 @@
 Blog::Application.configure do
   config.action_controller.perform_caching    = true
   config.action_mailer.asset_host             = 'http://wbotelhos.com.br'
-  config.action_mailer.default_url_options    = { :host => 'wbotelhos.com.br' }
+  config.action_mailer.default_url_options    = { host: 'wbotelhos.com.br' }
   config.action_mailer.delivery_method        = :smtp
   config.action_mailer.raise_delivery_errors  = false
   config.active_support.deprecation           = :notify
