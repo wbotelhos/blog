@@ -93,7 +93,7 @@ describe Comment, 'Article#show' do
   context 'comment numbers' do
     context 'with zero comments' do
       it 'show no one text' do
-        find('.comments').should have_content 'Nenhum comentário, seja o primeiro! (:'
+        find('#comments').should have_content 'Nenhum comentário, seja o primeiro! (:'
       end
     end
 
@@ -103,7 +103,7 @@ describe Comment, 'Article#show' do
       before { visit path }
 
       it 'show the number of comments' do
-        find('.comments').should have_content '1 comentário'
+        find('#comments').should have_content '1 comentário'
       end
 
       it 'show the number' do
@@ -132,7 +132,7 @@ describe Comment, 'Article#show' do
         before { visit path }
 
         it 'show the number of comments' do
-          find('.comments').should have_content '2 comentários'
+          find('#comments').should have_content '2 comentários'
         end
 
         it 'show response description' do

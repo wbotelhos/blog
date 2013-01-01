@@ -45,7 +45,7 @@ describe Article, '#index' do
       end
 
       it 'display edit link' do
-        find('.edit').should have_link 'Editar', href: "/articles/#{article_published.id}/edit"
+        page.should have_link 'Editar', href: "/articles/#{article_published.id}/edit"
       end
 
       it 'display permalink' do
@@ -59,7 +59,7 @@ describe Article, '#index' do
       context 'comment numbers' do
         context 'with zero comments' do
           it 'show no one text' do
-            find('li.comments a span').should have_content 'Nenhum comentário, seja o primeiro! (:'
+            page.should have_content 'Nenhum comentário, seja o primeiro! (:'
           end
         end
 
@@ -70,7 +70,7 @@ describe Article, '#index' do
           end
 
           it 'show the number of comments' do
-            find('li.comments a span').should have_content '1 comentário'
+            page.should have_content '1 comentário'
           end
 
           context 'with two comment' do
@@ -80,19 +80,15 @@ describe Article, '#index' do
             end
 
             it 'show the number of comments' do
-              find('li.comments a span').should have_content '2 comentários'
+              page.should have_content '2 comentários'
             end
           end
         end
       end
 
       context ':published_at' do
-        it 'show as link' do
-          page.should have_selector 'li.published a'
-        end
-
         it 'format as pt_BR' do
-          find('li.published a').text.should match %r(\d\d\/\d\d\/\d\d às \d\d:\d\d)
+          page.text.should match %r(\d\d\/\d\d\/\d\d às \d\d:\d\d)
         end
       end
 
@@ -112,7 +108,7 @@ describe Article, '#index' do
 
       context 'with pagination' do
         before do
-          stub_const('Pager::LIMIT', 1)
+          stub_const 'Pager::LIMIT', 1
           2.times.each { FactoryGirl.create :article_published }
           visit articles_path
         end
@@ -184,7 +180,7 @@ describe Article, '#index' do
 
       context 'when click on comment link' do
         it 'redirects to the article page' do
-          find('li.comments a').click
+          find_link('Nenhum comentário, seja o primeiro! (:').click
           current_path.should == article_path(article_published.year, article_published.month, article_published.day, article_published.slug)
         end
       end
