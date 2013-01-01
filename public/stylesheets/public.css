@@ -29,12 +29,9 @@ article h2.title a:hover { color: #85B839; }
 
 /* index, show: links */
 article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
-article .links li { float: left; font-size: 13px; line-height: 23px; padding-right: 10px; }
+article .links li a { margin-left: 12px; }
+article .links li { float: left; font-size: 13px; line-height: 23px; padding-right: 8px; }
 article .links li:after { content: '|'; padding-left: 10px; }
-article .links .comments { background: url('../images/comment.png') 0px 4px no-repeat; padding-left: 20px; }
-article .links .edit { background: url('../images/edit.png') 0px 3px no-repeat; padding-left: 23px; }
-article .links .permalink { background: url('../images/link.png') 0px 4px no-repeat; padding-left: 22px; }
-article .links .published { background: url('../images/calendar.png') 0px 4px no-repeat; padding-left: 22px; }
 
 /* index, show: cloud */
 article div.date { background: url('../images/balloon.png') 1px 0 no-repeat; font-family: arial; font-weight: bold; height: 54px; left: -47px; position: absolute; text-align: center; width: 74px; }
