@@ -55,7 +55,10 @@ module CommentHelper
   end
 
   def date(comment)
-    content_tag :span , t('comment.created_at', time: time_ago_in_words(comment.created_at))
+    icon = content_tag :i, nil, class: 'icon-time icon-large'
+    text = t('comment.created_at', time: time_ago_in_words(comment.created_at))
+
+    content_tag :span, icon + text
   end
 
   def response_link(comment)

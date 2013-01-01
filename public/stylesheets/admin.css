@@ -30,11 +30,11 @@ section { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 
 #title h2 { background: url('../images/pin.png') no-repeat; color: #464646; float: left; font-size: 23px; padding-left: 35px; padding-top: 3px; }
 
 /* edit: article - status url */
-#title a { color: #444; float: left; font: 15px arial; letter-spacing: 1px; margin-left: 20px; margin-top: 30px; padding-left: 23px; }
-#title a:hover { color: #85B839; }
-#title a#draft { background: url('../images/draft.png') no-repeat 0 1px; }
-#title a#published { background: url('../images/link.png') no-repeat 0 2px; }
-#title #status { background-color: #999; border-radius: 5px; color: #FFF; float: left; font: bold 12px helvetica; margin-left: 25px; margin-top: 27px; padding: 5px 15px; text-align: center; }
+  #actions { display: inline-block; margin-left: 24px; margin-top: 24px; }
+  #actions i { display: inline-block; }
+  #actions a { color: #444; font: 15px arial; letter-spacing: 1px;  }
+  #actions a:hover { color: #8D50A7; }
+  #status { background-color: #999; border-radius: 5px; color: #FFF; float: left; font: bold 12px helvetica; margin-left: 25px; margin-top: 27px; padding: 5px 15px; text-align: center; }
 
 /* new, edit: article */
 #controls { float: right; margin-bottom: 20px; padding-left: 5px; padding-right: 5px; width: 200px; }
@@ -56,8 +56,6 @@ section { float: left; border-left: 2px solid #DDD; min-height: 450px; padding: 
 article h2 { margin-left: 10px; margin-top: 12px; }
 article h2 a { color: #444; font-size: 22px; }
 article h2 a:hover { color: #85B839; }
-
-article .links li:after { content: ''; }
 
 article { float: left; margin-bottom: 17px; position: relative; width: 928px; } /* same the main + 70 */
 article + article { border-top: 1px solid #DDD; padding-top: 5px; }

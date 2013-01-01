@@ -106,4 +106,5 @@ aside ul li:hover span { display: block; }
 article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; margin-top: 10px; overflow: hidden; padding: 5px 10px; }
 article .links li { float: left; font-size: 13px; line-height: 23px; padding-right: 8px; }
 article .links li:after { content: '|'; padding-left: 10px; }
+article .links li:last-child:after { content: ''; }
 article .links li a { margin-left: 12px; }

@@ -60,7 +60,8 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .comment .name-date .anchors a.parent-anchor { font-size: 11px; }
 .comment .name-date .anchors p { color: #999; display: inline; font: 11px verdana; margin-right: 3px; }
 .comment .name-date .anchors { float: left; font-family: arial; font-size: 14px; }
-.comment .name-date span { background: url('../images/clock.png') no-repeat; float: right; font-size: 11px; height: 16px; opacity: .3; text-indent: 21px; }
+.comment .name-date span { float: right; font-size: 11px; opacity: .2; text-indent: 21px; }
+.comment .name-date span i { font-size: 15px; margin-right: 2px; }
 .comment .name-date { height: 25px; width: 740px }
 .comment .photo img { background-color: #EEE; float: left; height: 80px; margin-right: 7px; width: 80px; }
 .comment .photo { float: left; }
