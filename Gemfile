@@ -2,11 +2,11 @@ source :rubygems
 
 gem 'mysql2'
 gem 'pygments.rb'
-gem 'rails', '3.2.9'
+gem 'rails', '~> 3.2.10'
 gem 'rake'
 gem 'redcarpet'
 gem 'rspec-rails', '~> 2.12.0'
-gem 'thinking-sphinx'
+gem 'thinking-sphinx', '~> 2.0.14'
 
 group :development do
   gem 'awesome_print', require: false
