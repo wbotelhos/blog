@@ -39,6 +39,11 @@ header nav ul li a.selected { color: #1982B3; border-bottom: 3px solid #1982B3; 
 header #social { clear: both; float: right; }
 header #social ul li { display: inline-block; padding-left: 2px; }
 header #social ul li img { opacity: .6 }
+#share { margin-bottom: 20px; }
+#share p {  color: #333; font: bold 14px arial; letter-spacing: .7px; padding-top: 20px; text-align: center; }
+  #twitter { background: url('https://twitter.com/favicons/favicon.ico') no-repeat 9px 6px #E1F4FD; border-radius: 3px; border: 1px solid #B2E2F9; cursor: pointer; margin: 0 auto; padding: 0 12px 4px 33px; width: 34px; }
+  #twitter a { color: #333; font: bold 13px helvetica; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
+  #twitter:hover { background-color: #C2E8FA; }
 
 /* font awesome */
 .icon-large { color: #444; max-height: 26px; padding-right: 3px; }

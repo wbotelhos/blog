@@ -30,6 +30,13 @@
   </div>
 </article>
 
+<div class="clear"></div>
+
+<div id="share">
+  <p><%= t 'article.share_it' %></p>
+  <%= twitter_button text: @article.title, url: article_slug_url(@article) %>
+</div>
+
 <h3 id="comments">
   <i class="icon-comments-alt icon-large"></i>
   <%= t 'comment.count_html', count: @article.comments_count %>

@@ -26,7 +26,7 @@ describe Article, '#show' do
   end
 
   it 'display permalink' do
-    find('.links .permalink').should have_link 'Permalink', href: path
+    page.should have_link 'Permalink', href: path
   end
 
   it 'display comments link' do
@@ -42,7 +42,7 @@ describe Article, '#show' do
   context 'comment numbers' do
     context 'with zero comments' do
       it 'show no one text' do
-        find('li.comments a span').should have_content 'Nenhum comentário, seja o primeiro! (:'
+        page.should have_content 'Nenhum comentário, seja o primeiro! (:'
       end
     end
 
@@ -53,7 +53,7 @@ describe Article, '#show' do
       end
 
       it 'show the number of comments' do
-        find('li.comments a span').should have_content '1 comentário'
+        page.should have_content '1 comentário'
       end
 
       context 'with two comment' do
@@ -63,7 +63,7 @@ describe Article, '#show' do
         end
 
         it 'show the number of comments' do
-          find('li.comments a span').should have_content '2 comentários'
+          page.should have_content '2 comentários'
         end
       end
     end
@@ -84,7 +84,7 @@ describe Article, '#show' do
     end
 
     it 'not display edit link' do
-      find('.links .edit').should have_link 'Editar', href: "/articles/#{article.id}/edit"
+      page.should have_link 'Editar', href: "/articles/#{article.id}/edit"
     end
   end
 end
