@@ -28,6 +28,10 @@ pt-BR:
         create: 'Salvar'
         update: 'Atualizar'
 
+      link:
+        create: 'Salvar'
+        update: 'Atualizar'
+
       user:
         create: 'Salvar'
         update: 'Atualizar'

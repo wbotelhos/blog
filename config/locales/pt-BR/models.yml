@@ -30,6 +30,10 @@ pt-BR:
         name: 'Nome *'
         slug: 'Slug *'
 
+      link:
+        name: 'Nome *'
+        url: 'URL *'
+
       user:
         email: 'E-mail *'
         name: 'Nome *'

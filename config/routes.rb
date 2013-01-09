@@ -2,7 +2,7 @@ Blog::Application.routes.draw do
   root to: 'articles#index'
 
   controller :admin do
-    get   '/admin', action: :index
+    get '/admin', action: :index
   end
 
   controller :articles do
@@ -22,11 +22,12 @@ Blog::Application.routes.draw do
   end
 
   controller :categories do
-    get   '/categories',            action: :index
-    post  '/categories',            action: :create
-    get   '/categories/new',        action: :new
-    put   '/categories/:id',        action: :update, as: :categories_update
-    get   '/categories/:id/edit',   action: :edit,   as: :categories_edit
+    get   '/categories',          action: :index
+    post  '/categories',          action: :create
+    get   '/categories/new',      action: :new
+    put   '/categories/:id',      action: :update, as: :categories_update
+    get   '/categories/:name',    action: :show,   as: :categories_show
+    get   '/categories/:id/edit', action: :edit,   as: :categories_edit
   end
 
   controller :comments do
@@ -35,11 +36,11 @@ Blog::Application.routes.draw do
   end
 
   controller :donators do
-    get   '/donators',            action: :index
-    post  '/donators',            action: :create
-    get   '/donators/new',        action: :new
-    put   '/donators/:id',        action: :update, as: :donators_update
-    get   '/donators/:id/edit',   action: :edit,   as: :donators_edit
+    get   '/donators',          action: :index
+    post  '/donators',          action: :create
+    get   '/donators/new',      action: :new
+    put   '/donators/:id',      action: :update, as: :donators_update
+    get   '/donators/:id/edit', action: :edit,   as: :donators_edit
   end
 
   controller :feeds do
@@ -47,12 +48,20 @@ Blog::Application.routes.draw do
   end
 
   controller :labs do
-    get   '/labs',            action: :index
-    post  '/labs',            action: :create
-    get   '/labs/drafts',     action: :drafts
-    get   '/labs/new',        action: :new
-    put   '/labs/:id',        action: :update, as: :labs_update
-    get   '/labs/:id/edit',   action: :edit,   as: :labs_edit
+    get   '/labs',          action: :index
+    post  '/labs',          action: :create
+    get   '/labs/drafts',   action: :drafts
+    get   '/labs/new',      action: :new
+    put   '/labs/:id',      action: :update, as: :labs_update
+    get   '/labs/:id/edit', action: :edit,   as: :labs_edit
+  end
+
+  controller :links do
+    get   '/links',           action: :index
+    post  '/links',           action: :create
+    get   '/links/new',       action: :new
+    put   '/links/:id',       action: :update, as: :links_update
+    get   '/links/:id/edit',  action: :edit,   as: :links_edit
   end
 
   controller :sessions do

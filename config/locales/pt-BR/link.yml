@@ -1,3 +1,6 @@
 pt-BR:
   link:
-    title: 'Links'
+    edit: 'Editar Link'
+    new: 'Novo Link'
+    other: 'Links'
+    update: 'Atualizar'

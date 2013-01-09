@@ -35,6 +35,14 @@ pt-BR:
         alert: 'Erro ao atualizar o projeto!'
         notice: 'Projeto atualizado com sucesso!'
 
+    links:
+      create:
+        alert: 'Erro ao criar o link!'
+        notice: 'Link criado com sucesso!'
+      update:
+        alert: 'Erro ao atualizar o link!'
+        notice: 'Link atualizado com sucesso!'
+
     auth:
       alert: 'Você precisa estar logado!'
 

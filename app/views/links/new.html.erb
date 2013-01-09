@@ -1,0 +1,32 @@
+<div id="title">
+  <h2><%= t 'link.new' %></h2>
+</div>
+
+<%= render 'shared/error_messages', entity: @link %>
+
+<%= form_for @link, html: { class: 'link-form' } do |f| %>
+  <div id="fields">
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :url %>
+      <%= f.url_field :url %>
+    </p>
+  </div>
+
+  <div id="controls">
+    <h3><%= t 'link.create' %></h3>
+
+    <%= f.submit class: :save %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('.link-form').flury();
+    $('#link_name').focus();
+  });
+</script>
