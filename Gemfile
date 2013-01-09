@@ -2,7 +2,7 @@ source :rubygems
 
 gem 'mysql2'
 gem 'pygments.rb'
-gem 'rails', '~> 3.2.10'
+gem 'rails', '~> 3.2.11'
 gem 'rake'
 gem 'redcarpet'
 gem 'rspec-rails', '~> 2.12.0'
