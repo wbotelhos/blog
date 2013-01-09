@@ -57,6 +57,17 @@ describe Lab, '#index' do
     end
   end
 
+  context 'with record with HTML on description' do
+    before do
+      FactoryGirl.create :lab_published, description: '<a href="http://url.com">some-link</a>'
+      visit labs_path
+    end
+
+    it 'display the HTML element' do
+      find('.description').should have_link 'some-link', href: 'http://url.com'
+    end
+  end
+
   context 'without record' do
     before { visit labs_path }
 
