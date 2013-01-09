@@ -14,19 +14,12 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with :truncation, { pre_count: true }
   end
 
-  config.before do
-    DatabaseCleaner.strategy = :transaction
-  end
+  config.before { DatabaseCleaner.strategy = :transaction }
 
   config.before js: true do
     DatabaseCleaner.strategy = :truncation, { pre_count: true }
   end
 
-  config.before do
-    DatabaseCleaner.start
-  end
-
-  config.after do
-    DatabaseCleaner.clean
-  end
+  config.before { DatabaseCleaner.start }
+  config.after  { DatabaseCleaner.clean }
 end

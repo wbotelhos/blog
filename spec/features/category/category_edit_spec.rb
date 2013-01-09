@@ -4,7 +4,7 @@ require 'spec_helper'
 describe Category, '#edit' do
   let!(:category) { FactoryGirl.create :category, name: 'Skate' }
 
-  context "visition the root page" do
+  context "visiting the root page" do
     before { visit root_path }
 
     it "show edit link on category line" do
