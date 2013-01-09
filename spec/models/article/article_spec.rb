@@ -6,12 +6,13 @@ describe Article do
     FactoryGirl.build(:article).should be_valid
   end
 
-  let!(:article) { FactoryGirl.create :article, title: "City - São João del-rey ('!@#$\alive%ˆ&*~^]}", body: 'some body' }
+  let(:title) { "City - São João del-rey ('!@#$\alive%ˆ&*~^]}" }
+  let!(:article) { FactoryGirl.create :article, title: title, body: 'some body' }
 
-  describe '#slug_id' do
+  describe '#slug_title' do
     context 'on save' do
-      it 'should sanitize as slug style' do
-        article.slug.should == 'city-sao-joao-del-rey-alive'
+      it 'sanitize as slug style' do
+        FactoryGirl.create(:article, title: title + '-other!').slug.should == 'city-sao-joao-del-rey-alive-other'
       end
     end
 
@@ -21,8 +22,19 @@ describe Article do
         article.save
       end
 
-      it 'should sanitize as slug style' do
+      it 'sanitize as slug style' do
         article.slug.should == 'new-city-aimores-mg'
+      end
+    end
+
+    context "with invalid character on last block" do
+      before do
+        article.title = 'With Last Invalid Peace: !'
+        article.save
+      end
+
+      it 'removes the last token' do
+        article.slug.should == 'with-last-invalid-peace'
       end
     end
   end

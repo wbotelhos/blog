@@ -71,6 +71,10 @@ class Article < ActiveRecord::Base
       return
     end
 
+    write_attribute :slug, slug_title
+  end
+
+  def slug_title
     from  = 'áàãâäèéêëìíîïõòóôöùúûüç'
     to    = 'aaaaaeeeeiiiiooooouuuuc'
 
@@ -80,8 +84,9 @@ class Article < ActiveRecord::Base
     slug.gsub!  /\s/,     '-'
     slug.tr!    from,     to
     slug.gsub!  /[^\w-]/, ''
+    slug.gsub!  /-$/,     ''
 
-    write_attribute :slug, slug
+    slug
   end
 
   def with_zero
