@@ -8,15 +8,32 @@ footer { font-size: 13px; margin: 0 auto; overflow: auto; padding-bottom: 15px; 
 
 h1, h2, h3 { font-family: 'helvetica', arial, sans-serif }
 
-input[type="submit"], input[type="button"] { background-color: #AF81C3; border: none; border-radius: 3px; color: #FFF; cursor: pointer; font: 12px verdana; letter-spacing: .4px; padding: 7px 30px; }
-input[type="submit"]:hover, input[type="button"]:hover { background-color: #8D50A7; }
-input[type="text"], input[type="email"], input[type="password"] { background-color: #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #111; font: 12px verdana; height: 25px; letter-spacing: .3px; padding: 3px; }
+input[type="submit"],
+input[type="button"] { background-color: #AF81C3; border: none; border-radius: 3px; color: #FFF; cursor: pointer; font: 12px verdana; letter-spacing: .4px; padding: 7px 30px; }
 
-pre { background-color: #F8F8F8; border: 1px solid #EAEAEA; border-radius: 3px; color: #393939; font-size: 13px; padding: 10px 10px; text-shadow: none; }
+input[type="submit"]:hover,
+input[type="button"]:hover { background-color: #8D50A7; }
 
 textarea { background-color: #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #111; font: 12px verdana; letter-spacing: .3px; padding: 3px; resize: vertical; }
-textarea:focus, input[type="text"]:focus, input[type="search"]:focus { border: 1px solid #95BDD4 !important; }
-textarea:hover, input[type="text"]:hover, input[type="search"]:hover { border: 1px solid #BDBDBD !important; }
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="text"],
+input[type="url"] { background-color: #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #111; font: 12px verdana; height: 25px; letter-spacing: .3px; padding: 3px; }
+
+textarea:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="url"]:focus { border: 1px solid #95BDD4 !important; }
+
+textarea:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="search"]:hover,
+input[type="text"]:hover,
+input[type="url"]:hover { border: 1px solid #BDBDBD !important; }
 
 ul { list-style: none; margin: 0; padding-left: 0; }
 
@@ -101,7 +118,7 @@ aside ul li:hover span { display: block; }
 .lab .info .github-info a i { margin-right: 4px; }
 .lab .info .description { color: #444; font-size: 13px; margin-left: 10px; min-height: 42px; }
 .lab .info .links { float: right; margin-top: 12px; }
-.lab .info .links a { margin-right: 7px; }
+.lab .info .links a { margin-right: 3px; }
 .lab .info .links a:hover i { color: #277DA8; }
 
 /* result */

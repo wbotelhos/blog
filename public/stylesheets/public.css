@@ -139,7 +139,7 @@ aside #donate:hover { background-color: #BBB; color: #333; }
 aside #donate i { font-size: 18px; left: -4px; position: relative; top: 2px; }
 
 aside .search { margin-bottom: 10px; }
-aside .search input[type="search"] { background: url('../images/search.png') no-repeat 4px 5px #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #000; font-size: 13px; height: 24px; opacity: .7; padding-left: 25px; width: 173px; }
+aside .search input[type="search"] { background: url('../images/search.png') no-repeat 5px 7px #FBFBFB; opacity: .7; padding-left: 25px; width: 170px; }
 aside .search input[type="submit"] { display: none; margin-left: 36px; margin-top: 5px; }
 aside .search label { display: none; }
 
