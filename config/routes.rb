@@ -42,8 +42,8 @@ Blog::Application.routes.draw do
     get   '/donators/:id/edit',   action: :edit,   as: :donators_edit
   end
 
-  controller :feed do
-    get   '/feed', action: :feed
+  controller :feeds do
+    get '/feed', action: :feed
   end
 
   controller :labs do

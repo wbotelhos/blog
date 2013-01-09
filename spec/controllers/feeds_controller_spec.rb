@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FeedController do
+describe FeedsController do
   let(:article_draft) { FactoryGirl.create :article_draft }
   let(:article_published) { FactoryGirl.create :article_published }
   let(:criteria) { mock_model(Article).as_null_object }

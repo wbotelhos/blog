@@ -1,4 +1,4 @@
-class FeedController < ApplicationController
+class FeedsController < ApplicationController
   before_filter do
     request.format = :rss
   end
