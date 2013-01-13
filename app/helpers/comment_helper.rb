@@ -120,7 +120,7 @@ module CommentHelper
   def comment_box(article, comment, level)
     clazz = ['comment']
     clazz << 'authored' if comment.author
-    clazz << ('level-' + level.to_s) unless level == 0
+    clazz << "level-#{level}" unless level == 0
     clazz = clazz.join(' ')
 
     content_tag :div, photo(comment) + content(article, comment), id: anchor(comment), class: clazz
