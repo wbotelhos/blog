@@ -16,9 +16,11 @@ class Article < ActiveRecord::Base
   scope :published, where('published_at is not null and published_at <= ?', Time.zone.now)
   scope :drafts, where('published_at is null or published_at > ?', Time.zone.now)
 
-  before_validation :generate_slug, if: -> e { e.title.present? }
+  before_validation :generate_slug, if: -> e { e.title.present?}
 
-  validates :title, :slug, :user, :categories, presence: true
+  validates :title, presence: true, uniqueness: true
+  validates :user, :categories, presence: true
+  validates :slug, presence: true, if: -> e { e.title.present?}
 
   def text
     body.gsub /\s{1}#{MORE_TAG}/, ''
@@ -66,7 +68,7 @@ class Article < ActiveRecord::Base
   private
 
   def generate_slug
-    write_attribute :slug, title.blank? ? 'skip slug validate message' : title.slug
+    write_attribute :slug, title.slug
   end
 
   def with_zero
