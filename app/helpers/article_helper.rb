@@ -18,6 +18,12 @@ module ArticleHelper
     content_tag :ul, html.html_safe, class: 'links'
   end
 
+  def tags(article)
+    article.categories.map do |category|
+      link_to category.name, categories_show_path(category.name.slug), title: category.name
+    end.join(', ').html_safe
+  end
+
   private
 
   def comments_label(article)
