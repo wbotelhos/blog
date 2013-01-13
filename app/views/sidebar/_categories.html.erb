@@ -1,14 +1,16 @@
-<h2>
-  <i class="icon-tags icon-large"></i>
-  <%= t 'category.other' %>
-</h2>
+<% if categories.any? %>
+  <h2>
+    <i class="icon-tags icon-large"></i>
+    <%= t 'category.other' %>
+  </h2>
 
-<ul>
-  <% categories.each do |category| %>
-    <li>
+  <ul>
+    <% categories.each do |category| %>
       <%= t 'category.count_html', count: category.articles.size %>
       <%= link_to category.name, 'javascript:void(0);' %>
       <span><%= link_to t('navigation.category.edit'), categories_edit_path(category.id) %></span>
-    </li>
-  <% end %>
-</ul>
+      <li>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

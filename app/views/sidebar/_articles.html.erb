@@ -1,12 +1,14 @@
-<h2>
-  <i class="icon-file icon-large"></i>
-  <%= t 'article.other' %>
-</h2>
+<% if articles.any? %>
+  <h2>
+    <i class="icon-file icon-large"></i>
+    <%= t 'article.other' %>
+  </h2>
 
-<nav role="navigation">
-  <ul>
-    <% articles.each do |article| %>
-      <li><%= link_to article.title, article_slug(article) %></li>
-    <% end %>
-  </ul>
-</nav>
+  <nav role="navigation">
+    <ul>
+      <% articles.each do |article| %>
+        <li><%= link_to article.title, article_slug(article) %></li>
+      <% end %>
+    </ul>
+  </nav>
+<% end %>
