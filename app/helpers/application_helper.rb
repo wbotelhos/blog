@@ -1,3 +1,5 @@
+# coding: utf-8
+
 module ApplicationHelper
   def author(user)
     ''.html_safe.tap do |html|
@@ -12,6 +14,8 @@ module ApplicationHelper
 
     url = "http://www.gravatar.com/avatar/#{hash}?d=mm"
     url << "&s=#{options[:size]}" if options[:size]
+
+    options[:alt] = '' if options[:alt].nil?
 
     image_tag url, options
   end
@@ -48,8 +52,8 @@ module ApplicationHelper
     "#{CONFIG['author']}#{section}"
   end
 
-  def donate_button
-    url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=wbotelhos.com.br'
+  def donate_button(item_name = 'wbotelhos.com')
+    url = "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=#{item_name}"
     label = content_tag(:i, nil, class: 'icon-heart-empty') + t('navigation.donate')
 
     link_to label, url, id: 'donate', target: '_blank'
