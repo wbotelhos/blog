@@ -2,6 +2,8 @@
   <h2><%= t 'lab.new' %></h2>
 </div>
 
+<div class="clear"></div>
+
 <%= render 'shared/error_messages', entity: @lab %>
 
 <%= form_for @lab, html: { class: 'lab-form' } do |f| %>

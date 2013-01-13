@@ -3,9 +3,12 @@
 
   <div id="status"><%= @lab.status %></div>
 
-  <% if @lab.published_at.present? %>
-    <%= link_to @lab.url, @lab.url, id: 'published', target: '_blank' %>
-  <% end %>
+  <div id="actions">
+    <% if @lab.published_at.present? %>
+      <i class="icon-link icon-large"></i>
+      <%= link_to @lab.url, @lab.url, id: 'published', target: '_blank' %>
+    <% end %>
+  </div>
 </div>
 
 <div class="clear"></div>
