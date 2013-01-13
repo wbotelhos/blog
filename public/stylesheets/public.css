@@ -2,7 +2,7 @@
 #container section { float: left; border-right: 2px solid #DDD; padding: 10px; width: 858px; }
 
 /* result */
-#search-term { border-bottom: 1px solid #EEE; color: #333; font: 25px verdana; margin-bottom: 10px; margin-top: 15px; padding-bottom: 15px; text-align: center; }
+#search-term { border-bottom: 1px solid #EEE; color: #333; font-size: 2.5em; margin-bottom: 10px; margin-top: 15px; padding-bottom: 15px; text-align: center; }
 
 /* index, show: article box */
 article { float: left; margin-bottom: 17px; position: relative; width: 858px }
@@ -10,62 +10,62 @@ article + article { border-top: 1px solid #DDD; padding-top: 5px; }
 
 /* index, show: body */
 article .body { color: #202020; margin-top: 12px; padding-left: 10px; }
-article .body p { font-size: 14px; margin-bottom: 10px; }
+article .body p { font-size: 1.4em; margin-bottom: 10px; }
 article .body p.read-more { margin-top: 25px; text-align: center; width: 100%; }
-article .body p.read-more a { background-color: #AF81C3; border-radius: 3px; color: #FFF; font-size: 12px; padding: 7px 30px; }
+article .body p.read-more a { background-color: #AF81C3; border-radius: 3px; color: #FFF; font-size: .9em; padding: 7px 30px; }
 article .body p.read-more a:hover { background-color: #8D50A7; }
 article .body h2 { margin-bottom: 0; }
-article .body h3 { font-size: 16px; letter-spacing: .5px; margin-bottom: 0; }
+article .body h3 { font-size: 1.6em; letter-spacing: .5px; margin-bottom: 0; }
 article .body ul { margin-bottom: 10px; }
-article .body ul li { font-size: 14px; list-style: inside; margin-left: 5px; }
+article .body ul li { font-size: 1.4em; list-style: inside; margin-left: 5px; }
 article .body .align-center { display: block; margin: 0 auto; }
 article .body .align-left { display: inline; float: left; margin: 0 7px 2px 0; padding: 4px; }
 article .body .align-right { display: inline; float: right; margin: 0 0 2px 7px; padding: 4px; }
 
 /* index, show: title */
-article h2.title { letter-spacing: .5px; margin-left: 33px; margin-top: 10px; }
+article h2.title { letter-spacing: .5px; margin-left: 33px; margin-top: 6px; }
 article h2.title a { color: #444; }
 article h2.title a:hover { color: #85B839; }
 
 /* index, show: cloud */
 article div.date { background: url('../images/balloon.png') 1px 0 no-repeat; font-family: arial; font-weight: bold; height: 54px; left: -47px; position: absolute; text-align: center; width: 74px; }
-article div.date .number { font-size: 13px; position: relative; top: 4px; }
-article div.date .month { display: block; font-size: 12px; position: relative; text-transform: uppercase; top: -3px; }
+article div.date .number { font-size: 1.3em; position: relative; top: 7px; }
+article div.date .month { display: block; font-size: 1.2em; position: relative; text-transform: uppercase; top: 1px; }
 
 /* show: footer */
 article .footer { height: 33px; margin-top: 25px; }
-article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; font-size: 12px; padding-top: 3px; }
+article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; font-size: 1.2em; padding-top: 3px; }
 
 /* show: comment header */
-#comments { float: left; font: bold 19px verdana; margin-bottom: 25px; margin-left: 20px; }
+#comments { float: left; font-size: 2.3em; font-weight: bold; margin-bottom: 25px; margin-left: 20px; }
 
 /* show: comment */
 .comment { border: 1px solid #EAEAEA; border-radius: 2px; clear: both; float: right; height: auto; margin-bottom: 10px; padding: 10px; width: 835px; }
 .comment form input[type="submit"] { float: right; margin-right: 7px; }
 .comment form input[type="text"] { color: #111; margin-bottom: 7px; margin-right: 6px; padding: 2px; width: 234px; }
 .comment form textarea { color: #111; width: 725px; }
-.comment form .close { font-size: 13px; font-weight: bold; margin-bottom: 5px; margin-top: 5px; }
-.comment form .human label { color: #777; font: 11px verdana; padding-right: 5px; padding-top: 3px; }
-.comment form .human { float: left; margin-top: 3px; }
+.comment form .close {  display: block; font-size: 1.3em; font-weight: bold; margin-top: 5px; }
+.comment form .human label { color: #777; font-size: 1.1em; padding-right: 5px; padding-top: 3px; }
+.comment form .human { float: left; margin-top: 3px !important; }
+.comment .content .text { clear: both; color: #444; font-size: 1.2em; width: 740px; }
 .comment .content .text p { margin-top: 10px; }
-.comment .content .text pre { font-size: 12px; padding-left: 15px; }
-.comment .content .text { clear: both; color: #444; font-size: 12px; width: 740px; }
+.comment .content .text pre { padding-left: 15px; }
 .comment .content form p { margin: 0px; }
 .comment .content form { margin-top: 10px; }
 .comment .content { float: left; margin-left: 8px; }
 
-.comment .name-date .anchors a { font-size: 13px; letter-spacing: 1px; }
+.comment .name-date .anchors { float: left; font-family: arial; }
+.comment .name-date .anchors a { font-size: 1.2em; letter-spacing: 1px; }
 .comment .name-date .anchors a.name { color: #369; font-weight: bold; margin-left: 5px; margin-right: 10px; }
 .comment .name-date .anchors a:hover.name { color: #538CC6; }
-.comment .name-date .anchors a.parent-anchor { font-size: 11px; }
-.comment .name-date .anchors p { color: #999; display: inline; font: 11px verdana; margin-right: 3px; }
-.comment .name-date .anchors { float: left; font-family: arial; font-size: 14px; }
-.comment .name-date span { float: right; font-size: 11px; opacity: .2; text-indent: 21px; }
-.comment .name-date span i { font-size: 15px; margin-right: 2px; }
+.comment .name-date .anchors a.parent-anchor { font-size: 1.1em; }
+.comment .name-date .anchors p { color: #999; display: inline; font: 1.1em verdana; margin-right: 3px; }
+.comment .name-date span { float: right; font-size: 1.1em; opacity: .2; text-indent: 21px; }
+.comment .name-date span i { font-size: 1.5em; margin-right: 2px; }
 .comment .name-date { height: 25px; width: 740px }
 .comment .photo img { background-color: #EEE; float: left; height: 80px; margin-right: 7px; width: 80px; }
 .comment .photo { float: left; }
-.comment .reply-link { font-size: 11px; font-weight: bold; }
+.comment .reply-link { font-size: 1.1em; font-weight: bold; }
 
 .comment.authored { background-color: #FFE; }
 
@@ -106,27 +106,28 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .comment.level-5 form textarea { width: 640px; }
 
 /* show: comment form */
-.comment-create { clear: both; margin: 0 auto 50px; font-size: 13px; padding-top: 4px; width: 523px; }
+.comment-create { clear: both; margin: 0 auto 50px; padding-top: 4px; width: 523px; }
+.comment-create > p { font-size: 1.3em; }
 .comment-create p.alert, .comment-create p.notice { border-radius: 4px; color: #B94A48; margin-bottom: 5px; padding: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
 .comment-create p.alert { background-color: #F2DEDE }
 .comment-create p.notice { background-color: #DFF0D8 }
 
 .comment-create #human { float: left; margin-top: 4px; }
-.comment-create #human label { color: #888; font: 11px verdana; }
-.comment-create #replying-to { color: #444; font-size: 13px; margin-left: 1px; }
+.comment-create #human label { color: #888; font-size: 1.1em; }
+.comment-create #replying-to { color: #444; font-size: 1.3em; margin-left: 1px; }
 .comment-create input[type="text"] { color: #BBB; margin-bottom: 7px; padding: 2px; width: 165px; }
 .comment-create textarea { color: #BBB; height: 150px; margin-top: 4px; width: 515px; }
 .comment-create input[type="submit"] { float: right; }
-.comment-create #markdown-reference { color: #777; font: 11px verdana; margin-bottom: 8px; margin-top: 1px; }
+.comment-create #markdown-reference { color: #777; font-size: 1.2em; margin-bottom: 8px; margin-top: 1px; }
 .comment-create p { margin: 0; }
-.comment-create p i { color: #999; float: right; font-size: 12px; margin-right: 28px; margin-top: 6px; }
+.comment-create p i { color: #999; float: right; font-size: 1.2em; margin-right: 28px; margin-top: 6px; }
 
 /* index: pager */
 .pager { margin: 0 auto; padding-bottom: 10px; text-align: center; width: 280px; }
-.pager li { display: inline; padding: 0 3px; }
-.pager li a { border-radius: 3px; background: #FBFBFB; border: 1px solid #EEE; color: #277DA8; font: bold 14px arial; letter-spacing: .4px; padding: 4px 8px; text-align: center; text-shadow: 1px 1px 1px #FFF; }
+.pager li { display: inline; font-size: 1.4em; font-weight: bold; padding: 0 3px; }
+.pager li a { border-radius: 3px; background: #FBFBFB; border: 1px solid #EEE; color: #277DA8; letter-spacing: .4px; padding: 4px 8px; text-align: center; text-shadow: 1px 1px 1px #FFF; }
 .pager li a:hover { color: #85B839; }
-.pager li span { border-radius: 3px; background: #FBFBFB; border: 1px solid #EEE; color: #277DA8; font: bold 14px arial; letter-spacing: .4px; padding: 4px 8px; text-align: center; text-shadow: 1px 1px 1px #FFF; }
+.pager li span { border-radius: 3px; background: #FBFBFB; border: 1px solid #EEE; color: #277DA8; letter-spacing: .4px; padding: 4px 8px; text-align: center; text-shadow: 1px 1px 1px #FFF; }
 .pager li.disabled span { color: #EEE; }
 .pager li.page span { color: #888; }
 .pager.disabled { display: none; }
@@ -134,9 +135,9 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 /* sidebar */
 aside { float: right; padding: 10px; width: 200px; }
 
-aside #donate { background-color: #D7D7D7; border-radius: 4px; color: #333; display: block; font: 15px helvetica; letter-spacing: .4px; margin: 0 auto; padding: 5px 0 3px 14px; width: 77px; }
+aside #donate { background-color: #D7D7D7; border-radius: 4px; color: #333; display: block; font-size: 1.5em; letter-spacing: .4px; margin: 0 auto; padding: 2px 0 2px 14px; width: 77px; }
 aside #donate:hover { background-color: #BBB; color: #333; }
-aside #donate i { font-size: 18px; left: -4px; position: relative; top: 2px; }
+aside #donate i { font-size: 1.2em; left: -5px; position: relative; top: 2px; }
 
 aside .search { margin-bottom: 10px; }
 aside .search input[type="search"] { background: url('../images/search.png') no-repeat 5px 7px #FBFBFB; opacity: .7; padding-left: 25px; width: 170px; }
@@ -145,22 +146,22 @@ aside .search label { display: none; }
 
 /* about */
 #about { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: 173px; margin: 50px auto 0; padding: 12px; width: 800px; }
-#about p { float: left; font: 14px/2 verdana; margin-left: 10px; margin-top: 25px; }
+#about p { color: #222; float: left; font-size: 1.4em; line-height: 2em; margin-left: 10px; margin-top: 25px; }
 #about img { background-color: #EEE; border-radius: 2px; display: block; float: right; height: 160px; margin-right: 10px; margin-top: 5px; width: 160px; }
 
 /* index: donator */
-#donations h2 { color: #464646; float: left; font-size: 33px; margin-top: 15px; padding-left: 25px; }
+#donations h2 { color: #464646; float: left; font-size: 3.2em; margin-top: 10px; padding-left: 10px; }
 #donations table { width: 100%; }
 #donations table tr.odd { background-color: #F2F4F9; }
-#donations table tr td { color: #444; font: 12px arial; height: 33px; padding: 5px 5px 4px; text-align: center; }
+#donations table tr td { color: #444; font-size: 1.2em; height: 33px; padding: 5px 5px 4px; text-align: center; }
 #donations table tr td img { background-color: #C4C4C4; display: block; border-radius: 3px; box-shadow: 1px 1px 3px #DDD; height: 30px; width: 30px; }
-#donations table tr td.amount { font: bold 15px helvetica; width: 7%; }
+#donations table tr td.amount { font-weight: bold; font-size: 1.5em; width: 7%; }
 #donations table tr td.country { width: 9%; }
 #donations table tr td.date { width: 13%; }
 #donations table tr td.edit { width: 3%; }
 #donations table tr td.edit a:hover i { color: #277DA8; }
 #donations table tr td.image { width: 5%; }
-#donations table tr td.message { text-align: left; width: 37%; }
-#donations table tr td.name { font: 15px arial; text-align: left; width: 20%; }
-#donations table tr td.plan span { background-color: #369; border-radius: 7px; color: white; font-size: 12px; padding: 3px 10px; }
+#donations table tr td.message { text-align: left; width: 35%; }
+#donations table tr td.name { font-weight: bold; font-size: 1.3em; text-align: left; width: 22%; }
+#donations table tr td.plan span { background-color: #369; border-radius: 7px; color: white; padding: 3px 10px; }
 #donations table tr td.plan { width: 6%; }
