@@ -40,70 +40,48 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 #comments { float: left; font-size: 2.3em; font-weight: bold; margin-bottom: 25px; margin-left: 20px }
 
 /* show: comment */
-.comment { border: 1px solid #EAEAEA; border-radius: 2px; clear: both; float: right; height: auto; margin-bottom: 10px; padding: 10px; width: 835px }
-.comment form input[type="submit"] { float: right; margin-right: 7px }
-.comment form input[type="text"] { color: #111; margin-bottom: 7px; margin-right: 6px; padding: 2px; width: 234px }
-.comment form textarea { color: #111; width: 725px }
-.comment form .close {  display: block; font-size: 1.3em; font-weight: bold; margin-top: 5px }
+.comment { border: 1px solid #EAEAEA; border-radius: 2px; float: right; margin-bottom: 10px; padding: 10px; width: 835px }
+.comment form input[type="submit"] { float: right }
+.comment form input[type="text"] { margin-bottom: 7px; margin-right: 6px; width: 100% }
+.comment form textarea { width: 100% }
+.comment form .close {  display: block; font-size: 1.3em; font-weight: bold; margin: 5px 0 }
 .comment form .human label { color: #777; font-size: 1.1em; padding-right: 5px; padding-top: 3px }
-.comment form .human { float: left; margin-top: 3px !important }
-.comment .content .text { clear: both; color: #444; font-size: 1.2em; width: 740px }
+.comment form .human { float: left; }
+.comment .content { display: inline-block; margin-left: 10px; width: 740px }
+.comment .content form { margin-top: 10px }
+.comment .content form p { margin: 0 }
+.comment .content .text { color: #333; font-size: 1.2em; }
 .comment .content .text p { margin-top: 10px }
 .comment .content .text pre { padding-left: 15px }
-.comment .content form p { margin: 0px }
-.comment .content form { margin-top: 10px }
-.comment .content { float: left; margin-left: 8px }
-
-.comment .name-date .anchors { float: left; font-family: arial }
+.comment .name-date .anchors { float: left; }
 .comment .name-date .anchors a { font-size: 1.2em; letter-spacing: 1px }
 .comment .name-date .anchors a.name { color: #369; font-weight: bold; margin-left: 5px; margin-right: 10px }
 .comment .name-date .anchors a:hover.name { color: #538CC6 }
-.comment .name-date .anchors a.parent-anchor { font-size: 1.1em }
+.comment .name-date .anchors .parent-anchor { font-size: 1.1em }
 .comment .name-date .anchors p { color: #999; display: inline; font: 1.1em verdana; margin-right: 3px }
-.comment .name-date span { float: right; font-size: 1.1em; opacity: .2; text-indent: 21px }
+.comment .name-date { height: 30px; }
+.comment .name-date span { float: right; font-size: 1.1em; opacity: .2; }
 .comment .name-date span i { font-size: 1.5em; margin-right: 2px }
-.comment .name-date { height: 25px; width: 740px }
-.comment .photo img { background-color: #EEE; float: left; height: 80px; margin-right: 7px; width: 80px }
-.comment .photo { float: left }
+.comment .photo { display: inline-block; vertical-align: top }
+.comment .photo img { background-color: #EEE; height: 80px; width: 80px }
 .comment .reply-link { font-size: 1.1em; font-weight: bold }
 
-.comment.authored { background-color: #FFE }
+.authored { background-color: #FFE }
 
-.comment.level-1 { width: 820px }
-.comment.level-1 .name-date { width: 725px }
-.comment.level-1 .text { width: 725px }
-.comment.level-1 form { width: 724px }
-.comment.level-1 form input[type="text"] { width: 229px }
-.comment.level-1 form input[type='text'] { width: 229px }
-.comment.level-1 form textarea { width: 710px }
+.level-1 { width: 820px }
+.level-1 .content { width: 725px }
 
-.comment.level-2 { width: 805px }
-.comment.level-2 .name-date { width: 710px }
-.comment.level-2 .text { width: 710px }
-.comment.level-2 form { width: 707px }
-.comment.level-2 form input[type='text'] { width: 223px }
-.comment.level-2 form textarea { width: 691px }
+.level-2 { width: 805px }
+.level-2 .content { width: 710px }
 
-.comment.level-3 { width: 790px }
-.comment.level-3 .name-date { width: 695px }
-.comment.level-3 .text { width: 695px }
-.comment.level-3 form { width: 692px }
-.comment.level-3 form input[type='text'] { width: 218px }
-.comment.level-3 form textarea { width: 677px }
+.level-3 { width: 790px }
+.level-3 .content { width: 695px }
 
-.comment.level-4 { width: 775px }
-.comment.level-4 .name-date { width: 680px }
-.comment.level-4 .text { width: 680px }
-.comment.level-4 form { width: 677px }
-.comment.level-4 form input[type="text"] { width: 213px }
-.comment.level-4 form textarea { width: 661px }
+.level-4 { width: 775px }
+.level-4 .content { width: 680px }
 
-.comment.level-5 { width: 760px }
-.comment.level-5 .name-date { width: 665px }
-.comment.level-5 .text { width: 665px }
-.comment.level-5 form { width: 656px }
-.comment.level-5 form input[type="text"] { width: 206px }
-.comment.level-5 form textarea { width: 640px }
+.level-5 { width: 760px }
+.level-5 .content { width: 665px }
 
 /* show: comment form */
 .comment-create { clear: both; margin: 0 auto 50px; padding-top: 4px; width: 523px }

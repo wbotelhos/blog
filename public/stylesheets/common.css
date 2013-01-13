@@ -123,7 +123,7 @@ aside ul li:hover span { display: block }
 .lab .info .github-info a i { margin-right: 4px }
 .lab .info .description { color: #444; font-size: 1.3em; margin-left: 10px; min-height: 42px }
 .lab .info .links { float: right; margin-top: 11px }
-.lab .info .links a { font-size: 1.3em; margin-right: 3px }
+.lab .info .links a { font-size: 1.5em; margin-right: 6px }
 .lab .info .links a:hover i { color: #277DA8 }
 
 /* result */
