@@ -16,8 +16,7 @@ describe Article, '#update' do
     before do
       fill_in 'article_title', with: 'title-new'
       fill_in 'article_body', with: 'body-new'
-      uncheck "category-#{category_1.id}"
-      check "category-#{category_2.id}"
+      check category_1.name
       click_button 'Atualizar'
     end
 
@@ -31,7 +30,7 @@ describe Article, '#update' do
 
     it { find_field('article_title').value.should == 'title-new' }
     it { find_field('article_body').value.should == 'body-new' }
-    it { find_field("category-#{category_2.id}").should be_checked }
+    it { find_field(category_1.name).should be_checked }
   end
 
   context 'with invalid data' do
@@ -51,7 +50,7 @@ describe Article, '#update' do
     context 'blank title' do
       before do
         fill_in 'article_title', with: ''
-        check "category-#{category_1.id}"
+        check category_1.name
         click_button 'Atualizar'
       end
 
@@ -61,7 +60,7 @@ describe Article, '#update' do
     context 'with blank title the slug message validation is skipped' do
       before do
         fill_in 'article_title', with: ''
-        check "category-#{category_1.id}"
+        check category_1.name
         click_button 'Atualizar'
       end
 
@@ -71,8 +70,8 @@ describe Article, '#update' do
     context 'blank category' do
       before do
         fill_in 'article_title', with: 'title'
-        uncheck "category-#{category_1.id}"
-        uncheck "category-#{category_2.id}"
+        uncheck category_1.name
+        uncheck category_2.name
         click_button 'Atualizar'
       end
 
