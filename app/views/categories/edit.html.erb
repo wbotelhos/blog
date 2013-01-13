@@ -2,6 +2,8 @@
   <h2><%= t 'category.edit' %></h2>
 </div>
 
+<div class="clear"></div>
+
 <%= render 'shared/error_messages', entity: @category %>
 
 <%= form_for @category, url: categories_update_path, html: { class: 'category-form' } do |f| %>
