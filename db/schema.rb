@@ -35,12 +35,14 @@ ActiveRecord::Schema.define(:version => 20121222234809) do
 
   create_table "categories", :force => true do |t|
     t.integer  "articles_count", :default => 0
+    t.string   "slug",                          :null => false
     t.string   "name",                          :null => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
 
   add_index "categories", ["name"], :name => "index_categories_on_name", :unique => true
+  add_index "categories", ["slug"], :name => "index_categories_on_slug", :unique => true
 
   create_table "comments", :force => true do |t|
     t.boolean  "author",     :default => false, :null => false
@@ -88,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20121222234809) do
   end
 
   add_index "links", ["name"], :name => "index_links_on_name", :unique => true
+  add_index "links", ["url"], :name => "index_links_on_url", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                         :null => false

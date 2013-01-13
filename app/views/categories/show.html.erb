@@ -1,0 +1,10 @@
+<div id="search-term">
+  <i class="icon-tag icon-large"></i>
+  "<%= params[:slug] %>"
+</div>
+
+<% if @articles.any? %>
+  <%= render @articles %>
+<% else %>
+  <div id="none"><%= t 'category.none' %></div>
+<% end %>

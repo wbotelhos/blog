@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_filter :require_login, except: :index
+  before_filter :require_login, except: [:index, :show]
 
   def create
     @category = Category.new params[:category]
@@ -16,9 +16,21 @@ class CategoriesController < ApplicationController
     render layout: 'admin'
   end
 
+  def index
+    redirect_to root_path
+  end
+
   def new
     @category = Category.new
     render layout: 'admin'
+  end
+
+  def show
+    if params[:slug].present?
+      @articles = Article.all joins: :categories, conditions: { 'categories.slug' => params[:slug] }
+    else
+      redirect_to root_path
+    end
   end
 
   def update

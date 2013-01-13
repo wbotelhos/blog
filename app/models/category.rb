@@ -5,5 +5,14 @@ class Category < ActiveRecord::Base
 
   default_scope order 'name asc'
 
+  before_validation :generate_slug, if: -> e { e.name.present?}
+
   validates :name, presence: true, uniqueness: true
+  validates :slug, presence: true, if: -> e { e.name.present?}
+
+  private
+
+  def generate_slug
+    write_attribute :slug, name.slug
+  end
 end

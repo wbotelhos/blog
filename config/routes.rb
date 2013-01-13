@@ -26,7 +26,7 @@ Blog::Application.routes.draw do
     post  '/categories',          action: :create
     get   '/categories/new',      action: :new
     put   '/categories/:id',      action: :update, as: :categories_update
-    get   '/categories/:name',    action: :show,   as: :categories_show
+    get   '/categories/:slug',    action: :show,   as: :categories_show
     get   '/categories/:id/edit', action: :edit,   as: :categories_edit
   end
 

@@ -38,6 +38,15 @@ describe Category, '#create' do
       it { page.should have_content 'O campo "Nome *" deve ser preenchido!' }
     end
 
+    context 'with blank name the slug message validation is skipped' do
+      before do
+        fill_in 'category_name', with: ''
+        click_button 'Salvar'
+      end
+
+      it { page.should_not have_content 'O campo "Slug" deve ser preenchido!' }
+    end
+
     context 'Name already taken' do
       let!(:category) { FactoryGirl.create :category }
 
