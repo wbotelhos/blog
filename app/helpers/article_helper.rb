@@ -8,29 +8,25 @@ module ArticleHelper
   end
 
   def article_menu(article)
-    menus = ''
+    html = ''
+    html << menu('link',         link_to(t('article.permalink'),       article_slug(article),             title: t('article.permalink')))
+    html << menu('comments-alt', link_to(comments_label(article),      article_slug(article, 'comments'), title: t('comment.other')))
+    html << menu('calendar',     link_to(published_label(article),     'javascript:void(0);',             title: t('article.published_date')))
+    html << menu('share',        link_to(t('article.share'),           article_slug(article, 'share'),    title: t('article.share')))
+    html << menu('edit',         link_to(t('navigation.article.edit'), articles_edit_path(article),       title: t('article.edit'))) if is_logged?
 
-    link = link_to t('article.permalink'), article_slug(article), title: t('article.permalink')
-    menus << menu('link', link)
-
-    link = link_to t('article.comments_count_html', count: article.comments_count), article_slug(article, 'comments'), title: t('comment.other')
-    menus << menu('comments-alt', link)
-
-    link = link_to t('article.published_at', time: l(article.published_at)), 'javascript:void(0);', title: t('article.published_date')
-    menus << menu('calendar', link)
-
-    link = link_to t('article.share'), article_slug(article, 'share'), title: t('article.share')
-    menus << menu('share', link)
-
-    if is_logged?
-      link = link_to t('navigation.article.edit'), articles_edit_path(article), title: t('article.edit')
-      menus << menu('edit', link)
-    end
-
-    content_tag :ul, menus.html_safe, class: 'links'
+    content_tag :ul, html.html_safe, class: 'links'
   end
 
   private
+
+  def comments_label(article)
+    t 'article.comments_count_html', count: article.comments_count
+  end
+
+  def published_label(article)
+    t 'article.published_at', time: l(article.published_at)
+  end
 
   def menu(icon, link)
     icon = content_tag :i, nil, class: "icon-#{icon} icon-large"
