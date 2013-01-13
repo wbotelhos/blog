@@ -18,10 +18,7 @@
   <div class="footer">
     <div class="tags">
       <%= t 'article.tags' %>
-
-      <% @article.categories.each do |category| %>
-        <%= link_to category.name, 'javascript:void(0);' %><%= ',' unless category == @article.categories.last %>
-      <% end %>
+      <%= tags @article %>
     </div>
   </div>
 
