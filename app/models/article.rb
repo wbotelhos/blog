@@ -16,7 +16,7 @@ class Article < ActiveRecord::Base
   scope :published, where('published_at is not null and published_at <= ?', Time.zone.now)
   scope :drafts, where('published_at is null or published_at > ?', Time.zone.now)
 
-  before_validation :generate_slug, if: -> e { e.title }
+  before_validation :generate_slug, if: -> e { e.title.present? }
 
   validates :title, :slug, :user, :categories, presence: true
 
@@ -66,27 +66,7 @@ class Article < ActiveRecord::Base
   private
 
   def generate_slug
-    if title.blank?
-      write_attribute :slug, 'message-skipped'
-      return
-    end
-
-    write_attribute :slug, slug_title
-  end
-
-  def slug_title
-    from  = 'áàãâäèéêëìíîïõòóôöùúûüç'
-    to    = 'aaaaaeeeeiiiiooooouuuuc'
-
-    slug = title.downcase
-
-    slug.gsub!  /\s-\s/,  '-'
-    slug.gsub!  /\s/,     '-'
-    slug.tr!    from,     to
-    slug.gsub!  /[^\w-]/, ''
-    slug.gsub!  /-$/,     ''
-
-    slug
+    write_attribute :slug, title.blank? ? 'skip slug validate message' : title.slug
   end
 
   def with_zero
