@@ -48,6 +48,10 @@ describe ApplicationHelper do
       subject.should match 'href="linkedin.com"'
       subject.should match 'href="twitter.com"'
       subject.should match 'href="facebook.com"'
+      subject.should match 'class="github"'
+      subject.should match 'class="linkedin"'
+      subject.should match 'class="twitter"'
+      subject.should match 'class="facebook"'
     end
   end
 
