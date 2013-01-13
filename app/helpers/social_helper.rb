@@ -20,8 +20,8 @@ module SocialHelper
     content_tag :div, link, id: 'twitter'
   end
 
-  def social_icon(icon, title, path)
-    link_to image_tag(icon, alt: title, title: title), path, target: '_blank'
+  def social_icon(icon, title, url)
+    link_to image_tag(icon, alt: title, title: title), url, target: '_blank'
   end
 
   private
