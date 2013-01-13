@@ -21,7 +21,7 @@ module ArticleHelper
   private
 
   def comments_label(article)
-    t 'article.comments_count_html', count: article.comments_count
+    t 'comment.count_html', count: article.comments_count
   end
 
   def published_label(article)
