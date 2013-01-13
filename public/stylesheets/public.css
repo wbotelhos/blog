@@ -10,12 +10,12 @@ article + article { border-top: 1px solid #DDD; padding-top: 5px }
 
 /* index, show: body */
 article .body { color: #202020; margin-top: 12px; padding-left: 10px }
-article .body p { font-size: 1.4em; margin-bottom: 10px }
+article .body p { font-size: 1.5em; margin-bottom: 10px }
 article .body p.read-more { margin-top: 25px; text-align: center; width: 100% }
 article .body p.read-more a { background-color: #AF81C3; border-radius: 3px; color: #FFF; font-size: .9em; padding: 7px 30px }
 article .body p.read-more a:hover { background-color: #8D50A7 }
 article .body h2 { margin-bottom: 0 }
-article .body h3 { font-size: 1.6em; letter-spacing: .5px; margin-bottom: 0 }
+article .body h3 { font-size: 1.9em; letter-spacing: .5px; margin-bottom: 0 }
 article .body ul { margin-bottom: 10px }
 article .body ul li { font-size: 1.4em; list-style: inside; margin-left: 5px }
 article .body .align-center { display: block; margin: 0 auto }
@@ -23,7 +23,7 @@ article .body .align-left { display: inline; float: left; margin: 0 7px 2px 0; p
 article .body .align-right { display: inline; float: right; margin: 0 0 2px 7px; padding: 4px }
 
 /* index, show: title */
-article h2.title { letter-spacing: .5px; margin-left: 33px; margin-top: 6px }
+article h2.title { letter-spacing: .5px; margin: 6px 0 13px 33px }
 article h2.title a { color: #444 }
 article h2.title a:hover { color: #85B839 }
 

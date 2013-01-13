@@ -67,8 +67,8 @@ header #social ul li img { opacity: .6 }
 /* pygments */
 blockquote { background: url('../images/quote.gif') no-repeat 0 0 #FDFDFD; border-radius: 4px; margin-left: 0; padding-left: 22px }
 blockquote p { font-size: 1.3em !important; padding-left: 10px; padding-top: 5px }
-code { background-color: #F8F8F8; border: 1px solid #EAEAEA; border-radius: 3px; font-family: Menlo, monospace, serif !important; margin: 0 2px; padding: 1px 5px; white-space: nowrap }
-pre { background-color: #F8F8F8; border: 1px solid #EAEAEA; border-radius: 3px; color: #393939; font-family: Menlo, monospace, serif !important; padding: 10px 10px; text-shadow: none }
+code { background-color: #F8F8F8; border: 1px solid #EAEAEA; border-radius: 3px; margin: 0 2px; padding: 1px 5px; white-space: nowrap }
+pre { background-color: #F8F8F8; border: 1px solid #EAEAEA; border-radius: 3px; color: #393939; font-size: 1.3em; padding: 10px 10px; text-shadow: none }
 
 /* top */
 header > p { border-radius: 4px; float: right; font: 1.3em verdana; margin: 0; padding: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); width: 1080px }
