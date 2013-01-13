@@ -94,7 +94,6 @@ This blog is free under the MIT License, then be nice and keep the author's cred
 
 See you and your blog soon!
 ])
-article.slug = 'first-steps'
 article.categories = categories
 article.save!
 
