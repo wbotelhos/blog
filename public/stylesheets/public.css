@@ -47,12 +47,12 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .comment form .close {  display: block; font-size: 1.3em; font-weight: bold; margin: 5px 0 }
 .comment form .human label { color: #777; font-size: 1.1em; padding-right: 5px; padding-top: 3px }
 .comment form .human { float: left; }
-.comment .content { display: inline-block; margin-left: 10px; width: 740px }
+.comment .content { display: inline-block; margin-left: 10px; width: calc(100% - 90px) }
 .comment .content form { margin-top: 10px }
 .comment .content form p { margin: 0 }
 .comment .content .text { color: #333; font-size: 1.2em; }
 .comment .content .text p { margin-top: 10px }
-.comment .content .text pre { padding-left: 15px }
+.comment .content .text pre { font-size: 1em; padding-left: 15px }
 .comment .name-date .anchors { float: left; }
 .comment .name-date .anchors a { font-size: 1.2em; letter-spacing: 1px }
 .comment .name-date .anchors a.name { color: #369; font-weight: bold; margin-left: 5px; margin-right: 10px }
@@ -69,19 +69,10 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .authored { background-color: #FFE }
 
 .level-1 { width: 820px }
-.level-1 .content { width: 725px }
-
 .level-2 { width: 805px }
-.level-2 .content { width: 710px }
-
 .level-3 { width: 790px }
-.level-3 .content { width: 695px }
-
 .level-4 { width: 775px }
-.level-4 .content { width: 680px }
-
 .level-5 { width: 760px }
-.level-5 .content { width: 665px }
 
 /* show: comment form */
 .comment-create { clear: both; margin: 0 auto 50px; padding-top: 4px; width: 523px }
