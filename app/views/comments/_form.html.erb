@@ -18,14 +18,20 @@
         <%= f.hidden_field :url, value: user_session.url %>
     <% else %>
       <p>
-        <%= f.text_field :name, value: t('activerecord.attributes.comment.name'), title: t('activerecord.attributes.comment.name') %>
-        <%= f.text_field :email, value: t('activerecord.attributes.comment.email'), title: t('activerecord.attributes.comment.email') %>
-        <%= f.text_field :url, value: t('activerecord.attributes.comment.url'), title: t('activerecord.attributes.comment.url') %>
+        <%= f.label :name %>
+        <%= f.text_field :name, title: t('activerecord.attributes.comment.name') %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email, title: t('activerecord.attributes.comment.email') %>
+
+        <%= f.label :url %>
+        <%= f.text_field :url, title: t('activerecord.attributes.comment.url') %>
       </p>
     <% end %>
 
     <p>
-      <%= f.text_area :body, value: t('activerecord.attributes.comment.body'), title: t('activerecord.attributes.comment.body') %>
+      <%= f.label :body %>
+      <%= f.text_area :body, title: t('activerecord.attributes.comment.body') %>
     </p>
 
     <p id="markdown-reference">
@@ -55,10 +61,11 @@
     var form    = $('#new_comment'),
         botBox  = $('#human input');
 
-    $('#comment_name').on('focus', focusLabel).on('blur', blurLabel);
-    $('#comment_email').on('focus', focusLabel).on('blur', blurLabel);
-    $('#comment_url').on('focus', focusLabel).on('blur', blurLabel);
-    $('#comment_body').on('focus', focusLabel).on('blur', blurLabel);
+//    $('#comment_name').on('focus', focusLabel).on('blur', blurLabel);
+  //  $('#comment_email').on('focus', focusLabel).on('blur', blurLabel);
+//    $('#comment_url').on('focus', focusLabel).on('blur', blurLabel);
+    //$('#comment_body').on('focus', focusLabel).on('blur', blurLabel);
+    $('#new_comment').flury();
     $('#new_comment :submit').on('click', function() {
       if (!botBox.is(':checked')) {
         $(this).hide().parent().append("<i><%= t 'comment.sending' %></i>");
