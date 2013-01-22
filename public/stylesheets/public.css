@@ -1,21 +1,21 @@
 /* content */
-#container section { float: left; border-right: 2px solid #DDD; padding: 10px; width: 858px }
+#container section { float: left; border-right: 2px solid #DDD; padding: 10px; width: 78% }
 
 /* result */
 #search-term { border-bottom: 1px solid #EEE; color: #333; font-size: 2.5em; margin-bottom: 10px; margin-top: 15px; padding-bottom: 15px; text-align: center }
 
 /* index, show: article box */
-article { float: left; margin-bottom: 17px; position: relative; width: 858px }
+article { float: left; margin-bottom: 17px; position: relative; width: 100% }
 article + article { border-top: 1px solid #DDD; padding-top: 5px }
 
 /* index, show: body */
-article .body { color: #202020; margin-top: 12px; padding-left: 10px }
-article .body p { font-size: 1.5em; margin-bottom: 10px }
+article .body { color: #222; margin-top: 12px; padding-left: 5px }
+article .body p { font-size: 1.5em; margin-top: 7px }
 article .body p.read-more { margin-top: 25px; text-align: center; width: 100% }
 article .body p.read-more a { background-color: #AF81C3; border-radius: 3px; color: #FFF; font-size: .9em; padding: 7px 30px }
 article .body p.read-more a:hover { background-color: #8D50A7 }
 article .body h2 { margin-bottom: 0 }
-article .body h3 { font-size: 1.9em; letter-spacing: .5px; margin-bottom: 0 }
+article .body h3 { font-size: 2em; letter-spacing: .5px; margin-bottom: 0 }
 article .body ul { margin-bottom: 10px }
 article .body ul li { font-size: 1.4em; list-style: inside; margin-left: 5px }
 article .body .align-center { display: block; margin: 0 auto }
@@ -23,8 +23,8 @@ article .body .align-left { display: inline; float: left; margin: 0 7px 2px 0; p
 article .body .align-right { display: inline; float: right; margin: 0 0 2px 7px; padding: 4px }
 
 /* index, show: title */
-article h2.title { letter-spacing: .5px; margin: 6px 0 13px 33px }
-article h2.title a { color: #444 }
+article h2.title { line-height: 1.1em; margin: 10px 0 14px 33px }
+article h2.title a { color: #333 }
 article h2.title a:hover { color: #85B839 }
 
 /* index, show: cloud */
@@ -34,13 +34,13 @@ article div.date .month { display: block; font-size: 1.2em; position: relative; 
 
 /* show: footer */
 article .footer { height: 33px; margin-top: 25px }
-article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; font-size: 1.2em; padding-top: 3px }
+article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: right; font-size: 1.4em; padding-top: 3px }
 
 /* show: comment header */
-#comments { float: left; font-size: 2.3em; font-weight: bold; margin-bottom: 25px; margin-left: 20px }
+#comments { float: left; font-size: 2.3em; font-weight: bold; margin-bottom: 20px; margin-left: 15px }
 
 /* show: comment */
-.comment { border: 1px solid #EAEAEA; border-radius: 2px; float: right; margin-bottom: 10px; padding: 10px; width: 835px }
+.comment { border: 1px solid #EAEAEA; border-radius: 2px; float: right; margin-bottom: 10px; padding: 10px; width: 97.2% }
 .comment form input[type="submit"] { float: right }
 .comment form input[type="text"] { margin-bottom: 7px; margin-right: 6px; width: 100% }
 .comment form textarea { width: 100% }
@@ -50,21 +50,22 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .comment .content { display: inline-block; margin-left: 10px; width: calc(100% - 90px) }
 .comment .content form { margin-top: 10px }
 .comment .content form p { margin: 0 }
-.comment .content .text { color: #333; font-size: 1.2em; }
-.comment .content .text p { margin-top: 10px }
-.comment .content .text pre { font-size: 1em; padding-left: 15px }
+.comment .content .text { color: #333; font-size: 1.4em; }
+.comment .content .text p { line-height: 1.4em; margin-top: 10px }
+.comment .content .text pre { font-size: .85em; padding-left: 15px }
+.comment .content .text code { font-size: .9em }
 .comment .name-date .anchors { float: left; }
-.comment .name-date .anchors a { font-size: 1.2em; letter-spacing: 1px }
+.comment .name-date .anchors a { font-size: 1.4em; letter-spacing: .5px }
 .comment .name-date .anchors a.name { color: #369; font-weight: bold; margin-left: 5px; margin-right: 10px }
 .comment .name-date .anchors a:hover.name { color: #538CC6 }
 .comment .name-date .anchors .parent-anchor { font-size: 1.1em }
 .comment .name-date .anchors p { color: #999; display: inline; font: 1.1em verdana; margin-right: 3px }
 .comment .name-date { height: 30px; }
-.comment .name-date span { float: right; font-size: 1.1em; opacity: .2; }
-.comment .name-date span i { font-size: 1.5em; margin-right: 2px }
+.comment .name-date span { float: right; font-size: 1.2em; opacity: .2; }
+.comment .name-date span i { margin-right: 2px }
 .comment .photo { display: inline-block; vertical-align: top }
 .comment .photo img { background-color: #EEE; height: 80px; width: 80px }
-.comment .reply-link { font-size: 1.1em; font-weight: bold }
+.comment .reply-link { font-size: 1.2em }
 
 .authored { background-color: #FFE }
 
@@ -75,17 +76,17 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .level-5 { width: 760px }
 
 /* show: comment form */
-.comment-create { clear: both; margin: 0 auto 50px; padding-top: 4px; width: 523px }
+.comment-create { clear: both; margin: 0 auto 50px; padding-top: 4px; width: 527px }
 .comment-create > p { font-size: 1.3em }
 .comment-create p.alert, .comment-create p.notice { border-radius: 4px; color: #B94A48; margin-bottom: 5px; padding: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) }
 .comment-create p.alert { background-color: #F2DEDE }
 .comment-create p.notice { background-color: #DFF0D8 }
 
 .comment-create #human { float: left; margin-top: 4px }
-.comment-create #human label { color: #888; font-size: 1.1em }
+.comment-create #human label { color: #888; font-size: 1.1em; padding-left: 0; padding-right: 3px }
 .comment-create #replying-to { color: #444; font-size: 1.3em; margin-left: 1px }
-.comment-create input[type="text"] { color: #BBB; margin-bottom: 7px; padding: 2px; width: 165px }
-.comment-create textarea { color: #BBB; height: 150px; margin-top: 4px; width: 515px }
+.comment-create input[type="text"] { font-size: 1.5em; margin-right: 3px; width: 163px }
+.comment-create textarea { height: 150px; margin-top: 5px; width: 515px }
 .comment-create input[type="submit"] { float: right }
 .comment-create #markdown-reference { color: #777; font-size: 1.2em; margin-bottom: 8px; margin-top: 1px }
 .comment-create p { margin: 0 }
@@ -102,14 +103,14 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .pager.disabled { display: none }
 
 /* sidebar */
-aside { float: right; padding: 10px; width: 200px }
+aside { float: right; padding: 10px; width: 18% }
 
 aside #donate { background-color: #D7D7D7; border-radius: 4px; color: #333; display: block; font-size: 1.5em; letter-spacing: .4px; margin: 0 auto; padding: 2px 0 2px 14px; width: 77px }
 aside #donate:hover { background-color: #BBB; color: #333 }
 aside #donate i { font-size: 1.2em; left: -5px; position: relative; top: 2px }
 
 aside .search { margin-bottom: 10px }
-aside .search input[type="search"] { background: url('../images/search.png') no-repeat 5px 7px #FBFBFB; opacity: .7; padding-left: 25px; width: 170px }
+aside .search input[type="search"] { background: url('../images/search.png') no-repeat 5px 7px #FBFBFB; opacity: .6; padding-left: 25px; width: 170px }
 aside .search input[type="submit"] { display: none; margin-left: 36px; margin-top: 5px }
 aside .search label { display: none }
 
@@ -119,7 +120,7 @@ aside .search label { display: none }
 #about img { background-color: #EEE; border-radius: 2px; display: block; float: right; height: 160px; margin-right: 10px; margin-top: 5px; width: 160px }
 
 /* index: donator */
-#donations h2 { color: #464646; float: left; font-size: 3.2em; margin-top: 10px; padding-left: 10px }
+#donations h2 { font-size: 3.2em; margin-top: 10px; padding-left: 10px }
 #donations table { width: 100% }
 #donations table tr.odd { background-color: #F2F4F9 }
 #donations table tr td { color: #444; font-size: 1.2em; height: 33px; padding: 5px 5px 4px; text-align: center }

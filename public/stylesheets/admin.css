@@ -1,6 +1,5 @@
 /* common */
 #fields { float: left; width: 715px }
-#fields label { color: #BBB; font: 1.5em arial; letter-spacing: .7px; padding-left: 6px; padding-top: 8px }
 #fields textarea { min-height: 313px; width: 700px }
 #fields p input { width: 700px }
 
@@ -41,10 +40,10 @@ section { float: left; border-left: 2px solid #DDD; min-height: 709px; padding: 
 #controls { float: right; margin-bottom: 20px; padding-left: 5px; padding-right: 5px; width: 200px }
 #controls h3 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; font: bold 1.4em verdana; margin-bottom: 10px; padding-bottom: 7px; padding-top: 7px }
   #categories { margin-top: 11px }
-  #categories ul li { padding-left: 3px; padding-top: 2px }
+  #categories ul li { padding-left: 3px }
   #categories ul li:hover { border-radius: 4px; background-color: #EEE }
-  #categories ul li input { cursor: pointer; float: left; margin-right: 5px; margin-top: 2px; padding-top: 5px }
-  #categories ul li label { cursor: pointer; display: block; font-size: 1.2em; padding-bottom: 2px }
+  #categories ul li input { cursor: pointer; float: left; margin-right: 5px; margin-top: 4px }
+  #categories ul li label { cursor: pointer; display: block; font-size: 1.4em }
   #categories ul li label:hover { color: #8D50A7 }
 
 /* new: article, user */

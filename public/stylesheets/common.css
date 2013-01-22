@@ -6,7 +6,7 @@ body { background: url('../images/background.png') #E7E7E7; font: normal 10px/1.
 
 footer { font-size: 1.3em; margin: 0 auto; overflow: auto; padding-bottom: 15px; padding-top: 10px; text-align: center; width: 1100px }
 
-h2 { font-size: 2.6em }
+h2 { color: #444; font-size: 2.6em; letter-spacing: .5px; line-height: 1.3em }
 
 input[type="submit"],
 input[type="button"] { background-color: #AF81C3; border: none; border-radius: 3px; color: #FFF; cursor: pointer; font-size: 1.3em; letter-spacing: .4px; padding: 7px 30px }
@@ -14,7 +14,7 @@ input[type="button"] { background-color: #AF81C3; border: none; border-radius: 3
 input[type="submit"]:hover,
 input[type="button"]:hover { background-color: #8D50A7 }
 
-textarea { background-color: #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #111; font-size: 1.3em; letter-spacing: .3px; padding: 3px; resize: vertical }
+textarea { background-color: #FBFBFB; border: 1px solid #999; border-radius: 2px; color: #111; font-size: 1.4em; letter-spacing: .3px; padding: 3px; resize: vertical }
 input[type="email"],
 input[type="password"],
 input[type="search"],
@@ -40,25 +40,27 @@ ul { list-style: none; margin: 0; padding-left: 0 }
 .clear { clear: both }
 
 /* top */
-header { height: 176px; width: 1100px }
-header #logo { float: left; margin-bottom: 20px; margin-top: 8px }
-header #logo h1 a { color: #333; font-size: 2.7em; letter-spacing: -3px; line-height: 1; text-shadow: 2px 2px #FFF }
+header { height: 185px }
+header #logo { float: left }
+header #logo h1 { margin: 0; }
+header #logo h1 a { color: #3B3B3B; font-size: 3em; letter-spacing: -3px; text-shadow: 2px 2px #FFF }
 header #logo h1 a:hover { color: #000 }
-header #logo p { color: #999; float: left; font-size: 1.6em; font-weight: bold; margin-left: 10px; margin-top: 0; text-shadow: 1px 1px 1px #FFF; width: 385px }
+header #logo p { color: #999; float: left; font-size: 1.7em; font-weight: bold; margin-left: 10px; margin-top: 0; text-shadow: 1px 1px 1px #FFF; width: 385px }
 
-header nav { float: right; margin-top: 36px }
+header nav { float: right; margin-top: 28px }
 header nav ul { border-bottom: 1px solid #D7D7D7; border-top: 1px solid #D7D7D7; overflow: visible; padding-bottom: 11px; padding-top: 11px; text-shadow: 0 1px 0 #FFF }
 header nav ul li { display: inline; padding-left: 10px; padding-right: 10px }
-header nav ul li a { font-size: 1.5em; font-weight: bold; letter-spacing: 0.4px; text-align: center; text-shadow: 1px 1px 1px #FFF; text-transform: uppercase }
+header nav ul li a { font-size: 1.6em; font-weight: bold; letter-spacing: 0.4px; text-align: center; text-shadow: 1px 1px 1px #FFF; text-transform: uppercase }
 header nav ul li a.selected { color: #1982B3; border-bottom: 3px solid #1982B3 }
 
-header #social { clear: both; float: right }
+header #social { clear: both; float: right; margin-top: 8px }
 header #social ul li { display: inline-block; padding-left: 2px }
 header #social ul li img { opacity: .6 }
+
 #share { margin-bottom: 20px }
-#share p {  color: #333; font-size: 1.4em; font-weight: bold; letter-spacing: .7px; padding-top: 20px; text-align: center }
-  #twitter { background: url('https://twitter.com/favicons/favicon.ico') no-repeat 11px 10px #E1F4FD; border: 1px solid #B2E2F9; border-radius: 3px; cursor: pointer; margin: 0 auto; padding: 7px 10px; width: 70px }
-  #twitter a { color: #333; display: block; font-size: 1.4em; font-weight: bold; padding-left: 26px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) }
+#share p { color: #333; font-size: 1.4em; font-weight: bold; letter-spacing: .7px; padding-top: 20px; text-align: center }
+  #twitter { background: url('https://twitter.com/favicons/favicon.ico') no-repeat 11px 9px #E1F4FD; border: 1px solid #B2E2F9; border-radius: 3px; cursor: pointer; margin: 0 auto; padding: 6px 10px; width: 70px }
+  #twitter a { color: #333; display: block; font-size: 1.5em; font-weight: bold; padding-left: 26px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) }
   #twitter:hover { background-color: #C2E8FA }
 
 /* font awesome */
@@ -68,7 +70,7 @@ header #social ul li img { opacity: .6 }
 blockquote { background: url('../images/quote.gif') no-repeat 0 0 #FDFDFD; border-radius: 4px; margin-left: 0; padding-left: 22px }
 blockquote p { font-size: 1.3em !important; padding-left: 10px; padding-top: 5px }
 code { background-color: #F8F8F8; border: 1px solid #EAEAEA; border-radius: 3px; margin: 0 2px; padding: 1px 5px; white-space: nowrap }
-pre { background-color: #F8F8F8; border: 1px solid #EAEAEA; border-radius: 3px; color: #393939; font-size: 1.3em; padding: 10px 10px; text-shadow: none }
+pre { background-color: #F8F8F8; border: 1px solid #EAEAEA; border-radius: 3px; color: #393939; font-family: menlo, monospace, serif; font-size: 1.3em; padding: 10px 10px; text-shadow: none }
 
 /* top */
 header > p { border-radius: 4px; float: right; font: 1.3em verdana; margin: 0; padding: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); width: 1080px }
@@ -84,13 +86,13 @@ header p.notice { background-color: #DFF0D8; color: #468847 }
 .error-messages dd { font-size: 1.3em; margin-left: 0 }
 
 /* wrapper */
-#wrapper { margin: 0 auto; width: 1100px }
-#wrapper #container { background-color: #FFF; border: 1px solid #DDD; box-shadow: 0 1px 3px rgba(150, 150, 150, 0.3); float: left; width: 1100px }
+#wrapper { margin: 0 auto; width: 87% }
+#wrapper #container { background-color: #FFF; border: 1px solid #DDD; box-shadow: 0 1px 3px rgba(150, 150, 150, 0.3); float: left; width: 100% }
 
 /* show: public, index: user admin */
-.author { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; min-height: 93px; margin: 25px auto 0; overflow: auto; padding-bottom: 8px; padding-left: 10px; padding-top: 19px; width: 770px }
+.author { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; min-height: 93px; margin: 25px auto 0; overflow: auto; padding-bottom: 8px; padding-left: 10px; padding-top: 19px; width: 75% }
 .author img { background-color: #EEE; float: left; height: 80px; width: 80px }
-.author .biography { color: #555; float: left; font-size: 1.2em; letter-spacing: .3px; margin-top: 2px; padding-left: 10px }
+.author .biography { color: #555; float: left; font-size: 1.3em; letter-spacing: .3px; padding-left: 10px }
 .author .biography p { margin: 0 }
 .author .social { float: right; margin-right: 10px; width: 16px }
 .author .social a { background-color: #EEE; background-repeat: no-repeat; border-radius: 3px; display: block; height: 16px; margin-bottom: 5px; width: 16px }
@@ -100,11 +102,11 @@ header p.notice { background-color: #DFF0D8; color: #468847 }
 .author .social a.twitter { background-image: url('../images/twitter.png') }
 
 /* sidebar */
-aside h2 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; clear: both; color: #333; font-size: 1.5em; font-weight: bold; margin-top: 11px; margin-bottom: 2px; padding-bottom: 3px; padding-top: 5px }
+aside h2 { border-bottom: 1px solid #DDD; border-top: 1px solid #DDD; font-size: 1.7em; margin-top: 11px; margin-bottom: 2px; padding-bottom: 6px; padding-top: 8px }
 aside ul li { border-bottom: 1px dotted #F1F1F1; padding-bottom: 11px; padding-top: 10px }
 aside ul li:last-child { border-bottom: none }
-aside ul li a { display: inline-block; font-size: 1.3em; vertical-align: middle }
-aside ul li strong { background-color: #AF81C3; border-radius: 4px; color: #FFF; display: inline-block; height: 15px; margin-right: 5px; padding: 1px; text-align: center; vertical-align: middle; width: 17px }
+aside ul li a { display: inline-block; font-size: 1.4em; line-height: 1.35em; vertical-align: middle }
+aside ul li strong { background-color: #AF81C3; border-radius: 4px; color: #FFF; display: inline-block; height: 17px; margin-right: 5px; padding: 1px; text-align: center; vertical-align: middle; width: 17px }
 aside ul li span { display: none; float: right }
 aside ul li:hover span { display: block }
 
@@ -130,8 +132,8 @@ aside ul li:hover span { display: block }
 #none { color: #777; font-size: 2em; font-weight: bold; margin-top: 170px; text-align: center }
 
 /* index, show: article, drafts: article admin */
-article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; overflow: hidden; padding: 5px 10px }
-article .links li { float: left; font-size: 1.3em; line-height: 23px; padding-right: 8px }
-article .links li:after { content: '|'; padding-left: 10px }
+article .links { background-color: #F9F9F9; border: 1px solid #DDD; list-style: none; overflow: hidden; padding: 3px 10px }
+article .links li { float: left; font-size: 1.4em; padding-right: 8px; padding-top: 1px }
+article .links li:after { color: #333; content: '|'; padding-left: 10px }
 article .links li:last-child:after { content: '' }
 article .links li a { margin-left: 12px }
