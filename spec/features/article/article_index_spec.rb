@@ -53,13 +53,13 @@ describe Article, '#index' do
       end
 
       it 'display comments link' do
-        page.should have_link 'Nenhum comentário, seja o primeiro! (:', href: "#{path}#comments"
+        page.should have_link 'Nenhum comentário até o momento', href: "#{path}#comments"
       end
 
       context 'comment numbers' do
         context 'with zero comments' do
           it 'show no one text' do
-            page.should have_content 'Nenhum comentário, seja o primeiro! (:'
+            page.should have_content 'Nenhum comentário até o momento'
           end
         end
 
@@ -180,7 +180,7 @@ describe Article, '#index' do
 
       context 'when click on comment link' do
         it 'redirects to the article page' do
-          find_link('Nenhum comentário, seja o primeiro! (:').click
+          find_link('Nenhum comentário até o momento').click
           current_path.should == article_path(article_published.year, article_published.month, article_published.day, article_published.slug)
         end
       end

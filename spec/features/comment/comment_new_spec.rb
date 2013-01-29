@@ -93,7 +93,7 @@ describe Comment, 'Article#show' do
   context 'comment numbers' do
     context 'with zero comments' do
       it 'show no one text' do
-        find('#comments').should have_content 'Nenhum comentário, seja o primeiro! (:'
+        find('#comments').should have_content 'Nenhum comentário até o momento'
       end
     end
 

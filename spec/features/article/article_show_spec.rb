@@ -30,7 +30,7 @@ describe Article, '#show' do
   end
 
   it 'display comments link' do
-    page.should have_link 'Nenhum comentário, seja o primeiro! (:', href: "#{path}#comments"
+    page.should have_link 'Nenhum comentário até o momento', href: "#{path}#comments"
   end
 
   context 'author' do
@@ -42,7 +42,7 @@ describe Article, '#show' do
   context 'comment numbers' do
     context 'with zero comments' do
       it 'show no one text' do
-        page.should have_content 'Nenhum comentário, seja o primeiro! (:'
+        page.should have_content 'Nenhum comentário até o momento'
       end
     end
 
