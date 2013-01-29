@@ -69,14 +69,14 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 
 .authored { background-color: #FFE }
 
-.level-1 { width: 820px }
-.level-2 { width: 805px }
-.level-3 { width: 790px }
-.level-4 { width: 775px }
-.level-5 { width: 760px }
+.level-1 { width: 95.2% }
+.level-2 { width: 93.2% }
+.level-3 { width: 91.2% }
+.level-4 { width: 89.2% }
+.level-5 { width: 87.2% }
 
 /* show: comment form */
-.comment-create { clear: both; margin: 0 auto 50px; padding-top: 4px; width: 527px }
+.comment-create { clear: both; margin: 0 auto 50px; padding-top: 10px; width: 70% }
 .comment-create > p { font-size: 1.3em }
 .comment-create p.alert, .comment-create p.notice { border-radius: 4px; color: #B94A48; margin-bottom: 5px; padding: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) }
 .comment-create p.alert { background-color: #F2DEDE }
@@ -85,11 +85,11 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .comment-create #human { float: left; margin-top: 4px }
 .comment-create #human label { color: #888; font-size: 1.1em; padding-left: 0; padding-right: 3px }
 .comment-create #replying-to { color: #444; font-size: 1.3em; margin-left: 1px }
-.comment-create input[type="text"] { font-size: 1.5em; margin-right: 3px; width: 163px }
-.comment-create textarea { height: 150px; margin-top: 5px; width: 515px }
-.comment-create input[type="submit"] { float: right }
+.comment-create input[type="text"] { font-size: 1.5em; width: 100% }
+.comment-create textarea { height: 150px; width: 100% }
+.comment-create input[type="submit"] { float: right; margin-right: -9px }
 .comment-create #markdown-reference { color: #777; font-size: 1.2em; margin-bottom: 8px; margin-top: 1px }
-.comment-create p { margin: 0 }
+.comment-create p { margin: 5px }
 .comment-create p i { color: #999; float: right; font-size: 1.2em; margin-right: 28px; margin-top: 6px }
 
 /* index: pager */
