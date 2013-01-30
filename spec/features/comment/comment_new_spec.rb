@@ -29,63 +29,19 @@ describe Comment, 'Article#show' do
 
     context 'labels' do
       it 'display on name' do
-        find_field('comment_name').value.should == 'Nome *'
+        page.find('label[for="comment_name"]').text.should == 'Nome *'
       end
 
       it 'display on e-mail' do
-        find_field('comment_email').value.should == 'E-mail *'
+        page.find('label[for="comment_email"]').text.should == 'E-mail *'
       end
 
       it 'display on URL' do
-        find_field('comment_url').value.should == 'URL'
+        page.find('label[for="comment_url"]').text.should == 'URL'
       end
 
       it 'display on body' do
-        find_field('comment_body').value.should == "Seu comentário *\n\n```python\ndef cute:\n  print 'Hello Markdown!'\n```"
-      end
-
-      context 'on focus', js: true do
-        it 'display blank on name' do
-          page.execute_script "$('#comment_name').focus();"
-          find_field('comment_name').value.should be_empty
-        end
-
-        it 'display blank on e-mail' do
-          page.execute_script "$('#comment_email').focus();"
-          find_field('comment_email').value.should be_empty
-        end
-
-        it 'display blank on URL' do
-          page.execute_script "$('#comment_url').focus();"
-          find_field('comment_url').value.should be_empty
-        end
-
-        it 'display blank on body' do
-          page.execute_script "$('#comment_body').focus();"
-          find_field('comment_body').value.should be_empty
-        end
-      end
-
-      context 'on blur', js: true do
-        it 'display label on name' do
-          page.execute_script "$('#comment_name').focus().blur();"
-          find_field('comment_name').value.should == 'Nome *'
-        end
-
-        it 'display label on e-mail' do
-          page.execute_script "$('#comment_email').focus().blur();"
-          find_field('comment_email').value.should == 'E-mail *'
-        end
-
-        it 'display label on URL' do
-          page.execute_script "$('#comment_url').focus().blur();"
-          find_field('comment_url').value.should == 'URL'
-        end
-
-        it 'display label on body' do
-          page.execute_script "$('#comment_body').focus().blur();"
-          find_field('comment_body').value.should == "Seu comentário *\n\n```python\ndef cute:\n  print 'Hello Markdown!'\n```"
-        end
+        page.find('label[for="comment_body"]').text.should == "Comentário com `code` *"
       end
     end
   end
