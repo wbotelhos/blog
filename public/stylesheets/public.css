@@ -86,7 +86,7 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 .comment-create #human label { color: #888; font-size: 1.1em; padding-left: 0; padding-right: 3px }
 .comment-create #replying-to { color: #444; font-size: 1.3em; margin-left: 1px }
 .comment-create input[type="text"] { font-size: 1.5em; width: 100% }
-.comment-create textarea { height: 150px; width: 100% }
+.comment-create textarea { height: 200px; width: 100% }
 .comment-create input[type="submit"] { float: right; margin-right: -9px }
 .comment-create #markdown-reference { color: #777; font-size: 1.2em; margin-bottom: 8px; margin-top: 1px }
 .comment-create p { margin: 5px }
