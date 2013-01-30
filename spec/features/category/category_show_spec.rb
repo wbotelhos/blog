@@ -32,7 +32,7 @@ describe Category, '#show' do
     before { visit categories_show_path 'inexistent' }
 
     it 'show no result message' do
-      page.should have_content 'Nenhuma categoria encontrada!'
+      page.should have_content 'Nenhum artigo encontrado!'
     end
   end
 

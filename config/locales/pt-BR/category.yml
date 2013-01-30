@@ -2,7 +2,7 @@ pt-BR:
   category:
     edit: 'Editar Categoria'
     new: 'Nova Categoria'
-    none: 'Nenhuma categoria encontrada!'
+    none: 'Nenhum artigo encontrado!'
     other: 'Categorias'
     update: 'Atualizar'
     count_html:
