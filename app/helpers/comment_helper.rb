@@ -12,7 +12,7 @@ module CommentHelper
   def render_comment(article, comment, level = 0, html = '')
     html << comment_box(article, comment, level)
 
-    if comment.comments.any?
+    if comment.comments.present?
       level += 1
       comment.comments.each { |child| render_comment(article, child, level, html) }
     end
