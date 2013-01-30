@@ -63,12 +63,9 @@
     var form    = $('#new_comment'),
         botBox  = $('#human input');
 
-//    $('#comment_name').on('focus', focusLabel).on('blur', blurLabel);
-  //  $('#comment_email').on('focus', focusLabel).on('blur', blurLabel);
-//    $('#comment_url').on('focus', focusLabel).on('blur', blurLabel);
-    //$('#comment_body').on('focus', focusLabel).on('blur', blurLabel);
-    $('#new_comment').flury();
-    $('#new_comment :submit').on('click', function() {
+    form.flury();
+
+    form.children(':submit').on('click', function() {
       if (!botBox.is(':checked')) {
         $(this).hide().parent().append("<i><%= t 'comment.sending' %></i>");
       }

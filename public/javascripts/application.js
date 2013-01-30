@@ -16,22 +16,6 @@ AntiBot = {
   }
 };
 
-function blurLabel() {
-	var field = $(this);
-
-	if (field.val() == '') {
-		field.val(field.attr('title')).css('color', '#BBB');
-	}
-};
-
-function focusLabel() {
-	var field = $(this);
-
-	if (field.val() == field.attr('title')) {
-		field.val('').css('color', '#444');
-	}
-};
-
 function l00s3r(selector) {
   $('label[for="' + selector + '"]').text('b0t? l00s3r!');
   return false;
