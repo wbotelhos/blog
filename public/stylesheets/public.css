@@ -78,7 +78,8 @@ article .footer .tags { border-top: 4px double #E8E8E8; color: #888; float: righ
 /* show: comment form */
 .comment-create { clear: both; margin: 0 auto 50px; padding-top: 10px; width: 70% }
 .comment-create > p { font-size: 1.3em }
-.comment-create p.alert, .comment-create p.notice { border-radius: 4px; color: #B94A48; margin-bottom: 5px; padding: 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) }
+.comment-create p.alert,
+.comment-create p.notice { border-radius: 4px; color: #B94A48; margin-bottom: 5px; padding: 5px 0 5px 5px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); width: 98.8% }
 .comment-create p.alert { background-color: #F2DEDE }
 .comment-create p.notice { background-color: #DFF0D8 }
 
