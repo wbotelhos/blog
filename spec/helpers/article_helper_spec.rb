@@ -9,17 +9,18 @@ describe ArticleHelper do
       published_at: Time.local(1984, 10, 23),
       category_ids: [category_2.id, category_1.id]
   }
+  let(:date) { article.published_at }
 
   describe '#article_slug' do
     context 'without anchor' do
       it 'builds the path without anchor' do
-        helper.article_slug(article).should == '/1984/10/23/some-slug'
+        helper.article_slug(article).should == "/#{date.year}/#{date.month}/#{date.day}/some-slug"
       end
     end
 
     context 'with anchor' do
       it 'builds the path with anchor' do
-        helper.article_slug(article, 'anchor').should == '/1984/10/23/some-slug#anchor'
+        helper.article_slug(article, 'anchor').should == "/#{date.year}/#{date.month}/#{date.day}/some-slug#anchor"
       end
     end
   end
@@ -29,13 +30,13 @@ describe ArticleHelper do
 
     context 'without anchor' do
       it 'builds the path without anchor' do
-        helper.article_slug_url(article).should == 'http://url.com/1984/10/23/some-slug'
+        helper.article_slug_url(article).should == "http://url.com/#{date.year}/#{date.month}/#{date.day}/some-slug"
       end
     end
 
     context 'with anchor' do
       it 'builds the path with anchor' do
-        helper.article_slug_url(article, 'anchor').should == 'http://url.com/1984/10/23/some-slug#anchor'
+        helper.article_slug_url(article, 'anchor').should == "http://url.com/#{date.year}/#{date.month}/#{date.day}/some-slug#anchor"
       end
     end
   end
