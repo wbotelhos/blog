@@ -12,9 +12,13 @@ class Article < ActiveRecord::Base
 
   default_scope order 'published_at desc'
 
-  scope :recents, limit(10)
+  scope :recents,   limit(10)
   scope :published, where('published_at is not null and published_at <= ?', Time.zone.now)
-  scope :drafts, where('published_at is null or published_at > ?', Time.zone.now)
+  scope :drafts,    where('published_at is null or published_at > ?', Time.zone.now)
+
+  scope :by_category, -> category do
+    self.all(joins: :categories, conditions: { 'categories.slug' => category }) & self.published
+  end
 
   before_validation :generate_slug, if: -> e { e.title.present?}
 

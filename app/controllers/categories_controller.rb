@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
 
   def show
     if params[:slug].present?
-      @articles = Article.all joins: :categories, conditions: { 'categories.slug' => params[:slug] }
+      @articles = Article.by_category params[:slug]
     else
       redirect_to root_path
     end

@@ -3,7 +3,7 @@
   "<%= params[:slug] %>"
 </div>
 
-<% if @articles.any? %>
+<% if @articles.present? %>
   <%= render @articles %>
 <% else %>
   <div id="none"><%= t 'category.none' %></div>

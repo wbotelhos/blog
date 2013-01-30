@@ -137,4 +137,51 @@ describe Article do
       end
     end
   end
+
+  describe :scope do
+    let!(:category_ruby) { FactoryGirl.create :category, name: 'Ruby' }
+    let!(:article_draft) { FactoryGirl.create :article_draft,         category_ids: [category_ruby.id], categories: [category_ruby] }
+    let!(:article_published) { FactoryGirl.create :article_published, category_ids: [category_ruby.id], categories: [category_ruby] }
+
+    describe :published do
+      subject { described_class.published }
+
+      it 'returns just published' do
+        subject.should have(1).item
+        subject.should include article_published
+      end
+    end
+
+    describe :drafts do
+      subject { described_class.drafts }
+
+      it 'returns just drafts' do
+        subject.should have(2).item
+        subject.should include article_draft
+      end
+    end
+
+    describe :recents do
+      subject { described_class.recents }
+
+      before { FactoryGirl.create_list :article, 8 }
+
+      it 'returns just 10' do
+        subject.should have(10).item
+      end
+    end
+
+    describe :by_category do
+      let!(:category_java) { FactoryGirl.create :category, name: 'Java' }
+
+      before { FactoryGirl.create :article_published, category_ids: [category_java.id], categories: [category_java] }
+
+      subject { described_class.by_category category_ruby.slug }
+
+      it 'returns published articles of the given category' do
+        subject.should have(1).item
+        subject.should include article_published
+      end
+    end
+  end
 end
