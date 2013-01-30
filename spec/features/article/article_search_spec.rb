@@ -19,9 +19,9 @@ describe Article, '#search', js: true do
       end
     end
 
-    xit 'display the match article' do
+    it 'display the match article' do
       within 'section' do
-        page.should have_content 'skate'
+        page.should have_content article.title
       end
     end
 
