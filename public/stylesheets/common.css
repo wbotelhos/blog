@@ -40,12 +40,12 @@ ul { list-style: none; margin: 0; padding-left: 0 }
 .clear { clear: both }
 
 /* top */
-header { height: 185px }
-header #logo { float: left; height: 165px }
+header { height: 200px }
+header #logo { display: inline-block; height: 165px }
 header #logo h1 { line-height: 2em; margin-bottom: 0; margin-top: 18px }
 header #logo h1 a { color: #3B3B3B; font-size: 3em; letter-spacing: -3px; line-height: 1em; text-shadow: 2px 2px #FFF }
 header #logo h1 a:hover { color: #000 }
-header #logo p { color: #999; float: left; font-size: 1.7em; font-weight: bold; margin-left: 10px; margin-top: 10px; text-shadow: 1px 1px 1px #FFF; width: 385px }
+header #logo p { color: #999; font-size: 1.7em; font-weight: bold; margin-left: 10px; margin-top: 10px; text-shadow: 1px 1px 1px #FFF }
 
 header nav { float: right; margin-top: 28px }
 header nav ul { border-bottom: 1px solid #D7D7D7; border-top: 1px solid #D7D7D7; overflow: visible; padding-bottom: 11px; margin-bottom: 5px; padding-top: 11px; text-shadow: 0 1px 0 #FFF }
@@ -53,7 +53,7 @@ header nav ul li { display: inline; padding-left: 10px; padding-right: 10px }
 header nav ul li a { font-size: 1.6em; font-weight: bold; letter-spacing: 0.4px; text-align: center; text-shadow: 1px 1px 1px #FFF; text-transform: uppercase }
 header nav ul li a.selected { color: #1982B3; border-bottom: 3px solid #1982B3 }
 
-header #social { clear: both; float: right; margin-top: 8px }
+header #social { clear: both; float: right; margin-top: 90px }
 header #social ul li { display: inline-block; padding-left: 2px }
 header #social ul li img { opacity: .6 }
 
@@ -86,16 +86,17 @@ header p.notice { background-color: #DFF0D8; color: #468847 }
 .error-messages dd { font-size: 1.3em; margin-left: 0 }
 
 /* wrapper */
-#wrapper { margin: 0 auto; width: 87% }
+#wrapper { margin: 0 auto; width: 90% }
 #wrapper #container { background-color: #FFF; border: 1px solid #DDD; box-shadow: 0 1px 3px rgba(150, 150, 150, 0.3); float: left; width: 100% }
 
 /* show: public, index: user admin */
-.author { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; min-height: 93px; margin: 25px auto 0; overflow: auto; padding-bottom: 8px; padding-left: 10px; padding-top: 19px; width: 75% }
-.author img { background-color: #EEE; float: left; height: 80px; width: 80px }
-.author .biography { color: #555; float: left; font-size: 1.3em; letter-spacing: .3px; padding-left: 10px }
+.author { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: auto; margin: 50px auto 0; overflow: auto; padding: 10px; width: 75%; vertical-align: middle }
+.author img { background-color: #EEE; display: inline-block; height: 80px; width: 80px; vertical-align: middle }
+.author .biography { color: #555; display: inline-block; font-size: 1.2em; letter-spacing: .3px; margin-top: 2px; padding-left: 7px; padding-right: 7px; width: calc(98% - 80px - 7px - 7px - 6px); vertical-align: middle }
 .author .biography p { margin: 0 }
-.author .social { float: right; margin-right: 10px; width: 16px }
+.author .social { display: inline-block; width: 2%; vertical-align: middle }
 .author .social a { background-color: #EEE; background-repeat: no-repeat; border-radius: 3px; display: block; height: 16px; margin-bottom: 5px; width: 16px }
+.author .social a:last-child { margin-bottom: 0 }
 .author .social a.facebook { background-image: url('../images/facebook.png') }
 .author .social a.github { background-image: url('../images/github.png') }
 .author .social a.linkedin { background-image: url('../images/linkedin.png') }
