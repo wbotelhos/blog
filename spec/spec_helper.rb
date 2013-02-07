@@ -5,6 +5,8 @@ require 'capybara/rails'
 require 'database_cleaner'
 require 'rspec/rails'
 
+Rails.logger.level = 4 unless ENV['LOG']
+
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
