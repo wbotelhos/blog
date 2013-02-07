@@ -38,7 +38,7 @@ article .footer .tags { border-top: 4px double #E8E8E8; float: right; font-size:
 article .footer .tags span { color: #888; margin-right: 3px }
 article .footer .tags a { background-color: #88C4EE; border-radius: 5px 5px; color: #FFF; margin-left: 2px; margin-right: 2px; padding: 4px 7px }
 
-article .footer .tags a:hover { background-color: #1189DD; transition: color 0s ease 0s, background 1s ease-in 0s }
+article .footer .tags a:hover { background-color: #1189DD; transition: color 0s ease 0s, background .3s ease-in 0s }
 
 /* show: comment header */
 #comments { float: left; font-size: 2.3em; font-weight: bold; margin-bottom: 20px; margin-left: 15px }
