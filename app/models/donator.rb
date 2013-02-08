@@ -1,7 +1,7 @@
 class Donator < ActiveRecord::Base
   attr_accessible :name, :email, :url, :amount, :about, :country, :message
 
-  default_scope order 'created_at desc'
+  default_scope -> { order 'created_at desc' }
 
   validates :email,   presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
   validates :name,    presence: true

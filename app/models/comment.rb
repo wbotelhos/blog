@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
   belongs_to :comment
   has_many :comments
 
-  default_scope order 'id desc'
+  default_scope -> { order 'id desc' }
 
   validates :name, :body, :article, presence: true
   validates :email,                 presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }

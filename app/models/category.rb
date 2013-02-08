@@ -3,7 +3,7 @@ class Category < ActiveRecord::Base
 
   has_and_belongs_to_many :articles
 
-  default_scope order 'name asc'
+  default_scope -> { order 'name asc' }
 
   before_validation :generate_slug, if: -> e { e.name.present?}
 

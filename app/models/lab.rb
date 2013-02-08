@@ -1,7 +1,7 @@
 class Lab < ActiveRecord::Base
   attr_accessible :name, :slug, :description, :image
 
-  default_scope order 'created_at desc'
+  default_scope -> { order 'created_at desc' }
 
   scope :published, where('published_at is not null and published_at <= ?', Time.zone.now)
   scope :drafts, where('published_at is null or published_at > ?', Time.zone.now)
