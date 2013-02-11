@@ -46,7 +46,7 @@ describe ArticleHelper do
     let(:link_2) { '<a href="/categories/banana" title="Banana">Banana</a>' }
 
     it 'builds the tags as link separated by comma' do
-      helper.tags(article).should == "#{link_1}, #{link_2}"
+      helper.tags(article).should == "#{link_1} #{link_2}"
     end
   end
 

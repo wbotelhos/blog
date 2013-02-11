@@ -41,7 +41,7 @@ describe Article, '#index' do
       end
 
       it 'show tags with commas' do
-        page.should have_content article_published.categories.to_a.map(&:name).join ', '
+        page.should have_content article_published.categories.to_a.map(&:name).join ' '
       end
 
       it 'display edit link' do
