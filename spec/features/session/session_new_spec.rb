@@ -19,7 +19,9 @@ describe User, 'session#new' do
     end
 
     it 'displays error message' do
-      page.should have_content 'E-mail ou senha inválida!'
+      within '#container-login' do
+        page.should have_content 'E-mail ou senha inválida!'
+      end
     end
   end
 

@@ -76,7 +76,9 @@ describe Lab, '#drafts' do
     end
 
     it 'displays error message' do
-      page.should have_content 'Você precisa estar logado!'
+      within '#container-login' do
+        page.should have_content 'Você precisa estar logado!'
+      end
     end
   end
 end
