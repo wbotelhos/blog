@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    redirect_to login_path, alert: t('flash.auth.alert') unless is_logged?
+    redirect_to login_url, alert: t('flash.auth.alert') unless is_logged?
   end
 
   def sidebar

@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   helper_method :categories, :check_category?
 
   rescue_from Riddle::ConnectionError do
-    redirect_to root_path, alert: t('flash.articles.search.alert' )
+    redirect_to root_url, alert: t('flash.articles.search.alert' )
   end
 
   def drafts
@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
       @articles = Article.search params[:query], page: params[:page]
       @articles.delete_if { |article| article.published_at.nil? }
     else
-      redirect_to root_path
+      redirect_to root_url
     end
   end
 
@@ -43,7 +43,7 @@ class ArticlesController < ApplicationController
       @comment_form = CommentFormPresenter.new(@article, comment)
     else
       uri = "/#{params[:year]}/#{params[:month]}/#{params[:day]}/#{params[:slug]}"
-      redirect_to root_path, alert: t('flash.articles.not_found_html', uri: uri).html_safe
+      redirect_to root_url, alert: t('flash.articles.not_found_html', uri: uri).html_safe
     end
   end
 
@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
     @article = Article.find params[:id]
 
     if @article.update_attributes article
-      redirect_to articles_edit_path(@article), notice: t('flash.articles.update.notice')
+      redirect_to articles_edit_url(@article), notice: t('flash.articles.update.notice')
     else
       render :edit, layout: 'admin'
     end
@@ -70,7 +70,7 @@ class ArticlesController < ApplicationController
     article = Article.find params[:id]
     params[:article][:published_at] = Time.zone.now
     article.update_attributes params[:article]
-    redirect_to article_path(article.year, article.month, article.day, article.slug), notice: t('flash.articles.publish.notice')
+    redirect_to article_url(article.year, article.month, article.day, article.slug), notice: t('flash.articles.publish.notice')
   end
 
   def create
@@ -79,7 +79,7 @@ class ArticlesController < ApplicationController
     @article = user_session.articles.new params[:article]
 
     if @article.save
-      redirect_to articles_edit_path(@article), notice: t('flash.articles.draft.notice')
+      redirect_to articles_edit_url(@article), notice: t('flash.articles.draft.notice')
     else
       render :new, layout: 'admin'
     end

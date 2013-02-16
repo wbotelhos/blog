@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
     @category = Category.new params[:category]
 
     if @category.save
-      redirect_to root_path, notice: t('flash.categories.create.notice')
+      redirect_to root_url, notice: t('flash.categories.create.notice')
     else
       render :new, layout: 'admin'
     end
@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    redirect_to root_path
+    redirect_to root_url
   end
 
   def new
@@ -29,7 +29,7 @@ class CategoriesController < ApplicationController
     if params[:slug].present?
       @articles = Article.by_category params[:slug]
     else
-      redirect_to root_path
+      redirect_to root_url
     end
   end
 
@@ -37,7 +37,7 @@ class CategoriesController < ApplicationController
     @category = Category.find params[:id]
 
     if @category.update_attributes params[:category]
-      redirect_to root_path, notice: t('flash.categories.update.notice')
+      redirect_to root_url, notice: t('flash.categories.update.notice')
     else
       render :edit, layout: 'admin'
     end

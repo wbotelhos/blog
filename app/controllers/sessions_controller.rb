@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   layout 'login'
 
   def new
-    redirect_to root_path if session[:user_id]
+    redirect_to root_url if session[:user_id]
   end
 
   def create
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      redirect_to admin_path
+      redirect_to admin_url
     else
       flash.now[:alert] = t('flash.sessions.create.alert')
       render :new
@@ -21,6 +21,6 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to root_path
+    redirect_to root_url
   end
 end

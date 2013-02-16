@@ -5,7 +5,7 @@ class DonatorsController < ApplicationController
     @donator = Donator.new params[:donator]
 
     if @donator.save
-      redirect_to donators_path, notice: t('flash.donators.create.notice')
+      redirect_to donators_url, notice: t('flash.donators.create.notice')
     else
       render :new, layout: 'admin'
     end
@@ -28,6 +28,6 @@ class DonatorsController < ApplicationController
   def update
     donator = Donator.find params[:id]
     donator.update_attributes params[:donator]
-    redirect_to donators_path, notice: t('flash.donators.update.notice')
+    redirect_to donators_url, notice: t('flash.donators.update.notice')
   end
 end

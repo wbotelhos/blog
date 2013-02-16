@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     end
 
     # TODO: how to keep the value of filled fields on dispatcher?
-    redirect_to article_path(@article.year, @article.month, @article.day, @article.slug, anchor: 'comment-form')
+    redirect_to article_url(@article.year, @article.month, @article.day, @article.slug, anchor: 'comment-form')
   end
 
   def update
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
       flash[:alert] = t('flash.comments.update.alert')
     end
 
-    redirect_to article_path(@article.year, @article.month, @article.day, @article.slug)
+    redirect_to article_url(@article.year, @article.month, @article.day, @article.slug)
   end
 
   private

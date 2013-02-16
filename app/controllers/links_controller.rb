@@ -5,7 +5,7 @@ class LinksController < ApplicationController
     @link = Link.new params[:link]
 
     if @link.save
-      redirect_to root_path, notice: t('flash.links.create.notice')
+      redirect_to root_url, notice: t('flash.links.create.notice')
     else
       render :new, layout: 'admin'
     end
@@ -25,7 +25,7 @@ class LinksController < ApplicationController
     @link = Link.find params[:id]
 
     if @link.update_attributes params[:link]
-      redirect_to root_path, notice: t('flash.links.update.notice')
+      redirect_to root_url, notice: t('flash.links.update.notice')
     else
       render :edit, layout: 'admin'
     end
