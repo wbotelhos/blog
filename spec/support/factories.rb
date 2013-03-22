@@ -24,9 +24,9 @@ FactoryGirl.define do
     end
 
     factory :article_published do
-      created_at    Time.local(1984, 10, 23)
-      published_at  Time.local(1984, 10, 23)
-      updated_at    Time.local(1984, 10, 23)
+      created_at    Time.zone.local(1984, 10, 23)
+      published_at  Time.zone.local(1984, 10, 23)
+      updated_at    Time.zone.local(1984, 10, 23)
     end
   end
 
@@ -59,9 +59,9 @@ FactoryGirl.define do
     end
 
     factory :lab_published do
-      created_at    Time.local(1984, 10, 23)
-      published_at  Time.local(1984, 10, 23)
-      updated_at    Time.local(1984, 10, 23)
+      created_at    Time.zone.local(1984, 10, 23)
+      published_at  Time.zone.local(1984, 10, 23)
+      updated_at    Time.zone.local(1984, 10, 23)
     end
   end
 
