@@ -1,7 +1,7 @@
 source :rubygems
 
-gem 'rails',            '~> 3.2.11'
-gem 'rspec-rails',      '~> 2.12.0'
+gem 'rails',            '~> 3.2.13'
+gem 'rspec-rails',      '~> 2.13.0'
 gem 'rake'
 gem 'mysql2'
 gem 'thinking-sphinx',  '~> 2.0.14'
