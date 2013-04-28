@@ -30,7 +30,7 @@ after :deploy, 'counter_cache:all'
 
 namespace :deploy do
   task :start do
-    %w(config/database.yml config/sphinx.yml).each do |path|
+    %w[config/database.yml config/sphinx.yml].each do |path|
       from  = "#{deploy_to}/#{path}"
       to    = "#{current}/#{path}"
 

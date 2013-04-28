@@ -1,5 +1,5 @@
 .DS_Store
 /config/*.sphinx.conf
 /db/sphinx
+/log
 /tmp
-log/*
