@@ -90,7 +90,7 @@ header p.notice { background-color: #DFF0D8; color: #468847 }
 #wrapper #container { background-color: #FFF; border: 1px solid #DDD; box-shadow: 0 1px 3px rgba(150, 150, 150, 0.3); float: left; width: 100% }
 
 /* show: public, index: user admin */
-.author { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: auto; margin: 50px auto 0; overflow: auto; padding: 10px; width: 75%; vertical-align: middle }
+.author { background-color: #FDFDFD; border-bottom: 1px solid #F1F1F1; border-radius: 5px; border-top: 1px solid #F1F1F1; height: auto; margin: 90px auto 0; overflow: auto; padding: 10px; width: 75%; vertical-align: middle }
 .author img { background-color: #EEE; display: inline-block; height: 80px; width: 80px; vertical-align: middle }
 .author .biography { color: #555; display: inline-block; font-size: 1.2em; letter-spacing: .3px; margin-top: 2px; padding-left: 7px; padding-right: 7px; width: calc(98% - 80px - 7px - 7px - 6px); vertical-align: middle }
 .author .biography p { margin: 0 }
