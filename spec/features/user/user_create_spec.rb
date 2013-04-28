@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'spec_helper'
 
-describe Article, '#create' do
+describe User, '#create' do
   let(:user) { FactoryGirl.create :user }
   let(:user_new) { User.new name: 'name', email: 'email2@mail.com', password: 'password', password_confirmation: 'password' }
 
