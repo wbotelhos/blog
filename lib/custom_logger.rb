@@ -1,4 +1,4 @@
-require 'rails/rack/logger'
+require 'rails/all'
 
 class CustomLogger < Rails::Rack::Logger
   def initialize(app)
