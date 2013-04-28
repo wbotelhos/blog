@@ -11,6 +11,7 @@
 
   <%= form_for comment, url: comments_create_path(article), html: { role: 'form', onsubmit: 'return l00s3r("bot");' } do |f| %>
     <%= f.hidden_field :comment_id %>
+    <%= hidden_field_tag :bot, 'yes', id: nil %>
 
     <% if is_logged? %>
         <%= f.hidden_field :name, value: user_session.name %>

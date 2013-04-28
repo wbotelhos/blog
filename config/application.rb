@@ -1,4 +1,5 @@
 require File.expand_path('../boot', __FILE__)
+require File.expand_path('../../lib/custom_logger.rb', __FILE__)
 
 require 'active_record/railtie'
 require 'action_controller/railtie'
@@ -18,5 +19,7 @@ module Blog
     config.i18n.default_locale                = :'pt-BR'
     config.i18n.load_path                     += Dir[Rails.root.join('config/locales/**/*.yml').to_s]
     config.time_zone                          = 'Brasilia'
+
+    config.middleware.swap Rails::Rack::Logger, CustomLogger
   end
 end

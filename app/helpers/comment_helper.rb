@@ -10,14 +10,14 @@ module CommentHelper
   end
 
   def render_comment(article, comment, level = 0, html = '')
-    html << comment_box(article, comment, level)
+    html.tap do |content|
+      content << comment_box(article, comment, level)
 
-    if comment.comments.present?
-      level += 1
-      comment.comments.each { |child| render_comment(article, child, level, html) }
+      if comment.comments.present?
+        level += 1
+        comment.comments.each { |child| render_comment(article, child, level, content) }
+      end
     end
-
-    html
   end
 
   private
@@ -30,7 +30,7 @@ module CommentHelper
     "#{request.fullpath}##{anchor(comment)}"
   end
 
-  def input(type, name, value)
+  def input(type, name, value = nil)
     tag :input, type: type, name: name, value: value
   end
 
@@ -79,9 +79,10 @@ module CommentHelper
 
   def fields(comment)
     content_tag(:p,
-      input('text', 'comment[name]',  comment.name) +
-      input('text', 'comment[email]', comment.email) +
-      input('text', 'comment[url]',   comment.url)
+      input('text',   'comment[name]',  comment.name) +
+      input('text',   'comment[email]', comment.email) +
+      input('text',   'comment[url]',   comment.url) +
+      input('hidden', 'bot',            'yes')
     ) +
 
     content_tag(:p,

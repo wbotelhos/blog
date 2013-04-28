@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+
+  before_filter :filter_bot
+
   helper_method :user_session, :is_logged?, :sidebar
 
   rescue_from ActiveRecord::RecordNotFound do
@@ -29,11 +32,16 @@ class ApplicationController < ActionController::Base
     @sidebar ||= SidebarPresenter.new
   end
 
+  def filter_bot
+    logger.warn 'B0T attacking, doing nothing...'
+    render nothing: true, status: 404 if params[:bot].present?
+  end
+
   protected
 
   def handle_unverified_request
     reset_session
-    logger.warn 'B0T attacking, doing nothing...'
+    logger.warn 'B0T attacking "no csrf", doing nothing with 404!'
     render nothing: true, status: 404
   end
 end

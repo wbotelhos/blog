@@ -1,4 +1,6 @@
 <%= form_tag login_path, onsubmit: 'return l00s3r("bot");' do %>
+  <%= hidden_field_tag :bot, 'yes', id: nil %>
+
   <p>
     <%= label_tag :email, t('activerecord.attributes.user.email') %>
     <%= email_field_tag :email %>
