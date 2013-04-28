@@ -13,7 +13,7 @@ class CustomLogger < Rails::Rack::Logger
     level   = Rails.logger.level
 
     if params.include?(:bot) && params[:bot].present?
-      logger.warn %(B0T attacking "#{env['PATH_INFO']}", log suppressed! Doing nothing with 404...)
+      logger.warn %(B0T on "#{env['PATH_INFO']}"!)
 
       Rails.logger.level = Logger::ERROR
 

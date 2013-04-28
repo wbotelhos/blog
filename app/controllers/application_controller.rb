@@ -33,15 +33,17 @@ class ApplicationController < ActionController::Base
   end
 
   def filter_bot
-    logger.warn 'B0T attacking, doing nothing...'
-    render nothing: true, status: 404 if params[:bot].present?
+    if params[:bot].present?
+      logger.warn 'B0T on request!'
+      render nothing: true, status: 404
+    end
   end
 
   protected
 
   def handle_unverified_request
     reset_session
-    logger.warn 'B0T attacking "no csrf", doing nothing with 404!'
+    logger.warn 'B0T with no csrf!'
     render nothing: true, status: 404
   end
 end
