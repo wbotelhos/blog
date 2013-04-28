@@ -10,7 +10,7 @@
   <div id="fields">
     <p>
       <%= f.label :title %>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, data: { validaty: :required } %>
     </p>
 
     <p>
@@ -31,7 +31,7 @@
       <ul>
         <% categories.each do |category| %>
           <li>
-            <input id="category-<%= category.id %>" type="checkbox" name="article[category_ids][]" value="<%= category.id %>" <%= check_category?(@article, category) %> />
+            <input id="category-<%= category.id %>" type="checkbox" name="article[category_ids][]" value="<%= category.id %>" <%= check_category?(@article, category) %> data-validaty="required" />
             <label for="category-<%= category.id %>"><%= category.name %></label>
           </li>
         <% end %>
@@ -42,7 +42,7 @@
 
 <script type="text/javascript">
   $(function() {
-    $('.article-form').flury();
+    $('.article-form').flury().validaty();
     $('#article_title').focus();
     $('#article_body').taby({ space: 2 });
   });

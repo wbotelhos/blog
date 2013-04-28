@@ -3,12 +3,12 @@
 
   <p>
     <%= label_tag :email, t('activerecord.attributes.user.email') %>
-    <%= email_field_tag :email %>
+    <%= email_field_tag :email, nil, data: { validaty: 'required email' } %>
   </p>
 
   <p>
     <%= label_tag :password, t('activerecord.attributes.user.password') %>
-    <%= password_field_tag :password %>
+    <%= password_field_tag :password, nil, data: { validaty: :required } %>
   </p>
 
   <p id="human">
@@ -24,5 +24,7 @@
     $('#email').focus().select();
 
     AntiBot.init('#bot')
+
+    $('form').validaty();
   });
 </script>

@@ -14,17 +14,17 @@
     <%= hidden_field_tag :bot, 'yes', id: nil %>
 
     <% if is_logged? %>
-        <%= f.hidden_field :name, value: user_session.name %>
-        <%= f.hidden_field :email, value: user_session.email %>
-        <%= f.hidden_field :url, value: user_session.url %>
+      <%= f.hidden_field :name, value: user_session.name %>
+      <%= f.hidden_field :email, value: user_session.email %>
+      <%= f.hidden_field :url, value: user_session.url %>
     <% else %>
       <p>
         <%= f.label :name %>
-        <%= f.text_field :name, title: t('activerecord.attributes.comment.name') %>
+        <%= f.text_field :name, title: t('activerecord.attributes.comment.name'), data: { validaty: :required } %>
       </p>
       <p>
         <%= f.label :email %>
-        <%= f.text_field :email, title: t('activerecord.attributes.comment.email') %>
+        <%= f.text_field :email, title: t('activerecord.attributes.comment.email'), data: { validaty: 'required email' } %>
       </p>
       <p>
         <%= f.label :url %>
@@ -34,7 +34,7 @@
 
     <p>
       <%= f.label :body %>
-      <%= f.text_area :body, title: t('activerecord.attributes.comment.body') %>
+      <%= f.text_area :body, title: t('activerecord.attributes.comment.body'), data: { validaty: :required } %>
     </p>
 
     <p id="markdown-reference">
@@ -61,10 +61,10 @@
   }
 
   $(function() {
-    var form    = $('#new_comment'),
-        botBox  = $('#human input');
+    var form   = $('#new_comment'),
+        botBox = $('#human input');
 
-    form.flury();
+    form.flury().validaty();
 
     form.children(':submit').on('click', function() {
       if (!botBox.is(':checked')) {

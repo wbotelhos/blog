@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+
+.validaty .invalid { border: 1px solid #C00 }
+.validaty .valid { border: 1px solid #0C0 }
+
+.validaty-balloon { cursor: help; opacity: 0; position: absolute }
+.validaty-balloon ul { background-color: #444; opacity: .8; border-radius: 5px; list-style: none; margin: 0; padding: 4px 10px }
+.validaty-balloon li { color: #FFF; font-size: 1.2em; font-weight: bold; line-height: 1.6em; letter-spacing: .5px }
+.validaty-balloon div { border-right: 15px solid transparent; border-top: 10px solid #444; margin-left: 10px; opacity: .8; width: 0 }
+
+.validaty-message { cursor: help; opacity: 0 }
+.validaty-message ul { opacity: .8; list-style: none; margin: 0; padding: 4px 10px }
+.validaty-message li { color: #C00; font-size: 1.1em; line-height: 1.3em; letter-spacing: .5px }
