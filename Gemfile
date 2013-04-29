@@ -22,6 +22,7 @@ group :test do
   gem 'capybara',         '~> 2.1.0'
   gem 'database_cleaner'
   gem 'factory_girl',     '~> 4.2.0'
+  gem 'selenium-webdriver'
 end
 
 group :production do
