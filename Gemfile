@@ -6,6 +6,7 @@ gem 'mysql2'
 gem 'thinking-sphinx',  '~> 2.0.14'
 gem 'pygments.rb'
 gem 'redcarpet'
+gem 'html_compress'
 
 group :development do
   gem 'awesome_print',            require: false
