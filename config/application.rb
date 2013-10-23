@@ -10,7 +10,7 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Blog
   class Application < Rails::Application
-    config.action_mailer.default_url_options  = { host: 'wbotelhos.com.br' }
+    config.action_mailer.default_url_options  = { host: 'wbotelhos.com' }
     config.action_view.field_error_proc       = -> tag, _ { tag }
     config.active_record.whitelist_attributes = true
     config.assets.enabled                     = false

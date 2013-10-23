@@ -1,10 +1,10 @@
 # Blog on Rails
 
-[http://wbotelhos.com.br](http://wbotelhos.com.br) on Rails.
+[http://wbotelhos.com](http://wbotelhos.com) on Rails.
 
-[![Travis CI status](https://travis-ci.org/wbotelhos/wbotelhos-com-br.png?branch=master)](https://travis-ci.org/wbotelhos/wbotelhos-com-br "Travis CI")
+[![Travis CI status](https://travis-ci.org/wbotelhos/wbotelhos-com.png?branch=master)](https://travis-ci.org/wbotelhos/wbotelhos-com "Travis CI")
 
-[![Code Climate](https://codeclimate.com/github/wbotelhos/wbotelhos-com-br.png)](https://codeclimate.com/github/wbotelhos/wbotelhos-com-br "Code Climate")
+[![Code Climate](https://codeclimate.com/github/wbotelhos/wbotelhos-com.png)](https://codeclimate.com/github/wbotelhos/wbotelhos-com "Code Climate")
 
 ## Usage
 
@@ -15,8 +15,8 @@
 ### Clone and prepare the database
 
 ```bash
-git clone https://github.com/wbotelhos/wbotelhos-com-br.git
-cd wbotelhos-com-br
+git clone https://github.com/wbotelhos/wbotelhos-com.git
+cd wbotelhos-com
 bundle install
 rake db:create:all; rake db:migrate; rake db:setup
 open http://localhost:3000

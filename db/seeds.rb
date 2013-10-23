@@ -107,7 +107,7 @@ comment1 = article.comments.create!(
   response1 = article.comments.new(
     name:       'Washington Botelho',
     email:      'wbotelhos@gmail.com',
-    url:        'http://wbotelhos.com.br',
+    url:        'http://wbotelhos.com',
     body:       'Of course man, just keep the credits. (;',
     comment_id: comment1.id
   )
@@ -124,7 +124,7 @@ comment2 = article.comments.create!(
   response2 = article.comments.create!(
     name:       'Washington Botelho',
     email:      'wbotelhos@gmail.com',
-    url:        'http://wbotelhos.com.br',
+    url:        'http://wbotelhos.com',
     body:       "Hi Daniel,\nYour contributions are always welcome my friend.\nI'm waiting for your great code. (:",
     comment_id: comment2.id
   )
