@@ -1,3 +1,9 @@
+*.sw[pon]
+*.tar.gz
+*~
 .DS_Store
+.sass-cache
+/bin
 /log
+/public/assets
 /tmp
