@@ -1,31 +1,47 @@
 source 'https://rubygems.org'
 
-gem 'rails'           , '~> 3.2.15'
-gem 'rake'
-gem 'mysql2'
-gem 'thinking-sphinx' , '~> 2.0.14'
-gem 'pygments.rb'
-gem 'redcarpet'
+gem 'asset_sync'
+gem 'cancan'
+gem 'devise'
 gem 'html_compress'
+gem 'mysql2'
+gem 'pygments.rb'
+gem 'rails'         , '~> 3.2.15'
+gem 'redcarpet'
+gem 'sass-rails'
+gem 'thin'
+
+group :assets do
+  gem 'compass-rails'
+  gem 'turbo-sprockets-rails3'
+  gem 'uglifier'
+end
 
 group :development do
-  gem 'awesome_print' , require: false
-  gem 'capistrano'    , '~> 2.15.5'
+  gem 'capistrano', '~> 2.15.5'
+end
+
+group :development, :test do
+  gem 'debugger'
   gem 'guard-rspec'
-  gem 'mailcatcher'
-  gem 'pry-meta'      , require: false
-  gem 'rb-fsevent'    , require: false
-  gem 'ruby_gntp'
+  gem 'guard-spork'
+  gem 'pry-meta'     , require: false
+  gem 'quiet_assets'
+  gem 'rb-fsevent'   , require: false
+  gem 'ruby_gntp'    # require: http://growl.info/downloads
+end
+
+group :production do
+  gem 'unicorn'
 end
 
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl'
+  gem 'mongoid-rspec'
+  gem 'rack_session_access'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
-end
-
-group :production do
-  gem 'unicorn'
+  gem 'shoulda'
 end

@@ -2,10 +2,6 @@ class ArticlesController < ApplicationController
   before_filter :require_login, only: [:new, :create, :edit, :preview, :update, :drafts]
   helper_method :categories, :check_category?
 
-  rescue_from Riddle::ConnectionError do
-    redirect_to root_url, alert: t('flash.articles.search.alert' )
-  end
-
   def drafts
     @articles = Article.drafts
     render layout: 'admin'

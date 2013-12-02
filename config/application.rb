@@ -6,7 +6,7 @@ require 'action_controller/railtie'
 require 'action_mailer/railtie'
 require 'active_resource/railtie'
 
-Bundler.require(:default, Rails.env) if defined?(Bundler)
+Bundler.require(*Rails.groups(assets: %w[development test])) if defined?(Bundler)
 
 module Blog
   class Application < Rails::Application
@@ -14,6 +14,9 @@ module Blog
     config.action_view.field_error_proc       = -> tag, _ { tag }
     config.active_record.whitelist_attributes = true
     config.assets.enabled                     = false
+    config.assets.enabled                     = true
+    config.assets.initialize_on_precompile    = false
+    config.assets.version                     = '1.0'
     config.encoding                           = 'utf-8'
     config.filter_parameters                  += [:password]
     config.i18n.default_locale                = :'pt-BR'
