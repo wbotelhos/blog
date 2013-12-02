@@ -72,7 +72,7 @@ class ArticlesController < ApplicationController
   def create
     params[:article][:category_ids] ||= []
 
-    @article = user_session.articles.new params[:article]
+    @article = current_user.articles.new params[:article]
 
     if @article.save
       redirect_to articles_edit_url(@article), notice: t('flash.articles.draft.notice')

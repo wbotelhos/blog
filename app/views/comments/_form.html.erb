@@ -14,9 +14,9 @@
     <%= hidden_field_tag :bot, 'yes', id: nil %>
 
     <% if is_logged? %>
-      <%= f.hidden_field :name, value: user_session.name %>
-      <%= f.hidden_field :email, value: user_session.email %>
-      <%= f.hidden_field :url, value: user_session.url %>
+      <%= f.hidden_field :name, value: current_user.name %>
+      <%= f.hidden_field :email, value: current_user.email %>
+      <%= f.hidden_field :url, value: current_user.url %>
     <% else %>
       <p>
         <%= f.label :name %>

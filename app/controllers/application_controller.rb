@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :filter_bot
 
-  helper_method :user_session, :is_logged?, :sidebar
+  helper_method :current_user, :is_logged?, :sidebar
 
   rescue_from ActiveRecord::RecordNotFound do
     case request.format.symbol
@@ -16,12 +16,12 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def user_session
-    @user_session ||= session[:user_id] && User.find_by_id(session[:user_id])
+  def current_user
+    @current_user ||= session[:user_id] && User.find_by_id(session[:user_id])
   end
 
   def is_logged?
-    user_session.present?
+    current_user.present?
   end
 
   def require_login
