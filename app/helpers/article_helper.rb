@@ -1,10 +1,10 @@
 module ArticleHelper
   def article_slug(article, anchor = nil) #
-    article_path(article.slug, anchor: anchor)
+    slug_path(article.slug, anchor: anchor)
   end
 
   def article_slug_url(article, anchor = nil) #
-    article_url(article.slug, anchor: anchor)
+    slug_url(article.slug, anchor: anchor)
   end
 
   def article_menu(article)
