@@ -2,7 +2,6 @@ Blog::Application.routes.draw do
   root to: 'articles#index'
 
   get '/feed'  , to: 'feeds#feed'
-  get '/:slug' , to: 'articles#show', as: :slug
 
   resource :articles, except: :destroy
 
@@ -74,4 +73,6 @@ Blog::Application.routes.draw do
     put   '/users/:id',       action: :update, as: :users_update
     get   '/users/:id/edit',  action: :edit,   as: :users_edit
   end
+
+  get '/:slug' , to: 'articles#show', as: :slug
 end
