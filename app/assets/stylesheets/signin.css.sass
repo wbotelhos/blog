@@ -1,0 +1,56 @@
+@import "mixins"
+
+.signin
+  form
+    margin: 17% auto 0
+    width: 95%
+
+    div
+      margin-bottom: 15px
+
+      &.first-child
+        float: left
+        width: 50%
+
+      &.last-child
+        +calc('width', '50% - 5px')
+        float: left
+        margin-left: 5px
+
+    input[type="submit"]
+      float: none
+      width: 100%
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5)
+
+@media only screen and (min-width: 240px)
+
+@media only screen and (min-width: 320px)
+
+@media only screen and (min-width: 380px)
+
+@media only screen and (min-width: 480px)
+  .signin
+    form
+      width: 90%
+
+      div
+        &.last-child
+          +calc('width', '50% - 10px')
+          margin-left: 10px
+
+@media only screen and (min-width: 568px)
+
+@media only screen and (min-width: 600px)
+
+@media only screen and (min-width: 685px)
+  .signin
+    form
+      width: 70%
+
+@media only screen and (min-width: 768px)
+
+@media only screen and (min-width: 1024px)
+  .signin
+    form
+      width: 50%

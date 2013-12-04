@@ -1,0 +1,94 @@
+@import "compass/css3/box-sizing"
+@import "compass/css3/border-radius"
+@import "compass/css3/opacity"
+@import "mixins"
+
+* //
+  text-rendering: optimizelegibility
+
+*, *:before, *:after //
+  +box-sizing(border-box !important)
+
+*::-moz-placeholder //
+  color: #E0E0E0
+
+*::-moz-selection //
+  background-color: #CCE2FF
+
+*::-moz-selection //
+  background-color: #FFC
+  color: #555
+
+a //
+  color: #6ECFF5
+
+  &:hover//
+    color: #1AB8F3
+
+  &:active//
+    color: #0AA5DF
+
+blockquote
+  background: url('../images/quote.gif') no-repeat 0 0 #FDFDFD
+  border-radius: 4px
+  margin-left: 0
+  padding-left: 22px
+
+  p
+    font-size: 1.3em !important
+    padding-left: 10px
+    padding-top: 5px
+
+body //
+  background: image-url('background.jpg') #FAFAFA
+  color: #333
+  font-family: "Open Sans", "Arial", sans-serif
+  font-size: 10px
+  height: 100%
+  line-height: 1.6
+
+code//
+  background-color: #FEFEFE
+  border: 1px solid #FBFBFB
+  border-radius: 3px
+  margin: 0 2px
+  padding: 1px 5px
+  white-space: nowrap
+
+pre//
+  background-color: #FEFEFE
+  border-radius: 3px
+  border: 1px solid #FBFBFB
+  color: #393939
+  font-family: menlo, monospace, serif
+  font-size: 1.2em
+  overflow-x: scroll
+  padding: 10px 10px
+
+img//
+  max-width: 100%
+
+ul //
+  list-style: none
+
+@media only screen and (min-width: 240px)
+
+@media only screen and (min-width: 320px)
+
+@media only screen and (min-width: 380px)
+
+@media only screen and (min-width: 480px)
+
+@media only screen and (min-width: 568px)
+  body//
+    font-size: 11px
+
+@media only screen and (min-width: 600px)
+
+@media only screen and (min-width: 685px)
+
+@media only screen and (min-width: 678px)
+  body//
+    font-size: 12px
+
+@media only screen and (min-width: 1024px)
