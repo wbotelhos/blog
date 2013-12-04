@@ -1,24 +1,23 @@
 Blog::Application.routes.draw do
   root to: 'articles#index'
 
+  get '/feed'  , to: 'feeds#feed'
+  get '/:slug' , to: 'articles#show', as: :slug
+
+  resource :articles, except: :destroy
+
   controller :admin do
     get '/admin', action: :index
   end
 
   controller :articles do
-    get   '/articles',                action: :index
-    post  '/articles',                action: :create
     get   '/articles/drafts',         action: :drafts
-    get   '/articles/new',            action: :new
     get   '/articles/search',         action: :search
     # TODO: articles_path(@article) generates /articles.2
     # So we cannot use it withou as: because cause conflict with form_form @article
     get   '/articles/:id',            action: :preview,   as: :articles_preview
     # TODO: why form_for @article do not apply put method? I need to use url: articles_update.
     # How take off alias and form_for works by it self? articles_path(@article), method: :put
-    put   '/articles/:id',            action: :update,    as: :articles_update
-    get   '/articles/:id/edit',       action: :edit,      as: :articles_edit
-    get   '/:year/:month/:day/:slug', action: :show,      as: :article
   end
 
   controller :categories do
@@ -43,9 +42,6 @@ Blog::Application.routes.draw do
     get   '/donators/:id/edit', action: :edit,   as: :donators_edit
   end
 
-  controller :feeds do
-    get '/feed', action: :feed
-  end
 
   controller :labs do
     get   '/labs',          action: :index
