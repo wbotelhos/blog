@@ -1,58 +1,69 @@
 pt-BR:
   date:
-    abbr_month_names:
+    month_names:
     -
-    - Jan
-    - Fev
-    - Mar
-    - Abr
-    - Mai
-    - Jun
-    - Jul
-    - Ago
-    - Set
-    - Out
-    - Nov
-    - Dez
-  time:
-    formats:
-      default: ! "%d/%m/%y às %H:%M"
-      day: ! "%d"
-      month: ! "%b"
-      donation: ! "%b %d, %Y"
+    - Janeiro
+    - Fevereiro
+    - Março
+    - Abril
+    - Maio
+    - Junho
+    - Julho
+    - Agosto
+    - Setembro
+    - Outubro
+    - Novembro
+    - Dezembro
+
   datetime:
     distance_in_words:
+      half_a_minute: 'Agora'
+
       about_x_hours:
         one: '1 hora'
-        other: ! "%{count} horas"
+        other: "%{count} horas"
+
       about_x_months:
         one: '1 mês'
-        other: ! "%{count} meses"
+        other: "%{count} meses"
+
       about_x_years:
         one: '1 ano'
-        other: ! "%{count} anos"
+        other: "%{count} anos"
+
       almost_x_years:
         one: '1 ano'
-        other: ! "%{count} anos"
-      half_a_minute: 'meio minuto'
+        other: "%{count} anos"
+
       less_than_x_minutes:
         one: 'menos de um minuto'
-        other: ! "menos de %{count} minutos"
+        other: "menos de %{count} minutos"
+
       less_than_x_seconds:
         one: 'menos de 1 segundo'
-        other: ! "menos de %{count} segundos"
+        other: "menos de %{count} segundos"
+
       over_x_years:
         one: 'mais de 1 ano'
-        other: ! "mais de %{count} anos"
+        other: "mais de %{count} anos"
+
       x_days:
         one: '1 dia'
-        other: ! "%{count} dias"
+        other: "%{count} dias"
+
       x_minutes:
         one: '1 minuto'
-        other: ! "%{count} minutos"
+        other: "%{count} minutos"
+
       x_months:
         one: "1 mês"
-        other: ! "%{count} meses"
+        other: "%{count} meses"
+
       x_seconds:
         one: "1 segundo"
-        other: ! "%{count} segundos"
+        other: "%{count} segundos"
+
+  time:
+    formats:
+      default: '%d de %B de %Y'
+      short: '%B/%Y'
