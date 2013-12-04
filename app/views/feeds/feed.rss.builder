@@ -16,7 +16,7 @@ xml.rss version: '2.0', 'xmlns:dc' => 'http://purl.org/dc/elements/1.1/' do
         xml.creator article.user.name
 
         xml.description do
-          xml.cdata! markdown article.resume
+          xml.cdata! markdown article.body
         end
       end
     end
