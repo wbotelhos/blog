@@ -1,62 +1,17 @@
 <!DOCTYPE html>
 
-<html dir="ltr" lang="pt">
+<html dir="ltr" lang="<%= I18n.locale %>">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
+    <%= render 'shared/head_tags' %>
 
-    <title><%= title %></title>
-
-    <meta name="author" content="Washington Botelho" />
-    <meta name="description" content="Blog do Washington Botelho" />
-    <meta name="keywords" content="blog,washington,botelho,java,ruby,rails,python,tutorial,howto" />
-
-    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic" />
-
-    <%= stylesheet_link_tag 'application', 'public' %>
-    <%= javascript_include_tag 'jquery-1.9.0.min', 'application', 'modernizr.js', 'jquery.flury.min', 'jquery.socialy.min', 'jquery.taby.min', 'jquery.validaty.min', 'jquery.validaty.validators' %>
-    <%= auto_discovery_link_tag :rss, feed_url %>
-    <%= csrf_meta_tags %>
-
-    <link type="image/x-icon" rel="shortcut icon" href="/favicon.ico" />
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
   </head>
   <body>
-    <div id="wrapper">
-      <header role="banner">
-        <%= render 'shared/header' %>
-        <%= render 'shared/flash_messages' %>
-      </header>
+    <%= render 'shared/flash_messages' %>
 
-      <div id="container">
-        <section role="main">
-          <%= yield %>
-        </section>
-
-        <aside role="complementary">
-          <%= render 'articles/search' %>
-          <%= render sidebar.articles %>
-          <%= render sidebar.categories %>
-          <%= render sidebar.links %>
-          <%= render sidebar.admin %>
-        </aside>
-      </div>
-
-      <div id="credits">Developed by Washington Botelho</div>
-
-      <%= render 'shared/footer' %>
+    <div class="content">
+      <%= yield %>
     </div>
-
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-19499234-2']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
   </body>
 </html>
