@@ -1,90 +1,17 @@
-<% content_for :title do %><%= @article.title %><% end %>
+<section class="header">
+  <%= link_to 'Washington Botelho', root_path, class: :logo %>
 
-<article class="article">
+  <div class="quote">Se você não tem dom, tenha vontade!</div>
+</section>
 
-  <div class="date">
-    <span class="number"><%= t 'article.published_at', time: l(@article.published_at, format: :day) %></span>
-    <span class="month"><%= t 'article.published_at', time: l(@article.published_at, format: :month) %></span>
-  </div>
+<article>
+  <header>
+    <h1><%= link_to @article.title, slug_path(@article.slug) %></h1>
 
-  <h2 class="title"><%= link_to @article.title, article_slug(@article) %></h2>
+    <div class="published-at"><%= l @article.published_at %></div>
 
-  <%= article_menu @article %>
-
-  <div class="body">
-    <%= markdown @article.text %>
-  </div>
-
-  <div class="footer">
-    <div class="tags">
-      <div><%= t 'article.tags' %></div>
-      <%= tags @article %>
+    <div class="body">
+      <%= markdown @article.body %>
     </div>
-  </div>
-
-  <div class="author">
-    <%= author @article.user %>
-  </div>
+  </header>
 </article>
-
-<div class="clear"></div>
-
-<div id="share">
-  <p><%= t 'article.share_it' %></p>
-  <%= twitter_button text: @article.title, url: article_slug_url(@article) %>
-</div>
-
-<h3 id="comments">
-  <i class="icon-comments-alt icon-large"></i>
-  <%= t 'comment.count_html', count: @article.comments_count %>
-  <%= link_to '#', article_slug(@article, 'comment-form') %>
-</h3>
-
-<%= render_comments @article %>
-
-<%= render @comment_form.partial %>
-
-<script type="text/javascript">
-  function closeComment(id) {
-    var comment = $('#comment-' + id);
-
-    comment.find('form').hide();
-    comment.find('.text').show();
-  };
-
-  $(function() {
-
-    $('textarea').taby({ space: 2 });
-
-    $('.reply-link').on('click', function() {
-      var self  = $(this),
-          id    = self.closest('.comment').attr('id').split('-')[1],
-          name  = self.siblings('form').find('input[name="comment[name]"]').val();
-
-      $('#replying-to').show().children('strong').html('<a href="<%= request.fullpath %>#comment-' + id + '">#' + id + '</a> ' + name);
-      $('#comment_body').val('Oi ' + name + ',\n\n').blur().focus();
-      $('#comment_comment_id').val(id);
-    });
-
-    $('.close').on('click', function() {
-      var self = $(this);
-
-      self
-        .closest('form').hide()
-        .siblings('.text').show();
-
-      window.getSelection().removeAllRanges();
-    });
-
-    if ('<%= is_logged? %>' === 'true') {
-      $('.text').on('dblclick', function() {
-        var self = $(this).hide();
-
-        self.prev('div').hide()
-        self.next('form').show().find('input:eq(2)').focus();
-      });
-    }
-
-    AntiBot.init('.human input')
-  });
-</script>

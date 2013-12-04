@@ -1,8 +1,26 @@
-<% result = paginate(Article) { |model| model.published } %>
+<section class="header">
+  <%= link_to 'Washington Botelho', root_path, class: :logo %>
 
-<% if result[:items].present? %>
-  <%= render result[:items] %>
-  <%= result[:navigator] %>
-<% else %>
-  <div id="none"><%= t 'article.none' %></div>
-<% end %>
+  <div class="quote">Se você não tem dom, tenha vontade!</div>
+
+  <%= render 'shared/header' %>
+
+  <div class="bio">
+    Programador metido a designer, ajudante e aprendiz da comunidade open source.
+  </div>
+</section>
+
+<section class="archives">
+  <% @year_month_articles.each do |date, articles| %>
+    <div class="date"><%= date %></div>
+
+    <ul>
+      <% articles.each do |article| %>
+        <li>
+          <%= link_to article.title, slug_path(article.slug), class: :title %>
+          <%= link_to slug_url(article.slug), slug_path(article.slug), class: :url %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>
