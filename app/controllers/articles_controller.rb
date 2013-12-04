@@ -7,7 +7,10 @@ class ArticlesController < ApplicationController
     render layout: 'admin'
   end
 
-  def index
+  def index #
+    @year_month_articles = Article
+                            .published.select('published_at, slug, title')
+                            .group_by { |criteria| criteria.published_at.strftime('%m/%Y') }
   end
 
   def preview
