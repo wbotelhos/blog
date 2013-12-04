@@ -1,22 +1,6 @@
-<%= logo %>
-
 <nav role="navigation">
-  <ul>
-    <li><%= link_to t('lab.other'), labs_path %></li>
-    <li><%= link_to t('donator.other'), donators_path %></li>
-    <li><%= link_to t('navigation.about'), about_path %></li>
-    <% if is_logged? %>
-      <li><%= link_to t('navigation.admin'), admin_path %></li>
-      <li><%= link_to t('navigation.logout'), logout_path %></li>
-    <% end %>
-  </ul>
+  <%= social_icon 'E-mail'   , 'icon i-envelope' , "mailto:#{CONFIG['email']}" %>
+  <%= social_icon 'Feed'     , 'icon i-feed'     , feed_url %>
+  <%= social_icon 'Github'   , 'icon i-github'   , "http://github.com/#{CONFIG['github']}" %>
+  <%= social_icon 'Linkedin' , 'icon i-linkedin' , "http://linkedin.com/in/#{CONFIG['linkedin']}" %>
 </nav>
-
-<div id="social">
-  <ul>
-    <li><%= social_icon 'feed-big.png', 'Feed', feed_path %></li>
-    <li><%= social_icon 'linkedin-big.png', 'Linkedin', "http://linkedin.com/in/#{CONFIG['nick']}" %></li>
-    <li><%= social_icon 'twitter-big.png', 'Twitter', "http://twitter.com/#{CONFIG['nick']}" %></li>
-    <li><%= social_icon 'github-big.png', 'Github', "http://github.com/#{CONFIG['nick']}" %></li>
-  </ul>
-</div>
