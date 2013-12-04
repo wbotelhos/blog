@@ -1,5 +1,8 @@
 pt-BR:
   article:
+    flash:
+      not_found: 'O artigo "%{uri}" não foi encontrado!'#
+
     edit: 'Editar Artigo'
     new: 'Novo Artigo'
     none: 'Nenhum artigo publicado!'
