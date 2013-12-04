@@ -52,13 +52,6 @@ class Article < ActiveRecord::Base
     (year < 10) ? "000#{year}" : year
   end
 
-  define_index do
-    set_property delta: true
-
-    indexes title
-    indexes body
-  end
-
   def status
     if created_at.nil?
       I18n.t('article.status.new')
