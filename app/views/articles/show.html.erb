@@ -15,3 +15,9 @@
     </div>
   </header>
 </article>
+
+<section class="comments">
+  <ul>
+    <%= render partial: 'comments/comment', collection: @root_comments %>
+  </ul>
+</section>

@@ -1,50 +1,15 @@
 # coding: utf-8
 
 module CommentHelper
-  def render_comments(article)
-    ''.tap do |html|
-      article.comments.each do |comment|
-        html << render_comment(article, comment) if comment.comment.nil?
-      end
-    end.html_safe
-  end
-
-  def render_comment(article, comment, level = 0, html = '')
-    html.tap do |content|
-      content << comment_box(article, comment, level)
-
-      if comment.comments.present?
-        level += 1
-        comment.comments.each { |child| render_comment(article, child, level, content) }
-      end
-    end
-  end
-
-  private
-
-  def anchor(comment)
+  def anchor(comment)#
     "comment-#{comment.id}"
   end
 
-  def url_anchor(comment)
+  def url_anchor(comment)#
     "#{request.fullpath}##{anchor(comment)}"
   end
 
-  def input(type, name, value = nil)
-    tag :input, type: type, name: name, value: value
-  end
-
-  def photo(comment)
-    content_tag :div, gravatar(comment.email, alt: '', title: comment.name), class: 'photo'
-  end
-
-  def comment_number(comment)
-    link_to "##{comment.id}", url_anchor(comment), title: t('comment.shortcut_link')
-  end
-
-  def commenter_name(comment)
-    link_to comment.name, comment.url, target: '_blank', class: 'name'
-  end
+  private
 
   def response_description(comment)
     return '' if comment.comment.nil?
@@ -52,29 +17,6 @@ module CommentHelper
     link = link_to("##{comment.comment.id}", url_anchor(comment.comment), title: t('comment.go_to_parent'), class: 'parent-anchor')
 
     content_tag(:p, t('comment.reply_to')) + link
-  end
-
-  def date(comment)
-    icon = content_tag :i, nil, class: 'icon-time icon-large'
-    text = t('comment.created_at', time: time_ago_in_words(comment.created_at))
-
-    content_tag :span, icon + text
-  end
-
-  def response_link(comment)
-    link_to t('comment.reply'), "#{request.fullpath}#comment-form", target: '_self', class: 'reply-link'
-  end
-
-  def anchors(comment)
-    content_tag :div, comment_number(comment) + commenter_name(comment) + response_description(comment), class: 'anchors'
-  end
-
-  def header(comment)
-    content_tag(:div, anchors(comment) + date(comment), class: 'name-date') + response_link(comment)
-  end
-
-  def body(comment)
-    content_tag :div, markdown(comment.body), class: 'text'
   end
 
   def fields(comment)
@@ -112,10 +54,6 @@ module CommentHelper
     form_tag(url, method: :put, onsubmit: onsubmit, style: style) do
       fields(comment) << form_closer(comment) << anti_bot(comment) << submit_button
     end
-  end
-
-  def content(article, comment)
-    content_tag :div, header(comment) + body(comment) + form(article, comment), class: 'content'
   end
 
   def comment_box(article, comment, level)

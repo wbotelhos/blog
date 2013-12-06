@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(:version => 20121222234809) do
     t.boolean  "author",     :default => false, :null => false
     t.string   "email",                         :null => false
     t.string   "name",                          :null => false
-    t.text     "body",                          :null => false
     t.string   "url"
+    t.text     "body",                          :null => false
+    t.integer  "parent_id"
     t.integer  "article_id",                    :null => false
-    t.integer  "comment_id"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end

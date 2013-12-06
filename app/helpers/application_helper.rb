@@ -59,6 +59,12 @@ module ApplicationHelper
     link_to label, url, id: 'donate', target: '_blank'
   end
 
+  def time_ago(time)#
+    value = t('comment.created_at', time: time_ago_in_words(time))
+
+    content_tag :abbr, value, title: time.getutc.iso8601 if time
+  end
+
   private
 
   class HTMLwithPygments < Redcarpet::Render::HTML

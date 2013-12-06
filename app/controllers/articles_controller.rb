@@ -32,7 +32,8 @@ class ArticlesController < ApplicationController
   end
 
   def show #
-    @article = Article.where('slug = ?', params[:slug]).first
+    @article       = Article.where('slug = ?', params[:slug]).first
+    @root_comments = @article.comments.roots
 
     if @article.present?
       @comment_form = CommentFormPresenter.new @article, Comment.new

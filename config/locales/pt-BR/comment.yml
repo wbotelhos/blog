@@ -1,14 +1,16 @@
 pt-BR:
   comment:
+    created_at: "%{time} atrás"#
+    shortcut_link: 'Atalho para este comentário'#
+
+
     close: 'Fechar'
-    created_at: "%{time} atrás"
     go_to_parent: 'Visualizar o comentário pai'
     other: 'Comentários'
     reply: 'Responder'
     reply_to: 'Resposta ao comentário '
     replying_to: 'Respondendo '
     sending: 'Enviando...'
-    shortcut_link: 'Atalho para este comentário'
     undo: 'Desfazer'
     update: 'Atualizar'
     count_html:

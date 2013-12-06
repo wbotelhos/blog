@@ -1,0 +1,25 @@
+<li id="<%= anchor comment %>">
+  <div class="avatar">
+    <%= gravatar(comment.email, alt: '', title: comment.name) %>
+  </div>
+
+  <div class="body">
+    <header>
+      <%= link_to comment.name, root_path %>
+      <%= time_ago comment.created_at %>
+    </header>
+
+    <%= markdown comment.body %>
+
+    <footer>
+      <%= link_to "##{comment.id}", url_anchor(comment), title: t('comment.shortcut_link'), class: :anchor %>
+      <%= link_to t('comment.reply'), "#{request.fullpath}#comment-form", class: :reply %>
+    </footer>
+  </div>
+
+  <% if comment.children.present? %>
+    <ul>
+      <%= render partial: 'comments/comment', collection: comment.children %>
+    </ul>
+  <% end %>
+</li>
