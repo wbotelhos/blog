@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
 
   # default_scope -> { order 'id desc' }
 
-  scope :roots, -> { where(parent_id: nil) }#
+  scope :roots, -> { where parent_id: nil }#
 
   acts_as_tree
 
