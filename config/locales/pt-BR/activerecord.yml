@@ -9,12 +9,6 @@ pt-BR:
       category:
         name: 'Nome *'
 
-      comment:
-        name: 'Nome *'
-        email: 'E-mail *'
-        url: 'URL'
-        body: "Comentário com `code` *"
-
       donator:
         about: 'Sobre'
         amount: 'Valor *'
