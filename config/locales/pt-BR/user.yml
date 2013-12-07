@@ -1,5 +1,7 @@
 pt-BR:
   user:
+    bio: 'Programador metido a designer, ajudante e aprendiz da comunidade open source.'#
+
     create: 'Criar'
     edit: 'Editar Usuário'
     new: 'Novo Usuário'
