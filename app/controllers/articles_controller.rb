@@ -9,7 +9,9 @@ class ArticlesController < ApplicationController
 
   def index #
     @year_month_articles = Article
-                            .published.select('published_at, slug, title')
+                            .select('published_at, slug, title')
+                            .published
+                            .ordered
                             .group_by { |criteria| criteria.published_at.strftime('%m/%Y') }
   end
 
