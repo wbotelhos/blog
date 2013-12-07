@@ -9,7 +9,7 @@
     <ul>
       <% articles.each do |article| %>
         <li>
-          <%= link_to article.title, slug_path(article.slug), class: :title %>
+          <%= link_to article.title, slug_path(article.slug), class: :title %><br />
           <%= link_to slug_url(article.slug), slug_path(article.slug), class: :url %>
         </li>
       <% end %>
