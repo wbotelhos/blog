@@ -7,8 +7,11 @@ Blog::Application.routes.draw do
   get  '/logout' , to: 'sessions#destroy'
   post '/login'  , to: 'sessions#create'
 
-  resource :articles, except: :destroy do
-    resources :comments
+  resource :articles, except: :destroy
+
+  controller :comments do
+    post '/articles/:article_id/comments', action: :create, as: :article_comments
+    # put   '/articles/:article_id/comments/:id', action: :update, as: :comments_update
   end
 
   # controller :articles do
@@ -29,11 +32,6 @@ Blog::Application.routes.draw do
   #   get   '/categories/:slug',    action: :show,   as: :categories_show
   #   get   '/categories/:id/edit', action: :edit,   as: :categories_edit
   # end
-
-  controller :comments do
-    post  '/articles/:article_id/comments',     action: :create, as: :comments_create
-    put   '/articles/:article_id/comments/:id', action: :update, as: :comments_update
-  end
 
   # controller :donators do
   #   get   '/donators',          action: :index
