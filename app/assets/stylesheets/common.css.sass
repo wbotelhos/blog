@@ -61,7 +61,6 @@ pre//
   color: #393939
   font-family: menlo, monospace, serif
   font-size: 1.2em
-  overflow-x: scroll
   padding: 10px 10px
 
 img//
@@ -69,6 +68,21 @@ img//
 
 ul //
   list-style: none
+
+.input//
+  +border-radius(2px)
+  background-color: #FFF
+  border: 1px solid #CCC
+  color: #333333
+  font-size: 1.5em
+  max-height: 300px
+  min-height: 25px
+  padding: 12px 10px
+  transition: all 0.15s ease-in 0s
+  width: 100%
+
+  &:focus//
+    border-color: #EEE
 
 .message
   +border-radius(2px)
@@ -80,6 +94,14 @@ ul //
   &.alert
     background-color: #F1D7D7
     color: #A95252
+
+.placeholder//
+  float: left
+  margin-top: 10px
+  padding-left: 2px
+  padding-right: 2px
+  width: 100%
+
 @media only screen and (min-width: 240px)
 
 @media only screen and (min-width: 320px)

@@ -1,15 +1,15 @@
 Blog::Application.routes.draw do
   root to: 'articles#index'
 
-  get '/feed'  , to: 'feeds#feed'
+  get  '/admin'  , to: 'admin#index'
+  get  '/feed'   , to: 'feeds#feed'
+  get  '/login'  , to: 'sessions#new'
+  get  '/logout' , to: 'sessions#destroy'
+  post '/login'  , to: 'sessions#create'
 
   resource :articles, except: :destroy do
     resources :comments
   end
-
-  # controller :admin do
-  #   get '/admin', action: :index
-  # end
 
   # controller :articles do
   #   get   '/articles/drafts',         action: :drafts
@@ -59,12 +59,6 @@ Blog::Application.routes.draw do
   #   get   '/links/new',       action: :new
   #   put   '/links/:id',       action: :update, as: :links_update
   #   get   '/links/:id/edit',  action: :edit,   as: :links_edit
-  # end
-
-  # controller :sessions do
-  #   get   '/login',   action: :new
-  #   post  '/login',   action: :create
-  #   get   '/logout',  action: :destroy
   # end
 
   # controller :users do

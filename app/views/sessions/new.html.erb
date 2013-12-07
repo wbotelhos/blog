@@ -1,30 +1,31 @@
-<%= form_tag login_path, onsubmit: 'return l00s3r("bot");' do %>
-  <%= hidden_field_tag :bot, 'yes', id: nil %>
+<section role="main" class="signin">
 
-  <p>
-    <%= label_tag :email, t('activerecord.attributes.user.email') %>
-    <%= email_field_tag :email, nil, data: { validaty: 'required email' } %>
-  </p>
+  <%= form_tag login_path do |f| %>
+    <%= hidden_field_tag :bot, true %>
 
-  <p>
-    <%= label_tag :password, t('activerecord.attributes.user.password') %>
-    <%= password_field_tag :password, nil, data: { validaty: :required } %>
-  </p>
+    <%= render 'shared/flash_messages' %>
 
-  <p id="human">
-    <%= label_tag :bot, 'b0t?' %>
-    <%= check_box_tag :bot, :true, :true %>
-  </p>
+    <div class="placeholder">
+      <%= label_tag :email %>
+      <%= email_field_tag :email, @email, autofocus: true, class: :input %>
+    </div>
 
-  <%= submit_tag t('form.buttons.login'), name: nil %>
-<% end %>
+    <div class="placeholder">
+      <%= label_tag :password %>
+      <%= password_field_tag :password, nil, class: :input %>
+    </div>
 
-<script type="text/javascript">
+    <div class="placeholder not-human">
+      <%= check_box_tag :not_human, :true, :true %>
+      <%= label_tag :not_human, t(:i_am_bot) %>
+    </div>
+
+    <%= submit_tag t('form.buttons.login'), name: nil, class: 'button green right' %>
+  <% end %>
+</section>
+
+<script>
   $(function() {
-    $('#email').focus().select();
-
-    AntiBot.init('#bot')
-
-    $('form').validaty();
+    AntiBot.init('.signin');
   });
 </script>

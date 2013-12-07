@@ -54,10 +54,6 @@ pt-BR:
         alert: 'Erro ao salvar o comentário!'
         notice: 'Comentário atualizado!'
 
-    sessions:
-      create:
-        alert: 'E-mail ou senha inválida!'
-
     users:
       create:
         notice: 'Usuário criado com sucesso!'

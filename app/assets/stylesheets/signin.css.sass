@@ -1,25 +1,33 @@
+@import "compass/css3/border-radius"
 @import "mixins"
 
 .signin
   form
-    margin: 17% auto 0
-    width: 95%
+    margin: 8% auto 0
+    width: 90%
 
-    div
-      margin-bottom: 15px
-
-      &.first-child
-        float: left
-        width: 50%
-
-      &.last-child
-        +calc('width', '50% - 5px')
-        float: left
-        margin-left: 5px
+    label
+      color: #333
+      display: block
+      font: bold 1.5em arial
+      margin-bottom: 3px
+      margin-left: 2px
+      margin-top: 3px
+      width: 100%
 
     input[type="submit"]
-      float: none
+      margin-top: 15px
       width: 100%
+
+    .not-human
+      input
+        vertical-align: middle
+
+      label
+        display: inline
+        font-size: 1.2em
+        padding-right: 5px
+        vertical-align: middle
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5)
 
@@ -32,12 +40,7 @@
 @media only screen and (min-width: 480px)
   .signin
     form
-      width: 90%
-
-      div
-        &.last-child
-          +calc('width', '50% - 10px')
-          margin-left: 10px
+      width: 70%
 
 @media only screen and (min-width: 568px)
 
@@ -46,11 +49,11 @@
 @media only screen and (min-width: 685px)
   .signin
     form
-      width: 70%
+      width: 60%
 
 @media only screen and (min-width: 768px)
 
 @media only screen and (min-width: 1024px)
   .signin
     form
-      width: 50%
+      width: 40%

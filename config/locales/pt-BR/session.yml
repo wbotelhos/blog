@@ -1,0 +1,5 @@
+pt-BR:
+  sessions:
+    flash:
+      create:
+        alert: 'E-mail ou senha inválida!'
