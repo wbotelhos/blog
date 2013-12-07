@@ -21,29 +21,25 @@ Link.create! name: 'Washington Botelho [US]', url: 'http://wbotelhos.com'
 Link.create! name: 'yLabs',                   url: 'http://wbotelhos.com/labs'
 
 user = User.create!(
-  name:                   'Washington Botelho',
+  bio:                    'Programador metido a designer, ajudante e aprendiz da comunidade open source.',
   email:                  'wbotelhos@gmail.com',
-  bio:                    %[Desenvolvedor Java, Ruby e Python no Portal <a href="http://r7.com" target="_blank">R7.com</a>.\nÉ Bacharel em Sistemas de Informação e certificado OCJA 1.0 e OCJP 6.\nAjudante e aprendiz da comunidade open source e metido a designer.\n Além disso é apaixonado pela dança, skate, jiu-jitsu e Counter Strike Source. (:],
-  github:                 'http://github.com/wbotelhos',
-  twitter:                'http://twitter.com/wbotelhos',
-  linkedin:               'http://linkedin.com/in/wbotelhos',
-  facebook:               'http://facebook.com/wbotelhos',
+  name:                   'Washington Botelho',
   password:               'password',
   password_confirmation:  'password'
 )
 
 Lab.create!(
-  name:         'jQuery Raty',
-  slug:         'raty',
   description:  'jQuery Raty - A Star Rating Plugin',
   image:        'raty.png'
+  name:         'jQuery Raty',
+  slug:         'raty',
 )
 
 Lab.create!(
-  name:         'jQuery Gridy',
-  slug:         'gridy',
   description:  'jQuery Gridy - A Grid Plugin',
   image:        'gridy.png'
+  name:         'jQuery Gridy',
+  slug:         'gridy',
 )
 
 article = user.articles.new(
@@ -56,17 +52,13 @@ Hi! My name is **Washington Botelho** and this article is an example to introduc
 
 We are using the [Markdown](http://daringfireball.net/projects/markdown/ "Markdown") syntaxe with help of the [Redcarpet](https://github.com/tanoku/redcarpet "Redcarpet") and [Pygments.rb](https://github.com/tmm1/pygments.rb "Pygments.rb") to make it colorized.
 
-We can apply a Ruby *Syntax Highlighting* in an block like the following:
+You can apply a Ruby *Syntax Highlighting* in an block like the following:
 
 ```ruby
 def hello
   puts 'Hello Markdown!'
 end
 ```
-
-Here teminates the resume.
-
-<!--more-->
 
 But if you want to write other language linke Java, feel free:
 
@@ -82,7 +74,7 @@ class Hello {
 
 ### Credentials
 
-By default my credentials is written here, but wit you will run this blog, just edit the file `config/config.yml` and set your data.
+By default my credentials is written here, but you can change it editing the file config/config.yml.
 
 ### Deploy
 
@@ -90,7 +82,7 @@ We using the Capistrano to do it, then check the deploy.rb file to configure you
 
 ### License
 
-This blog is free under the MIT License, then be nice and keep the author's credits. (:
+This blog is free under the MIT License, be nice and keep the author's credits. (:
 
 See you and your blog soon!
 ])
@@ -98,61 +90,61 @@ article.categories = categories
 article.save!
 
 comment1 = article.comments.create!(
-  name:   'Gabriel Benz',
+  body:   "Hi Botelho,\nCould I use your blog?\n\nI really liked it!",
   email:  'glbenz@gmail.com',
-  url:    'http://http://gabrielbenz.com',
-  body:   "Hi Botelho,\nCould I use your blog?\n\nI really liked it!"
+  name:   'Gabriel Benz',
+  url:    'http://http://gabrielbenz.com'
 )
 
   response1 = article.comments.new(
-    name:       'Washington Botelho',
-    email:      'wbotelhos@gmail.com',
-    url:        'http://wbotelhos.com',
-    body:       'Of course man, just keep the credits. (;',
-    comment_id: comment1.id
+    body:      'Of course man, just keep the credits. (;',
+    email:     'wbotelhos@gmail.com',
+    name:      'Washington Botelho',
+    parent_id: comment1.id
+    url:       'http://wbotelhos.com'
   )
   response1.author = true
   response1.save!
 
 comment2 = article.comments.create!(
-  name:   'Daniel Faria',
+  body:   "Hi Washington,\nI would like to contribute to the blog, you agree Pull Requests?",
   email:  'danielfariati@gmail.com',
-  url:    'http://danielfariati.com.br',
-  body:   "Hi Washington,\nI would like to contribute to the blog, you agree Pull Requests?"
+  name:   'Daniel Faria',
+  url:    'http://danielfariati.com.br'
 )
 
   response2 = article.comments.create!(
-    name:       'Washington Botelho',
-    email:      'wbotelhos@gmail.com',
-    url:        'http://wbotelhos.com',
-    body:       "Hi Daniel,\nYour contributions are always welcome my friend.\nI'm waiting for your great code. (:",
-    comment_id: comment2.id
+    body:      "Hi Daniel,\nYour contributions are always welcome my friend.\nI'm waiting for your great code. (:",
+    email:     'wbotelhos@gmail.com',
+    name:      'Washington Botelho',
+    parent_id: comment2.id,
+    url:       'http://wbotelhos.com'
   )
   response2.author = true
   response2.save!
 
     article.comments.create!(
-      name:       'Daniel Faria',
-      email:      'danielfariati@gmail.com',
-      url:        'http://danielfariati.com.br',
-      body:       "Yeah! I'll pull it soon.",
-      comment_id: response2.id
+      name:      'Daniel Faria',
+      email:     'danielfariati@gmail.com',
+      url:       'http://danielfariati.com.br',
+      body:      "Yeah! I'll pull it soon.",
+      parent_id: response2.id
     )
 
 Donator.create!(
-  name:     'Madson Cardoso',
-  email:    'madsonmac@gmail.com',
-  amount:   60.0,
-  url:      'http://madsonmac.com',
-  country:  'Macapá',
-  message:  'Good job on blog and the jQuery plugins. Thanks for your work!'
+  amount:  60.0,
+  country: 'Macapá',
+  email:   'madsonmac@gmail.com',
+  message: 'Good job on blog and the jQuery plugins. Thanks for your work!',
+  name:    'Madson Cardoso',
+  url:     'http://madsonmac.com'
 )
 
 Donator.create!(
-  name:     'Lenon Marcelo',
-  email:    'lenon.marcel@gmail.com',
-  amount:   30.0,
-  url:      'http://lenonmarcel.com.br',
-  country:  'Gaúcho',
-  message:  'Nonononon. Thanks!'
+  amount:  30.0,
+  country: 'Gaúcho',
+  email:   'lenon.marcel@gmail.com',
+  message: 'Nonononon. Thanks!',
+  name:    'Lenon Marcelo',
+  url:     'http://lenonmarcel.com.br'
 )
