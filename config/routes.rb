@@ -2,7 +2,7 @@ Blog::Application.routes.draw do
   root to: 'articles#index'
 
   get  '/admin'  , to: 'admin#index'
-  get  '/feed'   , to: 'feeds#feed'
+  get  '/feed'   , to: 'feeds#index'
   get  '/login'  , to: 'sessions#new'
   get  '/logout' , to: 'sessions#destroy'
   post '/login'  , to: 'sessions#create'
