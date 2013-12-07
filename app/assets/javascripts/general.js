@@ -1,6 +1,6 @@
 AntiBot = {
-  init: function(selector) {
-    this.form   = $(selector).find('form');
+  init: function(form) {
+    this.form   = $(form);
     this.field  = this.form.find('.not-human input');
     this.bot    = $('#bot');
     this.label  = this.form.find('.not-human label');
