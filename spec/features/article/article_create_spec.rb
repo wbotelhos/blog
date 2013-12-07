@@ -7,7 +7,7 @@ describe Article, '#create' do
 
   before do
     login with: user.email
-    visit articles_new_path
+    visit new_articles_path
   end
 
   context 'submit with valid data' do

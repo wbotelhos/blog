@@ -24,7 +24,7 @@ describe Article, '#new' do
     end
 
     context 'form' do
-      before { visit articles_new_path }
+      before { visit new_articles_path }
 
       it { current_path.should == '/articles/new' }
 
@@ -45,7 +45,7 @@ describe Article, '#new' do
   end
 
   context 'when unlogged' do
-    before { visit articles_new_path }
+    before { visit new_articles_path }
 
     it 'redirects to the login page' do
       current_path.should == login_path
