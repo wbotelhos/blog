@@ -1,77 +1,41 @@
-<div id="comment-form" class="comment-create">
-  <!-- TODO: how to include error on redirect? -->
-  <%= render 'shared/error_messages', entity: comment %>
-  <%= render 'shared/flash_messages' %>
+<%= form_for [@article, @comment] do |f| %>
+  <%= f.hidden_field :article_id %>
+  <%= f.hidden_field :parent_id %>
+  <%= hidden_field_tag :bot, true %>
 
-  <div id="replying-to" style="display: none;">
-    <%= t('comment.replying_to') %>
-    <strong></strong>
-    <%= link_to "(#{t('comment.undo')})", 'javascript:void(0);', { onclick: 'removeReply();' } %>
+  <div class="placeholder">
+    <%= f.label :name %> <span class="mandatory">*</span>
+    <%= f.text_field :name, class: :input %>
+    <%= errors_for @comment, :name %>
   </div>
 
-  <%= form_for comment, url: comments_create_path(article), html: { role: 'form', onsubmit: 'return l00s3r("bot");' } do |f| %>
-    <%= f.hidden_field :comment_id %>
-    <%= hidden_field_tag :bot, 'yes', id: nil %>
+  <div class="placeholder">
+    <%= f.label :email %> <span class="mandatory">*</span>
+    <%= f.email_field :email, class: :input %>
+    <%= errors_for @comment, :email %>
+  </div>
 
-    <% if is_logged? %>
-      <%= f.hidden_field :name, value: current_user.name %>
-      <%= f.hidden_field :email, value: current_user.email %>
-      <%= f.hidden_field :url, value: current_user.url %>
-    <% else %>
-      <p>
-        <%= f.label :name %>
-        <%= f.text_field :name, title: t('activerecord.attributes.comment.name'), data: { validaty: :required } %>
-      </p>
-      <p>
-        <%= f.label :email %>
-        <%= f.text_field :email, title: t('activerecord.attributes.comment.email'), data: { validaty: 'required email' } %>
-      </p>
-      <p>
-        <%= f.label :url %>
-        <%= f.text_field :url, title: t('activerecord.attributes.comment.url') %>
-      </p>
-    <% end %>
+  <div class="placeholder">
+    <%= f.label :url %>
+    <%= f.url_field :url, class: :input %>
+  </div>
 
-    <p>
-      <%= f.label :body %>
-      <%= f.text_area :body, title: t('activerecord.attributes.comment.body'), data: { validaty: :required } %>
-    </p>
+  <div class="placeholder">
+    <%= f.label :body %> <span class="mandatory">*</span>
+    <%= f.text_area :body, class: :input %>
+    <%= errors_for @comment, :body %>
+  </div>
 
-    <p id="markdown-reference">
-      Para formatar o seu <strong>código</strong> utilize a sintaxe do
-      <%= link_to 'Markdown', 'http://daringfireball.net/projects/markdown/syntax', { title: 'Markdown', target: '_blank' } %>.
-    </p>
+  <div class="placeholder tip">
+    <%= t 'comment.format_your_code_html', link: link_to('Markdown', 'http://daringfireball.net/projects/markdown/syntax', title: 'Markdown', target: :_blank) %>
+  </div>
 
-    <p id="human">
-      <%= label_tag :bot, 'b0t?' %>
-      <%= check_box_tag :bot, :true, :true %>
-    </p>
+  <div class="placeholder not-human">
+    <%= check_box_tag :not_human, true, true %>
+    <%= label_tag :not_human, t(:i_am_bot) %>
+  </div>
 
-    <p>
-      <%= f.submit name: nil %>
-    </p>
-  <% end %>
-</div>
-
-<script type="text/javascript">
-  function removeReply() {
-    $('#replying-to').hide();
-    $('#comment_comment_id').val('');
-    $('#comment_body').val('').blur().focus();
-  }
-
-  $(function() {
-    var form   = $('#new_comment'),
-        botBox = $('#human input');
-
-    form.flury().validaty();
-
-    form.children(':submit').on('click', function() {
-      if (!botBox.is(':checked')) {
-        $(this).hide().parent().append("<i><%= t 'comment.sending' %></i>");
-      }
-    });
-
-    AntiBot.init('#bot')
-  });
-</script>
+  <div class="saver">
+    <%= f.submit name: nil, class: 'button green right' %>
+  </div>
+<% end %>

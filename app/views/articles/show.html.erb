@@ -20,3 +20,11 @@
     <%= render partial: 'comments/comment', collection: @root_comments %>
   </ul>
 </section>
+
+<%= render 'comments/form', article: @article, comment: @comment %>
+
+<script>
+  $(function() {
+    AntiBot.init('.new_comment');
+  });
+</script>

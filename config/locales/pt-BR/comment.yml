@@ -1,7 +1,16 @@
 pt-BR:
+  activerecord:
+    attributes:
+      comment:
+        name: 'Nome'#
+        email: 'E-mail'#
+        url: 'URL'#
+        body: "Comentário"#
+
   comment:
     created_at: "%{time} atrás"#
     shortcut_link: 'Atalho para este comentário'#
+    format_your_code_html: "Formate seu <strong>código</strong> utilizando %{link}."#
 
 
     close: 'Fechar'

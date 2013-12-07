@@ -5,8 +5,27 @@ module CommentHelper
     "comment-#{comment.id}"
   end
 
+  def comment_name(comment, options = {})
+    if comment.url.present?
+      url = comment.url
+
+      options.merge! target: :_blank
+    else
+      url = 'javascript:void(0);'
+    end
+
+    link_to comment.name, url, options
+  end
+
   def url_anchor(comment)#
     "#{request.fullpath}##{anchor(comment)}"
+  end
+
+  # workaround to simulate the form_builder that does not works.
+  def errors_for(comment, key)#
+    errors = comment.errors.messages[key]
+
+    content_tag(:span, errors[0], class: 'validation-error') if errors.present?
   end
 
   private
