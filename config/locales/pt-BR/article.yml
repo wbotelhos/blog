@@ -15,7 +15,7 @@ pt-BR:
     read_more: 'Leia mais...'
     read_more_about_html: 'Leia mais sobre %{text}'
     share: 'Compartilhar'
-    share_it: 'Compartilhe este artigo!'
+
     tags: 'Tags:'
     update: 'Atualizar'
     status:

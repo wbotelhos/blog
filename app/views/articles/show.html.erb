@@ -10,6 +10,11 @@
   </header>
 </article>
 
+<div class="share">
+  <p><%= t :share_it %></p>
+  <%= twitter_button text: @article.title, url: article_slug_url(@article) %>
+</div>
+
 <section class="comments">
   <ul>
     <%= render partial: 'comments/comment', collection: @root_comments %>

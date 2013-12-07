@@ -7,6 +7,18 @@ module ArticleHelper
     slug_url(article.slug, anchor: anchor)
   end
 
+  def twitter_button(options = {})#
+    options = {
+      text: %("#{options[:text]}" ~ ),
+      url:  options[:url],
+      via:  'wbotelhos'
+    }
+
+    link = link_to 'Tweet', "https://twitter.com/intent/tweet?#{to_query options}", target: :_blank
+
+    content_tag :div, link, class: :twitter
+  end
+
   def article_menu(article)
     html = ''
     html << menu('link',         link_to(t('article.permalink'),       article_slug(article),             title: t('article.permalink')))
@@ -25,6 +37,10 @@ module ArticleHelper
   end
 
   private
+
+  def to_query(options)#
+    options.map { |key, value| "#{key}=#{CGI.escape value}" }.join '&'
+  end
 
   def comments_label(article)
     t 'comment.count_html', count: article.comments_count
