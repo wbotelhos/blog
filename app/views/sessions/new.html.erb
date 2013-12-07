@@ -1,31 +1,22 @@
-<section role="main" class="signin">
+<%= form_tag login_path, class: :signin do |f| %>
+  <%= hidden_field_tag :bot, true %>
 
-  <%= form_tag login_path do |f| %>
-    <%= hidden_field_tag :bot, true %>
+  <%= render 'shared/flash_messages' %>
 
-    <%= render 'shared/flash_messages' %>
+  <div class="placeholder">
+    <%= label_tag :email %>
+    <%= email_field_tag :email, @email, autofocus: true, class: :input %>
+  </div>
 
-    <div class="placeholder">
-      <%= label_tag :email %>
-      <%= email_field_tag :email, @email, autofocus: true, class: :input %>
-    </div>
+  <div class="placeholder">
+    <%= label_tag :password %>
+    <%= password_field_tag :password, nil, class: :input %>
+  </div>
 
-    <div class="placeholder">
-      <%= label_tag :password %>
-      <%= password_field_tag :password, nil, class: :input %>
-    </div>
+  <div class="placeholder not-human">
+    <%= check_box_tag :not_human, true, true %>
+    <%= label_tag :not_human, t(:i_am_bot) %>
+  </div>
 
-    <div class="placeholder not-human">
-      <%= check_box_tag :not_human, true, true %>
-      <%= label_tag :not_human, t(:i_am_bot) %>
-    </div>
-
-    <%= submit_tag t('form.buttons.login'), name: nil, class: 'button green right' %>
-  <% end %>
-</section>
-
-<script>
-  $(function() {
-    AntiBot.init('.signin');
-  });
-</script>
+  <%= submit_tag t('form.buttons.login'), name: nil, class: 'button green right' %>
+<% end %>

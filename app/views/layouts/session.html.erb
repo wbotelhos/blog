@@ -3,6 +3,7 @@
 <html dir="ltr" lang="<%= I18n.locale %>">
 <head>
   <%= render 'shared/head_tags' %>
+
   <meta name="robots"    content="nofollow" />
   <meta name="googlebot" content="nofollow" />
 
@@ -12,8 +13,13 @@
 <body>
   <div class="content">
     <%= render 'shared/header' %>
-
     <%= yield %>
   </div>
+
+  <script>
+    $(function() {
+      AntiBot.init('.signin');
+    });
+  </script>
 </body>
 </html>
