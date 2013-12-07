@@ -6,6 +6,7 @@
   <div class="body">
     <header>
       <%= link_to comment.name, root_path %>
+      <%= content_tag :span, :author, class: :author if comment.author %>
       <%= time_ago comment.created_at %>
     </header>
 
