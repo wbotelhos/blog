@@ -13,9 +13,6 @@ pt-BR:
         create: 'Salvar'
         update: 'Atualizar'
 
-      comment:
-          create: 'Comentar'
-
       category:
         create: 'Salvar'
         update: 'Atualizar'

@@ -10,8 +10,9 @@ Blog::Application.routes.draw do
   resource :articles, except: :destroy
 
   controller :comments do
-    post '/articles/:article_id/comments', action: :create, as: :article_comments
-    # put   '/articles/:article_id/comments/:id', action: :update, as: :comments_update
+    post '/articles/:article_id/comments'          , action: :create , as: :article_comments
+    put  '/articles/:article_id/comments/:id'      , action: :update , as: :update_comments
+    get  '/articles/:article_id/comments/:id/edit' , action: :edit   , as: :edit_comments
   end
 
   # controller :articles do

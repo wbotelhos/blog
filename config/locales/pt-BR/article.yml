@@ -1,24 +1,26 @@
 pt-BR:
   article:
+    share_it: 'Compartilhe este artigo!'#
+
     flash:
       not_found: 'O artigo "%{uri}" não foi encontrado!'#
 
-    edit: 'Editar Artigo'
-    new: 'Novo Artigo'
-    none: 'Nenhum artigo publicado!'
-    other: 'Artigos'
-    permalink: 'Permalink'
-    preview: 'Visualizar'
-    publish: 'Publicar'
-    published_at: "%{time}"
-    published_date: 'Data de publicação'
-    read_more: 'Leia mais...'
-    read_more_about_html: 'Leia mais sobre %{text}'
-    share: 'Compartilhar'
+    # edit: 'Editar Artigo'
+    # new: 'Novo Artigo'
+    # none: 'Nenhum artigo publicado!'
+    # other: 'Artigos'
+    # permalink: 'Permalink'
+    # preview: 'Visualizar'
+    # publish: 'Publicar'
+    # published_at: "%{time}"
+    # published_date: 'Data de publicação'
+    # read_more: 'Leia mais...'
+    # read_more_about_html: 'Leia mais sobre %{text}'
+    # share: 'Compartilhar'
 
-    tags: 'Tags:'
-    update: 'Atualizar'
-    status:
-      new: 'Novo'
-      draft: 'Rascunho'
-      published: 'Publicado'
+    # tags: 'Tags:'
+    # update: 'Atualizar'
+    # status:
+    #   new: 'Novo'
+    #   draft: 'Rascunho'
+    #   published: 'Publicado'

@@ -1,4 +1,4 @@
-AntiBot = {
+var AntiBot = {
   init: function(form) {
     this.form   = $(form);
     this.field  = this.form.find('.not-human input');
@@ -26,9 +26,10 @@ AntiBot = {
   lock: function() {
     var that = this;
 
+    that.bot.val(true);
+
     that.submit.on('click', function(evt) {
       evt.preventDefault();
-      that.bot.val(true);
       that.label.text('Hey! Me desmarque.');
       that.field.focus();
     });
@@ -43,7 +44,7 @@ AntiBot = {
   }
 };
 
-Responder = {
+var CommentResponder = {
   init: function() {
     this.body     = $('#comment_body');
     this.comments = $('.comments');

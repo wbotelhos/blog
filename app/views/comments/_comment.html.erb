@@ -14,7 +14,8 @@
 
     <footer>
       <%= self_anchor comment %>
-      <%= link_to t('comment.reply'), "#{request.fullpath}#comment-form", data: { id: comment.id, name: comment.name }, class: :reply %>
+      <%= link_to t('comment.reply'), "#{request.fullpath}#new_comment", data: { id: comment.id, name: comment.name }, class: :reply %>
+      <%= link_to t('comment.edit'), edit_comments_path(@article, comment), class: :edit %>
     </footer>
   </div>
 

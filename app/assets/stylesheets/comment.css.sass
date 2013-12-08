@@ -40,7 +40,7 @@
     margin: 0
     padding: 0
 
-  .anchor, .reply
+  .anchor, .edit, .reply
     color: #777
     text-decoration: none
 
@@ -48,7 +48,7 @@
       color: #555
       transition: color 0s ease 0s, color 0.2s ease-in 0s
 
-  .anchor
+  .anchor, .reply
     margin-right: 5px
 
   .author
@@ -73,20 +73,17 @@
 
   .body
     margin-bottom: 10px
-    min-height: 56px // 48 .avatar.height + 8 .avatar.top
+    min-height: 56px  48 // .avatar.height + 8 .avatar.top
     padding-left: 40px
     padding-top: 8px
     position: relative
 
-.new_comment//
-  a
-    text-decoration: none
-
+.new_comment, .edit_comment
   input[type="submit"]
     margin-top: 5px
     width: 100%
 
-  label//
+  label
     color: #333
     display: inline-block
     font: bold 1.4em arial
@@ -94,22 +91,26 @@
     margin-left: 2px
     margin-top: 3px
 
-  textarea//
+  textarea
     font-size: 1.2em
     height: 170px
     max-height: 200px
 
-  .not-human//
-    input//
+  .not-human
+    input
       vertical-align: top
 
-    label//
+    label
       display: inline
       font-size: 1.2em
       padding-right: 5px
       vertical-align: top
 
-  .tip//
+.new_comment
+  a
+    text-decoration: none
+
+  .tip
     color: #777
     font-size: 1.1em
     margin-left: 2px
@@ -122,7 +123,7 @@
 @media only screen and (min-width: 380px)
 
 @media only screen and (min-width: 480px)
-  .new_comment
+  .new_comment, .edit_comment
     margin: 0 auto
     width: 80%
 
@@ -142,7 +143,7 @@
     pre
       font-size: 0.8em
 
-    .anchor, .reply
+    .anchor, .edit, .reply
       font-size: 0.9em
 
     .author
@@ -151,17 +152,12 @@
     .body
       padding-left: 7px
 
-  .new_comment//
-    input[type="submit"]
-      float: right
-      margin-top: 0
-      width: auto
-
-    .not-human//
-      input//
+  .new_comment, .edit_comment
+    .not-human
+      input
         vertical-align: middle
 
-      label//
+      label
         vertical-align: middle
 
 @media only screen and (min-width: 600px)
@@ -171,6 +167,5 @@
 @media only screen and (min-width: 678px)
 
 @media only screen and (min-width: 1024px)
-  .new_comment
+  .new_comment, .edit_comment
     width: 60%
-

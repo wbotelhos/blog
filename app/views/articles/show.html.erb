@@ -11,7 +11,7 @@
 </article>
 
 <div class="share">
-  <p><%= t :share_it %></p>
+  <p><%= t 'article.share_it' %></p>
   <%= twitter_button text: @article.title, url: article_slug_url(@article) %>
 </div>
 
@@ -21,11 +21,11 @@
   </ul>
 </section>
 
-<%= render 'comments/form', article: @article, comment: @comment %>
+<%= render 'comments/create' %>
 
 <script>
   $(function() {
     AntiBot.init('.new_comment');
-    Responder.init();
+    CommentResponder.init();
   });
 </script>

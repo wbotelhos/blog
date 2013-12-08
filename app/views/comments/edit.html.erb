@@ -1,0 +1,43 @@
+<%= form_for [@article, @comment], url: update_comments_path(@article, @comment) do |f| %>
+  <%= f.hidden_field :article_id %>
+  <%= f.hidden_field :parent_id %>
+  <%= hidden_field_tag :bot, true %>
+
+  <div class="placeholder">
+    <%= f.label :name %> <span class="mandatory">*</span>
+    <%= f.text_field :name, required: true, autofocus: true, class: :input %>
+    <%= errors_for @comment, :name %>
+  </div>
+
+  <div class="placeholder">
+    <%= f.label :email %> <span class="mandatory">*</span>
+    <%= f.email_field :email, required: true, class: :input %>
+    <%= errors_for @comment, :email %>
+  </div>
+
+  <div class="placeholder">
+    <%= f.label :url %>
+    <%= f.url_field :url, class: :input %>
+  </div>
+
+  <div class="placeholder">
+    <%= f.label :body %> <span class="mandatory">*</span>
+    <%= f.text_area :body, required: true, class: :input %>
+    <%= errors_for @comment, :body %>
+  </div>
+
+  <div class="placeholder not-human">
+    <%= check_box_tag :not_human, true, true %>
+    <%= label_tag :not_human, t(:i_am_bot) %>
+  </div>
+
+  <div class="saver">
+    <%= f.submit name: nil, class: 'button green right' %>
+  </div>
+<% end %>
+
+<script>
+  $(function() {
+    AntiBot.init('.edit_comment');
+  });
+</script>

@@ -15,16 +15,20 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment    = Comment.find params[:id]
+    @article    = Article.new
+    @article.id = params[:article_id]
+  end
+
   def update
     @article = Article.find params[:article_id]
-
     @comment = @article.comments.find params[:id]
 
     if @comment.update_attributes params[:comment]
-      flash[:notice] = t('flash.comments.update.notice')
-      redirect_to slug_url(@article.slug, anchor: :new_comment)
+      redirect_to slug_url(@article.slug, anchor: "comment-#{@comment.id}")
     else
-      render template: 'articles/show'
+      render 'edit'
     end
   end
 end

@@ -1,4 +1,4 @@
-<%= form_for [@article, @comment], url: article_comments_path(@article, anchor: :new_comment) do |f| %>
+<%= form_for [@article, @comment] do |f| %>
   <%= f.hidden_field :article_id %>
   <%= f.hidden_field :parent_id %>
   <%= hidden_field_tag :bot, true %>
@@ -27,7 +27,7 @@
       <%= t 'comment.replying_to' %><strong></strong>
     </div>
 
-    <%= link_to "(#{t :cancel })", 'javascript:void(0);', id: 'replying-cancel' %>
+    <%= link_to "(#{t 'comment.cancel' })", 'javascript:void(0);', id: 'replying-cancel' %>
 
     <%= f.text_area :body, required: true, class: :input %>
     <%= errors_for @comment, :body %>
