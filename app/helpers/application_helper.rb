@@ -8,6 +8,14 @@ module ApplicationHelper
     content_tag(:span, errors[0], class: 'validation-error') if errors.present?
   end
 
+  def social_icon(text, clazz, path) #
+    path.gsub! /mailto:/, ''
+
+    text = "#{text} <#{path}>"
+
+    link_to '', path, alt: text, title: text, target: :_blank, class: clazz
+  end
+
   def author(user)
     ''.html_safe.tap do |html|
       html << gravatar(user.email, alt: '', title: user.name)
