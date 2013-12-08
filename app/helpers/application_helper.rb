@@ -9,9 +9,7 @@ module ApplicationHelper
   end
 
   def social_icon(text, clazz, path) #
-    path.gsub! /mailto:/, ''
-
-    text = "#{text} <#{path}>"
+    text = "#{text} <#{path.gsub /mailto:/, ''}>"
 
     link_to '', path, alt: text, title: text, target: :_blank, class: clazz
   end
