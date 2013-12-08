@@ -1,5 +1,18 @@
 @import "compass/css3/border-radius"
 
+#replying-cancel, #replying-to
+  display: inline-block
+  visibility: hidden
+
+#replying-cancel
+  margin-left: 5px
+
+#replying-to
+  margin-left: 10px
+
+  strong
+    color: #777
+
 .comments
   font-size: 1.2em
   margin-top: 50px
@@ -66,6 +79,9 @@
     position: relative
 
 .new_comment//
+  a
+    text-decoration: none
+
   input[type="submit"]
     margin-top: 5px
     width: 100%
@@ -79,14 +95,9 @@
     margin-top: 3px
 
   textarea//
+    font-size: 1.2em
     height: 170px
     max-height: 200px
-
-  .tip//
-    color: #777
-    font-size: 1.1em
-    margin-left: 2px
-    margin-top: 2px
 
   .not-human//
     input//
@@ -98,10 +109,11 @@
       padding-right: 5px
       vertical-align: top
 
-  // #replying-to
-  //   color: #444
-  //   font-size: 1.3em
-  //   margin-left: 1px
+  .tip//
+    color: #777
+    font-size: 1.1em
+    margin-left: 2px
+    margin-top: 2px
 
 @media only screen and (min-width: 240px)
 
@@ -132,6 +144,9 @@
 
     .anchor, .reply
       font-size: 0.9em
+
+    .author
+      font-size: 0.8em
 
     .body
       padding-left: 7px

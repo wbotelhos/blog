@@ -13,7 +13,7 @@ AntiBot = {
   binds: function() {
     var that = this;
 
-    that.field.on('change.antibot', function() {
+    that.field.on('change', function() {
       if (that.field.is(':checked')) {
         that.label.text('Sério?');
         that.lock();
@@ -26,7 +26,7 @@ AntiBot = {
   lock: function() {
     var that = this;
 
-    that.submit.on('click.antibot', function(evt) {
+    that.submit.on('click', function(evt) {
       evt.preventDefault();
       that.bot.val(true);
       that.label.text('Hey! Me desmarque.');
@@ -37,47 +37,68 @@ AntiBot = {
   unlock: function() {
     var that = this;
 
-    that.submit.off('.antibot');
+    that.submit.off('click');
     that.bot.removeAttr('value');
     that.label.text('Humanos! <3');
   }
 };
 
-function closeMessage(button) {
-  $(button).parent().fadeOut('fast');
-};
+Responder = {
+  init: function() {
+    this.body     = $('#comment_body');
+    this.comments = $('.comments');
+    this.parent   = $('#comment_parent_id');
+    this.cancel   = $('#replying-cancel');
+    this.replying = $('#replying-to');
 
-function loading(boo, title, description, style, autohide) {
-  var messages = $('#messages').empty(),
-      alert    = $('<div />', { 'class': style });
+    this.binds();
+  },
 
-  if (boo) {
-    var message = $('<span />'),
-        title   = $('<strong />', { html: title, 'class': 'alert' }),
-        close   = $('<input />', { type: 'button', value: '×', 'class': 'close' });
+  binds: function() {
+    var that = this;
 
-    close.on('click', function() {
-      closeMessage(this);
+    that.comments.on('click', '.reply', function() {
+      var self  = $(this),
+          id    = self.data('id'),
+          name  = self.data('name');
+
+      that.setParent(id);
+      that.write(name + ',\n\n');
+      that.showReplying(id, name);
+      that.showCancel();
+      that.focuz();
     });
 
-    if (title) {
-      message.append(title);
-    }
+    that.cancel.on('click', function() {
+      that.replying.css('visibility', 'hidden');
+      that.body.val('');
+      that.cancel.css('visibility', 'hidden');
+      that.parent.removeAttr('value');
 
-    message.append(description);
+      that.focuz();
+    });
+  },
 
-    messages.show().append(alert.append(message, close));
+  focuz: function() {
+    this.body.blur().focus();
+  },
 
-    if (autohide) {
-      setTimeout(function() {
-        alert.fadeOut();
-      }, 5000);
-    }
+  setParent: function(id) {
+    this.parent.val(id);
+  },
+
+  showCancel: function(id, name) {
+    this.cancel.css('visibility', 'visible');
+  },
+
+  showReplying: function(id, name) {
+    var anchor = '#comment-' + id,
+        text   = '#' + id;
+
+    this.replying.css('visibility', 'visible').children('strong').html('<a href="' + anchor + '">' + text + '</a> ' + name);
+  },
+
+  write: function(text) {
+    this.body.val(text);
   }
 };
-
-$(function() {
-  $('#messages').find('.close').on('click', function() {
-    $(this).parent().fadeOut('fast');
-  });
-});

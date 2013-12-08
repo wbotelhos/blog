@@ -1,6 +1,13 @@
 # coding: utf-8
 
 module ApplicationHelper
+  # workaround to simulate the form_builder that does not works.
+  def errors_for(object, key)#
+    errors = object.errors.messages[key]
+
+    content_tag(:span, errors[0], class: 'validation-error') if errors.present?
+  end
+
   def author(user)
     ''.html_safe.tap do |html|
       html << gravatar(user.email, alt: '', title: user.name)

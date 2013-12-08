@@ -2,10 +2,10 @@
 
 module CommentHelper
   def anchor(comment)#
-    "comment-#{comment.id}"
+    "##{id_for comment}"
   end
 
-  def comment_name(comment, options = {})
+  def comment_name(comment, options = {})#
     if comment.url.present?
       url = comment.url
 
@@ -17,15 +17,12 @@ module CommentHelper
     link_to comment.name, url, options
   end
 
-  def url_anchor(comment)#
-    "#{request.fullpath}##{anchor(comment)}"
+  def id_for(comment)#
+    "comment-#{comment.id}"
   end
 
-  # workaround to simulate the form_builder that does not works.
-  def errors_for(comment, key)#
-    errors = comment.errors.messages[key]
-
-    content_tag(:span, errors[0], class: 'validation-error') if errors.present?
+  def self_anchor(comment)#
+    link_to "##{comment.id}", anchor(comment), title: t('comment.shortcut'), class: :anchor
   end
 
   private
@@ -55,11 +52,6 @@ module CommentHelper
     content_tag :p, link_to(t('comment.close'), 'javascript:void(0);', class: 'close')
   end
 
-  def anti_bot(comment)
-    id = "bot-#{comment.id}"
-    content_tag :p, label_tag(id, 'b0t?') + check_box_tag(id, nil, true), class: 'human'
-  end
-
   def submit_button
     content_tag :p, submit_tag(t('comment.update'), name: nil)
   end
@@ -73,14 +65,5 @@ module CommentHelper
     form_tag(url, method: :put, onsubmit: onsubmit, style: style) do
       fields(comment) << form_closer(comment) << anti_bot(comment) << submit_button
     end
-  end
-
-  def comment_box(article, comment, level)
-    clazz = ['comment']
-    clazz << 'authored' if comment.author
-    clazz << "level-#{level}" unless level == 0
-    clazz = clazz.join(' ')
-
-    content_tag :div, photo(comment) + content(article, comment), id: anchor(comment), class: clazz
   end
 end

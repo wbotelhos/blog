@@ -9,8 +9,9 @@ pt-BR:
 
   comment:
     created_at: "%{time} atrás"#
-    shortcut_link: 'Atalho para este comentário'#
     format_your_code_html: "Formate seu <strong>código</strong> utilizando %{link}."#
+    replying_to: 'Em resposta: '#
+    shortcut: 'Atalho para este comentário'#
 
 
     close: 'Fechar'
@@ -18,7 +19,6 @@ pt-BR:
     other: 'Comentários'
     reply: 'Responder'
     reply_to: 'Resposta ao comentário '
-    replying_to: 'Respondendo '
     sending: 'Enviando...'
     undo: 'Desfazer'
     update: 'Atualizar'

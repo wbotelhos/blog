@@ -1,4 +1,4 @@
-<li id="<%= anchor comment %>">
+<li id="<%= id_for comment %>">
   <div class="avatar">
     <%= gravatar(comment.email, alt: '', title: comment.name) %>
   </div>
@@ -13,8 +13,8 @@
     <%= markdown comment.body %>
 
     <footer>
-      <%= link_to "##{comment.id}", url_anchor(comment), title: t('comment.shortcut_link'), class: :anchor %>
-      <%= link_to t('comment.reply'), "#{request.fullpath}#comment-form", class: :reply %>
+      <%= self_anchor comment %>
+      <%= link_to t('comment.reply'), "#{request.fullpath}#comment-form", data: { id: comment.id, name: comment.name }, class: :reply %>
     </footer>
   </div>
 
