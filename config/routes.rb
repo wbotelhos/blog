@@ -10,10 +10,12 @@ Blog::Application.routes.draw do
   resource :articles, except: :destroy
 
   controller :comments do
+    get  '/articles/:article_id/comments/:id/edit' , action: :edit   , as: :edit_comments
     post '/articles/:article_id/comments'          , action: :create , as: :article_comments
     put  '/articles/:article_id/comments/:id'      , action: :update , as: :update_comments
-    get  '/articles/:article_id/comments/:id/edit' , action: :edit   , as: :edit_comments
   end
+
+  get '/:slug' , to: 'articles#show', as: :slug
 
   # controller :articles do
   #   get   '/articles/drafts',         action: :drafts
@@ -68,6 +70,4 @@ Blog::Application.routes.draw do
   #   put   '/users/:id',       action: :update, as: :users_update
   #   get   '/users/:id/edit',  action: :edit,   as: :users_edit
   # end
-
-  get '/:slug' , to: 'articles#show', as: :slug
 end
