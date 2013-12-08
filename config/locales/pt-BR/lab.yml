@@ -1,13 +1,13 @@
-pt-BR:
-  lab:
-    edit: 'Editar Projeto'
-    loading: 'Loading informations...'
-    new: 'Novo Projeto'
-    none: 'Nenhum projeto publicado!'
-    other: 'Labs'
-    publish: 'Publicar'
-    update: 'Atualizar'
-    status:
-      new: 'Novo'
-      draft: 'Rascunho'
-      published: 'Publicado'
+# pt-BR:
+#   lab:
+#     edit: 'Editar Projeto'
+#     loading: 'Loading informations...'
+#     new: 'Novo Projeto'
+#     none: 'Nenhum projeto publicado!'
+#     other: 'Labs'
+#     publish: 'Publicar'
+#     update: 'Atualizar'
+#     status:
+#       new: 'Novo'
+#       draft: 'Rascunho'
+#       published: 'Publicado'

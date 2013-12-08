@@ -1,34 +1,34 @@
-pt-BR:
-  form:
-    buttons:
-      login: 'Acessar'
-      search: 'Pesquisar'
+# pt-BR:
+#   form:
+#     buttons:
+#       login: 'Acessar'
+#       search: 'Pesquisar'
 
-    labels:
-      query: 'Pesquisar'
+#     labels:
+#       query: 'Pesquisar'
 
-  helpers:
-    submit:
-      article:
-        create: 'Salvar'
-        update: 'Atualizar'
+#   helpers:
+#     submit:
+#       article:
+#         create: 'Salvar'
+#         update: 'Atualizar'
 
-      category:
-        create: 'Salvar'
-        update: 'Atualizar'
+#       category:
+#         create: 'Salvar'
+#         update: 'Atualizar'
 
-      donator:
-        create: 'Salvar'
-        update: 'Atualizar'
+#       donator:
+#         create: 'Salvar'
+#         update: 'Atualizar'
 
-      lab:
-        create: 'Salvar'
-        update: 'Atualizar'
+#       lab:
+#         create: 'Salvar'
+#         update: 'Atualizar'
 
-      link:
-        create: 'Salvar'
-        update: 'Atualizar'
+#       link:
+#         create: 'Salvar'
+#         update: 'Atualizar'
 
-      user:
-        create: 'Salvar'
-        update: 'Atualizar'
+#       user:
+#         create: 'Salvar'
+#         update: 'Atualizar'
