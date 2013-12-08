@@ -1,4 +1,4 @@
-<%= form_for [@article, @comment], url: update_comments_path(@article, @comment) do |f| %>
+<%= form_for [@article, @comment] do |f| %>
   <%= f.hidden_field :article_id %>
   <%= f.hidden_field :parent_id %>
   <%= hidden_field_tag :bot, true %>
