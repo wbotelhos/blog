@@ -4,26 +4,21 @@ class Article < ActiveRecord::Base
   MORE_TAG = '<!--more-->'
 
   attr_readonly :user_id
-  attr_accessible :title, :slug, :body, :category_ids, :published_at
+  attr_accessible :title, :slug, :body, :published_at
 
   belongs_to :user, counter_cache: true
   has_many :comments, dependent: :destroy
-  has_and_belongs_to_many :categories
 
   scope :drafts    , -> { where('published_at is null or published_at > ?', Time.zone.now).order 'created_at desc' }
   scope :ordered   , -> { order 'published_at desc' }#
   scope :published , -> { where 'published_at is not null and published_at <= ?', Time.zone.now }#
   scope :recents   , -> { limit 10 }#
 
-  scope :by_category, -> category do
-    self.all(joins: :categories, conditions: { 'categories.slug' => category }) & self.published
-  end
-
   before_validation :generate_slug, if: -> e { e.title.present?}
 
-  validates :title, presence: true, uniqueness: true
-  validates :user, :categories, presence: true
-  validates :slug, presence: true, if: -> e { e.title.present?}
+  validates :title , presence: true , uniqueness: true
+  validates :user  , presence: true
+  validates :slug  , presence: true , if: -> e { e.title.present?}
 
   def text
     body.gsub /\s{1}#{MORE_TAG}/, ''

@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   before_filter :require_login, only: [:new, :create, :edit, :preview, :update, :drafts]
-  helper_method :categories, :check_category?
 
   def index #
     @year_month_articles = Article
@@ -19,7 +18,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def new
+  def new#
     @article = Article.new
   end
 
@@ -39,7 +38,7 @@ class ArticlesController < ApplicationController
     @article = Article.find params[:id]
   end
 
-  def update
+  def update#
     @article = Article.find params[:id]
 
     if @article.update_attributes params[:article]
@@ -57,26 +56,12 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    params[:article][:category_ids] ||= []
-
     @article = current_user.articles.new params[:article]
 
     if @article.save
-      redirect_to articles_edit_url(@article), notice: t('flash.articles.draft.notice')
+      redirect_to slug_url @article.slug
     else
       render :new
-    end
-  end
-
-  private
-
-  def categories
-    @categories ||= Category.scoped
-  end
-
-  def check_category?(article, category)
-    if !article.nil? && !article.categories.nil? && article.categories.include?(category)
-      'checked="checked"'
     end
   end
 end
