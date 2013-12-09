@@ -25,11 +25,11 @@ class ArticlesController < ApplicationController
 
   def show #
     @article = Article.where('slug = ?', params[:slug]).first
-    @comment = @article.comments.new
 
     if @article.present?
-      @title = @article.title
+      @comment       = @article.comments.new
       @root_comments = @article.comments.roots
+      @title         = @article.title
     else
       redirect_to root_url, alert: t('article.flash.not_found', uri: params[:slug])
     end

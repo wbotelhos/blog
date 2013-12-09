@@ -7,6 +7,7 @@ pt-BR:
 
   article:
     drafts: 'Rascunhos'
+    new: 'Novo Artigo'
     share_it: 'Compartilhe este artigo!'#
 
     flash:
@@ -18,7 +19,6 @@ pt-BR:
         update: 'Atualizar'
 
     # edit: 'Editar Artigo'
-    # new: 'Novo Artigo'
     # none: 'Nenhum artigo publicado!'
     # other: 'Artigos'
     # permalink: 'Permalink'
