@@ -55,16 +55,6 @@ module ApplicationHelper
     Redcarpet::Markdown.new(renderer, options).render(content).html_safe
   end
 
-  def title(section = nil)
-    if content_for?(:title).present?
-      section = " | #{content_for :title}"
-    elsif section
-      section = " | #{section}"
-    end
-
-    "#{CONFIG['author']}#{section}"
-  end
-
   def donate_button(item_name = 'wbotelhos.com')
     url = "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=#{item_name}"
     label = content_tag(:i, nil, class: 'icon-heart-empty') + t('navigation.donate')
