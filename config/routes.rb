@@ -7,12 +7,8 @@ Blog::Application.routes.draw do
   get  '/logout' , to: 'sessions#destroy'
   post '/login'  , to: 'sessions#create'
 
-  resource :articles, except: :destroy
-
-  controller :comments do
-    get  '/articles/:article_id/comments/:id/edit' , action: :edit   , as: :edit_comments
-    post '/articles/:article_id/comments'          , action: :create , as: :article_comments
-    put  '/articles/:article_id/comments/:id'      , action: :update , as: :update_comments
+  resources :articles, except: [:destroy, :show] do
+    resources :comments, only: [:edit, :create, :update]
   end
 
   get '/:slug' , to: 'articles#show', as: :slug
