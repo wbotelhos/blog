@@ -2,7 +2,7 @@
   <header>
     <h1><%= link_to @article.title, slug_path(@article.slug) %></h1>
 
-    <div class="published-at"><%= l @article.published_at %></div>
+    <div class="published-at"><%= published_at @article %></div>
 
     <div class="body">
       <%= markdown @article.body %>

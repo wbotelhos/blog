@@ -7,6 +7,10 @@ module ArticleHelper
     slug_url(article.slug, anchor: anchor)
   end
 
+  def published_at(article)
+    l article.published_at || article.created_at
+  end
+
   def twitter_button(options = {})#
     options = {
       text: %("#{options[:text]}" ~ ),
