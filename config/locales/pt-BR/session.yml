@@ -1,5 +1,7 @@
 pt-BR:
-  sessions:
+  session:
+    access: 'Acessar'
+
     flash:
       create:
         alert: 'E-mail ou senha inválida!'

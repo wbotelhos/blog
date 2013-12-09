@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
       redirect_to admin_url
     else
-      flash.now[:alert] = t('sessions.flash.create.alert')
+      flash.now[:alert] = t('session.flash.create.alert')
       @email            = params[:email]
 
       render :new
