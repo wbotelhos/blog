@@ -2,6 +2,6 @@
 
 <%= favicon_link_tag %>
 
-<title><%= @title || "#{CONFIG['author']} - #{CONFIG['description']}" %></title>
+<title><%= "#{@title || CONFIG['description']} - #{CONFIG['author']}" %></title>
 
 <%= csrf_meta_tags %>
