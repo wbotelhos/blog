@@ -4,7 +4,6 @@ class ArticlesController < ApplicationController
 
   def drafts
     @articles = Article.drafts
-    render layout: 'admin'
   end
 
   def index #
@@ -30,7 +29,6 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
-    render layout: 'admin'
   end
 
   def show #
@@ -47,7 +45,6 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find params[:id]
-    render layout: 'admin'
   end
 
   def update
