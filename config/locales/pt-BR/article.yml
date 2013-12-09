@@ -1,10 +1,21 @@
 pt-BR:
+  activerecord:
+    attributes:
+      article:
+        body: 'Conteúdo'
+        title: 'Título'
+
   article:
     drafts: 'Rascunhos'
     share_it: 'Compartilhe este artigo!'#
 
     flash:
       not_found: 'O artigo "%{uri}" não foi encontrado!'#
+
+  helpers:
+    submit:
+      article:
+        update: 'Atualizar'
 
     # edit: 'Editar Artigo'
     # new: 'Novo Artigo'

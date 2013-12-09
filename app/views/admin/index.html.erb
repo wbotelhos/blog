@@ -5,7 +5,7 @@
     <% @drafts.each do |article| %>
       <ul>
         <li>
-          <%= link_to article.title, slug_path(article.slug), class: :title %><br />
+          <%= link_to article.title, edit_article_path(article.id), class: :title %><br />
           <%= link_to slug_url(article.slug), slug_path(article.slug), class: :url %>
         </li>
       </ul>

@@ -1,11 +1,6 @@
 pt-BR:
   activerecord:
     # attributes:
-    #   article:
-    #     body: 'Conteúdo'
-    #     categories: 'Categoria'
-    #     title: 'Título *'
-
     #   category:
     #     name: 'Nome *'
 

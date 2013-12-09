@@ -2,20 +2,12 @@ class ArticlesController < ApplicationController
   before_filter :require_login, only: [:new, :create, :edit, :preview, :update, :drafts]
   helper_method :categories, :check_category?
 
-  def drafts
-    @articles = Article.drafts
-  end
-
   def index #
     @year_month_articles = Article
                             .select('published_at, slug, title')
                             .published
                             .ordered
                             .group_by { |criteria| criteria.published_at.strftime('%m/%Y') }
-  end
-
-  def preview
-    @article = Article.find params[:id]
   end
 
   def search
@@ -43,21 +35,17 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit
+  def edit#
     @article = Article.find params[:id]
   end
 
   def update
-    article = params[:article]
-
-    article[:category_ids] = [] if article[:category_ids].nil?
-
     @article = Article.find params[:id]
 
-    if @article.update_attributes article
-      redirect_to articles_edit_url(@article), notice: t('flash.articles.update.notice')
+    if @article.update_attributes params[:article]
+      redirect_to slug_url @article.slug
     else
-      render :edit, layout: 'admin'
+      render :edit
     end
   end
 
@@ -76,7 +64,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to articles_edit_url(@article), notice: t('flash.articles.draft.notice')
     else
-      render :new, layout: 'admin'
+      render :new
     end
   end
 

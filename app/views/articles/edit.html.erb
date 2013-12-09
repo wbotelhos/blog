@@ -1,64 +1,22 @@
-<div id="title">
-  <h2><%= t 'article.edit' %></h2>
-
-  <div id="status"><%= @article.status %></div>
-
-  <div id="actions">
-    <% if @article.published_at.nil? %>
-      <i class="icon-zoom-in icon-large"></i>
-      <%= link_to t('article.preview'), articles_preview_path(@article), id: 'draft', target: '_blank' %>
-    <% else %>
-      <i class="icon-link icon-large"></i>
-      <%= link_to @article.slug, article_slug(@article), id: 'published', target: '_blank' %>
-    <% end %>
-  </div>
-</div>
-
-<div class="clear"></div>
-
-<%= render 'shared/error_messages', entity: @article %>
-
-<%= form_for @article, url: articles_update_path, html: { class: 'article-form' } do |f| %>
-  <div id="fields">
-    <p>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </p>
-
-    <p>
-      <%= f.label :body %>
-      <%= f.text_area :body %>
-    </p>
+<%= form_for @article do |f| %>
+  <div class="placeholder">
+    <%= f.label :title %> <span class="mandatory">*</span>
+    <%= f.text_field :title, autofocus: true, required: true, class: :input %>
+    <%= errors_for @article, :title %>
   </div>
 
-  <div id="controls">
-    <h3><%= t 'article.publish' %></h3>
+  <div class="placeholder">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: :input %>
+  </div>
 
-    <%= f.submit t('article.update'), class: :update %>
-
-    <% if @article.published_at.nil? %>
-      <input type="button" value="<%= t 'article.publish' %>" class="publish" />
-    <% end %>
-
-    <div id="categories">
-      <h3><%= t 'category.other' %></h3>
-
-      <ul>
-        <% categories.each do |category| %>
-          <li>
-            <input id="category-<%= category.id %>" type="checkbox" name="article[category_ids][]" value="<%= category.id %>" <%= check_category?(@article, category) %> />
-            <label for="category-<%= category.id %>"><%= category.name %></label>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+  <div class="saver">
+    <%= f.submit name: nil, class: 'button green right' %>
   </div>
 <% end %>
 
-<script type="text/javascript">
+<script>
   $(function() {
-    $('.article-form').flury();
-    $('#article_title').focus();
-    $('#article_body').taby({ space: 2 });
+    $('#article_body').taby();
   });
 </script>
