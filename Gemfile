@@ -2,9 +2,6 @@ source 'https://rubygems.org'
 
 gem 'acts_as_tree'
 gem 'asset_sync'
-gem 'cancan'
-gem 'devise'
-gem 'html_compress'
 gem 'mysql2'
 gem 'pygments.rb'
 gem 'rails'         , '~> 3.2.16'
@@ -33,6 +30,7 @@ group :development, :test do
 end
 
 group :production do
+  gem 'html_compress'
   gem 'unicorn'
 end
 
@@ -40,7 +38,6 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl'
-  gem 'mongoid-rspec'
   gem 'rack_session_access'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
