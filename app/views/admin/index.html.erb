@@ -1,5 +1,7 @@
 <div class="admin">
-  <%= link_to t('article.new'), new_article_path, class: 'button blue right' %>
+  <div class="buttons">
+    <%= link_to t('article.new'), new_article_path, class: 'button blue' %>
+  </div>
 
   <section class="archives">
     <h1><%= t 'article.drafts' %></h1>
