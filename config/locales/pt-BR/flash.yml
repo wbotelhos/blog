@@ -42,9 +42,6 @@ pt-BR:
 #         alert: 'Erro ao atualizar o link!'
 #         notice: 'Link atualizado com sucesso!'
 
-#     auth:
-#       alert: 'Você precisa estar logado!'
-
 #     comments:
 #       create:
 #         notice: 'Seu comentário foi adicionado!'

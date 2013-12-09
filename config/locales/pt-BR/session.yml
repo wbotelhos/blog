@@ -1,7 +1,5 @@
 pt-BR:
   session:
     access: 'Acessar'
-
-    flash:
-      create:
-        alert: 'E-mail ou senha inválida!'
+    denied: 'E-mail ou senha inválida!'
+    required: 'Você precisa estar logado!'
