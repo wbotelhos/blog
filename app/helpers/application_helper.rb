@@ -8,6 +8,10 @@ module ApplicationHelper
     content_tag(:span, errors[0], class: 'validation-error') if errors.present?
   end
 
+  def menu_icon(text, clazz, path) #
+    link_to '', path, alt: text, title: text, class: clazz
+  end
+
   def social_icon(text, clazz, path) #
     text = "#{text} <#{path.gsub /mailto:/, ''}>"
 

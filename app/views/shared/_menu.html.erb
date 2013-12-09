@@ -1,9 +1,14 @@
 <nav role="navigation" class="navigation">
-  <%= social_icon 'E-mail'   , 'icon i-envelope' , "mailto:#{CONFIG['email']}" %>
-  <%= social_icon 'Feed'     , 'icon i-feed'     , feed_url %>
-  <%= social_icon 'Github'   , 'icon i-github'   , "http://github.com/#{CONFIG['github']}" %>
-  <%= social_icon 'Linkedin' , 'icon i-linkedin' , "http://linkedin.com/in/#{CONFIG['linkedin']}" %>
-  <%= social_icon 'Twitter'  , 'icon i-twitter'  , "http://twitter.com/#{CONFIG['twitter']}" %>
+  <%= social_icon 'E-mail'   , 'i-envelope' , "mailto:#{CONFIG['email']}" %>
+  <%= social_icon 'Feed'     , 'i-feed'     , feed_url %>
+  <%= social_icon 'Github'   , 'i-github'   , "http://github.com/#{CONFIG['github']}" %>
+  <%= social_icon 'Linkedin' , 'i-linkedin' , "http://linkedin.com/in/#{CONFIG['linkedin']}" %>
+  <%= social_icon 'Twitter'  , 'i-twitter'  , "http://twitter.com/#{CONFIG['twitter']}" %>
+
+  <% if is_logged? %>
+    <%= menu_icon 'Admin'       , 'i-cog'  , admin_path %>
+    <%= menu_icon 'Novo artigo' , 'i-file' , new_article_path %>
+  <% end %>
 </nav>
 
 <div class="bio"><%= t 'user.bio' %></div>
