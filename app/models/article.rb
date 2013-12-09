@@ -10,7 +10,7 @@ class Article < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_and_belongs_to_many :categories
 
-  scope :drafts    , -> { where 'published_at is null or published_at > ?', Time.zone.now }
+  scope :drafts    , -> { where('published_at is null or published_at > ?', Time.zone.now).order 'created_at desc' }
   scope :ordered   , -> { order 'published_at desc' }#
   scope :published , -> { where 'published_at is not null and published_at <= ?', Time.zone.now }#
   scope :recents   , -> { limit 10 }#

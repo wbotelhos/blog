@@ -1,4 +1,14 @@
-<div id="welcome">
-  <h1><%= t 'navigation.dashboard' %></h1>
-  <p><%= t 'admin.description_html', name: current_user.name %></p>
+<div class="admin">
+  <section class="archives">
+    <h1><%= t 'article.drafts' %></h1>
+
+    <% @drafts.each do |article| %>
+      <ul>
+        <li>
+          <%= link_to article.title, slug_path(article.slug), class: :title %><br />
+          <%= link_to slug_url(article.slug), slug_path(article.slug), class: :url %>
+        </li>
+      </ul>
+    <% end %>
+  </section>
 </div>
