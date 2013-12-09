@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     if @comment.update_attributes params[:comment]
       redirect_to slug_url(@article.slug, anchor: "comment-#{@comment.id}")
     else
-      render 'edit'
+      render :edit
     end
   end
 end
