@@ -1,4 +1,16 @@
 FactoryGirl.define do
+  factory :comment do
+    body             'body'
+    sequence(:email) { |i| "john#{i}@example.org" }
+    sequence(:name)  { |i| "John #{i}" }
+    url              'http://example.org'
+
+    factory :comment_with_author do
+      author true
+      email  'author@example.org'
+    end
+  end
+
   factory :user do
     name                  'Washington Botelho'
     sequence(:email)      { |i| "wbotelhos#{i}@gmail.com" }
@@ -6,16 +18,11 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
-  factory :category do
-    sequence(:name) { |i| "category-#{i}" }
-  end
-
   factory :article do
     sequence(:title)  { |i| "title #{i}" }
     sequence(:slug)   { |i| "title-#{i}" }
     body              'body <!--more--> body'
     association       :user
-    categories        { |categories| [categories.association(:category)] }
 
     factory :article_draft do
       created_at    Time.zone.now
@@ -27,24 +34,6 @@ FactoryGirl.define do
       created_at    Time.zone.local(1984, 10, 23)
       published_at  Time.zone.local(1984, 10, 23)
       updated_at    Time.zone.local(1984, 10, 23)
-    end
-  end
-
-  factory :article_category do
-    association :article
-    association :category
-  end
-
-  factory :comment do
-    sequence(:name)   { |i| "name #{i}" }
-    sequence(:email)  { |i| "email#{i}@mail.com" }
-    url               'http://url.com'
-    body              'body'
-    association       :article
-
-    factory :comment_with_author do
-      author          true
-      email           'author@email.com'
     end
   end
 
