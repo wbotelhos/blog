@@ -1,5 +1,4 @@
 <%= form_for [@article, @comment], url: article_comments_path(@article, anchor: :new_comment) do |f| %>
-  <%= f.hidden_field :article_id %>
   <%= f.hidden_field :parent_id %>
   <%= hidden_field_tag :bot, true %>
 
