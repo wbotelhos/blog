@@ -1,5 +1,3 @@
-# coding: utf-8
-
 class CommentsController < ApplicationController
   before_filter :require_login, only: :update
 
