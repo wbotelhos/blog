@@ -42,7 +42,7 @@ class ArticlesController < ApplicationController
     @article = Article.find params[:id]
 
     if @article.update_attributes params[:article]
-      redirect_to slug_url @article.slug
+      redirect_to edit_article_url @article
     else
       render :edit
     end
