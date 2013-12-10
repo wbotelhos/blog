@@ -4,6 +4,8 @@
 
     <div class="published-at"><%= published_at @article %></div>
 
+    <%= link_to t('article.edit'), edit_article_path(@article), class: 'button green-dark edit' if is_logged? %>
+
     <div class="body">
       <%= markdown @article.body %>
     </div>
