@@ -1,4 +1,22 @@
 FactoryGirl.define do
+  factory :article do
+    association       :user
+    body              'The Article'
+    sequence(:title)  { |i| "Title #{i}" }
+
+    factory :article_draft do
+      created_at   Time.zone.now
+      published_at nil
+      updated_at   Time.zone.now
+    end
+
+    factory :article_published do
+      created_at   Time.zone.local(1984, 10, 23)
+      published_at Time.zone.local(1984, 10, 23)
+      updated_at   Time.zone.local(1984, 10, 23)
+    end
+  end
+
   factory :comment do
     body             'body'
     sequence(:email) { |i| "john#{i}@example.org" }
@@ -16,25 +34,6 @@ FactoryGirl.define do
     sequence(:email)      { |i| "wbotelhos#{i}@gmail.com" }
     password              'password'
     password_confirmation 'password'
-  end
-
-  factory :article do
-    sequence(:title)  { |i| "title #{i}" }
-    sequence(:slug)   { |i| "title-#{i}" }
-    body              'body <!--more--> body'
-    association       :user
-
-    factory :article_draft do
-      created_at    Time.zone.now
-      updated_at    Time.zone.now
-      published_at  nil
-    end
-
-    factory :article_published do
-      created_at    Time.zone.local(1984, 10, 23)
-      published_at  Time.zone.local(1984, 10, 23)
-      updated_at    Time.zone.local(1984, 10, 23)
-    end
   end
 
   factory :lab do

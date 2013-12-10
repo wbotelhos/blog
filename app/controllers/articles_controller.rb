@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
     @year_month_articles = Article
                             .select('published_at, slug, title')
                             .published
-                            .ordered
+                            .by_published
                             .group_by { |criteria| criteria.published_at.strftime('%m/%Y') }
   end
 

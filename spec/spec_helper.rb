@@ -15,8 +15,8 @@ Spork.prefork do
 
   RSpec.configure do |config|
     config.filter_run focus: true
-    config.infer_base_class_for_anonymous_controllers = false
-    config.run_all_when_everything_filtered = true
+    config.infer_base_class_for_anonymous_controllers      = false
+    config.run_all_when_everything_filtered                = true
     config.treat_symbols_as_metadata_keys_with_true_values = true
 
     config.before :suite do

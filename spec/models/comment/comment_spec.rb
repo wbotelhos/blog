@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe Comment do
+  it 'has a valid factory' do
+    FactoryGirl.build(:comment).should be_valid
+  end
+
   it { should validate_presence_of :article }
   it { should validate_presence_of :body }
   it { should validate_presence_of :email }
   it { should validate_presence_of :name }
-
-  it 'has a valid factory' do
-    FactoryGirl.build(:comment).should be_valid
-  end
 
   context :create do
     let!(:article) { FactoryGirl.create :article }
@@ -45,7 +45,7 @@ describe Comment do
       let!(:parent)  { FactoryGirl.create :comment, article: article }
       let!(:child)   { FactoryGirl.create :comment, article: article, parent: parent }
 
-      it 'returns just the root comments', :focus do
+      it 'returns just the root comments' do
         expect(Comment.roots).to eq [parent]
       end
     end
