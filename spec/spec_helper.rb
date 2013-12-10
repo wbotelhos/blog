@@ -1,30 +1,38 @@
-ENV['RAILS_ENV'] ||= 'test'
+require 'rubygems'
+require 'spork'
 
-require File.expand_path('../../config/environment', __FILE__)
-require 'capybara/rails'
-require 'database_cleaner'
-require 'rspec/rails'
+Spork.prefork do
+  ENV['RAILS_ENV'] ||= 'test'
 
-Rails.logger.level = 4 unless ENV['LOG']
+  require File.expand_path('../../config/environment', __FILE__)
+  require 'capybara/rails'
+  require 'database_cleaner'
+  require 'rspec/rails'
 
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  Rails.logger.level = 4 unless ENV['LOG']
 
-RSpec.configure do |config|
-  config.filter_run focus: true
-  config.infer_base_class_for_anonymous_controllers = false
-  config.run_all_when_everything_filtered = true
-  config.treat_symbols_as_metadata_keys_with_true_values = true
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
-  config.before :suite do
-    DatabaseCleaner.clean_with :truncation, { pre_count: true }
+  RSpec.configure do |config|
+    config.filter_run focus: true
+    config.infer_base_class_for_anonymous_controllers = false
+    config.run_all_when_everything_filtered = true
+    config.treat_symbols_as_metadata_keys_with_true_values = true
+
+    config.before :suite do
+      DatabaseCleaner.clean_with :truncation, { pre_count: true }
+    end
+
+    config.before { DatabaseCleaner.strategy = :transaction }
+
+    config.before js: true do
+      DatabaseCleaner.strategy = :truncation, { pre_count: true }
+    end
+
+    config.before { DatabaseCleaner.start }
+    config.after  { DatabaseCleaner.clean }
   end
+end
 
-  config.before { DatabaseCleaner.strategy = :transaction }
-
-  config.before js: true do
-    DatabaseCleaner.strategy = :truncation, { pre_count: true }
-  end
-
-  config.before { DatabaseCleaner.start }
-  config.after  { DatabaseCleaner.clean }
+Spork.each_run do
 end

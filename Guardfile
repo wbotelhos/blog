@@ -8,3 +8,8 @@ guard :rspec, all_on_start: false, all_after_pass: false do
   watch(%r(^spec/.+_spec\.rb$))
   watch('spec/spec_helper.rb')                  { 'spec' }
 end
+
+guard :spork, wait: 120, test_unit: false, cucumber: false, rspec_env: { RAILS_ENV: :test } do
+  watch('Gemfile.lock')
+  watch('spec/spec_helper.rb')
+end
