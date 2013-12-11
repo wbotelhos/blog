@@ -4,16 +4,8 @@ FactoryGirl.define do
     body              'The Article'
     sequence(:title)  { |i| "Title #{i}" }
 
-    factory :article_draft do
-      created_at   Time.zone.now
-      published_at nil
-      updated_at   Time.zone.now
-    end
-
     factory :article_published do
-      created_at   Time.zone.local(1984, 10, 23)
       published_at Time.zone.local(1984, 10, 23)
-      updated_at   Time.zone.local(1984, 10, 23)
     end
   end
 
