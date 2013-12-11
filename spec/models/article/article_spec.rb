@@ -92,7 +92,7 @@ describe Article do
 
         context 'article without published date in the same time' do
           before do
-            Time.stub_chain(:now).and_return Time.local(2013, 1, 1, 0, 0, 0)
+            Time.chain(:now).and_return Time.local(2013, 1, 1, 0, 0, 0)
 
             @article_now = FactoryGirl.create :article, published_at: Time.now
           end

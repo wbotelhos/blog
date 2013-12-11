@@ -50,7 +50,7 @@ class ArticlesController < ApplicationController
 
   def publish
     article = Article.find params[:id]
-    params[:article][:published_at] = Time.zone.now
+    params[:article][:published_at] = Time.now
     article.update_attributes params[:article]
     redirect_to article_url(article.year, article.month, article.day, article.slug), notice: t('flash.articles.publish.notice')
   end
