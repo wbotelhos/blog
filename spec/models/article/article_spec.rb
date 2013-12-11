@@ -6,16 +6,21 @@ describe Article do
   end
 
   it { should belong_to :user }
-  it { should has_many(:comments).with_dependent :destroy }
+  xit { should has_many(:comments).with_dependent :destroy }
 
   it { should validate_presence_of :user }
   it { should validate_presence_of :title }
 
+  xit { should validate_uniqueness_of :title }
+
   context :create do
+    let(:user) { FactoryGirl.create :user }
+
     it 'creates a valid media' do
-      expect {
-        Article.create! title: 'title', body:  'body'
-      }.to_not raise_error
+      article      = Article.new title: 'title', body: 'body'
+      article.user = user
+
+      article.should be_valid
     end
   end
 
@@ -56,7 +61,7 @@ describe Article do
       let!(:articles) { FactoryGirl.create_list :article, 9 }
 
       it 'limits the quantity' do
-        expect(Article.recents).to eq 10
+        expect(Article.recents).to have(10).items
       end
     end
 
@@ -92,12 +97,12 @@ describe Article do
 
         context 'article without published date in the same time' do
           before do
-            Time.chain(:now).and_return Time.local(2013, 1, 1, 0, 0, 0)
+            Time.stub(:now).and_return Time.local(2013, 1, 1, 0, 0, 0)
 
             @article_now = FactoryGirl.create :article, published_at: Time.now
           end
 
-          it 'is ignored', :focus do
+          it 'is ignored' do
             expect(Article.published).to include @article_now
           end
         end

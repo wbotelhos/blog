@@ -33,19 +33,8 @@ FactoryGirl.define do
 
   factory :user do
     name                  'Washington Botelho'
-    sequence(:email)      { |i| "wbotelhos#{i}@gmail.com" }
     password              'password'
     password_confirmation 'password'
-  end
-
-  factory :link do
-    sequence(:name) { |i| "name #{i}" }
-    url             'http://url.com'
-  end
-
-  factory :donator do
-    name              'Donator'
-    sequence(:email)  { |i| "donator#{i}@mail.com" }
-    amount            10.00
+    sequence(:email)      { |i| "wbotelhos#{i}@gmail.com" }
   end
 end

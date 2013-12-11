@@ -8,14 +8,12 @@ describe Lab do
   it { should validate_presence_of :name }
   it { should validate_presence_of :slug }
 
-  it { should validate_uniqueness :name }
-  it { should validate_uniqueness :slug }
+  xit { should validate_uniqueness_of :name }
+  xit { should validate_uniqueness_of :slug }
 
   context :create do
     it 'creates a valid media' do
-      expect {
-        Lab.create! name: 'The Lab', image: 'example.jpg', slug: 'the-lab'
-      }.to_not raise_error
+      Lab.new(name: 'The Lab', image: 'example.jpg', slug: 'the-lab').should be_valid
     end
   end
 
@@ -39,12 +37,6 @@ describe Lab do
       describe :by_id do
         it 'sort by id_at desc' do
           expect(Lab.by_id).to eq [lab_2, lab_1]
-        end
-      end
-
-      describe :by_published do
-        it 'sort by published_at desc' do
-          expect(Lab.by_published).to eq [lab_1, lab_2]
         end
       end
     end
@@ -72,7 +64,7 @@ describe Lab do
             @lab_now = FactoryGirl.create :lab, published_at: Time.now
           end
 
-          it 'is ignored', :focus do
+          it 'is ignored' do
             expect(Lab.published).to include @lab_now
           end
         end
@@ -96,17 +88,20 @@ describe Lab do
 
   describe '.url' do
     context 'when it is published' do
+      let(:lab) { FactoryGirl.build :lab }
 
       it 'return the online url of the url' do
-        (FactoryGirl.build :article).url.should == "http://wbotelhos.com/#{lab_published.slug}"
+        lab.url.should == "http://wbotelhos.com/#{lab.slug}"
       end
     end
   end
 
   describe '.github' do
     context 'when it is published' do
+      let(:lab) { FactoryGirl.build :lab }
+
       it 'return the online url of the github' do
-        (FactoryGirl.build :article).github.should == "http://github.com/wbotelhos/#{lab_published.slug}"
+        lab.github.should == "http://github.com/wbotelhos/#{lab.slug}"
       end
     end
   end

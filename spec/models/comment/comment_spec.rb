@@ -16,21 +16,22 @@ describe Comment do
     let!(:article) { FactoryGirl.create :article }
 
     it 'creates a valid media' do
-      expect {
-        comment = Comment.new(
-          article_id: article.id,
-          body:       'body',
-          email:      'john@example.org',
-          name:       'name',
-          url:        'http://example.org'
-        )
+      comment = Comment.new(
+        article_id: article.id,
+        body:       'body',
+        email:      'john@example.org',
+        name:       'name',
+        url:        'http://example.org'
+      )
 
-        comment.parent = comment
-        comment.save!
-      }.to_not raise_error
+      comment.parent = comment
+      comment.should be_valid
     end
 
-    it 'validates the email' do
+  end
+
+  context :format do
+    it 'validates the email format' do
       expect(FactoryGirl.build(:comment, email: 'fail')).to be_invalid
       expect(FactoryGirl.build(:comment, email: 'fail@')).to be_invalid
       expect(FactoryGirl.build(:comment, email: 'fail@fail')).to be_invalid
@@ -42,8 +43,8 @@ describe Comment do
 
   context :scope do
     describe :roots do
-      let!(:parent)  { FactoryGirl.create :comment }
-      let!(:child)   { FactoryGirl.create :comment, parent: parent }
+      let!(:parent) { FactoryGirl.create :comment }
+      let!(:child)  { FactoryGirl.create :comment, parent: parent }
 
       it 'returns just the root comments' do
         expect(Comment.roots).to eq [parent]
