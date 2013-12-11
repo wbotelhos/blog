@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe FeedsController do
-  let(:article_draft) { FactoryGirl.create :article_draft }
-  let(:article_published) { FactoryGirl.create :article_published }
-  let(:criteria) { mock_model(Article).as_null_object }
+  let(:criteria) { double.as_null_object }
 
   describe 'GET #feed' do
     before do
@@ -11,14 +9,19 @@ describe FeedsController do
       criteria.stub(:recents).and_return criteria
     end
 
-    it 'filter by published' do
+    it 'is filtered by published' do
       Article.should_receive :published
-      get :feed
+      get :index
     end
 
-    it 'filter by recents' do
+    it 'is filtered by recents' do
       criteria.should_receive :recents
-      get :feed
+      get :index
+    end
+
+    it 'is sorted by published date' do
+      criteria.should_receive :by_published
+      get :index
     end
   end
 end

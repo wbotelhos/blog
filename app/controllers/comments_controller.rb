@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :require_login, only: :update
+  before_filter :require_login, except: :create
 
   def create
     @article        = Article.find params[:article_id]
@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment.author = is_logged?
 
     if @comment.save
-      redirect_to slug_url(@article.slug, anchor: "comment-#{@comment.id}")
+      redirect_to slug_url @article.slug, anchor: "comment-#{@comment.id}"
     else
       render template: 'articles/show'
     end
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     @comment = @article.comments.find params[:id]
 
     if @comment.update_attributes params[:comment]
-      redirect_to slug_url(@article.slug, anchor: "comment-#{@comment.id}")
+      redirect_to slug_url @article.slug, anchor: "comment-#{@comment.id}"
     else
       render :edit
     end

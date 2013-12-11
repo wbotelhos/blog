@@ -1,19 +1,17 @@
 require 'spec_helper'
 
 describe CommentsController do
-  context 'create comment' do
-    let(:article) { mock_model(Article) }
-    let(:comment) { Comment.new }
+  context 'accessing the admin area' do
+    context :unlogged do
+      it 'redirect to the login page' do
+        get :edit, article_id: 1, id: 1
+        response.should redirect_to login_path
+      end
 
-    before do
-      Article.stub find: article
-      controller.stub_chain(:article, :comments, new: comment)
-      comment.stub save: true
-    end
-
-    xit 'redirects to the article page' do
-      post :create, article_id: article.id
-      response.should redirect_to article_path(article.id)
+      it 'redirect to the login page' do
+        put :update, article_id: 1, id: 1
+        response.should redirect_to login_path
+      end
     end
   end
 end
