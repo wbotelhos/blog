@@ -30,6 +30,9 @@ class LabsController < ApplicationController
     render layout: 'admin'
   end
 
+  def show
+  end
+
   def update
     @lab = Lab.find params[:id]
 
