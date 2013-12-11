@@ -18,6 +18,7 @@ FactoryGirl.define do
   end
 
   factory :comment do
+    association      :article
     body             'body'
     sequence(:email) { |i| "john#{i}@example.org" }
     sequence(:name)  { |i| "John #{i}" }
