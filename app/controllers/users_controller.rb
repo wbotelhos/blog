@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 
   layout 'admin'
 
+  def donate
+
+  end
+
   def edit
     @user = User.find params[:id]
   end

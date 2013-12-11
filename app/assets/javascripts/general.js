@@ -103,3 +103,13 @@ var CommentResponder = {
     this.body.val(text);
   }
 };
+
+$(function() {
+  var heart = $('.i-heart');
+
+  $('#logo').on('mouseover', function() {
+    heart.css('color', '#FF9BC3');
+  }).on('mouseout', function() {
+    heart.removeAttr('style');
+  });
+});
