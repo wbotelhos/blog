@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_filter :require_login
+  before_filter :require_login, except: :donate
 
   layout 'admin'
 
   def donate
-
+    render layout: 'application'
   end
 
   def edit
