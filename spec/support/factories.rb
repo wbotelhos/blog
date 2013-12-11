@@ -22,28 +22,20 @@ FactoryGirl.define do
     end
   end
 
+  factory :lab do
+    sequence(:name) { |i| "Lab #{i}" }
+    sequence(:slug) { |i| "lab-#{i}" }
+
+    factory :lab_published do
+      published_at Time.zone.local(1984, 10, 23)
+    end
+  end
+
   factory :user do
     name                  'Washington Botelho'
     sequence(:email)      { |i| "wbotelhos#{i}@gmail.com" }
     password              'password'
     password_confirmation 'password'
-  end
-
-  factory :lab do
-    sequence(:name) { |i| "name #{i}" }
-    sequence(:slug) { |i| "name-#{i}" }
-
-    factory :lab_draft do
-      created_at    Time.zone.now
-      published_at  nil
-      updated_at    Time.zone.now
-    end
-
-    factory :lab_published do
-      created_at    Time.zone.local(1984, 10, 23)
-      published_at  Time.zone.local(1984, 10, 23)
-      updated_at    Time.zone.local(1984, 10, 23)
-    end
   end
 
   factory :link do

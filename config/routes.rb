@@ -11,7 +11,10 @@ Blog::Application.routes.draw do
     resources :comments, only: [:edit, :create, :update]
   end
 
-  get '/:slug' , to: 'articles#show', as: :slug
+  resources :labs, except: [:destroy, :show]
+
+  get '/:slug' , to: 'labs#show'     , as: :slug, constraints: ParamConstraints.new
+  get '/:slug' , to: 'articles#show' , as: :slug
 
   # controller :articles do
   #   get   '/articles/drafts',         action: :drafts
@@ -38,16 +41,6 @@ Blog::Application.routes.draw do
   #   get   '/donators/new',      action: :new
   #   put   '/donators/:id',      action: :update, as: :donators_update
   #   get   '/donators/:id/edit', action: :edit,   as: :donators_edit
-  # end
-
-
-  # controller :labs do
-  #   get   '/labs',          action: :index
-  #   post  '/labs',          action: :create
-  #   get   '/labs/drafts',   action: :drafts
-  #   get   '/labs/new',      action: :new
-  #   put   '/labs/:id',      action: :update, as: :labs_update
-  #   get   '/labs/:id/edit', action: :edit,   as: :labs_edit
   # end
 
   # controller :links do
