@@ -14,8 +14,7 @@ Blog::Application.routes.draw do
 
   resources :labs, except: [:destroy, :show]
 
-  resources :users, only: :update do
-  end
+  resources :users, only: :update
 
   get '/:slug' , to: 'labs#show'     , as: :slug, constraints: ParamConstraints.new
   get '/:slug' , to: 'articles#show' , as: :slug
