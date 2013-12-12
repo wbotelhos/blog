@@ -14,7 +14,7 @@ describe PasswordEncryptor do
       encryption  = PasswordEncryptor.encrypt :password
       actual_hash = PasswordEncryptor.hasher :password, encryption[:salt]
 
-      actual_hash.should == encryption[:hash]
+      expect(actual_hash).to eq encryption[:hash]
     end
   end
 
