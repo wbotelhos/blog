@@ -287,6 +287,7 @@ DEPENDENCIES
   quiet_assets
   rack_session_access
   rails (~> 3.2.16)
+  rake
   rb-fsevent
   redcarpet
   rspec-rails
