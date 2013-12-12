@@ -4,7 +4,7 @@ module SessionHelper
 
     fill_in 'E-mail', with: options[:with]
     fill_in 'Senha', with: options[:password] || 'password'
-    uncheck 'bot'
+    uncheck 'not_human'
 
     click_button 'Acessar'
   end
