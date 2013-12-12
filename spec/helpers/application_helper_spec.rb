@@ -20,7 +20,7 @@ describe ApplicationHelper do
 
     context 'with alt parameter' do
       it 'builds the html with alt' do
-        expect(helper.gravatar(email, alt: :alt)).to match 'alt="alt"'
+        expect(helper.gravatar email, alt: :alt).to match 'alt="alt"'
       end
     end
   end
