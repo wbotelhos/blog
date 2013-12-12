@@ -5,12 +5,18 @@
   <%= social_icon t(:linkedin) , 'i-linkedin' , "http://linkedin.com/in/#{CONFIG['linkedin']}" %>
   <%= social_icon t(:twitter)  , 'i-twitter'  , "http://twitter.com/#{CONFIG['twitter']}" %>
 
-  <%= menu_icon t('donate.title'), 'i-heart', donate_url %>
-
   <% if is_logged? %>
     <%= menu_icon 'Admin'       , 'i-cog'  , admin_path %>
     <%= menu_icon 'Novo artigo' , 'i-file' , new_article_path %>
   <% end %>
+
+  <%= menu_icon t(:donate), 'i-heart', 'javascript:void(0);' %>
+
+  <div id="donations">
+    <%= link_to 'Git tip', 'http://gittip.com/wbotelhos', target: :_blank %>
+    <span>•</span>
+    <%= link_to 'Paypal', 'http://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=wbotelhos.com', target: :_blank %>
+  </div>
 </nav>
 
 <div class="bio"><%= t 'user.bio' %></div>

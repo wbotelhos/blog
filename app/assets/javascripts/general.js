@@ -105,11 +105,9 @@ var CommentResponder = {
 };
 
 $(function() {
-  var heart = $('.i-heart');
+  var donations = $('#donations');
 
-  $('#logo').on('mouseover', function() {
-    heart.css('color', '#FF9BC3');
-  }).on('mouseout', function() {
-    heart.removeAttr('style');
+  $('.i-heart').on('click', function(e) {
+    donations.slideToggle('fast');
   });
 });

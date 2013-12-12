@@ -1,8 +1,5 @@
 pt-BR:
-  donate:
-    description: 'Thank you!'
-    title: 'Thanks! <3'
-
+  donate: 'Thank you! <3'
   email: 'E-mail'
   feed: 'Feed'
   github: 'Github'

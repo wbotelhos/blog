@@ -1,11 +1,4 @@
 module ApplicationHelper
-  def donate_button(item_name = 'wbotelhos.com') # pending
-    url   = "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=#{item_name}"
-    label = content_tag(:i, nil, class: 'i-heart') + t(:donate)
-
-    link_to label, url, id: :donate, target: :_blank
-  end
-
   def errors_for(object, key)
     errors = object.errors.messages[key]
 

@@ -24,22 +24,4 @@ describe ApplicationHelper do
       end
     end
   end
-
-  describe '#donate_button' do
-    let(:item_name) { 'wbotelhos\.com' }
-
-    context 'without item_name parameter' do
-      it 'builds the html' do
-        expect(helper.donate_button).to match %r(https://www\.paypal.com/cgi-bin/webscr\?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=#{item_name})
-      end
-    end
-
-    context 'with item_name parameter' do
-      let(:item_name) { 'some_item_name' }
-
-      it 'builds the html' do
-        expect(helper.donate_button item_name).to match %r(https://www\.paypal.com/cgi-bin/webscr\?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=#{item_name})
-      end
-    end
-  end
 end

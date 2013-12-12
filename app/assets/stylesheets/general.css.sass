@@ -1,5 +1,6 @@
 .bio
   color: #444
+  font-size: 1.1em
   line-height: 1.4
   margin-bottom: 25px
   margin-top: 10px
@@ -9,22 +10,28 @@
   margin: 0 auto
   width: 95%
 
-.donation
-  text-align: center
+#donations
+  display: none
+  font-weight: bold
 
-  .gittip
-    display: block
-    margin-top: 30px
+  a
+    color: #DC5
+    font-size: 1.4em
+    margin-top: 5px
 
-  .title
-    color: #369
-    font-size: 3.2em
-    font-weight: bold
-    line-height: 1.1
-    margin: 10px 0 20px
+    &:hover
+      color: #6ECFF5
+      transition: color 0s ease 0s, color 0.2s ease-in 0s
 
-    i
-      color: #F00
+    &:active
+      color: #0AA5DF
+
+  span
+    color: #C2E8FA
+    font-size: 1.8em
+    padding-left: 2px
+    padding-right: 2px
+    vertical-align: middle
 
 .header
   margin-top: 10px
@@ -68,8 +75,8 @@
       color: #6ECFF5
       transition: color 0s ease 0s, color 0.2s ease-in 0s
 
-      &:active
-        color: #0AA5DF
+    &:active
+      color: #0AA5DF
 
   .i-heart
     color: #F00
