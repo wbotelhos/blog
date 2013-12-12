@@ -4,7 +4,7 @@ class Authenticator
 
     return unless user
 
-    actual_hash = PasswordEncryptor.hasher(password, user.password_salt)
+    actual_hash = PasswordEncryptor.hasher password, user.password_salt
 
     return user if user.password_hash == actual_hash
   end

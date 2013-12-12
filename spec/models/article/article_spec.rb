@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Article do
   it 'has a valid factory' do
-    FactoryGirl.build(:article).should be_valid
+    expect(FactoryGirl.build :article).to be_valid
   end
 
   it { should belong_to :user }
@@ -20,7 +20,7 @@ describe Article do
       article      = Article.new title: 'title', body: 'body'
       article.user = user
 
-      article.should be_valid
+      expect(article).to be_valid
     end
   end
 
@@ -37,7 +37,7 @@ describe Article do
 
     context 'on save' do
       it 'slug the title' do
-        article.slug.should == 'some-title'
+        expect(article.slug).to eq 'some-title'
       end
     end
 
@@ -48,7 +48,7 @@ describe Article do
       end
 
       it 'slug the title' do
-        article.slug.should == 'new-title'
+        expect(article.slug).to eq 'new-title'
       end
     end
   end

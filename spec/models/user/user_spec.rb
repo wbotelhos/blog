@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   it 'has a valid factory' do
-    FactoryGirl.build(:user).should be_valid
+    expect(FactoryGirl.build :user).to be_valid
   end
 
   it { should validate_presence_of :email }
@@ -13,12 +13,12 @@ describe User do
 
   context :create do
     it 'creates a valid media' do
-      User.new(
+      expect(User.new(
         email:                 'john@example.org',
         name:                  'John',
         password:              'password',
         password_confirmation: 'password'
-      ).should be_valid
+      )).to be_valid
     end
   end
 
@@ -43,12 +43,12 @@ describe User do
 
   context :confirmation do
     it 'has a invalid one' do
-      User.new(
+      expect(User.new(
         email:                 'john@example.org',
         name:                  'John',
         password:              'password',
         password_confirmation: 'password_wrong'
-      ).should_not be_valid
+      )).to_not be_valid
     end
   end
 end

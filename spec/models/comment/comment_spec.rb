@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Comment do
   it 'has a valid factory' do
-    FactoryGirl.build(:comment).should be_valid
+    expect(FactoryGirl.build :comment).to be_valid
   end
 
   it { should belong_to :article }
@@ -25,7 +25,7 @@ describe Comment do
       )
 
       comment.parent = comment
-      comment.should be_valid
+      expect(comment).to be_valid
     end
 
   end

@@ -3,29 +3,27 @@
 require 'spec_helper'
 
 describe String do
-  let(:text) { "City - São João del-rey ('!@#$alive%ˆ&*~^]}" }
-
   it 'slug blank' do
-    ' '.slug.should == ''
+    expect(' '.slug).to be_blank
   end
 
   it 'slug space' do
-    'a b'.slug.should == 'a-b'
+    expect('a b'.slug).to eq 'a-b'
   end
 
   it 'slug last dash' do
-    'a b !'.slug.should == 'a-b'
+    expect('a b !'.slug).to eq 'a-b'
   end
 
   it 'keeps underscore' do
-    '_'.slug.should == '_'
+    expect('_'.slug).to eq '_'
   end
 
   it 'replaces hyphen separator to just hyphen' do
-    'a - a'.slug.should == 'a-a'
+    expect('a - a'.slug).to eq 'a-a'
   end
 
   it 'slug none alpha alphanumeric' do
-    %(ok!@#$\%ˆ&*()+-={}|[]\\:";'<>?,./).slug.should == 'ok'
+    expect(%(ok!@#$\%ˆ&*()+-={}|[]\\:";'<>?,./).slug).to eq 'ok'
   end
 end

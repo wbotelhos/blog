@@ -5,7 +5,7 @@ describe AdminController do
     context :unlogged do
       it 'redirect to the login page' do
         get :index
-        response.should redirect_to login_path
+        expect(response).to redirect_to login_path
       end
     end
   end

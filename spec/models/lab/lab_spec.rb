@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Lab do
   it 'has a valid factory' do
-    FactoryGirl.build(:lab).should be_valid
+    expect(FactoryGirl.build :lab).to be_valid
   end
 
   it { should validate_presence_of :name }
@@ -13,7 +13,7 @@ describe Lab do
 
   context :create do
     it 'creates a valid media' do
-      Lab.new(name: 'The Lab', image: 'example.jpg', slug: 'the-lab').should be_valid
+      expect(Lab.new name: 'The Lab', image: 'example.jpg', slug: 'the-lab').to be_valid
     end
   end
 
@@ -21,11 +21,11 @@ describe Lab do
     let(:lab) { FactoryGirl.create :lab }
 
     it 'does not allow the same name'  do
-      expect(FactoryGirl.build(:lab, name: lab.name)).to be_invalid
+      expect(FactoryGirl.build :lab, name: lab.name).to be_invalid
     end
 
     it 'does not allow the same slug'  do
-      expect(FactoryGirl.build(:lab, slug: lab.slug)).to be_invalid
+      expect(FactoryGirl.build :lab, slug: lab.slug).to be_invalid
     end
   end
 
@@ -91,7 +91,7 @@ describe Lab do
       let(:lab) { FactoryGirl.build :lab }
 
       it 'return the online url of the url' do
-        lab.url.should == "http://wbotelhos.com/#{lab.slug}"
+        expect(lab.url).to eq "http://wbotelhos.com/#{lab.slug}"
       end
     end
   end
@@ -101,7 +101,7 @@ describe Lab do
       let(:lab) { FactoryGirl.build :lab }
 
       it 'return the online url of the github' do
-        lab.github.should == "http://github.com/wbotelhos/#{lab.slug}"
+        expect(lab.github).to eq "http://github.com/wbotelhos/#{lab.slug}"
       end
     end
   end

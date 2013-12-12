@@ -5,13 +5,13 @@ describe Authenticator do
 
   context 'with valid credentials' do
     it 'returns user' do
-      Authenticator.authenticate(user.email, 'password').should eql user
+      expect(Authenticator.authenticate user.email, :password).to eq user
     end
   end
 
   context 'with invalid credentials' do
     it 'returns nothing' do
-      Authenticator.authenticate(user.email, 'invalid').should be_nil
+      expect(Authenticator.authenticate user.email, :invalid).to be_nil
     end
   end
 end
