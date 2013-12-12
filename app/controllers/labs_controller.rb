@@ -11,11 +11,6 @@ class LabsController < ApplicationController
     end
   end
 
-  def drafts
-    @labs = Lab.drafts
-    render :index, layout: 'admin'
-  end
-
   def edit
     @lab = Lab.find params[:id]
     render layout: 'admin'
