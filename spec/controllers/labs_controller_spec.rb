@@ -1,25 +1,26 @@
 require 'spec_helper'
 
 describe LabsController do
-  context 'GET #drafts' do
-    context 'when unlogged' do
-      it 'redirect to login page' do
-        get :drafts
-        response.should redirect_to login_path
+  context 'accessing the admin area' do
+    context :unlogged do
+      it 'redirect to the login page' do
+        get :new
+        expect(response).to redirect_to login_path
       end
 
-      it 'shows mandatory login message'
-    end
-
-    context 'when logged' do
-      before do
-        @user = mock_model User
-        @user.stub(:id).and_return(1)
+      it 'redirect to the login page' do
+        get :edit, id: 1
+        expect(response).to redirect_to login_path
       end
 
-      xit 'redirect to the page' do
-        get :drafts, {}, { :user_id => @user.id }
-        assert_response :success
+      it 'redirect to the login page' do
+        put :update, id: 1
+        expect(response).to redirect_to login_path
+      end
+
+      it 'redirect to the login page' do
+        post :create
+        expect(response).to redirect_to login_path
       end
     end
   end
