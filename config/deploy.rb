@@ -32,7 +32,6 @@ namespace :deploy do
     update
     assets.precompile
     app.setup
-    counter_cache.all
     app.restart
   end
 end
@@ -69,18 +68,11 @@ end
 namespace :app do
   desc 'Copy configuration files'
   task :setup do
-    %w[config/database.yml config/sphinx.yml].each do |path|
-      from  = "#{deploy_to}/#{path}"
-      to    = "#{current}/#{path}"
+    %w[config/database.yml].each do |path|
+      from = "#{deploy_to}/#{path}"
+      to   = "#{current}/#{path}"
 
       run "if [ -f '#{to}' ]; then rm '#{to}'; fi; ln -s #{from} #{to}"
     end
-  end
-end
-
-namespace :counter_cache do
-  desc '[counter_cache] updates all counter cache'
-  task :all do
-    run "cd #{current} && bundle exec rake counter_cache:all"
   end
 end
