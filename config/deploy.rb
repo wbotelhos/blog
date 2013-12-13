@@ -2,23 +2,24 @@ require 'bundler/capistrano'
 
 set :application, 'wbotelhos.com'
 
-set :scm        , :git
-set :repository , 'git@github.com:wbotelhos/wbotelhos-com.git'
-set :branch     , 'master'
-set :deploy_via , :remote_cache
+set :branch        , 'master'
+set :deploy_via    , :remote_cache
+set :keep_releases , 2
+set :repository    , 'git@github.com:wbotelhos/wbotelhos-com.git'
+set :scm           , :git
 
-set :user   , 'ubuntu'
-set :runner , 'ubuntu'
 set :group  , 'ubuntu'
+set :runner , 'ubuntu'
+set :user   , 'ubuntu'
 
 set :use_sudo, false
 
 set :deploy_to , '/var/www/wbotelhos'
 set :current   , "#{deploy_to}/current"
 
-role :web , application
 role :app , application
 role :db  , application, primary: true
+role :web , application
 
 default_run_options[:pty] = true
 
