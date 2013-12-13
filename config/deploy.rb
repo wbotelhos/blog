@@ -31,8 +31,8 @@ after :deploy, 'deploy:cleanup'
 namespace :deploy do
   task :default do
     update
-    assets.precompile
     app.setup
+    assets.precompile
     app.restart
   end
 end
@@ -52,20 +52,6 @@ namespace :app do
   end
 end
 
-namespace :assets do
-  assets_path   = '~/workspace/wbotelhos/public/assets'
-  public_remote = "#{user}@#{application}:#{current}/public"
-
-  task :precompile do
-    %x(bundle exec rake assets:precompile)
-    %x(rsync -e "ssh -i ${HOME}/.ssh/wbotelhos.pem" --archive --compress --progress #{assets_path} #{public_remote})
-
-    run %(rm -rf "#{current}/app/assets")
-
-    %x(rm -rf #{assets_path}/*)
-  end
-end
-
 namespace :app do
   desc 'Copy configuration files'
   task :setup do
@@ -75,5 +61,18 @@ namespace :app do
 
       run "if [ -f '#{to}' ]; then rm '#{to}'; fi; ln -s #{from} #{to}"
     end
+  end
+end
+
+namespace :assets do
+  assets_path   = '~/workspace/blog/public/assets'
+  public_remote = "#{user}@#{application}:#{current}/public"
+
+  task :precompile do
+    %x(bundle exec rake assets:precompile)
+    %x(rsync -e "ssh -i ${HOME}/.ssh/wbotelhos.pem" --archive --compress --progress #{assets_path} #{public_remote})
+    %x(rm -rf #{assets_path})
+
+    run %(rm -rf "#{current}/app/assets")
   end
 end
