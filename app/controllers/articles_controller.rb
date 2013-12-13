@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
+    # TODO: extract it as a scope and test.
     @year_month_articles = Article.select('published_at, slug, title').published.by_published.group_by { |criteria| criteria.published_at.strftime('%m/%Y') }
   end
 
