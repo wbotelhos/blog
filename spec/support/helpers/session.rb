@@ -1,12 +1,14 @@
+require 'rack_session_access/capybara'
+
 module SessionHelper
-  def login(options)
-    visit login_path unless current_path == login_path
+  def login
+    user = FactoryGirl.create :user
 
-    fill_in 'E-mail', with: options[:with]
-    fill_in 'Senha', with: options[:password] || 'password'
-    uncheck 'not_human'
+    page.set_rack_session current_user: user.id
+  end
 
-    click_button 'Acessar'
+  def logout
+    page.set_rack_session current_user: nil
   end
 end
 
