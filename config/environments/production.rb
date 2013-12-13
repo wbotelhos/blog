@@ -1,5 +1,5 @@
 Blog::Application.configure do
-  config.action_controller.asset_host        = '//blog.s3.amazonaws.com'
+  config.action_controller.asset_host        = '//wbotelhos.s3.amazonaws.com'
   config.action_controller.perform_caching   = true
   config.action_mailer.asset_host            = 'http://wbotelhos.com'
   config.action_mailer.default_url_options   = { host: 'wbotelhos.com' }
