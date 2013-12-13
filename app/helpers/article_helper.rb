@@ -13,7 +13,7 @@ module ArticleHelper
 
   def twitter_button(options = {})
     options = {
-      text: %("#{options[:text]}" ~ ),
+      text: %("#{options[:text]}" ~),
       url:  options[:url],
       via:  'wbotelhos'
     }

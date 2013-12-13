@@ -58,7 +58,7 @@ describe ArticleHelper do
       let(:button) { CGI.unescape helper.twitter_button(text: 'Some Text', url: 'http://wbotelhos.com') }
 
       it 'builds the right text' do
-        expect(button).to match %r(text="Some Text" ~ )
+        expect(button).to match %r(text="Some Text" ~)
       end
 
       it 'builds the right url' do
