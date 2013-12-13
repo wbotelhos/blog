@@ -7,6 +7,7 @@ gem 'pygments.rb'
 gem 'rails'         , '~> 3.2.16'
 gem 'rake'
 gem 'redcarpet'
+gem 'rspec-rails'
 gem 'sass-rails'
 gem 'thin'
 
@@ -40,7 +41,6 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl'
   gem 'rack_session_access'
-  gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'shoulda'
 end
