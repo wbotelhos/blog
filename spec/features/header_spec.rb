@@ -1,25 +1,21 @@
-# coding: utf-8
 require 'spec_helper'
 
-describe 'top' do
-  context 'static data' do
-    before { visit '/' }
+describe :header do
+  before { visit root_path }
 
-    it 'should show logo data' do
-      page.should have_content CONFIG['author']
-      page.should have_content CONFIG['description']
+  it 'shows the logo' do
+    expect(page).to have_link CONFIG['author']
+  end
+
+  context 'clicking on logo' do
+    before { click_link CONFIG['author'] }
+
+    it 'goes to root page' do
+      expect(current_path).to eq root_path
     end
   end
 
-  context 'when logged' do
-    let(:user) { FactoryGirl.create :user }
-
-    before { login with: user.email }
-
-    it 'should show menu' do
-      page.should have_content 'Sobre'
-      page.should have_content 'Admin!'
-      page.should have_content 'Sair'
-    end
+  it 'shows the quote' do
+    expect(page).to have_content CONFIG['quote']
   end
 end
