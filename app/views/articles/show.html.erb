@@ -5,11 +5,11 @@
     <div class="published-at"><%= published_at @article %></div>
 
     <%= link_to t('article.edit'), edit_article_path(@article), class: 'button green-dark edit' if is_logged? %>
-
-    <div class="body">
-      <%= markdown @article.body %>
-    </div>
   </header>
+
+  <div class="body">
+    <%= markdown @article.body %>
+  </div>
 </article>
 
 <div class="share">
@@ -28,6 +28,7 @@
 <script>
   $(function() {
     AntiBot.init('.new_comment');
+
     CommentResponder.init();
 
     $('#comment_body').taby();
