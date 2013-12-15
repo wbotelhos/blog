@@ -4,11 +4,11 @@ module SessionHelper
   def login
     user = FactoryGirl.create :user
 
-    page.set_rack_session current_user: user.id
+    page.set_rack_session user_id: user.id
   end
 
   def logout
-    page.set_rack_session current_user: nil
+    page.set_rack_session user_id: nil
   end
 end
 
