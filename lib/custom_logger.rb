@@ -8,9 +8,9 @@ class CustomLogger < Rails::Rack::Logger
   end
 
   def call(env)
-    request = ActionDispatch::Request.new env
-    params  = request.request_parameters
     level   = Rails.logger.level
+    params  = request.request_parameters
+    request = ActionDispatch::Request.new env
 
     if params.include?(:bot) && params[:bot].present?
       logger.warn %(B0T on "#{env['PATH_INFO']}"!)
