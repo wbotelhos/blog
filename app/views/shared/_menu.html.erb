@@ -10,7 +10,7 @@
     <%= menu_icon 'Novo artigo' , 'i-file' , new_article_path %>
   <% end %>
 
-  <%= menu_icon t(:donate), 'i-heart', 'javascript:void(0);' %>
+  <%= content_tag :i, '', title: t(:donate), class: 'i-heart' %>
 
   <div id="donations">
     <%= link_to 'Git tip', 'http://gittip.com/wbotelhos', target: :_blank %>
