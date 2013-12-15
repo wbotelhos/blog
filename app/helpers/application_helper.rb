@@ -32,13 +32,13 @@ module ApplicationHelper
   end
 
   def menu_icon(text, clazz, path)
-    link_to '', path, alt: text, title: text, class: clazz
+    link_to '', path, title: text, class: clazz
   end
 
   def social_icon(text, clazz, path)
     text = "#{text} <#{path.gsub /mailto:/, ''}>"
 
-    link_to '', path, alt: text, title: text, target: :_blank, class: clazz
+    link_to '', path, title: text, target: :_blank, class: clazz
   end
 
   def time_ago(time)
