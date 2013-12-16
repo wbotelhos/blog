@@ -38,22 +38,11 @@ namespace :deploy do
 end
 
 namespace :app do
-  task :start do
-    run "cd #{current} && GEM_HOME=/opt/local/ruby/gems && RAILS_ENV=production bundle exec unicorn_rails -c #{deploy_to}/config/unicorn.rb -D"
-  end
-
-  task :stop do
-    run "if [ -f #{shared_path}/pids/unicorn.pid ]; then kill `cat #{shared_path}/pids/unicorn.pid`; fi"
-  end
-
   task :restart do
     stop
     start
   end
-end
 
-namespace :app do
-  desc 'Copy configuration files'
   task :setup do
     %w[config/database.yml].each do |path|
       from = "#{deploy_to}/#{path}"
@@ -61,6 +50,14 @@ namespace :app do
 
       run "if [ -f '#{to}' ]; then rm '#{to}'; fi; ln -s #{from} #{to}"
     end
+  end
+
+  task :start do
+    run "cd #{current} && GEM_HOME=/opt/local/ruby/gems && RAILS_ENV=production bundle exec unicorn_rails -c #{deploy_to}/config/unicorn.rb -D"
+  end
+
+  task :stop do
+    run "if [ -f #{shared_path}/pids/unicorn.pid ]; then kill `cat #{shared_path}/pids/unicorn.pid`; fi"
   end
 end
 
