@@ -2,22 +2,24 @@
   <%= f.hidden_field :parent_id %>
   <%= hidden_field_tag :bot, true %>
 
-  <div class="placeholder">
-    <%= f.label :name %> <span class="mandatory">*</span>
-    <%= f.text_field :name, required: true, class: :input %>
-    <%= errors_for @comment, :name %>
-  </div>
+  <% unless is_logged? %>
+    <div class="placeholder">
+      <%= f.label :name %> <span class="mandatory">*</span>
+      <%= f.text_field :name, required: true, class: :input %>
+      <%= errors_for @comment, :name %>
+    </div>
 
-  <div class="placeholder">
-    <%= f.label :email %> <span class="mandatory">*</span>
-    <%= f.email_field :email, required: true, class: :input %>
-    <%= errors_for @comment, :email %>
-  </div>
+    <div class="placeholder">
+      <%= f.label :email %> <span class="mandatory">*</span>
+      <%= f.email_field :email, required: true, class: :input %>
+      <%= errors_for @comment, :email %>
+    </div>
 
-  <div class="placeholder">
-    <%= f.label :url %>
-    <%= f.url_field :url, class: :input %>
-  </div>
+    <div class="placeholder">
+      <%= f.label :url %>
+      <%= f.url_field :url, class: :input %>
+    </div>
+  <% end %>
 
   <div class="placeholder">
     <%= f.label :body %> <span class="mandatory">*</span>
@@ -36,10 +38,12 @@
     <%= t 'comment.format_your_code_html', link: link_to('Markdown', 'http://daringfireball.net/projects/markdown/syntax', title: 'Markdown', target: :_blank) %>
   </div>
 
-  <div class="placeholder not-human">
-    <%= check_box_tag :not_human, true, true %>
-    <%= label_tag :not_human, t(:i_am_bot) %>
-  </div>
+  <% unless is_logged? %>
+    <div class="placeholder not-human">
+      <%= check_box_tag :not_human, true, true %>
+      <%= label_tag :not_human, t(:i_am_bot) %>
+    </div>
+  <% end %>
 
   <div class="saver">
     <%= f.submit name: nil, class: 'button green' %>

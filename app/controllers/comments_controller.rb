@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
   def create
     @article        = Article.find params[:article_id]
     @comment        = @article.comments.new params[:comment]
-    @comment.author = is_logged?
+
+    assign_author if is_logged?
 
     if @comment.save
       redirect_to slug_url @article.slug, anchor: "comment-#{@comment.id}"
@@ -28,5 +29,14 @@ class CommentsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  private
+
+  def assign_author
+    @comment.author = true
+    @comment.email = @current_user.email
+    @comment.name  = @current_user.name
+    @comment.url   = CONFIG['url']
   end
 end

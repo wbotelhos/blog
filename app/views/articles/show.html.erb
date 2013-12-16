@@ -27,7 +27,9 @@
 
 <script>
   $(function() {
-    AntiBot.init('.new_comment');
+    <% unless is_logged? %>
+      AntiBot.init('.new_comment');
+    <% end %>
 
     CommentResponder.init();
 
