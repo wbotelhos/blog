@@ -6,7 +6,7 @@
   <div class="body">
     <header>
       <%= comment_name comment %>
-      <%= content_tag :span, :author, class: :author if comment.author %>
+      <%= content_tag :span, t('user.author'), class: :author if comment.author %>
       <%= time_ago comment.created_at %>
     </header>
 
