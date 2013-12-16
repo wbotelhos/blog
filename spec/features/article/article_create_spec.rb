@@ -1,75 +1,43 @@
 # coding: utf-8
+
 require 'spec_helper'
 
 describe Article, '#create' do
-  let(:user) { FactoryGirl.create :user }
-  let!(:category) { FactoryGirl.create :category }
-
   before do
-    login with: user.email
-    visit new_articles_path
+    login
+    visit new_article_path
+  end
+
+  it 'hides the preview button' do
+    expect(current_path).to_not have_button 'Preview'
   end
 
   context 'submit with valid data' do
     before do
-      fill_in 'article_title', with: 'title'
-      fill_in 'article_body', with: 'body'
-      check "category-#{category.id}"
+      fill_in 'article_title' , with: 'Some Title'
+      fill_in 'article_body'  , with: 'Some body'
+
       click_button 'Salvar'
     end
 
     it 'redirects to edit page' do
-      current_path.should match %r(/articles/\d+/edit)
-    end
-
-    it 'displays success message' do
-      page.should have_content 'Rascunho salvo com sucesso!'
+      expect(current_path).to match %r(/articles/\d+)
     end
   end
 
-  context 'with invalid data' do
-    before do
-      fill_in 'article_title', with: ''
-      check "category-#{category.id}"
-      click_button 'Salvar'
-    end
-
-    it 'renders form page again' do
-      current_path.should == articles_path
-    end
-
-    it 'the chosen category keeps checked' do
-      page.should have_checked_field "category-#{category.id}"
-    end
-
+  context 'with invalid data', :js do
     context 'blank title' do
       before do
-        fill_in 'article_title', with: ''
-        check "category-#{category.id}"
+        page.execute_script "$('#article_title').removeAttr('required');"
+
         click_button 'Salvar'
       end
 
-      it { page.should have_content 'O campo "Título *" deve ser preenchido!' }
-    end
-
-    context 'with blank title the slug message validation is skipped' do
-      before do
-        fill_in 'article_title', with: ''
-        check "category-#{category.id}"
-        click_button 'Salvar'
+      it 'renders form page again' do
+        expect(current_path).to eq articles_path
       end
 
-      it { page.should_not have_content 'O campo "Slug" deve ser preenchido!' }
-    end
-
-    context 'blank category' do
-      before do
-        fill_in 'article_title', with: 'title'
-        uncheck "category-#{category.id}"
-        click_button 'Salvar'
-      end
-
-      it { page.should have_content 'O campo "Categoria" deve ser preenchido!' }
+      it { expect(page).to have_content 'O campo "Título" deve ser preenchido!' }
     end
   end
 end

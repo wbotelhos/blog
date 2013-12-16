@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.new params[:article]
 
     if @article.save
-      redirect_to slug_url @article.slug
+      redirect_to edit_article_url @article
     else
       render :new
     end
