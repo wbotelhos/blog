@@ -18,8 +18,8 @@ pt-BR:
   helpers:
     submit:
       article:
-        create: 'Salvar'
-        update: 'Atualizar'
+        create: 'SALVAR'
+        update: 'ATUALIZAR'
 
     # none: 'Nenhum artigo publicado!'
     # other: 'Artigos'

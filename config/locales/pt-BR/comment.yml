@@ -19,8 +19,8 @@ pt-BR:
   helpers:
     submit:
       comment:
-        create: 'Comentar'
-        update: 'Atualizar'
+        create: 'COMENTAR'
+        update: 'ATUALIZAR'
 
 # close: 'Fechar'
 # go_to_parent: 'Visualizar o comentário pai'
