@@ -5,6 +5,8 @@ module SessionHelper
     user = FactoryGirl.create :user
 
     page.set_rack_session user_id: user.id
+
+    user
   end
 
   def logout
