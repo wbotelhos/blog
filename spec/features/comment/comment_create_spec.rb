@@ -5,46 +5,44 @@ require 'spec_helper'
 describe Comment, '#create' do
   let(:article) { FactoryGirl.create :article_published }
 
-  context 'when logged' do
+  context 'when unlogged' do
     before do
-      @user = login
-
+      logout
       visit slug_path article.slug
     end
 
-    context 'with valid data' do
-      before do
-        fill_in 'comment_body', with: 'Some comment!'
-
-        click_button 'COMENTAR'
-      end
-
-      it 'redirects to the article page' do
-        expect(current_path).to eq slug_path(article.slug)
-      end
-
-      it 'displays comment' do
-        within '#comment-1' do
-          expect(page).to have_content 'autor'
-          expect(page).to have_content 'menos de um minuto atrás'
-          expect(page).to have_link    '#1'                       , href: '#comment-1'
-          expect(page).to have_link    'Editar'
-          expect(page).to have_link    'Responder'
-          expect(page).to have_link    @user.name                 , href: CONFIG['url']
-        end
-      end
+    it 'shows the BOT label' do
+      expect(page).to have_field 'BOT!'
     end
-  end
 
-  context 'when unlogged' do
+    it 'shows the BOT field' do
+      expect(page).to have_field 'not_human'
+    end
+
+    it 'shows the name field' do
+      expect(page).to have_field 'comment_name'
+    end
+
+    it 'shows the email field' do
+      expect(page).to have_field 'comment_email'
+    end
+
+    it 'shows the url field' do
+      expect(page).to have_field 'comment_url'
+    end
+
+    it 'shows the body field' do
+      expect(page).to have_field 'comment_body'
+    end
+
     context 'with valid data' do
-      before do
-        visit slug_path article.slug
+      let(:comment) { FactoryGirl.build :comment }
 
-        fill_in 'comment_body'  , with: 'Some comment!'
-        fill_in 'comment_email' , with: 'john@example.org'
-        fill_in 'comment_name'  , with: 'John'
-        fill_in 'comment_url'   , with: 'http://example.org'
+      before do
+        fill_in 'comment_body'  , with: comment.body
+        fill_in 'comment_email' , with: comment.email
+        fill_in 'comment_name'  , with: comment.name
+        fill_in 'comment_url'   , with: comment.url
 
         uncheck 'not_human'
 
@@ -52,21 +50,36 @@ describe Comment, '#create' do
       end
 
       it 'redirects to the article page' do
-        current_path.should == slug_path(article.slug)
+        expect(current_path).to eq "/articles/#{article.id}/comments"
       end
 
-       xit 'displays comment' do
-         page.should have_content 'some name'
-         page.should have_content 'some comment'
-       end
+      it 'does not displays the author indicator', :js do
+        expect(page).to_not have_content 'autor'
+      end
+
+      it 'displays the time', :js do
+        expect(page).to have_content 'menos de um minuto atrás'
+      end
+
+      it 'displays the self anchor', :js do
+        expect(page).to have_selector '.anchor'
+      end
+
+      it 'displays the edit link', :js do
+        expect(page).to_not have_link 'Editar'
+      end
+
+      it 'displays the answer link', :js do
+        expect(page).to have_link 'Responder'
+      end
+
+      it 'displays the commenter name', :js do
+        expect(page).to have_link comment.name, href: comment.url
+      end
     end
 
     context 'with invalid data', :js do
-      before do
-        visit slug_path article.slug
-
-        page.execute_script "$('#new_comment :input').removeAttr('required')"
-      end
+      before { page.execute_script "$('#new_comment :input').removeAttr('required')" }
 
       context 'given empty name' do
         before do
@@ -75,10 +88,12 @@ describe Comment, '#create' do
           fill_in 'comment_url'   , with: 'http://example.org'
 
           uncheck 'not_human'
+
+          click_button 'COMENTAR'
         end
 
         it 'displays error message' do
-          page.should have_content 'O campo "Nome" deve ser preenchido!'
+          expect(page).to have_content 'O campo "Nome" deve ser preenchido!'
         end
       end
 
@@ -94,7 +109,7 @@ describe Comment, '#create' do
         end
 
         it 'displays error message' do
-          page.should have_content 'O campo "E-mail" deve ser preenchido!'
+          expect(page).to have_content 'O campo "E-mail" deve ser preenchido!'
         end
       end
 
@@ -110,8 +125,132 @@ describe Comment, '#create' do
         end
 
         it 'displays error message' do
-          page.should have_content 'O campo "Comentário" deve ser preenchido!'
+          expect(page).to have_content 'O campo "Comentário" deve ser preenchido!'
         end
+      end
+    end
+
+    context 'answering', :js do
+      let!(:comment) { FactoryGirl.create :comment, article: article }
+
+      before do
+        visit slug_path article.slug
+
+        within "#comment-#{comment.id}" do
+          click_link 'Responder'
+        end
+      end
+
+      it { expect(find_field('comment_body').value).to eq "#{comment.name},\n\n" }
+
+      it 'shows the answer explanation' do
+        expect(page).to have_content "Em resposta: ##{comment.id} #{comment.name}"
+      end
+
+      it 'shows the answer explanation anchor' do
+        expect(page).to have_link "##{comment.id}", href: "#comment-#{comment.id}"
+      end
+    end
+
+    context 'with BOT checked', :js do
+      before { click_button 'COMENTAR' }
+
+      it 'shows the BOT alert label' do
+        expect(page).to have_field 'Hey! Me desmarque.'
+      end
+
+      context 'when uncheck' do
+        before { uncheck 'not_human' }
+
+        it 'shows the human message label' do
+          expect(page).to have_field 'Humanos! <3'
+        end
+
+        context 'when check againg' do
+          before { check 'not_human' }
+
+          it 'shows the stupid message label' do
+            expect(page).to have_field 'Sério?'
+          end
+        end
+      end
+    end
+  end
+
+  context 'when logged' do
+    before do
+      @user = login
+
+      visit slug_path article.slug
+    end
+
+    it 'hides the name field' do
+      expect(page).to_not have_field 'comment_name'
+    end
+
+    it 'hides the email field' do
+      expect(page).to_not have_field 'comment_email'
+    end
+
+    it 'hides the url field' do
+      expect(page).to_not have_field 'comment_url'
+    end
+
+    context 'with valid data' do
+      before do
+        fill_in 'comment_body', with: 'Some comment!'
+
+        click_button 'COMENTAR'
+      end
+
+      it 'redirects to the article page' do
+        expect(current_path).to eq slug_path(article.slug)
+      end
+
+      it 'displays the author indicator' do
+        expect(page).to have_content 'autor'
+      end
+
+      it 'displays the time' do
+        expect(page).to have_content 'menos de um minuto atrás'
+      end
+
+      it 'displays the self anchor' do
+        expect(page).to have_selector '.anchor'
+      end
+
+      it 'displays the edit link' do
+        expect(page).to have_link 'Editar'
+      end
+
+      it 'displays the answer link' do
+        expect(page).to have_link 'Responder'
+      end
+
+      it 'displays the commenter name' do
+        expect(page).to have_link @user.name, href: CONFIG['url']
+      end
+    end
+
+    context 'answering', :js do
+      let!(:comment) { FactoryGirl.create :comment, article: article }
+
+      before do
+        visit slug_path article.slug
+
+        within "#comment-#{comment.id}" do
+          click_link 'Responder'
+        end
+      end
+
+      it { expect(find_field('comment_body').value).to eq "#{comment.name},\n\n" }
+
+      it 'shows the answer explanation' do
+        expect(page).to have_content "Em resposta: ##{comment.id} #{comment.name}"
+      end
+
+      it 'shows the answer explanation anchor' do
+        expect(page).to have_link "##{comment.id}", href: "#comment-#{comment.id}"
       end
     end
   end
