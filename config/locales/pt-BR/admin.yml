@@ -1,4 +1,3 @@
 pt-BR:
   admin:
-#     description_html: "Seja bem vindo <strong>%{name}</strong>"
-#     one: 'Administração'
+    one: 'Administração'

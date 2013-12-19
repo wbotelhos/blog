@@ -1,37 +1,28 @@
 require 'spec_helper'
 
 describe User do
-  let(:user) { FactoryGirl.create :user }
+  before do
+    login
+    visit admin_path
+  end
+
+  it 'starts with user access' do
+    expect(current_path).to eq admin_path
+  end
 
   context 'when logout' do
-    context 'via top link' do
-      before do
-        login with: user.email
-        visit root_path
-        find('header nav ul').click_link 'Sair'
-      end
+    before { click_link '', href: '/logout' }
 
-      it 'redirects to the home page' do
-        current_path.should == root_path
-      end
-
-      it { page.should have_no_content 'Admin!' }
-      it { page.should have_no_content 'Sair' }
+    it 'redirects to the home page' do
+      expect(current_path).to eq root_path
     end
 
-    context 'via bottom link' do
-      before do
-        login with: user.email
-        visit root_path
-        find('aside ul:last li:last').click_link 'Sair'
-      end
+    context 'trying to access admin' do
+      before { visit admin_path }
 
-      it 'redirects to the home page' do
-        current_path.should == root_path
+      it 'losts the admin access' do
+        expect(current_path).to eq login_path
       end
-
-      it { page.should have_no_content 'Admin!' }
-      it { page.should have_no_content 'Sair' }
     end
   end
 end

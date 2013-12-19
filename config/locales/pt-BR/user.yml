@@ -2,6 +2,11 @@ pt-BR:
   user:
     author: 'autor'
     bio: 'Programador metido a designer, ajudante e aprendiz da comunidade open source.'
+    email: 'E-mail'
+    github: 'Github'
+    linkedin: 'Linkedin'
+    logout: 'Sair'
+    twitter: 'Twitter'
 
     # create: 'Criar'
     # edit: 'Editar Usuário'
