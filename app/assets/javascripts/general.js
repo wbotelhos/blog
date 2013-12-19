@@ -1,4 +1,4 @@
-var AntiBot = {
+var AntiBOT = {
   init: function(form) {
     this.form   = $(form);
     this.field  = this.form.find('.not-human input');
