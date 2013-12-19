@@ -60,6 +60,10 @@ describe :menu do
     expect(page).to_not have_link '', href: new_article_path
   end
 
+  it 'hides the logout menu icon' do
+    expect(page).to_not have_link '', href: logout_path
+  end
+
   context 'clicking on feed icon' do
     before { find('.i-feed').click  }
 
@@ -84,6 +88,10 @@ describe :menu do
 
     it 'shows new article menu icon' do
       expect(page).to have_link '', href: new_article_path
+    end
+
+    it 'shows the logout menu icon' do
+      expect(page).to have_link '', href: logout_path
     end
   end
 end
