@@ -2,12 +2,13 @@
 alias ...='cd ../../'
 alias ..='cd ..'
 alias .='cd .'
+alias ks="sh -c 'if [ -f /var/www/wbotelhos/shared/pids/unicorn.pid ]; then kill `cat /var/www/wbotelhos/shared/pids/unicorn.pid`; fi'"
 alias la='ls -lah'
-alias ulog='tail -100f /var/www/wbotelhos/shared/log/unicorn.error.log'
 alias plog='tail -100f /var/www/wbotelhos/shared/log/production.log'
 alias ps='ps aux | grep'
 alias reload='source ~/.bash_profile'
-alias ks="sh -c 'if [ -f /var/www/wbotelhos/shared/pids/unicorn.pid ]; then kill `cat /var/www/wbotelhos/shared/pids/unicorn.pid`; fi'"
+alias ss='cd /var/www/wbotelhos/current && GEM_HOME=/opt/local/ruby/gems && RAILS_ENV=production bundle exec unicorn_rails -c /var/www/wbotelhos/config/unicorn.rb -D'
+alias ulog='tail -100f /var/www/wbotelhos/shared/log/unicorn.error.log'
 alias work='cd /var/www/wbotelhos'
 
 # COLOR
