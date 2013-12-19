@@ -11,14 +11,6 @@ describe Comment, '#create' do
       visit slug_path article.slug
     end
 
-    it 'shows the BOT label' do
-      expect(page).to have_field 'BOT!'
-    end
-
-    it 'shows the BOT field' do
-      expect(page).to have_field 'not_human'
-    end
-
     it 'shows the name field' do
       expect(page).to have_field 'comment_name'
     end
@@ -152,25 +144,35 @@ describe Comment, '#create' do
       end
     end
 
-    context 'with BOT checked', :js do
-      before { click_button 'COMENTAR' }
-
-      it 'shows the BOT alert label' do
-        expect(page).to have_field 'Hey! Me desmarque.'
+    describe '#AntiBOT', :js do
+      it 'starts checked' do
+        expect(page).to have_checked_field 'not_human'
       end
 
-      context 'when uncheck' do
+      it 'starts with bot log' do
+        expect(page).to have_content 'BOT!'
+      end
+
+      context 'on uncheck' do
         before { uncheck 'not_human' }
 
-        it 'shows the human message label' do
-          expect(page).to have_field 'Humanos! <3'
+        it 'logs human message' do
+          expect(page).to have_content 'Humanos! <3'
         end
 
-        context 'when check againg' do
+        context 'on check' do
           before { check 'not_human' }
 
-          it 'shows the stupid message label' do
-            expect(page).to have_field 'Sério?'
+          it 'log human message' do
+            expect(page).to have_content 'Sério?'
+          end
+
+          context 'and submit' do
+            before { click_button 'COMENTAR' }
+
+            it 'blocks and shows exclamation message' do
+              expect(page).to have_content 'Hey! Me desmarque.'
+            end
           end
         end
       end
