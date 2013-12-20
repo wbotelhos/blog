@@ -7,9 +7,6 @@ describe User do
 
   it { should validate_presence_of :email }
   it { should validate_presence_of :name }
-  it { should validate_presence_of :password }
-
-  xit { should validate_uniqueness_of :email }
 
   context :create do
     it 'creates a valid media' do
