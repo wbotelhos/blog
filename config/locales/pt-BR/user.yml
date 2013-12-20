@@ -1,7 +1,21 @@
 pt-BR:
+  activerecord:
+    attributes:
+      user:
+        email: 'E-mail'
+        name: 'Nome'
+        password: 'Senha'
+        password_confirmation: 'Confirmação de senha'
+
+  helpers:
+    submit:
+      user:
+        update: 'ATUALIZAR'
+
   user:
     author: 'autor'
     bio: 'Programador metido a designer, ajudante e aprendiz da comunidade open source.'
+    edit: 'Profile'
     email: 'E-mail'
     github: 'Github'
     linkedin: 'Linkedin'

@@ -1,17 +1,15 @@
 class UsersController < ApplicationController
   before_filter :require_login
 
-  layout 'admin'
-
   def edit
-    @user = User.find params[:id]
+    @user = User.find session[:user_id]
   end
 
   def update
-    @user = User.find params[:id]
+    @user = User.find session[:user_id]
 
     if @user.update_attributes params[:user]
-      redirect_to admin_url
+      redirect_to profile_path
     else
       render :edit
     end

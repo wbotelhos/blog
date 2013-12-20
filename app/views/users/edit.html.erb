@@ -1,73 +1,29 @@
-<div id="title">
-  <h2><%= t 'user.edit' %></h2>
-</div>
-
-<div class="clear"></div>
-
-<%= render 'shared/error_messages', entity: @user %>
-
-<%= form_for @user, url: users_update_path, html: { class: 'user-form' } do |f| %>
-  <div id="fields">
-    <p>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </p>
-
-    <p>
-      <%= f.label :email %>
-      <%= f.email_field :email %>
-    </p>
-
-    <p>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </p>
-
-    <p>
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-    </p>
-
-    <p>
-      <%= f.label :url %>
-      <%= f.text_field :url %>
-    </p>
-
-    <p>
-      <%= f.label :github %>
-      <%= f.text_field :github %>
-    </p>
-
-    <p>
-      <%= f.label :linkedin %>
-      <%= f.text_field :linkedin %>
-    </p>
-
-    <p>
-      <%= f.label :twitter %>
-      <%= f.text_field :twitter %>
-    </p>
-
-    <p>
-      <%= f.label :facebook %>
-      <%= f.text_field :facebook %>
-    </p>
-
-    <p>
-      <%= f.label :bio %>
-      <%= f.text_area :bio %>
-    </p>
+<%= form_for @user do |f| %>
+  <div class="placeholder">
+    <%= f.label :name %> <span class="mandatory">*</span>
+    <%= f.text_field :name, autofocus: true, required: true, class: :input %>
+    <%= errors_for @user, :name %>
   </div>
 
-  <div id="controls">
-    <h3><%= t 'user.update' %></h3>
-    <%= f.submit class: :update %>
+  <div class="placeholder">
+    <%= f.label :email %> <span class="mandatory">*</span>
+    <%= f.email_field :email, required: true, class: :input %>
+    <%= errors_for @user, :email %>
+  </div>
+
+  <div class="placeholder">
+    <%= f.label :password %> <span class="mandatory">*</span>
+    <%= f.password_field :password, class: :input %>
+    <%= errors_for @user, :password %>
+  </div>
+
+  <div class="placeholder">
+    <%= f.label :password_confirmation %> <span class="mandatory">*</span>
+    <%= f.password_field :password_confirmation, class: :input %>
+    <%= errors_for @user, :password_confirmation %>
+  </div>
+
+  <div class="saver">
+    <%= f.submit name: nil, class: 'button green' %>
   </div>
 <% end %>
-
-<script type="text/javascript">
-  $(function() {
-    $('.user-form').flury();
-    $('#user_name').focus();
-  });
-</script>

@@ -52,6 +52,10 @@ describe :menu do
     end
   end
 
+  it 'hides profile menu icon' do
+    expect(page).to_not have_link '', href: profile_path
+  end
+
   it 'hides admin menu icon' do
     expect(page).to_not have_link '', href: admin_path
   end
@@ -80,6 +84,10 @@ describe :menu do
     before do
       login
       visit root_path
+    end
+
+    it 'shows profile menu icon' do
+      expect(page).to have_link '', href: profile_path
     end
 
     it 'shows admin menu icon' do

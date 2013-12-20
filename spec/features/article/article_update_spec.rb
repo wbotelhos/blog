@@ -11,7 +11,7 @@ describe Article, '#update' do
   end
 
   it 'shows the preview link' do
-    expect(page).to have_link 'Preview', href: slug_path(article.slug)
+    expect(page).to have_link 'PREVIEW', href: slug_path(article.slug)
   end
 
   context 'with valid data' do
@@ -19,7 +19,7 @@ describe Article, '#update' do
       fill_in 'article_title' , with: 'Some Title'
       fill_in 'article_body'  , with: 'Some body'
 
-      click_button 'Atualizar'
+      click_button 'ATUALIZAR'
     end
 
     it 'redirects to edit page' do
@@ -37,7 +37,7 @@ describe Article, '#update' do
 
         fill_in 'article_title', with: ''
 
-        click_button 'Atualizar'
+        click_button 'ATUALIZAR'
       end
 
       it 'renders form page again' do

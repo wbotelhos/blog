@@ -17,7 +17,7 @@ describe Article, '#create' do
       fill_in 'article_title' , with: 'Some Title'
       fill_in 'article_body'  , with: 'Some body'
 
-      click_button 'Salvar'
+      click_button 'SALVAR'
     end
 
     it 'redirects to edit page' do
@@ -25,12 +25,24 @@ describe Article, '#create' do
     end
   end
 
+  context 'with same title' do
+    let!(:article) { FactoryGirl.create :article }
+
+    before do
+      fill_in 'article_title', with: article.title
+
+      click_button 'SALVAR'
+    end
+
+    it { expect(page).to have_content %(O valor "#{article.title}" para o campo "Título" já esta em uso!) }
+  end
+
   context 'with invalid data', :js do
     context 'blank title' do
       before do
         page.execute_script "$('#article_title').removeAttr('required');"
 
-        click_button 'Salvar'
+        click_button 'SALVAR'
       end
 
       it 'renders form page again' do

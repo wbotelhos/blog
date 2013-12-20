@@ -32,11 +32,11 @@ pt-BR:
     errors:
       messages:
         blank: 'O campo "%{attribute}" deve ser preenchido!'
-        # confirmation: 'A confirmação de senha não confere com o digitado no campo "%{attribute}"!'
+        confirmation: 'A confirmação de senha não confere com o digitado no campo "%{attribute}"!'
         invalid: 'O valor "%{value}" para o campo "%{attribute}" é inválido!'
         # not_a_number: 'O valor "%{value}" não é um número válido para o campo "%{attribute}"!'
         # record_invalid: "Erro de validação: %{errors}!"
-        # taken: 'O valor "%{value}" para o campo "%{attribute}" já esta em uso!'
+        taken: 'O valor "%{value}" para o campo "%{attribute}" já esta em uso!'
 
       # models:
       #   comment:
