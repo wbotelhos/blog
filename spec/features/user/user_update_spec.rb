@@ -38,8 +38,8 @@ describe User, '#update' do
 
     context 'filling only name and email' do
       before do
-        fill_in 'user_email'                 , with: 'botelho@example.org'
-        fill_in 'user_name'                  , with: 'Washington Botelho'
+        fill_in 'user_email'                 , with: 'washington@example.org'
+        fill_in 'user_name'                  , with: 'Botelho'
         fill_in 'user_password'              , with: ''
         fill_in 'user_password_confirmation' , with: ''
 
@@ -49,6 +49,9 @@ describe User, '#update' do
       it 'redirects to edit page' do
         expect(current_path).to eq profile_path
       end
+
+      it { expect(find_field('user_email').value).to eq 'washington@example.org' }
+      it { expect(find_field('user_name').value).to  eq 'Botelho' }
 
       it { expect(page).to_not have_content 'O campo "Password" deve ser preenchido!' }
     end
