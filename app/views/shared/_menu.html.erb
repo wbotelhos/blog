@@ -6,9 +6,10 @@
   <%= social_icon t(:feed)           , 'i-feed'     , feed_url %>
 
   <% if is_logged? %>
-    <%= menu_icon t('admin.one')   , 'i-cog'  , admin_path %>
-    <%= menu_icon t('article.new') , 'i-file' , new_article_path %>
-    <%= menu_icon t('user.logout') , 'i-exit' , logout_path %>
+    <%= menu_icon t('admin.one')   , 'i-cog'     , admin_path %>
+    <%= menu_icon t('article.new') , 'i-file'    , new_article_path %>
+    <%= menu_icon t('user.edit')   , 'i-profile' , profile_path %>
+    <%= menu_icon t('user.logout') , 'i-exit'    , logout_path %>
   <% end %>
 
   <%= content_tag :i, '', title: t(:donate), class: 'i-heart' %>
