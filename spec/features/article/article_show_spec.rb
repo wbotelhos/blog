@@ -19,7 +19,7 @@ describe Article, '#show' do
     end
   end
 
-  it 'shows twitter button', :focus do
+  it 'shows twitter button' do
     expect(page).to have_link 'Tweet'
   end
 
