@@ -8,9 +8,6 @@ describe Lab do
   it { should validate_presence_of :name }
   it { should validate_presence_of :slug }
 
-  xit { should validate_uniqueness_of :name }
-  xit { should validate_uniqueness_of :slug }
-
   context :create do
     it 'creates a valid media' do
       expect(Lab.new name: 'The Lab', image: 'example.jpg', slug: 'the-lab').to be_valid
