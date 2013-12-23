@@ -37,11 +37,14 @@ describe User, '#update' do
     end
 
     context 'filling only name and email' do
+      let!(:new_user)     { FactoryGirl.build :user, email: 'washington@example.org', name: 'Botelho' }
+      let!(:old_password) { @user.password }
+
       before do
-        fill_in 'user_email'                 , with: 'washington@example.org'
-        fill_in 'user_name'                  , with: 'Botelho'
-        fill_in 'user_password'              , with: ''
-        fill_in 'user_password_confirmation' , with: ''
+        fill_in 'user_email'                 , with: new_user.email
+        fill_in 'user_name'                  , with: new_user.name
+        fill_in 'user_password'              , with: nil
+        fill_in 'user_password_confirmation' , with: nil
 
         click_button 'ATUALIZAR'
       end
@@ -54,6 +57,28 @@ describe User, '#update' do
       it { expect(find_field('user_name').value).to  eq 'Botelho' }
 
       it { expect(page).to_not have_content 'O campo "Password" deve ser preenchido!' }
+
+      context 'coming back to login page' do
+        before do
+          visit logout_path
+          visit login_path
+        end
+
+        context 'and try to login with old password', :js do
+          before do
+            fill_in 'email'    , with: new_user.email
+            fill_in 'password' , with: old_password
+
+            uncheck 'not_human'
+
+            click_button 'ACESSAR'
+          end
+
+          it 'keeps the unchanged password' do
+            expect(page).to_not have_content I18n.t('session.denied')
+          end
+        end
+      end
     end
   end
 
