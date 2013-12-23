@@ -57,6 +57,32 @@ describe Article do
     let!(:article_1) { FactoryGirl.create :article, created_at: Time.local(2000, 1, 1), published_at: Time.local(2001, 1, 2) }
     let!(:article_2) { FactoryGirl.create :article, created_at: Time.local(2000, 1, 2), published_at: Time.local(2001, 1, 1) }
 
+    describe :home_selected do
+      let!(:article) { FactoryGirl.create :article }
+      let(:result)   { Article.home_selected.first }
+
+      it 'brings only the fields used on home' do
+        expect(result).to     have_attribute :published_at
+        expect(result).to     have_attribute :slug
+        expect(result).to     have_attribute :title
+        expect(result).to_not have_attribute :body
+        expect(result).to_not have_attribute :created_at
+        expect(result).to_not have_attribute :id
+        expect(result).to_not have_attribute :updated_at
+        expect(result).to_not have_attribute :user_id
+      end
+    end
+
+    describe :by_month do
+      let!(:article_1) { FactoryGirl.create :article, published_at: Time.local(2013, 01, 01) }
+      let!(:article_2) { FactoryGirl.create :article, published_at: Time.local(2013, 01, 01) }
+      let!(:article_3) { FactoryGirl.create :article, published_at: Time.local(2013, 02, 01) }
+      let!(:article_4) { FactoryGirl.create :article, published_at: Time.local(2013, 03, 01) }
+      let(:result)     { Article.by_month }
+
+      xit 'groups the articles by published month'
+    end
+
     describe :recents do
       let!(:articles) { FactoryGirl.create_list :article, 9 }
 
