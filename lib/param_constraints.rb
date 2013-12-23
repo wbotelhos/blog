@@ -5,7 +5,7 @@ class ParamConstraints
     is_lab? @request.params[:slug]
   end
 
-  def is_lab?(value)
-    CONFIG['labs'].split(',').include? value
+  def is_lab?(slug)
+    Lab.find_by_slug(slug).present?
   end
 end
