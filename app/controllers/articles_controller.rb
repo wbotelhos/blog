@@ -40,7 +40,6 @@ class ArticlesController < ApplicationController
     if @article.present?
       @comment       = @article.comments.new
       @root_comments = @article.comments.roots
-      @title         = @article.title
     else
       redirect_to root_url, alert: t('article.flash.not_found', uri: params[:slug])
     end
