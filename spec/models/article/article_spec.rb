@@ -6,12 +6,9 @@ describe Article do
   end
 
   it { should belong_to :user }
-  xit { should has_many(:comments).with_dependent :destroy }
 
   it { should validate_presence_of :user }
   it { should validate_presence_of :title }
-
-  xit { should validate_uniqueness_of :title }
 
   context :create do
     let(:user) { FactoryGirl.create :user }
