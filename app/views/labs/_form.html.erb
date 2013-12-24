@@ -1,0 +1,34 @@
+<%= form_for @media do |f| %>
+  <div class="placeholder">
+    <%= f.label :title %> <span class="mandatory">*</span>
+    <%= f.text_field :title, autofocus: true, required: true, class: :input %>
+    <%= errors_for @media, :title %>
+  </div>
+
+  <div class="placeholder">
+    <%= f.label :slug %> <span class="mandatory">*</span>
+    <%= f.text_field :slug, required: true, class: :input %>
+    <%= errors_for @media, :slug %>
+  </div>
+
+  <div class="placeholder">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: :input %>
+  </div>
+
+  <div class="placeholder">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: :input %>
+  </div>
+
+  <div class="saver">
+    <%= f.submit name: nil, class: 'button green' %>
+    <%= link_to t('lab.preview'), slug_path(@media.slug), target: :_blank, class: 'button green-dark' if @media.persisted? %>
+  </div>
+<% end %>
+
+<script>
+  $(function() {
+    $('#lab_body').taby();
+  });
+</script>

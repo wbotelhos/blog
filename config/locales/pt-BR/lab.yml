@@ -3,6 +3,8 @@ pt-BR:
     attributes:
       lab:
         body: 'Conteúdo'
+        description: 'Descrição'
+        slug: 'Slug'
         title: 'Título'
 
   helpers:

@@ -2,7 +2,7 @@ class LabsController < ApplicationController
   before_filter :require_login, except: [:index, :show]
 
   def create
-    @media = current_user.labs.new params[:lab]
+    @media = Lab.new params[:lab]
 
     if @media.save
       redirect_to edit_lab_url @media
