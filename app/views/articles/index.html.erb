@@ -1,12 +1,12 @@
 <section class="archives">
-  <% @year_month_articles.each do |date, articles| %>
+  <% @year_month_medias.each do |date, medias| %>
     <div class="date"><%= date %></div>
 
     <ul>
-      <% articles.each do |article| %>
+      <% medias.each do |media| %>
         <li>
-          <%= link_to article.title, slug_path(article.slug), class: :title %><br />
-          <%= link_to slug_url(article.slug), slug_path(article.slug), class: :url %>
+          <%= link_to media.title, slug_path(media.slug), class: :title %><br />
+          <%= link_to slug_url(media.slug), slug_path(media.slug), class: :url %>
         </li>
       <% end %>
     </ul>

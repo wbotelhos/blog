@@ -1,20 +1,20 @@
 <article>
   <header>
-    <h1><%= link_to @article.title, slug_path(@article.slug) %></h1>
+    <h1><%= link_to @media.title, slug_path(@media.slug) %></h1>
 
-    <div class="published-at"><%= published_at @article %></div>
+    <div class="published-at"><%= published_at @media %></div>
 
-    <%= link_to t('article.edit'), edit_article_path(@article), class: 'button green-dark edit' if is_logged? %>
+    <%= link_to t('article.edit'), edit_article_path(@media), class: 'button green-dark edit' if is_logged? %>
   </header>
 
   <div class="body">
-    <%= markdown @article.body %>
+    <%= markdown @media.body %>
   </div>
 </article>
 
 <div class="share">
   <p><%= t 'article.share_it' %></p>
-  <%= twitter_button text: @article.title, url: article_slug_url(@article) %>
+  <%= twitter_button text: @media.title, url: article_slug_url(@media) %>
 </div>
 
 <section class="comments">

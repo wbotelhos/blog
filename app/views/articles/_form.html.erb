@@ -1,8 +1,8 @@
-<%= form_for @article do |f| %>
+<%= form_for @media do |f| %>
   <div class="placeholder">
     <%= f.label :title %> <span class="mandatory">*</span>
     <%= f.text_field :title, autofocus: true, required: true, class: :input %>
-    <%= errors_for @article, :title %>
+    <%= errors_for @media, :title %>
   </div>
 
   <div class="placeholder">
@@ -12,7 +12,7 @@
 
   <div class="saver">
     <%= f.submit name: nil, class: 'button green' %>
-    <%= link_to t('article.preview'), slug_path(@article.slug), target: :_blank, class: 'button green-dark' if @article.persisted? %>
+    <%= link_to t('article.preview'), slug_path(@media.slug), target: :_blank, class: 'button green-dark' if @media.persisted? %>
   </div>
 <% end %>
 

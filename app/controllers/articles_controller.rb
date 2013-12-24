@@ -2,25 +2,25 @@ class ArticlesController < ApplicationController
   before_filter :require_login, except: [:index, :show]
 
   def create
-    @article = current_user.articles.new params[:article]
+    @media = current_user.articles.new params[:article]
 
-    if @article.save
-      redirect_to edit_article_url @article
+    if @media.save
+      redirect_to edit_article_url @media
     else
       render :new
     end
   end
 
   def edit
-    @article = Article.find params[:id]
+    @media = Article.find params[:id]
   end
 
   def index
-    @year_month_articles = Article.home_selected.published.by_published.group_by { |criteria| criteria.published_at.strftime('%m/%Y') }
+    @year_month_medias = Article.home_selected.published.by_published.group_by { |criteria| criteria.published_at.strftime('%m/%Y') }
   end
 
   def new
-    @article = Article.new
+    @media = Article.new
   end
 
   def publish # pending
@@ -35,21 +35,21 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.where('slug = ?', params[:slug]).first
+    @media = Article.where('slug = ?', params[:slug]).first
 
-    if @article.present?
-      @comment       = @article.comments.new
-      @root_comments = @article.comments.roots
+    if @media.present?
+      @comment       = @media.comments.new
+      @root_comments = @media.comments.roots
     else
       redirect_to root_url, alert: t('article.flash.not_found', uri: params[:slug])
     end
   end
 
   def update
-    @article = Article.find params[:id]
+    @media = Article.find params[:id]
 
-    if @article.update_attributes params[:article]
-      redirect_to edit_article_url @article
+    if @media.update_attributes params[:article]
+      redirect_to edit_article_url @media
     else
       render :edit
     end
