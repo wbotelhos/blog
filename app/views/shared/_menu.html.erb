@@ -1,18 +1,20 @@
 <nav role="navigation" class="navigation">
   <%= social_icon t('user.email')    , 'i-envelope' , "mailto:#{CONFIG['email']}" %>
+  <%= social_icon t(:feed)           , 'i-feed'     , feed_url %>
   <%= social_icon t('user.github')   , 'i-github'   , CONFIG['github'] %>
   <%= social_icon t('user.linkedin') , 'i-linkedin' , CONFIG['linkedin'] %>
   <%= social_icon t('user.twitter')  , 'i-twitter'  , CONFIG['twitter'] %>
-  <%= social_icon t(:feed)           , 'i-feed'     , feed_url %>
+  <%= menu_icon   t('lab.other')     , 'i-labs'     , labs_path %>
+
+  <%= content_tag :i, '', title: t(:donate), class: 'i-heart' %>
 
   <% if is_logged? %>
     <%= menu_icon t('admin.one')   , 'i-cog'     , admin_path %>
     <%= menu_icon t('article.new') , 'i-file'    , new_article_path %>
+    <%= menu_icon t('lab.new')     , 'i-lab'     , new_lab_path %>
     <%= menu_icon t('user.edit')   , 'i-profile' , profile_path %>
     <%= menu_icon t('user.logout') , 'i-exit'    , logout_path %>
   <% end %>
-
-  <%= content_tag :i, '', title: t(:donate), class: 'i-heart' %>
 
   <div id="donations">
     <%= link_to 'Git tip', 'http://gittip.com/wbotelhos', target: :_blank %>

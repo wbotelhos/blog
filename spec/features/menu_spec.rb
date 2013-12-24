@@ -3,7 +3,7 @@ require 'spec_helper'
 describe :menu do
   before { visit root_path }
 
-  it 'shows the bio' do
+  it 'shows bio' do
     expect(page).to have_link CONFIG['bio']
   end
 
@@ -21,6 +21,10 @@ describe :menu do
 
   it 'shows twitter icon' do
     expect(page).to have_link '', href: CONFIG['twitter']
+  end
+
+  it 'shows labs icon' do
+    expect(page).to have_link '', href: labs_path
   end
 
   context 'donate icon' do
@@ -64,8 +68,12 @@ describe :menu do
     expect(page).to_not have_link '', href: new_article_path
   end
 
-  it 'hides the logout menu icon' do
+  it 'hides logout menu icon' do
     expect(page).to_not have_link '', href: logout_path
+  end
+
+  it 'hides new lab menu icon' do
+    expect(page).to_not have_link '', href: new_lab_path
   end
 
   context 'clicking on feed icon' do
@@ -76,7 +84,7 @@ describe :menu do
     end
   end
 
-  it 'shows the quote' do
+  it 'shows quote' do
     expect(page).to have_content CONFIG['quote']
   end
 
@@ -98,8 +106,12 @@ describe :menu do
       expect(page).to have_link '', href: new_article_path
     end
 
-    it 'shows the logout menu icon' do
+    it 'shows logout menu icon' do
       expect(page).to have_link '', href: logout_path
+    end
+
+    it 'shows new lab menu icon' do
+      expect(page).to have_link '', href: new_lab_path
     end
   end
 end
