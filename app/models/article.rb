@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
   attr_readonly :user_id
 
-  attr_accessible :title, :slug, :body, :published_at
+  attr_accessible :body, :published_at, :slug, :title
 
   belongs_to :user
 
