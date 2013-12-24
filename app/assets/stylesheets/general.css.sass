@@ -1,3 +1,73 @@
+article
+  margin-top: 20px
+
+  header
+    h1
+      font-size: 2.5em
+      font-weight: bold
+      line-height: 1.1
+      margin: 10px 0 5px
+      text-align: center
+
+      a
+        text-decoration: none
+
+    .edit
+      display: block
+      margin: 10px auto 0
+      text-align: center
+      text-decoration: none
+      width: 100px
+
+      &:hover
+        color: #FFF
+
+    .published-at
+      font-size: 1.2em
+      text-align: center
+
+  .align-center
+    display: block
+    margin: 0 auto
+
+  .align-left
+    display: inline
+    float: left
+    margin: 0 7px 2px 0
+    padding: 4px
+
+  .align-right
+    display: inline
+    float: right
+    margin: 0 0 2px 7px
+    padding: 4px
+
+  .body
+    color: #222
+    margin-top: 20px
+    padding-left: 5px
+    word-wrap: break-word
+
+    h3
+      font-size: 2.2em
+      letter-spacing: 0.5px
+      margin-bottom: 0
+
+    p
+      font-size: 1.5em
+      margin-top: 7px
+
+    pre  does not work on ios
+      white-space: pre
+
+    li
+      font-size: 1.4em
+      list-style: inside
+      margin-left: 5px
+
+    ul
+      margin-bottom: 10px
+
 .bio
   color: #444
   font-size: 1.1em
@@ -118,6 +188,34 @@
     &:hover
       color: #FF9BC3
 
+.share
+  margin-top: 30px
+
+  p
+    color: #333
+    font-size: 1.4em
+    font-weight: bold
+    letter-spacing: .7px
+    text-align: center
+
+  .twitter
+    border: 1px solid #B2E2F9
+    border-radius: 3px
+    margin: 0 auto
+    width: 90px
+
+    a
+      background: url('https:twitter.com/favicons/favicon.ico') no-repeat 11px 11px #E1F4FD
+      color: #333
+      display: block
+      font-size: 1.2em
+      font-weight: bold
+      padding: 8px 10px 8px 35px
+      text-decoration: none
+
+      &:hover
+        background-color: #C2E8FA
+
 #donations
   display: none
   font-weight: bold
@@ -148,6 +246,11 @@
 @media only screen and (min-width: 380px)
 
 @media only screen and (min-width: 480px)
+  article
+    header
+      h1
+        font-size: 2.8em
+
   .edit_article, .new_article, .edit_user
     margin-left: auto
     margin-right: auto
@@ -163,6 +266,18 @@
         margin-right: 10px
 
 @media only screen and (min-width: 568px)
+  article
+    a
+      &:hover
+        color: #1AB8F3
+
+      &:active
+        color: #0AA5DF
+
+    header
+      h1
+        font-size: 3em
+
   .content
     width: 90%
 

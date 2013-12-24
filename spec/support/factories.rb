@@ -23,6 +23,7 @@ FactoryGirl.define do
   end
 
   factory :lab do
+    sequence(:body)  { 'body' }
     sequence(:title) { |i| "Lab #{i}" }
     sequence(:slug)  { |i| "lab-#{i}" }
 
