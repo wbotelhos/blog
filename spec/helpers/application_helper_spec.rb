@@ -24,4 +24,38 @@ describe ApplicationHelper do
       end
     end
   end
+
+  describe '#media_slug' do
+    let(:article) { FactoryGirl.create :article, title: 'Some Title' }
+
+    context 'without anchor' do
+      it 'builds the path without anchor' do
+        expect(helper.media_slug article).to eq '/some-title'
+      end
+    end
+
+    context 'with anchor' do
+      it 'builds the path with anchor' do
+        expect(helper.media_slug article, 'anchor').to eq '/some-title#anchor'
+      end
+    end
+  end
+
+  describe '#media_slug_url' do
+    let(:article) { FactoryGirl.create :article, title: 'Some Title' }
+
+    before { @request.host = 'example.org' }
+
+    context 'without anchor' do
+      it 'builds the path without anchor' do
+        expect(helper.media_slug_url article).to eq 'http://example.org/some-title'
+      end
+    end
+
+    context 'with anchor' do
+      it 'builds the path with anchor' do
+        expect(helper.media_slug_url article, 'anchor').to eq 'http://example.org/some-title#anchor'
+      end
+    end
+  end
 end

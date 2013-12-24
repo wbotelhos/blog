@@ -1,40 +1,6 @@
 require 'spec_helper'
 
 describe ArticleHelper do
-  describe '#article_slug' do
-    let(:article) { FactoryGirl.create :article, title: 'Some Title' }
-
-    context 'without anchor' do
-      it 'builds the path without anchor' do
-        expect(helper.article_slug article).to eq '/some-title'
-      end
-    end
-
-    context 'with anchor' do
-      it 'builds the path with anchor' do
-        expect(helper.article_slug article, 'anchor').to eq '/some-title#anchor'
-      end
-    end
-  end
-
-  describe '#article_slug_url' do
-    let(:article) { FactoryGirl.create :article, title: 'Some Title' }
-
-    before { @request.host = 'example.org' }
-
-    context 'without anchor' do
-      it 'builds the path without anchor' do
-        expect(helper.article_slug_url article).to eq 'http://example.org/some-title'
-      end
-    end
-
-    context 'with anchor' do
-      it 'builds the path with anchor' do
-        expect(helper.article_slug_url article, 'anchor').to eq 'http://example.org/some-title#anchor'
-      end
-    end
-  end
-
   describe '#published_at' do
     context 'with published_at date' do
       let(:article) { FactoryGirl.build :article, published_at: Time.local(2000, 1, 1) }

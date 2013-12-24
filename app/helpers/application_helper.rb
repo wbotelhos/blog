@@ -31,6 +31,14 @@ module ApplicationHelper
     Redcarpet::Markdown.new(renderer, options).render(content).html_safe
   end
 
+  def media_slug(media, anchor = nil)
+    slug_path(media.slug, anchor: anchor)
+  end
+
+  def media_slug_url(media, anchor = nil)
+    slug_url(media.slug, anchor: anchor)
+  end
+
   def menu_icon(text, clazz, path)
     link_to '', path, title: text, class: clazz
   end

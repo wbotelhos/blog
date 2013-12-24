@@ -1,12 +1,4 @@
 module ArticleHelper
-  def article_slug(article, anchor = nil)
-    slug_path(article.slug, anchor: anchor)
-  end
-
-  def article_slug_url(article, anchor = nil)
-    slug_url(article.slug, anchor: anchor)
-  end
-
   def published_at(article)
     l article.published_at || article.created_at
   end

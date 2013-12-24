@@ -4,14 +4,14 @@
     <span class="month"><%= t 'article.published_at', time: l(article.published_at, format: :month) %></span>
   </div>
 
-  <h2 class="title"><%= link_to article.title, article_slug(article) %></h2>
+  <h2 class="title"><%= link_to article.title, media_slug(article) %></h2>
 
   <%= article_menu article %>
 
   <div class="body">
     <%= markdown article.resume %>
 
-    <p class="read-more"><%= link_to t('article.read_more'), article_slug(article), title: t('article.read_more_about_html', text: article.title) %></p>
+    <p class="read-more"><%= link_to t('article.read_more'), media_slug(article), title: t('article.read_more_about_html', text: article.title) %></p>
   </div>
 
   <div class="footer">
