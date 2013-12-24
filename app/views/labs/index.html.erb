@@ -1,20 +1,14 @@
-<% content_for :title do %><%= t 'lab.other' %><% end %>
+<section class="archives">
+  <% @year_month_medias.each do |date, medias| %>
+    <div class="date"><%= date %></div>
 
-<% if @labs.empty? %>
-  <div id="none"><%= t 'lab.none' %></div>
-<% else %>
-  <%= render @labs %>
-<% end %>
-
-<script type="text/javascript">
-  $(function() {
-    $.fn.socialy.defaults.app = 'github';
-    $.fn.socialy.defaults.username = 'wbotelhos';
-
-    $('#repository-capty').socialy({ repository: 'capty' });
-    $('#repository-chrony').socialy({ repository: 'chrony' });
-    $('#repository-flury').socialy({ repository: 'flury' });
-    $('#repository-raty').socialy({ repository: 'raty' });
-    $('#repository-stepy').socialy({ repository: 'stepy' });
-  });
-</script>
+    <ul>
+      <% medias.each do |media| %>
+        <li>
+          <%= link_to media.title, slug_path(media.slug), class: :title %><br />
+          <%= link_to slug_url(media.slug), slug_path(media.slug), class: :url %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>

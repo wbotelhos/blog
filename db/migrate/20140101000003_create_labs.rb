@@ -3,14 +3,14 @@ class CreateLabs < ActiveRecord::Migration
     create_table :labs do |t|
       t.datetime :published_at
       t.string   :description
-      t.string   :image
-      t.string   :name         , null: false
       t.string   :slug         , null: false
+      t.string   :title        , null: false
+      t.text     :body
 
       t.timestamps
     end
 
-    add_index :labs, :name, unique: true
+    add_index :labs, :title, unique: true
   end
 
   def down

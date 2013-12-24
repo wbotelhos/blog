@@ -43,14 +43,14 @@ ActiveRecord::Schema.define(:version => 20140101000003) do
   create_table "labs", :force => true do |t|
     t.datetime "published_at"
     t.string   "description"
-    t.string   "image"
-    t.string   "name",         :null => false
     t.string   "slug",         :null => false
+    t.string   "title",        :null => false
+    t.text     "body"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
 
-  add_index "labs", ["name"], :name => "index_labs_on_name", :unique => true
+  add_index "labs", ["title"], :name => "index_labs_on_title", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",         :null => false

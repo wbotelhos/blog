@@ -23,8 +23,8 @@ FactoryGirl.define do
   end
 
   factory :lab do
-    sequence(:name) { |i| "Lab #{i}" }
-    sequence(:slug) { |i| "lab-#{i}" }
+    sequence(:title) { |i| "Lab #{i}" }
+    sequence(:slug)  { |i| "lab-#{i}" }
 
     factory :lab_published do
       published_at Time.local(1984, 10, 23)

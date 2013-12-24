@@ -1,40 +1,44 @@
 class LabsController < ApplicationController
-  before_filter :require_login, except: :index
+  before_filter :require_login, except: [:index, :show]
 
   def create
-    @lab = Lab.new params[:lab]
+    @media = current_user.labs.new params[:lab]
 
-    if @lab.save
-      redirect_to labs_drafts_url, notice: t('flash.labs.draft.notice')
+    if @media.save
+      redirect_to edit_lab_url @media
     else
-      render :new, layout: 'admin'
+      render :new
     end
   end
 
   def edit
-    @lab = Lab.find params[:id]
-    render layout: 'admin'
+    @media = Lab.find params[:id]
   end
 
   def index
-    @labs = Lab.published
+    @year_month_medias = Lab.home_selected.published.by_published.group_by { |criteria| criteria.published_at.strftime('%m/%Y') }
   end
 
   def new
-    @lab = Lab.new
-    render layout: 'admin'
+    @media = Lab.new
   end
 
   def show
+    @media = Lab.where('slug = ?', params[:slug]).first
+
+    if @media.present?
+    else
+      redirect_to root_url, alert: t('lab.flash.not_found', uri: params[:slug])
+    end
   end
 
   def update
-    @lab = Lab.find params[:id]
+    @media = Lab.find params[:id]
 
-    if @lab.update_attributes params[:lab]
-      redirect_to labs_url, notice: t('flash.labs.update.notice')
+    if @media.update_attributes params[:lab]
+      redirect_to edit_lab_url @media
     else
-      render :edit, layout: 'admin'
+      render :edit
     end
   end
 end

@@ -8,17 +8,19 @@ user = User.create!(
 )
 
 Lab.create!(
-  description: 'jQuery Raty - A Star Rating Plugin',
-  image:       'raty.png',
-  name:        'jQuery Raty',
-  slug:        'raty'
+  body:         "Usage: `$('div').raty();`",
+  description:  'jQuery Raty - A Star Rating Plugin',
+  published_at: Time.now,
+  slug:         'raty',
+  title:        'jQuery Raty'
 )
 
 Lab.create!(
-  description: 'jQuery Gridy - A Grid Plugin',
-  image:       'gridy.png',
-  name:        'jQuery Gridy',
-  slug:        'gridy'
+  body:         "Usage: `$('textarea').taby();`",
+  description:  'jQuery Taby - A Textarea Tabulator',
+  published_at: Time.now,
+  slug:         'taby',
+  title:        'jQuery Taby'
 )
 
 article = user.articles.new(
