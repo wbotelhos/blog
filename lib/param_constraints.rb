@@ -1,8 +1,6 @@
 class ParamConstraints
   def matches?(request)
-    @request ||= request
-
-    is_lab? @request.params[:slug]
+    is_lab? request.params[:slug]
   end
 
   def is_lab?(slug)
