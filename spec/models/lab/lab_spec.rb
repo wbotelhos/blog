@@ -5,24 +5,21 @@ describe Lab do
     expect(FactoryGirl.build :lab).to be_valid
   end
 
-  it { should validate_presence_of :name }
-  it { should validate_presence_of :slug }
+  it { should validate_presence_of :title }
 
   context :create do
     it 'creates a valid media' do
-      expect(Lab.new name: 'The Lab', image: 'example.jpg', slug: 'the-lab').to be_valid
+      lab = Lab.new title: 'title', slug: 'title'
+
+      expect(lab).to be_valid
     end
   end
 
   context :uniqueness do
     let(:lab) { FactoryGirl.create :lab }
 
-    it 'does not allow the same name'  do
-      expect(FactoryGirl.build :lab, name: lab.name).to be_invalid
-    end
-
-    it 'does not allow the same slug'  do
-      expect(FactoryGirl.build :lab, slug: lab.slug).to be_invalid
+    it 'does not allow the same title'  do
+      expect(FactoryGirl.build(:lab, title: lab.title)).to be_invalid
     end
   end
 
@@ -30,10 +27,42 @@ describe Lab do
     let!(:lab_1) { FactoryGirl.create :lab, created_at: Time.local(2000, 1, 1), published_at: Time.local(2001, 1, 2) }
     let!(:lab_2) { FactoryGirl.create :lab, created_at: Time.local(2000, 1, 2), published_at: Time.local(2001, 1, 1) }
 
+    describe :home_selected do
+      let!(:lab) { FactoryGirl.create :lab }
+      let(:result)   { Lab.home_selected.first }
+
+      it 'brings only the fields used on home' do
+        expect(result).to     have_attribute :published_at
+        expect(result).to     have_attribute :slug
+        expect(result).to     have_attribute :title
+        expect(result).to_not have_attribute :body
+        expect(result).to_not have_attribute :created_at
+        expect(result).to_not have_attribute :id
+        expect(result).to_not have_attribute :updated_at
+        expect(result).to_not have_attribute :user_id
+      end
+    end
+
+    describe :by_month do
+      let!(:lab_1) { FactoryGirl.create :lab, published_at: Time.local(2013, 01, 01) }
+      let!(:lab_2) { FactoryGirl.create :lab, published_at: Time.local(2013, 01, 01) }
+      let!(:lab_3) { FactoryGirl.create :lab, published_at: Time.local(2013, 02, 01) }
+      let!(:lab_4) { FactoryGirl.create :lab, published_at: Time.local(2013, 03, 01) }
+      let(:result) { Lab.by_month }
+
+      xit 'groups the labs by published month'
+    end
+
     context :sort do
-      describe :by_id do
-        it 'sort by id_at desc' do
-          expect(Lab.by_id).to eq [lab_2, lab_1]
+      describe :by_created do
+        it 'sort by created_at desc' do
+          expect(Lab.by_created).to eq [lab_2, lab_1]
+        end
+      end
+
+      describe :by_published do
+        it 'sort by published_at desc' do
+          expect(Lab.by_published).to eq [lab_1, lab_2]
         end
       end
     end
