@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="<%= I18n.locale %>">
+<head>
+  <%= stylesheet_link_tag 'labs' %>
+</head>
+<body>
+  <div class="content">
+    <div role="banner" class="header">
+      <h1><%= link_to @media.title, slug_path(@media.slug), class: :logo %></h1>
+
+      <div class="description"><%= @media.description %></div>
+    </div>
+
+    <nav role="navigation" class="navigation">
+      <ul>
+        <li><%= link_to content_tag(:i, nil, class: 'i-arrow-down') + ' v1.0.1', 'http://github.com/wbotelhos/dynamy/archive/0.1.0.zip' %></li>
+        <li><%= link_to content_tag(:i, nil, class: 'i-github'), 'http://github.com/wbotelhos/dynamy' %></li>
+        <li><%= link_to content_tag(:i, nil, class: 'i-labs'), 'http://wbotelhos.com/labs' %></li>
+        <li><%= link_to content_tag(:i, nil, class: 'i-heart'), 'http://wbotelhos.com/labs', class: :heart %></li>
+      </ul>
+    </nav>
+
+    <%= yield %>
+  </div>
+</body>
+</html>

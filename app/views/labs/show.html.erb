@@ -1,18 +1,5 @@
 <article>
-  <header>
-    <h1><%= link_to @media.title, slug_path(@media.slug) %></h1>
-
-    <div class="published-at"><%= published_at @media %></div>
-
-    <%= link_to t('lab.edit'), edit_lab_path(@media), class: 'button green-dark edit' if is_logged? %>
-  </header>
-
   <div class="body">
     <%= markdown @media.body %>
   </div>
 </article>
-
-<div class="share">
-  <p><%= t 'lab.share_it' %></p>
-  <%= twitter_button text: @media.title, url: media_slug_url(@media) %>
-</div>
