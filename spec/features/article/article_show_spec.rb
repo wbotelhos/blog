@@ -59,9 +59,9 @@ describe Article, '#show' do
       visit slug_path article.slug
     end
 
-    it 'does not display edit link' do
+    it 'displays edit link' do
       within 'header' do
-        expect(page).to have_link 'Editar'
+        expect(page).to have_link 'Editar', href: edit_article_path(article)
       end
     end
   end
