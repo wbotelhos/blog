@@ -107,7 +107,7 @@ var CommentResponder = {
 $(function() {
   var donations = $('#donations');
 
-  $('.i-heart').on('click', function(e) {
+  $('.i-heart').on('click', function() {
     donations.slideToggle('fast');
   });
 });
