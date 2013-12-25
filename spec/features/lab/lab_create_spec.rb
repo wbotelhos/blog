@@ -14,9 +14,10 @@ describe Lab, '#create' do
 
   context 'submit with valid data' do
     before do
-      fill_in 'lab_body'  , with: 'body'
-      fill_in 'lab_slug'  , with: 'slug'
-      fill_in 'lab_title' , with: 'title'
+      fill_in 'lab_body'    , with: 'body'
+      fill_in 'lab_slug'    , with: 'slug'
+      fill_in 'lab_title'   , with: 'title'
+      fill_in 'lab_version' , with: '1.0.0'
 
       click_button 'SALVAR'
     end
@@ -39,11 +40,14 @@ describe Lab, '#create' do
   end
 
   context 'with invalid data', :js do
+    before do
+      page.execute_script "$(':input').removeAttr('required');"
+    end
+
     context 'blank title' do
       before do
-        fill_in 'lab_slug', with: 'slug'
-
-        page.execute_script "$(':input').removeAttr('required');"
+        fill_in 'lab_slug'    , with: 'slug'
+        fill_in 'lab_version' , with: '1.0.0'
 
         click_button 'SALVAR'
       end
@@ -57,18 +61,25 @@ describe Lab, '#create' do
 
     context 'blank slug' do
       before do
-        fill_in 'lab_title', with: 'title'
-
-        page.execute_script "$(':input').removeAttr('required');"
+        fill_in 'lab_title'   , with: 'title'
+        fill_in 'lab_version' , with: '1.0.0'
 
         click_button 'SALVAR'
       end
 
-      it 'renders form page again' do
-        expect(current_path).to eq labs_path
+      it { expect(page).to have_content 'O campo "Slug" deve ser preenchido!' }
+    end
+
+    context 'blank version' do
+      before do
+        fill_in 'lab_title'   , with: 'title'
+        fill_in 'lab_slug'    , with: 'slug'
+        fill_in 'lab_version' , with: ''
+
+        click_button 'SALVAR'
       end
 
-      it { expect(page).to have_content 'O campo "Slug" deve ser preenchido!' }
+      it { expect(page).to have_content 'O campo "Versão" deve ser preenchido!' }
     end
   end
 end

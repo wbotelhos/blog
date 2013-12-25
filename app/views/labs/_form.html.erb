@@ -17,6 +17,12 @@
   </div>
 
   <div class="placeholder">
+    <%= f.label :version %> <span class="mandatory">*</span>
+    <%= f.text_field :version, required: true, class: :input %>
+    <%= errors_for @media, :version %>
+  </div>
+
+  <div class="placeholder">
     <%= f.label :body %>
     <%= f.text_area :body, class: :input %>
   </div>

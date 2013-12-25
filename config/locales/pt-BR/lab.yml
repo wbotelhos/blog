@@ -6,6 +6,7 @@ pt-BR:
         description: 'Descrição'
         slug: 'Slug'
         title: 'Título'
+        version: 'Versão'
 
   helpers:
     submit:

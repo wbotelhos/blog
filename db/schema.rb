@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20140101000003) do
     t.string   "description"
     t.string   "slug",         :null => false
     t.string   "title",        :null => false
+    t.string   "version",      :null => false
     t.text     "body"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false

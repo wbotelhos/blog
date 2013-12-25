@@ -6,14 +6,7 @@ describe Lab do
   end
 
   it { should validate_presence_of :title }
-
-  context :create do
-    it 'creates a valid media' do
-      lab = Lab.new title: 'title', slug: 'title'
-
-      expect(lab).to be_valid
-    end
-  end
+  it { should validate_presence_of :version }
 
   context :uniqueness do
     let(:lab) { FactoryGirl.create :lab }
