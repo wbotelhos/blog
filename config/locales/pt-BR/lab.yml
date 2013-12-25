@@ -21,6 +21,3 @@ pt-BR:
     other: 'Labs'
     preview: 'PREVIEW'
     share_it: 'Compartilhe este projeto!'
-
-    flash:
-      not_found: 'O projeto "%{uri}" não foi encontrado!'

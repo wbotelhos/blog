@@ -28,10 +28,6 @@ class LabsController < ApplicationController
   def show
     @media = Lab.where('slug = ?', params[:slug]).first
 
-    unless @media.present?
-      redirect_to root_url, alert: t('lab.flash.not_found', uri: params[:slug])
-    end
-
     render layout: 'labs'
   end
 
