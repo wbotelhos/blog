@@ -6,8 +6,6 @@
   <%= social_icon t('user.twitter')  , 'i-twitter'  , CONFIG['twitter'] %>
   <%= menu_icon   t('lab.other')     , 'i-labs'     , labs_path %>
 
-  <%= content_tag :i, '', title: t(:donate), class: 'i-heart' %>
-
   <% if is_logged? %>
     <%= menu_icon t('admin.one')   , 'i-cog'     , admin_path %>
     <%= menu_icon t('article.new') , 'i-file'    , new_article_path %>
@@ -16,11 +14,7 @@
     <%= menu_icon t('user.logout') , 'i-exit'    , logout_path %>
   <% end %>
 
-  <div id="donations">
-    <%= link_to 'Git tip', 'http://gittip.com/wbotelhos', target: :_blank %>
-    <span>•</span>
-    <%= link_to 'Paypal', 'http://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=wbotelhos.com', target: :_blank %>
-  </div>
+  <%= render 'shared/donation' %>
 </nav>
 
 <div class="bio"><%= t 'user.bio' %></div>
