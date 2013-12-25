@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'acts_as_tree'
-gem 'asset_sync'
 gem 'mysql2'
 gem 'pygments.rb'
 gem 'rails'        , '~> 3.2.16'
@@ -9,7 +8,6 @@ gem 'rake'
 gem 'redcarpet'
 gem 'rspec-rails'
 gem 'sass-rails'
-gem 'thin'
 
 group :assets do
   gem 'compass-rails'
@@ -18,6 +16,7 @@ group :assets do
 end
 
 group :development do
+  gem 'asset_sync'
   gem 'capistrano', '~> 2.15.5'
 end
 
@@ -29,6 +28,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'rb-fsevent'   , require: false
   gem 'ruby_gntp'    # require: http://growl.info/downloads
+  gem 'thin'
 end
 
 group :production do
