@@ -7,30 +7,6 @@ describe Lab, '#show' do
 
   before { visit slug_path lab.slug }
 
-  it 'shows the title' do
-    within 'header' do
-      expect(page).to have_link lab.title
-    end
-  end
-
-  it 'shows published date' do
-    within 'header' do
-      expect(page).to have_content "#{lab.published_at.day} de Outubro de #{lab.published_at.year}"
-    end
-  end
-
-  it 'shows twitter button' do
-    expect(page).to have_link 'Tweet'
-  end
-
-  context 'clicking on title' do
-    before { click_link lab.title }
-
-    it 'sends to the same page' do
-      expect(current_path).to eq "/#{lab.slug}"
-    end
-  end
-
   it 'redirects to show page' do
     expect(current_path).to eq "/#{lab.slug}"
   end
@@ -41,15 +17,66 @@ describe Lab, '#show' do
     end
   end
 
-  context 'trying to access an inexistent record' do
-    before { visit slug_path 'invalid' }
-
-    it 'redirects to root page' do
-      expect(current_path).to eq root_path
+  describe 'header' do
+    it 'shows title' do
+      within '.header' do
+        expect(page).to have_link lab.title, href: slug_path(lab.slug)
+      end
     end
 
-    it 'display not found message' do
-      expect(page).to have_content 'O artigo "invalid" não foi encontrado!'
+    it 'shows description' do
+      within '.header' do
+        expect(page).to have_link lab.description
+      end
+    end
+  end
+
+  describe 'navigation' do
+    it 'shows download button' do
+      within 'nav' do
+        expect(page).to have_link "v#{lab.version}", href: "#{CONFIG['github']}/#{lab.slug}/archive/#{lab.version}.zip"
+      end
+    end
+
+    it 'show github button' do
+      within 'nav' do
+        expect(page).to have_link '', href: "#{CONFIG['github']}/#{lab.slug}"
+      end
+    end
+
+    it 'show labs button' do
+      within 'nav' do
+        expect(page).to have_link '', href: "#{CONFIG['url_http']}/labs"
+      end
+    end
+
+    context 'donate icon' do
+      it 'shows donate icon' do
+        expect(page).to have_css '.i-heart'
+      end
+
+      it 'hides donate options' do
+        expect(page).to have_link 'Git tip' , visible: false
+        expect(page).to have_link 'Paypal'  , visible: false
+      end
+
+      context 'clicking on donate icon' do
+        before { find('.i-heart').click }
+
+        it 'shows donate options' do
+          expect(page).to have_link 'Git tip' , visible: true
+          expect(page).to have_link 'Paypal'  , visible: true
+        end
+
+        context 'clicking again' do
+          before { find('.i-heart').click }
+
+          it 'hides donate options' do
+            expect(page).to have_link 'Git tip' , visible: false
+            expect(page).to have_link 'Paypal'  , visible: false
+          end
+        end
+      end
     end
   end
 
@@ -59,9 +86,9 @@ describe Lab, '#show' do
       visit slug_path lab.slug
     end
 
-    it 'does not display edit link' do
+    it 'displays edit link' do
       within 'header' do
-        expect(page).to have_link 'Editar'
+        expect(page).to have_link 'Editar', href: edit_lab_path(lab)
       end
     end
   end

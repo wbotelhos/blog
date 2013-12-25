@@ -3,5 +3,11 @@
  *= require fonts
  *= require common
  *= require buttons
- *= require_tree .
+ *= require general
+ *= require pygments
+ *= require article
+ *= require comment
+ *= require signin
+ *= require admin
  */
+

@@ -17,6 +17,7 @@ module Blog
     config.assets.enabled                     = false
     config.assets.enabled                     = true
     config.assets.initialize_on_precompile    = false
+    config.assets.precompile                  += %w[labs.css labs.js]
     config.assets.version                     = '1.0'
     config.encoding                           = 'utf-8'
     config.filter_parameters                  += [:password]
