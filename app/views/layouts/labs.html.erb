@@ -16,7 +16,7 @@
     <nav role="navigation" class="navigation">
       <%= link_to content_tag(:i, nil, class: 'i-arrow-down') + " v#{@media.version}", "#{CONFIG['github']}/#{@media.slug}/archive/#{@media.version}.zip", class: :download %>
       <%= link_to content_tag(:i, nil, class: 'i-github'), "#{CONFIG['github']}/#{@media.slug}", target: :blank %>
-      <%= link_to content_tag(:i, nil, class: 'i-labs'), "#{CONFIG['url_http']}/labs", target: :blank %>
+      <%= link_to content_tag(:i, nil, class: 'i-labs'), "#{CONFIG['url_http']}/labs", target: :blank, class: :labs %>
 
       <%= render 'shared/donation' %>
     </nav>

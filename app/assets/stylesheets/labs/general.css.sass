@@ -20,18 +20,17 @@
 article
   margin-top: 20px
 
-  header
-    .edit
-      display: block
-      font-size: 1.4em
-      margin: 10px auto 0
-      padding: 12px
-      text-align: center
-      text-decoration: none
-      width: 100px
+  header .edit
+    display: block
+    font-size: 1.4em
+    margin: 0 auto
+    padding: 12px
+    text-align: center
+    text-decoration: none
+    width: 100px
 
-      &:hover
-        color: #FFF
+    &:hover
+      color: #FFF
 
 body
   background-color: #FAFAFA
@@ -43,26 +42,27 @@ body
 
 nav
   > a, .i-heart
-    //                   3 buttons  margin-left  margin-right
-    +calc(width, '100% / 3 -        4px -        4px')
+    //                    labs.margin-left  labs.margin-right 3 buttons
+    +calc(width, '(100% - 8px -             8px) /            3')
     color: #333
     float: left
     text-align: center
 
   a, .i-heart
-    font-size: 1.5em
-    margin-top: 8px
-    border-radius: 4px
     background-color: #FFF
-    padding: 10px
+    border-radius: 4px
+    font-size: 1.5em
     height: 48px
     letter-spacing: 0.4px
-    margin-left: 4px
-    margin-right: 4px
+    margin-top: 8px
+    padding-top: 12px
     text-decoration: none
 
     &:hover
       background-color: #D9E6F2
+
+    &:active
+      color: #0AA5DF
 
   i
     font-size: 1.5em
@@ -75,6 +75,10 @@ nav
 
     i
       top: 2px
+
+  .labs
+    margin-left: 8px
+    margin-right: 8px
 
   .i-heart
     color: #F00
