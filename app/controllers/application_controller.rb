@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :filter_bot
+  before_filter :set_locale
 
   helper_method :current_user, :is_logged?, :sidebar
 
@@ -26,6 +27,10 @@ class ApplicationController < ActionController::Base
 
   def require_login
     redirect_to login_url, alert: t('session.required') unless is_logged?
+  end
+
+  def set_locale
+    I18n.locale = controller_name == 'labs' && action_name == 'show' ? :'en-US' : :'pt-BR'
   end
 
   def sidebar
