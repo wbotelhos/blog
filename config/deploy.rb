@@ -33,7 +33,7 @@ namespace :deploy do
     update
     app.setup
     assets.precompile
-    app.secret_key
+    app.secret_token
     app.restart
   end
 end
@@ -44,7 +44,7 @@ namespace :app do
     start
   end
 
-  task :secret_key do
+  task :secret_token do
     secret = %x(bundle exec rake secret).split(/\n/)[1]
     output = %(Blog::Application.config.secret_token = "#{secret}")
     run %(echo '#{output}' > #{current}/config/initializers/secret_token.rb)
