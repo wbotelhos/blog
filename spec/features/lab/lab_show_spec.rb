@@ -46,7 +46,7 @@ describe Lab, '#show' do
 
     it 'show labs button' do
       within 'nav' do
-        expect(page).to have_link '', href: "#{CONFIG['url_http']}/labs"
+        expect(page).to have_link '', href: labs_url
       end
     end
 

@@ -11,6 +11,10 @@ class Lab < ActiveRecord::Base
   validates :title   , presence: true , uniqueness: true
   validates :version , presence: true
 
+  def download
+    "#{CONFIG['github']}/#{slug}/archive/#{version}.zip"
+  end
+
   def github
     "#{CONFIG['github']}/#{slug}"
   end

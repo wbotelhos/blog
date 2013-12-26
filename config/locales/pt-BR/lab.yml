@@ -15,6 +15,7 @@ pt-BR:
         update: 'ATUALIZAR'
 
   lab:
+    download: "Baixe a versão %{version}"
     drafts: 'Rascunhos'
     edit: 'Editar'
     new: 'Novo Projeto'

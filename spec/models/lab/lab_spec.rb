@@ -106,22 +106,26 @@ describe Lab do
   end
 
   describe '.url' do
-    context 'when it is published' do
-      let(:lab) { FactoryGirl.build :lab }
+    let(:lab) { FactoryGirl.build :lab }
 
-      it 'return the online url of the url' do
-        expect(lab.url).to eq "http://wbotelhos.com/#{lab.slug}"
-      end
+    it 'return the online url of the url' do
+      expect(lab.url).to eq "#{CONFIG['url_http']}/#{lab.slug}"
     end
   end
 
   describe '.github' do
-    context 'when it is published' do
-      let(:lab) { FactoryGirl.build :lab }
+    let(:lab) { FactoryGirl.build :lab }
 
-      it 'return the online url of the github' do
-        expect(lab.github).to eq "http://github.com/wbotelhos/#{lab.slug}"
-      end
+    it 'return the online url of the github' do
+      expect(lab.github).to eq "#{CONFIG['github']}/#{lab.slug}"
+    end
+  end
+
+  describe '.download' do
+    let(:lab) { FactoryGirl.build :lab }
+
+    it 'return the github download url' do
+      expect(lab.download).to eq "#{CONFIG['github']}/#{lab.slug}/archive/#{lab.version}.zip"
     end
   end
 end
