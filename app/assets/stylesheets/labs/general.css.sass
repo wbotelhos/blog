@@ -1,151 +1,31 @@
 @import "compass/css3/box-sizing"
 @import "mixins"
 
-*
-  text-rendering: optimizelegibility
-
-*, *:before, *:after
-  +box-sizing(border-box !important)
-
-*::-moz-placeholder
-  color: #E0E0E0
-
-*::-moz-selection
-  background-color: #CCE2FF
-
-*::-moz-selection
-  background-color: #FFC
-  color: #555
-
-article
-  margin-top: 20px
-
-  header .edit
-    display: block
-    font-size: 1.4em
-    height: auto
-    margin: 0 auto
-    text-align: center
-    text-decoration: none
-    width: 100px
-
-    &:hover
-      color: #FFF
-
 body
   background-color: #FAFAFA
-  color: #626262
-  font-family: "Open Sans", "Arial", sans-serif
-  font-size: 10px
-  height: 100%
-  line-height: 1.6
 
-nav
+.navigation
   > a, .i-heart
-    //                    labs.margin-left  labs.margin-right 3 buttons
-    +calc(width, '(100% - 8px -             8px) /            3')
-    color: #333
-    float: left
-    text-align: center
-
-  a, .i-heart
-    background-color: #FFF
-    border-radius: 4px
-    font-size: 1.5em
-    height: 48px
-    letter-spacing: 0.4px
-    margin-top: 8px
-    padding-top: 11px
-    text-decoration: none
-
-    &:hover
-      background-color: #D9E6F2
-
-    &:active
-      color: #0AA5DF
-
-  i
-    font-size: 1.5em
-    position: relative
+    width: 33%
 
   .download
+    font-size: 1.8em
+    padding-bottom: 5px
     width: 100%
-
-    i
-      font-size: 1.3em
-      left: -2px
-      top: 2px
 
   .labs
     margin-left: 8px
-    margin-right: 8px
-
-  .i-heart
-    color: #F00
-    cursor: pointer
-    font-size: 2.1em
-    padding-top: 13px
-
-    &:hover
-      color: #FF9BC3
-
-.clearfix
-  *zoom: 1
-
-  &:before, &:after
-    content: ' '
-    display: table
-
-  &:after
-    clear: both
-
-.content
-  margin: 0 auto
-  width: 95%
-
-.description
-  color: #999
-  font-size: 1.4em
-  font-weight: bold
-  margin-left: 10px
-  margin-top: 0
-  text-align: center
-  text-shadow: 1px 1px 1px #FFF
 
 .header
   a
-    color: #3B3B3B
-    display: block
     font-size: 2.2em
-    letter-spacing: -3px
-    line-height: 1.2
-    text-align: center
-    text-decoration: none
-    text-shadow: 2px 2px #FFF
+
+  div
+    font-weight: bold
 
   h1
     margin-bottom: 7px
     margin-top: 5px
-
-#donations
-  display: none
-  font-weight: bold
-  margin-top: 15px
-  text-align: center
-
-  a
-    color: #DC5
-    padding: 12px 14px
-
-    &:hover
-      color: #F00
-
-  span
-    color: #FF9BC3
-    font-size: 2.2em
-    padding-left: 2px
-    padding-right: 2px
-    vertical-align: middle
 
 @media only screen and (min-width: 240px)
 
@@ -156,38 +36,20 @@ nav
 @media only screen and (min-width: 480px)
 
 @media only screen and (min-width: 568px)
-  body
-    font-size: 11px
 
 @media only screen and (min-width: 600px)
 
 @media only screen and (min-width: 685px)
 
 @media only screen and (min-width: 768px)
-  body
-    font-size: 12px
-
-  nav
-    float: right
-    margin-top: 10px
-
-    a
-      padding-top: 9px
-
-    a, .i-heart
-      width: 65px
-
-    .download
-      width: 110px
-      margin-right: 8px
-
-    .i-heart
-      padding-top: 11px
-
   .content
     margin-top: 10px
+    width: 90%
 
   .header
     float: left
+
+  .navigation
+    float: right
 
 @media only screen and (min-width: 1024px)

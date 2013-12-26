@@ -1,0 +1,190 @@
+@import "compass/css3/box-sizing"
+@import "compass/css3/border-radius"
+@import "compass/css3/opacity"
+@import "mixins"
+
+*
+  text-rendering: optimizelegibility
+
+*, *:before, *:after
+  +box-sizing(border-box !important)
+
+*::-moz-placeholder
+  color: #E0E0E0
+
+*::-moz-selection
+  background-color: #CCE2FF
+
+*::-moz-selection
+  background-color: #FFC
+  color: #555
+
+article
+  margin-top: 20px
+
+blockquote
+  background: image-url('quote.gif') no-repeat 0 0 #FDFDFD
+  border-radius: 4px
+  margin-left: 0
+  padding-left: 22px
+
+  p
+    font-size: 1.3em !important
+    padding-left: 10px
+    padding-top: 5px
+
+body
+  color: #555
+  font-family: "Open Sans", "Arial", sans-serif
+  font-size: 10px
+  height: 100%
+  line-height: 1.6
+
+code
+  background-color: #FEFEFE
+  border-radius: 3px
+  border: 1px solid #FBFBFB
+  margin: 0 2px
+  padding: 1px 5px
+
+header
+  .edit
+    display: block
+    font-size: 1.4em
+    margin: 10px auto 0
+    padding-top: 8px
+    text-align: center
+    text-decoration: none
+    width: 100px
+
+    &:hover
+      color: #FFF
+
+img
+  max-width: 100%
+
+pre
+  background-color: #FEFEFE
+  border-radius: 3px
+  border: 1px solid #FBFBFB
+  color: #393939
+  font-family: menlo, monospace, serif
+  font-size: 1.2em
+  overflow: auto
+  padding: 10px 10px
+  white-space: pre
+
+textarea
+  resize: vertical
+
+ul
+  list-style: none
+
+.clearfix
+  *zoom: 1
+
+  &:before, &:after
+    content: ' '
+    display: table
+
+  &:after
+    clear: both
+
+.content
+  margin: 0 auto
+  width: 95%
+
+.header
+  margin-top: 10px
+  text-align: center
+
+  a
+    color: #3B3B3B
+    letter-spacing: -3px
+    line-height: 1.1
+    text-decoration: none
+    text-shadow: 2px 2px #FFF
+
+    &:hover
+      color: #444
+
+  div
+    color: #888
+    font-size: 1.3em
+
+.navigation
+  margin-top: 5px
+  text-align: center
+
+  > a, .i-heart
+    background-color: #FFF
+    border-radius: 4px
+    display: inline-block
+    font-size: 2.3em
+    margin-top: 8px
+    padding-bottom: 8px
+    padding-top: 8px
+
+    &:hover
+      color: #6ECFF5
+      transition: color 0s ease 0s, color 0.2s ease-in 0s
+
+    &:active
+      color: #0AA5DF
+
+  a
+    color: #555
+    text-decoration: none
+
+  .i-heart
+    color: #F00
+    cursor: pointer
+
+    &:hover
+      color: #FF9BC3
+
+#donations
+  display: none
+  font-weight: bold
+  margin-top: 5px
+  text-align: center
+
+  a
+    color: #DC5
+    font-size: 1.4em
+
+    &:hover
+      color: #6ECFF5
+      transition: color 0s ease 0s, color 0.2s ease-in 0s
+
+    &:active
+      color: #0AA5DF
+
+  span
+    color: #FF9BC3
+    font-size: 1.8em
+    padding-left: 3px
+    padding-right: 3px
+    vertical-align: sub
+
+@media only screen and (min-width: 240px)
+
+@media only screen and (min-width: 320px)
+
+@media only screen and (min-width: 380px)
+
+@media only screen and (min-width: 480px)
+
+@media only screen and (min-width: 568px)
+  body
+    font-size: 11px
+
+@media only screen and (min-width: 600px)
+
+@media only screen and (min-width: 685px)
+
+@media only screen and (min-width: 768px)
+  body
+    font-size: 12px
+
+@media only screen and (min-width: 1024px)

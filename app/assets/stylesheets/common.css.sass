@@ -1,74 +1,9 @@
-@import "compass/css3/box-sizing"
 @import "compass/css3/border-radius"
-@import "compass/css3/opacity"
-@import "mixins"
 
-* //
-  text-rendering: optimizelegibility
-
-*, *:before, *:after //
-  +box-sizing(border-box !important)
-
-*::-moz-placeholder //
-  color: #E0E0E0
-
-*::-moz-selection //
-  background-color: #CCE2FF
-
-*::-moz-selection //
-  background-color: #FFC
-  color: #555
-
-a //
-  color: #6ECFF5
-
-blockquote
-  background: image-url('quote.gif') no-repeat 0 0 #FDFDFD
-  border-radius: 4px
-  margin-left: 0
-  padding-left: 22px
-
-  p
-    font-size: 1.3em !important
-    padding-left: 10px
-    padding-top: 5px
-
-body //
+body
   background: image-url('background.jpg') #FAFAFA
-  color: #333
-  font-family: "Open Sans", "Arial", sans-serif
-  font-size: 10px
-  height: 100%
-  line-height: 1.6
 
-code//
-  background-color: #FEFEFE
-  border-radius: 3px
-  border: 1px solid #FBFBFB
-  margin: 0 2px
-  padding: 1px 5px
-
-img//
-  max-width: 100%
-
-pre//
-  background-color: #FEFEFE
-  border-radius: 3px
-  border: 1px solid #FBFBFB
-  color: #393939
-  font-family: menlo, monospace, serif
-  font-size: 1.2em
-  overflow: auto
-  padding: 10px 10px
-  white-space: pre
-
-textarea
-  resize: vertical
-
-ul //
-  list-style: none
-
-.input//
+.input
   +border-radius(2px)
   background-color: #FFF
   border: 1px solid #CCC
@@ -80,7 +15,7 @@ ul //
   transition: all 0.15s ease-in 0s
   width: 100%
 
-  &:focus//
+  &:focus
     border-color: #EEE
 
 .mandatory
@@ -99,14 +34,14 @@ ul //
     background-color: #F1D7D7
     color: #A95252
 
-.placeholder//
+.placeholder
   float: left
   margin-top: 10px
   padding-left: 2px
   padding-right: 2px
   width: 100%
 
-.saver//
+.saver
   clear: both
   float: right
   margin-bottom: 15px
@@ -131,15 +66,11 @@ ul //
 @media only screen and (min-width: 480px)
 
 @media only screen and (min-width: 568px)
-  body//
-    font-size: 11px
 
 @media only screen and (min-width: 600px)
 
 @media only screen and (min-width: 685px)
 
 @media only screen and (min-width: 768px)
-  body//
-    font-size: 12px
 
 @media only screen and (min-width: 1024px)

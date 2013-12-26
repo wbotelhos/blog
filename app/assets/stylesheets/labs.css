@@ -1,5 +1,7 @@
 /*
  *= require normalize
+ *= require shared
+ *= require pygments
  *= require fonts
  *= require buttons
  *= require labs/general

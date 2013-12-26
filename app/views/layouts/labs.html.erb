@@ -26,13 +26,13 @@
     <div role="banner" class="header">
       <h1><%= link_to @media.title, slug_path(@media.slug), class: :logo %></h1>
 
-      <div class="description"><%= @media.description %></div>
+      <div><%= @media.description %></div>
     </div>
 
     <nav role="navigation" class="navigation">
       <%= link_to content_tag(:i, nil, class: 'i-file-zip') + " v#{@media.version}" , @media.download , title: t('lab.download', version: @media.version)                  , class: :download %>
-      <%= link_to content_tag(:i, nil, class: 'i-github')                           , @media.github   , title: "Github <#{@media.github}>"                , target: :blank %>
-      <%= link_to content_tag(:i, nil, class: 'i-labs')                             , labs_url        , title: "Labs <#{labs_url}>"                       , target: :blank , class: :labs %>
+      <%= link_to ''                                                                , @media.github   , title: "Github <#{@media.github}>"                , target: :blank , class: 'i-github' %>
+      <%= link_to ''                                                                , labs_url        , title: "Labs <#{labs_url}>"                       , target: :blank , class: 'labs i-labs' %>
 
       <%= render 'shared/donation' %>
     </nav>
