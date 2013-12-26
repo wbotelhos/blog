@@ -23,6 +23,10 @@ describe Article, '#show' do
     expect(page).to have_link 'Tweet'
   end
 
+  it 'changes the title' do
+    expect(page).to have_title article.title
+  end
+
   context 'clicking on title' do
     before { click_link article.title }
 

@@ -17,6 +17,10 @@ describe Lab, '#show' do
     end
   end
 
+  it 'changes the title' do
+    expect(page).to have_title "#{lab.title} | #{lab.description}"
+  end
+
   describe 'header' do
     it 'shows title' do
       within '.header' do

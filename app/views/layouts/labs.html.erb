@@ -2,6 +2,7 @@
 
 <html dir="ltr" lang="<%= I18n.locale %>">
 <head>
+  <title><%= "#{@title || CONFIG['description']} - #{CONFIG['author']}" %></title>
   <%= stylesheet_link_tag    'labs' %>
   <%= javascript_include_tag 'labs' %>
 </head>

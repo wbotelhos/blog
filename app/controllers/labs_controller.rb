@@ -27,6 +27,7 @@ class LabsController < ApplicationController
 
   def show
     @media = Lab.where('slug = ?', params[:slug]).first
+    @title = "#{@media.title} | #{@media.description}"
 
     render layout: 'labs'
   end
