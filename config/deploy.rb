@@ -45,8 +45,9 @@ namespace :app do
   end
 
   task :secret_token do
-    secret = %x(bundle exec rake secret).split(/\n/)[1]
+    secret = %x(bundle exec rake secret).gsub(/\n/, '')
     output = %(Blog::Application.config.secret_token = "#{secret}")
+
     run %(echo '#{output}' > #{current}/config/initializers/secret_token.rb)
   end
 
