@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'acts_as_tree'
+gem 'asset_sync'
 gem 'mysql2'
 gem 'pygments.rb'
 gem 'rails'        , '~> 3.2.16'
@@ -16,7 +17,6 @@ group :assets do
 end
 
 group :development do
-  gem 'asset_sync'
   gem 'capistrano' , '~> 2.15.5'
 end
 
