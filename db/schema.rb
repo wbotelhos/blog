@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20140101000003) do
   create_table "labs", :force => true do |t|
     t.datetime "published_at"
     t.string   "description"
+    t.string   "keywords",     :null => false
     t.string   "slug",         :null => false
     t.string   "title",        :null => false
     t.string   "version",      :null => false
