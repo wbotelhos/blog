@@ -34,7 +34,7 @@ blockquote
     padding-top: 5px
 
 body
-  color: #555
+  color: #333
   font-family: "Open Sans", "Arial", sans-serif
   font-size: 10px
   height: 100%
@@ -80,6 +80,38 @@ textarea
 ul
   list-style: none
 
+.body
+  margin-top: 20px
+  word-wrap: break-word
+
+  a
+    color: #369
+
+    &:hover
+      color: #1AB8F3
+
+    &:active
+      color: #0AA5DF
+
+  h3
+    font-size: 2.2em
+    letter-spacing: 0.5px
+    margin-bottom: 0
+
+  p
+    font-size: 1.45em
+
+  pre
+    white-space: pre
+
+  li
+    font-size: 1.4em
+    list-style: inside
+    margin-left: 5px
+
+  ul
+    margin-bottom: 10px
+
 .clearfix
   *zoom: 1
 
@@ -92,7 +124,7 @@ ul
 
 .content
   margin: 0 auto
-  width: 95%
+  width: 93%
 
 .header
   margin-top: 10px
@@ -186,5 +218,9 @@ ul
 @media only screen and (min-width: 768px)
   body
     font-size: 12px
+
+  .content
+    margin-top: 10px
+    width: 90%
 
 @media only screen and (min-width: 1024px)
