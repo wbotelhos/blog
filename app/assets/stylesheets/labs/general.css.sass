@@ -71,6 +71,11 @@ nav
   .download
     width: 100%
 
+    i
+      font-size: 1.3em
+      left: -2px
+      top: 2px
+
   .labs
     margin-left: 8px
     margin-right: 8px
@@ -122,9 +127,6 @@ nav
     margin-bottom: 7px
     margin-top: 5px
 
-.i-arrow-down
-  left: -2px
-
 #donations
   display: none
   font-weight: bold
@@ -154,19 +156,38 @@ nav
 @media only screen and (min-width: 480px)
 
 @media only screen and (min-width: 568px)
-  body//
+  body
     font-size: 11px
 
 @media only screen and (min-width: 600px)
 
 @media only screen and (min-width: 685px)
 
-@media only screen and (min-width: 678px)
-  body//
+@media only screen and (min-width: 768px)
+  body
     font-size: 12px
 
   nav
+    float: right
+    margin-top: 10px
+
     a
       padding-top: 9px
+
+    a, .i-heart
+      width: 65px
+
+    .download
+      width: 110px
+      margin-right: 8px
+
+    .i-heart
+      padding-top: 11px
+
+  .content
+    margin-top: 10px
+
+  .header
+    float: left
 
 @media only screen and (min-width: 1024px)

@@ -30,9 +30,9 @@
     </div>
 
     <nav role="navigation" class="navigation">
-      <%= link_to content_tag(:i, nil, class: 'i-arrow-down') + " v#{@media.version}" , @media.download , title: t('lab.download', version: @media.version)                  , class: :download %>
-      <%= link_to content_tag(:i, nil, class: 'i-github')                             , @media.github   , title: "Github <#{@media.github}>"                , target: :blank %>
-      <%= link_to content_tag(:i, nil, class: 'i-labs')                               , labs_url        , title: "Labs <#{labs_url}>"                       , target: :blank , class: :labs %>
+      <%= link_to content_tag(:i, nil, class: 'i-file-zip') + " v#{@media.version}" , @media.download , title: t('lab.download', version: @media.version)                  , class: :download %>
+      <%= link_to content_tag(:i, nil, class: 'i-github')                           , @media.github   , title: "Github <#{@media.github}>"                , target: :blank %>
+      <%= link_to content_tag(:i, nil, class: 'i-labs')                             , labs_url        , title: "Labs <#{labs_url}>"                       , target: :blank , class: :labs %>
 
       <%= render 'shared/donation' %>
     </nav>
