@@ -20,18 +20,22 @@ class Lab < ActiveRecord::Base
   end
 
   def javascripts
-    js_import.delete(' ').split(',').map do |url|
-      %(<script src="#{url}"></script>)
-    end.join('').html_safe if js_import.present?
+    build_tag js_import, %(<script src="{{url}}"></script>)
   end
 
   def stylesheets
-    css_import.delete(' ').split(',').map do |url|
-      %(<link rel="stylesheet" href="#{url}">)
-    end.join('').html_safe if css_import.present?
+    build_tag css_import, %(<link rel="stylesheet" href="{{url}}">)
   end
 
   def url
     "#{CONFIG['url_http']}/#{slug}"
+  end
+
+  private
+
+  def build_tag(attribute, template)
+    attribute.delete(' ').split(',').map do |url|
+      template.sub '{{url}}', url
+    end.join('').html_safe if attribute.present?
   end
 end
