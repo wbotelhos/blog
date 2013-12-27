@@ -36,7 +36,7 @@
       <%= link_to ''                                                                , @media.github   , title: "Github <#{@media.github}>"                , target: :blank , class: 'i-github' %>
       <%= link_to ''                                                                , labs_url        , title: "Labs <#{labs_url}>"                       , target: :blank , class: 'labs i-labs' %>
 
-      <%= render 'shared/donation' %>
+      <%= render 'shared/donation', product: @media.title %>
     </nav>
 
     <%= yield %>
