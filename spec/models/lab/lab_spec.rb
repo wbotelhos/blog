@@ -5,6 +5,8 @@ describe Lab do
     expect(FactoryGirl.build :lab).to be_valid
   end
 
+  it { should validate_presence_of :description }
+  it { should validate_presence_of :keywords }
   it { should validate_presence_of :title }
   it { should validate_presence_of :version }
 
@@ -30,9 +32,14 @@ describe Lab do
         expect(result).to     have_attribute :title
         expect(result).to_not have_attribute :body
         expect(result).to_not have_attribute :created_at
+        expect(result).to_not have_attribute :css_import
         expect(result).to_not have_attribute :id
+        expect(result).to_not have_attribute :js
+        expect(result).to_not have_attribute :js_import
+        expect(result).to_not have_attribute :js_ready
         expect(result).to_not have_attribute :updated_at
         expect(result).to_not have_attribute :user_id
+        expect(result).to_not have_attribute :version
       end
     end
 
@@ -126,6 +133,62 @@ describe Lab do
 
     it 'return the github download url' do
       expect(lab.download).to eq "#{CONFIG['github']}/#{lab.slug}/archive/#{lab.version}.zip"
+    end
+  end
+
+  describe '.javascripts', :focus do
+    context 'with single file' do
+      let(:lab) { FactoryGirl.build :lab, js_import: 'http://example.org' }
+
+      it 'returns the urls wrapped with script tag' do
+        expect(lab.javascripts).to eq %(<script src="http://example.org"></script>)
+      end
+    end
+
+    context 'with multiple files' do
+      context 'with spaces' do
+        let(:lab) { FactoryGirl.create :lab, js_import: 'http://example.org, http://example.com' }
+
+        it 'returns the urls wrapped with script tag' do
+          expect(lab.javascripts).to eq %(<script src="http://example.org"></script><script src="http://example.com"></script>)
+        end
+      end
+
+      context 'without spaces' do
+        let(:lab) { FactoryGirl.build :lab, js_import: 'http://example.org,http://example.com' }
+
+        it 'returns the urls wrapped with script tag' do
+          expect(lab.javascripts).to eq %(<script src="http://example.org"></script><script src="http://example.com"></script>)
+        end
+      end
+    end
+  end
+
+  describe '.stylesheets', :focus do
+    context 'with single file' do
+      let(:lab) { FactoryGirl.build :lab, css_import: 'http://example.org' }
+
+      it 'returns the urls wrapped with link tag' do
+        expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org">)
+      end
+    end
+
+    context 'with multiple files' do
+      context 'with spaces' do
+        let(:lab) { FactoryGirl.create :lab, css_import: 'http://example.org, http://example.com' }
+
+        it 'returns the urls wrapped with link tag' do
+          expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org"><link rel="stylesheet" href="http://example.com">)
+        end
+      end
+
+      context 'without spaces' do
+        let(:lab) { FactoryGirl.build :lab, css_import: 'http://example.org,http://example.com' }
+
+        it 'returns the urls wrapped with link tag' do
+          expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org"><link rel="stylesheet" href="http://example.com">)
+        end
+      end
     end
   end
 end

@@ -3,7 +3,12 @@ pt-BR:
     attributes:
       lab:
         body: 'Conteúdo'
+        css_import: 'CSS import'
         description: 'Descrição'
+        js: 'JS'
+        js_import: 'JS import'
+        js_ready: 'JS ready'
+        keywords: 'Palavras-chave'
         slug: 'Slug'
         title: 'Título'
         version: 'Versão'

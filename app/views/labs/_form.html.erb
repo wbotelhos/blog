@@ -1,5 +1,36 @@
 <%= form_for @media do |f| %>
   <div class="placeholder">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: :input %>
+  </div>
+
+  <div class="placeholder">
+    <%= f.label :version %> <span class="mandatory">*</span>
+    <%= f.text_field :version, required: true, class: :input %>
+    <%= errors_for @media, :version %>
+  </div>
+
+  <div class="placeholder">
+    <%= f.label :js_ready %>
+    <%= f.text_area :js_ready, class: :input %>
+  </div>
+
+  <div class="placeholder">
+    <%= f.label :css_import %>
+    <%= f.text_field :css_import, class: :input %>
+  </div>
+
+  <div class="placeholder">
+    <%= f.label :js_import %>
+    <%= f.text_field :js_import, class: :input %>
+  </div>
+
+  <div class="placeholder">
+    <%= f.label :js %>
+    <%= f.text_field :js, class: :input %>
+  </div>
+
+  <div class="placeholder">
     <%= f.label :title %> <span class="mandatory">*</span>
     <%= f.text_field :title, autofocus: true, required: true, class: :input %>
     <%= errors_for @media, :title %>
@@ -12,19 +43,15 @@
   </div>
 
   <div class="placeholder">
-    <%= f.label :description %>
+    <%= f.label :description %> <span class="mandatory">*</span>
     <%= f.text_field :description, class: :input %>
+    <%= errors_for @media, :description %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :version %> <span class="mandatory">*</span>
-    <%= f.text_field :version, required: true, class: :input %>
-    <%= errors_for @media, :version %>
-  </div>
-
-  <div class="placeholder">
-    <%= f.label :body %>
-    <%= f.text_area :body, class: :input %>
+    <%= f.label :keywords %> <span class="mandatory">*</span>
+    <%= f.text_field :keywords, required: true, class: :input %>
+    <%= errors_for @media, :keywords %>
   </div>
 
   <div class="saver">

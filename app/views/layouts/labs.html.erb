@@ -20,6 +20,8 @@
 
   <%= stylesheet_link_tag    'labs' %>
   <%= javascript_include_tag 'labs' %>
+
+  <%= @media.javascripts %>
 </head>
 <body>
   <div class="content">
@@ -39,5 +41,13 @@
 
     <%= yield %>
   </div>
+
+  <script>
+    <%= @media.js.html_safe %>
+
+    $(function() {
+      <%= @media.js_ready.html_safe %>
+    });
+  </script>
 </body>
 </html>
