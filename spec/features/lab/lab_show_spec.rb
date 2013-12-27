@@ -30,7 +30,7 @@ describe Lab, '#show' do
 
     it 'shows description' do
       within '.header' do
-        expect(page).to have_link lab.description
+        expect(page).to have_content lab.description
       end
     end
   end
@@ -92,7 +92,7 @@ describe Lab, '#show' do
 
     it 'displays edit link' do
       within 'header' do
-        expect(page).to have_link 'Editar', href: edit_lab_path(lab)
+        expect(page).to have_link 'Edit', href: edit_lab_path(lab)
       end
     end
   end
