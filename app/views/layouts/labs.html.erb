@@ -43,10 +43,10 @@
   </div>
 
   <script>
-    <%= @media.js.html_safe %>
+    <%= @media.js.html_safe if @media.js.present? %>
 
     $(function() {
-      <%= @media.js_ready.html_safe %>
+      <%= @media.js_ready.html_safe if @media.js_ready.present? %>
     });
   </script>
 </body>
