@@ -21,6 +21,8 @@
   <%= stylesheet_link_tag    'labs' %>
   <%= javascript_include_tag 'labs' %>
 
+  <%= @media.stylesheets_inline %>
+
   <%= @media.javascripts %>
 </head>
 <body>
@@ -43,10 +45,10 @@
   </div>
 
   <script>
-    <%= @media.js.html_safe if @media.js.present? %>
+    <%= @media.javascripts_inline %>
 
     $(function() {
-      <%= @media.js_ready.html_safe if @media.js_ready.present? %>
+      <%= @media.javascripts_ready %>
     });
   </script>
 </body>

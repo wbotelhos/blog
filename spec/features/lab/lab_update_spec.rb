@@ -16,7 +16,9 @@ describe Lab, '#update' do
 
   context 'with valid data' do
     before do
+      fill_in 'lab_analytics'   , with: 'UA-432-1'
       fill_in 'lab_body'        , with: 'Some body'
+      fill_in 'lab_css'         , with: 'Some CSS'
       fill_in 'lab_css_import'  , with: 'Some CSS import'
       fill_in 'lab_description' , with: 'Some description'
       fill_in 'lab_js'          , with: 'Some JS'
@@ -34,7 +36,9 @@ describe Lab, '#update' do
       expect(current_path).to eq "/labs/#{lab.id}/edit"
     end
 
+    it { expect(find_field('lab_analytics').value).to   eq 'UA-432-1' }
     it { expect(find_field('lab_body').value).to        eq 'Some body' }
+    it { expect(find_field('lab_css').value).to         eq 'Some CSS' }
     it { expect(find_field('lab_css_import').value).to  eq 'Some CSS import' }
     it { expect(find_field('lab_description').value).to eq 'Some description' }
     it { expect(find_field('lab_js').value).to          eq 'Some JS' }
@@ -53,6 +57,7 @@ describe Lab, '#update' do
 
     context 'blank title' do
       before do
+        fill_in 'lab_analytics'   , with: 'UA-123-4'
         fill_in 'lab_description' , with: 'description'
         fill_in 'lab_keywords'    , with: 'key,words'
         fill_in 'lab_slug'        , with: 'slug'
@@ -71,6 +76,7 @@ describe Lab, '#update' do
 
     context 'blank slug' do
       before do
+        fill_in 'lab_analytics'   , with: 'UA-123-4'
         fill_in 'lab_description' , with: 'description'
         fill_in 'lab_keywords'    , with: 'key,words'
         fill_in 'lab_slug'        , with: ''
@@ -85,6 +91,7 @@ describe Lab, '#update' do
 
     context 'blank version' do
       before do
+        fill_in 'lab_analytics'   , with: 'UA-123-4'
         fill_in 'lab_description' , with: 'description'
         fill_in 'lab_keywords'    , with: 'key,words'
         fill_in 'lab_slug'        , with: 'slug'
@@ -99,6 +106,7 @@ describe Lab, '#update' do
 
     context 'blank keywords' do
       before do
+        fill_in 'lab_analytics'   , with: 'UA-123-4'
         fill_in 'lab_description' , with: 'description'
         fill_in 'lab_keywords'    , with: ''
         fill_in 'lab_slug'        , with: 'slug'
@@ -113,6 +121,7 @@ describe Lab, '#update' do
 
     context 'blank description' do
       before do
+        fill_in 'lab_analytics'   , with: 'UA-123-4'
         fill_in 'lab_description' , with: ''
         fill_in 'lab_keywords'    , with: 'key,words'
         fill_in 'lab_slug'        , with: 'slug'
@@ -123,6 +132,21 @@ describe Lab, '#update' do
       end
 
       it { expect(page).to have_content 'O campo "Descrição" deve ser preenchido!' }
+    end
+
+    context 'blank lab_analytics' do
+      before do
+        fill_in 'lab_analytics'   , with: ''
+        fill_in 'lab_description' , with: 'description'
+        fill_in 'lab_keywords'    , with: 'key,words'
+        fill_in 'lab_slug'        , with: 'slug'
+        fill_in 'lab_title'       , with: 'title'
+        fill_in 'lab_version'     , with: '1.0.0'
+
+        click_button 'ATUALIZAR'
+      end
+
+      it { expect(page).to have_content 'O campo "Analytics" deve ser preenchido!' }
     end
   end
 end

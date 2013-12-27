@@ -5,6 +5,7 @@ describe Lab do
     expect(FactoryGirl.build :lab).to be_valid
   end
 
+  it { should validate_presence_of :analytics }
   it { should validate_presence_of :description }
   it { should validate_presence_of :keywords }
   it { should validate_presence_of :title }
@@ -136,58 +137,132 @@ describe Lab do
     end
   end
 
-  describe '.javascripts', :focus do
-    context 'with single file' do
-      let(:lab) { FactoryGirl.build :lab, js_import: 'http://example.org' }
+  describe '.javascripts' do
+    context 'with value' do
+      context 'with single file' do
+        let(:lab) { FactoryGirl.build :lab, js_import: 'http://example.org' }
 
-      it 'returns the urls wrapped with script tag' do
-        expect(lab.javascripts).to eq %(<script src="http://example.org"></script>)
+        it 'returns the urls wrapped with script tag' do
+          expect(lab.javascripts).to eq %(<script src="http://example.org"></script>)
+        end
+      end
+
+      context 'with multiple files' do
+        context 'with spaces' do
+          let(:lab) { FactoryGirl.create :lab, js_import: 'http://example.org, http://example.com' }
+
+          it 'returns the urls wrapped with script tag' do
+            expect(lab.javascripts).to eq %(<script src="http://example.org"></script><script src="http://example.com"></script>)
+          end
+        end
+
+        context 'without spaces' do
+          let(:lab) { FactoryGirl.build :lab, js_import: 'http://example.org,http://example.com' }
+
+          it 'returns the urls wrapped with script tag' do
+            expect(lab.javascripts).to eq %(<script src="http://example.org"></script><script src="http://example.com"></script>)
+          end
+        end
       end
     end
 
-    context 'with multiple files' do
-      context 'with spaces' do
-        let(:lab) { FactoryGirl.create :lab, js_import: 'http://example.org, http://example.com' }
+    context 'without value' do
+      let(:lab) { FactoryGirl.build :lab, js_import: nil }
 
-        it 'returns the urls wrapped with script tag' do
-          expect(lab.javascripts).to eq %(<script src="http://example.org"></script><script src="http://example.com"></script>)
-        end
-      end
-
-      context 'without spaces' do
-        let(:lab) { FactoryGirl.build :lab, js_import: 'http://example.org,http://example.com' }
-
-        it 'returns the urls wrapped with script tag' do
-          expect(lab.javascripts).to eq %(<script src="http://example.org"></script><script src="http://example.com"></script>)
-        end
+      it 'returns nothing' do
+        expect(lab.javascripts).to be_nil
       end
     end
   end
 
-  describe '.stylesheets', :focus do
-    context 'with single file' do
-      let(:lab) { FactoryGirl.build :lab, css_import: 'http://example.org' }
+  describe '.javascripts_inline' do
+    context 'with value' do
+      let(:lab) { FactoryGirl.build :lab, js: '$("div").raty();' }
 
-      it 'returns the urls wrapped with link tag' do
-        expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org">)
+      it 'returns the content without wrap' do
+        expect(lab.javascripts_inline).to eq '$("div").raty();'
       end
     end
 
-    context 'with multiple files' do
-      context 'with spaces' do
-        let(:lab) { FactoryGirl.create :lab, css_import: 'http://example.org, http://example.com' }
+    context 'with value' do
+      let(:lab) { FactoryGirl.build :lab, js: nil }
+
+      it 'returns nothing' do
+        expect(lab.javascripts_inline).to be_nil
+      end
+    end
+  end
+
+  describe '.javascripts_ready' do
+    context 'with value' do
+      let(:lab) { FactoryGirl.build :lab, js_ready: '$("div").raty();' }
+
+      it 'returns the content without wrap' do
+        expect(lab.javascripts_ready).to eq '$("div").raty();'
+      end
+    end
+
+    context 'with value' do
+      let(:lab) { FactoryGirl.build :lab, js_ready: nil }
+
+      it 'returns nothing' do
+        expect(lab.javascripts_ready).to be_nil
+      end
+    end
+  end
+
+  describe '.stylesheets' do
+    context 'with value' do
+      context 'with single file' do
+        let(:lab) { FactoryGirl.build :lab, css_import: 'http://example.org' }
 
         it 'returns the urls wrapped with link tag' do
-          expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org"><link rel="stylesheet" href="http://example.com">)
+          expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org">)
         end
       end
 
-      context 'without spaces' do
-        let(:lab) { FactoryGirl.build :lab, css_import: 'http://example.org,http://example.com' }
+      context 'with multiple files' do
+        context 'with spaces' do
+          let(:lab) { FactoryGirl.create :lab, css_import: 'http://example.org, http://example.com' }
 
-        it 'returns the urls wrapped with link tag' do
-          expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org"><link rel="stylesheet" href="http://example.com">)
+          it 'returns the urls wrapped with link tag' do
+            expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org"><link rel="stylesheet" href="http://example.com">)
+          end
         end
+
+        context 'without spaces' do
+          let(:lab) { FactoryGirl.build :lab, css_import: 'http://example.org,http://example.com' }
+
+          it 'returns the urls wrapped with link tag' do
+            expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org"><link rel="stylesheet" href="http://example.com">)
+          end
+        end
+      end
+    end
+
+    context 'without value' do
+      let(:lab) { FactoryGirl.build :lab, css_import: nil }
+
+      it 'returns nothing' do
+        expect(lab.stylesheets).to be_nil
+      end
+    end
+  end
+
+  describe '.stylesheets_inline' do
+    context 'with value' do
+      let(:lab) { FactoryGirl.build :lab, css: 'i { float: left }' }
+
+      it 'returns the content wrapped with stylesheet tag without spaces' do
+        expect(lab.stylesheets_inline).to eq %(<style>i{float:left}</style>)
+      end
+    end
+
+    context 'without value' do
+      let(:lab) { FactoryGirl.build :lab, css: nil }
+
+      it 'returns nothing' do
+        expect(lab.stylesheets_inline).to be_nil
       end
     end
   end

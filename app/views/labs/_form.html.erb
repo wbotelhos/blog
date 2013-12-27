@@ -27,7 +27,12 @@
 
   <div class="placeholder">
     <%= f.label :js %>
-    <%= f.text_field :js, class: :input %>
+    <%= f.text_area :js, class: :input %>
+  </div>
+
+  <div class="placeholder">
+    <%= f.label :css %>
+    <%= f.text_area :css, class: :input %>
   </div>
 
   <div class="placeholder">
@@ -54,6 +59,12 @@
     <%= errors_for @media, :keywords %>
   </div>
 
+  <div class="placeholder">
+    <%= f.label :analytics %> <span class="mandatory">*</span>
+    <%= f.text_field :analytics, required: true, class: :input %>
+    <%= errors_for @media, :analytics %>
+  </div>
+
   <div class="saver">
     <%= f.submit name: nil, class: 'button green' %>
     <%= link_to t('lab.preview'), slug_path(@media.slug), target: :_blank, class: 'button green-dark' if @media.persisted? %>
@@ -62,6 +73,6 @@
 
 <script>
   $(function() {
-    $('#lab_body').taby();
+    $('#lab_css, #lab_js, #lab_body, #lab_js_ready').taby();
   });
 </script>

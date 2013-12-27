@@ -2,16 +2,18 @@ class CreateLabs < ActiveRecord::Migration
   def up
     create_table :labs do |t|
       t.datetime :published_at
+      t.string   :analytics
+      t.string   :css
       t.string   :css_import
       t.string   :description
       t.string   :js
       t.string   :js_import
-      t.string   :js_ready
       t.string   :keywords     , null: false
       t.string   :slug         , null: false
       t.string   :title        , null: false
       t.string   :version      , null: false
       t.text     :body
+      t.text     :js_ready
 
       t.timestamps
     end

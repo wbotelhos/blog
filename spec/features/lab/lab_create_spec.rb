@@ -14,6 +14,7 @@ describe Lab, '#create' do
 
   context 'submit with valid data' do
     before do
+      fill_in 'lab_analytics'   , with: 'UA-123-4'
       fill_in 'lab_body'        , with: 'body'
       fill_in 'lab_description' , with: 'description'
       fill_in 'lab_keywords'    , with: 'key,words'
@@ -48,6 +49,7 @@ describe Lab, '#create' do
 
     context 'blank title' do
       before do
+        fill_in 'lab_analytics'   , with: 'UA-123-4'
         fill_in 'lab_description' , with: 'description'
         fill_in 'lab_keywords'    , with: 'key,words'
         fill_in 'lab_slug'        , with: 'slug'
@@ -65,6 +67,7 @@ describe Lab, '#create' do
 
     context 'blank slug' do
       before do
+        fill_in 'lab_analytics'   , with: 'UA-123-4'
         fill_in 'lab_description' , with: 'description'
         fill_in 'lab_keywords'    , with: 'key,words'
         fill_in 'lab_title'       , with: 'title'
@@ -78,6 +81,7 @@ describe Lab, '#create' do
 
     context 'blank version' do
       before do
+        fill_in 'lab_analytics'   , with: 'UA-123-4'
         fill_in 'lab_description' , with: 'description'
         fill_in 'lab_keywords'    , with: 'key,words'
         fill_in 'lab_slug'        , with: 'slug'
@@ -92,6 +96,7 @@ describe Lab, '#create' do
 
     context 'blank keywords' do
       before do
+        fill_in 'lab_analytics'   , with: 'UA-123-4'
         fill_in 'lab_description' , with: 'description'
         fill_in 'lab_keywords'    , with: ''
         fill_in 'lab_slug'        , with: 'slug'
@@ -106,6 +111,7 @@ describe Lab, '#create' do
 
     context 'blank description' do
       before do
+        fill_in 'lab_analytics'   , with: 'UA-123-4'
         fill_in 'lab_description' , with: ''
         fill_in 'lab_keywords'    , with: 'key,words'
         fill_in 'lab_slug'        , with: 'slug'
@@ -116,6 +122,21 @@ describe Lab, '#create' do
       end
 
       it { expect(page).to have_content 'O campo "Descrição" deve ser preenchido!' }
+    end
+
+    context 'blank analytics' do
+      before do
+        fill_in 'lab_analytics'   , with: ''
+        fill_in 'lab_description' , with: 'description'
+        fill_in 'lab_keywords'    , with: 'key,words'
+        fill_in 'lab_slug'        , with: 'slug'
+        fill_in 'lab_title'       , with: 'title'
+        fill_in 'lab_version'     , with: '1.0.0'
+
+        click_button 'SALVAR'
+      end
+
+      it { expect(page).to have_content 'O campo "Analytics" deve ser preenchido!' }
     end
   end
 end
