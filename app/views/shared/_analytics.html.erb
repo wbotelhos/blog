@@ -1,7 +1,7 @@
 <% if ENV['RAILS_ENV'] == 'production' %>
   <script>
     var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', '<%= CONFIG["analytics"] %>']);
+    _gaq.push(['_setAccount', '<%= code %>']);
     _gaq.push(['_setDomainName', 'wbotelhos.com']);
     _gaq.push(['_setAllowLinker', true]);
     _gaq.push(['_trackPageview']);
