@@ -6,11 +6,11 @@ class PasswordEncryptor
     { hash: hash, salt: salt }
   end
 
-  def self.hasher(password, salt)
-    encryptor.hexdigest "--#{password}--#{salt}--"
-  end
-
   def self.encryptor
     Digest::SHA1
+  end
+
+  def self.hasher(password, salt)
+    encryptor.hexdigest "--#{password}--#{salt}--"
   end
 end
