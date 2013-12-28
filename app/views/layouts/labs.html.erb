@@ -5,19 +5,14 @@
   <%= render 'labs/head_tags' %>
 
   <%= stylesheet_link_tag    'labs' %>
-  <%= javascript_include_tag 'labs' %>
-
   <%= @media.stylesheets_inline %>
 
+  <%= javascript_include_tag 'labs' %>
   <%= @media.javascripts %>
 </head>
 <body>
   <div class="content">
-    <div role="banner" class="header">
-      <h1><%= link_to @media.title, slug_path(@media.slug), class: :logo %></h1>
-
-      <div><%= @media.description %></div>
-    </div>
+    <%= render 'shared/header' %>
 
     <nav role="navigation" class="navigation">
       <%= link_to content_tag(:i, nil, class: 'i-file-zip') + " v#{@media.version}" , @media.download , title: t('lab.download', version: @media.version)                  , class: :download %>
