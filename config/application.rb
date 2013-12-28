@@ -1,3 +1,5 @@
+# By Washington Botelho (http://wbotelhos.com)
+
 require File.expand_path('../boot', __FILE__)
 require File.expand_path('../../lib/custom_logger.rb', __FILE__)
 require File.expand_path('../../lib/param_constraints.rb', __FILE__)
