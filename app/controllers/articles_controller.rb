@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
     @media = Article.new
   end
 
-  def publish # pending
+  def publish # TODO
     article                         = Article.find params[:id]
     params[:article][:published_at] = Time.now
 
