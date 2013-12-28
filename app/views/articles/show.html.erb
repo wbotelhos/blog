@@ -24,15 +24,3 @@
 </section>
 
 <%= render 'comments/new' %>
-
-<script>
-  $(function() {
-    <% unless is_logged? %>
-      AntiBOT.init('.new_comment');
-    <% end %>
-
-    CommentResponder.init();
-
-    $('#comment_body').taby();
-  });
-</script>
