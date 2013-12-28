@@ -6,7 +6,6 @@
  *= require buttons
  *= require general
  *= require pygments
- *= require article
  *= require comment
  *= require signin
  *= require admin
