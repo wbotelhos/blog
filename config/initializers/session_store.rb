@@ -1,1 +1,1 @@
-Blog::Application.config.session_store :cookie_store, key: '_blog_session'
+Blog::Application.config.session_store :cookie_store, key: '_wbotelhos_session'
