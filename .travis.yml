@@ -10,4 +10,8 @@ before_script:
   - rake db:migrate
   - rake db:test:prepare
 
+env:
+  global:
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+
 script: RAILS_ENV=test bundle exec rspec spec
