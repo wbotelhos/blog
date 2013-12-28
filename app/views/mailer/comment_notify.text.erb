@@ -1,5 +1,0 @@
-Olá <%= @article.user.name %>,
-
-O artigo "<%= @article.title %>" foi comentado por <%= @comment.name %>.
-
-Dê um feedback para este leitor através do link: <%= article_url(@article.year, @article.month, @article.day, @article.slug, anchor: "comment-#{@comment.id}") %>

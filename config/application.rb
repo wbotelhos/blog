@@ -4,14 +4,12 @@ require File.expand_path('../../lib/param_constraints.rb', __FILE__)
 
 require 'active_record/railtie'
 require 'action_controller/railtie'
-require 'action_mailer/railtie'
 require 'active_resource/railtie'
 
 Bundler.require(*Rails.groups(assets: %w[development test])) if defined?(Bundler)
 
 module Blog
   class Application < Rails::Application
-    config.action_mailer.default_url_options  = { host: 'wbotelhos.com' }
     config.action_view.field_error_proc       = -> tag, _ { tag }
     config.active_record.whitelist_attributes = true
     config.assets.enabled                     = false

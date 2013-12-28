@@ -1,9 +1,0 @@
-Olá <%= @comment.name %>,
-
-O artigo "<%= @article.title %>" no qual você participou foi respondido por <%= @new_comment.name %>.
-
-Não perca a discussão, visite: <%= article_url(@article.year, @article.month, @article.day, @article.slug, anchor: "comment-#{@new_comment.id}") %>
-
----
-<%= CONFIG['author'] %>
-<%= CONFIG['url_http'] %>
