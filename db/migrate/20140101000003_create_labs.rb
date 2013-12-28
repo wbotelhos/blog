@@ -3,7 +3,6 @@ class CreateLabs < ActiveRecord::Migration
     create_table :labs do |t|
       t.datetime :published_at
       t.string   :analytics
-      t.string   :css
       t.string   :css_import
       t.string   :description
       t.string   :js
@@ -14,6 +13,7 @@ class CreateLabs < ActiveRecord::Migration
       t.string   :version      , null: false
       t.text     :body
       t.text     :js_ready
+      t.text   :css
 
       t.timestamps
     end
