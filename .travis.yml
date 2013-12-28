@@ -10,4 +10,4 @@ before_script:
   - rake db:migrate
   - rake db:test:prepare
 
-script: RAILS_ENV=test bundle exec rake spec
+script: RAILS_ENV=test bundle exec rspec spec
