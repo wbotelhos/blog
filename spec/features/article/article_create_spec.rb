@@ -38,12 +38,12 @@ describe Article, '#create' do
   end
 
   context 'with invalid data', :js do
-    context 'blank title' do
-      before do
-        page.execute_script "$('#article_title').removeAttr('required');"
+    before do
+      page.execute_script "$('#article_title').removeAttr('required');"
+    end
 
-        click_button 'SALVAR'
-      end
+    context 'blank title' do
+      before { click_button 'SALVAR' }
 
       it 'renders form page again' do
         expect(current_path).to eq articles_path
