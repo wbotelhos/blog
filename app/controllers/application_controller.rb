@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def filter_bot
-    if !is_logged? || params[:bot].present?
+    if !is_logged? && params[:bot].present?
       logger.warn 'B0T on request!'
       render nothing: true, status: 404
     end
