@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment    = Comment.find params[:id]
+    @comment  = Comment.find params[:id]
     @media    = Article.new
     @media.id = params[:article_id]
   end
