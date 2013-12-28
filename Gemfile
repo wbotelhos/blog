@@ -9,6 +9,7 @@ gem 'rake'
 gem 'redcarpet'
 gem 'rspec-rails'
 gem 'sass-rails'
+gem 'rack_session_access'
 
 group :assets do
   gem 'compass-rails'
@@ -40,7 +41,6 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl'
-  gem 'rack_session_access'
   gem 'selenium-webdriver'
   gem 'shoulda'
 end
