@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :filter_bot
   before_filter :set_locale
 
-  helper_method :current_user, :is_logged?, :sidebar
+  helper_method :current_user, :is_logged?
 
   private
 
@@ -22,10 +22,6 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = controller_name == 'labs' && action_name == 'show' ? :'en-US' : :'pt-BR'
-  end
-
-  def sidebar
-    @sidebar ||= SidebarPresenter.new
   end
 
   def filter_bot
