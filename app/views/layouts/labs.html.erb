@@ -3,12 +3,7 @@
 <html dir="ltr" lang="<%= I18n.locale %>">
 <head>
   <%= render 'labs/head_tags' %>
-
-  <%= stylesheet_link_tag    'labs' %>
-  <%= @media.stylesheets_inline %>
-
-  <%= javascript_include_tag 'labs' %>
-  <%= @media.javascripts %>
+  <%= render 'labs/includes' %>
 </head>
 <body>
   <div class="content">
@@ -18,14 +13,7 @@
     <%= yield %>
   </div>
 
-  <script>
-    <%= @media.javascripts_inline %>
-
-    $(function() {
-      <%= @media.javascripts_ready %>
-    });
-  </script>
-
+  <%= render 'labs/javascripts' %>
   <%= render 'shared/analytics', code: @media.analytics %>
 </body>
 </html>
