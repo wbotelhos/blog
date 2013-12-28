@@ -21,17 +21,3 @@ pt-BR:
       comment:
         create: 'COMENTAR'
         update: 'ATUALIZAR'
-
-# close: 'Fechar'
-# go_to_parent: 'Visualizar o comentário pai'
-# other: 'Comentários'
-# reply_to: 'Resposta ao comentário '
-# sending: 'Enviando...'
-# undo: 'Desfazer'
-# update: 'Atualizar'
-# count_html:
-#   one: '1 comentário'
-#   other: "%{count} comentários"
-#   zero: 'Nenhum comentário até o momento'
-# email:
-#   not_sent: 'Seu comentário foi adicionado! Porém ninguém foi notificado.'

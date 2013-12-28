@@ -1,45 +1,9 @@
 pt-BR:
   activerecord:
-    # attributes:
-    #   category:
-    #     name: 'Nome *'
-
-    #   donator:
-    #     about: 'Sobre'
-    #     amount: 'Valor *'
-    #     country: 'País'
-    #     email: 'E-mail *'
-    #     message: 'Mensagem'
-    #     name: 'Nome *'
-    #     url: 'URL'
-
-    #   lab:
-    #     description: 'Descrição'
-    #     image: 'Imagem'
-    #     name: 'Nome *'
-    #     slug: 'Slug *'
-
-    #   link:
-    #     name: 'Nome *'
-    #     url: 'URL *'
-
-    #   user:
-    #     email: 'E-mail *'
-    #     name: 'Nome *'
-    #     password: 'Senha *'
-    #     password_confirmation: 'Confirmação de senha *'
-
     errors:
       messages:
-        # not_a_number: 'O valor "%{value}" não é um número válido para o campo "%{attribute}"!'
         blank: 'O campo "%{attribute}" deve ser preenchido!'
         confirmation: 'A confirmação de senha não confere com o digitado no campo "%{attribute}"!'
         invalid: 'O valor "%{value}" para o campo "%{attribute}" é inválido!'
         record_invalid: "Erro de validação: %{errors}!"
         taken: 'O valor "%{value}" para o campo "%{attribute}" já esta em uso!'
-
-      # models:
-      #   comment:
-      #       attributes:
-      #         body:
-      #           blank: 'O campo "Comentário" deve ser preenchido!'

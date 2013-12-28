@@ -20,21 +20,3 @@ pt-BR:
       article:
         create: 'SALVAR'
         update: 'ATUALIZAR'
-
-    # none: 'Nenhum artigo publicado!'
-    # other: 'Artigos'
-    # permalink: 'Permalink'
-    # preview: 'Visualizar'
-    # publish: 'Publicar'
-    # published_at: "%{time}"
-    # published_date: 'Data de publicação'
-    # read_more: 'Leia mais...'
-    # read_more_about_html: 'Leia mais sobre %{text}'
-    # share: 'Compartilhar'
-
-    # tags: 'Tags:'
-    # update: 'Atualizar'
-    # status:
-    #   new: 'Novo'
-    #   draft: 'Rascunho'
-    #   published: 'Publicado'
