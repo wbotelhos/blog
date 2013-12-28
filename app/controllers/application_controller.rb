@@ -12,7 +12,14 @@ class ApplicationController < ActionController::Base
     @current_user ||= session[:user_id] && User.find_by_id(session[:user_id])
   end
 
-  def is_logged?#
+  def filter_bot
+    if !is_logged? || params[:bot].present?
+      logger.warn 'B0T on request!'
+      render nothing: true, status: 404
+    end
+  end
+
+  def is_logged?
     current_user.present?
   end
 
@@ -22,13 +29,6 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = controller_name == 'labs' && action_name == 'show' ? :'en-US' : :'pt-BR'
-  end
-
-  def filter_bot
-    if !is_logged? || params[:bot].present?
-      logger.warn 'B0T on request!'
-      render nothing: true, status: 404
-    end
   end
 
   protected
