@@ -1,4 +1,4 @@
-<li id="<%= id_for comment %>">
+<li id="<%= id_for comment %>" class="comment">
   <div class="avatar">
     <%= gravatar(comment.email, alt: '', title: comment.name) %>
   </div>
@@ -20,8 +20,8 @@
   </div>
 
   <% if comment.children.present? %>
-    <ul>
+    <ol>
       <%= render partial: 'comments/comment', collection: comment.children %>
-    </ul>
+    </ol>
   <% end %>
 </li>

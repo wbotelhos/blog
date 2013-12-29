@@ -14,7 +14,7 @@
     color: #777
 
 .comments
-  font-size: 1.2em
+  font-size: 1.3em
   margin-top: 50px
 
   abbr
@@ -22,27 +22,41 @@
     font-size: 0.9em
     margin-left: 5px
 
+  blockquote
+    p
+      font-size: 1em
+
+  h1
+    font-size: 1.5em
+
+  h2
+    font-size: 1.3em
+
+  h3, h4, h5, h6
+    font-size: 0.9em
+
   header
     margin-bottom: 5px
 
     a
+      margin-right: 5px
       text-decoration: none
 
-  li
-    border-top: 1px solid #DDD
-    padding-left: 15px
-    position: relative
-    word-wrap: break-word
+  ol
+    list-style: none
+    padding: 0
 
   pre
     font-size: 0.9em
 
   ul
-    margin: 0
-    padding: 0
+    font-size: 0.9em
+    list-style: circle
+    padding-left: 5px
 
   .anchor, .edit, .reply
     color: #777
+    font-size: 0.9em
     text-decoration: none
 
     &:hover
@@ -58,7 +72,6 @@
     border-radius: 3px
     color: #FFF
     font-size: 0.9em
-    margin-left: 5px
     padding: 3px 7px
     letter-spacing: 0.7px
 
@@ -78,6 +91,12 @@
     padding-left: 40px
     padding-top: 8px
     position: relative
+
+  .comment
+    border-top: 1px solid #DDD
+    padding-left: 15px
+    position: relative
+    word-wrap: break-word
 
 .new_comment, .edit_comment
   input[type="submit"]
@@ -134,9 +153,6 @@
     abbr
       font-size: 0.8em
 
-    li
-      padding-left: 48px
-
     pre
       font-size: 0.8em
 
@@ -148,6 +164,9 @@
 
     .body
       padding-left: 7px
+
+    .comment
+      padding-left: 48px
 
   .new_comment, .edit_comment
     .not-human
