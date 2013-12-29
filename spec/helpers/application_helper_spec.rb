@@ -6,9 +6,27 @@ describe ApplicationHelper do
     let(:email) { 'wbotelhos@gmail.com' }
     let(:md5)   { Digest::MD5.hexdigest email }
 
-    context 'without :size' do
-      it 'build an image' do
-        expect(helper.gravatar email).to match %r(src="http://www\.gravatar\.com/avatar/#{md5}\?d=mm")
+    context 'into production env' do
+      before { Rails.env = 'production' }
+
+      context 'with :size' do
+        it 'build an image with size' do
+          expect(helper.gravatar email, size: 1).to match %r(src="http://www\.gravatar\.com/avatar/#{md5}\?d=mm&amp;s=1")
+        end
+      end
+
+      context 'without :size' do
+        it 'build an image' do
+          expect(helper.gravatar email).to match %r(src="http://www\.gravatar\.com/avatar/#{md5}\?d=mm")
+        end
+      end
+    end
+
+    context 'outside production env' do
+      before { Rails.env = 'test' }
+
+      it 'build default image url' do
+        expect(helper.gravatar email).to match %r(src="/assets/avatar.jpg")
       end
     end
 

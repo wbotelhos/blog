@@ -7,9 +7,7 @@ module ApplicationHelper
 
   def gravatar(email, options = {})
     hash = Digest::MD5.hexdigest(email)
-    url  = "http://www.gravatar.com/avatar/#{hash}?d=mm"
-
-    url << "&s=#{options[:size]}" if options[:size]
+    url  = avatar_image hash, options
 
     options[:alt] = '' if options[:alt].nil?
 
@@ -56,6 +54,16 @@ module ApplicationHelper
   end
 
   private
+
+  def avatar_image(hash, options)
+    if Rails.env.production?
+      url = "http://www.gravatar.com/avatar/#{hash}?d=mm"
+      url << "&s=#{options[:size]}" if options[:size]
+      url
+    else
+      'avatar.jpg'
+    end
+  end
 
   class HTMLwithPygments < Redcarpet::Render::HTML
     def block_code(code, language)
