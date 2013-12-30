@@ -1,7 +1,7 @@
 <div class="clearfix"></div>
 
 <article>
-  <% unless is_logged? %>
+  <% if is_logged? %>
     <header>
       <%= link_to t('lab.edit'), edit_lab_path(@media), class: 'button green-dark edit' %>
     </header>
