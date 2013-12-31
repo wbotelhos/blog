@@ -78,24 +78,22 @@ describe ApplicationHelper do
   end
 
   describe '#twitter_button' do
-    context '' do
-      let(:button) { CGI.unescape helper.twitter_button(text: 'Some Text', url: 'http://wbotelhos.com') }
+    let(:button) { CGI.unescape helper.twitter_button(text: 'Some Text', url: 'http://wbotelhos.com') }
 
-      it 'builds the right text' do
-        expect(button).to match %r(text="Some Text" ~)
-      end
+    it 'builds the right text' do
+      expect(button).to match %r(text="Some Text" ~)
+    end
 
-      it 'builds the right url' do
-        expect(button).to match %r(url=http://wbotelhos.com)
-      end
+    it 'builds the right url' do
+      expect(button).to match %r(url=http://wbotelhos.com)
+    end
 
-      it 'builds the right via' do
-        expect(button).to match %r(via=wbotelhos)
-      end
+    it 'builds the right via' do
+      expect(button).to match %r(via=wbotelhos)
+    end
 
-      it 'builds the right target' do
-        expect(button).to match %r(target="_blank")
-      end
+    it 'builds the right target' do
+      expect(button).to match %r(target="_blank")
     end
   end
 end
