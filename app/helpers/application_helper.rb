@@ -53,6 +53,19 @@ module ApplicationHelper
     content_tag :abbr, value, title: time.getutc.iso8601 if time
   end
 
+  def twitter_button(options = {})
+    options = {
+      text: %("#{options[:text]}" ~),
+      url:  options[:url],
+      via:  'wbotelhos'
+    }
+
+    content = content_tag :i, nil, class: 'i-twitter'
+    link    = link_to content, "https://twitter.com/intent/tweet?#{to_query options}", target: :_blank
+
+    content_tag :div, link, class: :twitter
+  end
+
   private
 
   def avatar_image(hash, options)
@@ -63,6 +76,10 @@ module ApplicationHelper
     else
       'avatar.jpg'
     end
+  end
+
+  def to_query(options)
+    options.map { |key, value| "#{key}=#{CGI.escape value}" }.join '&'
   end
 
   class HTMLwithPygments < Redcarpet::Render::HTML

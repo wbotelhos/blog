@@ -12,15 +12,6 @@
   </div>
 </article>
 
-<div class="share">
-  <p><%= t 'article.share_it' %></p>
-  <%= twitter_button text: @media.title, url: media_slug_url(@media) %>
-</div>
-
-<section class="comments">
-  <ol>
-    <%= render partial: 'comments/comment', collection: @root_comments %>
-  </ol>
-</section>
+<%= render 'shared/share_it', text: @media.title %>
 
 <%= render 'comments/new' %>

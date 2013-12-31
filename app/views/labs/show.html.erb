@@ -11,3 +11,5 @@
     <%= markdown @media.body %>
   </div>
 </article>
+
+<%= render 'shared/share_it', text: "#{@media.title} - #{@media.description}" %>

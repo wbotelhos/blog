@@ -10,7 +10,6 @@ pt-BR:
     edit: 'Editar'
     new: 'Novo Artigo'
     preview: 'PREVIEW'
-    share_it: 'Compartilhe este artigo!'
 
     flash:
       not_found: 'O artigo "%{uri}" não foi encontrado!'
