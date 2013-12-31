@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
     @comment.author = true
     @comment.email  = @current_user.email
     @comment.name   = @current_user.name
-    @comment.url    = CONFIG['url']
+    @comment.url    = CONFIG['url_http']
   end
 
   def build_resource
