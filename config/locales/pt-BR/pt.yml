@@ -2,4 +2,6 @@ pt-BR:
   donate: 'Thank you! <3'
   feed: 'Feed'
   i_am_bot: 'BOT!'
-  share_it: 'Compartilhe isto!'
+  share:
+    title: 'Compartilhe!'
+    twitter: 'via Twitter'

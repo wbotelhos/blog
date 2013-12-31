@@ -61,7 +61,7 @@ module ApplicationHelper
     }
 
     content = content_tag :i, nil, class: 'i-twitter'
-    link    = link_to content, "https://twitter.com/intent/tweet?#{to_query options}", target: :_blank
+    link    = link_to content, "https://twitter.com/intent/tweet?#{to_query options}", title: t('share.twitter'), target: :_blank
 
     content_tag :div, link, class: :twitter
   end

@@ -1,3 +1,5 @@
 en-US:
   donate: 'Thank you! <3'
-  share_it: 'Share this!'
+  share:
+    title: 'Share it!'
+    twitter: 'via Twitter'
