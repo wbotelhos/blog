@@ -1,9 +1,9 @@
 <nav role="navigation" class="navigation">
   <%= social_icon t('user.email')    , 'i-envelope' , "mailto:#{CONFIG['email']}" %>
   <%= social_icon t(:feed)           , 'i-feed'     , feed_url %>
-  <%= social_icon t('user.github')   , 'i-github'   , CONFIG['github'] %>
-  <%= social_icon t('user.linkedin') , 'i-linkedin' , CONFIG['linkedin'] %>
-  <%= social_icon t('user.twitter')  , 'i-twitter'  , CONFIG['twitter'] %>
+  <%= social_icon t('user.github')   , 'i-github'   , github %>
+  <%= social_icon t('user.linkedin') , 'i-linkedin' , linkedin %>
+  <%= social_icon t('user.twitter')  , 'i-twitter'  , twitter %>
   <%= menu_icon   t('lab.other')     , 'i-labs'     , labs_path %>
 
   <% if is_logged? %>

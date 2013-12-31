@@ -5,6 +5,10 @@ module ApplicationHelper
     content_tag(:span, errors[0], class: 'validation-error') if errors.present?
   end
 
+  def github
+    "http://github.com/#{CONFIG['github']}"
+  end
+
   def gravatar(email, options = {})
     hash = Digest::MD5.hexdigest(email)
     url  = avatar_image hash, options
@@ -12,6 +16,10 @@ module ApplicationHelper
     options[:alt] = '' if options[:alt].nil?
 
     image_tag url, options
+  end
+
+  def linkedin
+    "http://linkedin.com/in/#{CONFIG['linkedin']}"
   end
 
   def markdown(content)
@@ -53,11 +61,15 @@ module ApplicationHelper
     content_tag :abbr, value, title: time.getutc.iso8601 if time
   end
 
+  def twitter
+    "http://twitter.com/#{CONFIG['twitter']}"
+  end
+
   def twitter_button(options = {})
     options = {
       text: %("#{options[:text]}" ~),
       url:  options[:url],
-      via:  'wbotelhos'
+      via:  CONFIG['twitter']
     }
 
     content = content_tag :i, nil, class: 'i-twitter'

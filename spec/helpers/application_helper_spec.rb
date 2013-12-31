@@ -2,6 +2,12 @@ require 'spec_helper'
 require 'digest/md5'
 
 describe ApplicationHelper do
+  describe '#github' do
+    it 'builds the url' do
+      expect(helper.github).to eq "http://github.com/#{CONFIG['github']}"
+    end
+  end
+
   describe '#gravatar' do
     let(:email) { 'wbotelhos@gmail.com' }
     let(:md5)   { Digest::MD5.hexdigest email }
@@ -43,6 +49,12 @@ describe ApplicationHelper do
     end
   end
 
+  describe '#linkedin' do
+    it 'builds the url' do
+      expect(helper.linkedin).to eq "http://linkedin.com/in/#{CONFIG['linkedin']}"
+    end
+  end
+
   describe '#media_slug' do
     let(:article) { FactoryGirl.create :article, title: 'Some Title' }
 
@@ -77,6 +89,12 @@ describe ApplicationHelper do
     end
   end
 
+  describe '#twitter' do
+    it 'builds the url' do
+      expect(helper.twitter).to eq "http://twitter.com/#{CONFIG['twitter']}"
+    end
+  end
+
   describe '#twitter_button' do
     let(:button) { CGI.unescape helper.twitter_button(text: 'Some Text', url: 'http://wbotelhos.com') }
 
@@ -89,7 +107,7 @@ describe ApplicationHelper do
     end
 
     it 'builds the right via' do
-      expect(button).to match %r(via=wbotelhos)
+      expect(button).to match %r(via=#{CONFIG['twitter']})
     end
 
     it 'builds the right target' do
