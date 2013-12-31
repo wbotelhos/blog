@@ -123,7 +123,7 @@ describe Comment, '#create' do
     end
 
     context 'answering', :js do
-      let!(:comment) { FactoryGirl.create :comment, article: article }
+      let!(:comment) { FactoryGirl.create :comment, commentable: article }
 
       before do
         visit slug_path article.slug
@@ -235,7 +235,7 @@ describe Comment, '#create' do
     end
 
     context 'answering', :js do
-      let!(:comment) { FactoryGirl.create :comment, article: article }
+      let!(:comment) { FactoryGirl.create :comment, commentable: article }
 
       before do
         visit slug_path article.slug

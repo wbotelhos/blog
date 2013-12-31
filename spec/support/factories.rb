@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :article do
+  factory :article, aliases: [:commentable] do
     association      :user
     body             'The Article'
     sequence(:title) { |i| "Title #{i}" }
@@ -10,7 +10,7 @@ FactoryGirl.define do
   end
 
   factory :comment do
-    association      :article
+    association      :commentable
     body             'body'
     sequence(:email) { |i| "john#{i}@example.org" }
     sequence(:name)  { |i| "John #{i}" }

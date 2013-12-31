@@ -27,23 +27,23 @@ ActiveRecord::Schema.define(:version => 20140101000003) do
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
 
   create_table "comments", :force => true do |t|
-    t.boolean  "author",     :default => false, :null => false
+    t.boolean  "author",           :default => false, :null => false
     t.integer  "parent_id"
-    t.string   "email",                         :null => false
-    t.string   "name",                          :null => false
+    t.string   "email",                               :null => false
+    t.string   "name",                                :null => false
     t.string   "url"
-    t.text     "body",                          :null => false
-    t.integer  "article_id",                    :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.text     "body",                                :null => false
+    t.integer  "commentable_id",                      :null => false
+    t.string   "commentable_type",                    :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
-  add_index "comments", ["article_id"], :name => "index_comments_on_article_id"
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
 
   create_table "labs", :force => true do |t|
     t.datetime "published_at"
     t.string   "analytics"
-    t.string   "css"
     t.string   "css_import"
     t.string   "description"
     t.string   "js"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20140101000003) do
     t.string   "version",      :null => false
     t.text     "body"
     t.text     "js_ready"
+    t.text     "css"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end

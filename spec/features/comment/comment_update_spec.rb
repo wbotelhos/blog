@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe Comment, '#update' do
   let!(:article) { FactoryGirl.create :article_published }
-  let!(:comment) { FactoryGirl.create :comment, article: article }
+  let!(:comment) { FactoryGirl.create :comment, commentable: article }
 
   before do
     @user = login

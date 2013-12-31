@@ -5,7 +5,7 @@ class Article < ActiveRecord::Base
 
   belongs_to :user
 
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
   scope :by_created    , -> { order 'created_at desc' }
   scope :by_published  , -> { order 'published_at desc' }

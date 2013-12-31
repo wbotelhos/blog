@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
   before_filter :require_login, except: :create
+  before_filter :build_resource
 
   def create
-    @media   = Article.find params[:article_id]
+    @media   = @model.find @id
     @comment = @media.comments.new params[:comment]
 
     assign_author if is_logged?
@@ -10,18 +11,18 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to slug_url @media.slug, anchor: "comment-#{@comment.id}"
     else
-      render template: 'articles/show'
+      render template: "#{@resource}/show"
     end
   end
 
   def edit
     @comment  = Comment.find params[:id]
-    @media    = Article.new
-    @media.id = params[:article_id]
+    @media    = @model.new
+    @media.id = @id
   end
 
   def update
-    @media = Article.find params[:article_id]
+    @media   = @model.find @id
     @comment = @media.comments.find params[:id]
 
     if @comment.update_attributes params[:comment]
@@ -35,8 +36,13 @@ class CommentsController < ApplicationController
 
   def assign_author
     @comment.author = true
-    @comment.email = @current_user.email
-    @comment.name  = @current_user.name
-    @comment.url   = CONFIG['url']
+    @comment.email  = @current_user.email
+    @comment.name   = @current_user.name
+    @comment.url    = CONFIG['url']
+  end
+
+  def build_resource
+    @resource, @id = request.path.split('/')[1, 2]
+    @model         = @resource.camelize.singularize.constantize
   end
 end

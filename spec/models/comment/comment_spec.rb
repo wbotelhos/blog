@@ -5,23 +5,22 @@ describe Comment do
     expect(FactoryGirl.build :comment).to be_valid
   end
 
-  it { should belong_to :article }
+  it { should belong_to :commentable }
 
-  it { should validate_presence_of :article }
+  it { should validate_presence_of :commentable }
   it { should validate_presence_of :body }
   it { should validate_presence_of :email }
   it { should validate_presence_of :name }
 
   context :create do
-    let!(:article) { FactoryGirl.create :article }
+    let!(:commentable) { FactoryGirl.create :commentable }
 
     it 'creates a valid media' do
-      comment = Comment.new(
-        article_id: article.id,
-        body:       'body',
-        email:      'john@example.org',
-        name:       'name',
-        url:        'http://example.org'
+      comment = commentable.comments.new(
+        body:           'body',
+        email:          'john@example.org',
+        name:           'name',
+        url:            'http://example.org'
       )
 
       comment.parent = comment

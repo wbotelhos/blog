@@ -1,4 +1,4 @@
-<%= form_for [@media, @comment], url: article_comments_path(@media, anchor: :new_comment) do |f| %>
+<%= form_for @comment, url: polymorphic_path([@media, @comment], anchor: :new_comment) do |f| %>
   <%= f.hidden_field :parent_id %>
   <%= hidden_field_tag :bot, true unless is_logged? %>
 
