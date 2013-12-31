@@ -1,0 +1,23 @@
+en-US:
+  activerecord:
+    attributes:
+      comment:
+        body: 'Body'
+        email: 'Mail'
+        name: 'Name'
+        url: 'URL'
+
+  comment:
+    cancel: 'cancel'
+    created_at: "%{time} ago"
+    edit: 'Edit'
+    format_your_code_html: "Format your <strong>code</strong> using %{link}."
+    reply: 'Answer'
+    replying_to: 'Answering: '
+    shortcut: 'Link to this comment'
+
+  helpers:
+    submit:
+      comment:
+        create: 'COMMENT'
+        update: 'UPDATE'

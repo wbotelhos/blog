@@ -20,7 +20,7 @@ describe Article, '#show' do
   end
 
   it 'shows twitter button' do
-    expect(page).to have_link 'Tweet'
+    expect(page).to have_selector '.share .twitter'
   end
 
   it 'changes the title' do

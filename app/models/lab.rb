@@ -1,6 +1,8 @@
 class Lab < ActiveRecord::Base
   attr_accessible :analytics, :body, :css, :css_import, :description, :js, :js_import, :js_ready, :keywords, :published_at, :slug, :title, :version
 
+  has_many :comments, as: :commentable, dependent: :destroy
+
   scope :by_created    , -> { order 'created_at desc' }
   scope :by_published  , -> { order 'published_at desc' }
   scope :drafts        , -> { where 'published_at is null or published_at > ?', Time.now }

@@ -27,9 +27,16 @@ class LabsController < ApplicationController
 
   def show
     @media = Lab.where('slug = ?', params[:slug]).first
-    @title = "#{@media.title} | #{@media.description}"
 
-    render layout: 'labs'
+    if @media.present?
+      @comment       = @media.comments.new
+      @root_comments = @media.comments.roots
+      @title         = "#{@media.title} | #{@media.description}"
+
+      render layout: 'labs'
+    else
+      redirect_to root_url, alert: t('article.flash.not_found', uri: params[:slug])
+    end
   end
 
   def update

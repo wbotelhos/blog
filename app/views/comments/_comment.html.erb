@@ -15,7 +15,7 @@
     <footer>
       <%= self_anchor comment %>
       <%= link_to t('comment.reply'), "#{request.fullpath}#new_comment", data: { id: comment.id, name: comment.name }, class: :reply %>
-      <%= link_to t('comment.edit'), edit_article_comment_path(@media, comment), class: :edit if is_logged? %>
+      <%= link_to t('comment.edit'), polymorphic_path([:edit, @media, comment]), class: :edit if is_logged? %>
     </footer>
   </div>
 

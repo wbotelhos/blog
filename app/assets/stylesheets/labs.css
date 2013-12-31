@@ -4,5 +4,6 @@
  *= require pygments
  *= require fonts
  *= require buttons
+ *= require comment
  *= require labs/general
  */

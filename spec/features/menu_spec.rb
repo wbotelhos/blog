@@ -12,15 +12,15 @@ describe :menu do
   end
 
   it 'shows linkedin icon' do
-    expect(page).to have_link '', href: CONFIG['linkedin']
+    expect(page).to have_link '', href: "http://linkedin.com/in/#{CONFIG['linkedin']}"
   end
 
   it 'shows github icon' do
-    expect(page).to have_link '', href: CONFIG['github']
+    expect(page).to have_link '', href: "http://github.com/#{CONFIG['github']}"
   end
 
   it 'shows twitter icon' do
-    expect(page).to have_link '', href: CONFIG['twitter']
+    expect(page).to have_link '', href: "http://twitter.com/#{CONFIG['twitter']}"
   end
 
   it 'shows labs icon' do

@@ -230,7 +230,7 @@ describe Comment, '#create' do
       end
 
       it 'displays the commenter name' do
-        expect(page).to have_link @user.name, href: CONFIG['url']
+        expect(page).to have_link @user.name, href: CONFIG['url_http']
       end
     end
 
