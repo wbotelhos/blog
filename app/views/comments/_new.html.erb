@@ -1,6 +1,6 @@
 <%= form_for [@media, @comment], url: article_comments_path(@media, anchor: :new_comment) do |f| %>
   <%= f.hidden_field :parent_id %>
-  <%= hidden_field_tag :bot, true %>
+  <%= hidden_field_tag :bot, true unless is_logged? %>
 
   <% unless is_logged? %>
     <div class="placeholder">
