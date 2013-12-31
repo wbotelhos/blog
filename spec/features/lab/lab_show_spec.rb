@@ -12,9 +12,7 @@ describe Lab, '#show' do
   end
 
   it 'does not display edit link' do
-    within 'header' do
-      expect(page).to_not have_link 'Editar'
-    end
+    expect(page).to_not have_link 'Edit'
   end
 
   it 'changes the title' do
