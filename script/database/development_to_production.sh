@@ -2,9 +2,7 @@
 
 # $1: remote database password
 
-GRAY='\033[0;36m'
-GREEN='\033[0;32m'
-NO_COLOR='\033[1;0m'
+. script/colors.sh
 
 FILE_SQL="wbotelhos_local_`date +%Y-%m-%d_%H-%M-%S`.sql"
 FILE_TAR="${FILE_SQL}.tar.gz"
