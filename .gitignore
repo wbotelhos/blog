@@ -5,5 +5,6 @@
 .sass-cache
 /bin
 /log
+/public/*y
 /public/assets
 /tmp
