@@ -8,7 +8,7 @@
 cd ~/workspace/blog
 
 if [ -n "$1" ]; then
-  ./script/database/production_to_development.sh $1
+  script/database/production_to_development.sh $1
 fi
 
 echo -e "\n${GRAY}Dumpping labs slugs...${NO_COLOR}"

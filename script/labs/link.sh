@@ -10,6 +10,5 @@ for LAB in "${LABS[@]}"; do
     rm $TO
   fi
 
-
   ln -s $FROM $TO
 done
