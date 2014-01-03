@@ -1,7 +1,7 @@
 <%= form_for @media do |f| %>
   <div class="placeholder">
     <%= f.label :body %>
-    <%= f.text_area :body, class: 'input code' %>
+    <%= f.text_area :body, autofocus: true, class: 'input code' %>
   </div>
 
   <div class="placeholder">
@@ -37,7 +37,7 @@
 
   <div class="placeholder">
     <%= f.label :title %> <span class="mandatory">*</span>
-    <%= f.text_field :title, autofocus: true, required: true, class: :input %>
+    <%= f.text_field :title, required: true, class: :input %>
     <%= errors_for @media, :title %>
   </div>
 
