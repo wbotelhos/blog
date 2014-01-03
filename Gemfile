@@ -33,7 +33,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'html_compress'
+  # gem 'html_compress'
   gem 'unicorn'
 end
 
