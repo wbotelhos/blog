@@ -81,3 +81,23 @@ namespace :assets do
     run %(rm -rf "#{current}/app/assets")
   end
 end
+
+namespace :labs do
+  task :cold do
+    run %(mkdir -p ~/workspace)
+    run %(ln -s #{current} ~/workspace/blog)
+  end
+
+  task :default do
+    labs.pull
+    labs.setup
+  end
+
+  task :pull do
+    run %(cd #{current} && script/labs/pull.sh)
+  end
+
+  task :setup do
+    run %(cd #{current} && script/labs/setup.sh)
+  end
+end
