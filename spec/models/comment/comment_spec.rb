@@ -45,8 +45,18 @@ describe Comment do
       let!(:parent) { FactoryGirl.create :comment }
       let!(:child)  { FactoryGirl.create :comment, parent: parent }
 
-      it 'returns just the root comments' do
+      it 'returns just the root' do
         expect(Comment.roots).to eq [parent]
+      end
+    end
+
+    describe :pendings do
+      let!(:comment)  { FactoryGirl.create :comment, pending: false }
+      let!(:authored) { FactoryGirl.create :comment, author: true }
+      let!(:pending)  { FactoryGirl.create :comment }
+
+      it 'returns just the pendings that does not belongs to author' do
+        expect(Comment.pendings).to eq [pending]
       end
     end
   end

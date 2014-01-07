@@ -2,6 +2,7 @@ class CreateComments < ActiveRecord::Migration
   def up
     create_table :comments do |t|
       t.boolean :author         , null: false , default: false
+      t.boolean :pending        , null: false , default: true
       t.integer :parent_id
       t.string  :email          , null: false
       t.string  :name           , null: false

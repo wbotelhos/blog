@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20140101000003) do
 
   create_table "comments", :force => true do |t|
     t.boolean  "author",           :default => false, :null => false
+    t.boolean  "pending",          :default => true,  :null => false
     t.integer  "parent_id"
     t.string   "email",                               :null => false
     t.string   "name",                                :null => false

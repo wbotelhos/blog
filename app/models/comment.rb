@@ -6,7 +6,8 @@ class Comment < ActiveRecord::Base
 
   belongs_to :commentable, polymorphic: true
 
-  scope :roots, -> { where parent_id: nil }
+  scope :pendings , -> { where pending: true, author: false  }
+  scope :roots    , -> { where parent_id: nil }
 
   acts_as_tree order: 'id desc'
 
