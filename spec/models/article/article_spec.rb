@@ -62,9 +62,9 @@ describe Article do
         expect(result).to     have_attribute :published_at
         expect(result).to     have_attribute :slug
         expect(result).to     have_attribute :title
+        expect(result).to     have_attribute :id
         expect(result).to_not have_attribute :body
         expect(result).to_not have_attribute :created_at
-        expect(result).to_not have_attribute :id
         expect(result).to_not have_attribute :updated_at
         expect(result).to_not have_attribute :user_id
       end
