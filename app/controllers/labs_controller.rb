@@ -1,5 +1,6 @@
 class LabsController < ApplicationController
   before_filter :require_login, except: [:index, :show]
+  before_filter :find, only: [:edit, :export, :update]
 
   layout 'application'
 
@@ -14,7 +15,15 @@ class LabsController < ApplicationController
   end
 
   def edit
-    @media = Lab.find params[:id]
+  end
+
+  def export
+    url      = "#{CONFIG['url_http']}/#{@media.slug}"
+    response = Aitch.get url
+
+    return unless response.success?
+
+    AssetExtractor.new(@media, response).process
   end
 
   def index
@@ -40,12 +49,16 @@ class LabsController < ApplicationController
   end
 
   def update
-    @media = Lab.find params[:id]
-
     if @media.update_attributes params[:lab]
       redirect_to edit_lab_url @media
     else
       render :edit
     end
+  end
+
+  private
+
+  def find
+    @media = Lab.find params[:id]
   end
 end

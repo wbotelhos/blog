@@ -8,8 +8,16 @@ Blog::Application.routes.draw do
   get  '/profile' , to: 'users#edit'
   post '/login'   , to: 'sessions#create'
 
-  resources :articles, :labs, except: [:destroy, :show] do
+  resources :articles, except: [:destroy, :show] do
     resources :comments, only: [:edit, :create, :update]
+  end
+
+  resources :labs, except: [:destroy, :show] do
+    resources :comments, only: [:edit, :create, :update]
+
+    member do
+      get 'export'
+    end
   end
 
   resources :users, only: :update
