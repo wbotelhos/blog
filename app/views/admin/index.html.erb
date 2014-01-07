@@ -2,13 +2,13 @@
   <section class="listing">
     <h1><%= t 'article.drafts' %></h1>
 
-    <% @drafts.each do |article| %>
-      <ul>
+    <ul>
+      <% @drafts.each do |article| %>
         <li>
           <%= link_to article.title, edit_article_path(article.id), class: :title %><br />
           <%= link_to slug_url(article.slug), slug_path(article.slug), class: :url %>
         </li>
-      </ul>
-    <% end %>
+      <% end %>
+    </ul>
   </section>
 </div>
