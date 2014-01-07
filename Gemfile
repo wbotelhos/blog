@@ -1,15 +1,17 @@
 source 'https://rubygems.org'
 
 gem 'acts_as_tree'
+gem 'aitch'
 gem 'asset_sync'
 gem 'mysql2'
+gem 'nokogiri'
 gem 'pygments.rb'
 gem 'rails'        , '~> 3.2.16'
 gem 'rake'
 gem 'redcarpet'
 gem 'rspec-rails'
 gem 'sass-rails'
-gem 'rack_session_access'
+gem 'storage'
 
 group :assets do
   gem 'compass-rails'
@@ -41,6 +43,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl'
+  gem 'rack_session_access'
   gem 'selenium-webdriver'
   gem 'shoulda'
 end
