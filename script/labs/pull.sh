@@ -1,7 +1,7 @@
 #!/bin/bash
 
 . script/colors.sh
-. script/labs/config.sh
+. script/labs/load_labs.sh
 
 for LAB in "${LABS[@]}"; do
   cd ~/workspace

@@ -35,6 +35,7 @@ namespace :deploy do
     assets.precompile
     app.secret_token
     app.restart
+    labs.link
   end
 end
 
@@ -88,9 +89,8 @@ namespace :labs do
     run %(ln -s #{current} ~/workspace/blog)
   end
 
-  task :default do
-    labs.pull
-    labs.setup
+  task :link do
+    run %(cd #{current} && script/labs/link.sh)
   end
 
   task :pull do

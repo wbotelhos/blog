@@ -1,5 +1,8 @@
 #!/bin/bash
 
+. script/colors.sh
+. script/labs/load_labs.sh
+
 echo -e "\n${GRAY}Linking labs into plublic directory...${NO_COLOR}"
 
 for LAB in "${LABS[@]}"; do
