@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe AssetExtractor::Url, :focus do
+describe AssetExtractor::Url do
   let(:base_url) { 'http://example.org' }
 
   describe '.to_s' do
