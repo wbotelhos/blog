@@ -1,11 +1,5 @@
 <%= form_for @user do |f| %>
   <div class="placeholder">
-    <%= f.label :name %> <span class="mandatory">*</span>
-    <%= f.text_field :name, autofocus: true, required: true, class: :input %>
-    <%= errors_for @user, :name %>
-  </div>
-
-  <div class="placeholder">
     <%= f.label :email %> <span class="mandatory">*</span>
     <%= f.email_field :email, required: true, class: :input %>
     <%= errors_for @user, :email %>

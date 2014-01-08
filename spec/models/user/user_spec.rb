@@ -6,13 +6,11 @@ describe User do
   end
 
   it { should validate_presence_of :email }
-  it { should validate_presence_of :name }
 
   context :create do
     it 'creates a valid media' do
       expect(User.new(
         email:                 'john@example.org',
-        name:                  'John',
         password:              'password',
         password_confirmation: 'password'
       )).to be_valid
@@ -42,7 +40,6 @@ describe User do
     it 'has a invalid one' do
       expect(User.new(
         email:                 'john@example.org',
-        name:                  'John',
         password:              'password',
         password_confirmation: 'password_wrong'
       )).to_not be_valid
