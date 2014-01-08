@@ -13,7 +13,6 @@ fi
 echo -e "\n${GRAY}Dumpping labs slugs...${NO_COLOR}"
 bundle exec rake labs:dump
 
-. script/labs/load_labs.sh
 . script/labs/pull.sh
 . script/labs/link.sh
 
