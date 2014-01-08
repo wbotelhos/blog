@@ -57,7 +57,7 @@ describe Comment, '#update' do
     end
 
     it 'displays the commenter name' do
-      expect(page).to have_link 'new_name', href: 'http://example.org/new'
+      expect(page).to have_link 'new name', href: 'http://example.org/new'
     end
 
     it 'hides the pending message' do
