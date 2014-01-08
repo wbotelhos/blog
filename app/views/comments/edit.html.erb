@@ -24,6 +24,11 @@
     <%= errors_for @comment, :body %>
   </div>
 
+  <div class="placeholder">
+    <%= f.check_box :pending %>
+    <%= f.label :pending %>
+  </div>
+
   <div class="saver">
     <%= f.submit name: nil, class: 'button green' %>
   </div>

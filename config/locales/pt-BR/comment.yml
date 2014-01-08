@@ -5,6 +5,7 @@ pt-BR:
         body: 'Comentário'
         email: 'E-mail'
         name: 'Nome'
+        pending: 'Pendente'
         url: 'URL'
 
   comment:

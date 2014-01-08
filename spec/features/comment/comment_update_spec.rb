@@ -11,7 +11,7 @@ describe Comment, '#update' do
 
     visit slug_path article.slug
 
-    within "#comment-#{comment.id}" do
+    within '.comments' do
       click_link 'Editar'
     end
   end
@@ -21,13 +21,13 @@ describe Comment, '#update' do
   end
 
   context 'change the values' do
-    let(:new_comment) { FactoryGirl.create :comment }
-
     before do
-      fill_in 'comment_body'  , with: new_comment.body
-      fill_in 'comment_email' , with: new_comment.email
-      fill_in 'comment_name'  , with: new_comment.name
-      fill_in 'comment_url'   , with: new_comment.url
+      fill_in 'comment_body'  , with: 'new body'
+      fill_in 'comment_email' , with: 'new-john@example.org'
+      fill_in 'comment_name'  , with: 'new name'
+      fill_in 'comment_url'   , with: 'http://example.org/new'
+
+      uncheck 'comment_pending'
 
       click_button 'ATUALIZAR'
     end
@@ -37,39 +37,31 @@ describe Comment, '#update' do
     end
 
     it 'does not displays the author indicator' do
-      within "#comment-#{comment.id}" do
-        expect(page).to_not have_content 'autor'
-      end
+      expect(page).to_not have_content 'autor'
     end
 
     it 'displays the time' do
-      within "#comment-#{comment.id}" do
-        expect(page).to have_content 'menos de um minuto atrás'
-      end
+      expect(page).to have_content 'menos de um minuto atrás'
     end
 
     it 'displays the self anchor' do
-      within "#comment-#{comment.id}" do
-        expect(page).to have_selector '.anchor'
-      end
+      expect(page).to have_selector '.anchor'
     end
 
     it 'displays the edit link' do
-      within "#comment-#{comment.id}" do
-        expect(page).to have_link 'Editar'
-      end
+      expect(page).to have_link 'Editar'
     end
 
     it 'displays the answer link' do
-      within "#comment-#{comment.id}" do
-        expect(page).to have_link 'Responder'
-      end
+      expect(page).to have_link 'Responder'
     end
 
     it 'displays the commenter name' do
-      within "#comment-#{comment.id}" do
-        expect(page).to have_link new_comment.name, href: new_comment.url
-      end
+      expect(page).to have_link 'new_name', href: 'http://example.org/new'
+    end
+
+    it 'hides the pending message' do
+      expect(page).to_not have_content 'pendente'
     end
   end
 end
