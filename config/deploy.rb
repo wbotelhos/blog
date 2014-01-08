@@ -34,8 +34,8 @@ namespace :deploy do
     app.setup
     assets.precompile
     app.secret_token
-    app.restart
     labs.link
+    app.restart
   end
 end
 
