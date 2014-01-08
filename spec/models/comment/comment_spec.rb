@@ -17,16 +17,15 @@ describe Comment do
 
     it 'creates a valid media' do
       comment = commentable.comments.new(
-        body:           'body',
-        email:          'john@example.org',
-        name:           'name',
-        url:            'http://example.org'
+        body:  'body',
+        email: 'john@example.org',
+        name:  'name',
+        url:   'http://example.org'
       )
 
       comment.parent = comment
       expect(comment).to be_valid
     end
-
   end
 
   context :format do
