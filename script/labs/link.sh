@@ -10,7 +10,7 @@ for LAB in "${LABS[@]}"; do
   TO="public/${LAB}"
 
   if [ -L "$TO" ]; then
-    rm $TO
+    unlink $TO
   fi
 
   ln -s $FROM $TO
