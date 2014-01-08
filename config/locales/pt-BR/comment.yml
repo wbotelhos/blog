@@ -2,7 +2,7 @@ pt-BR:
   activerecord:
     attributes:
       comment:
-        body: "Comentário"
+        body: 'Comentário'
         email: 'E-mail'
         name: 'Nome'
         url: 'URL'
@@ -13,6 +13,7 @@ pt-BR:
     edit: 'Editar'
     format_your_code_html: "Formate seu <strong>código</strong> utilizando %{link}."
     other: 'Comentários'
+    pending: 'pendente'
     reply: 'Responder'
     replying_to: 'Em resposta: '
     shortcut: 'Atalho para este comentário'

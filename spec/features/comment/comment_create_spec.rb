@@ -232,6 +232,10 @@ describe Comment, '#create' do
       it 'displays the commenter name' do
         expect(page).to have_link @user.name, href: CONFIG['url_http']
       end
+
+      it 'does not begins pending' do
+        expect(page).to_not have_content 'pendente'
+      end
     end
 
     context 'answering', :js do

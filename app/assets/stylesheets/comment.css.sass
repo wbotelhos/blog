@@ -67,13 +67,7 @@
     margin-right: 5px
 
   .author
-    +border-radius(3px)
     background-color: #CCC
-    border-radius: 3px
-    color: #FFF
-    font-size: 0.9em
-    padding: 3px 7px
-    letter-spacing: 0.7px
 
   .avatar
     height: 48px
@@ -97,6 +91,17 @@
     padding-left: 15px
     position: relative
     word-wrap: break-word
+
+  .flag
+    +border-radius(3px)
+    border-radius: 3px
+    color: #FFF
+    font-size: 0.9em
+    padding: 3px 7px
+    letter-spacing: 0.7px
+
+  .pending
+    background-color: #FF8080
 
 .new_comment, .edit_comment
   input[type="submit"]
@@ -159,14 +164,14 @@
     .anchor, .edit, .reply
       font-size: 0.9em
 
-    .author
-      font-size: 0.8em
-
     .body
       padding-left: 7px
 
     .comment
       padding-left: 48px
+
+    .flag
+      font-size: 0.8em
 
   .new_comment, .edit_comment
     .not-human
