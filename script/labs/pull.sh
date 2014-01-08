@@ -6,7 +6,7 @@
 for LAB in "${LABS[@]}"; do
   cd ~/workspace
 
-  if [ -d "${LAB}" ]; then
+  if [ -d "$LAB" ]; then
     echo -e "\n${GRAY}Pulling ${LAB}...${NO_COLOR}"
 
     cd $LAB
