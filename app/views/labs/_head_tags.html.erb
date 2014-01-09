@@ -1,5 +1,7 @@
 <%= render 'labs/meta_tags' %>
 
+<%= favicon_link_tag %>
+
 <title><%= "#{@title || CONFIG['description']} - #{CONFIG['author']}" %></title>
 
 <%= csrf_meta_tags %>
