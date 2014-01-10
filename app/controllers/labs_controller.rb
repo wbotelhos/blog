@@ -18,7 +18,7 @@ class LabsController < ApplicationController
   end
 
   def export
-    url      = "#{CONFIG['url_http']}/#{@media.slug}"
+    url      = "#{CONFIG['url_http']}/#{@media.slug}?offline"
     response = Aitch.get url
 
     return unless response.success?
