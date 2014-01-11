@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe AssetExtractor::Url do
+describe AssetUrl do
   let(:base_url) { 'http://example.org' }
 
   describe '.to_s' do
@@ -35,6 +35,5 @@ describe AssetExtractor::Url do
         expect(described_class.new(base_url, url).to_s).to eq "#{base_url}#{url}"
       end
     end
-
   end
 end
