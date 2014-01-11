@@ -4,7 +4,7 @@ describe LabsController do
   context 'accessing the admin area' do
     context :unlogged do
       it 'redirect to the login page' do
-        get :new
+        post :create
         expect(response).to redirect_to login_path
       end
 
@@ -14,12 +14,17 @@ describe LabsController do
       end
 
       it 'redirect to the login page' do
-        put :update, id: 1
+        get :export, id: 1
         expect(response).to redirect_to login_path
       end
 
       it 'redirect to the login page' do
-        post :create
+        get :new
+        expect(response).to redirect_to login_path
+      end
+
+      it 'redirect to the login page' do
+        put :update, id: 1
         expect(response).to redirect_to login_path
       end
     end
