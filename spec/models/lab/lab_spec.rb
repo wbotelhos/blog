@@ -125,7 +125,7 @@ describe Lab do
     let(:lab) { FactoryGirl.build :lab }
 
     it 'return the online url of the github' do
-      expect(lab.github).to eq "#{CONFIG['github']}/#{lab.slug}"
+      expect(lab.github).to eq "http://github.com/#{CONFIG['github']}/#{lab.slug}"
     end
   end
 
@@ -133,7 +133,7 @@ describe Lab do
     let(:lab) { FactoryGirl.build :lab }
 
     it 'return the github download url' do
-      expect(lab.download).to eq "#{CONFIG['github']}/#{lab.slug}/archive/#{lab.version}.zip"
+      expect(lab.download).to eq "http://github.com/#{CONFIG['github']}/#{lab.slug}/archive/#{lab.version}.zip"
     end
   end
 
