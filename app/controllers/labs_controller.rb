@@ -4,6 +4,8 @@ class LabsController < ApplicationController
 
   layout 'application'
 
+  MAX_ROWS = 100
+
   def create
     @media = Lab.new params[:lab]
 
@@ -24,6 +26,26 @@ class LabsController < ApplicationController
     return unless response.success?
 
     AssetExtractor.new(@media, response).process
+  end
+
+  def gridy
+    filter = get_filter
+    model  = []
+
+    begin
+      if filter[:search].present?
+        model = Lab.where filter[:find] => Regexp.new(".*#{filter[:search]}.*", "i")
+      else
+        model = Lab
+      end
+
+      require 'debugger';debugger
+      model = model.order("#{filter[:sort_name]} #{filter[:sort_order]}").offset(MAX_ROWS).skip(filter[:skip])
+
+      render json: { list: model, total: model.count }
+    # rescue
+      # render json: { list: [], total: 0, error: I18n.t('mongoid.errors.messages.document_not_found') }
+    end
   end
 
   def index
@@ -60,5 +82,28 @@ class LabsController < ApplicationController
 
   def find
     @media = Lab.find params[:id]
+  end
+
+  def get_filter
+    hash = {
+      address:    params[:address],
+      find:       params[:find],
+      page:       params[:page].to_i,
+      search:     params[:search],
+      sort_name:  params[:sortName],
+      sort_order: params[:sortOrder],
+      rows:       params[:rows].to_i
+    }
+
+    page = hash[:page] - 1
+    page = 0 if page < 0
+
+    hash[:skip] = page * hash[:rows]
+
+    hash
+  end
+
+  def rows_for(filter)
+    filter[:rows] > MAX_ROWS ? MAX_ROWS : filter[:rows]
   end
 end

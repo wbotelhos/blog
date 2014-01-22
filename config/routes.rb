@@ -13,11 +13,11 @@ Blog::Application.routes.draw do
   end
 
   resources :labs, except: [:destroy, :show] do
-    resources :comments, only: [:edit, :create, :update]
+    get 'gridy'  , on: :collection
 
-    member do
-      get 'export'
-    end
+    get 'export' , on: :member
+
+    resources :comments, only: [:edit, :create, :update]
   end
 
   resources :users, only: :update
