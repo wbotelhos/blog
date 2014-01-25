@@ -36,13 +36,13 @@ describe Lab, '#show' do
   describe 'navigation' do
     it 'shows download button' do
       within 'nav' do
-        expect(page).to have_link "v#{lab.version}", href: "#{CONFIG['github']}/#{lab.slug}/archive/#{lab.version}.zip"
+        expect(page).to have_link "v#{lab.version}", href: "http://github.com/#{CONFIG['github']}/#{lab.slug}/archive/#{lab.version}.zip"
       end
     end
 
     it 'show github button' do
       within 'nav' do
-        expect(page).to have_link '', href: "#{CONFIG['github']}/#{lab.slug}"
+        expect(page).to have_link '', href: "http://github.com/#{CONFIG['github']}/#{lab.slug}"
       end
     end
 
