@@ -30,19 +30,7 @@ article
     margin: 0 0 2px 7px
     padding: 4px
 
-.bio
-  color: #444
-  font-size: 1.1em
-  line-height: 1.4
-  margin-bottom: 25px
-  margin-top: 10px
-  text-align: center
-
-.edit_article, .new_article, .edit_lab, .new_lab, .edit_user
-  input[type="submit"]
-    margin-top: 5px
-    width: 100%
-
+form
   label
     color: #333
     display: inline-block
@@ -52,14 +40,26 @@ article
     margin-top: 3px
 
   textarea
-    height: 250px
+    height: 200px
 
-  .saver
-    a
-      margin-top: 7px
-      text-align: center
-      text-decoration: none
-      width: 100%
+.bio
+  color: #444
+  font-size: 1.1em
+  line-height: 1.4
+  margin-bottom: 25px
+  margin-top: 10px
+  text-align: center
+
+.saver
+  a
+    padding-top: 12px
+    text-align: center
+
+  a, input
+    font-size: 1.2em
+    margin-top: 7px
+    text-decoration: none
+    width: 100%
 
 .header
   a
@@ -115,19 +115,17 @@ article
       h1
         font-size: 2.8em
 
-  .edit_article, .new_article, .edit_lab, .new_lab, .edit_user
+  form
     margin-left: auto
     margin-right: auto
     width: 80%
 
-    input[type="submit"], .saver a
+  .saver
+    a, input
       float: right
-      margin-top: 0
+      font-size: 1em
+      margin-left: 7px
       width: auto
-
-    .saver
-      a
-        margin-right: 10px
 
 @media only screen and (min-width: 568px)
   article

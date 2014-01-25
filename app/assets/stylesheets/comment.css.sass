@@ -105,19 +105,10 @@
 
 .new_comment, .edit_comment
   input[type="submit"]
-    margin-top: 5px
-    width: 100%
-
-  label
-    color: #333
-    display: inline-block
-    font: bold 1.4em arial
-    margin-bottom: 3px
-    margin-left: 2px
-    margin-top: 3px
+    margin-top: 0
 
   textarea
-    height: 170px
+    height: 100px
 
   .not-human
     input
@@ -136,7 +127,6 @@
   .tip
     color: #777
     font-size: 1.1em
-    margin-left: 2px
     margin-top: 2px
 
 @media only screen and (min-width: 480px)
@@ -144,11 +134,6 @@
     margin-left: auto
     margin-right: auto
     width: 80%
-
-    input[type="submit"]
-      float: right
-      margin-top: 0
-      width: auto
 
   .edit_comment
     margin-top: 30px
@@ -174,11 +159,11 @@
       font-size: 0.8em
 
   .new_comment, .edit_comment
-    .not-human
-      input
-        vertical-align: middle
+    textarea
+      height: 200px
 
-      label
+    .not-human
+      input, label
         vertical-align: middle
 
 @media only screen and (min-width: 1024px)
