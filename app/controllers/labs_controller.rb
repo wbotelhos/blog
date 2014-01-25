@@ -39,7 +39,6 @@ class LabsController < ApplicationController
         model = Lab
       end
 
-      require 'debugger';debugger
       model = model.order("#{filter[:sort_name]} #{filter[:sort_order]}").offset(MAX_ROWS).skip(filter[:skip])
 
       render json: { list: model, total: model.count }

@@ -47,4 +47,38 @@ describe Article, '#update' do
       it { expect(page).to have_content 'O campo "Título" deve ser preenchido!' }
     end
   end
+
+  context 'when unpublished' do
+    it 'shows the publish button' do
+      expect(page).to have_button 'PUBLICAR'
+    end
+
+    context 'and click on publish button' do
+      before do
+        visit edit_article_path article
+
+        click_button 'PUBLICAR'
+      end
+
+      it 'renders index page' do
+        expect(current_path).to eq root_path
+      end
+
+      it 'shows the actual article on published list' do
+        expect(page).to have_content article.title
+      end
+    end
+  end
+
+  context 'when published' do
+    before do
+      article.publish!
+
+      visit edit_article_path article
+    end
+
+    it 'hides the publish button' do
+      expect(page).to_not have_button 'PUBLICAR'
+    end
+  end
 end

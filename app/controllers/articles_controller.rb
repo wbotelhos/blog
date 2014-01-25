@@ -23,12 +23,11 @@ class ArticlesController < ApplicationController
     @media = Article.new
   end
 
-  def publish # TODO
-    article                         = Article.find params[:id]
-    params[:article][:published_at] = Time.now
+  def publish
+    article = Article.find params[:id]
 
-    if article.update_attributes params[:article]
-      redirect_to slug_url article.slug
+    if article.publish!
+      redirect_to root_url, notice: t('article.flash.published')
     else
       render :edit
     end

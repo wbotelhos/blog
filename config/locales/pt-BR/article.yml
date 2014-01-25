@@ -10,9 +10,11 @@ pt-BR:
     edit: 'Editar'
     new: 'Novo Artigo'
     preview: 'PREVIEW'
+    publish: 'PUBLICAR'
 
     flash:
       not_found: 'O artigo "%{uri}" não foi encontrado!'
+      published: 'Artigo publicado com sucesso!'
 
   helpers:
     submit:

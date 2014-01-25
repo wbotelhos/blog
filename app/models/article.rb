@@ -20,6 +20,16 @@ class Article < ActiveRecord::Base
   validates :title , presence: true , uniqueness: true
   validates :user  , presence: true
 
+  def published?
+    published_at.present?
+  end
+
+  def publish!
+    write_attribute :published_at, Time.now
+
+    save
+  end
+
   private
 
   def generate_slug

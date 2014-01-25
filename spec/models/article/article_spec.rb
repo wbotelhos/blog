@@ -146,4 +146,34 @@ describe Article do
       end
     end
   end
+
+  describe :published? do
+    context 'when unpublished' do
+      it 'returns false' do
+        expect(Article.new).to_not be_published
+      end
+    end
+
+    context 'when published' do
+      it 'returns true' do
+        expect(Article.new published_at: Time.now).to be_published
+      end
+    end
+  end
+
+  describe :state do
+    let!(:article) { FactoryGirl.create :article }
+
+    it 'begins unpublished' do
+      expect(article.published_at).to be_nil
+    end
+
+    context 'when publish' do
+      before { article.publish! }
+
+      it 'becames published' do
+        expect(article.published_at).to_not be_nil
+      end
+    end
+  end
 end
