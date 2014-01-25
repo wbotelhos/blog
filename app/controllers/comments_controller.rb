@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
   def assign_author
     @comment.author  = true
     @comment.email   = @current_user.email
-    @comment.name    = @current_user.name
+    @comment.name    = CONFIG['author']
     @comment.pending = false
     @comment.url     = CONFIG['url_http']
   end
