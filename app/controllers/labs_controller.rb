@@ -29,21 +29,25 @@ class LabsController < ApplicationController
   end
 
   def gridy
-    filter = get_filter
-    model  = []
+    filter   = get_filter
+    criteria = Lab.select('title, description, version')
 
     begin
       if filter[:search].present?
-        model = Lab.where filter[:find] => Regexp.new(".*#{filter[:search]}.*", "i")
-      else
-        model = Lab
+        criteria = criteria.where filter[:find] => Regexp.new(".*#{filter[:search]}.*", "i")
       end
 
-      model = model.order("#{filter[:sort_name]} #{filter[:sort_order]}").offset(MAX_ROWS).skip(filter[:skip])
+      sql = criteria
+            .order("#{filter[:sort_name]} #{filter[:sort_order]}")
+            .offset(MAX_ROWS)
+            .skip(filter[:skip])
+            .to_sql
 
-      render json: { list: model, total: model.count }
-    # rescue
-      # render json: { list: [], total: 0, error: I18n.t('mongoid.errors.messages.document_not_found') }
+      result = Lab.find_by_sql sql
+
+      render json: { list: result, total: result.count }
+    rescue ActiveRecord::RecordNotFound
+      render json: { list: [], total: 0, error: I18n.t('lab.errors.not_found') }
     end
   end
 
