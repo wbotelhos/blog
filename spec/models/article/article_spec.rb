@@ -10,17 +10,6 @@ describe Article do
   it { should validate_presence_of :user }
   it { should validate_presence_of :title }
 
-  context :create do
-    let(:user) { FactoryGirl.create :user }
-
-    it 'creates a valid media' do
-      article      = Article.new title: 'title', body: 'body'
-      article.user = user
-
-      expect(article).to be_valid
-    end
-  end
-
   context :uniqueness do
     let(:article) { FactoryGirl.create :article }
 
