@@ -1,19 +1,21 @@
 #!/bin/bash
 
 . script/colors.sh
-. script/labs/load_labs.sh
+. script/labs/slugs.sh
 
-for LAB in "${LABS[@]}"; do
-  cd ~/workspace
+cd ~/workspace
 
-  if [ -d "$LAB" ]; then
-    echo -e "\n${GRAY}Pulling ${LAB}...${NO_COLOR}"
+for SLUG in "${SLUGS[@]}"; do
+  if [ -d "${SLUG}" ]; then
+    echo -e "\n${GRAY}Pulling ${SLUG}...${NO_COLOR}"
 
-    cd $LAB
+    cd $SLUG
     git pull origin master
   else
-    echo -e "\n${GRAY}Cloning ${LAB}...${NO_COLOR}"
+    echo -e "\n${GRAY}Cloning ${SLUG}...${NO_COLOR}"
 
-    git clone "git@github.com:wbotelhos/${LAB}.git"
+    git clone "git@github.com:wbotelhos/${SLUG}.git"
   fi
 done
+
+cd ~/workspace/blog

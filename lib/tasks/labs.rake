@@ -4,6 +4,6 @@ namespace :labs do
     labs  = Lab.published.by_published.map &:slug
     files = "LABS=(#{labs.join ' '})"
 
-    File.open('script/labs/config.sh', 'w') { |f| f.write files }
+    File.open('script/labs/slugs.sh', 'w') { |f| f.write files }
   end
 end

@@ -4,8 +4,6 @@
 
 . script/colors.sh
 
-cd ~/workspace/blog
-
 if [ -n "$1" ]; then
   script/database/production_to_development.sh $1
 fi

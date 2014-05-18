@@ -1,13 +1,13 @@
 #!/bin/bash
 
 . script/colors.sh
-. script/labs/load_labs.sh
+. script/labs/slugs.sh
 
 echo -e "\n${GRAY}Linking labs into plublic directory...${NO_COLOR}"
 
-for LAB in "${LABS[@]}"; do
-  FROM=~/workspace/"${LAB}"
-  TO="public/${LAB}"
+for SLUG in "${SLUGS[@]}"; do
+  FROM=~/workspace/"${SLUG}"
+  TO="public/${SLUG}"
 
   if [ -L "$TO" ]; then
     unlink $TO
