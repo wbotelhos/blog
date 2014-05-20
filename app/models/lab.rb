@@ -38,7 +38,7 @@ class Lab < ActiveRecord::Base
   end
 
   def stylesheets_inline
-    "<style>#{css.delete(' ')}</style>".html_safe if css.present?
+    "<style>#{css}</style>".html_safe if css.present?
   end
 
   def url

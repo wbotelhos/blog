@@ -253,8 +253,8 @@ describe Lab do
     context 'with value' do
       let(:lab) { FactoryGirl.build :lab, css: 'i { float: left }' }
 
-      it 'returns the content wrapped with stylesheet tag without spaces' do
-        expect(lab.stylesheets_inline).to eq %(<style>i{float:left}</style>)
+      it 'returns the original content' do
+        expect(lab.stylesheets_inline).to eq %(<style>i { float: left }</style>)
       end
     end
 
