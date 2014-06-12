@@ -13,8 +13,8 @@ class String
     slug.gsub! /\s/     , '-'
     slug.tr!   from     , to
     slug.gsub! /[^\w-]/ , ''
+    slug.sub!  /^-/     , ''
     slug.gsub! /-$/     , ''
-    slug.gsub! /ˆ-/     , ''
 
     slug
   end
