@@ -9,7 +9,7 @@ gem 'pygments.rb'
 gem 'rails'        , '~> 3.2.16'
 gem 'rake'
 gem 'redcarpet'
-gem 'rspec-rails'
+gem 'rspec-rails', '~> 2.99.0'
 gem 'sass-rails'
 gem 'storage'
 
