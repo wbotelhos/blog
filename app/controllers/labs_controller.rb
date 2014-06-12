@@ -26,6 +26,8 @@ class LabsController < ApplicationController
     return unless response.success?
 
     AssetExtractor.new(@media, response).process
+
+    render nothing: true
   end
 
   def gridy
