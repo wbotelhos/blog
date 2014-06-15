@@ -52,7 +52,7 @@ rspec
 
 ## Licence
 
-The MIT License
+[The MIT License](http://opensource.org/licenses/MIT)
 
 ## Donate
 
