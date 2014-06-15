@@ -16,21 +16,21 @@
 
 ```bash
 git clone https://github.com/wbotelhos/wbotelhos-com.git
-cd wbotelhos-com
 ```
 
 ### Prepare the gemset
 
 ```bash
+cd wbotelhos-com
 rvm gemset create wbotelhos
 cd .
-NOKOGIRI_USE_SYSTEM_LIBRARIES=1 bundle
+bundle
 ```
 
 ### Prepare the database
 
 ```bash
-rake db:create:all && rake db:migrate && rake db:setup
+rake db:drop:all && rake db:create:all && rake db:migrate
 ```
 
 ### Run the project
@@ -41,7 +41,13 @@ rails s
 
 ### Open the project
 
-Acess http://localhost:3000
+```bash
+open http://localhost:3000
+```
+
+or
+
+Acess `http://localhost:3000` via browser.
 
 ### Run the tests
 
@@ -50,10 +56,37 @@ rake db:test:prepare
 rspec
 ```
 
+# Tasks
+
+### Dump production database locally
+
+```bash
+./script/database/production_to_development.sh production.password
+```
+
+### Dump local database to production
+
+```bash
+./script/database/development_to_production.sh production.password
+```
+
+### Deploy
+
+- Code beautiful things;
+- Commit your changes;
+- `git push origin master`;
+- `cap deploy`.
+
+For more information: [Rails Deploy com Capistrano na Amazon EC2](http://wbotelhos.com/rails-deploy-com-capistrano-na-amazon-ec2)
+
+## Contributors
+
+[Check it out](http://github.com/wbotelhos/raty/graphs/contributors)
+
 ## Licence
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-## Donate
+## Love it!
 
-You can do it by [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=Blog-BR). Thanks! (:
+Via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=wbotelhos.com) or [Gittip](http://www.gittip.com/wbotelhos). Thanks! (:
