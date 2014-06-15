@@ -34,7 +34,7 @@ describe Article, '#create' do
       click_button 'SALVAR'
     end
 
-    it { expect(page).to have_content %(O valor "#{article.title}" para o campo "Título" já esta em uso!) }
+    it { expect(page).to have_content %(O valor "#{article.title}" para o campo "Título" já está em uso!) }
   end
 
   context 'with invalid data', :js do
