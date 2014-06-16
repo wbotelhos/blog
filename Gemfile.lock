@@ -111,8 +111,9 @@ GEM
       lumberjack (~> 1.0)
       pry (>= 0.9.12)
       thor (>= 0.18.1)
-    guard-rspec (1.2.1)
-      guard (>= 1.1)
+    guard-rspec (4.2.10)
+      guard (~> 2.1)
+      rspec (>= 2.14, < 4.0)
     guard-spork (1.5.1)
       childprocess (>= 0.2.3)
       guard (>= 1.1)
@@ -124,7 +125,7 @@ GEM
     journey (1.0.4)
     json (1.8.1)
     kgio (2.9.2)
-    listen (2.7.7)
+    listen (2.7.8)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -200,21 +201,26 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     redcarpet (3.1.2)
-    rspec-collection_matchers (1.0.0)
-      rspec-expectations (>= 2.99.0.beta1)
-    rspec-core (2.99.0)
-    rspec-expectations (2.99.0)
-      diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.99.1)
-    rspec-rails (2.99.0)
+    rspec (3.0.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+    rspec-core (3.0.1)
+      rspec-support (~> 3.0.0)
+    rspec-expectations (3.0.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.0.0)
+    rspec-mocks (3.0.1)
+      rspec-support (~> 3.0.0)
+    rspec-rails (3.0.1)
       actionpack (>= 3.0)
-      activemodel (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-collection_matchers
-      rspec-core (~> 2.99.0)
-      rspec-expectations (~> 2.99.0)
-      rspec-mocks (~> 2.99.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+      rspec-support (~> 3.0.0)
+    rspec-support (3.0.0)
     ruby_gntp (0.3.4)
     rubyzip (1.1.4)
     sass (3.2.19)
@@ -256,7 +262,7 @@ GEM
       railties (> 3.2.8, < 4.0.0)
       sprockets (>= 2.2.0)
     tzinfo (0.3.39)
-    uglifier (2.5.0)
+    uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicorn (4.8.3)
@@ -290,11 +296,11 @@ DEPENDENCIES
   pygments.rb
   quiet_assets
   rack_session_access
-  rails (~> 3.2.16)
+  rails (~> 3.2.18)
   rake
   rb-fsevent
   redcarpet
-  rspec-rails (~> 2.99.0)
+  rspec-rails
   ruby_gntp
   sass-rails
   selenium-webdriver
