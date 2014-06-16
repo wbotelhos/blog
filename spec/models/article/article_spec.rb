@@ -5,10 +5,10 @@ describe Article do
     expect(FactoryGirl.build :article).to be_valid
   end
 
-  it { should belong_to :user }
+  it { is_expected.to belong_to :user }
 
-  it { should validate_presence_of :user }
-  it { should validate_presence_of :title }
+  it { is_expected.to validate_presence_of :user }
+  it { is_expected.to validate_presence_of :title }
 
   context :uniqueness do
     let(:article) { FactoryGirl.create :article }
@@ -73,7 +73,7 @@ describe Article do
       let!(:articles) { FactoryGirl.create_list :article, 9 }
 
       it 'limits the quantity' do
-        expect(Article.recents).to have(10).items
+        expect(Article.recents.size).to eq 10
       end
     end
 
@@ -109,7 +109,7 @@ describe Article do
 
         context 'article without published date in the same time' do
           before do
-            Time.stub(:now).and_return Time.local(2013, 1, 1, 0, 0, 0)
+            allow(Time).to receive(:now).and_return Time.local(2013, 1, 1, 0, 0, 0)
 
             @article_now = FactoryGirl.create :article, published_at: Time.now
           end

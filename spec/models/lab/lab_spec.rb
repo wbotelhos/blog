@@ -5,11 +5,11 @@ describe Lab do
     expect(FactoryGirl.build :lab).to be_valid
   end
 
-  it { should validate_presence_of :analytics }
-  it { should validate_presence_of :description }
-  it { should validate_presence_of :keywords }
-  it { should validate_presence_of :title }
-  it { should validate_presence_of :version }
+  it { is_expected.to validate_presence_of :analytics }
+  it { is_expected.to validate_presence_of :description }
+  it { is_expected.to validate_presence_of :keywords }
+  it { is_expected.to validate_presence_of :title }
+  it { is_expected.to validate_presence_of :version }
 
   context :uniqueness do
     let(:lab) { FactoryGirl.create :lab }
@@ -86,7 +86,7 @@ describe Lab do
 
         context 'lab without published date in the same time' do
           before do
-            Time.stub(:now).and_return Time.local(2013, 1, 1, 0, 0, 0)
+            allow(Time).to receive(:now).and_return Time.local(2013, 1, 1, 0, 0, 0)
 
             @lab_now = FactoryGirl.create :lab, published_at: Time.now
           end

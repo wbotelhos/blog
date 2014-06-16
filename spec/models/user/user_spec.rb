@@ -5,7 +5,7 @@ describe User do
     expect(FactoryGirl.build :user).to be_valid
   end
 
-  it { should validate_presence_of :email }
+  it { is_expected.to validate_presence_of :email }
 
   context :create do
     it 'creates a valid media' do

@@ -5,12 +5,12 @@ describe Comment do
     expect(FactoryGirl.build :comment).to be_valid
   end
 
-  it { should belong_to :commentable }
+  it { is_expected.to belong_to :commentable }
 
-  it { should validate_presence_of :commentable }
-  it { should validate_presence_of :body }
-  it { should validate_presence_of :email }
-  it { should validate_presence_of :name }
+  it { is_expected.to validate_presence_of :commentable }
+  it { is_expected.to validate_presence_of :body }
+  it { is_expected.to validate_presence_of :email }
+  it { is_expected.to validate_presence_of :name }
 
   context :create do
     let!(:commentable) { FactoryGirl.create :commentable }

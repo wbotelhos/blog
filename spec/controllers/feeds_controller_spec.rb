@@ -5,22 +5,22 @@ describe FeedsController do
 
   describe 'GET #feed' do
     before do
-      Article.stub(:published).and_return criteria
-      criteria.stub(:recents).and_return criteria
+      allow(Article).to receive(:published).and_return criteria
+      allow(criteria).to receive(:recents).and_return criteria
     end
 
     it 'is filtered by published' do
-      Article.should_receive :published
+      expect(Article).to receive :published
       get :index
     end
 
     it 'is filtered by recents' do
-      criteria.should_receive :recents
+      expect(criteria).to receive :recents
       get :index
     end
 
     it 'is sorted by published date' do
-      criteria.should_receive :by_published
+      expect(criteria).to receive :by_published
       get :index
     end
   end
