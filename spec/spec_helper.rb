@@ -16,8 +16,13 @@ Spork.prefork do
   RSpec.configure do |config|
     config.filter_run focus: true
     config.infer_base_class_for_anonymous_controllers      = false
+    config.infer_spec_type_from_file_location!
     config.run_all_when_everything_filtered                = true
     config.treat_symbols_as_metadata_keys_with_true_values = true
+
+    config.mock_with :rspec do |mocks|
+      # mocks.verify_partial_doubles = true
+    end
 
     config.before :suite do
       DatabaseCleaner.clean_with :truncation, { pre_count: true }
