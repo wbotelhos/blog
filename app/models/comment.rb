@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   include ActsAsTree
-  extend ActsAsTree::Presentation
+  extend ActsAsTree::TreeView
 
   attr_accessible :body, :email, :name, :parent_id, :pending, :url
 
