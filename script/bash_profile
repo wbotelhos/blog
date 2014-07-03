@@ -19,7 +19,7 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # 30: Black | 31: Red | 32: Green | 33: Yellow | 34: Blue | 35: Purple | 36: Cyan | 37: White | green others...
 # 0: Normal | 1: Bold
-function prompt() {
+prompt() {
   local CYAN='\[\033[0;36m\]'
   local PURPLE='\[\033[0;35m\]'
   local RED='\[\033[0;31m\]'
@@ -31,4 +31,16 @@ function prompt() {
 
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+# FUNCTIONS
+
+block_ip() {
+  IP=$1
+
+  sudo iptables -I INPUT -s $IP -j DROP
+}
+
+block_ip_show() {
+  sudo iptables -L INPUT -v -n
 }
