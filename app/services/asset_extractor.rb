@@ -5,8 +5,10 @@ class AssetExtractor
   end
 
   def extract_html
-    destiny = join_path 'demo.html'
-    html    = fix_favicon @html.to_html
+    destiny = join_path 'demo/index.html'
+    html    = @html.to_html
+    html    = fix_favicon html
+    html    = fix_lib_path html
     html    = fix_public_path html
 
     write_file destiny, html
@@ -20,7 +22,7 @@ class AssetExtractor
       type           = expand_filename filename
       folder         = [path, type].compact.join('/')
       tag[attribute] = "#{folder}/#{filename}"
-      destiny        = join_path folder, filename
+      destiny        = join_path 'demo', folder, filename
 
       save_file! url, destiny, filename
     end
@@ -34,8 +36,7 @@ class AssetExtractor
   end
 
   def process
-    extract 'link[href*="labs"] , script[src*="labs"]', 'demo'
-    extract 'link[href*="lib"]  , script[src*="lib"]', 'lib'
+    extract 'link[href*="labs"] , script[src*="labs"]', nil
 
     remove_elements
 
@@ -65,7 +66,12 @@ class AssetExtractor
   end
 
   def fix_favicon(html)
-    html.sub! '//wbotelhos.s3.amazonaws.com/favicon.ico', 'demo/favicon.ico'
+    html.sub! '//wbotelhos.s3.amazonaws.com/favicon.ico', 'favicon.ico'
+  end
+
+  def fix_lib_path(html)
+    html.gsub! 'lib/'    , '../lib/'
+    html.gsub! 'vendor/' , '../vendor/'
   end
 
   def fix_public_path(html)
