@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe FeedsController do
   let(:criteria) { double.as_null_object }

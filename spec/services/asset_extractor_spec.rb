@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe AssetUrl do
   let(:base_url) { 'http://example.org' }

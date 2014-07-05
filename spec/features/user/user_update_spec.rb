@@ -1,6 +1,6 @@
 # coding: utf-8
 
-require 'spec_helper'
+require 'rails_helper'
 
 describe User, '#update' do
   before do

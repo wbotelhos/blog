@@ -19,7 +19,7 @@ class LabsController < ApplicationController
   def edit
   end
 
-  def export_
+  def export
     url      = "#{CONFIG['url_http']}/#{@media.slug}?offline"
     response = Aitch.get url
 

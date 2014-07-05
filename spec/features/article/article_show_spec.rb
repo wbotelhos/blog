@@ -1,6 +1,6 @@
 # coding: utf-8
 
-require 'spec_helper'
+require 'rails_helper'
 
 describe Article, '#show' do
   let(:article) { FactoryGirl.create :article_published }
