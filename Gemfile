@@ -1,3 +1,6 @@
+#ruby=ruby-2.1.2
+#ruby-gemset=blogy
+
 source 'https://rubygems.org'
 
 gem 'acts_as_tree'
