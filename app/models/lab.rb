@@ -25,7 +25,7 @@ class Lab < ActiveRecord::Base
     build_tag js_import, %(<script src="{{url}}"></script>)
   end
 
-  def javascripts_inline
+  def javascripts_inline # TODO: avoid the max character here.
     js.html_safe if js.present?
   end
 
