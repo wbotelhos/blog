@@ -6,7 +6,7 @@ gem 'asset_sync'
 gem 'mysql2'
 gem 'nokogiri'
 gem 'pygments.rb'
-gem 'rails'        , '~> 3.2.18'
+gem 'rails'        , '~> 3.2'
 gem 'rake'
 gem 'redcarpet'
 gem 'rspec-rails'
@@ -20,17 +20,15 @@ group :assets do
 end
 
 group :development do
-  gem 'capistrano' , '~> 2.15.5'
+  gem 'capistrano' , '~> 2.15'
 end
 
 group :development, :test do
-  gem 'debugger'
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'pry-meta'     , require: false
   gem 'quiet_assets'
   gem 'rb-fsevent'   , require: false
-  gem 'ruby_gntp'    # require: http://growl.info/downloads
   gem 'thin'
 end
 

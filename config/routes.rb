@@ -9,7 +9,7 @@ Blog::Application.routes.draw do
   post '/login'   , to: 'sessions#create'
 
   resources :articles, except: [:destroy, :show] do
-    put 'publish', on: :member
+    patch 'publish', on: :member
 
     resources :comments, only: [:edit, :create, :update]
   end
