@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'acts_as_tree'
 gem 'aitch'
 gem 'asset_sync'
+gem 'compass-rails'
 gem 'mysql2'
 gem 'nokogiri'
 gem 'pygments.rb'
@@ -12,12 +13,8 @@ gem 'redcarpet'
 gem 'rspec-rails'
 gem 'sass-rails'
 gem 'storage'
-
-group :assets do
-  gem 'compass-rails'
-  gem 'turbo-sprockets-rails3'
-  gem 'uglifier'
-end
+gem 'turbo-sprockets-rails3'
+gem 'uglifier'
 
 group :development do
   gem 'capistrano' , '~> 2.15'

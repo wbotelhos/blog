@@ -8,7 +8,7 @@ require 'active_record/railtie'
 require 'action_controller/railtie'
 require 'active_resource/railtie'
 
-Bundler.require(*Rails.groups(assets: %w[development test])) if defined?(Bundler)
+Bundler.require :default, Rails.env
 
 module Blog
   class Application < Rails::Application
