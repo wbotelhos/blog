@@ -25,7 +25,6 @@ end
 
 group :development, :test do
   gem 'guard-rspec'
-  gem 'guard-spork'
   gem 'pry-meta'     , require: false
   gem 'quiet_assets'
   gem 'rb-fsevent'   , require: false
