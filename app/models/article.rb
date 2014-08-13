@@ -1,8 +1,6 @@
 class Article < ActiveRecord::Base
   attr_readonly :user_id
 
-  attr_accessible :body, :published_at, :slug, :title
-
   belongs_to :user
 
   has_many :comments, as: :commentable, dependent: :destroy

@@ -1,15 +1,9 @@
-guard :rspec, all_on_start: false, all_after_pass: false do
-  watch(%r(^app/helpers/application_helper.rb)) { |m| "spec/helpers/application_helper_spec.rb" }
-  watch(%r(^app/helpers/article_helper.rb))     { |m| "spec/helpers/article_helper_spec.rb" }
-  watch(%r(^app/helpers/social_helper.rb))      { |m| "spec/helpers/social_helper_spec.rb" }
-  watch(%r(^app/models/(.+)\.rb$))              { |m| "spec/features/#{m[1]}" }
-  watch(%r(^app/models/(.+)\.rb$))              { |m| "spec/models/#{m[1]}" }
-  watch(%r(^config/initializers/(.+).rb))       { |m| "spec/initializers/#{m[1]}_spec.rb" }
-  watch(%r(^spec/.+_spec\.rb$))
-  watch('spec/spec_helper.rb')                  { 'spec' }
-end
-
-guard :spork, wait: 120, test_unit: false, cucumber: false, rspec_env: { RAILS_ENV: :test } do
-  watch('Gemfile.lock')
-  watch('spec/spec_helper.rb')
+guard :rspec, all_after_pass: false, all_on_start: false, cmd: 'spring rspec' do
+  watch(%r(^app/(.+)\.rb$))                          { |m| "spec/#{m[1]}_spec.rb" }
+  watch(%r(^lib/(.+)\.rb$))                          { |m| "spec/lib/#{m[1]}_spec.rb" }
+  watch(%r(^spec/(.+)_spec\.rb$))
+  watch(%r(^spec/support/(.+)\.rb$))                 { 'spec' }
+  watch('app/controllers/application_controller.rb') { 'spec/controllers' }
+  watch('config/routes.rb')                          { 'spec/routing' }
+  watch('spec/spec_helper.rb')                       { 'spec' }
 end

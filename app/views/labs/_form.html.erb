@@ -67,7 +67,7 @@
 
   <div class="saver">
     <%= f.submit name: nil, class: 'button green' %>
-    <%= link_to t('lab.preview'), slug_path(@media.slug), target: :_blank, class: 'button green-dark' if @media.persisted? %>
+    <%= link_to t('lab.preview'), slug_lab_path(@media.slug), target: :_blank, class: 'button green-dark' if @media.persisted? && @media.errors.blank? %>
   </div>
 <% end %>
 

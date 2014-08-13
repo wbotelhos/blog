@@ -24,8 +24,8 @@ describe Lab do
     let!(:lab_2) { FactoryGirl.create :lab, created_at: Time.local(2000, 1, 2), published_at: Time.local(2001, 1, 1) }
 
     describe :home_selected do
-      let!(:lab) { FactoryGirl.create :lab }
-      let(:result)   { Lab.home_selected.first }
+      let!(:lab)   { FactoryGirl.create :lab }
+      let(:result) { Lab.home_selected.first }
 
       it 'brings only the fields used on home' do
         expect(result).to     have_attribute :published_at
@@ -34,13 +34,13 @@ describe Lab do
         expect(result).to_not have_attribute :body
         expect(result).to_not have_attribute :created_at
         expect(result).to_not have_attribute :css_import
-        expect(result).to_not have_attribute :id
         expect(result).to_not have_attribute :js
         expect(result).to_not have_attribute :js_import
         expect(result).to_not have_attribute :js_ready
         expect(result).to_not have_attribute :updated_at
         expect(result).to_not have_attribute :user_id
         expect(result).to_not have_attribute :version
+        expect(result.id).to  be_nil
       end
     end
 

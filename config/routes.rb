@@ -24,6 +24,6 @@ Blog::Application.routes.draw do
 
   resources :users, only: :update
 
-  get '/:slug' , to: 'labs#show'     , as: :slug, constraints: ParamConstraints.new
+  get '/:slug' , to: 'labs#show'     , as: :slug_lab , constraints: ParamConstraints.new
   get '/:slug' , to: 'articles#show' , as: :slug
 end

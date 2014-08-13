@@ -1,14 +1,14 @@
-Blog::Application.configure do
+Rails.application.configure do
   config.middleware.use RackSessionAccess::Middleware
 
   config.action_controller.allow_forgery_protection = false
   config.action_controller.perform_caching          = false
-  config.action_dispatch.show_exceptions            = true
-  config.active_record.mass_assignment_sanitizer    = :strict
+  config.action_dispatch.show_exceptions            = false
+  config.action_mailer.delivery_method              = :test
   config.active_support.deprecation                 = :stderr
-  config.cache_classes                              = ENV['DRB'] != 'true'
+  config.cache_classes                              = true
   config.consider_all_requests_local                = true
+  config.eager_load                                 = false
   config.serve_static_assets                        = true
   config.static_cache_control                       = 'public, max-age=3600'
-  config.whiny_nils                                 = true
 end

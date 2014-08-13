@@ -1,4 +1,6 @@
 class LabsController < ApplicationController
+  permits :analytics, :body, :css, :css_import, :description, :js, :js_import, :js_ready, :keywords, :published_at, :slug, :title, :version
+
   before_filter :require_login, except: [:index, :show]
   before_filter :find, only: [:edit, :export, :update]
 
@@ -6,8 +8,8 @@ class LabsController < ApplicationController
 
   MAX_ROWS = 100
 
-  def create
-    @media = Lab.new params[:lab]
+  def create(lab)
+    @media = Lab.new lab
 
     if @media.save
       redirect_to edit_lab_url @media
@@ -61,8 +63,8 @@ class LabsController < ApplicationController
     @media = Lab.new
   end
 
-  def show
-    @media = Lab.where('slug = ?', params[:slug]).first
+  def show(slug)
+    @media = Lab.where('slug = ?', slug).first
 
     if @media.present?
       @comment       = @media.comments.new
@@ -71,13 +73,13 @@ class LabsController < ApplicationController
 
       render layout: 'labs'
     else
-      redirect_to root_url, alert: t('article.flash.not_found', uri: params[:slug])
+      redirect_to root_url, alert: t('article.flash.not_found', uri: slug)
     end
   end
 
-  def update
-    if @media.update_attributes params[:lab]
-      redirect_to edit_lab_url @media
+  def update(id, lab)
+    if @media.update_attributes lab
+      redirect_to edit_lab_url id
     else
       render :edit
     end

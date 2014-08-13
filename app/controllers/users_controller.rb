@@ -1,14 +1,16 @@
 class UsersController < ApplicationController
+  permits :email, :password, :password_confirmation
+
   before_filter :require_login
   before_filter :find, only: [:edit, :update]
 
   def edit
   end
 
-  def update
-    filter_unchanged_password
+  def update(user)
+    user.delete(:password) if user[:password].blank?
 
-    if @user.update_attributes params[:user]
+    if @user.update_attributes user
       redirect_to profile_path
     else
       render :edit
@@ -16,10 +18,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def filter_unchanged_password
-    params[:user].delete(:password) if params[:user][:password].blank?
-  end
 
   def find
     @user = User.find session[:user_id]

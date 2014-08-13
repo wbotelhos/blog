@@ -22,15 +22,13 @@ git clone https://github.com/wbotelhos/wbotelhos-com.git
 
 ```bash
 cd wbotelhos-com
-rvm gemset create wbotelhos
-cd .
 bundle
 ```
 
 ### Prepare the database
 
 ```bash
-rake db:drop:all && rake db:create:all && rake db:migrate
+rake rake db:create:all && rake db:migrate
 ```
 
 ### Run the project
@@ -49,11 +47,25 @@ or
 
 Acess `http://localhost:3000` via browser.
 
-### Run the tests
+### Specs
 
 ```bash
 rake db:test:prepare
 rspec
+```
+
+#### JavaScript
+
+##### Configure
+
+```bash
+npm install
+```
+
+##### Run
+
+```bash
+npm test
 ```
 
 # Tasks

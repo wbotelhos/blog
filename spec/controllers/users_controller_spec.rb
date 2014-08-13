@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe UsersController do
   context 'accessing the admin area' do
-    context :unlogged do
+    context 'unlogged' do
       it 'redirect to the login page' do
         get :edit, id: 1
         expect(response).to redirect_to login_path

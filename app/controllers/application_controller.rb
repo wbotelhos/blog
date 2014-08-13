@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  protect_from_forgery with: :exception
 
   before_filter :filter_bot
   before_filter :set_locale
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = controller_name == 'labs' && action_name == 'show' ? :'en-US' : :'pt-BR'
+    I18n.locale = controller_name == 'labs' && action_name == 'show' ? :en : :pt
   end
 
   protected

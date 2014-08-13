@@ -3,6 +3,8 @@
 
 source 'https://rubygems.org'
 
+# gem 'storage'
+gem 'action_args'
 gem 'acts_as_tree'
 gem 'aitch'
 gem 'asset_sync'
@@ -13,9 +15,7 @@ gem 'pygments.rb'
 gem 'rails'
 gem 'rake'
 gem 'redcarpet'
-gem 'rspec-rails'
 gem 'sass-rails'
-gem 'storage'
 gem 'turbo-sprockets-rails3'
 gem 'uglifier'
 
@@ -25,14 +25,14 @@ end
 
 group :development, :test do
   gem 'guard-rspec'
-  gem 'pry-meta'     , require: false
+  gem 'pry-meta'
   gem 'quiet_assets'
-  gem 'rb-fsevent'   , require: false
+  gem 'rb-fsevent'            if `uname` =~ /Darwin/
+  gem 'spring-commands-rspec'
   gem 'thin'
 end
 
 group :production do
-  # gem 'html_compress'
   gem 'unicorn'
 end
 
@@ -41,6 +41,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl'
   gem 'rack_session_access'
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
-  gem 'shoulda'
+  gem 'shoulda-matchers'
 end

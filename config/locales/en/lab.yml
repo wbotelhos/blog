@@ -1,4 +1,4 @@
-en-US:
+en:
   lab:
     download: "Download version %{version}"
     edit: 'Edit'

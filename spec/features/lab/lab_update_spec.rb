@@ -7,11 +7,11 @@ describe Lab, '#update' do
 
   before do
     login
-    visit edit_lab_path lab
+    visit edit_lab_path lab.id
   end
 
   it 'shows the preview link' do
-    expect(page).to have_link 'PREVIEW', href: slug_path(lab.slug)
+    expect(page).to have_link 'PREVIEW', href: slug_lab_path(lab.slug)
   end
 
   context 'with valid data' do

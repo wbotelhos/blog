@@ -17,7 +17,7 @@
   </div>
 <% end %>
 
-<%= button_to t('article.publish'), publish_article_path(@media), method: :put, class: 'button blue' if @media.persisted? && !@media.published? %>
+<%= button_to t('article.publish'), publish_article_path(@media), method: :patch, class: 'button blue' if @media.persisted? && !@media.published? %>
 
 <script>
   $(function() {

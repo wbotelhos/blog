@@ -31,7 +31,7 @@ describe Lab, '#index' do
       before { click_link lab.title }
 
       it 'redirects to the lab page' do
-        expect(current_path).to eq slug_path(lab.slug)
+        expect(current_path).to eq slug_lab_path(lab.slug)
       end
     end
 
@@ -39,7 +39,7 @@ describe Lab, '#index' do
       before { click_link lab.slug }
 
       it 'redirects to the lab page' do
-        expect(current_path).to eq slug_path(lab.slug)
+        expect(current_path).to eq slug_lab_path(lab.slug)
       end
     end
   end

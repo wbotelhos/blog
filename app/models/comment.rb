@@ -2,8 +2,6 @@ class Comment < ActiveRecord::Base
   include ActsAsTree
   extend ActsAsTree::TreeView
 
-  attr_accessible :body, :email, :name, :parent_id, :pending, :url
-
   belongs_to :commentable, polymorphic: true
 
   scope :pendings , -> { where pending: true, author: false  }

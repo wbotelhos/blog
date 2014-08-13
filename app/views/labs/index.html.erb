@@ -5,8 +5,8 @@
     <ul>
       <% medias.each do |media| %>
         <li>
-          <%= link_to media.title, slug_path(media.slug), class: :title %><br />
-          <%= link_to slug_url(media.slug), slug_path(media.slug), class: :url %>
+          <%= link_to media.title, slug_lab_path(media.slug), class: :title %><br />
+          <%= link_to slug_url(media.slug), slug_lab_path(media.slug), class: :url %>
         </li>
       <% end %>
     </ul>

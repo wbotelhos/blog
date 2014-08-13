@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe LabsController do
   context 'accessing the admin area' do
-    context :unlogged do
+    context 'unlogged' do
       it 'redirect to the login page' do
         post :create
         expect(response).to redirect_to login_path

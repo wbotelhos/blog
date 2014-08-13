@@ -5,7 +5,7 @@ require 'rails_helper'
 describe Lab, '#show' do
   let(:lab) { FactoryGirl.create :lab_published }
 
-  before { visit slug_path lab.slug }
+  before { visit slug_lab_path lab.slug }
 
   it 'redirects to show page' do
     expect(current_path).to eq "/#{lab.slug}"
@@ -22,7 +22,7 @@ describe Lab, '#show' do
   describe 'header' do
     it 'shows title' do
       within '.header' do
-        expect(page).to have_link lab.title, href: slug_path(lab.slug)
+        expect(page).to have_link lab.title, href: slug_lab_path(lab.slug)
       end
     end
 
@@ -85,7 +85,7 @@ describe Lab, '#show' do
   context 'when logged' do
     before do
       login
-      visit slug_path lab.slug
+      visit slug_lab_path lab.slug
     end
 
     it 'displays edit link' do

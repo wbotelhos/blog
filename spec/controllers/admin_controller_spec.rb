@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe AdminController do
   context 'accessing the admin area' do
-    context :unlogged do
+    context 'unlogged' do
       it 'redirect to the login page' do
         get :index
-        expect(response).to redirect_to login_path
+        expect(response).to redirect_to login_url
       end
     end
   end
