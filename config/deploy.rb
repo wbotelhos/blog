@@ -1,4 +1,5 @@
 require 'bundler/capistrano'
+require 'yaml'
 
 set :application, 'wbotelhos.com'
 
@@ -33,7 +34,7 @@ namespace :deploy do
     update
     app.setup
     assets.precompile
-    app.secret_token
+    app.secret_key
     labs.link
     app.restart
   end
@@ -45,11 +46,11 @@ namespace :app do
     start
   end
 
-  task :secret_token do
-    secret = %x(bundle exec rake secret).gsub(/\n/, '')
-    output = %(Blog::Application.config.secret_token = "#{secret}")
+  task :secret_key do
+    secret_key = %x(bundle exec rake secret).gsub(/\n/, '')
+    output     = { production: { secret_key_base: secret_key } }
 
-    run %(echo '#{output}' > #{current}/config/initializers/secret_token.rb)
+    run %(echo '#{output.to_yaml}' > #{current}/config/secrets.yml)
   end
 
   task :setup do
