@@ -3,7 +3,6 @@ pt:
     attributes:
       user:
         email: 'E-mail'
-        name: 'Nome'
         password: 'Senha'
         password_confirmation: 'Confirmação de senha'
 
