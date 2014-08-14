@@ -7,13 +7,13 @@ require 'rails/all'
 
 Bundler.require *Rails.groups
 
-module Blog
+module Blogy
   class Application < Rails::Application
     config.action_view.field_error_proc = -> tag, _ { tag }
+    config.assets.precompile            += %w[labs.css labs.js]
     config.i18n.default_locale          = :pt
     config.i18n.load_path               += Dir[Rails.root.join('config/locales/**/*.yml').to_s]
     config.time_zone                    = 'Brasilia'
-    config.assets.precompile                  += %w[labs.css labs.js]
 
     config.middleware.swap Rails::Rack::Logger, CustomLogger
   end

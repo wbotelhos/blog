@@ -1,3 +1,3 @@
-require File.expand_path('../application', __FILE__)
+require File.expand_path '../application', __FILE__
 
-Blog::Application.initialize!
+Rails.application.initialize!

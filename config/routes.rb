@@ -1,4 +1,4 @@
-Blog::Application.routes.draw do
+Rails.application.routes.draw do
   root to: 'articles#index'
 
   get  '/admin'   , to: 'admin#index'

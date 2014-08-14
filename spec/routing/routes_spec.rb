@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe :routes do
   before do
-    Blog::Application.reload_routes!
+    Rails.application.reload_routes!
   end
 
   it 'routes /admin to admin#index' do

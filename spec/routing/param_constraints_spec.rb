@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe ParamConstraints do
   before do
-    Blog::Application.reload_routes!
+    Rails.application.reload_routes!
   end
 
   context 'with a not labs slug' do
