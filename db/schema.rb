@@ -9,67 +9,68 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140101000003) do
+ActiveRecord::Schema.define(version: 20140101000003) do
 
-  create_table "articles", :force => true do |t|
+  create_table "articles", force: true do |t|
     t.datetime "published_at"
-    t.string   "slug",         :null => false
-    t.string   "title",        :null => false
+    t.string   "slug",         null: false
+    t.string   "title",        null: false
     t.text     "body"
-    t.integer  "user_id",      :null => false
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "user_id",      null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
-  add_index "articles", ["slug"], :name => "index_articles_on_slug", :unique => true
-  add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
+  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
-  create_table "comments", :force => true do |t|
-    t.boolean  "author",           :default => false, :null => false
-    t.boolean  "pending",          :default => true,  :null => false
+  create_table "comments", force: true do |t|
+    t.boolean  "author",           default: false, null: false
+    t.boolean  "pending",          default: true,  null: false
     t.integer  "parent_id"
-    t.string   "email",                               :null => false
-    t.string   "name",                                :null => false
+    t.string   "email",                            null: false
+    t.string   "name",                             null: false
     t.string   "url"
-    t.text     "body",                                :null => false
-    t.integer  "commentable_id",                      :null => false
-    t.string   "commentable_type",                    :null => false
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.text     "body",                             null: false
+    t.integer  "commentable_id",                   null: false
+    t.string   "commentable_type",                 null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
-  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
 
-  create_table "labs", :force => true do |t|
+  create_table "labs", force: true do |t|
     t.datetime "published_at"
     t.string   "analytics"
     t.string   "css_import"
     t.string   "description"
     t.string   "js"
     t.string   "js_import"
-    t.string   "keywords",     :null => false
-    t.string   "slug",         :null => false
-    t.string   "title",        :null => false
-    t.string   "version",      :null => false
+    t.string   "keywords",     null: false
+    t.string   "slug",         null: false
+    t.string   "title",        null: false
+    t.string   "version",      null: false
     t.text     "body"
     t.text     "js_ready"
     t.text     "css"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
-  add_index "labs", ["title"], :name => "index_labs_on_title", :unique => true
+  add_index "labs", ["title"], name: "index_labs_on_title", unique: true, using: :btree
 
-  create_table "users", :force => true do |t|
-    t.string   "email",         :null => false
-    t.string   "password_hash", :null => false
-    t.string   "password_salt", :null => false
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+  create_table "users", force: true do |t|
+    t.string   "email",         null: false
+    t.string   "name",          null: false
+    t.string   "password_hash", null: false
+    t.string   "password_salt", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
