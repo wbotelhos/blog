@@ -3,7 +3,6 @@
 
 source 'https://rubygems.org'
 
-# gem 'storage'
 gem 'action_args'
 gem 'acts_as_tree'
 gem 'aitch'
