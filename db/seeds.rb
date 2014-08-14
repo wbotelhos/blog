@@ -1,8 +1,7 @@
 # coding: utf-8
 
 user = User.create!(
-  email:                 'wbotelhos@gmail.com',
-  name:                  'Washington Botelho',
+  email:                 'wbotelhos@example.com',
   password:              'password',
   password_confirmation: 'password'
 )
@@ -77,14 +76,14 @@ article.save!
 
 comment_1 = article.comments.create!(
   body:  "Hi Botelho,\nCould I use your blog?\n\nI really liked it!",
-  email: 'glbenz@gmail.com',
+  email: 'glbenz@example.com',
   name:  'Gabriel Benz',
   url:   'http://gabrielbenz.com'
 )
 
   response_1 = article.comments.new(
     body:      'Of course man, just keep the credits. (;',
-    email:     'wbotelhos@gmail.com',
+    email:     'wbotelhos@example.com',
     name:      'Washington Botelho',
     parent_id: comment_1.id,
     url:       'http://wbotelhos.com'
@@ -94,14 +93,14 @@ comment_1 = article.comments.create!(
 
 comment_2 = article.comments.create!(
   body:  "Hi Washington,\nI would like to contribute to the blog, you agree Pull Requests?",
-  email: 'danielfariati@gmail.com',
+  email: 'danielfariati@example.com',
   name:  'Daniel Faria',
   url:   'http://danielfariati.com.br'
 )
 
   response2 = article.comments.create!(
     body:      "Hi Daniel,\nYour contributions are always welcome my friend.\nI'm waiting for your great code. (:",
-    email:     'wbotelhos@gmail.com',
+    email:     'wbotelhos@example.com',
     name:      'Washington Botelho',
     parent_id: comment_2.id,
     url:       'http://wbotelhos.com'
@@ -111,7 +110,7 @@ comment_2 = article.comments.create!(
 
     article.comments.create!(
       body:      "Yeah! I'll pull it soon.",
-      email:     'danielfariati@gmail.com',
+      email:     'danielfariati@example.com',
       name:      'Daniel Faria',
       parent_id: response2.id,
       url:       'http://danielfariati.com.br'

@@ -9,7 +9,7 @@ describe ApplicationHelper do
   end
 
   describe '#gravatar' do
-    let(:email) { 'wbotelhos@gmail.com' }
+    let(:email) { 'wbotelhos@example.com' }
     let(:md5)   { Digest::MD5.hexdigest email }
 
     context 'into production env' do

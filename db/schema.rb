@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20140101000003) do
     t.string   "title",        null: false
     t.text     "body"
     t.integer  "user_id",      null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20140101000003) do
     t.text     "body",                             null: false
     t.integer  "commentable_id",                   null: false
     t.string   "commentable_type",                 null: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
@@ -56,19 +56,18 @@ ActiveRecord::Schema.define(version: 20140101000003) do
     t.text     "body"
     t.text     "js_ready"
     t.text     "css"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "labs", ["title"], name: "index_labs_on_title", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",         null: false
-    t.string   "name",          null: false
     t.string   "password_hash", null: false
     t.string   "password_salt", null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
