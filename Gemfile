@@ -26,7 +26,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'pry-meta'
   gem 'quiet_assets'
-  gem 'rb-fsevent'            if `uname` =~ /Darwin/
+  gem 'rb-fsevent'
   gem 'spring-commands-rspec'
   gem 'thin'
 end
