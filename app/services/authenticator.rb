@@ -1,6 +1,6 @@
 class Authenticator
   def self.authenticate(email, password)
-    user = User.find_by_email email
+    user = User.find_by email: email
 
     return unless user
 
