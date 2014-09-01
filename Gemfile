@@ -15,7 +15,7 @@ gem 'rails'
 gem 'rake'
 gem 'redcarpet'
 gem 'sass-rails'
-gem 'turbo-sprockets-rails3'
+gem 'sprockets', '2.11.0' # avoids: ActionView::Template::Error (wrong number of arguments (2 for 1)
 gem 'uglifier'
 
 group :development do
