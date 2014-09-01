@@ -6,7 +6,7 @@ set :application, 'wbotelhos.com'
 set :branch        , 'master'
 set :deploy_via    , :remote_cache
 set :keep_releases , 2
-set :repository    , 'git@github.com:wbotelhos/wbotelhos-com.git'
+set :repository    , 'git@github.com:wbotelhos/blogy.git'
 set :scm           , :git
 
 set :group  , 'ubuntu'
@@ -15,7 +15,7 @@ set :user   , 'ubuntu'
 
 set :use_sudo, false
 
-set :deploy_to , '/var/www/wbotelhos'
+set :deploy_to , '/var/www/blogy'
 set :current   , "#{deploy_to}/current"
 
 role :app , application
@@ -77,7 +77,7 @@ namespace :assets do
 
   task :precompile do
     %x(bundle exec rake assets:precompile)
-    %x(rsync -e "ssh -i ${HOME}/.ssh/wbotelhos.pem" --archive --compress --progress #{assets_path} #{public_remote})
+    %x(rsync -e "ssh -i ~/.ssh/blogy.pem" --archive --compress --progress #{assets_path} #{public_remote})
     %x(rm -rf #{assets_path})
 
     run %(rm -rf "#{current}/app/assets")
@@ -87,7 +87,7 @@ end
 namespace :labs do
   task :cold do
     run %(mkdir -p ~/workspace)
-    run %(ln -s #{current} ~/workspace/blog)
+    run %(ln -s #{current} ~/workspace/blogy)
   end
 
   task :link do
