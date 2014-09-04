@@ -63,7 +63,7 @@ namespace :app do
   end
 
   task :start do
-    run "cd #{current} && GEM_HOME=/opt/local/ruby/gems && RAILS_ENV=production bundle exec unicorn_rails -c #{deploy_to}/config/unicorn.rb -D"
+    run "cd #{current} && GEM_HOME=/usr/local/ruby/gems && RAILS_ENV=production bundle exec unicorn_rails -c #{deploy_to}/config/unicorn.rb -D"
   end
 
   task :stop do
@@ -72,12 +72,12 @@ namespace :app do
 end
 
 namespace :assets do
-  assets_path   = '~/workspace/blog/public/assets'
+  assets_path   = '~/workspace/blogy/public/assets'
   public_remote = "#{user}@#{application}:#{current}/public"
 
   task :precompile do
     %x(bundle exec rake assets:precompile)
-    %x(rsync -e "ssh -i ~/.ssh/blogy.pem" --archive --compress --progress #{assets_path} #{public_remote})
+    %x(rsync -e "ssh -i ${HOME}/.ssh/wbotelhos.pem" --archive --compress --progress #{assets_path} #{public_remote})
     %x(rm -rf #{assets_path})
 
     run %(rm -rf "#{current}/app/assets")
