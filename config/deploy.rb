@@ -1,5 +1,4 @@
 require 'bundler/capistrano'
-require 'yaml'
 
 set :application, 'wbotelhos.com'
 
@@ -47,10 +46,10 @@ namespace :app do
   end
 
   task :secret_key do
+    file       = "#{current}/config/secrets.yml"
     secret_key = %x(bundle exec rake secret).gsub(/\n/, '')
-    output     = { production: { secret_key_base: secret_key } }
 
-    run %(echo '#{output.to_yaml}' > #{current}/config/secrets.yml)
+    run %(echo 'production:' > #{file} && echo "  secret_key_base: #{secret_key}" >> #{file})
   end
 
   task :setup do
@@ -80,7 +79,10 @@ namespace :assets do
     %x(rsync -e "ssh -i ${HOME}/.ssh/wbotelhos.pem" --archive --compress --progress #{assets_path} #{public_remote})
     %x(rm -rf #{assets_path})
 
-    run %(rm -rf "#{current}/app/assets")
+    run %(rm -rf "#{current}/app/assets/fonts/*")
+    run %(rm -rf "#{current}/app/assets/images/*")
+    run %(rm -rf "#{current}/app/assets/javascripts/*")
+    run %(rm -rf "#{current}/app/assets/stylesheets/*")
   end
 end
 
