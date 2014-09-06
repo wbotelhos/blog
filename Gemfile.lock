@@ -275,7 +275,7 @@ DEPENDENCIES
   acts_as_tree
   aitch
   asset_sync
-  capistrano (~> 2.15)
+  capistrano (~> 2.15.0)
   capybara
   compass-rails
   database_cleaner

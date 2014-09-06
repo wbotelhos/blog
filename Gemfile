@@ -19,7 +19,7 @@ gem 'sprockets', '2.11.0' # avoids: ActionView::Template::Error (wrong number of
 gem 'uglifier'
 
 group :development do
-  gem 'capistrano' , '~> 2.15'
+  gem 'capistrano' , '~> 2.15.0'
 end
 
 group :development, :test do
