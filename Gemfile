@@ -1,4 +1,4 @@
-#ruby=ruby-2.1.2
+#ruby=ruby-2.1.3
 #ruby-gemset=blogy
 
 source 'https://rubygems.org'
