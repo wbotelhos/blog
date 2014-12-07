@@ -5,7 +5,7 @@ set :application, 'wbotelhos.com'
 set :branch        , 'master'
 set :deploy_via    , :remote_cache
 set :keep_releases , 2
-set :repository    , 'git@github.com:wbotelhos/blogy.git'
+set :repository    , 'git@github.com:wbotelhos/blogy'
 set :scm           , :git
 
 set :group  , 'ubuntu'
@@ -71,18 +71,8 @@ namespace :app do
 end
 
 namespace :assets do
-  assets_path   = '~/workspace/blogy/public/assets'
-  public_remote = "#{user}@#{application}:#{current}/public"
-
   task :precompile do
-    %x(bundle exec rake assets:precompile)
-    %x(rsync -e "ssh -i ${HOME}/.ssh/wbotelhos.pem" --archive --compress --progress #{assets_path} #{public_remote})
-    %x(rm -rf #{assets_path})
-
-    run %(rm -rf "#{current}/app/assets/fonts/*")
-    run %(rm -rf "#{current}/app/assets/images/*")
-    run %(rm -rf "#{current}/app/assets/javascripts/*")
-    run %(rm -rf "#{current}/app/assets/stylesheets/*")
+    %x(RAILS_ENV=production bundle exec rake assets:precompile)
   end
 end
 
