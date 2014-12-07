@@ -6,7 +6,6 @@ source 'https://rubygems.org'
 gem 'action_args'
 gem 'acts_as_tree'
 gem 'aitch'
-gem 'asset_sync'
 gem 'compass-rails'
 gem 'mysql2'
 gem 'nokogiri'
@@ -17,6 +16,10 @@ gem 'redcarpet'
 gem 'sass-rails'
 gem 'sprockets', '2.11.0' # avoids: ActionView::Template::Error (wrong number of arguments (2 for 1)
 gem 'uglifier'
+
+# loading just fog storage for otimization.
+gem 'fog', require: 'fog/aws/storage'
+gem 'asset_sync'
 
 group :development do
   gem 'capistrano' , '~> 2.15.0'
