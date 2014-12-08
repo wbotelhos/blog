@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_controller.asset_host              = '//danca.s3.amazonaws.com'
+  config.action_controller.asset_host              = '//blogy.s3.amazonaws.com'
   config.action_controller.perform_caching         = true
   config.active_record.dump_schema_after_migration = false
   config.active_support.deprecation                = :notify
