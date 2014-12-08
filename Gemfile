@@ -1,6 +1,3 @@
-#ruby=ruby-2.1.3
-#ruby-gemset=blogy
-
 source 'https://rubygems.org'
 
 gem 'action_args'
@@ -9,31 +6,31 @@ gem 'aitch'
 gem 'compass-rails'
 gem 'mysql2'
 gem 'nokogiri'
+gem 'non-stupid-digest-assets'
 gem 'pygments.rb'
-gem 'rails'
+gem 'rails', '~> 4.1.6'
 gem 'rake'
 gem 'redcarpet'
-gem 'sass-rails'
-gem 'sprockets', '2.11.0' # avoids: ActionView::Template::Error (wrong number of arguments (2 for 1)
+gem 'sass-rails', '4.0.3'
+gem 'turbolinks'
 gem 'uglifier'
-gem 'sprockets_better_errors'
-gem 'non-stupid-digest-assets'
+
+# avoids: ActionView::Template::Error (wrong number of arguments (2 for 1)
+# sass-rails (~> 4.0.3) ruby depends on sprockets (<= 2.11.0, ~> 2.8) ruby
+gem 'sprockets', '2.11.0'
 
 # loading just fog storage for otimization.
 gem 'fog', require: 'fog/aws/storage'
 gem 'asset_sync'
 
 group :development do
-  gem 'capistrano' , '~> 2.15.0'
+  gem 'capistrano', '~> 2.15'
 end
 
 group :development, :test do
   gem 'guard-rspec'
   gem 'pry-meta'
-  gem 'quiet_assets'
-  gem 'rb-fsevent'
   gem 'spring-commands-rspec'
-  gem 'thin'
 end
 
 group :production do
