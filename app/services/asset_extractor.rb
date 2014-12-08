@@ -66,7 +66,7 @@ class AssetExtractor
   end
 
   def fix_favicon(html)
-    html.sub! '//wbotelhos.s3.amazonaws.com/favicon.ico', 'favicon.ico'
+    html.sub! '//blogy.s3.amazonaws.com/favicon.ico', 'favicon.ico'
   end
 
   def fix_lib_path(html)
@@ -99,11 +99,11 @@ class AssetExtractor
   end
 
   def rename_fonts(body)
-    body.gsub!('//wbotelhos.s3.amazonaws.com/assets', '../fonts')
+    body.gsub!('//blogy.s3.amazonaws.com/assets', '../fonts')
 
     # "#{$1}.#{$2}" does not works
     %w[eot svg ttf woff].each do |ext|
-      body.gsub!(/(wbotelhos)\-.+\.(#{ext})/ , "wbotelhos.#{ext}")
+      body.gsub!(/(blogy)\-.+\.(#{ext})/ , "blogy.#{ext}")
     end
 
     body
