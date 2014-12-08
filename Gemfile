@@ -16,6 +16,8 @@ gem 'redcarpet'
 gem 'sass-rails'
 gem 'sprockets', '2.11.0' # avoids: ActionView::Template::Error (wrong number of arguments (2 for 1)
 gem 'uglifier'
+gem 'sprockets_better_errors'
+gem 'non-stupid-digest-assets'
 
 # loading just fog storage for otimization.
 gem 'fog', require: 'fog/aws/storage'

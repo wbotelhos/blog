@@ -181,6 +181,7 @@ GEM
       net-ssh (>= 2.6.5)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
+    non-stupid-digest-assets (1.0.4)
     opennebula (4.10.1)
       json
       nokogiri
@@ -282,6 +283,8 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    sprockets_better_errors (0.0.4)
+      sprockets-rails (>= 1.0.0)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0)
@@ -326,6 +329,7 @@ DEPENDENCIES
   guard-rspec
   mysql2
   nokogiri
+  non-stupid-digest-assets
   pry-meta
   pygments.rb
   quiet_assets
@@ -340,6 +344,7 @@ DEPENDENCIES
   shoulda-matchers
   spring-commands-rspec
   sprockets (= 2.11.0)
+  sprockets_better_errors
   thin
   uglifier
   unicorn
