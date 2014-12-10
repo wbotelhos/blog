@@ -19,12 +19,8 @@ gem 'uglifier'
 # sass-rails (~> 4.0.3) ruby depends on sprockets (<= 2.11.0, ~> 2.8) ruby
 gem 'sprockets', '2.11.0'
 
-# loading just fog storage for otimization.
-gem 'fog', require: 'fog/aws/storage'
-gem 'asset_sync'
-
 group :development do
-  gem 'capistrano', '~> 2.15'
+  gem 'capistrano'
 end
 
 group :development, :test do

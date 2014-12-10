@@ -1,96 +1,92 @@
-require 'bundler/capistrano'
-
-set :application, 'wbotelhos.com'
-
-set :branch        , 'master'
-set :deploy_via    , :remote_cache
-set :keep_releases , 2
-set :repository    , 'git@github.com:wbotelhos/blogy'
-set :scm           , :git
-
-set :group  , 'ubuntu'
-set :runner , 'ubuntu'
-set :user   , 'ubuntu'
-
-set :use_sudo, false
-
-set :deploy_to , '/var/www/blogy'
-set :current   , "#{deploy_to}/current"
-
-role :app , application
-role :db  , application, primary: true
-role :web , application
-
-default_run_options[:pty] = true
-
-ssh_options[:forward_agent] = true
-ssh_options[:keys]          = '~/.ssh/wbotelhos.pem'
-
-after :deploy, 'deploy:cleanup'
-
-namespace :deploy do
-  task :default do
-    update
-    app.setup
-    assets.precompile
-    app.secret_key
-    labs.link
-    app.restart
-  end
-end
+set :application      , 'blogy'
+set :database_file    , "#{deploy_to}/config/database.yml"
+set :log_level        , :info
+set :repo_url         , 'git@github.com:wbotelhos/blogy'
+set :secrets_file     , "#{current_path}/config/secrets.yml"
+set :unicorn_file     , "#{deploy_to}/config/unicorn.rb"
+set :unicorn_pid_file , "#{shared_path}/pids/unicorn.pid"
 
 namespace :app do
-  task :restart do
-    stop
-    start
-  end
-
   task :secret_key do
-    file       = "#{current}/config/secrets.yml"
-    secret_key = %x(bundle exec rake secret).gsub(/\n/, '')
+    on roles :app do
+      info ': Filling secrets.yml...'
 
-    run %(echo 'production:' > #{file} && echo "  secret_key_base: #{secret_key}" >> #{file})
+      key = %x(bundle exec rake secret).gsub /\n/, ''
+
+      execute %(echo 'production:' > #{fetch(:secrets_file)} && echo "  secret_key_base: #{key}" >> #{fetch(:secrets_file)})
+    end
   end
 
   task :setup do
-    %w[config/database.yml].each do |path|
-      from = "#{deploy_to}/#{path}"
-      to   = "#{current}/#{path}"
+    on roles :app do
+      info ': Linking database.yml...'
 
-      run "if [ -f '#{to}' ]; then rm '#{to}'; fi; ln -s #{from} #{to}"
+      %w[config/database.yml].each do |path|
+        from = "#{deploy_to}/#{path}"
+        to   = "#{current_path}/#{path}"
+
+        execute :rm, '-f', to
+        execute :ln, '-s', from, to
+      end
+    end
+  end
+end
+
+namespace :unicorn do
+  task :restart do
+    on roles :app do
+      invoke 'unicorn:stop'
+      invoke 'unicorn:start'
     end
   end
 
   task :start do
-    run "cd #{current} && GEM_HOME=/usr/local/ruby/gems && RAILS_ENV=production bundle exec unicorn_rails -c #{deploy_to}/config/unicorn.rb -D"
+    on roles :app do
+      within current_path do
+        if test unicorn_pid_exist? && unicorn_running?
+          info ': Unicorn is already running.'
+        else
+          info ': Unicorn starting...'
+
+          with rails_env: fetch(:rails_env) do
+            execute :bundle, 'exec unicorn_rails', '-c', fetch(:unicorn_file), '-D'
+          end
+        end
+      end
+    end
   end
 
   task :stop do
-    run "if [ -f #{shared_path}/pids/unicorn.pid ]; then kill `cat #{shared_path}/pids/unicorn.pid`; fi"
+    on roles :app do
+      within current_path do
+        if test unicorn_pid_exist?
+          if test unicorn_running?
+            info ': Unicorn stopping...'
+            execute :kill, unicorn_pid
+          else
+            info ': Unicorn PID was dead. Removing it...'
+            execute :rm, fetch(:unicorn_pid_file)
+          end
+        else
+          info ': Unicorn is already stopped.'
+        end
+      end
+    end
   end
 end
 
-namespace :assets do
-  task :precompile do
-    %x(RAILS_ENV=production bundle exec rake assets:precompile)
-  end
+after 'deploy:finished', 'app:setup'
+after 'deploy:finished', 'app:secret_key'
+after 'deploy:finished', 'unicorn:restart'
+
+def unicorn_pid
+  "`cat #{fetch(:unicorn_pid)}`"
 end
 
-namespace :labs do
-  task :cold do
-    run %(mkdir -p ~/workspace)
-    run %(ln -s #{current} ~/workspace/blogy)
-  end
+def unicorn_pid_exist?
+  "[ -e #{fetch(:unicorn_pid)} ]"
+end
 
-  task :link do
-    run %(cd #{current} && script/labs/link.sh)
-  end
-
-  task :pull do
-    run %(cd #{current} && script/labs/pull.sh)
-  end
-
-  task :setup do
-    run %(cd #{current} && script/labs/setup.sh)
-  end
+def unicorn_running?
+  "kill -0 #{unicorn_pid}"
 end
