@@ -2,6 +2,7 @@
 *.sw[pon]
 *.tar.gz
 *~
+.capistrano
 .DS_Store
 .sass-cache
 /bin

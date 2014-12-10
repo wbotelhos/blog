@@ -80,11 +80,11 @@ after 'deploy:finished', 'app:secret_key'
 after 'deploy:finished', 'unicorn:restart'
 
 def unicorn_pid
-  "`cat #{fetch(:unicorn_pid)}`"
+  "`cat #{fetch(:unicorn_pid_file)}`"
 end
 
 def unicorn_pid_exist?
-  "[ -e #{fetch(:unicorn_pid)} ]"
+  "[ -e #{fetch(:unicorn_pid_file)} ]"
 end
 
 def unicorn_running?

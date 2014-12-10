@@ -41,6 +41,12 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (~> 1.3)
+    capistrano-bundler (1.1.3)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-rails (1.1.2)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
     capistrano-stats (1.1.0)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -236,7 +242,8 @@ DEPENDENCIES
   action_args
   acts_as_tree
   aitch
-  capistrano
+  capistrano-bundler
+  capistrano-rails
   capybara
   compass-rails
   database_cleaner

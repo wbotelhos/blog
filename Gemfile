@@ -20,7 +20,8 @@ gem 'uglifier'
 gem 'sprockets', '2.11.0'
 
 group :development do
-  gem 'capistrano'
+  gem 'capistrano-bundler' , require: false
+  gem 'capistrano-rails'   , require: false
 end
 
 group :development, :test do
