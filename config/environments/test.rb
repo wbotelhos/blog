@@ -8,7 +8,7 @@ Rails.application.configure do
   config.cache_classes                              = false
   config.consider_all_requests_local                = true
   config.eager_load                                 = true
-  config.serve_static_assets                        = true
+  config.serve_static_files                         = true
   config.static_cache_control                       = 'public, max-age=3600'
 
   config.middleware.use RackSessionAccess::Middleware
