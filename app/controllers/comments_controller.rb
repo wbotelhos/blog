@@ -1,12 +1,10 @@
 class CommentsController < ApplicationController
-  permits :body, :email, :name, :parent_id, :pending, :url
-
   before_filter :require_login, except: :create
   before_filter :build_resource
 
-  def create(comment)
+  def create
     @media   = @model.find @id
-    @comment = @media.comments.new comment
+    @comment = @media.comments.new parameters
 
     assign_author if is_logged?
 
@@ -17,17 +15,17 @@ class CommentsController < ApplicationController
     end
   end
 
-  def edit(id)
-    @comment  = Comment.find id
+  def edit
+    @comment  = Comment.find params[:id]
     @media    = @model.new
     @media.id = @id
   end
 
-  def update(id, comment)
+  def update
     @media   = @model.find @id
-    @comment = @media.comments.find id
+    @comment = @media.comments.find params[:id]
 
-    if @comment.update_attributes comment
+    if @comment.update_attributes parameters
       redirect_to slug_url @media.slug, anchor: "comment-#{@comment.id}"
     else
       render :edit
@@ -47,5 +45,9 @@ class CommentsController < ApplicationController
   def build_resource
     @resource, @id = request.path.split('/')[1, 2]
     @model         = @resource.camelize.singularize.constantize
+  end
+
+  def parameters
+    params.require(:comment).permit :body, :email, :name, :parent_id, :pending, :url
   end
 end

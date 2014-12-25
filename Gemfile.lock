@@ -1,7 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    action_args (1.4.0)
     actionmailer (4.2.0)
       actionpack (= 4.2.0)
       actionview (= 4.2.0)
@@ -260,7 +259,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  action_args
   acts_as_tree
   aitch
   capistrano-bundler

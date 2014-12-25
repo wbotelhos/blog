@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'action_args'
 gem 'acts_as_tree'
 gem 'aitch'
 gem 'compass-rails'

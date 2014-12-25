@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
-  permits :email, :password, :password_confirmation
-
   before_filter :require_login
   before_filter :find, only: [:edit, :update]
 
   def edit
   end
 
-  def update(user)
+  def update
+    user = parameters
+
     user.delete(:password) if user[:password].blank?
 
     if @user.update_attributes user
@@ -21,5 +21,9 @@ class UsersController < ApplicationController
 
   def find
     @user = User.find session[:user_id]
+  end
+
+  def parameters
+    params.require(:user).permit :email, :password, :password_confirmation
   end
 end

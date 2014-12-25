@@ -1,10 +1,8 @@
 class ArticlesController < ApplicationController
-  permits :body, :published_at, :slug, :title
-
   before_filter :require_login, except: [:index, :show]
 
-  def create(article)
-    @media = current_user.articles.new article
+  def create
+    @media = current_user.articles.new parameters
 
     if @media.save
       redirect_to edit_article_url @media
@@ -13,8 +11,8 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit(id)
-    @media = Article.find id
+  def edit
+    @media = Article.find params[:id]
   end
 
   def index
@@ -25,8 +23,8 @@ class ArticlesController < ApplicationController
     @media = Article.new
   end
 
-  def publish(id)
-    article = Article.find id
+  def publish
+    article = Article.find params[:id]
 
     if article.publish!
       redirect_to root_url, notice: t('article.flash.published')
@@ -35,25 +33,31 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def show(slug)
-    @media = Article.where('slug = ?', slug).first
+  def show
+    @media = Article.where('slug = ?', params[:slug]).first
 
     if @media.present?
       @comment       = @media.comments.new
       @root_comments = @media.comments.roots
       @title         = @media.title
     else
-      redirect_to root_url, alert: t('article.flash.not_found', uri: slug)
+      redirect_to root_url, alert: t('article.flash.not_found', uri: params[:slug])
     end
   end
 
-  def update(id, article)
-    @media = Article.find id
+  def update
+    @media = Article.find params[:id]
 
-    if @media.update_attributes article
+    if @media.update_attributes parameters
       redirect_to edit_article_url @media
     else
       render :edit
     end
+  end
+
+  private
+
+  def parameters
+    params.require(:article).permit :body, :published_at, :title
   end
 end
