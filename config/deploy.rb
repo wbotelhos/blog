@@ -34,16 +34,26 @@ end
 
 namespace :labs do
   task :all do
-    labs.prepare
-    labs.dump
-    labs.update
-    labs.link
+    invoke 'labs:prepare'
+    invoke 'labs:dump'
+    invoke 'labs:update'
+    invoke 'labs:link'
   end
 
   task :dump do
     on roles :app do
       within current_path do
         execute 'script/labs/dump.sh'
+      end
+    end
+  end
+
+  task :clean do
+    on roles :app do
+      execute :rm, '-rf', '~/workspace/*y'
+
+      within current_path do
+        execute :rm, '-f', 'public/*y'
       end
     end
   end
@@ -56,7 +66,7 @@ namespace :labs do
         slugs.split("\n").each do |slug|
           info ": Linking #{slug}..."
 
-          execute :ln, '-sf', "~/workspace/#{slug}", "./public/#{slug}"
+          # execute :ln, '-nfs', "~/workspace/#{slug}", "public/#{slug}"
         end
       end
     end
@@ -123,7 +133,7 @@ end
 
 after 'deploy:finished', 'app:setup'
 after 'deploy:finished', 'app:secret_key'
-after 'deploy:finished', 'labs:setup'
+after 'deploy:finished', 'labs:all'
 after 'deploy:finished', 'unicorn:restart'
 
 def unicorn_pid
