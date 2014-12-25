@@ -110,6 +110,7 @@ end
 
 after 'deploy:finished', 'app:setup'
 after 'deploy:finished', 'app:secret_key'
+after 'deploy:finished', 'labs:setup'
 after 'deploy:finished', 'unicorn:restart'
 
 def unicorn_pid
