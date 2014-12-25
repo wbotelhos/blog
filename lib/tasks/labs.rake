@@ -1,9 +1,10 @@
 namespace :labs do
-  desc 'Dump all labs slugs'
+  desc 'Dumps all labs slugs'
   task dump: [:environment] do
-    labs  = Lab.published.by_published.map &:slug
-    files = "SLUGS=(#{labs.join ' '})"
+    slugs = Lab.published.by_published.map(&:slug).join ''
 
-    File.open('script/labs/slugs.sh', 'w') { |f| f.write files }
+    File.open('script/labs/slugs.sh', 'w') do |file|
+      file.write "SLUGS=(#{slugs})"
+    end
   end
 end

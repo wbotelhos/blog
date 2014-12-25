@@ -32,6 +32,39 @@ namespace :app do
   end
 end
 
+namespace :labs do
+  task :cold do
+    on roles :app do
+      execute :mkdir, '-p', '~/workspace'
+      execute :ln, '-sf', current_path, '~/workspace/blogy'
+    end
+  end
+
+  task :link do
+    on roles :app do
+      within current_path do
+        execute 'script/labs/link.sh'
+      end
+    end
+  end
+
+  task :pull do
+    on roles :app do
+      within current_path do
+        execute 'script/labs/pull.sh'
+      end
+    end
+  end
+
+  task :setup do
+    on roles :app do
+      within current_path do
+        execute 'script/labs/setup.sh'
+      end
+    end
+  end
+end
+
 namespace :unicorn do
   task :restart do
     on roles :app do

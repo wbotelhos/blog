@@ -1,6 +1,9 @@
 #!/bin/bash
 
-. script/colors.sh
+GRAY='\033[0;36m'
+GREEN='\033[0;32m'
+NO_COLOR='\033[1;0m'
+
 . script/labs/slugs.sh
 
 cd ~/workspace
