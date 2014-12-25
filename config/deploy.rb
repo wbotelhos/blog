@@ -66,7 +66,7 @@ namespace :labs do
         slugs.split("\n").each do |slug|
           info ": Linking #{slug}..."
 
-          # execute :ln, '-nfs', "~/workspace/#{slug}", "public/#{slug}"
+          execute :ln, '-nfs', "~/workspace/#{slug}", "public/#{slug}"
         end
       end
     end
@@ -133,8 +133,8 @@ end
 
 after 'deploy:finished', 'app:setup'
 after 'deploy:finished', 'app:secret_key'
-after 'deploy:finished', 'labs:all'
 after 'deploy:finished', 'unicorn:restart'
+after 'deploy:finished', 'labs:all'
 
 def unicorn_pid
   "`cat #{fetch(:unicorn_pid_file)}`"
