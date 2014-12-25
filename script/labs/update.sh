@@ -8,7 +8,7 @@ GRAY='\033[0;36m'
 GREEN='\033[0;32m'
 NO_COLOR='\033[1;0m'
 
-JOB_NAME='Labs#link'
+JOB_NAME='Labs#update'
 
 #####################
 # --- Functions --- #
@@ -24,9 +24,17 @@ end() {
   echo -e "-------------------------------------\n"
 }
 
-link() {
+pull() {
+  cd ~/workspace
+
   while read slug; do
-    ln -sfn "~/workspace/${slug}" "public/${slug}"
+    if [ -d $slug ]; then
+      cd ~/workspace/${slug}
+      git pull origin master
+      cd -
+    else
+      git clone "git@github.com:wbotelhos/${slug}.git"
+    fi
   done < ~/workspace/blogy/script/labs/slugs.txt
 }
 
@@ -36,6 +44,6 @@ link() {
 
 begin
 
-link
+pull
 
 end

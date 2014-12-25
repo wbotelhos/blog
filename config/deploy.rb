@@ -33,33 +33,46 @@ namespace :app do
 end
 
 namespace :labs do
-  task :cold do
+  task :all do
+    labs.prepare
+    labs.dump
+    labs.update
+    labs.link
+  end
+
+  task :dump do
+    on roles :app do
+      within current_path do
+        execute 'script/labs/dump.sh'
+      end
+    end
+  end
+
+  task :link do
+    on roles :app do
+      slugs = capture %(cat "#{current_path}/script/labs/slugs.txt")
+
+      within current_path do
+        slugs.split("\n").each do |slug|
+          info ": Linking #{slug}..."
+
+          execute :ln, '-sf', "~/workspace/#{slug}", "./public/#{slug}"
+        end
+      end
+    end
+  end
+
+  task :prepare do
     on roles :app do
       execute :mkdir, '-p', '~/workspace'
       execute :ln, '-sf', current_path, '~/workspace/blogy'
     end
   end
 
-  task :link do
+  task :update do
     on roles :app do
       within current_path do
-        execute 'script/labs/link.sh'
-      end
-    end
-  end
-
-  task :pull do
-    on roles :app do
-      within current_path do
-        execute 'script/labs/pull.sh'
-      end
-    end
-  end
-
-  task :setup do
-    on roles :app do
-      within current_path do
-        execute 'script/labs/setup.sh'
+        execute 'script/labs/update.sh'
       end
     end
   end
