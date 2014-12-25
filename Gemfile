@@ -6,18 +6,12 @@ gem 'aitch'
 gem 'compass-rails'
 gem 'mysql2'
 gem 'nokogiri'
-gem 'non-stupid-digest-assets'
 gem 'pygments.rb'
-gem 'rails', '~> 4.1.6'
+gem 'rails'
 gem 'rake'
 gem 'redcarpet'
-gem 'sass-rails', '4.0.3'
-gem 'turbolinks'
+gem 'sass-rails', '4.0.5'
 gem 'uglifier'
-
-# avoids: ActionView::Template::Error (wrong number of arguments (2 for 1)
-# sass-rails (~> 4.0.3) ruby depends on sprockets (<= 2.11.0, ~> 2.8) ruby
-gem 'sprockets', '2.11.0'
 
 group :development do
   gem 'capistrano-bundler' , require: false
