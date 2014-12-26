@@ -1,4 +1,3 @@
-//= require jquery-1.10.2.min
-
+//= require jquery
 //= require shared
 //= require jquery.taby
