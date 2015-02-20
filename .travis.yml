@@ -1,5 +1,7 @@
+cache: bundler
 language: ruby
 rvm: 2.2.0
+sudo: false
 
 before_install:
   - export DISPLAY=:99.0
