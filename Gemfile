@@ -19,7 +19,7 @@ end
 
 group :development, :test do
   gem 'guard-rspec'
-  gem 'pry-meta'
+  gem 'pry-byebug'
   gem 'spring-commands-rspec'
 end
 
