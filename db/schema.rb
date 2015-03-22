@@ -13,12 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20140101000003) do
 
-  create_table "articles", force: true do |t|
+  create_table "articles", force: :cascade do |t|
     t.datetime "published_at"
-    t.string   "slug",         null: false
-    t.string   "title",        null: false
-    t.text     "body"
-    t.integer  "user_id",      null: false
+    t.string   "slug",         limit: 255,   null: false
+    t.string   "title",        limit: 255,   null: false
+    t.text     "body",         limit: 65535
+    t.integer  "user_id",      limit: 4,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -26,46 +26,46 @@ ActiveRecord::Schema.define(version: 20140101000003) do
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
-  create_table "comments", force: true do |t|
-    t.boolean  "author",           default: false, null: false
-    t.boolean  "pending",          default: true,  null: false
-    t.integer  "parent_id"
-    t.string   "email",                            null: false
-    t.string   "name",                             null: false
-    t.string   "url"
-    t.text     "body",                             null: false
-    t.integer  "commentable_id",                   null: false
-    t.string   "commentable_type",                 null: false
+  create_table "comments", force: :cascade do |t|
+    t.boolean  "author",           limit: 1,     default: false, null: false
+    t.boolean  "pending",          limit: 1,     default: true,  null: false
+    t.integer  "parent_id",        limit: 4
+    t.string   "email",            limit: 255,                   null: false
+    t.string   "name",             limit: 255,                   null: false
+    t.string   "url",              limit: 255
+    t.text     "body",             limit: 65535,                 null: false
+    t.integer  "commentable_id",   limit: 4,                     null: false
+    t.string   "commentable_type", limit: 255,                   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
 
-  create_table "labs", force: true do |t|
+  create_table "labs", force: :cascade do |t|
     t.datetime "published_at"
-    t.string   "analytics"
-    t.string   "css_import"
-    t.string   "description"
-    t.string   "js"
-    t.string   "js_import"
-    t.string   "keywords",     null: false
-    t.string   "slug",         null: false
-    t.string   "title",        null: false
-    t.string   "version",      null: false
-    t.text     "body"
-    t.text     "js_ready"
-    t.text     "css"
+    t.string   "analytics",    limit: 255
+    t.string   "css_import",   limit: 255
+    t.string   "description",  limit: 255
+    t.string   "js",           limit: 255
+    t.string   "js_import",    limit: 255
+    t.string   "keywords",     limit: 255,   null: false
+    t.string   "slug",         limit: 255,   null: false
+    t.string   "title",        limit: 255,   null: false
+    t.string   "version",      limit: 255,   null: false
+    t.text     "body",         limit: 65535
+    t.text     "js_ready",     limit: 65535
+    t.text     "css",          limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "labs", ["title"], name: "index_labs_on_title", unique: true, using: :btree
 
-  create_table "users", force: true do |t|
-    t.string   "email",         null: false
-    t.string   "password_hash", null: false
-    t.string   "password_salt", null: false
+  create_table "users", force: :cascade do |t|
+    t.string   "email",         limit: 255, null: false
+    t.string   "password_hash", limit: 255, null: false
+    t.string   "password_salt", limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
