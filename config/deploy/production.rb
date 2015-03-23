@@ -1,1 +1,1 @@
-server 'wbotelhos.com', user: 'ubuntu', roles: %w[web app]
+server 'wbotelhos.com', user: 'user', roles: %w[web app]
