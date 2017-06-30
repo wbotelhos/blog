@@ -6,7 +6,7 @@ gem 'compass-rails'
 gem 'mysql2'
 gem 'nokogiri'
 gem 'pygments.rb'
-gem 'rails'
+gem 'rails', '~> 4.2.1'
 gem 'rake'
 gem 'redcarpet'
 gem 'sass-rails', '4.0.5'
@@ -20,7 +20,6 @@ end
 group :development, :test do
   gem 'guard-rspec'
   gem 'pry-byebug'
-  gem 'spring-commands-rspec'
 end
 
 group :production do
