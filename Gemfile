@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'acts_as_tree'
 gem 'aitch'
-gem 'compass-rails'
 gem 'mysql2'
 gem 'nokogiri'
 gem 'pygments.rb'
