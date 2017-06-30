@@ -8,7 +8,7 @@ gem 'pygments.rb'
 gem 'rails', '~> 4.2.1'
 gem 'rake'
 gem 'redcarpet'
-gem 'sass-rails', '4.0.5'
+gem 'sass-rails'
 gem 'uglifier'
 
 group :development do
