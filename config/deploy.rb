@@ -1,17 +1,17 @@
-set :application      , 'blogy'
-set :database_file    , "#{deploy_to}/config/database.yml"
-set :log_level        , :info
-set :repo_url         , 'git@github.com:wbotelhos/blogy'
-set :secrets_file     , "#{current_path}/config/secrets.yml"
-set :unicorn_file     , "#{deploy_to}/config/unicorn.rb"
-set :unicorn_pid_file , "#{shared_path}/pids/unicorn.pid"
+set :application,      'blogy'
+set :database_file,    "#{deploy_to}/config/database.yml"
+set :log_level,        :info
+set :repo_url,         'git@github.com:wbotelhos/blogy'
+set :secrets_file,     "#{current_path}/config/secrets.yml"
+set :unicorn_file,     "#{deploy_to}/config/unicorn.rb"
+set :unicorn_pid_file, "#{shared_path}/pids/unicorn.pid"
 
 namespace :app do
   task :secret_key do
     on roles :app do
       info ': Filling secrets.yml...'
 
-      key = %x(bundle exec rake secret).gsub /\n/, ''
+      key = `bundle exec rake secret`.delete "\n"
 
       execute %(echo 'production:' > #{fetch(:secrets_file)} && echo "  secret_key_base: #{key}" >> #{fetch(:secrets_file)})
     end
