@@ -9,12 +9,12 @@ default: &default
 
 development:
   <<: *default
-  database: wbotelhos_development
+  database: blogy_development
 
 production:
   <<: *default
-  database: wbotelhos_production
+  database: blogy_production
 
 test:
   <<: *default
-  database: wbotelhos_test
+  database: blogy_test
