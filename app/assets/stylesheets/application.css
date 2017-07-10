@@ -1,5 +1,6 @@
 /*
- *= require normalize
+ *= require vendor/normalize
+
  *= require fonts
  *= require shared
  *= require common
@@ -10,4 +11,3 @@
  *= require signin
  *= require admin
  */
-

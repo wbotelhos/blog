@@ -1,5 +1,6 @@
 /*
- *= require normalize
+ *= require vendor/normalize
+
  *= require shared
  *= require pygments
  *= require fonts
