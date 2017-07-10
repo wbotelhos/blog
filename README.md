@@ -16,6 +16,10 @@
 
 [Wiki](https://github.com/wbotelhos/blogy/wiki)
 
+## Pygments Schema
+
+[perldoc](https://github.com/richleland/pygments-css/blob/master/perldoc.css)
+
 ## Contributors
 
 [Check it out](http://github.com/wbotelhos/raty/graphs/contributors)
