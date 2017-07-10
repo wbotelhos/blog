@@ -12,12 +12,11 @@ gem 'sass-rails'
 gem 'uglifier'
 
 group :development do
-  gem 'capistrano-bundler' , require: false
-  gem 'capistrano-rails'   , require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
 end
 
 group :development, :test do
-  gem 'guard-rspec'
   gem 'pry-byebug'
 end
 
