@@ -1,12 +1,10 @@
+.capistrano
+.DS_Store
+.sass-cache
+*.log
 *.sql
 *.sw[pon]
 *.tar.gz
 *~
-.capistrano
-.DS_Store
-.sass-cache
-/bin
-/log
 /public/*y
 /public/assets
-/tmp
