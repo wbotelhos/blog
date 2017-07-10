@@ -2,25 +2,25 @@ pt:
   activerecord:
     attributes:
       comment:
-        body: 'Comentário'
-        email: 'E-mail'
-        name: 'Nome'
-        pending: 'Pendente'
-        url: 'URL'
+        body: Comentário
+        email: E-mail
+        name: Nome
+        pending: Pendente
+        url: URL
 
   comment:
-    cancel: 'cancelar'
-    created_at: "%{time} atrás"
-    edit: 'Editar'
-    format_your_code_html: "Formate seu <strong>código</strong> utilizando %{link}."
-    other: 'Comentários'
-    pending: 'pendente'
-    reply: 'Responder'
+    cancel: cancelar
+    created_at: '%{time} atrás'
+    edit: Editar
+    format_your_code_html: 'Formate seu <strong>código</strong> utilizando %{link}.'
+    other: Comentários
+    pending: pendente
+    reply: Responder
     replying_to: 'Em resposta: '
-    shortcut: 'Atalho para este comentário'
+    shortcut: Atalho para este comentário
 
   helpers:
     submit:
       comment:
-        create: 'COMENTAR'
-        update: 'ATUALIZAR'
+        create: comentar
+        update: atualizar

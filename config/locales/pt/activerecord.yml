@@ -5,5 +5,5 @@ pt:
         blank: 'O campo "%{attribute}" deve ser preenchido!'
         confirmation: 'A confirmação de senha não confere com o digitado no campo "%{attribute}"!'
         invalid: 'O valor "%{value}" para o campo "%{attribute}" é inválido!'
-        record_invalid: "Erro de validação: %{errors}!"
+        record_invalid: 'Erro de validação: %{errors}!'
         taken: 'O valor "%{value}" para o campo "%{attribute}" já está em uso!'

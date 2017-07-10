@@ -7,9 +7,9 @@ class Article < ActiveRecord::Base
 
   scope :by_created,    -> { order 'created_at desc' }
   scope :by_published,  -> { order 'published_at desc' }
-  scope :drafts,        -> { where 'published_at is null or published_at > ?', Time.now }
+  scope :drafts,        -> { where 'published_at is null or published_at > ?', Time.current }
   scope :home_selected, -> { select 'id, published_at, slug, title' }
-  scope :published,     -> { where 'published_at is not null and published_at <= ?', Time.now }
+  scope :published,     -> { where 'published_at is not null and published_at <= ?', Time.current }
   scope :recents,       -> { limit 10 }
 
   before_validation :generate_slug, if: ->(e) { e.title.present? }
@@ -23,7 +23,7 @@ class Article < ActiveRecord::Base
   end
 
   def publish!
-    write_attribute :published_at, Time.now
+    write_attribute :published_at, Time.current
 
     save
   end

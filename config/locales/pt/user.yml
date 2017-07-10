@@ -2,21 +2,21 @@ pt:
   activerecord:
     attributes:
       user:
-        email: 'E-mail'
-        password: 'Senha'
-        password_confirmation: 'Confirmação de senha'
+        email: E-mail
+        password: Senha
+        password_confirmation: Confirmação de senha
 
   helpers:
     submit:
       user:
-        update: 'ATUALIZAR'
+        update: atualizar
 
   user:
-    author: 'autor'
-    bio: 'Programador metido a designer, ajudante e aprendiz da comunidade open source.'
-    edit: 'Profile'
-    email: 'E-mail'
-    github: 'Github'
-    linkedin: 'Linkedin'
-    logout: 'Sair'
-    twitter: 'Twitter'
+    author: autor
+    bio: 'Programador ajudante e aprendiz da comunidade open source.'
+    edit: Profile
+    email: E-mail
+    github: Github
+    linkedin: Linkedin
+    logout: Sair
+    twitter: Twitter

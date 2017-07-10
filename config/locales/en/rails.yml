@@ -17,51 +17,51 @@ en:
 
   datetime:
     distance_in_words:
-      half_a_minute: 'Now'
+      half_a_minute: Now
 
       about_x_hours:
-        one: '1 hour'
-        other: "%{count} hours"
+        one: 1 hour
+        other: '%{count} hours'
 
       about_x_months:
-        one: '1 month'
-        other: "%{count} months"
+        one: 1 month
+        other: '%{count} months'
 
       about_x_years:
-        one: '1 year'
-        other: "%{count} years"
+        one: 1 year
+        other: '%{count} years'
 
       almost_x_years:
-        one: '1 year'
-        other: "%{count} years"
+        one: 1 year
+        other: '%{count} years'
 
       less_than_x_minutes:
-        one: 'less than one minute'
-        other: "less than %{count} minutes"
+        one: less than one minute
+        other: 'less than %{count} minutes'
 
       less_than_x_seconds:
-        one: 'less than 1 second'
-        other: "less than %{count} seconds"
+        one: less than 1 second
+        other: 'less than %{count} seconds'
 
       over_x_years:
-        one: 'more than 1 year'
-        other: "more than %{count} years"
+        one: more than 1 year
+        other: 'more than %{count} years'
 
       x_days:
-        one: '1 day'
-        other: "%{count} days"
+        one: 1 day
+        other: '%{count} days'
 
       x_minutes:
-        one: '1 minute'
-        other: "%{count} minutes"
+        one: 1 minute
+        other: '%{count} minutes'
 
       x_months:
-        one: "1 month"
-        other: "%{count} months"
+        one: 1 month
+        other: '%{count} months'
 
       x_seconds:
-        one: "1 second"
-        other: "%{count} seconds"
+        one: 1 second
+        other: '%{count} seconds'
 
   time:
     formats:

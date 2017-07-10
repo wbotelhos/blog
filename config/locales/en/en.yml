@@ -1,6 +1,7 @@
 en:
   donate: 'Thank you! <3'
-  i_am_bot: 'BOT!'
+  i_am_bot: BOT!
+
   share:
-    title: 'Share it!'
-    twitter: 'via Twitter'
+    title: Share it!
+    twitter: via Twitter

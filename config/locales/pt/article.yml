@@ -2,22 +2,22 @@ pt:
   activerecord:
     attributes:
       article:
-        body: 'Conteúdo'
-        title: 'Título'
+        body: Conteúdo
+        title: Título
 
   article:
-    drafts: 'Rascunhos'
-    edit: 'Editar'
-    new: 'Novo Artigo'
-    preview: 'PREVIEW'
-    publish: 'PUBLICAR'
+    drafts: Rascunhos
+    edit: Editar
+    new: Novo Artigo
+    preview: preview
+    publish: publicar
 
     flash:
       not_found: 'O artigo "%{uri}" não foi encontrado!'
-      published: 'Artigo publicado com sucesso!'
+      published: Artigo publicado com sucesso!
 
   helpers:
     submit:
       article:
-        create: 'SALVAR'
-        update: 'ATUALIZAR'
+        create: salvar
+        update: atualizar

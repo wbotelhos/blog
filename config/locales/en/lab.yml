@@ -1,5 +1,5 @@
 en:
   lab:
-    download: "Download version %{version}"
-    edit: 'Edit'
-    share_it: 'Share this project!'
+    download: 'Download version %{version}'
+    edit: Edit
+    share_it: Share this project!

@@ -2,23 +2,23 @@ en:
   activerecord:
     attributes:
       comment:
-        body: 'Body'
-        email: 'Mail'
-        name: 'Name'
-        url: 'URL'
+        body: Body
+        email: Mail
+        name: Name
+        url: URL
 
   comment:
-    cancel: 'cancel'
-    created_at: "%{time} ago"
-    edit: 'Edit'
-    format_your_code_html: "Format your <strong>code</strong> using %{link}."
-    pending: 'pending'
-    reply: 'Answer'
+    cancel: cancel
+    created_at: '%{time} ago'
+    edit: Edit
+    format_your_code_html: 'Format your <strong>code</strong> using %{link}.'
+    pending: pending
+    reply: Answer
     replying_to: 'Answering: '
-    shortcut: 'Link to this comment'
+    shortcut: Link to this comment
 
   helpers:
     submit:
       comment:
-        create: 'COMMENT'
-        update: 'UPDATE'
+        create: comment
+        update: update

@@ -2,28 +2,28 @@ pt:
   activerecord:
     attributes:
       lab:
-        analytics: 'Analytics'
-        body: 'Conteúdo'
-        css: 'CSS'
-        css_import: 'CSS import'
-        description: 'Descrição'
-        js: 'JS'
-        js_import: 'JS import'
-        js_ready: 'JS ready'
-        keywords: 'Palavras-chave'
-        slug: 'Slug'
-        title: 'Título'
-        version: 'Versão'
+        analytics: Analytics
+        body: Conteúdo
+        css: CSS
+        css_import: CSS import
+        description: Descrição
+        js: JS
+        js_import: JS import
+        js_ready: JS ready
+        keywords: Palavras-chave
+        slug: Slug
+        title: Título
+        version: Versão
 
   helpers:
     submit:
       lab:
-        create: 'SALVAR'
-        update: 'ATUALIZAR'
+        create: salvar
+        update: atualizar
 
   lab:
-    drafts: 'Rascunhos'
-    edit: 'Editar'
-    new: 'Novo Projeto'
-    other: 'Labs'
-    preview: 'PREVIEW'
+    drafts: Rascunhos
+    edit: Editar
+    new: Novo Projeto
+    other: Labs
+    preview: preview

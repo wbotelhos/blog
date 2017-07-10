@@ -1,7 +1,8 @@
 pt:
   donate: 'Thank you! <3'
-  feed: 'Feed'
-  i_am_bot: 'BOT!'
+  feed: Feed
+  i_am_bot: BOT!
+
   share:
-    title: 'Compartilhe!'
-    twitter: 'via Twitter'
+    title: Compartilhe!
+    twitter: via Twitter
