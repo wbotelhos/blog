@@ -1,15 +1,18 @@
 class Lab < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
-  scope :by_created    , -> { order 'created_at desc' }
-  scope :by_published  , -> { order 'published_at desc' }
-  scope :drafts        , -> { where 'published_at is null or published_at > ?', Time.now }
-  scope :home_selected , -> { select 'published_at, slug, title' }
-  scope :published     , -> { where 'published_at is not null and published_at <= ?', Time.now }
+  scope :by_created,    -> { order 'created_at desc' }
+  scope :by_published,  -> { order 'published_at desc' }
+  scope :drafts,        -> { where 'published_at is null or published_at > ?', Time.now }
+  scope :home_selected, -> { select 'published_at, slug, title' }
+  scope :published,     -> { where 'published_at is not null and published_at <= ?', Time.now }
 
-  validates :analytics, :description , :keywords , :version , presence: true
-  validates :slug                                           , presence: true , if: -> e { e.title.present?}
-  validates :title                                          , presence: true , uniqueness: true
+  validates :analytics,   presence: true
+  validates :description, presence: true
+  validates :keywords,    presence: true
+  validates :slug,        presence: true, if: ->(e) { e.title.present? }
+  validates :title,       presence: true, uniqueness: true
+  validates :version,     presence: true
 
   def download
     "#{github}/archive/#{version}.zip"
@@ -46,8 +49,10 @@ class Lab < ActiveRecord::Base
   private
 
   def build_tag(attribute, template)
-    attribute.delete(' ').split(',').map do |url|
-      template.sub '{{url}}', url
-    end.join('').html_safe if attribute.present?
+    if attribute.present?
+      attribute.delete(' ').split(',').map do |url|
+        template.sub '{{url}}', url
+      end.join('').html_safe
+    end
   end
 end
