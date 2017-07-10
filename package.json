@@ -1,0 +1,24 @@
+{
+  "name": "blogy",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": "7.x",
+    "npm": "4.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wbotelhos/stepy"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^4.0.0",
+    "gulp-install": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "jquery": "^3.2.1",
+    "normalize.css": "^7.0.0",
+    "pygments-css": "^1.0.0"
+  },
+  "devDependencies": {}
+}

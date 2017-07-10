@@ -1,8 +1,8 @@
 /*
- *= require vendor/normalize
+*= require vendor/normalize
+*= require vendor/pygments
 
  *= require shared
- *= require pygments
  *= require fonts
  *= require buttons
  *= require comment

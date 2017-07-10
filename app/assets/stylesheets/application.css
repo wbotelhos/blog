@@ -1,12 +1,12 @@
 /*
  *= require vendor/normalize
+ *= require vendor/pygments
 
  *= require fonts
  *= require shared
  *= require common
  *= require buttons
  *= require general
- *= require pygments
  *= require comment
  *= require signin
  *= require admin
