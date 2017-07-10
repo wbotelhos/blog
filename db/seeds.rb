@@ -11,7 +11,7 @@ Lab.create!(
   body:         "Usage: `$('div').raty();`",
   description:  'jQuery Raty - A Star Rating Plugin',
   keywords:     'jquery,raty',
-  published_at: Time.now,
+  published_at: Time.current,
   slug:         'raty',
   title:        'jQuery Raty',
   version:      '1.0.0'
@@ -22,14 +22,14 @@ Lab.create!(
   body:         "Usage: `$('textarea').taby();`",
   description:  'jQuery Taby - A Textarea Tabulator',
   keywords:     'jquery,taby',
-  published_at: Time.now,
+  published_at: Time.current,
   slug:         'taby',
   title:        'jQuery Taby',
   version:      '1.0.0'
 )
 
 article = user.articles.new(
-  published_at: Time.now,
+  published_at: Time.current,
   title:        'First Steps',
   body:         %[
 Hi! My name is **Washington Botelho** and this article is an example to introduce how it works.

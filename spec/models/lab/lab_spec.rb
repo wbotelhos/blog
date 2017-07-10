@@ -88,7 +88,7 @@ describe Lab do
           before do
             allow(Time).to receive(:now).and_return Time.local(2013, 1, 1, 0, 0, 0)
 
-            @lab_now = FactoryGirl.create :lab, published_at: Time.now
+            @lab_now = FactoryGirl.create :lab, published_at: Time.current
           end
 
           it 'is ignored' do

@@ -23,6 +23,6 @@ class Logger::SimpleFormatter
   end
 
   def format(color, label)
-    "\033[#{color}[#{label}]\033[0m [#{Time.now}]"
+    "\033[#{color}[#{label}]\033[0m [#{Time.current}]"
   end
 end

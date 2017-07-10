@@ -111,7 +111,7 @@ describe Article do
           before do
             allow(Time).to receive(:now).and_return Time.local(2013, 1, 1, 0, 0, 0)
 
-            @article_now = FactoryGirl.create :article, published_at: Time.now
+            @article_now = FactoryGirl.create :article, published_at: Time.current
           end
 
           it 'is ignored' do
@@ -145,7 +145,7 @@ describe Article do
 
     context 'when published' do
       it 'returns true' do
-        expect(Article.new published_at: Time.now).to be_published
+        expect(Article.new published_at: Time.current).to be_published
       end
     end
   end
