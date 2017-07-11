@@ -1,5 +1,6 @@
 .capistrano
 .DS_Store
+.env
 .sass-cache
 *.log
 *.sql
