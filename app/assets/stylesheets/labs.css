@@ -1,6 +1,8 @@
 /*
-*= require vendor/normalize
-*= require vendor/pygments
+ *= require vendor/normalize
+ *= require vendor/pygments
+
+ *= require components/clearfix
 
  *= require shared
  *= require fonts
