@@ -49,8 +49,8 @@ var CommentResponder = {
     this.body     = $('#comment_body');
     this.comments = $('.comments');
     this.parent   = $('#comment_parent_id');
-    this.cancel   = $('#replying-cancel');
-    this.replying = $('#replying-to');
+    this.cancel   = $('.commenter__cancel');
+    this.replying = $('.commenter__replying');
 
     this.binds();
   },
@@ -58,10 +58,11 @@ var CommentResponder = {
   binds: function() {
     var that = this;
 
-    that.comments.on('click', '.reply', function() {
-      var self  = $(this),
-          id    = self.data('id'),
-          name  = self.data('name');
+    that.comments.on('click', '.comments__reply', function() {
+      var
+        self  = $(this),
+        id    = self.data('id'),
+        name  = self.data('name');
 
       that.setParent(id);
       that.write(name + ',\n\n');
@@ -81,7 +82,7 @@ var CommentResponder = {
   },
 
   focuz: function() {
-    this.body.blur().focus();
+    this.body.trigger('blur').trigger('focus');
   },
 
   setParent: function(id) {
@@ -105,7 +106,7 @@ var CommentResponder = {
 };
 
 $(function() {
-  var donations = $('#donations');
+  var donations = $('.donations');
 
   $('.i-heart').on('click', function() {
     donations.slideToggle('fast');

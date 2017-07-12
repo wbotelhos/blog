@@ -1,78 +1,78 @@
 <%= form_for @media do |f| %>
   <div class="placeholder">
-    <%= f.label :body %>
-    <%= f.text_area :body, autofocus: true, class: 'input code' %>
+    <%= f.label :body, class: :label %>
+    <%= f.text_area :body, autofocus: true, class: 'input input--textarea input--code' %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :version %> <span class="mandatory">*</span>
+    <%= f.label :version, class: 'label label--mandatory' %>
     <%= f.text_field :version, required: true, class: :input %>
     <%= errors_for @media, :version %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :js_ready %>
-    <%= f.text_area :js_ready, class: 'input code' %>
+    <%= f.label :js_ready, class: :label %>
+    <%= f.text_area :js_ready, class: 'input input--textarea input--code' %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :css_import %>
+    <%= f.label :css_import, class: :label %>
     <%= f.text_field :css_import, class: :input %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :js_import %>
+    <%= f.label :js_import, class: :label %>
     <%= f.text_field :js_import, class: :input %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :js %>
-    <%= f.text_area :js, class: 'input code' %>
+    <%= f.label :js, class: :label %>
+    <%= f.text_area :js, class: 'input input--textarea input--code' %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :css %>
-    <%= f.text_area :css, class: 'input code' %>
+    <%= f.label :css, class: :label %>
+    <%= f.text_area :css, class: 'input input--textarea input--code' %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :title %> <span class="mandatory">*</span>
+    <%= f.label :title, class: 'label label--mandatory' %>
     <%= f.text_field :title, required: true, class: :input %>
     <%= errors_for @media, :title %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :slug %> <span class="mandatory">*</span>
+    <%= f.label :slug, class: 'label label--mandatory' %>
     <%= f.text_field :slug, required: true, class: :input %>
     <%= errors_for @media, :slug %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :description %> <span class="mandatory">*</span>
+    <%= f.label :description, class: 'label label--mandatory' %>
     <%= f.text_field :description, class: :input %>
     <%= errors_for @media, :description %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :keywords %> <span class="mandatory">*</span>
+    <%= f.label :keywords, class: 'label label--mandatory' %>
     <%= f.text_field :keywords, required: true, class: :input %>
     <%= errors_for @media, :keywords %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :analytics %> <span class="mandatory">*</span>
+    <%= f.label :analytics, class: 'label label--mandatory' %>
     <%= f.text_field :analytics, required: true, class: :input %>
     <%= errors_for @media, :analytics %>
   </div>
 
   <div class="saver">
-    <%= f.submit name: nil, class: 'button green' %>
-    <%= link_to t('lab.preview'), slug_lab_path(@media.slug), target: :_blank, class: 'button green-dark' if @media.persisted? && @media.errors.blank? %>
+    <%= f.submit name: nil, class: 'button button--weed' %>
+    <%= link_to t('lab.preview'), slug_lab_path(@media.slug), target: :_blank, class: 'button button--sky' if @media.persisted? && @media.errors.blank? %>
   </div>
 <% end %>
 
 <script>
   $(function() {
-    $('.code').taby();
+    $('.input--code').taby();
   });
 </script>

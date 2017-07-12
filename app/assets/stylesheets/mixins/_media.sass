@@ -1,0 +1,5 @@
+@import variables/breakpoints
+
+=media($width, $direction: 'min-width')
+  @media only screen and (#{$direction}: $width)
+    @content

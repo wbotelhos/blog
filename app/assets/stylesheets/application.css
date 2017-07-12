@@ -2,12 +2,22 @@
  *= require vendor/normalize
  *= require vendor/pygments
 
- *= require fonts
- *= require shared
- *= require common
- *= require buttons
- *= require general
- *= require comment
- *= require signin
- *= require admin
+ *= require components/article
+ *= require components/bio
+ *= require components/button
+ *= require components/code
+ *= require components/commenter
+ *= require components/comments
+ *= require components/common
+ *= require components/donations
+ *= require components/fonts
+ *= require components/input
+ *= require components/label
+ *= require components/listing
+ *= require components/navigation
+ *= require components/placeholder
+ *= require components/share
+
+ *= require layouts/header
+ *= require layouts/container
  */

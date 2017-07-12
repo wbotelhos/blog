@@ -2,35 +2,35 @@
   <%= f.hidden_field :parent_id %>
 
   <div class="placeholder">
-    <%= f.label :name %> <span class="mandatory">*</span>
+    <%= f.label :name, class: 'label label--mandatory' %>
     <%= f.text_field :name, required: true, autofocus: true, class: :input %>
     <%= errors_for @comment, :name %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :email %> <span class="mandatory">*</span>
+    <%= f.label :email, class: 'label label--mandatory' %>
     <%= f.email_field :email, required: true, class: :input %>
     <%= errors_for @comment, :email %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :url %>
+    <%= f.label :url, class: :label %>
     <%= f.url_field :url, class: :input %>
   </div>
 
   <div class="placeholder">
-    <%= f.label :body %> <span class="mandatory">*</span>
-    <%= f.text_area :body, required: true, class: :input %>
+    <%= f.label :body, class: 'label label--mandatory' %>
+    <%= f.text_area :body, required: true, class: 'input input--textarea input--code' %>
     <%= errors_for @comment, :body %>
   </div>
 
   <div class="placeholder">
     <%= f.check_box :pending %>
-    <%= f.label :pending %>
+    <%= f.label :pending, class: :label %>
   </div>
 
   <div class="saver">
-    <%= f.submit name: nil, class: 'button green' %>
+    <%= f.submit name: nil, class: 'button button--weed' %>
   </div>
 <% end %>
 

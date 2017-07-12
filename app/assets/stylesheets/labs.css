@@ -2,11 +2,24 @@
  *= require vendor/normalize
  *= require vendor/pygments
 
- *= require components/clearfix
+ *= require components/article
+ *= require components/bio
+ *= require components/button
+ *= require components/code
+ *= require components/commenter
+ *= require components/comments
+ *= require components/common
+ *= require components/donations
+ *= require components/fonts
+ *= require components/input
+ *= require components/label
+ *= require components/listing
+ *= require components/navigation
+ *= require components/placeholder
+ *= require components/share
 
- *= require shared
- *= require fonts
- *= require buttons
- *= require comment
- *= require labs/general
+ *= require layouts/header
+ *= require layouts/container
+
+ *= require components/clearfix
  */

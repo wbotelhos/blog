@@ -58,7 +58,7 @@ describe Lab, '#show' do
       end
 
       it 'hides donate options' do
-        expect(page).to have_link 'Git tip' , visible: false
+        expect(page).to have_link 'Gratipay', visible: false
         expect(page).to have_link 'Paypal'  , visible: false
       end
 
@@ -66,7 +66,7 @@ describe Lab, '#show' do
         before { find('.i-heart').click }
 
         it 'shows donate options' do
-          expect(page).to have_link 'Git tip' , visible: true
+          expect(page).to have_link 'Gratipay' , visible: true
           expect(page).to have_link 'Paypal'  , visible: true
         end
 
@@ -74,7 +74,7 @@ describe Lab, '#show' do
           before { find('.i-heart').click }
 
           it 'hides donate options' do
-            expect(page).to have_link 'Git tip' , visible: false
+            expect(page).to have_link 'Gratipay', visible: false
             expect(page).to have_link 'Paypal'  , visible: false
           end
         end

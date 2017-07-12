@@ -1,0 +1,33 @@
+@import variables/colors
+
+.button
+  border-radius: 4px
+  border: 0
+  color: $air
+  cursor: pointer
+  display: inline-block
+  height: 44px
+  line-height: 44px
+  margin-top: 16px
+  padding-left: 15px
+  padding-right: 15px
+  text-align: center
+  width: 100%
+
+  &--sky
+    background-color: $sea
+
+    &:focus, &:hover
+      background-color: $sky
+
+    &:active
+      background-color: $marine
+
+  &--weed
+    background-color: $weed
+
+    &:focus, &:hover
+      background-color: $weed-dark
+
+    &:active
+      background-color: $weed-light

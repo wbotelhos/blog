@@ -4,19 +4,19 @@
   <%= render 'shared/flash_messages' %>
 
   <div class="placeholder">
-    <%= label_tag :email %>
+    <%= label_tag :email, nil, class: 'label label--mandatory' %>
     <%= email_field_tag :email, @email, required: true, autofocus: true, class: :input %>
   </div>
 
   <div class="placeholder">
-    <%= label_tag :password %>
+    <%= label_tag :password, nil, class: 'label label--mandatory' %>
     <%= password_field_tag :password, nil, required: true, class: :input %>
   </div>
 
   <div class="placeholder not-human">
     <%= check_box_tag :not_human, true, true %>
-    <%= label_tag :not_human, t(:i_am_bot) %>
+    <%= label_tag :not_human, t(:i_am_bot), class: :label %>
   </div>
 
-  <%= submit_tag t('session.access'), name: nil, class: 'button green' %>
+  <%= submit_tag t('session.access'), name: nil, class: 'button button--weed' %>
 <% end %>

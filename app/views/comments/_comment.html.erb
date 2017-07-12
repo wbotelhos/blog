@@ -1,22 +1,21 @@
-<li id="<%= id_for comment %>" class="comment">
-  <div class="avatar">
-    <%= gravatar(comment.email, alt: '', title: comment.name) %>
+<li id="<%= "comment-#{comment.id}" %>" class="comments__comment">
+  <div class="comments__avatar">
+    <%= gravatar comment.email, alt: '', title: comment.name %>
   </div>
 
-  <div class="body">
+  <div class="comments__body">
     <header>
-      <%= comment_name comment %>
-      <%= content_tag :span, t('comment.pending'), class: 'flag pending' if is_logged? && comment.pending %>
-      <%= content_tag :span, t('user.author'), class: 'flag author' if comment.author %>
-      <%= time_ago comment.created_at %>
+      <%= link_to comment.name, 'javascript:void(0);', class: :comments__name %>
+      <%= content_tag :span, t('comment.pending'), class: 'comments__tag comments__tag--pending' if is_logged? && comment.pending %>
+      <%= content_tag :span, t('user.author'), class: 'comments__tag comments__tag--author' if comment.author %>
+      <%= link_to l(comment.created_at, format: '%e %b %Y %H:%M'), "#comment-#{comment.id}", alt: t('comment.shortcut'), class: :comments__date %>
     </header>
 
     <%= markdown comment.body %>
 
     <footer>
-      <%= self_anchor comment %>
-      <%= link_to t('comment.reply'), "#{request.fullpath}#new_comment", data: { id: comment.id, name: comment.name }, class: :reply %>
-      <%= link_to t('comment.edit'), polymorphic_path([:edit, @media, comment]), class: :edit if is_logged? %>
+      <%= link_to t('comment.reply'), "#{request.fullpath}#new_comment", data: { id: comment.id, name: comment.name }, class: :comments__reply %>
+      <%= link_to t('comment.edit'), polymorphic_path([:edit, @media, comment]), class: :comments__edit if is_logged? %>
     </footer>
   </div>
 

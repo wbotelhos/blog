@@ -1,8 +1,34 @@
 pt:
   donate: 'Thank you! <3'
+
+  date:
+    abbr_month_names:
+      -
+      - Jan
+      - Fev
+      - Mar
+      - Abr
+      - Mai
+      - Jun
+      - Jul
+      - Ago
+      - Set
+      - Out
+      - Nov
+      - Dez
+
+    formats:
+      default: "%d/%m/%y"
+
+  edit: Editar
   feed: Feed
   i_am_bot: BOT!
 
   share:
     title: Compartilhe!
     twitter: via Twitter
+
+  time:
+    formats:
+      default: '%d de %B de %Y'
+      short: '%B/%Y'

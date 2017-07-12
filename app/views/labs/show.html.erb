@@ -1,13 +1,7 @@
 <div class="clearfix"></div>
 
 <article>
-  <% if is_logged? %>
-    <header>
-      <%= link_to t('lab.edit'), edit_lab_path(@media), class: 'button green-dark edit' %>
-    </header>
-  <% end %>
-
-  <div class="body">
+  <div class="article__body">
     <%= markdown @media.body %>
   </div>
 </article>

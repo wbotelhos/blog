@@ -1,13 +1,14 @@
-<article>
+<article class="article">
   <header>
-    <h1><%= link_to @media.title, slug_path(@media.slug) %></h1>
+    <h1 class="article__title"><%= link_to @media.title, slug_path(@media.slug) %></h1>
 
-    <div class="published-at"><%= published_at @media %></div>
-
-    <%= link_to t('article.edit'), edit_article_path(@media), class: 'button green-dark edit' if is_logged? %>
+    <div class="article__date">
+      <%= published_at @media %>
+      <%= link_to t(:edit), edit_article_path(@media), class: :article__edit if is_logged? %>
+    </div>
   </header>
 
-  <div class="body">
+  <div class="article__body">
     <%= markdown @media.body %>
   </div>
 </article>
