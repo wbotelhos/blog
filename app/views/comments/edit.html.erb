@@ -20,7 +20,7 @@
 
   <div class="placeholder">
     <%= f.label :body, class: 'label label--mandatory' %>
-    <%= f.text_area :body, required: true, class: 'input input--textarea input--code' %>
+    <%= f.text_area :body, required: true, rows: 11, data: { 'spandy-rows' => 11 }, class: 'input input--textarea input--code' %>
     <%= errors_for @comment, :body %>
   </div>
 
@@ -36,6 +36,8 @@
 
 <script>
   $(function() {
-    $('#comment_body').taby();
+    $('.input--code').taby();
+
+    Expandy.init('.input--code');
   });
 </script>

@@ -30,7 +30,7 @@
 
     <%= link_to "(#{t 'comment.cancel' })", 'javascript:void(0);', class: 'commenter__cancel' %>
 
-    <%= f.text_area :body, required: true, class: 'input input--textarea input--code' %>
+    <%= f.text_area :body, required: true, rows: 11, data: { 'spandy-rows' => 11 }, class: 'input input--textarea input--code' %>
     <%= errors_for @comment, :body %>
   </div>
 
@@ -59,5 +59,7 @@
     CommentResponder.init();
 
     $('.input--code').taby();
+
+    Expandy.init('.input--code');
   });
 </script>

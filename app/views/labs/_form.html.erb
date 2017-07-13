@@ -1,7 +1,7 @@
 <%= form_for @media do |f| %>
   <div class="placeholder">
     <%= f.label :body, class: :label %>
-    <%= f.text_area :body, autofocus: true, class: 'input input--textarea input--code' %>
+    <%= f.text_area :body, autofocus: true, rows: 15, data: { 'spandy-rows' => 15 }, class: 'input input--textarea input--code' %>
   </div>
 
   <div class="placeholder">
@@ -12,7 +12,7 @@
 
   <div class="placeholder">
     <%= f.label :js_ready, class: :label %>
-    <%= f.text_area :js_ready, class: 'input input--textarea input--code' %>
+    <%= f.text_area :js_ready, rows: 11, data: { 'spandy-rows' => 11 }, class: 'input input--textarea input--code' %>
   </div>
 
   <div class="placeholder">
@@ -27,12 +27,12 @@
 
   <div class="placeholder">
     <%= f.label :js, class: :label %>
-    <%= f.text_area :js, class: 'input input--textarea input--code' %>
+    <%= f.text_area :js, rows: 11, data: { 'spandy-rows' => 11 }, class: 'input input--textarea input--code' %>
   </div>
 
   <div class="placeholder">
     <%= f.label :css, class: :label %>
-    <%= f.text_area :css, class: 'input input--textarea input--code' %>
+    <%= f.text_area :css, rows: 11, data: { 'spandy-rows' => 11 }, class: 'input input--textarea input--code' %>
   </div>
 
   <div class="placeholder">
@@ -74,5 +74,7 @@
 <script>
   $(function() {
     $('.input--code').taby();
+
+    Expandy.init('#lab_body');
   });
 </script>

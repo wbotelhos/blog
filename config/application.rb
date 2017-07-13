@@ -7,7 +7,7 @@ Bundler.require *Rails.groups
 module Blogy
   class Application < Rails::Application
     config.action_view.field_error_proc = -> tag, _ { tag }
-    config.assets.precompile            += %w[labs.css labs.js session.css session.js]
+    config.assets.precompile            += %w[admin.css admin.js labs.css labs.js session.css session.js]
     config.autoload_paths               << Rails.root.join('app/services')
     config.i18n.default_locale          = :pt
     config.i18n.load_path               += Dir[Rails.root.join('config/locales/**/*.yml').to_s]

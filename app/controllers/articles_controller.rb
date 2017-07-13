@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   before_filter :require_login, except: [:index, :show]
 
+  layout 'admin', except: %i[index show]
+
   def create
     @media = current_user.articles.new parameters
 

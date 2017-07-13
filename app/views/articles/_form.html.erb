@@ -1,3 +1,13 @@
+<style>
+  .button {
+    float: right;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-decoration: none;
+    width: 85px;
+  }
+</style>
+
 <%= form_for @media do |f| %>
   <div class="placeholder">
     <%= f.label :title %> <span class="mandatory">*</span>
@@ -7,20 +17,22 @@
 
   <div class="placeholder">
     <%= f.label :body %>
-    <%= f.text_area :body, class: 'input input--textarea input--code' %>
+    <%= f.text_area :body, rows: 15, data: { 'spandy-rows' => 15 }, class: 'input input--textarea input--code' %>
   </div>
 
   <div class="saver">
-    <%= f.submit name: nil, class: 'button green' %>
+    <%= f.submit name: nil, class: 'button button--weed' %>
 
-    <%= link_to t('article.preview'), slug_path(@media.slug), target: :_blank, class: 'button green-dark' if @media.persisted? %>
+    <%= link_to t('article.preview'), slug_path(@media.slug), target: :_blank, class: 'button button--weed' if @media.persisted? %>
   </div>
 <% end %>
 
-<%= button_to t('article.publish'), publish_article_path(@media), method: :patch, class: 'button blue' if @media.persisted? && !@media.published? %>
+<%= button_to t('article.publish'), publish_article_path(@media), method: :patch, class: 'button button--sky' if @media.persisted? && !@media.published? %>
 
 <script>
   $(function() {
     $('.input--code').taby();
+
+    Expandy.init('.input--code');
   });
 </script>
