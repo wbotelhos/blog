@@ -1,0 +1,14 @@
+/*
+ *= require vendor/normalize
+
+ *= require components/button
+ *= require components/common
+ *= require components/input
+ *= require components/label
+ *= require components/message
+ *= require components/placeholder
+ *= require components/session
+
+ *= require layouts/header
+ *= require layouts/container
+ */

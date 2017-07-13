@@ -17,8 +17,8 @@ class SessionsController < ApplicationController
 
       redirect_to admin_url
     else
-      flash.now[:alert] = t('session.denied')
-      @email            = params[:email]
+      flash.now[:notice] = t('session.denied')
+      @email             = params[:email]
 
       render :new
     end

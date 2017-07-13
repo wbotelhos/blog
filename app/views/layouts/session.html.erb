@@ -7,11 +7,11 @@
   <meta name="robots"    content="nofollow" />
   <meta name="googlebot" content="nofollow" />
 
-  <%= stylesheet_link_tag    :application %>
-  <%= javascript_include_tag :application %>
+  <%= stylesheet_link_tag    :session %>
+  <%= javascript_include_tag :session %>
 </head>
 <body>
-  <div class="content">
+  <div class="container">
     <%= render 'shared/header' %>
 
     <%= yield %>
@@ -19,7 +19,7 @@
 
   <script>
     $(function() {
-      AntiBOT.init('.signin');
+      AntiBOT.init('.session');
     });
   </script>
 </body>
