@@ -86,7 +86,7 @@ comment_1 = article.comments.create!(
     email:     'wbotelhos@example.com',
     name:      'Washington Botelho',
     parent_id: comment_1.id,
-    url:       'http://wbotelhos.com'
+    url:       'https://wbotelhos.com'
   )
   response_1.author = true
   response_1.save!
@@ -103,7 +103,7 @@ comment_2 = article.comments.create!(
     email:     'wbotelhos@example.com',
     name:      'Washington Botelho',
     parent_id: comment_2.id,
-    url:       'http://wbotelhos.com'
+    url:       'https://wbotelhos.com'
   )
   response2.author = true
   response2.save!
