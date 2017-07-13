@@ -4,6 +4,6 @@ class ParamConstraints
   end
 
   def is_lab?(slug)
-    Lab.find_by_slug(slug).present?
+    Lab.exists? slug: slug
   end
 end
