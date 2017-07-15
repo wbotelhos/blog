@@ -7,5 +7,6 @@
 *.sw[pon]
 *.tar.gz
 *~
+/config/database.yml
 /public/*y
 /public/assets
