@@ -2,13 +2,13 @@
   <% @year_month_medias.each do |date, medias| %>
     <div class="listing__date"><%= date %></div>
 
-    <ul>
+    <ol>
       <% medias.each do |media| %>
         <li>
-          <%= link_to media.title, slug_lab_path(media.slug), class: :listing__title %><br />
+          <%= link_to media.title, slug_lab_path(media.slug), class: :listing__title %>
           <%= link_to slug_url(media.slug), slug_lab_path(media.slug), class: :listing__url %>
         </li>
       <% end %>
-    </ul>
+    </ol>
   <% end %>
 </section>
