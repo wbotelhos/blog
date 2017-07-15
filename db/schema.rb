@@ -19,16 +19,16 @@ ActiveRecord::Schema.define(version: 20140101000003) do
     t.string   "title",        limit: 255,   null: false
     t.text     "body",         limit: 65535
     t.integer  "user_id",      limit: 4,     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
-    t.boolean  "author",           limit: 1,     default: false, null: false
-    t.boolean  "pending",          limit: 1,     default: true,  null: false
+    t.boolean  "author",                         default: false, null: false
+    t.boolean  "pending",                        default: true,  null: false
     t.integer  "parent_id",        limit: 4
     t.string   "email",            limit: 255,                   null: false
     t.string   "name",             limit: 255,                   null: false
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20140101000003) do
     t.text     "body",             limit: 65535,                 null: false
     t.integer  "commentable_id",   limit: 4,                     null: false
     t.string   "commentable_type", limit: 255,                   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
@@ -56,18 +56,19 @@ ActiveRecord::Schema.define(version: 20140101000003) do
     t.text     "body",         limit: 65535
     t.text     "js_ready",     limit: 65535
     t.text     "css",          limit: 65535
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "labs", ["title"], name: "index_labs_on_title", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",         limit: 255, null: false
+    t.string   "name",          limit: 255, null: false
     t.string   "password_hash", limit: 255, null: false
     t.string   "password_salt", limit: 255, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
