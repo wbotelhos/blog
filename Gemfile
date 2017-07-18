@@ -11,11 +11,6 @@ gem 'redcarpet'
 gem 'sass-rails'
 gem 'uglifier'
 
-group :development do
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano-rails', require: false
-end
-
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-byebug'

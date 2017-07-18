@@ -62,10 +62,6 @@ class Hello {
 
 By default my credentials is written here, but you can change it editing the file config/config.yml.
 
-### Deploy
-
-We using the Capistrano to do it, then check the deploy.rb file to configure your settings.
-
 ### License
 
 This blog is free under the MIT License, be nice and keep the author's credits. (:
