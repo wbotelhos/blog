@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'acts_as_tree'
 gem 'aitch'
+gem 'dotenv-rails'
 gem 'mysql2'
 gem 'nokogiri'
 gem 'pygments.rb'
@@ -12,7 +13,6 @@ gem 'sass-rails'
 gem 'uglifier'
 
 group :development, :test do
-  gem 'dotenv-rails'
   gem 'pry-byebug'
 end
 
