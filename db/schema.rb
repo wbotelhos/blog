@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140101000003) do
+ActiveRecord::Schema.define(version: 20170716210842) do
 
   create_table "articles", force: :cascade do |t|
     t.datetime "published_at"
@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 20140101000003) do
   create_table "labs", force: :cascade do |t|
     t.datetime "published_at"
     t.string   "analytics",    limit: 255
-    t.string   "css_import",   limit: 255
+    t.text     "css_import",   limit: 65535
     t.string   "description",  limit: 255
-    t.string   "js",           limit: 255
-    t.string   "js_import",    limit: 255
+    t.text     "js",           limit: 65535
+    t.text     "js_import",    limit: 65535
     t.string   "keywords",     limit: 255,   null: false
     t.string   "slug",         limit: 255,   null: false
     t.string   "title",        limit: 255,   null: false
