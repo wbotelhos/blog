@@ -1,8 +1,8 @@
 # Blog on Rails
 
-[![Travis CI status](https://travis-ci.org/wbotelhos/wbotelhos-com.png?branch=master)](https://travis-ci.org/wbotelhos/wbotelhos-com "Travis CI")
-[![Code Climate](https://codeclimate.com/github/wbotelhos/wbotelhos-com.png)](https://codeclimate.com/github/wbotelhos/wbotelhos-com "Code Climate")
-[![Support wbotelhos.com](http://img.shields.io/gittip/wbotelhos.svg)](https://www.gittip.com/wbotelhos "Git Tip")
+[![Travis CI status](https://travis-ci.org/wbotelhos/blogy.png?branch=master)](https://travis-ci.org/wbotelhos/blogy "Travis CI")
+[![Maintainability](https://api.codeclimate.com/v1/badges/77c48bc2ae425721e774/maintainability)](https://codeclimate.com/github/wbotelhos/blogy/maintainability)
+[![Patreon](https://img.shields.io/badge/donate-%3C3-brightgreen.svg)](https://www.patreon.com/wbotelhos)
 
 ## Usage
 
@@ -24,10 +24,6 @@
 
 [Check it out](http://github.com/wbotelhos/raty/graphs/contributors)
 
-## Licence
-
-[The MIT License](http://opensource.org/licenses/MIT)
-
 ## Love it!
 
-Via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=wbotelhos.com) or [Gittip](http://www.gittip.com/wbotelhos). Thanks! (:
+Via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=blogy) or [Patreon](https://www.patreon.com/wbotelhos). Thanks! (:
