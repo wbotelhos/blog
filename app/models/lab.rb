@@ -11,7 +11,8 @@ class Lab < ActiveRecord::Base
   validates :description, presence: true
   validates :keywords,    presence: true
   validates :slug,        presence: true, if: ->(e) { e.title.present? }
-  validates :title,       presence: true, uniqueness: true
+  validates :title,       presence: true
+  validates :title,       uniqueness: { case_sensitive: false }
   validates :version,     presence: true
 
   def download

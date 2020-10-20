@@ -15,7 +15,8 @@ class Article < ActiveRecord::Base
   before_validation :generate_slug, if: ->(e) { e.title.present? }
 
   validates :slug,  presence: true, if: ->(e) { e.title.present? }
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
+  validates :title, uniqueness: { case_sensitive: false }
   validates :user,  presence: true
 
   def published?

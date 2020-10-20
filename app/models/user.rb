@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
   attr_reader :password
 
-  validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
-  validates :password, confirmation: true, if: -> { password.present? }
-
   has_many :articles, dependent: :nullify
+
+  validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
+  validates :email, uniqueness: { case_sensitive: false }
+  validates :password, confirmation: true, if: -> { password.present? }
 
   def password=(password)
     encryption = PasswordEncryptor.encrypt password
