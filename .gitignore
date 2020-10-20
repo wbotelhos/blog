@@ -6,6 +6,7 @@
 *.sw[pon]
 *.tar.gz
 *~
+/.bundle
 /config/database.yml
 /public/*y
 /public/assets
