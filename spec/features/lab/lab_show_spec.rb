@@ -91,8 +91,8 @@ RSpec.describe Lab, '#show' do
 
       visit slug_lab_path lab.slug
 
-      within 'header' do
-        expect(page).to have_link 'Editar', href: edit_lab_path(lab)
+      within '.header__subtitle' do
+        expect(page).to have_link 'Edit', href: edit_lab_path(lab)
       end
     end
   end
