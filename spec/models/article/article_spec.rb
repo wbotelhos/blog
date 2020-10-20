@@ -12,13 +12,7 @@ RSpec.describe Article do
   it { is_expected.to validate_presence_of :user }
   it { is_expected.to validate_presence_of :title }
 
-  context :uniqueness do
-    let(:article) { FactoryBot.create :article }
-
-    it 'does not allow the same title' do
-      expect(FactoryBot.build(:article, title: article.title)).to be_invalid
-    end
-  end
+  it { expect(FactoryBot.build(:article)).to validate_uniqueness_of(:title).case_insensitive }
 
   describe '#generate_slug' do
     let!(:article) { FactoryBot.create :article, title: 'Some Title' }
@@ -30,10 +24,7 @@ RSpec.describe Article do
     end
 
     context 'on update' do
-      before do
-        article.title = 'New Title'
-        article.save
-      end
+      before { article.update!(title: 'New Title') }
 
       it 'slug the title' do
         expect(article.slug).to eq 'new-title'
@@ -42,8 +33,13 @@ RSpec.describe Article do
   end
 
   describe :scope do
-    let!(:article_1) { FactoryBot.create :article, created_at: Time.zone.local(2000, 1, 1), published_at: Time.zone.local(2001, 1, 2) }
-    let!(:article_2) { FactoryBot.create :article, created_at: Time.zone.local(2000, 1, 2), published_at: Time.zone.local(2001, 1, 1) }
+    let!(:article_1) do
+      FactoryBot.create :article, created_at: Time.zone.local(2000, 1, 1), published_at: Time.zone.local(2001, 1, 2)
+    end
+
+    let!(:article_2) do
+      FactoryBot.create :article, created_at: Time.zone.local(2000, 1, 2), published_at: Time.zone.local(2001, 1, 1)
+    end
 
     describe :home_selected do
       let!(:article) { FactoryBot.create :article }

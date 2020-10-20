@@ -9,6 +9,8 @@ RSpec.describe User do
 
   it { is_expected.to validate_presence_of :email }
 
+  it { expect(FactoryBot.build(:user)).to validate_uniqueness_of(:email).case_insensitive }
+
   context :create do
     it 'creates a valid media' do
       expect(User.new(
@@ -28,14 +30,6 @@ RSpec.describe User do
       expect(FactoryBot.build(:user, email: 'fail@fail.')).to be_invalid
 
       expect(FactoryBot.build(:user, email: 'ok@ok.ok')).to be_valid
-    end
-  end
-
-  context :uniqueness do
-    let(:user) { FactoryBot.create :user }
-
-    it 'does not allow the same email' do
-      expect(FactoryBot.build(:user, email: user.email)).to be_invalid
     end
   end
 

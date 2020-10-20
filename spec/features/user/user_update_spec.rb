@@ -63,16 +63,14 @@ RSpec.describe User, '#update' do
         end
 
         context 'and try to login with old password', :js do
-          before do
+          it 'keeps the unchanged password' do
             fill_in 'email', with: new_user.email
             fill_in 'password', with: old_password
 
             uncheck 'not_human'
 
-            click_button 'ACESSAR'
-          end
+            click_button 'Acessar'
 
-          it 'keeps the unchanged password' do
             expect(page).not_to have_content I18n.t('session.denied')
           end
         end

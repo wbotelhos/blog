@@ -13,7 +13,7 @@ RSpec.describe Lab, '#update' do
   end
 
   it 'shows the preview link' do
-    expect(page).to have_link 'PREVIEW', href: slug_lab_path(lab.slug)
+    expect(page).to have_link 'Preview', href: slug_lab_path(lab.slug)
   end
 
   context 'with valid data' do
@@ -70,7 +70,7 @@ RSpec.describe Lab, '#update' do
       end
 
       it 'renders form page again' do
-        expect(page).to have_current_path lab_path lab, ignore_query: true
+        expect(page).to have_current_path lab_path lab
       end
 
       it { expect(page).to have_content 'O campo "Título" deve ser preenchido!' }

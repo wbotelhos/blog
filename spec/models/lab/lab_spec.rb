@@ -13,13 +13,7 @@ RSpec.describe Lab do
   it { is_expected.to validate_presence_of :title }
   it { is_expected.to validate_presence_of :version }
 
-  context :uniqueness do
-    let(:lab) { FactoryBot.create :lab }
-
-    it 'does not allow the same title'  do
-      expect(FactoryBot.build(:lab, title: lab.title)).to be_invalid
-    end
-  end
+  it { expect(FactoryBot.build(:lab)).to validate_uniqueness_of(:title).case_insensitive }
 
   describe :scope do
     let!(:lab_1) { FactoryBot.create :lab, created_at: Time.zone.local(2000, 1, 1), published_at: Time.zone.local(2001, 1, 2) }
