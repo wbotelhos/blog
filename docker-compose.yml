@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  database:
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: trust
+
+    image: mysql:latest
+
+    ports:
+      - 3306:3306
