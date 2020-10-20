@@ -4,6 +4,7 @@ gem 'aitch'
 gem 'dotenv-rails'
 gem 'mysql2'
 gem 'nokogiri'
+gem 'puma'
 gem 'pygments.rb'
 gem 'rails'
 gem 'rake'
@@ -20,12 +21,6 @@ end
 
 group :development, :test do
   gem 'pry-byebug'
-  gem 'puma'
-end
-
-group :production do
-  gem 'unicorn'
-  gem 'unicorn-worker-killer'
 end
 
 group :test do
