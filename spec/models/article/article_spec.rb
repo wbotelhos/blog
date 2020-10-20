@@ -42,8 +42,8 @@ RSpec.describe Article do
   end
 
   describe :scope do
-    let!(:article_1) { FactoryBot.create :article, created_at: Time.local(2000, 1, 1), published_at: Time.local(2001, 1, 2) }
-    let!(:article_2) { FactoryBot.create :article, created_at: Time.local(2000, 1, 2), published_at: Time.local(2001, 1, 1) }
+    let!(:article_1) { FactoryBot.create :article, created_at: Time.zone.local(2000, 1, 1), published_at: Time.zone.local(2001, 1, 2) }
+    let!(:article_2) { FactoryBot.create :article, created_at: Time.zone.local(2000, 1, 2), published_at: Time.zone.local(2001, 1, 1) }
 
     describe :home_selected do
       let!(:article) { FactoryBot.create :article }
@@ -62,10 +62,10 @@ RSpec.describe Article do
     end
 
     describe :by_month do
-      let!(:article_1) { FactoryBot.create :article, published_at: Time.local(2013, 0o1, 0o1) }
-      let!(:article_2) { FactoryBot.create :article, published_at: Time.local(2013, 0o1, 0o1) }
-      let!(:article_3) { FactoryBot.create :article, published_at: Time.local(2013, 0o2, 0o1) }
-      let!(:article_4) { FactoryBot.create :article, published_at: Time.local(2013, 0o3, 0o1) }
+      let!(:article_1) { FactoryBot.create :article, published_at: Time.zone.local(2013, 0o1, 0o1) }
+      let!(:article_2) { FactoryBot.create :article, published_at: Time.zone.local(2013, 0o1, 0o1) }
+      let!(:article_3) { FactoryBot.create :article, published_at: Time.zone.local(2013, 0o2, 0o1) }
+      let!(:article_4) { FactoryBot.create :article, published_at: Time.zone.local(2013, 0o3, 0o1) }
       let(:result)     { Article.by_month }
 
       xit 'groups the articles by published month'
@@ -111,7 +111,7 @@ RSpec.describe Article do
 
         context 'article without published date in the same time' do
           before do
-            allow(Time).to receive(:now).and_return Time.local(2013, 1, 1, 0, 0, 0)
+            allow(Time).to receive(:now).and_return Time.zone.local(2013, 1, 1, 0, 0, 0)
 
             @article_now = FactoryBot.create :article, published_at: Time.current
           end
@@ -128,7 +128,7 @@ RSpec.describe Article do
         end
 
         context 'article with published date but in the future (scheduled)' do
-          let!(:article_scheduled) { FactoryBot.create :article, published_at: Time.local(2500, 1, 1) }
+          let!(:article_scheduled) { FactoryBot.create :article, published_at: Time.zone.local(2500, 1, 1) }
 
           it 'is ignored' do
             expect(Article.published).not_to include article_scheduled

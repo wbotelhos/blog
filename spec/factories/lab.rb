@@ -9,7 +9,7 @@ FactoryBot.define do
     version              { '1.0.0' }
 
     factory :lab_published do
-      published_at { Time.local(1984, 10, 23) }
+      published_at { Time.zone.local(1984, 10, 23) }
     end
   end
 end
