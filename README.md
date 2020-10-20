@@ -19,11 +19,3 @@
 ## Pygments Schema
 
 [perldoc](https://github.com/richleland/pygments-css/blob/master/perldoc.css)
-
-## Contributors
-
-[Check it out](http://github.com/wbotelhos/raty/graphs/contributors)
-
-## Love it!
-
-Via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=X8HEP2878NDEG&item_name=blogy) or [Patreon](https://www.patreon.com/wbotelhos). Thanks! (:
