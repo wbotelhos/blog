@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = controller_name == 'labs' && action_name == 'show' ? :en : :pt
+    I18n.locale = controller_name == 'labs' && action_name == 'show' ? 'en-US' : 'pt-BR'
   end
 
   protected
