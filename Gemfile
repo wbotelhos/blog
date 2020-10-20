@@ -30,11 +30,9 @@ group :production do
 end
 
 group :test do
-  gem 'capybara'
-  gem 'database_cleaner'
+  gem 'capybara-box', require: false
   gem 'factory_bot_rails'
   gem 'rack_session_access'
   gem 'rspec-rails'
-  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
 end
