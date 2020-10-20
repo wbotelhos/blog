@@ -10,3 +10,9 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+
+# custom
+
+Rails.application.config.tap do |config|
+  config.assets.digest = false if Rails.env.test?
+end

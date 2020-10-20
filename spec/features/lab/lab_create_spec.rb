@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe Lab, '#create' do
+  let!(:user) { FactoryBot.create(:user) }
+
   before do
-    login
+    login(user)
     visit new_lab_path
   end
 
@@ -20,7 +25,7 @@ RSpec.describe Lab, '#create' do
       fill_in 'lab_title', with: 'title'
       fill_in 'lab_version', with: '1.0.0'
 
-      click_button 'SALVAR'
+      click_button 'Salvar'
     end
 
     it 'redirects to edit page' do
@@ -34,7 +39,7 @@ RSpec.describe Lab, '#create' do
     before do
       fill_in 'lab_title', with: lab.title
 
-      click_button 'SALVAR'
+      click_button 'Salvar'
     end
 
     it { expect(page).to have_content %(O valor "#{lab.title}" para o campo "Título" já está em uso!) }
@@ -53,7 +58,7 @@ RSpec.describe Lab, '#create' do
         fill_in 'lab_slug', with: 'slug'
         fill_in 'lab_version', with: '1.0.0'
 
-        click_button 'SALVAR'
+        click_button 'Salvar'
       end
 
       it 'renders form page again' do
@@ -71,7 +76,7 @@ RSpec.describe Lab, '#create' do
         fill_in 'lab_title', with: 'title'
         fill_in 'lab_version', with: '1.0.0'
 
-        click_button 'SALVAR'
+        click_button 'Salvar'
       end
 
       it { expect(page).to have_content 'O campo "Slug" deve ser preenchido!' }
@@ -86,7 +91,7 @@ RSpec.describe Lab, '#create' do
         fill_in 'lab_title', with: 'title'
         fill_in 'lab_version', with: ''
 
-        click_button 'SALVAR'
+        click_button 'Salvar'
       end
 
       it { expect(page).to have_content 'O campo "Versão" deve ser preenchido!' }
@@ -101,7 +106,7 @@ RSpec.describe Lab, '#create' do
         fill_in 'lab_title', with: 'title'
         fill_in 'lab_version', with: '1.0.0'
 
-        click_button 'SALVAR'
+        click_button 'Salvar'
       end
 
       it { expect(page).to have_content 'O campo "Palavras-chave" deve ser preenchido!' }
@@ -116,7 +121,7 @@ RSpec.describe Lab, '#create' do
         fill_in 'lab_title', with: 'title'
         fill_in 'lab_version', with: '1.0.0'
 
-        click_button 'SALVAR'
+        click_button 'Salvar'
       end
 
       it { expect(page).to have_content 'O campo "Descrição" deve ser preenchido!' }
@@ -131,7 +136,7 @@ RSpec.describe Lab, '#create' do
         fill_in 'lab_title', with: 'title'
         fill_in 'lab_version', with: '1.0.0'
 
-        click_button 'SALVAR'
+        click_button 'Salvar'
       end
 
       it { expect(page).to have_content 'O campo "Analytics" deve ser preenchido!' }

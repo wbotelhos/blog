@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe Lab, '#update' do
   let(:lab) { FactoryBot.create :lab }
+  let!(:user) { FactoryBot.create(:user) }
 
   before do
-    login
+    login(user)
     visit edit_lab_path lab.id
   end
 
@@ -27,7 +31,7 @@ RSpec.describe Lab, '#update' do
       fill_in 'lab_title', with: 'Some title'
       fill_in 'lab_version', with: '2.0.0'
 
-      click_button 'ATUALIZAR'
+      click_button 'Atualizar'
     end
 
     it 'redirects to edit page' do
@@ -62,7 +66,7 @@ RSpec.describe Lab, '#update' do
         fill_in 'lab_title', with: ''
         fill_in 'lab_version', with: '1.0.0'
 
-        click_button 'ATUALIZAR'
+        click_button 'Atualizar'
       end
 
       it 'renders form page again' do
@@ -81,7 +85,7 @@ RSpec.describe Lab, '#update' do
         fill_in 'lab_title', with: 'title'
         fill_in 'lab_version', with: '1.0.0'
 
-        click_button 'ATUALIZAR'
+        click_button 'Atualizar'
       end
 
       it { expect(page).to have_content 'O campo "Slug" deve ser preenchido!' }
@@ -96,7 +100,7 @@ RSpec.describe Lab, '#update' do
         fill_in 'lab_title', with: 'title'
         fill_in 'lab_version', with: ''
 
-        click_button 'ATUALIZAR'
+        click_button 'Atualizar'
       end
 
       it { expect(page).to have_content 'O campo "Versão" deve ser preenchido!' }
@@ -111,7 +115,7 @@ RSpec.describe Lab, '#update' do
         fill_in 'lab_title', with: 'title'
         fill_in 'lab_version', with: '1.0.0'
 
-        click_button 'ATUALIZAR'
+        click_button 'Atualizar'
       end
 
       it { expect(page).to have_content 'O campo "Palavras-chave" deve ser preenchido!' }
@@ -126,7 +130,7 @@ RSpec.describe Lab, '#update' do
         fill_in 'lab_title', with: 'title'
         fill_in 'lab_version', with: '1.0.0'
 
-        click_button 'ATUALIZAR'
+        click_button 'Atualizar'
       end
 
       it { expect(page).to have_content 'O campo "Descrição" deve ser preenchido!' }
@@ -141,7 +145,7 @@ RSpec.describe Lab, '#update' do
         fill_in 'lab_title', with: 'title'
         fill_in 'lab_version', with: '1.0.0'
 
-        click_button 'ATUALIZAR'
+        click_button 'Atualizar'
       end
 
       it { expect(page).to have_content 'O campo "Analytics" deve ser preenchido!' }

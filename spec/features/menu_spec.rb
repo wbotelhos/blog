@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe :menu do
   before { visit root_path }
 
@@ -33,7 +36,7 @@ RSpec.describe :menu do
     end
 
     it 'hides donate options' do
-      expect(page).to have_link 'Git tip', visible: false
+      expect(page).to have_link 'Patreon', href: 'https://www.patreon.com/wbotelhos/creators', visible: false
       expect(page).to have_link 'Paypal', visible: false
     end
 
@@ -41,7 +44,7 @@ RSpec.describe :menu do
       before { find('.i-heart').click }
 
       it 'shows donate options' do
-        expect(page).to have_link 'Git tip', visible: true
+        expect(page).to have_link 'Patreon', href: 'https://www.patreon.com/wbotelhos/creators', visible: true
         expect(page).to have_link 'Paypal', visible: true
       end
 
@@ -49,7 +52,7 @@ RSpec.describe :menu do
         before { find('.i-heart').click }
 
         it 'hides donate options' do
-          expect(page).to have_link 'Git tip', visible: false
+          expect(page).to have_link 'Patreon', href: 'https://www.patreon.com/wbotelhos/creators', visible: false
           expect(page).to have_link 'Paypal', visible: false
         end
       end
@@ -89,8 +92,10 @@ RSpec.describe :menu do
   end
 
   context 'when logged' do
+    let!(:user) { FactoryBot.create(:user) }
+
     before do
-      login
+      login(user)
       visit root_path
     end
 

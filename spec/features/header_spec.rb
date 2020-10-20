@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+
 RSpec.describe :header do
   before { visit root_path }
 

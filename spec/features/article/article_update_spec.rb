@@ -1,15 +1,19 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe Article, '#update' do
   let(:article) { FactoryBot.create :article }
+  let!(:user) { FactoryBot.create(:user) }
 
   before do
-    login
+    login(user)
     visit edit_article_path article
   end
 
   it 'shows the preview link' do
-    expect(page).to have_link 'PREVIEW', href: slug_path(article.slug)
+    expect(page).to have_link 'Preview', href: slug_path(article.slug)
   end
 
   context 'with valid data' do
@@ -17,11 +21,11 @@ RSpec.describe Article, '#update' do
       fill_in 'article_title', with: 'Some Title'
       fill_in 'article_body', with: 'Some body'
 
-      click_button 'ATUALIZAR'
+      click_button 'Atualizar'
     end
 
     it 'redirects to edit page' do
-      expect(page).to have_current_path "/articles/#{article.id}/edit", ignore_query: true
+      expect(page).to have_current_path "/articles/#{article.id}/edit"
     end
 
     it { expect(find_field('article_title').value).to eq 'Some Title' }
@@ -35,11 +39,11 @@ RSpec.describe Article, '#update' do
 
         fill_in 'article_title', with: ''
 
-        click_button 'ATUALIZAR'
+        click_button 'Atualizar'
       end
 
       it 'renders form page again' do
-        expect(page).to have_current_path article_path article, ignore_query: true
+        expect(page).to have_current_path article_path article
       end
 
       it { expect(page).to have_content 'O campo "Título" deve ser preenchido!' }
@@ -48,18 +52,18 @@ RSpec.describe Article, '#update' do
 
   context 'when unpublished' do
     it 'shows the publish button' do
-      expect(page).to have_button 'PUBLICAR'
+      expect(page).to have_button 'Publicar'
     end
 
     context 'and click on publish button' do
       before do
         visit edit_article_path article
 
-        click_button 'PUBLICAR'
+        click_button 'Publicar'
       end
 
       it 'renders index page' do
-        expect(page).to have_current_path root_path, ignore_query: true
+        expect(page).to have_current_path root_path
       end
 
       it 'shows the actual article on published list' do
@@ -76,7 +80,7 @@ RSpec.describe Article, '#update' do
     end
 
     it 'hides the publish button' do
-      expect(page).not_to have_button 'PUBLICAR'
+      expect(page).not_to have_button 'Publicar'
     end
   end
 end

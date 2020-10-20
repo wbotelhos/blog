@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe Article, '#show' do
   let(:article) { FactoryBot.create :article_published }
 
@@ -56,8 +59,10 @@ RSpec.describe Article, '#show' do
   end
 
   context 'when logged' do
+    let!(:user) { FactoryBot.create(:user) }
+
     before do
-      login
+      login(user)
       visit slug_path article.slug
     end
 

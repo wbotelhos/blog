@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe 'Admin', '#index' do
   context 'when logged' do
-    before { login }
+    let!(:user) { FactoryBot.create(:user) }
+
+    before { login(user) }
 
     context 'article' do
       let!(:draft)     { FactoryBot.create :article, published_at: nil }

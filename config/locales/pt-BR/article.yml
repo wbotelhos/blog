@@ -8,8 +8,8 @@ pt-BR:
   article:
     drafts: Rascunhos
     new: Novo Artigo
-    preview: preview
-    publish: publicar
+    preview: Preview
+    publish: Publicar
 
     flash:
       not_found: 'O artigo "%{uri}" não foi encontrado!'
@@ -18,5 +18,5 @@ pt-BR:
   helpers:
     submit:
       article:
-        create: salvar
-        update: atualizar
+        create: Salvar
+        update: Atualizar

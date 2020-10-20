@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe Comment, '#create' do
   let(:article) { FactoryBot.create :article_published }
 
@@ -36,7 +39,7 @@ RSpec.describe Comment, '#create' do
 
         uncheck 'not_human'
 
-        click_button 'COMENTAR'
+        click_button 'Comentar'
       end
 
       it 'redirects to the article page' do
@@ -79,7 +82,7 @@ RSpec.describe Comment, '#create' do
 
           uncheck 'not_human'
 
-          click_button 'COMENTAR'
+          click_button 'Comentar'
         end
 
         it 'displays error message' do
@@ -95,7 +98,7 @@ RSpec.describe Comment, '#create' do
 
           uncheck 'not_human'
 
-          click_button 'COMENTAR'
+          click_button 'Comentar'
         end
 
         it 'displays error message' do
@@ -111,7 +114,7 @@ RSpec.describe Comment, '#create' do
 
           uncheck 'not_human'
 
-          click_button 'COMENTAR'
+          click_button 'Comentar'
         end
 
         it 'displays error message' do
@@ -166,7 +169,7 @@ RSpec.describe Comment, '#create' do
           end
 
           context 'and submit' do
-            before { click_button 'COMENTAR' }
+            before { click_button 'Comentar' }
 
             it 'blocks and shows exclamation message' do
               expect(page).to have_content 'Hey! Me desmarque.'
@@ -178,8 +181,10 @@ RSpec.describe Comment, '#create' do
   end
 
   context 'when logged' do
+    let!(:user) { FactoryBot.create(:user) }
+
     before do
-      @user = login
+      login(user)
 
       visit slug_path article.slug
     end
@@ -200,7 +205,7 @@ RSpec.describe Comment, '#create' do
       before do
         fill_in 'comment_body', with: 'Some comment!'
 
-        click_button 'COMENTAR'
+        click_button 'Comentar'
       end
 
       it 'redirects to the article page' do

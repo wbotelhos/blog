@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe Lab, '#index' do
   context 'when logged' do
     let!(:draft) { FactoryBot.create :lab }
     let!(:lab)   { FactoryBot.create :lab_published }
+    let!(:user) { FactoryBot.create(:user) }
 
     before do
-      login
+      login(user)
       visit labs_path
     end
 

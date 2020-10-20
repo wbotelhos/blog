@@ -1,14 +1,19 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe User, '#update' do
+  let!(:user) { FactoryBot.create(:user) }
+
   before do
-    @user = login
+    login(user)
     visit profile_path
   end
 
   it { expect(page).to have_current_path '/profile' }
 
-  it { expect(find('#user_email').value).to                 eq @user.email }
+  it { expect(find('#user_email').value).to                 eq user.email }
   it { expect(find('#user_password').value).to              be_nil }
   it { expect(find('#user_password_confirmation').value).to be_nil }
 
@@ -19,7 +24,7 @@ RSpec.describe User, '#update' do
         fill_in 'user_password', with: 'some-password'
         fill_in 'user_password_confirmation', with: 'some-password'
 
-        click_button 'ATUALIZAR'
+        click_button 'Atualizar'
       end
 
       it 'redirects to edit page' do
@@ -33,14 +38,14 @@ RSpec.describe User, '#update' do
 
     context 'filling only email' do
       let!(:new_user)     { FactoryBot.build :user, email: 'washington@example.org' }
-      let!(:old_password) { @user.password }
+      let!(:old_password) { user.password }
 
       before do
         fill_in 'user_email', with: new_user.email
         fill_in 'user_password', with: nil
         fill_in 'user_password_confirmation', with: nil
 
-        click_button 'ATUALIZAR'
+        click_button 'Atualizar'
       end
 
       it 'redirects to edit page' do
@@ -86,7 +91,7 @@ RSpec.describe User, '#update' do
         fill_in 'user_password', with: 'some-password'
         fill_in 'user_password_confirmation', with: 'some-password'
 
-        click_button 'ATUALIZAR'
+        click_button 'Atualizar'
       end
 
       it { expect(page).to have_content 'O campo "E-mail" deve ser preenchido!' }
@@ -99,7 +104,7 @@ RSpec.describe User, '#update' do
         fill_in 'user_password', with: 'some-password'
         fill_in 'user_password_confirmation', with: ''
 
-        click_button 'ATUALIZAR'
+        click_button 'Atualizar'
       end
 
       it { expect(page).to have_content 'A confirmação de senha não confere com o digitado no campo "Senha"!' }

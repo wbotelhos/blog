@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe Lab, '#show' do
   let(:lab) { FactoryBot.create :lab_published }
 
@@ -56,7 +59,7 @@ RSpec.describe Lab, '#show' do
       end
 
       it 'hides donate options' do
-        expect(page).to have_link 'Gratipay', visible: false
+        expect(page).to have_link 'Patreon', visible: false
         expect(page).to have_link 'Paypal', visible: false
       end
 
@@ -64,7 +67,7 @@ RSpec.describe Lab, '#show' do
         before { find('.i-heart').click }
 
         it 'shows donate options' do
-          expect(page).to have_link 'Gratipay', visible: true
+          expect(page).to have_link 'Patreon', visible: true
           expect(page).to have_link 'Paypal', visible: true
         end
 
@@ -72,7 +75,7 @@ RSpec.describe Lab, '#show' do
           before { find('.i-heart').click }
 
           it 'hides donate options' do
-            expect(page).to have_link 'Gratipay', visible: false
+            expect(page).to have_link 'Patreon', visible: false
             expect(page).to have_link 'Paypal', visible: false
           end
         end
@@ -81,14 +84,15 @@ RSpec.describe Lab, '#show' do
   end
 
   context 'when logged' do
-    before do
-      login
-      visit slug_lab_path lab.slug
-    end
+    let!(:user) { FactoryBot.create(:user) }
 
-    it 'displays edit link' do
+    it 'displays edit link', :js do
+      login(user)
+
+      visit slug_lab_path lab.slug
+
       within 'header' do
-        expect(page).to have_link 'Edit', href: edit_lab_path(lab)
+        expect(page).to have_link 'Editar', href: edit_lab_path(lab)
       end
     end
   end

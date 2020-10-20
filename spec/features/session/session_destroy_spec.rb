@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe User do
+  let!(:user) { FactoryBot.create(:user) }
+
   before do
-    login
+    login(user)
     visit admin_path
   end
 

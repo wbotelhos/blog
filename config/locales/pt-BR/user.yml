@@ -9,7 +9,7 @@ pt-BR:
   helpers:
     submit:
       user:
-        update: atualizar
+        update: Atualizar
 
   user:
     author: autor

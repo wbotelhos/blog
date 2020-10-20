@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe User, 'session#new', :js do
   let(:user) { FactoryBot.create :user }
 
@@ -12,10 +15,10 @@ RSpec.describe User, 'session#new', :js do
 
       uncheck 'not_human'
 
-      click_button 'ACESSAR'
+      click_button 'Acessar'
     end
 
-    it 'redirects to the same page' do
+    it 'redirects to the same page', :js do
       expect(page).to have_current_path login_path, ignore_query: true
     end
 
@@ -31,7 +34,7 @@ RSpec.describe User, 'session#new', :js do
 
       uncheck 'not_human'
 
-      click_button 'ACESSAR'
+      click_button 'Acessar'
     end
 
     it 'redirects to admin page' do
@@ -63,7 +66,7 @@ RSpec.describe User, 'session#new', :js do
         end
 
         context 'and submit' do
-          before { click_button 'ACESSAR' }
+          before { click_button 'Acessar' }
 
           it 'blocks and shows exclamation message' do
             expect(page).to have_content 'Hey! Me desmarque.'
@@ -74,7 +77,9 @@ RSpec.describe User, 'session#new', :js do
   end
 
   context 'when logged' do
-    before { login }
+    let!(:user) { FactoryBot.create(:user) }
+
+    before { login(user) }
 
     context 'and visit login page' do
       before { visit login_path }

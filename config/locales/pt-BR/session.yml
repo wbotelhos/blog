@@ -1,5 +1,5 @@
 pt-BR:
   session:
-    access: acessar
+    access: Acessar
     denied: E-mail ou senha inválida!
     required: Você precisa estar logado!

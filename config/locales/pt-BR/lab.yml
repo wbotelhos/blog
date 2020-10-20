@@ -18,12 +18,12 @@ pt-BR:
   helpers:
     submit:
       lab:
-        create: salvar
-        update: atualizar
+        create: Salvar
+        update: Atualizar
 
   lab:
     drafts: Rascunhos
     edit: Editar
     new: Novo Projeto
     other: Labs
-    preview: preview
+    preview: Preview

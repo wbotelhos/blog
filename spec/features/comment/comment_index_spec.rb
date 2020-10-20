@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe Comment, '#index' do
   context 'with pending comment' do
     let!(:pending) { FactoryBot.create :comment }
@@ -16,8 +19,10 @@ RSpec.describe Comment, '#index' do
     end
 
     context 'when unlogged' do
+      let!(:user) { FactoryBot.create(:user) }
+
       before do
-        login
+        login(user)
         visit slug_path pending.commentable.slug
       end
 

@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe Article, '#index' do
   context 'when logged' do
     let!(:draft)   { FactoryBot.create :article }
     let!(:article) { FactoryBot.create :article_published }
+    let!(:user) { FactoryBot.create(:user) }
 
     before do
-      login
+      login(user)
       visit articles_path
     end
 

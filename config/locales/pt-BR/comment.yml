@@ -9,7 +9,7 @@ pt-BR:
         url: URL
 
   comment:
-    cancel: cancelar
+    cancel: Cancelar
     created_at: '%{time} atrás'
     edit: Editar
     format_your_code_html: 'Formate seu <strong>código</strong> utilizando %{link}.'
@@ -22,5 +22,5 @@ pt-BR:
   helpers:
     submit:
       comment:
-        create: comentar
-        update: atualizar
+        create: Comentar
+        update: Atualizar

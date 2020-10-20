@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
+require 'support/capybara_box'
+require 'support/includes/login'
+
 RSpec.describe Comment, '#update' do
   let!(:article) { FactoryBot.create :article_published }
   let!(:comment) { FactoryBot.create :comment, commentable: article }
+  let!(:user) { FactoryBot.create(:user) }
 
   before do
-    @user = login
+    login(user)
 
     visit slug_path article.slug
 
@@ -27,7 +31,7 @@ RSpec.describe Comment, '#update' do
 
       uncheck 'comment_pending'
 
-      click_button 'ATUALIZAR'
+      click_button 'Atualizar'
     end
 
     it 'redirects to the article page' do
