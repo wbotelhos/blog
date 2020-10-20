@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_filter :filter_bot
-  before_filter :set_locale
+  before_action :filter_bot
+  before_action :set_locale
 
   helper_method :current_user, :is_logged?
 

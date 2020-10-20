@@ -1,5 +1,5 @@
 class FeedsController < ApplicationController
-  before_filter { request.format = :rss }
+  before_action { request.format = :rss }
 
   def index
     @articles = Article.published.by_published.recents

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :require_login
-  before_filter :find, only: [:edit, :update]
+  before_action :require_login
+  before_action :find, only: [:edit, :update]
 
   def edit
   end

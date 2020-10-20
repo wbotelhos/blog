@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_filter :require_login, except: :create
-  before_filter :build_resource
+  before_action :require_login, except: :create
+  before_action :build_resource
 
   def create
     @media   = @model.find @id

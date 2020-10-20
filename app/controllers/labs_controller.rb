@@ -1,6 +1,6 @@
 class LabsController < ApplicationController
-  before_filter :require_login, except: [:index, :show]
-  before_filter :find, only: [:edit, :export, :update]
+  before_action :require_login, except: [:index, :show]
+  before_action :find, only: [:edit, :export, :update]
 
   layout 'application'
 
