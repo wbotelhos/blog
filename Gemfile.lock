@@ -56,8 +56,6 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    acts_as_tree (2.9.1)
-      activerecord (>= 3.0.0)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     aitch (1.1.0)
@@ -208,7 +206,7 @@ GEM
       rubocop-ast (>= 0.6.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (0.7.1)
+    rubocop-ast (0.8.0)
       parser (>= 2.7.1.5)
     rubocop-performance (1.8.1)
       rubocop (>= 0.87.0)
@@ -217,9 +215,9 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 0.87.0)
-    rubocop-rspec (1.44.0)
+    rubocop-rspec (1.44.1)
       rubocop (~> 0.87)
-      rubocop-ast (~> 0.7.1)
+      rubocop-ast (>= 0.7.1)
     ruby-progressbar (1.10.1)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
@@ -273,7 +271,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_tree
   aitch
   capybara-box
   dotenv-rails

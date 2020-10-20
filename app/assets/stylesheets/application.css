@@ -6,8 +6,6 @@
  *= require components/bio
  *= require components/button
  *= require components/code
- *= require components/commenter
- *= require components/comments
  *= require components/common
  *= require components/donations
  *= require components/fonts

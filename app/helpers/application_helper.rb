@@ -55,12 +55,6 @@ module ApplicationHelper
     link_to '', path, title: text, target: :_blank, class: clazz, rel: :noopener
   end
 
-  def time_ago(time)
-    value = t('comment.created_at', time: time_ago_in_words(time))
-
-    tag.abbr(value, title: time.getutc.iso8601) if time
-  end
-
   def twitter
     "http://twitter.com/#{CONFIG['twitter']}"
   end

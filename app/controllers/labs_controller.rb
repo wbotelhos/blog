@@ -62,9 +62,7 @@ class LabsController < ApplicationController
     @media = Lab.where('slug = ?', params[:slug]).first
 
     if @media.present?
-      @comment       = @media.comments.new
-      @root_comments = @media.comments.roots
-      @title         = "#{@media.title} | #{@media.description}"
+      @title = "#{@media.title} | #{@media.description}"
 
       render layout: 'labs'
     else

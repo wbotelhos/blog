@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'acts_as_tree'
 gem 'aitch'
 gem 'dotenv-rails'
 gem 'mysql2'
