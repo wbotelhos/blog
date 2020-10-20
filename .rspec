@@ -1,2 +1,2 @@
---color
+--require common_helper
 --require spec_helper
