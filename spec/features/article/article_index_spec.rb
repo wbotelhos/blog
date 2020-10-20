@@ -11,7 +11,7 @@ describe Article, '#index' do
     end
 
     it 'access index page' do
-      expect(current_path).to eq '/articles'
+      expect(page).to have_current_path '/articles'
     end
 
     it 'do not display draft record' do
@@ -31,7 +31,7 @@ describe Article, '#index' do
       before { click_link article.title }
 
       it 'redirects to the article page' do
-        expect(current_path).to eq slug_path(article.slug)
+        expect(page).to have_current_path slug_path(article.slug), ignore_query: true
       end
     end
 
@@ -39,7 +39,7 @@ describe Article, '#index' do
       before { click_link article.slug }
 
       it 'redirects to the article page' do
-        expect(current_path).to eq slug_path(article.slug)
+        expect(page).to have_current_path slug_path(article.slug), ignore_query: true
       end
     end
   end

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 require 'rails_helper'
 
 describe Article, '#create' do
@@ -9,19 +7,19 @@ describe Article, '#create' do
   end
 
   it 'hides the preview button' do
-    expect(current_path).to_not have_button 'Preview'
+    expect(current_path).not_to have_button 'Preview'
   end
 
   context 'submit with valid data' do
     before do
-      fill_in 'article_title' , with: 'Some Title'
-      fill_in 'article_body'  , with: 'Some body'
+      fill_in 'article_title', with: 'Some Title'
+      fill_in 'article_body', with: 'Some body'
 
       click_button 'SALVAR'
     end
 
     it 'redirects to edit page' do
-      expect(current_path).to match %r(/articles/\d+)
+      expect(page).to have_current_path %r(/articles/\d+)
     end
   end
 
@@ -46,7 +44,7 @@ describe Article, '#create' do
       before { click_button 'SALVAR' }
 
       it 'renders form page again' do
-        expect(current_path).to eq articles_path
+        expect(page).to have_current_path articles_path, ignore_query: true
       end
 
       it { expect(page).to have_content 'O campo "Título" deve ser preenchido!' }

@@ -33,54 +33,54 @@ describe :menu do
     end
 
     it 'hides donate options' do
-      expect(page).to have_link 'Git tip' , visible: false
-      expect(page).to have_link 'Paypal'  , visible: false
+      expect(page).to have_link 'Git tip', visible: false
+      expect(page).to have_link 'Paypal', visible: false
     end
 
     context 'clicking on donate icon' do
       before { find('.i-heart').click }
 
       it 'shows donate options' do
-        expect(page).to have_link 'Git tip' , visible: true
-        expect(page).to have_link 'Paypal'  , visible: true
+        expect(page).to have_link 'Git tip', visible: true
+        expect(page).to have_link 'Paypal', visible: true
       end
 
       context 'clicking again' do
         before { find('.i-heart').click }
 
         it 'hides donate options' do
-          expect(page).to have_link 'Git tip' , visible: false
-          expect(page).to have_link 'Paypal'  , visible: false
+          expect(page).to have_link 'Git tip', visible: false
+          expect(page).to have_link 'Paypal', visible: false
         end
       end
     end
   end
 
   it 'hides profile menu icon' do
-    expect(page).to_not have_link '', href: profile_path
+    expect(page).not_to have_link '', href: profile_path
   end
 
   it 'hides admin menu icon' do
-    expect(page).to_not have_link '', href: admin_path
+    expect(page).not_to have_link '', href: admin_path
   end
 
   it 'hides new article menu icon' do
-    expect(page).to_not have_link '', href: new_article_path
+    expect(page).not_to have_link '', href: new_article_path
   end
 
   it 'hides logout menu icon' do
-    expect(page).to_not have_link '', href: logout_path
+    expect(page).not_to have_link '', href: logout_path
   end
 
   it 'hides new lab menu icon' do
-    expect(page).to_not have_link '', href: new_lab_path
+    expect(page).not_to have_link '', href: new_lab_path
   end
 
   context 'clicking on feed icon' do
-    before { find('.i-feed').click  }
+    before { find('.i-feed').click }
 
     it 'goes to feed page' do
-      expect(current_path).to eq feed_path
+      expect(page).to have_current_path feed_path, ignore_query: true
     end
   end
 

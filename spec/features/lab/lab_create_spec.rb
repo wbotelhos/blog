@@ -1,5 +1,3 @@
-# coding: utf-8
-
 require 'rails_helper'
 
 describe Lab, '#create' do
@@ -9,24 +7,24 @@ describe Lab, '#create' do
   end
 
   it 'hides the preview button' do
-    expect(current_path).to_not have_button 'Preview'
+    expect(current_path).not_to have_button 'Preview'
   end
 
   context 'submit with valid data' do
     before do
-      fill_in 'lab_analytics'   , with: 'UA-123-4'
-      fill_in 'lab_body'        , with: 'body'
-      fill_in 'lab_description' , with: 'description'
-      fill_in 'lab_keywords'    , with: 'key,words'
-      fill_in 'lab_slug'        , with: 'slug'
-      fill_in 'lab_title'       , with: 'title'
-      fill_in 'lab_version'     , with: '1.0.0'
+      fill_in 'lab_analytics', with: 'UA-123-4'
+      fill_in 'lab_body', with: 'body'
+      fill_in 'lab_description', with: 'description'
+      fill_in 'lab_keywords', with: 'key,words'
+      fill_in 'lab_slug', with: 'slug'
+      fill_in 'lab_title', with: 'title'
+      fill_in 'lab_version', with: '1.0.0'
 
       click_button 'SALVAR'
     end
 
     it 'redirects to edit page' do
-      expect(current_path).to match %r(/labs/\d+)
+      expect(page).to have_current_path %r(/labs/\d+)
     end
   end
 
@@ -49,17 +47,17 @@ describe Lab, '#create' do
 
     context 'blank title' do
       before do
-        fill_in 'lab_analytics'   , with: 'UA-123-4'
-        fill_in 'lab_description' , with: 'description'
-        fill_in 'lab_keywords'    , with: 'key,words'
-        fill_in 'lab_slug'        , with: 'slug'
-        fill_in 'lab_version'     , with: '1.0.0'
+        fill_in 'lab_analytics', with: 'UA-123-4'
+        fill_in 'lab_description', with: 'description'
+        fill_in 'lab_keywords', with: 'key,words'
+        fill_in 'lab_slug', with: 'slug'
+        fill_in 'lab_version', with: '1.0.0'
 
         click_button 'SALVAR'
       end
 
       it 'renders form page again' do
-        expect(current_path).to eq labs_path
+        expect(page).to have_current_path labs_path, ignore_query: true
       end
 
       it { expect(page).to have_content 'O campo "Título" deve ser preenchido!' }
@@ -67,11 +65,11 @@ describe Lab, '#create' do
 
     context 'blank slug' do
       before do
-        fill_in 'lab_analytics'   , with: 'UA-123-4'
-        fill_in 'lab_description' , with: 'description'
-        fill_in 'lab_keywords'    , with: 'key,words'
-        fill_in 'lab_title'       , with: 'title'
-        fill_in 'lab_version'     , with: '1.0.0'
+        fill_in 'lab_analytics', with: 'UA-123-4'
+        fill_in 'lab_description', with: 'description'
+        fill_in 'lab_keywords', with: 'key,words'
+        fill_in 'lab_title', with: 'title'
+        fill_in 'lab_version', with: '1.0.0'
 
         click_button 'SALVAR'
       end
@@ -81,12 +79,12 @@ describe Lab, '#create' do
 
     context 'blank version' do
       before do
-        fill_in 'lab_analytics'   , with: 'UA-123-4'
-        fill_in 'lab_description' , with: 'description'
-        fill_in 'lab_keywords'    , with: 'key,words'
-        fill_in 'lab_slug'        , with: 'slug'
-        fill_in 'lab_title'       , with: 'title'
-        fill_in 'lab_version'     , with: ''
+        fill_in 'lab_analytics', with: 'UA-123-4'
+        fill_in 'lab_description', with: 'description'
+        fill_in 'lab_keywords', with: 'key,words'
+        fill_in 'lab_slug', with: 'slug'
+        fill_in 'lab_title', with: 'title'
+        fill_in 'lab_version', with: ''
 
         click_button 'SALVAR'
       end
@@ -96,12 +94,12 @@ describe Lab, '#create' do
 
     context 'blank keywords' do
       before do
-        fill_in 'lab_analytics'   , with: 'UA-123-4'
-        fill_in 'lab_description' , with: 'description'
-        fill_in 'lab_keywords'    , with: ''
-        fill_in 'lab_slug'        , with: 'slug'
-        fill_in 'lab_title'       , with: 'title'
-        fill_in 'lab_version'     , with: '1.0.0'
+        fill_in 'lab_analytics', with: 'UA-123-4'
+        fill_in 'lab_description', with: 'description'
+        fill_in 'lab_keywords', with: ''
+        fill_in 'lab_slug', with: 'slug'
+        fill_in 'lab_title', with: 'title'
+        fill_in 'lab_version', with: '1.0.0'
 
         click_button 'SALVAR'
       end
@@ -111,12 +109,12 @@ describe Lab, '#create' do
 
     context 'blank description' do
       before do
-        fill_in 'lab_analytics'   , with: 'UA-123-4'
-        fill_in 'lab_description' , with: ''
-        fill_in 'lab_keywords'    , with: 'key,words'
-        fill_in 'lab_slug'        , with: 'slug'
-        fill_in 'lab_title'       , with: 'title'
-        fill_in 'lab_version'     , with: '1.0.0'
+        fill_in 'lab_analytics', with: 'UA-123-4'
+        fill_in 'lab_description', with: ''
+        fill_in 'lab_keywords', with: 'key,words'
+        fill_in 'lab_slug', with: 'slug'
+        fill_in 'lab_title', with: 'title'
+        fill_in 'lab_version', with: '1.0.0'
 
         click_button 'SALVAR'
       end
@@ -126,12 +124,12 @@ describe Lab, '#create' do
 
     context 'blank analytics' do
       before do
-        fill_in 'lab_analytics'   , with: ''
-        fill_in 'lab_description' , with: 'description'
-        fill_in 'lab_keywords'    , with: 'key,words'
-        fill_in 'lab_slug'        , with: 'slug'
-        fill_in 'lab_title'       , with: 'title'
-        fill_in 'lab_version'     , with: '1.0.0'
+        fill_in 'lab_analytics', with: ''
+        fill_in 'lab_description', with: 'description'
+        fill_in 'lab_keywords', with: 'key,words'
+        fill_in 'lab_slug', with: 'slug'
+        fill_in 'lab_title', with: 'title'
+        fill_in 'lab_version', with: '1.0.0'
 
         click_button 'SALVAR'
       end

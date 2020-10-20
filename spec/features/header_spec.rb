@@ -11,7 +11,7 @@ describe :header do
     before { click_link CONFIG['author'] }
 
     it 'goes to root page' do
-      expect(current_path).to eq root_path
+      expect(page).to have_current_path root_path, ignore_query: true
     end
   end
 

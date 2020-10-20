@@ -23,7 +23,7 @@ class Article < ActiveRecord::Base
   end
 
   def publish!
-    write_attribute :published_at, Time.current
+    self[:published_at] = Time.current
 
     save
   end
@@ -31,6 +31,6 @@ class Article < ActiveRecord::Base
   private
 
   def generate_slug
-    write_attribute :slug, title.slug
+    self[:slug] = title.slug
   end
 end

@@ -31,8 +31,8 @@ class AssetExtractor
   def remove_elements
     @html.at_css('form').remove
     @html.at_css('meta[name="csrf-token"]').remove
-    @html.search('.reply').map &:remove
-    @html.search('//abbr').map &:remove
+    @html.search('.reply').map(&:remove)
+    @html.search('//abbr').map(&:remove)
   end
 
   def process
@@ -48,9 +48,7 @@ class AssetExtractor
 
     body = Aitch.get(url).body.force_encoding('binary')
 
-    if filename == 'labs.css'
-      body = rename_fonts body
-    end
+    body = rename_fonts body if filename == 'labs.css'
 
     write_file destiny, body
   end
@@ -70,12 +68,12 @@ class AssetExtractor
   end
 
   def fix_lib_path(html)
-    html.gsub! 'lib/'    , '../lib/'
-    html.gsub! 'vendor/' , '../vendor/'
+    html.gsub! 'lib/', '../lib/'
+    html.gsub! 'vendor/', '../vendor/'
   end
 
   def fix_public_path(html)
-    html.gsub! /raty\//, ''
+    html.gsub!(%r(raty/), '')
   end
 
   def get_filename(url)
@@ -103,7 +101,7 @@ class AssetExtractor
 
     # "#{$1}.#{$2}" does not works
     %w[eot svg ttf woff].each do |ext|
-      body.gsub!(/(blogy)\-.+\.(#{ext})/ , "blogy.#{ext}")
+      body.gsub!(/(blogy)-.+\.(#{ext})/, "blogy.#{ext}")
     end
 
     body

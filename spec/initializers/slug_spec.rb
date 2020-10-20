@@ -1,5 +1,3 @@
-# coding: utf-8
-
 require 'rails_helper'
 
 describe String do
@@ -24,7 +22,7 @@ describe String do
   end
 
   it 'slugs none alpha alphanumeric' do
-    expect(%(ok!@#$\%ˆ&*()+-={}|[]\\:";'<>?,./).slug).to eq 'ok'
+    expect(%(ok!@#{$\}%ˆ&*()+-={}|[]\\:";'<>?,./).slug).to eq 'ok'
   end
 
   it 'slugs hyphen on begin' do

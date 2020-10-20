@@ -11,7 +11,7 @@ describe Lab, '#index' do
     end
 
     it 'access index page' do
-      expect(current_path).to eq '/labs'
+      expect(page).to have_current_path '/labs'
     end
 
     it 'do not display draft record' do
@@ -31,7 +31,7 @@ describe Lab, '#index' do
       before { click_link lab.title }
 
       it 'redirects to the lab page' do
-        expect(current_path).to eq slug_lab_path(lab.slug)
+        expect(page).to have_current_path slug_lab_path(lab.slug), ignore_query: true
       end
     end
 
@@ -39,7 +39,7 @@ describe Lab, '#index' do
       before { click_link lab.slug }
 
       it 'redirects to the lab page' do
-        expect(current_path).to eq slug_lab_path(lab.slug)
+        expect(page).to have_current_path slug_lab_path(lab.slug), ignore_query: true
       end
     end
   end

@@ -5,7 +5,7 @@ class AssetUrl
   end
 
   def to_s
-    if @url =~ %r(\Ahttps?://)i
+    if %r(\Ahttps?://)i.match?(@url)
       @url
     elsif @url.starts_with? '//'
       "http:#{@url}"

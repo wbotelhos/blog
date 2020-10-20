@@ -2,7 +2,7 @@ module ApplicationHelper
   def errors_for(object, key)
     errors = object.errors.messages[key]
 
-    content_tag(:span, errors[0], class: 'validation-error') if errors.present?
+    tag.span(errors[0], class: 'validation-error') if errors.present?
   end
 
   def github
@@ -31,7 +31,7 @@ module ApplicationHelper
       lax_html_blocks:    true,
       no_intra_emphasis:  true,
       strikethrough:      true,
-      superscript:        true
+      superscript:        true,
     }
 
     Redcarpet::Markdown.new(renderer, options).render(content).html_safe
@@ -50,15 +50,15 @@ module ApplicationHelper
   end
 
   def social_icon(text, clazz, path)
-    text = "#{text} <#{path.gsub /mailto:/, ''}>"
+    text = "#{text} <#{path.gsub(/mailto:/, '')}>"
 
-    link_to '', path, title: text, target: :_blank, class: clazz
+    link_to '', path, title: text, target: :_blank, class: clazz, rel: :noopener
   end
 
   def time_ago(time)
     value = t('comment.created_at', time: time_ago_in_words(time))
 
-    content_tag :abbr, value, title: time.getutc.iso8601 if time
+    tag.abbr(value, title: time.getutc.iso8601) if time
   end
 
   def twitter
@@ -69,13 +69,13 @@ module ApplicationHelper
     options = {
       text: %("#{options[:text]}" ~),
       url:  options[:url],
-      via:  CONFIG['twitter']
+      via:  CONFIG['twitter'],
     }
 
-    content = content_tag :i, nil, class: 'i-twitter'
-    link    = link_to content, "https://twitter.com/intent/tweet?#{to_query options}", title: t('share.twitter'), target: :_blank
+    content = tag.i(nil, class: 'i-twitter')
+    link    = link_to content, "https://twitter.com/intent/tweet?#{to_query options}", title: t('share.twitter'), target: :_blank, rel: :noopener
 
-    content_tag :div, link, class: :twitter
+    tag.div(link, class: :twitter)
   end
 
   private

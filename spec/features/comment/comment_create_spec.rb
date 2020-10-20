@@ -1,5 +1,3 @@
-# coding: utf-8
-
 require 'rails_helper'
 
 describe Comment, '#create' do
@@ -31,10 +29,10 @@ describe Comment, '#create' do
       let(:comment) { FactoryGirl.build :comment }
 
       before do
-        fill_in 'comment_body'  , with: comment.body
-        fill_in 'comment_email' , with: comment.email
-        fill_in 'comment_name'  , with: comment.name
-        fill_in 'comment_url'   , with: comment.url
+        fill_in 'comment_body', with: comment.body
+        fill_in 'comment_email', with: comment.email
+        fill_in 'comment_name', with: comment.name
+        fill_in 'comment_url', with: comment.url
 
         uncheck 'not_human'
 
@@ -42,11 +40,11 @@ describe Comment, '#create' do
       end
 
       it 'redirects to the article page' do
-        expect(current_path).to eq "/articles/#{article.id}/comments"
+        expect(page).to have_current_path "/articles/#{article.id}/comments", ignore_query: true
       end
 
       it 'does not displays the author indicator', :js do
-        expect(page).to_not have_content 'autor'
+        expect(page).not_to have_content 'autor'
       end
 
       it 'displays the time', :js do
@@ -58,7 +56,7 @@ describe Comment, '#create' do
       end
 
       it 'displays the edit link', :js do
-        expect(page).to_not have_link 'Editar'
+        expect(page).not_to have_link 'Editar'
       end
 
       it 'displays the answer link', :js do
@@ -75,9 +73,9 @@ describe Comment, '#create' do
 
       context 'given empty name' do
         before do
-          fill_in 'comment_body'  , with: 'Some comment!'
-          fill_in 'comment_email' , with: 'john@example.org'
-          fill_in 'comment_url'   , with: 'http://example.org'
+          fill_in 'comment_body', with: 'Some comment!'
+          fill_in 'comment_email', with: 'john@example.org'
+          fill_in 'comment_url', with: 'http://example.org'
 
           uncheck 'not_human'
 
@@ -91,9 +89,9 @@ describe Comment, '#create' do
 
       context 'given empty email' do
         before do
-          fill_in 'comment_body'  , with: 'Some comment!'
-          fill_in 'comment_name'  , with: 'John'
-          fill_in 'comment_url'   , with: 'http://example.org'
+          fill_in 'comment_body', with: 'Some comment!'
+          fill_in 'comment_name', with: 'John'
+          fill_in 'comment_url', with: 'http://example.org'
 
           uncheck 'not_human'
 
@@ -107,9 +105,9 @@ describe Comment, '#create' do
 
       context 'given empty body' do
         before do
-          fill_in 'comment_email' , with: 'john@example.org'
-          fill_in 'comment_name'  , with: 'John'
-          fill_in 'comment_url'   , with: 'http://example.org'
+          fill_in 'comment_email', with: 'john@example.org'
+          fill_in 'comment_name', with: 'John'
+          fill_in 'comment_url', with: 'http://example.org'
 
           uncheck 'not_human'
 
@@ -187,15 +185,15 @@ describe Comment, '#create' do
     end
 
     it 'hides the name field' do
-      expect(page).to_not have_field 'comment_name'
+      expect(page).not_to have_field 'comment_name'
     end
 
     it 'hides the email field' do
-      expect(page).to_not have_field 'comment_email'
+      expect(page).not_to have_field 'comment_email'
     end
 
     it 'hides the url field' do
-      expect(page).to_not have_field 'comment_url'
+      expect(page).not_to have_field 'comment_url'
     end
 
     context 'with valid data' do
@@ -206,7 +204,7 @@ describe Comment, '#create' do
       end
 
       it 'redirects to the article page' do
-        expect(current_path).to eq slug_path(article.slug)
+        expect(page).to have_current_path slug_path(article.slug), ignore_query: true
       end
 
       it 'displays the author indicator' do
@@ -234,7 +232,7 @@ describe Comment, '#create' do
       end
 
       it 'does not begins pending' do
-        expect(page).to_not have_content 'pendente'
+        expect(page).not_to have_content 'pendente'
       end
     end
 

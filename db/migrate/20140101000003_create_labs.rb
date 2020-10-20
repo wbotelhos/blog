@@ -7,13 +7,13 @@ class CreateLabs < ActiveRecord::Migration
       t.string   :description
       t.string   :js
       t.string   :js_import
-      t.string   :keywords     , null: false
-      t.string   :slug         , null: false
-      t.string   :title        , null: false
-      t.string   :version      , null: false
+      t.string   :keywords, null: false
+      t.string   :slug, null: false
+      t.string   :title, null: false
+      t.string   :version, null: false
       t.text     :body
       t.text     :js_ready
-      t.text   :css
+      t.text :css
 
       t.timestamps
     end

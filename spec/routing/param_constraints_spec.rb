@@ -14,7 +14,7 @@ describe ParamConstraints do
   context 'with a labs slug' do
     let!(:lab) { FactoryGirl.create :lab, slug: 'raty' }
 
-    it "routes /slug to lab#show" do
+    it 'routes /slug to lab#show' do
       expect(get: "/#{lab.slug}?slug=#{lab.slug}").to route_to(controller: 'labs', action: 'show', slug: lab.slug)
     end
   end

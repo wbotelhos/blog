@@ -1,5 +1,3 @@
-# coding: utf-8
-
 require 'rails_helper'
 
 describe User, 'session#new', :js do
@@ -9,8 +7,8 @@ describe User, 'session#new', :js do
 
   context 'with wrong password' do
     before do
-      fill_in 'email'    , with: 'john@example.org'
-      fill_in 'password' , with: 'wrong'
+      fill_in 'email', with: 'john@example.org'
+      fill_in 'password', with: 'wrong'
 
       uncheck 'not_human'
 
@@ -18,7 +16,7 @@ describe User, 'session#new', :js do
     end
 
     it 'redirects to the same page' do
-      expect(current_path).to eq login_path
+      expect(page).to have_current_path login_path, ignore_query: true
     end
 
     it 'displays error message' do
@@ -28,8 +26,8 @@ describe User, 'session#new', :js do
 
   context 'with right password' do
     before do
-      fill_in 'email'    , with: user.email
-      fill_in 'password' , with: user.password
+      fill_in 'email', with: user.email
+      fill_in 'password', with: user.password
 
       uncheck 'not_human'
 
@@ -37,7 +35,7 @@ describe User, 'session#new', :js do
     end
 
     it 'redirects to admin page' do
-      expect(current_path).to eq admin_path
+      expect(page).to have_current_path admin_path, ignore_query: true
     end
   end
 
@@ -82,7 +80,7 @@ describe User, 'session#new', :js do
       before { visit login_path }
 
       it 'redirects to index page' do
-        expect(current_path).to eq root_path
+        expect(page).to have_current_path root_path, ignore_query: true
       end
     end
   end

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 require 'rails_helper'
 
 describe 'Admin', '#index' do
@@ -13,7 +11,7 @@ describe 'Admin', '#index' do
       before { visit admin_path }
 
       it 'access index page' do
-        expect(current_path).to eq '/admin'
+        expect(page).to have_current_path '/admin'
       end
 
       it 'do not display published record' do
@@ -33,7 +31,7 @@ describe 'Admin', '#index' do
         before { click_link draft.title }
 
         it 'redirects to edit page' do
-          expect(current_path).to eq edit_article_path(draft.id)
+          expect(page).to have_current_path edit_article_path(draft.id), ignore_query: true
         end
       end
 
@@ -41,7 +39,7 @@ describe 'Admin', '#index' do
         before { click_link draft.slug }
 
         it 'redirects to the draft page' do
-          expect(current_path).to eq slug_path(draft.slug)
+          expect(page).to have_current_path slug_path(draft.slug), ignore_query: true
         end
       end
     end
@@ -53,7 +51,7 @@ describe 'Admin', '#index' do
       before { visit admin_path }
 
       it 'access index page' do
-        expect(current_path).to eq '/admin'
+        expect(page).to have_current_path '/admin'
       end
 
       it 'do not display answered record' do
@@ -73,7 +71,7 @@ describe 'Admin', '#index' do
         before { click_link pending.email }
 
         it 'redirects to edit page' do
-          expect(current_path).to eq "/articles/#{pending.commentable.id}/comments/#{pending.id}/edit"
+          expect(page).to have_current_path "/articles/#{pending.commentable.id}/comments/#{pending.id}/edit", ignore_query: true
         end
       end
 
@@ -81,7 +79,7 @@ describe 'Admin', '#index' do
         before { click_link slug_url(pending.commentable.slug, anchor: "comment-#{pending.id}") }
 
         it 'redirects to the article page' do
-          expect(current_path).to eq "/#{pending.commentable.slug}"
+          expect(page).to have_current_path "/#{pending.commentable.slug}", ignore_query: true
         end
       end
     end

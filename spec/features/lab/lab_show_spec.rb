@@ -1,5 +1,3 @@
-# coding: utf-8
-
 require 'rails_helper'
 
 describe Lab, '#show' do
@@ -8,11 +6,11 @@ describe Lab, '#show' do
   before { visit slug_lab_path lab.slug }
 
   it 'redirects to show page' do
-    expect(current_path).to eq "/#{lab.slug}"
+    expect(page).to have_current_path "/#{lab.slug}", ignore_query: true
   end
 
   it 'does not display edit link' do
-    expect(page).to_not have_link 'Edit'
+    expect(page).not_to have_link 'Edit'
   end
 
   it 'changes the title' do
@@ -59,15 +57,15 @@ describe Lab, '#show' do
 
       it 'hides donate options' do
         expect(page).to have_link 'Gratipay', visible: false
-        expect(page).to have_link 'Paypal'  , visible: false
+        expect(page).to have_link 'Paypal', visible: false
       end
 
       context 'clicking on donate icon' do
         before { find('.i-heart').click }
 
         it 'shows donate options' do
-          expect(page).to have_link 'Gratipay' , visible: true
-          expect(page).to have_link 'Paypal'  , visible: true
+          expect(page).to have_link 'Gratipay', visible: true
+          expect(page).to have_link 'Paypal', visible: true
         end
 
         context 'clicking again' do
@@ -75,7 +73,7 @@ describe Lab, '#show' do
 
           it 'hides donate options' do
             expect(page).to have_link 'Gratipay', visible: false
-            expect(page).to have_link 'Paypal'  , visible: false
+            expect(page).to have_link 'Paypal', visible: false
           end
         end
       end

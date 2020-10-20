@@ -1,5 +1,3 @@
-# coding: utf-8
-
 require 'rails_helper'
 
 describe Comment, '#update' do
@@ -17,15 +15,15 @@ describe Comment, '#update' do
   end
 
   it 'redirects to edit page' do
-    expect(current_path).to eq "/articles/#{article.id}/comments/#{comment.id}/edit"
+    expect(page).to have_current_path "/articles/#{article.id}/comments/#{comment.id}/edit", ignore_query: true
   end
 
   context 'change the values' do
     before do
-      fill_in 'comment_body'  , with: 'new body'
-      fill_in 'comment_email' , with: 'new-john@example.org'
-      fill_in 'comment_name'  , with: 'new name'
-      fill_in 'comment_url'   , with: 'http://example.org/new'
+      fill_in 'comment_body', with: 'new body'
+      fill_in 'comment_email', with: 'new-john@example.org'
+      fill_in 'comment_name', with: 'new name'
+      fill_in 'comment_url', with: 'http://example.org/new'
 
       uncheck 'comment_pending'
 
@@ -33,11 +31,11 @@ describe Comment, '#update' do
     end
 
     it 'redirects to the article page' do
-      expect(current_path).to eq slug_path(article.slug)
+      expect(page).to have_current_path slug_path(article.slug), ignore_query: true
     end
 
     it 'does not displays the author indicator' do
-      expect(page).to_not have_content 'autor'
+      expect(page).not_to have_content 'autor'
     end
 
     it 'displays the time' do
@@ -61,7 +59,7 @@ describe Comment, '#update' do
     end
 
     it 'hides the pending message' do
-      expect(page).to_not have_content 'pendente'
+      expect(page).not_to have_content 'pendente'
     end
   end
 end

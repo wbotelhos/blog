@@ -1,5 +1,3 @@
-# coding: utf-8
-
 require 'rails_helper'
 
 describe Article, '#show' do
@@ -31,17 +29,17 @@ describe Article, '#show' do
     before { click_link article.title }
 
     it 'sends to the same page' do
-      expect(current_path).to eq "/#{article.slug}"
+      expect(page).to have_current_path "/#{article.slug}", ignore_query: true
     end
   end
 
   it 'redirects to show page' do
-    expect(current_path).to eq "/#{article.slug}"
+    expect(page).to have_current_path "/#{article.slug}", ignore_query: true
   end
 
   it 'does not display edit link' do
     within 'header' do
-      expect(page).to_not have_link 'Editar'
+      expect(page).not_to have_link 'Editar'
     end
   end
 
@@ -49,7 +47,7 @@ describe Article, '#show' do
     before { visit slug_path 'invalid' }
 
     it 'redirects to root page' do
-      expect(current_path).to eq root_path
+      expect(page).to have_current_path root_path, ignore_query: true
     end
 
     it 'display not found message' do

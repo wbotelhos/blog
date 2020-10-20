@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Lab do
   it 'has a valid factory' do
-    expect(FactoryGirl.build :lab).to be_valid
+    expect(FactoryGirl.build(:lab)).to be_valid
   end
 
   it { is_expected.to validate_presence_of :analytics }
@@ -31,24 +31,24 @@ describe Lab do
         expect(result).to     have_attribute :published_at
         expect(result).to     have_attribute :slug
         expect(result).to     have_attribute :title
-        expect(result).to_not have_attribute :body
-        expect(result).to_not have_attribute :created_at
-        expect(result).to_not have_attribute :css_import
-        expect(result).to_not have_attribute :js
-        expect(result).to_not have_attribute :js_import
-        expect(result).to_not have_attribute :js_ready
-        expect(result).to_not have_attribute :updated_at
-        expect(result).to_not have_attribute :user_id
-        expect(result).to_not have_attribute :version
+        expect(result).not_to have_attribute :body
+        expect(result).not_to have_attribute :created_at
+        expect(result).not_to have_attribute :css_import
+        expect(result).not_to have_attribute :js
+        expect(result).not_to have_attribute :js_import
+        expect(result).not_to have_attribute :js_ready
+        expect(result).not_to have_attribute :updated_at
+        expect(result).not_to have_attribute :user_id
+        expect(result).not_to have_attribute :version
         expect(result.id).to  be_nil
       end
     end
 
     describe :by_month do
-      let!(:lab_1) { FactoryGirl.create :lab, published_at: Time.local(2013, 01, 01) }
-      let!(:lab_2) { FactoryGirl.create :lab, published_at: Time.local(2013, 01, 01) }
-      let!(:lab_3) { FactoryGirl.create :lab, published_at: Time.local(2013, 02, 01) }
-      let!(:lab_4) { FactoryGirl.create :lab, published_at: Time.local(2013, 03, 01) }
+      let!(:lab_1) { FactoryGirl.create :lab, published_at: Time.local(2013, 0o1, 0o1) }
+      let!(:lab_2) { FactoryGirl.create :lab, published_at: Time.local(2013, 0o1, 0o1) }
+      let!(:lab_3) { FactoryGirl.create :lab, published_at: Time.local(2013, 0o2, 0o1) }
+      let!(:lab_4) { FactoryGirl.create :lab, published_at: Time.local(2013, 0o3, 0o1) }
       let(:result) { Lab.by_month }
 
       xit 'groups the labs by published month'
@@ -98,7 +98,7 @@ describe Lab do
 
         context 'lab without published date' do
           it 'is ignored' do
-            expect(Lab.published).to_not include lab_draft
+            expect(Lab.published).not_to include lab_draft
           end
         end
 
@@ -106,7 +106,7 @@ describe Lab do
           let!(:lab_scheduled) { FactoryGirl.create :lab, published_at: Time.local(2500, 1, 1) }
 
           it 'is ignored' do
-            expect(Lab.published).to_not include lab_scheduled
+            expect(Lab.published).not_to include lab_scheduled
           end
         end
       end

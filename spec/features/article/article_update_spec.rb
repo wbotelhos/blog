@@ -1,5 +1,3 @@
-# coding: utf-8
-
 require 'rails_helper'
 
 describe Article, '#update' do
@@ -16,14 +14,14 @@ describe Article, '#update' do
 
   context 'with valid data' do
     before do
-      fill_in 'article_title' , with: 'Some Title'
-      fill_in 'article_body'  , with: 'Some body'
+      fill_in 'article_title', with: 'Some Title'
+      fill_in 'article_body', with: 'Some body'
 
       click_button 'ATUALIZAR'
     end
 
     it 'redirects to edit page' do
-      expect(current_path).to eq "/articles/#{article.id}/edit"
+      expect(page).to have_current_path "/articles/#{article.id}/edit", ignore_query: true
     end
 
     it { expect(find_field('article_title').value).to eq 'Some Title' }
@@ -41,7 +39,7 @@ describe Article, '#update' do
       end
 
       it 'renders form page again' do
-        expect(current_path).to eq article_path article
+        expect(page).to have_current_path article_path article, ignore_query: true
       end
 
       it { expect(page).to have_content 'O campo "Título" deve ser preenchido!' }
@@ -61,7 +59,7 @@ describe Article, '#update' do
       end
 
       it 'renders index page' do
-        expect(current_path).to eq root_path
+        expect(page).to have_current_path root_path, ignore_query: true
       end
 
       it 'shows the actual article on published list' do
@@ -78,7 +76,7 @@ describe Article, '#update' do
     end
 
     it 'hides the publish button' do
-      expect(page).to_not have_button 'PUBLICAR'
+      expect(page).not_to have_button 'PUBLICAR'
     end
   end
 end

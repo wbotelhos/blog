@@ -9,12 +9,12 @@ describe ArticlesController do
       end
 
       it 'redirect to the login page' do
-        get :edit, id: 1
+        get :edit, params: { id: 1 }
         expect(response).to redirect_to login_url
       end
 
       it 'redirect to the login page' do
-        put :update, id: 1
+        put :update, params: { id: 1 }
         expect(response).to redirect_to login_url
       end
 

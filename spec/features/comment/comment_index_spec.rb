@@ -11,7 +11,7 @@ describe Comment, '#index' do
       end
 
       it 'does not shows pending label' do
-        expect(page).to_not have_content 'pendente'
+        expect(page).not_to have_content 'pendente'
       end
     end
 

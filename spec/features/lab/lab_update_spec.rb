@@ -1,5 +1,3 @@
-# coding: utf-8
-
 require 'rails_helper'
 
 describe Lab, '#update' do
@@ -16,24 +14,24 @@ describe Lab, '#update' do
 
   context 'with valid data' do
     before do
-      fill_in 'lab_analytics'   , with: 'UA-432-1'
-      fill_in 'lab_body'        , with: 'Some body'
-      fill_in 'lab_css'         , with: 'Some CSS'
-      fill_in 'lab_css_import'  , with: 'Some CSS import'
-      fill_in 'lab_description' , with: 'Some description'
-      fill_in 'lab_js'          , with: 'Some JS'
-      fill_in 'lab_js_import'   , with: 'Some JS import'
-      fill_in 'lab_js_ready'    , with: 'Some JS ready'
-      fill_in 'lab_keywords'    , with: 'key,words'
-      fill_in 'lab_slug'        , with: 'Some slug'
-      fill_in 'lab_title'       , with: 'Some title'
-      fill_in 'lab_version'     , with: '2.0.0'
+      fill_in 'lab_analytics', with: 'UA-432-1'
+      fill_in 'lab_body', with: 'Some body'
+      fill_in 'lab_css', with: 'Some CSS'
+      fill_in 'lab_css_import', with: 'Some CSS import'
+      fill_in 'lab_description', with: 'Some description'
+      fill_in 'lab_js', with: 'Some JS'
+      fill_in 'lab_js_import', with: 'Some JS import'
+      fill_in 'lab_js_ready', with: 'Some JS ready'
+      fill_in 'lab_keywords', with: 'key,words'
+      fill_in 'lab_slug', with: 'Some slug'
+      fill_in 'lab_title', with: 'Some title'
+      fill_in 'lab_version', with: '2.0.0'
 
       click_button 'ATUALIZAR'
     end
 
     it 'redirects to edit page' do
-      expect(current_path).to eq "/labs/#{lab.id}/edit"
+      expect(page).to have_current_path "/labs/#{lab.id}/edit", ignore_query: true
     end
 
     it { expect(find_field('lab_analytics').value).to   eq 'UA-432-1' }
@@ -57,18 +55,18 @@ describe Lab, '#update' do
 
     context 'blank title' do
       before do
-        fill_in 'lab_analytics'   , with: 'UA-123-4'
-        fill_in 'lab_description' , with: 'description'
-        fill_in 'lab_keywords'    , with: 'key,words'
-        fill_in 'lab_slug'        , with: 'slug'
-        fill_in 'lab_title'       , with: ''
-        fill_in 'lab_version'     , with: '1.0.0'
+        fill_in 'lab_analytics', with: 'UA-123-4'
+        fill_in 'lab_description', with: 'description'
+        fill_in 'lab_keywords', with: 'key,words'
+        fill_in 'lab_slug', with: 'slug'
+        fill_in 'lab_title', with: ''
+        fill_in 'lab_version', with: '1.0.0'
 
         click_button 'ATUALIZAR'
       end
 
       it 'renders form page again' do
-        expect(current_path).to eq lab_path lab
+        expect(page).to have_current_path lab_path lab, ignore_query: true
       end
 
       it { expect(page).to have_content 'O campo "Título" deve ser preenchido!' }
@@ -76,12 +74,12 @@ describe Lab, '#update' do
 
     context 'blank slug' do
       before do
-        fill_in 'lab_analytics'   , with: 'UA-123-4'
-        fill_in 'lab_description' , with: 'description'
-        fill_in 'lab_keywords'    , with: 'key,words'
-        fill_in 'lab_slug'        , with: ''
-        fill_in 'lab_title'       , with: 'title'
-        fill_in 'lab_version'     , with: '1.0.0'
+        fill_in 'lab_analytics', with: 'UA-123-4'
+        fill_in 'lab_description', with: 'description'
+        fill_in 'lab_keywords', with: 'key,words'
+        fill_in 'lab_slug', with: ''
+        fill_in 'lab_title', with: 'title'
+        fill_in 'lab_version', with: '1.0.0'
 
         click_button 'ATUALIZAR'
       end
@@ -91,12 +89,12 @@ describe Lab, '#update' do
 
     context 'blank version' do
       before do
-        fill_in 'lab_analytics'   , with: 'UA-123-4'
-        fill_in 'lab_description' , with: 'description'
-        fill_in 'lab_keywords'    , with: 'key,words'
-        fill_in 'lab_slug'        , with: 'slug'
-        fill_in 'lab_title'       , with: 'title'
-        fill_in 'lab_version'     , with: ''
+        fill_in 'lab_analytics', with: 'UA-123-4'
+        fill_in 'lab_description', with: 'description'
+        fill_in 'lab_keywords', with: 'key,words'
+        fill_in 'lab_slug', with: 'slug'
+        fill_in 'lab_title', with: 'title'
+        fill_in 'lab_version', with: ''
 
         click_button 'ATUALIZAR'
       end
@@ -106,12 +104,12 @@ describe Lab, '#update' do
 
     context 'blank keywords' do
       before do
-        fill_in 'lab_analytics'   , with: 'UA-123-4'
-        fill_in 'lab_description' , with: 'description'
-        fill_in 'lab_keywords'    , with: ''
-        fill_in 'lab_slug'        , with: 'slug'
-        fill_in 'lab_title'       , with: 'title'
-        fill_in 'lab_version'     , with: '1.0.0'
+        fill_in 'lab_analytics', with: 'UA-123-4'
+        fill_in 'lab_description', with: 'description'
+        fill_in 'lab_keywords', with: ''
+        fill_in 'lab_slug', with: 'slug'
+        fill_in 'lab_title', with: 'title'
+        fill_in 'lab_version', with: '1.0.0'
 
         click_button 'ATUALIZAR'
       end
@@ -121,12 +119,12 @@ describe Lab, '#update' do
 
     context 'blank description' do
       before do
-        fill_in 'lab_analytics'   , with: 'UA-123-4'
-        fill_in 'lab_description' , with: ''
-        fill_in 'lab_keywords'    , with: 'key,words'
-        fill_in 'lab_slug'        , with: 'slug'
-        fill_in 'lab_title'       , with: 'title'
-        fill_in 'lab_version'     , with: '1.0.0'
+        fill_in 'lab_analytics', with: 'UA-123-4'
+        fill_in 'lab_description', with: ''
+        fill_in 'lab_keywords', with: 'key,words'
+        fill_in 'lab_slug', with: 'slug'
+        fill_in 'lab_title', with: 'title'
+        fill_in 'lab_version', with: '1.0.0'
 
         click_button 'ATUALIZAR'
       end
@@ -136,12 +134,12 @@ describe Lab, '#update' do
 
     context 'blank lab_analytics' do
       before do
-        fill_in 'lab_analytics'   , with: ''
-        fill_in 'lab_description' , with: 'description'
-        fill_in 'lab_keywords'    , with: 'key,words'
-        fill_in 'lab_slug'        , with: 'slug'
-        fill_in 'lab_title'       , with: 'title'
-        fill_in 'lab_version'     , with: '1.0.0'
+        fill_in 'lab_analytics', with: ''
+        fill_in 'lab_description', with: 'description'
+        fill_in 'lab_keywords', with: 'key,words'
+        fill_in 'lab_slug', with: 'slug'
+        fill_in 'lab_title', with: 'title'
+        fill_in 'lab_version', with: '1.0.0'
 
         click_button 'ATUALIZAR'
       end

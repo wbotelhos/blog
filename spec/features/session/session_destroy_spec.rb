@@ -7,21 +7,21 @@ describe User do
   end
 
   it 'starts with user access' do
-    expect(current_path).to eq admin_path
+    expect(page).to have_current_path admin_path, ignore_query: true
   end
 
   context 'when logout' do
     before { click_link '', href: '/logout' }
 
     it 'redirects to the home page' do
-      expect(current_path).to eq root_path
+      expect(page).to have_current_path root_path, ignore_query: true
     end
 
     context 'trying to access admin' do
       before { visit admin_path }
 
       it 'losts the admin access' do
-        expect(current_path).to eq login_path
+        expect(page).to have_current_path login_path, ignore_query: true
       end
     end
   end

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 user = User.create!(
   email:                 'wbotelhos@example.com',
   password:              'password',
@@ -67,7 +65,8 @@ By default my credentials is written here, but you can change it editing the fil
 This blog is free under the MIT License, be nice and keep the author's credits. (:
 
 See you and your blog soon!
-])
+]
+)
 article.save!
 
 comment_1 = article.comments.create!(
@@ -77,15 +76,15 @@ comment_1 = article.comments.create!(
   url:   'http://gabrielbenz.com'
 )
 
-  response_1 = article.comments.new(
-    body:      'Of course man, just keep the credits. (;',
-    email:     'wbotelhos@example.com',
-    name:      'Washington Botelho',
-    parent_id: comment_1.id,
-    url:       'https://wbotelhos.com'
-  )
-  response_1.author = true
-  response_1.save!
+response_1 = article.comments.new(
+  body:      'Of course man, just keep the credits. (;',
+  email:     'wbotelhos@example.com',
+  name:      'Washington Botelho',
+  parent_id: comment_1.id,
+  url:       'https://wbotelhos.com'
+)
+response_1.author = true
+response_1.save!
 
 comment_2 = article.comments.create!(
   body:  "Hi Washington,\nI would like to contribute to the blog, you agree Pull Requests?",
@@ -94,20 +93,20 @@ comment_2 = article.comments.create!(
   url:   'http://danielfariati.com.br'
 )
 
-  response2 = article.comments.create!(
-    body:      "Hi Daniel,\nYour contributions are always welcome my friend.\nI'm waiting for your great code. (:",
-    email:     'wbotelhos@example.com',
-    name:      'Washington Botelho',
-    parent_id: comment_2.id,
-    url:       'https://wbotelhos.com'
-  )
-  response2.author = true
-  response2.save!
+response2 = article.comments.create!(
+  body:      "Hi Daniel,\nYour contributions are always welcome my friend.\nI'm waiting for your great code. (:",
+  email:     'wbotelhos@example.com',
+  name:      'Washington Botelho',
+  parent_id: comment_2.id,
+  url:       'https://wbotelhos.com'
+)
+response2.author = true
+response2.save!
 
-    article.comments.create!(
-      body:      "Yeah! I'll pull it soon.",
-      email:     'danielfariati@example.com',
-      name:      'Daniel Faria',
-      parent_id: response2.id,
-      url:       'http://danielfariati.com.br'
-    )
+article.comments.create!(
+  body:      "Yeah! I'll pull it soon.",
+  email:     'danielfariati@example.com',
+  name:      'Daniel Faria',
+  parent_id: response2.id,
+  url:       'http://danielfariati.com.br'
+)

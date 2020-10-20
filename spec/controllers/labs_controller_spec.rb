@@ -9,12 +9,12 @@ describe LabsController do
       end
 
       it 'redirect to the login page' do
-        get :edit, id: 1
+        get :edit, params: { id: 1 }
         expect(response).to redirect_to login_path
       end
 
       it 'redirect to the login page' do
-        get :export, id: 1
+        get :export, params: { id: 1 }
         expect(response).to redirect_to login_path
       end
 
@@ -24,7 +24,7 @@ describe LabsController do
       end
 
       it 'redirect to the login page' do
-        put :update, id: 1
+        put :update, params: { id: 1 }
         expect(response).to redirect_to login_path
       end
     end

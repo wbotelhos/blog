@@ -1,6 +1,6 @@
 class LabsController < ApplicationController
-  before_action :require_login, except: [:index, :show]
-  before_action :find, only: [:edit, :export, :update]
+  before_action :require_login, except: %i[index show]
+  before_action :find, only: %i[edit export update]
 
   layout 'application'
 
@@ -16,8 +16,7 @@ class LabsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def export
     url      = "#{CONFIG['url_http']}/#{@media.slug}?offline"
@@ -35,9 +34,7 @@ class LabsController < ApplicationController
     criteria = Lab.select('title, description, version')
 
     begin
-      if filter[:search].present?
-        criteria = criteria.where filter[:find] => Regexp.new(".*#{filter[:search]}.*", "i")
-      end
+      criteria = criteria.where filter[:find] => Regexp.new(".*#{filter[:search]}.*", 'i') if filter[:search].present?
 
       sql = criteria
             .order("#{filter[:sort_name]} #{filter[:sort_order]}")
@@ -97,7 +94,7 @@ class LabsController < ApplicationController
       search:     params[:search],
       sort_name:  params[:sortName],
       sort_order: params[:sortOrder],
-      rows:       params[:rows].to_i
+      rows:       params[:rows].to_i,
     }
 
     page = hash[:page] - 1

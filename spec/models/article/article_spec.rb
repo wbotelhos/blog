@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Article do
   it 'has a valid factory' do
-    expect(FactoryGirl.build :article).to be_valid
+    expect(FactoryGirl.build(:article)).to be_valid
   end
 
   it { is_expected.to belong_to :user }
@@ -13,7 +13,7 @@ describe Article do
   context :uniqueness do
     let(:article) { FactoryGirl.create :article }
 
-    it 'does not allow the same title'  do
+    it 'does not allow the same title' do
       expect(FactoryGirl.build(:article, title: article.title)).to be_invalid
     end
   end
@@ -52,18 +52,18 @@ describe Article do
         expect(result).to     have_attribute :slug
         expect(result).to     have_attribute :title
         expect(result).to     have_attribute :id
-        expect(result).to_not have_attribute :body
-        expect(result).to_not have_attribute :created_at
-        expect(result).to_not have_attribute :updated_at
-        expect(result).to_not have_attribute :user_id
+        expect(result).not_to have_attribute :body
+        expect(result).not_to have_attribute :created_at
+        expect(result).not_to have_attribute :updated_at
+        expect(result).not_to have_attribute :user_id
       end
     end
 
     describe :by_month do
-      let!(:article_1) { FactoryGirl.create :article, published_at: Time.local(2013, 01, 01) }
-      let!(:article_2) { FactoryGirl.create :article, published_at: Time.local(2013, 01, 01) }
-      let!(:article_3) { FactoryGirl.create :article, published_at: Time.local(2013, 02, 01) }
-      let!(:article_4) { FactoryGirl.create :article, published_at: Time.local(2013, 03, 01) }
+      let!(:article_1) { FactoryGirl.create :article, published_at: Time.local(2013, 0o1, 0o1) }
+      let!(:article_2) { FactoryGirl.create :article, published_at: Time.local(2013, 0o1, 0o1) }
+      let!(:article_3) { FactoryGirl.create :article, published_at: Time.local(2013, 0o2, 0o1) }
+      let!(:article_4) { FactoryGirl.create :article, published_at: Time.local(2013, 0o3, 0o1) }
       let(:result)     { Article.by_month }
 
       xit 'groups the articles by published month'
@@ -121,7 +121,7 @@ describe Article do
 
         context 'article without published date' do
           it 'is ignored' do
-            expect(Article.published).to_not include article_draft
+            expect(Article.published).not_to include article_draft
           end
         end
 
@@ -129,7 +129,7 @@ describe Article do
           let!(:article_scheduled) { FactoryGirl.create :article, published_at: Time.local(2500, 1, 1) }
 
           it 'is ignored' do
-            expect(Article.published).to_not include article_scheduled
+            expect(Article.published).not_to include article_scheduled
           end
         end
       end
@@ -139,13 +139,13 @@ describe Article do
   describe :published? do
     context 'when unpublished' do
       it 'returns false' do
-        expect(Article.new).to_not be_published
+        expect(Article.new).not_to be_published
       end
     end
 
     context 'when published' do
       it 'returns true' do
-        expect(Article.new published_at: Time.current).to be_published
+        expect(Article.new(published_at: Time.current)).to be_published
       end
     end
   end
@@ -161,7 +161,7 @@ describe Article do
       before { article.publish! }
 
       it 'becames published' do
-        expect(article.published_at).to_not be_nil
+        expect(article.published_at).not_to be_nil
       end
     end
   end

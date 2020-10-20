@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
   before_action :require_login
-  before_action :find, only: [:edit, :update]
+  before_action :find, only: %i[edit update]
 
-  def edit
-  end
+  def edit; end
 
   def update
     user = parameters

@@ -1,22 +1,19 @@
-# coding: utf-8
-
 class String
   def slug
-    return '' if self.blank?
+    return '' if blank?
 
     from = 'áàãâäèéêëìíîïõòóôöùúûüç'
     to   = 'aaaaaeeeeiiiiooooouuuuc'
 
-    slug = self.downcase
+    slug = downcase
 
-    slug.gsub! /\s-\s/  , '-'
-    slug.gsub! /\s/     , '-'
-    slug.tr!   from     , to
-    slug.gsub! /[^\w-]/ , ''
-    slug.sub!  /^-/     , ''
-    slug.gsub! /-$/     , ''
+    slug.gsub!(/\s-\s/, '-')
+    slug.gsub!(/\s/, '-')
+    slug.tr! from, to
+    slug.gsub!(/[^\w-]/, '')
+    slug.sub!(/^-/, '')
+    slug.gsub!(/-$/, '')
 
     slug
   end
 end
-

@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :require_login, except: [:index, :show]
+  before_action :require_login, except: %i[index show]
 
   layout 'admin', except: %i[index show]
 
