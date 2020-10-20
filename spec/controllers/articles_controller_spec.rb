@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe ArticlesController do
+RSpec.describe ArticlesController do
   context 'accessing the admin area' do
     context 'unlogged' do
       it 'redirect to the login page' do

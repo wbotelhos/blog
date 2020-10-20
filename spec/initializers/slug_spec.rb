@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe String do
+RSpec.describe String do
   it 'slugs blank' do
     expect(' '.slug).to be_blank
   end

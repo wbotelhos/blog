@@ -1,9 +1,9 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Lab, '#index' do
+RSpec.describe Lab, '#index' do
   context 'when logged' do
-    let!(:draft) { FactoryGirl.create :lab }
-    let!(:lab)   { FactoryGirl.create :lab_published }
+    let!(:draft) { FactoryBot.create :lab }
+    let!(:lab)   { FactoryBot.create :lab_published }
 
     before do
       login

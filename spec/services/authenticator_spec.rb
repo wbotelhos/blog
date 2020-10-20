@@ -1,7 +1,7 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Authenticator do
-  let(:user) { FactoryGirl.create :user }
+RSpec.describe Authenticator do
+  let(:user) { FactoryBot.create :user }
 
   context 'with valid credentials' do
     it 'returns user' do

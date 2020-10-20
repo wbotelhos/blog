@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe :routes do
+RSpec.describe :routes do
   before do
     Rails.application.reload_routes!
   end

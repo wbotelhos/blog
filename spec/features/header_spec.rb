@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe :header do
+RSpec.describe :header do
   before { visit root_path }
 
   it 'shows the logo' do

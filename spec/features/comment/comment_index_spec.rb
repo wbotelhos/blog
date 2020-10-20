@@ -1,8 +1,8 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Comment, '#index' do
+RSpec.describe Comment, '#index' do
   context 'with pending comment' do
-    let!(:pending) { FactoryGirl.create :comment }
+    let!(:pending) { FactoryBot.create :comment }
 
     context 'when unlogged' do
       before do

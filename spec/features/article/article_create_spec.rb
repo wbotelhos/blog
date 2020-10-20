@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Article, '#create' do
+RSpec.describe Article, '#create' do
   before do
     login
     visit new_article_path
@@ -24,7 +24,7 @@ describe Article, '#create' do
   end
 
   context 'with same title' do
-    let!(:article) { FactoryGirl.create :article }
+    let!(:article) { FactoryBot.create :article }
 
     before do
       fill_in 'article_title', with: article.title

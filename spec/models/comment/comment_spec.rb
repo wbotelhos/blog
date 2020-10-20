@@ -1,8 +1,10 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Comment do
+require 'support/shoulda'
+
+RSpec.describe Comment do
   it 'has a valid factory' do
-    expect(FactoryGirl.build(:comment)).to be_valid
+    expect(FactoryBot.build(:comment)).to be_valid
   end
 
   it { is_expected.to belong_to :commentable }
@@ -13,7 +15,7 @@ describe Comment do
   it { is_expected.to validate_presence_of :name }
 
   context :create do
-    let!(:commentable) { FactoryGirl.create :commentable }
+    let!(:commentable) { FactoryBot.create :commentable }
 
     it 'creates a valid media' do
       comment = commentable.comments.new(
@@ -30,19 +32,19 @@ describe Comment do
 
   context :format do
     it 'validates the email format' do
-      expect(FactoryGirl.build(:comment, email: 'fail')).to be_invalid
-      expect(FactoryGirl.build(:comment, email: 'fail@')).to be_invalid
-      expect(FactoryGirl.build(:comment, email: 'fail@fail')).to be_invalid
-      expect(FactoryGirl.build(:comment, email: 'fail@fail.')).to be_invalid
+      expect(FactoryBot.build(:comment, email: 'fail')).to be_invalid
+      expect(FactoryBot.build(:comment, email: 'fail@')).to be_invalid
+      expect(FactoryBot.build(:comment, email: 'fail@fail')).to be_invalid
+      expect(FactoryBot.build(:comment, email: 'fail@fail.')).to be_invalid
 
-      expect(FactoryGirl.build(:comment, email: 'ok@ok.ok')).to be_valid
+      expect(FactoryBot.build(:comment, email: 'ok@ok.ok')).to be_valid
     end
   end
 
   context :scope do
     describe :roots do
-      let!(:parent) { FactoryGirl.create :comment }
-      let!(:child)  { FactoryGirl.create :comment, parent: parent }
+      let!(:parent) { FactoryBot.create :comment }
+      let!(:child)  { FactoryBot.create :comment, parent: parent }
 
       it 'returns just the root' do
         expect(Comment.roots).to eq [parent]
@@ -50,9 +52,9 @@ describe Comment do
     end
 
     describe :pendings do
-      let!(:comment)  { FactoryGirl.create :comment, pending: false }
-      let!(:authored) { FactoryGirl.create :comment, author: true }
-      let!(:pending)  { FactoryGirl.create :comment }
+      let!(:comment)  { FactoryBot.create :comment, pending: false }
+      let!(:authored) { FactoryBot.create :comment, author: true }
+      let!(:pending)  { FactoryBot.create :comment }
 
       it 'returns just the pendings that does not belongs to author' do
         expect(Comment.pendings).to eq [pending]

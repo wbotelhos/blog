@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Lab, '#create' do
+RSpec.describe Lab, '#create' do
   before do
     login
     visit new_lab_path
@@ -29,7 +29,7 @@ describe Lab, '#create' do
   end
 
   context 'with same title' do
-    let!(:lab) { FactoryGirl.create :lab }
+    let!(:lab) { FactoryBot.create :lab }
 
     before do
       fill_in 'lab_title', with: lab.title

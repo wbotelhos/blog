@@ -1,7 +1,7 @@
-require 'rails_helper'
+# frozen_string_literal: true
 require 'digest/md5'
 
-describe ApplicationHelper do
+RSpec.describe ApplicationHelper do
   describe '#github' do
     it 'builds the url' do
       expect(helper.github).to eq "http://github.com/#{CONFIG['github']}"
@@ -56,7 +56,7 @@ describe ApplicationHelper do
   end
 
   describe '#media_slug' do
-    let(:article) { FactoryGirl.create :article, title: 'Some Title' }
+    let(:article) { FactoryBot.create :article, title: 'Some Title' }
 
     context 'without anchor' do
       it 'builds the path without anchor' do
@@ -72,7 +72,7 @@ describe ApplicationHelper do
   end
 
   describe '#media_slug_url' do
-    let(:article) { FactoryGirl.create :article, title: 'Some Title' }
+    let(:article) { FactoryBot.create :article, title: 'Some Title' }
 
     before { @request.host = 'example.org' }
 
@@ -99,7 +99,7 @@ describe ApplicationHelper do
     let(:button) { CGI.unescape helper.twitter_button(text: 'Some Text', url: 'http://wbotelhos.com') }
 
     it 'builds the right text' do
-      expect(button).to(match /text="Some Text" ~/))
+      expect(button).to match(/text="Some Text"/)
     end
 
     it 'builds the right url' do
@@ -107,11 +107,11 @@ describe ApplicationHelper do
     end
 
     it 'builds the right via' do
-      expect(button).to(match /via=#{CONFIG['twitter']}/))
+      expect(button).to match(/via=#{CONFIG['twitter']}/)
     end
 
     it 'builds the right target' do
-      expect(button).to(match /target="_blank"/))
+      expect(button).to match(/target="_blank"/)
     end
   end
 end

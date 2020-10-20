@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe LabsController do
+RSpec.describe LabsController do
   context 'accessing the admin area' do
     context 'unlogged' do
       it 'redirect to the login page' do

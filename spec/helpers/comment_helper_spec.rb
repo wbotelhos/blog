@@ -1,8 +1,8 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe CommentHelper do
+RSpec.describe CommentHelper do
   describe '#anchor' do
-    let(:comment) { FactoryGirl.build :comment, id: 1 }
+    let(:comment) { FactoryBot.build :comment, id: 1 }
 
     it 'builds an anchor with id' do
       expect(helper.anchor(comment)).to eq '#comment-1'
@@ -10,7 +10,7 @@ describe CommentHelper do
   end
 
   describe '#self_anchor' do
-    let(:comment) { FactoryGirl.build :comment, id: 1 }
+    let(:comment) { FactoryBot.build :comment, id: 1 }
 
     it 'builds the href with self anchor' do
       expect(helper.self_anchor(comment)).to match 'href="#comment-1'

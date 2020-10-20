@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe User, '#update' do
+RSpec.describe User, '#update' do
   before do
     @user = login
     visit profile_path
@@ -32,7 +32,7 @@ describe User, '#update' do
     end
 
     context 'filling only email' do
-      let!(:new_user)     { FactoryGirl.build :user, email: 'washington@example.org' }
+      let!(:new_user)     { FactoryBot.build :user, email: 'washington@example.org' }
       let!(:old_password) { @user.password }
 
       before do

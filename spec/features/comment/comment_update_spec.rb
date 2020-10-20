@@ -1,8 +1,8 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Comment, '#update' do
-  let!(:article) { FactoryGirl.create :article_published }
-  let!(:comment) { FactoryGirl.create :comment, commentable: article }
+RSpec.describe Comment, '#update' do
+  let!(:article) { FactoryBot.create :article_published }
+  let!(:comment) { FactoryBot.create :comment, commentable: article }
 
   before do
     @user = login

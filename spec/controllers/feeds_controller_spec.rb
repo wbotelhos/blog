@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe FeedsController do
+RSpec.describe FeedsController do
   let(:criteria) { double.as_null_object }
 
   describe 'GET #feed' do

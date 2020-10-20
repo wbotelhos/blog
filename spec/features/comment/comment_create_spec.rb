@@ -1,7 +1,7 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Comment, '#create' do
-  let(:article) { FactoryGirl.create :article_published }
+RSpec.describe Comment, '#create' do
+  let(:article) { FactoryBot.create :article_published }
 
   context 'when unlogged' do
     before do
@@ -26,7 +26,7 @@ describe Comment, '#create' do
     end
 
     context 'with valid data' do
-      let(:comment) { FactoryGirl.build :comment }
+      let(:comment) { FactoryBot.build :comment }
 
       before do
         fill_in 'comment_body', with: comment.body
@@ -121,7 +121,7 @@ describe Comment, '#create' do
     end
 
     context 'answering', :js do
-      let!(:comment) { FactoryGirl.create :comment, commentable: article }
+      let!(:comment) { FactoryBot.create :comment, commentable: article }
 
       before do
         visit slug_path article.slug
@@ -237,7 +237,7 @@ describe Comment, '#create' do
     end
 
     context 'answering', :js do
-      let!(:comment) { FactoryGirl.create :comment, commentable: article }
+      let!(:comment) { FactoryBot.create :comment, commentable: article }
 
       before do
         visit slug_path article.slug

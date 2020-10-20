@@ -1,8 +1,10 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Lab do
+require 'support/shoulda'
+
+RSpec.describe Lab do
   it 'has a valid factory' do
-    expect(FactoryGirl.build(:lab)).to be_valid
+    expect(FactoryBot.build(:lab)).to be_valid
   end
 
   it { is_expected.to validate_presence_of :analytics }
@@ -12,19 +14,19 @@ describe Lab do
   it { is_expected.to validate_presence_of :version }
 
   context :uniqueness do
-    let(:lab) { FactoryGirl.create :lab }
+    let(:lab) { FactoryBot.create :lab }
 
     it 'does not allow the same title'  do
-      expect(FactoryGirl.build(:lab, title: lab.title)).to be_invalid
+      expect(FactoryBot.build(:lab, title: lab.title)).to be_invalid
     end
   end
 
   describe :scope do
-    let!(:lab_1) { FactoryGirl.create :lab, created_at: Time.local(2000, 1, 1), published_at: Time.local(2001, 1, 2) }
-    let!(:lab_2) { FactoryGirl.create :lab, created_at: Time.local(2000, 1, 2), published_at: Time.local(2001, 1, 1) }
+    let!(:lab_1) { FactoryBot.create :lab, created_at: Time.local(2000, 1, 1), published_at: Time.local(2001, 1, 2) }
+    let!(:lab_2) { FactoryBot.create :lab, created_at: Time.local(2000, 1, 2), published_at: Time.local(2001, 1, 1) }
 
     describe :home_selected do
-      let!(:lab)   { FactoryGirl.create :lab }
+      let!(:lab)   { FactoryBot.create :lab }
       let(:result) { Lab.home_selected.first }
 
       it 'brings only the fields used on home' do
@@ -45,10 +47,10 @@ describe Lab do
     end
 
     describe :by_month do
-      let!(:lab_1) { FactoryGirl.create :lab, published_at: Time.local(2013, 0o1, 0o1) }
-      let!(:lab_2) { FactoryGirl.create :lab, published_at: Time.local(2013, 0o1, 0o1) }
-      let!(:lab_3) { FactoryGirl.create :lab, published_at: Time.local(2013, 0o2, 0o1) }
-      let!(:lab_4) { FactoryGirl.create :lab, published_at: Time.local(2013, 0o3, 0o1) }
+      let!(:lab_1) { FactoryBot.create :lab, published_at: Time.local(2013, 0o1, 0o1) }
+      let!(:lab_2) { FactoryBot.create :lab, published_at: Time.local(2013, 0o1, 0o1) }
+      let!(:lab_3) { FactoryBot.create :lab, published_at: Time.local(2013, 0o2, 0o1) }
+      let!(:lab_4) { FactoryBot.create :lab, published_at: Time.local(2013, 0o3, 0o1) }
       let(:result) { Lab.by_month }
 
       xit 'groups the labs by published month'
@@ -69,7 +71,7 @@ describe Lab do
     end
 
     context :state do
-      let!(:lab_draft) { FactoryGirl.create :lab }
+      let!(:lab_draft) { FactoryBot.create :lab }
 
       describe :drafts do
         it 'returns drafts' do
@@ -88,7 +90,7 @@ describe Lab do
           before do
             allow(Time).to receive(:now).and_return Time.local(2013, 1, 1, 0, 0, 0)
 
-            @lab_now = FactoryGirl.create :lab, published_at: Time.current
+            @lab_now = FactoryBot.create :lab, published_at: Time.current
           end
 
           it 'is ignored' do
@@ -103,7 +105,7 @@ describe Lab do
         end
 
         context 'lab with published date but in the future (scheduled)' do
-          let!(:lab_scheduled) { FactoryGirl.create :lab, published_at: Time.local(2500, 1, 1) }
+          let!(:lab_scheduled) { FactoryBot.create :lab, published_at: Time.local(2500, 1, 1) }
 
           it 'is ignored' do
             expect(Lab.published).not_to include lab_scheduled
@@ -114,7 +116,7 @@ describe Lab do
   end
 
   describe '.url' do
-    let(:lab) { FactoryGirl.build :lab }
+    let(:lab) { FactoryBot.build :lab }
 
     it 'return the online url of the url' do
       expect(lab.url).to eq "#{CONFIG['url_http']}/#{lab.slug}"
@@ -122,7 +124,7 @@ describe Lab do
   end
 
   describe '.github' do
-    let(:lab) { FactoryGirl.build :lab }
+    let(:lab) { FactoryBot.build :lab }
 
     it 'return the online url of the github' do
       expect(lab.github).to eq "http://github.com/#{CONFIG['github']}/#{lab.slug}"
@@ -130,7 +132,7 @@ describe Lab do
   end
 
   describe '.download' do
-    let(:lab) { FactoryGirl.build :lab }
+    let(:lab) { FactoryBot.build :lab }
 
     it 'return the github download url' do
       expect(lab.download).to eq "http://github.com/#{CONFIG['github']}/#{lab.slug}/archive/#{lab.version}.zip"
@@ -140,7 +142,7 @@ describe Lab do
   describe '.javascripts' do
     context 'with value' do
       context 'with single file' do
-        let(:lab) { FactoryGirl.build :lab, js_import: 'http://example.org' }
+        let(:lab) { FactoryBot.build :lab, js_import: 'http://example.org' }
 
         it 'returns the urls wrapped with script tag' do
           expect(lab.javascripts).to eq %(<script src="http://example.org"></script>)
@@ -149,7 +151,7 @@ describe Lab do
 
       context 'with multiple files' do
         context 'with spaces' do
-          let(:lab) { FactoryGirl.create :lab, js_import: 'http://example.org, http://example.com' }
+          let(:lab) { FactoryBot.create :lab, js_import: 'http://example.org, http://example.com' }
 
           it 'returns the urls wrapped with script tag' do
             expect(lab.javascripts).to eq %(<script src="http://example.org"></script><script src="http://example.com"></script>)
@@ -157,7 +159,7 @@ describe Lab do
         end
 
         context 'without spaces' do
-          let(:lab) { FactoryGirl.build :lab, js_import: 'http://example.org,http://example.com' }
+          let(:lab) { FactoryBot.build :lab, js_import: 'http://example.org,http://example.com' }
 
           it 'returns the urls wrapped with script tag' do
             expect(lab.javascripts).to eq %(<script src="http://example.org"></script><script src="http://example.com"></script>)
@@ -167,7 +169,7 @@ describe Lab do
     end
 
     context 'without value' do
-      let(:lab) { FactoryGirl.build :lab, js_import: nil }
+      let(:lab) { FactoryBot.build :lab, js_import: nil }
 
       it 'returns nothing' do
         expect(lab.javascripts).to be_nil
@@ -177,7 +179,7 @@ describe Lab do
 
   describe '.javascripts_inline' do
     context 'with value' do
-      let(:lab) { FactoryGirl.build :lab, js: '$("div").raty();' }
+      let(:lab) { FactoryBot.build :lab, js: '$("div").raty();' }
 
       it 'returns the content without wrap' do
         expect(lab.javascripts_inline).to eq '$("div").raty();'
@@ -185,7 +187,7 @@ describe Lab do
     end
 
     context 'with value' do
-      let(:lab) { FactoryGirl.build :lab, js: nil }
+      let(:lab) { FactoryBot.build :lab, js: nil }
 
       it 'returns nothing' do
         expect(lab.javascripts_inline).to be_nil
@@ -195,7 +197,7 @@ describe Lab do
 
   describe '.javascripts_ready' do
     context 'with value' do
-      let(:lab) { FactoryGirl.build :lab, js_ready: '$("div").raty();' }
+      let(:lab) { FactoryBot.build :lab, js_ready: '$("div").raty();' }
 
       it 'returns the content without wrap' do
         expect(lab.javascripts_ready).to eq '$("div").raty();'
@@ -203,7 +205,7 @@ describe Lab do
     end
 
     context 'with value' do
-      let(:lab) { FactoryGirl.build :lab, js_ready: nil }
+      let(:lab) { FactoryBot.build :lab, js_ready: nil }
 
       it 'returns nothing' do
         expect(lab.javascripts_ready).to be_nil
@@ -214,7 +216,7 @@ describe Lab do
   describe '.stylesheets' do
     context 'with value' do
       context 'with single file' do
-        let(:lab) { FactoryGirl.build :lab, css_import: 'http://example.org' }
+        let(:lab) { FactoryBot.build :lab, css_import: 'http://example.org' }
 
         it 'returns the urls wrapped with link tag' do
           expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org">)
@@ -223,7 +225,7 @@ describe Lab do
 
       context 'with multiple files' do
         context 'with spaces' do
-          let(:lab) { FactoryGirl.create :lab, css_import: 'http://example.org, http://example.com' }
+          let(:lab) { FactoryBot.create :lab, css_import: 'http://example.org, http://example.com' }
 
           it 'returns the urls wrapped with link tag' do
             expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org"><link rel="stylesheet" href="http://example.com">)
@@ -231,7 +233,7 @@ describe Lab do
         end
 
         context 'without spaces' do
-          let(:lab) { FactoryGirl.build :lab, css_import: 'http://example.org,http://example.com' }
+          let(:lab) { FactoryBot.build :lab, css_import: 'http://example.org,http://example.com' }
 
           it 'returns the urls wrapped with link tag' do
             expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org"><link rel="stylesheet" href="http://example.com">)
@@ -241,7 +243,7 @@ describe Lab do
     end
 
     context 'without value' do
-      let(:lab) { FactoryGirl.build :lab, css_import: nil }
+      let(:lab) { FactoryBot.build :lab, css_import: nil }
 
       it 'returns nothing' do
         expect(lab.stylesheets).to be_nil
@@ -251,7 +253,7 @@ describe Lab do
 
   describe '.stylesheets_inline' do
     context 'with value' do
-      let(:lab) { FactoryGirl.build :lab, css: 'i { float: left }' }
+      let(:lab) { FactoryBot.build :lab, css: 'i { float: left }' }
 
       it 'returns the original content' do
         expect(lab.stylesheets_inline).to eq %(<style>i { float: left }</style>)
@@ -259,7 +261,7 @@ describe Lab do
     end
 
     context 'without value' do
-      let(:lab) { FactoryGirl.build :lab, css: nil }
+      let(:lab) { FactoryBot.build :lab, css: nil }
 
       it 'returns nothing' do
         expect(lab.stylesheets_inline).to be_nil

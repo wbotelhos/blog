@@ -1,7 +1,7 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Article, '#show' do
-  let(:article) { FactoryGirl.create :article_published }
+RSpec.describe Article, '#show' do
+  let(:article) { FactoryBot.create :article_published }
 
   before { visit slug_path article.slug }
 

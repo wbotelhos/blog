@@ -1,7 +1,7 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Lab, '#update' do
-  let(:lab) { FactoryGirl.create :lab }
+RSpec.describe Lab, '#update' do
+  let(:lab) { FactoryBot.create :lab }
 
   before do
     login

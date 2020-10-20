@@ -1,12 +1,12 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe 'Admin', '#index' do
+RSpec.describe 'Admin', '#index' do
   context 'when logged' do
     before { login }
 
     context 'article' do
-      let!(:draft)     { FactoryGirl.create :article, published_at: nil }
-      let!(:published) { FactoryGirl.create :article_published }
+      let!(:draft)     { FactoryBot.create :article, published_at: nil }
+      let!(:published) { FactoryBot.create :article_published }
 
       before { visit admin_path }
 
@@ -45,8 +45,8 @@ describe 'Admin', '#index' do
     end
 
     context 'comment' do
-      let!(:pending)  { FactoryGirl.create :comment }
-      let!(:answered) { FactoryGirl.create :comment_answered }
+      let!(:pending)  { FactoryBot.create :comment }
+      let!(:answered) { FactoryBot.create :comment_answered }
 
       before { visit admin_path }
 

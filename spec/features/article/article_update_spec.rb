@@ -1,7 +1,7 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Article, '#update' do
-  let(:article) { FactoryGirl.create :article }
+RSpec.describe Article, '#update' do
+  let(:article) { FactoryBot.create :article }
 
   before do
     login

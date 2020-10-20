@@ -1,8 +1,10 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Article do
+require 'support/shoulda'
+
+RSpec.describe Article do
   it 'has a valid factory' do
-    expect(FactoryGirl.build(:article)).to be_valid
+    expect(FactoryBot.build(:article)).to be_valid
   end
 
   it { is_expected.to belong_to :user }
@@ -11,15 +13,15 @@ describe Article do
   it { is_expected.to validate_presence_of :title }
 
   context :uniqueness do
-    let(:article) { FactoryGirl.create :article }
+    let(:article) { FactoryBot.create :article }
 
     it 'does not allow the same title' do
-      expect(FactoryGirl.build(:article, title: article.title)).to be_invalid
+      expect(FactoryBot.build(:article, title: article.title)).to be_invalid
     end
   end
 
   describe '#generate_slug' do
-    let!(:article) { FactoryGirl.create :article, title: 'Some Title' }
+    let!(:article) { FactoryBot.create :article, title: 'Some Title' }
 
     context 'on save' do
       it 'slug the title' do
@@ -40,11 +42,11 @@ describe Article do
   end
 
   describe :scope do
-    let!(:article_1) { FactoryGirl.create :article, created_at: Time.local(2000, 1, 1), published_at: Time.local(2001, 1, 2) }
-    let!(:article_2) { FactoryGirl.create :article, created_at: Time.local(2000, 1, 2), published_at: Time.local(2001, 1, 1) }
+    let!(:article_1) { FactoryBot.create :article, created_at: Time.local(2000, 1, 1), published_at: Time.local(2001, 1, 2) }
+    let!(:article_2) { FactoryBot.create :article, created_at: Time.local(2000, 1, 2), published_at: Time.local(2001, 1, 1) }
 
     describe :home_selected do
-      let!(:article) { FactoryGirl.create :article }
+      let!(:article) { FactoryBot.create :article }
       let(:result)   { Article.home_selected.first }
 
       it 'brings only the fields used on home' do
@@ -60,17 +62,17 @@ describe Article do
     end
 
     describe :by_month do
-      let!(:article_1) { FactoryGirl.create :article, published_at: Time.local(2013, 0o1, 0o1) }
-      let!(:article_2) { FactoryGirl.create :article, published_at: Time.local(2013, 0o1, 0o1) }
-      let!(:article_3) { FactoryGirl.create :article, published_at: Time.local(2013, 0o2, 0o1) }
-      let!(:article_4) { FactoryGirl.create :article, published_at: Time.local(2013, 0o3, 0o1) }
+      let!(:article_1) { FactoryBot.create :article, published_at: Time.local(2013, 0o1, 0o1) }
+      let!(:article_2) { FactoryBot.create :article, published_at: Time.local(2013, 0o1, 0o1) }
+      let!(:article_3) { FactoryBot.create :article, published_at: Time.local(2013, 0o2, 0o1) }
+      let!(:article_4) { FactoryBot.create :article, published_at: Time.local(2013, 0o3, 0o1) }
       let(:result)     { Article.by_month }
 
       xit 'groups the articles by published month'
     end
 
     describe :recents do
-      let!(:articles) { FactoryGirl.create_list :article, 9 }
+      let!(:articles) { FactoryBot.create_list :article, 9 }
 
       it 'limits the quantity' do
         expect(Article.recents.size).to eq 10
@@ -92,7 +94,7 @@ describe Article do
     end
 
     context :state do
-      let!(:article_draft) { FactoryGirl.create :article }
+      let!(:article_draft) { FactoryBot.create :article }
 
       describe :drafts do
         it 'returns drafts' do
@@ -111,7 +113,7 @@ describe Article do
           before do
             allow(Time).to receive(:now).and_return Time.local(2013, 1, 1, 0, 0, 0)
 
-            @article_now = FactoryGirl.create :article, published_at: Time.current
+            @article_now = FactoryBot.create :article, published_at: Time.current
           end
 
           it 'is ignored' do
@@ -126,7 +128,7 @@ describe Article do
         end
 
         context 'article with published date but in the future (scheduled)' do
-          let!(:article_scheduled) { FactoryGirl.create :article, published_at: Time.local(2500, 1, 1) }
+          let!(:article_scheduled) { FactoryBot.create :article, published_at: Time.local(2500, 1, 1) }
 
           it 'is ignored' do
             expect(Article.published).not_to include article_scheduled
@@ -151,7 +153,7 @@ describe Article do
   end
 
   describe :state do
-    let!(:article) { FactoryGirl.create :article }
+    let!(:article) { FactoryBot.create :article }
 
     it 'begins unpublished' do
       expect(article.published_at).to be_nil

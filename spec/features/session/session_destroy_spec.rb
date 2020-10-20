@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe User do
+RSpec.describe User do
   before do
     login
     visit admin_path

@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe PasswordEncryptor do
+RSpec.describe PasswordEncryptor do
   describe '#encrypt' do
     it 'returns password hash' do
       expect(PasswordEncryptor.encrypt(:password)).to have_key :hash

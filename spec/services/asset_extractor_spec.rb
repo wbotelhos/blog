@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe AssetUrl do
+RSpec.describe AssetUrl do
   let(:base_url) { 'http://example.org' }
 
   describe '.to_s' do

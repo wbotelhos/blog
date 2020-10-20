@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe :menu do
+RSpec.describe :menu do
   before { visit root_path }
 
   it 'shows bio' do

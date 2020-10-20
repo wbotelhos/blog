@@ -1,6 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe ParamConstraints do
+RSpec.describe ParamConstraints do
   before do
     Rails.application.reload_routes!
   end
@@ -12,7 +12,7 @@ describe ParamConstraints do
   end
 
   context 'with a labs slug' do
-    let!(:lab) { FactoryGirl.create :lab, slug: 'raty' }
+    let!(:lab) { FactoryBot.create :lab, slug: 'raty' }
 
     it 'routes /slug to lab#show' do
       expect(get: "/#{lab.slug}?slug=#{lab.slug}").to route_to(controller: 'labs', action: 'show', slug: lab.slug)

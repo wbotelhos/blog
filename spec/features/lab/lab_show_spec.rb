@@ -1,7 +1,7 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe Lab, '#show' do
-  let(:lab) { FactoryGirl.create :lab_published }
+RSpec.describe Lab, '#show' do
+  let(:lab) { FactoryBot.create :lab_published }
 
   before { visit slug_lab_path lab.slug }
 

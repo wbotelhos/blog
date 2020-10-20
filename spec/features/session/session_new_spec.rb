@@ -1,7 +1,7 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-describe User, 'session#new', :js do
-  let(:user) { FactoryGirl.create :user }
+RSpec.describe User, 'session#new', :js do
+  let(:user) { FactoryBot.create :user }
 
   before { visit login_path }
 
