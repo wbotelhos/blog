@@ -1,8 +1,8 @@
 # Blog on Rails
 
-[![Travis CI status](https://travis-ci.org/wbotelhos/blogy.png?branch=master)](https://travis-ci.org/wbotelhos/blogy "Travis CI")
-[![Maintainability](https://api.codeclimate.com/v1/badges/77c48bc2ae425721e774/maintainability)](https://codeclimate.com/github/wbotelhos/blogy/maintainability)
-[![Patreon](https://img.shields.io/badge/donate-%3C3-brightgreen.svg)](https://www.patreon.com/wbotelhos)
+[![CI](https://github.com/wbotelhos/danca/workflows/CI/badge.svg?)](https://github.com/wbotelhos/danca/actions?query=workflow%3ACI)
+[![Quality](https://api.codeclimate.com/v1/badges/77c48bc2ae425721e774/maintainability)](https://codeclimate.com/github/wbotelhos/blogy/maintainability)
+[![codecov](https://codecov.io/gh/wbotelhos/blogy/branch/master/graph/badge.svg?token=xxx)](https://codecov.io/gh/wbotelhos/blogy)
 
 ## Usage
 

@@ -25,8 +25,9 @@ end
 
 group :test do
   gem 'capybara-box', require: false
+  gem 'codecov', require: false
   gem 'factory_bot_rails'
   gem 'rack_session_access'
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', require: false
 end
