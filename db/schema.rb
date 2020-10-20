@@ -1,76 +1,71 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170716210842) do
+ActiveRecord::Schema.define(version: 2020_10_20_160408) do
 
-  create_table "articles", force: :cascade do |t|
+  create_table "articles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.datetime "published_at"
-    t.string   "slug",         limit: 255,   null: false
-    t.string   "title",        limit: 255,   null: false
-    t.text     "body",         limit: 65535
-    t.integer  "user_id",      limit: 4,     null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string "slug", null: false
+    t.string "title", null: false
+    t.text "body"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_articles_on_slug", unique: true
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
-  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
-  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
-
-  create_table "comments", force: :cascade do |t|
-    t.boolean  "author",                         default: false, null: false
-    t.boolean  "pending",                        default: true,  null: false
-    t.integer  "parent_id",        limit: 4
-    t.string   "email",            limit: 255,                   null: false
-    t.string   "name",             limit: 255,                   null: false
-    t.string   "url",              limit: 255
-    t.text     "body",             limit: 65535,                 null: false
-    t.integer  "commentable_id",   limit: 4,                     null: false
-    t.string   "commentable_type", limit: 255,                   null: false
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+  create_table "comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+    t.boolean "author", default: false, null: false
+    t.boolean "pending", default: true, null: false
+    t.integer "parent_id"
+    t.string "email", null: false
+    t.string "name", null: false
+    t.string "url"
+    t.text "body", null: false
+    t.integer "commentable_id", null: false
+    t.string "commentable_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
   end
 
-  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
-
-  create_table "labs", force: :cascade do |t|
+  create_table "labs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.datetime "published_at"
-    t.string   "analytics",    limit: 255
-    t.text     "css_import",   limit: 65535
-    t.string   "description",  limit: 255
-    t.text     "js",           limit: 65535
-    t.text     "js_import",    limit: 65535
-    t.string   "keywords",     limit: 255,   null: false
-    t.string   "slug",         limit: 255,   null: false
-    t.string   "title",        limit: 255,   null: false
-    t.string   "version",      limit: 255,   null: false
-    t.text     "body",         limit: 65535
-    t.text     "js_ready",     limit: 65535
-    t.text     "css",          limit: 65535
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string "analytics"
+    t.text "css_import"
+    t.string "description"
+    t.text "js"
+    t.text "js_import"
+    t.string "keywords", null: false
+    t.string "slug", null: false
+    t.string "title", null: false
+    t.string "version", null: false
+    t.text "body"
+    t.text "js_ready"
+    t.text "css"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_labs_on_title", unique: true
   end
 
-  add_index "labs", ["title"], name: "index_labs_on_title", unique: true, using: :btree
-
-  create_table "users", force: :cascade do |t|
-    t.string   "email",         limit: 255, null: false
-    t.string   "name",          limit: 255, null: false
-    t.string   "password_hash", limit: 255, null: false
-    t.string   "password_salt", limit: 255, null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "name", null: false
+    t.string "password_hash", null: false
+    t.string "password_salt", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
