@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :article, aliases: [:commentable] do
     association      :user
     body             { 'The Article' }

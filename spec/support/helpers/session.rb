@@ -2,7 +2,7 @@ require 'rack_session_access/capybara'
 
 module SessionHelper
   def login
-    user = FactoryGirl.create :user
+    user = FactoryBot.create :user
 
     page.set_rack_session user_id: user.id
 
