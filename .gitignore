@@ -9,3 +9,5 @@
 /config/database.yml
 /public/*y
 /public/assets
+/tmp
+/vendor
