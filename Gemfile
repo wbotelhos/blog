@@ -14,6 +14,9 @@ gem 'uglifier'
 
 group :development do
   gem 'listen', require: false
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec', require: false
 end
 
 group :development, :test do
