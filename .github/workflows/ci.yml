@@ -42,12 +42,6 @@ jobs:
       - name: Yarn install
         run: yarn --frozen-lockfile
 
-      - name: Yarn test
-        uses: GabrielBB/xvfb-action@v1.2
-
-        with:
-          run: yarn test
-
       - name: Ruby and Bundle Install
         uses: eregon/use-ruby-action@v1
 
