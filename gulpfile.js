@@ -1,65 +1,54 @@
 var gulp = require('gulp');
 
-gulp.task('install', function() {
+function install() {
   'use strict';
 
-  gulp.src(['./package.json']).pipe(require('gulp-install')());
-});
+  return gulp.src('./package.json').pipe(require('gulp-install')());
+}
 
-gulp.task('files', ['install'], function() {
+function files(done) {
   'use strict';
 
-  var
-    rename  = require('gulp-rename'),
-    entries = [
-      ['node_modules/jquery/dist/jquery.min.js'],
-      ['node_modules/normalize.css/normalize.css'],
-      ['node_modules/pygments-css/default.css', 'pygments.css']
-    ];
-
-  function dest(filename) {
-    if (/\.(css|sass|scss)$/.test(filename)) {
-      return 'app/assets/stylesheets/vendor';
-    }
-
-    if (/\.(js)$/.test(filename)) {
-      return 'app/assets/javascripts/vendor';
-    }
-
-    if (/\.(eot|svg|ttf|woff|woff2)$/.test(filename)) {
-      return 'app/assets/fonts/vendor';
-    }
-  }
+  var entries = [
+    ['node_modules/jquery/dist/jquery.min.js'],
+    ['node_modules/normalize.css/normalize.css'],
+    ['node_modules/pygments-css/default.css', 'pygments.css'],
+  ];
 
   for (var i = 0; i < entries.length; i++) {
-    var
-      file     = entries[i][0],
-      filename = entries[i][1] || file.split('/').pop();
+    var file     = entries[i][0];
+    var filename = entries[i][1] || file.split('/').pop();
 
-    gulp
-    .src(file)
-    .pipe(rename(filename))
-    .pipe(gulp.dest(dest(filename)));
+    function destiny(filename) {
+      if (/\.(css|sass|scss)$/.test(filename)) {
+        return 'app/assets/stylesheets/vendor';
+      }
+
+      if (/\.(js|js.map)$/.test(filename)) {
+        return 'app/assets/javascripts/vendor';
+      }
+    }
+
+    gulp.src(file).pipe(require('gulp-rename')(filename)).pipe(gulp.dest(destiny(filename)));
   }
-});
 
-gulp.task('lint', ['files'], function() {
+  done();
+};
+
+function lint() {
   'use strict';
 
   var eslint = require('gulp-eslint');
 
-  var src = [
-    './app/assets/javascripts/**/*.js',
-    '!./app/assets/javascripts/vendor/*.js'
-  ]
+  var files = [
+    'app/assets/javascripts/**/*.js',
+    '!app/assets/javascripts/vendor/*.js',
+  ];
 
-  gulp
-    .src(src)
-    .pipe(eslint())
-    .pipe(eslint.formatEach())
-    .pipe(eslint.failOnError());
-});
+  return gulp.src(files).pipe(eslint()).pipe(eslint.formatEach()).pipe(eslint.failOnError());
+};
 
-gulp.task('default', ['lint'], function(done) {
-  'use strict';
-});
+exports.default = gulp.series(install, gulp.parallel(files, lint));
+exports.install = install;
+exports.files   = files;
+exports.lint    = lint;

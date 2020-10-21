@@ -1,24 +1,25 @@
 {
-  "name": "blogy",
-  "version": "0.1.0",
-  "license": "MIT",
-  "private": false,
-  "engines": {
-    "node": "7.x",
-    "npm": "4.x"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wbotelhos/stepy"
+  "bugs": {
+    "url": "https://github.com/wbotelhos/blogy"
   },
   "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-eslint": "^4.0.0",
-    "gulp-install": "^1.1.0",
-    "gulp-rename": "^1.2.2",
-    "jquery": "^3.2.1",
-    "normalize.css": "^7.0.0",
+    "jquery": "^3.5.1",
+    "normalize.css": "^8.0.1",
     "pygments-css": "^1.0.0"
   },
-  "devDependencies": {}
+  "description": "Blog on Rails!",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-eslint": "^6.0.0",
+    "gulp-install": "^1.1.0",
+    "gulp-rename": "^2.0.0"
+  },
+  "license": "MIT",
+  "name": "blogy",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wbotelhos/blogy"
+  },
+  "version": "0.1.0"
 }

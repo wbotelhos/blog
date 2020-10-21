@@ -10,6 +10,7 @@
 /.env
 /config/database.yml
 /config/master.key
+/node_modules
 /public/*y
 /public/assets
 /tmp

@@ -1,4 +1,4 @@
-var AntiBOT = {
+var AntiBOT = { // eslint-disable-line no-unused-vars
   init: function(form) {
     this.form   = $(form);
     this.field  = this.form.find('.not-human input');
