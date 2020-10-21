@@ -7,7 +7,7 @@ development:
 
 production:
   adapter: mysql2
-  database: blogy_production
+  database: <%= ENV["DATABASE_DATABASE"] %>
   encoding: utf8
   host: <%= ENV["DATABASE_HOST"] %>
   password: <%= ENV["DATABASE_PASSWORD"] %>
