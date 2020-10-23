@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 gem 'aitch'
@@ -9,8 +11,7 @@ gem 'pygments.rb'
 gem 'rails'
 gem 'rake'
 gem 'redcarpet'
-gem 'sass-rails'
-gem 'uglifier'
+gem 'sassc-rails'
 
 group :development do
   gem 'listen', require: false
