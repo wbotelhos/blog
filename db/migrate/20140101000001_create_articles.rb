@@ -1,17 +1,18 @@
-class CreateArticles < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateArticles < ActiveRecord::Migration[6.0]
   def up
     create_table :articles do |t|
-      t.datetime :published_at
-      t.string   :slug, null: false
       t.string   :title, null: false
+      t.string   :slug, null: false
+      t.datetime :published_at
       t.text     :body
 
-      t.references :user, null: false
+      t.references :user, foreign_key: true, index: true, null: false
 
       t.timestamps
     end
 
-    add_index :articles, :user_id
     add_index :articles, :slug, unique: true
   end
 

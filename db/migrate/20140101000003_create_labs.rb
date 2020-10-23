@@ -1,19 +1,21 @@
-class CreateLabs < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateLabs < ActiveRecord::Migration[6.0]
   def up
     create_table :labs do |t|
-      t.datetime :published_at
-      t.string   :analytics
-      t.string   :css_import
-      t.string   :description
-      t.string   :js
-      t.string   :js_import
-      t.string   :keywords, null: false
-      t.string   :slug, null: false
       t.string   :title, null: false
+      t.string   :slug, null: false
       t.string   :version, null: false
-      t.text     :body
+      t.string   :description
+      t.string   :keywords, null: false
+      t.datetime :published_at
+      t.text     :css
+      t.text     :js
+      t.text     :css_import
+      t.text     :js_import
       t.text     :js_ready
-      t.text :css
+      t.string   :analytics
+      t.text     :body
 
       t.timestamps
     end
