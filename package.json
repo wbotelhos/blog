@@ -4,8 +4,7 @@
   },
   "dependencies": {
     "jquery": "^3.5.1",
-    "normalize.css": "^8.0.1",
-    "pygments-css": "^1.0.0"
+    "normalize.css": "^8.0.1"
   },
   "description": "Blog on Rails!",
   "devDependencies": {

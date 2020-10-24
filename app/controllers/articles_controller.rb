@@ -40,6 +40,8 @@ class ArticlesController < ApplicationController
 
     if @media.present?
       @title = @media.title
+
+      @article = ArticlePresenter.new(@media)
     else
       redirect_to root_url, alert: t('article.flash.not_found', uri: params[:slug])
     end

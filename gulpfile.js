@@ -12,7 +12,6 @@ function files(done) {
   var entries = [
     ['node_modules/jquery/dist/jquery.min.js'],
     ['node_modules/normalize.css/normalize.css'],
-    ['node_modules/pygments-css/default.css', 'pygments.css'],
   ];
 
   for (var i = 0; i < entries.length; i++) {

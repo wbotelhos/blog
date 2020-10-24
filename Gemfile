@@ -11,6 +11,7 @@ gem 'pygments.rb'
 gem 'rails'
 gem 'rake'
 gem 'redcarpet'
+gem 'rouge'
 gem 'sassc-rails'
 
 group :development do
@@ -29,6 +30,7 @@ group :test do
   gem 'codecov', require: false
   gem 'factory_bot_rails'
   gem 'rack_session_access'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'shoulda-matchers', require: false
 end

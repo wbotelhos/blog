@@ -22,21 +22,6 @@ module ApplicationHelper
     "http://linkedin.com/in/#{CONFIG['linkedin']}"
   end
 
-  def markdown(content)
-    renderer = HTMLwithPygments.new hard_wrap: true
-
-    options = {
-      autolink:           true,
-      fenced_code_blocks: true,
-      lax_html_blocks:    true,
-      no_intra_emphasis:  true,
-      strikethrough:      true,
-      superscript:        true,
-    }
-
-    Redcarpet::Markdown.new(renderer, options).render(content).html_safe
-  end
-
   def media_slug(media, anchor = nil)
     slug_path(media.slug, anchor: anchor)
   end
@@ -86,11 +71,5 @@ module ApplicationHelper
 
   def to_query(options)
     options.map { |key, value| "#{key}=#{CGI.escape value}" }.join '&'
-  end
-
-  class HTMLwithPygments < Redcarpet::Render::HTML
-    def block_code(code, language)
-      Pygments.highlight(code, lexer: language, options: { encoding: 'utf-8' })
-    end
   end
 end

@@ -64,6 +64,8 @@ class LabsController < ApplicationController
     if @media.present?
       @title = "#{@media.title} | #{@media.description}"
 
+      @lab = LabPresenter.new(@media)
+
       render layout: 'labs'
     else
       redirect_to root_url, alert: t('article.flash.not_found', uri: params[:slug])

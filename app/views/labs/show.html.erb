@@ -1,9 +1,7 @@
 <div class="clearfix"></div>
 
 <article>
-  <div class="article__body">
-    <%= markdown @media.body %>
-  </div>
+  <div class="article__body"><%= raw @lab.content %></div>
 </article>
 
 <%= render 'shared/share_it', text: "#{@media.title} - #{@media.description}" %>

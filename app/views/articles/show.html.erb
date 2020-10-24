@@ -8,9 +8,7 @@
     </div>
   </header>
 
-  <div class="article__body">
-    <%= markdown @media.body %>
-  </div>
+  <div class="article__body"><%= raw @article.content %></div>
 </article>
 
 <%= render 'shared/share_it', text: @media.title %>
