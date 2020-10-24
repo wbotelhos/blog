@@ -22,11 +22,9 @@ AllCops:
     - config/initializers/backtrace_silencers.rb
     - config/initializers/content_security_policy.rb
     - config/initializers/cookies_serializer.rb
-    - config/initializers/devise.rb
     - config/initializers/filter_parameter_logging.rb
     - config/initializers/inflections.rb
     - config/initializers/mime_types.rb
-    - config/initializers/rack_attack.rb
     - config/initializers/wrap_parameters.rb
     - config/puma.rb
     - config/spring.rb
@@ -65,11 +63,6 @@ Metrics/BlockLength:
 
 Metrics/MethodLength:
   Max: 50
-
-Naming/MethodParameterName:
-  AllowedNames:
-    - id
-    - lr
 
 Naming/VariableNumber:
   EnforcedStyle: snake_case
