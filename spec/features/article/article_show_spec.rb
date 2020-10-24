@@ -4,7 +4,7 @@ require 'support/capybara_box'
 require 'support/includes/login'
 
 RSpec.describe Article, '#show' do
-  let(:article) { FactoryBot.create :article_published }
+  let(:article) { FactoryBot.create :article, :published }
 
   before { visit slug_path article.slug }
 

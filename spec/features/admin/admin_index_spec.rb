@@ -11,7 +11,7 @@ RSpec.describe 'Admin', '#index' do
 
     context 'article' do
       let!(:draft)     { FactoryBot.create :article, published_at: nil }
-      let!(:published) { FactoryBot.create :article_published }
+      let!(:published) { FactoryBot.create :article, :published }
 
       before { visit admin_path }
 
