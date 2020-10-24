@@ -25,6 +25,18 @@ RSpec.describe :routes do
     expect(post: '/login').to route_to(controller: 'sessions', action: 'create')
   end
 
+  it 'routes /articles/:article_id/comments to comments#create' do
+    expect(post: '/articles/1/comments').to route_to(action: 'create', controller: 'comments', article_id: '1')
+  end
+
+  it 'routes /articles/:article_id/comments/:id/edit to comments#edit' do
+    expect(get: '/articles/1/comments/2/edit').to route_to(action: 'edit', controller: 'comments', article_id: '1', id: '2')
+  end
+
+  it 'routes /articles/:article_id/comments/:id to comments#update' do
+    expect(put: '/articles/1/comments/2').to route_to(action: 'update', controller: 'comments', article_id: '1', id: '2')
+  end
+
   it 'routes /articles to articles#index' do
     expect(get: '/articles').to route_to(controller: 'articles', action: 'index')
   end

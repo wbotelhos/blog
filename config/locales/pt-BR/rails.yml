@@ -1,5 +1,20 @@
 pt-BR:
   date:
+    abbr_month_names:
+    -
+    - Jan
+    - Fev
+    - Mar
+    - Abr
+    - Mai
+    - Jun
+    - Jul
+    - Ago
+    - Set
+    - Out
+    - Nov
+    - Dez
+
     month_names:
     -
     - Janeiro
@@ -17,4 +32,4 @@ pt-BR:
 
   time:
     formats:
-      default: '%B %d, %Y'
+      default: '%b %d, %Y'

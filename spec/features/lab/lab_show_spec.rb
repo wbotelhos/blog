@@ -9,7 +9,7 @@ RSpec.describe Lab, '#show' do
   before { visit slug_lab_path lab.slug }
 
   it 'redirects to show page' do
-    expect(page).to have_current_path "/#{lab.slug}", ignore_query: true
+    expect(page).to have_current_path "/#{lab.slug}"
   end
 
   it 'does not display edit link' do

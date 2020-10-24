@@ -62,7 +62,7 @@ RSpec.describe Lab, '#create' do
       end
 
       it 'renders form page again' do
-        expect(page).to have_current_path labs_path, ignore_query: true
+        expect(page).to have_current_path labs_path
       end
 
       it { expect(page).to have_content 'O campo "Título" deve ser preenchido!' }

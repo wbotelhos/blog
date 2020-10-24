@@ -11,4 +11,17 @@
       <% end %>
     </ol>
   </section>
+
+  <section class="listing">
+    <h1><%= t 'comment.other' %></h1>
+
+    <ol>
+      <% @pendings.each do |comment| %>
+        <li>
+          <%= link_to comment.email, polymorphic_path([:edit, comment.commentable, comment]), class: :listing__title %>
+          <%= link_to slug_url(comment.commentable.slug, anchor: "comment-#{comment.id}"), slug_path(comment.commentable.slug, anchor: "comment-#{comment.id}"), class: :listing__url %>
+        </li>
+      <% end %>
+    </ol>
+  </section>
 </div>

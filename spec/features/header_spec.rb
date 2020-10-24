@@ -13,7 +13,7 @@ RSpec.describe :header do
     before { click_link CONFIG['author'] }
 
     it 'goes to root page' do
-      expect(page).to have_current_path root_path, ignore_query: true
+      expect(page).to have_current_path root_path
     end
   end
 

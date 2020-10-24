@@ -35,7 +35,7 @@ RSpec.describe Lab, '#index' do
       before { click_link lab.title }
 
       it 'redirects to the lab page' do
-        expect(page).to have_current_path slug_lab_path(lab.slug), ignore_query: true
+        expect(page).to have_current_path slug_lab_path(lab.slug)
       end
     end
 
@@ -43,7 +43,7 @@ RSpec.describe Lab, '#index' do
       before { click_link lab.slug }
 
       it 'redirects to the lab page' do
-        expect(page).to have_current_path slug_lab_path(lab.slug), ignore_query: true
+        expect(page).to have_current_path slug_lab_path(lab.slug)
       end
     end
   end

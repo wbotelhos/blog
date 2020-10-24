@@ -19,7 +19,7 @@ RSpec.describe User, 'session#new', :js do
     end
 
     it 'redirects to the same page', :js do
-      expect(page).to have_current_path login_path, ignore_query: true
+      expect(page).to have_current_path login_path
     end
 
     it 'displays error message' do
@@ -38,7 +38,7 @@ RSpec.describe User, 'session#new', :js do
     end
 
     it 'redirects to admin page' do
-      expect(page).to have_current_path admin_path, ignore_query: true
+      expect(page).to have_current_path admin_path
     end
   end
 
@@ -85,7 +85,7 @@ RSpec.describe User, 'session#new', :js do
       before { visit login_path }
 
       it 'redirects to index page' do
-        expect(page).to have_current_path root_path, ignore_query: true
+        expect(page).to have_current_path root_path
       end
     end
   end

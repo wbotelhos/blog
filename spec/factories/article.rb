@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :article do
+  factory :article, aliases: [:commentable] do
     association      :user
     body             { 'The Article' }
     sequence(:title) { |i| "Title #{i}" }

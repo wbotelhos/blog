@@ -28,7 +28,7 @@ RSpec.describe User, '#update' do
       end
 
       it 'redirects to edit page' do
-        expect(page).to have_current_path profile_path, ignore_query: true
+        expect(page).to have_current_path profile_path
       end
 
       it { expect(find_field('user_email').value).to                 eq 'botelho@example.org' }
@@ -49,7 +49,7 @@ RSpec.describe User, '#update' do
       end
 
       it 'redirects to edit page' do
-        expect(page).to have_current_path profile_path, ignore_query: true
+        expect(page).to have_current_path profile_path
       end
 
       it { expect(find_field('user_email').value).to eq 'washington@example.org' }

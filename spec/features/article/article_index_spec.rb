@@ -35,7 +35,7 @@ RSpec.describe Article, '#index' do
       before { click_link article.title }
 
       it 'redirects to the article page' do
-        expect(page).to have_current_path slug_path(article.slug), ignore_query: true
+        expect(page).to have_current_path slug_path(article.slug)
       end
     end
 
@@ -43,7 +43,7 @@ RSpec.describe Article, '#index' do
       before { click_link article.slug }
 
       it 'redirects to the article page' do
-        expect(page).to have_current_path slug_path(article.slug), ignore_query: true
+        expect(page).to have_current_path slug_path(article.slug)
       end
     end
   end

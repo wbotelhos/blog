@@ -47,7 +47,7 @@ RSpec.describe Article, '#create' do
       it 'renders form page again' do
         click_button 'Salvar'
 
-        expect(page).to have_current_path articles_path, ignore_query: true
+        expect(page).to have_current_path articles_path
       end
 
       it 'shows error' do

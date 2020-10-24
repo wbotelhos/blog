@@ -62,7 +62,9 @@ class LabsController < ApplicationController
     @media = Lab.where('slug = ?', params[:slug]).first
 
     if @media.present?
-      @title = "#{@media.title} | #{@media.description}"
+      @comment       = @media.comments.new
+      @root_comments = CommentPresenter.wrap(@media.comments.roots)
+      @title         = "#{@media.title} | #{@media.description}"
 
       @lab = LabPresenter.new(@media)
 

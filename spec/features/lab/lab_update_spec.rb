@@ -35,7 +35,7 @@ RSpec.describe Lab, '#update' do
     end
 
     it 'redirects to edit page' do
-      expect(page).to have_current_path "/labs/#{lab.id}/edit", ignore_query: true
+      expect(page).to have_current_path "/labs/#{lab.id}/edit"
     end
 
     it { expect(find_field('lab_analytics').value).to   eq 'UA-432-1' }

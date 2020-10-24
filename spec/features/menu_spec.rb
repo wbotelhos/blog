@@ -83,7 +83,7 @@ RSpec.describe :menu do
     before { find('.i-feed').click }
 
     it 'goes to feed page' do
-      expect(page).to have_current_path feed_path, ignore_query: true
+      expect(page).to have_current_path feed_path
     end
   end
 

@@ -36,12 +36,14 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @media = Article.where('slug = ?', params[:slug]).first
+    media = Article.where('slug = ?', params[:slug]).first
 
-    if @media.present?
-      @title = @media.title
+    if media.present?
+      @comment       = media.comments.new
+      @root_comments = CommentPresenter.wrap(media.comments.roots)
+      @title         = media.title
 
-      @article = ArticlePresenter.new(@media)
+      @media = ArticlePresenter.new(media)
     else
       redirect_to root_url, alert: t('article.flash.not_found', uri: params[:slug])
     end

@@ -32,12 +32,12 @@ RSpec.describe Article, '#show' do
     before { click_link article.title }
 
     it 'sends to the same page' do
-      expect(page).to have_current_path "/#{article.slug}", ignore_query: true
+      expect(page).to have_current_path "/#{article.slug}"
     end
   end
 
   it 'redirects to show page' do
-    expect(page).to have_current_path "/#{article.slug}", ignore_query: true
+    expect(page).to have_current_path "/#{article.slug}"
   end
 
   it 'does not display edit link' do
@@ -50,7 +50,7 @@ RSpec.describe Article, '#show' do
     before { visit slug_path 'invalid' }
 
     it 'redirects to root page' do
-      expect(page).to have_current_path root_path, ignore_query: true
+      expect(page).to have_current_path root_path
     end
 
     it 'display not found message' do

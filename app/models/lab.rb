@@ -1,4 +1,6 @@
 class Lab < ActiveRecord::Base
+  has_many :comments, as: :commentable, dependent: :destroy
+
   scope :by_created,    -> { order 'created_at desc' }
   scope :by_published,  -> { order 'published_at desc' }
   scope :drafts,        -> { where 'published_at is null or published_at > ?', Time.current }
