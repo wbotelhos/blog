@@ -9,6 +9,16 @@ function install() {
 function files(done) {
   'use strict';
 
+  function destiny(filename) {
+    if (/\.(css|sass|scss)$/.test(filename)) {
+      return 'app/assets/stylesheets/vendor';
+    }
+
+    if (/\.(js|js.map)$/.test(filename)) {
+      return 'app/assets/javascripts/vendor';
+    }
+  }
+
   var entries = [
     ['node_modules/jquery/dist/jquery.min.js'],
     ['node_modules/normalize.css/normalize.css'],
@@ -17,16 +27,6 @@ function files(done) {
   for (var i = 0; i < entries.length; i++) {
     var file     = entries[i][0];
     var filename = entries[i][1] || file.split('/').pop();
-
-    function destiny(filename) {
-      if (/\.(css|sass|scss)$/.test(filename)) {
-        return 'app/assets/stylesheets/vendor';
-      }
-
-      if (/\.(js|js.map)$/.test(filename)) {
-        return 'app/assets/javascripts/vendor';
-      }
-    }
 
     gulp.src(file).pipe(require('gulp-rename')(filename)).pipe(gulp.dest(destiny(filename)));
   }
