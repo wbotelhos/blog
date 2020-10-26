@@ -2,6 +2,7 @@
 **/.DS_Store
 **/*.md
 /.bundle
+/.dockerignore
 /.env*
 /.eslint*
 /.git*
