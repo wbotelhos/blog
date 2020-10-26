@@ -1,4 +1,4 @@
-var CommentResponder = {
+var CommentResponder = { // eslint-disable-line no-unused-vars
   init: function() {
     this.body     = $('#comment_body');
     this.comments = $('.comments');
@@ -13,10 +13,9 @@ var CommentResponder = {
     var that = this;
 
     that.comments.on('click', '.comments__reply', function() {
-      var
-        self  = $(this),
-        id    = self.data('id'),
-        name  = self.data('name');
+      var self = $(this);
+      var id   = self.data('id');
+      var name = self.data('name');
 
       that.setParent(id);
       that.write(name + ',\n\n');
@@ -43,15 +42,19 @@ var CommentResponder = {
     this.parent.val(id);
   },
 
-  showCancel: function(id, name) {
+  showCancel: function() {
     this.cancel.css('visibility', 'visible');
   },
 
   showReplying: function(id, name) {
-    var anchor = '#comment-' + id,
-        text   = '#' + id;
+    var anchor = '#comment-' + id;
+    var text   = '#' + id;
 
-    this.replying.css('visibility', 'visible').children('strong').html('<a href="' + anchor + '">' + text + '</a> ' + name);
+    this
+      .replying
+      .css('visibility', 'visible')
+      .children('strong')
+      .html('<a href="' + anchor + '">' + text + '</a> ' + name);
   },
 
   write: function(text) {
