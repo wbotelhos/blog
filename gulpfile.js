@@ -32,7 +32,7 @@ function files(done) {
   }
 
   done();
-};
+}
 
 function lint() {
   'use strict';
@@ -45,7 +45,7 @@ function lint() {
   ];
 
   return gulp.src(files).pipe(eslint()).pipe(eslint.formatEach()).pipe(eslint.failOnError());
-};
+}
 
 exports.default = gulp.series(install, gulp.parallel(files, lint));
 exports.install = install;
