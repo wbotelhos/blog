@@ -47,7 +47,7 @@ open http://0.0.0.0:3000
 
 ## Run Application local
 
-Need install ruby version of file `.ruby-version`.
+Need install ruby version of file [.ruby-version](.ruby-version).
 
 ```sh
 bundle install
