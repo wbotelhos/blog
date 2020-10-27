@@ -14,5 +14,6 @@ Rails.application.config.assets.version = '1.0'
 # custom
 
 Rails.application.config.tap do |config|
-  config.assets.digest = false if Rails.env.test?
+  config.action_controller.asset_host = ENV['ASSET_HOST'] if Rails.env.production?
+  config.assets.digest                = false if Rails.env.test?
 end
