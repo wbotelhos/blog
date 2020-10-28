@@ -75,7 +75,7 @@ class LabsController < ApplicationController
   end
 
   def update
-    if @media.update_attributes parameters
+    if @media.update(parameters)
       redirect_to edit_lab_url params[:id]
     else
       render :edit

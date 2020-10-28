@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     @media   = @model.find @id
     @comment = @media.comments.find params[:id]
 
-    if @comment.update_attributes parameters
+    if @comment.update(parameters)
       redirect_to slug_url @media.slug, anchor: "comment-#{@comment.id}"
     else
       render :edit

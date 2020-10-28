@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
   def update
     @media = Article.find params[:id]
 
-    if @media.update_attributes parameters
+    if @media.update(parameters)
       redirect_to edit_article_url @media
     else
       render :edit

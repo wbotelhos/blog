@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     user.delete(:password) if user[:password].blank?
 
-    if @user.update_attributes user
+    if @user.update(user)
       redirect_to profile_path
     else
       render :edit
