@@ -71,7 +71,7 @@ RSpec.describe Comment, '#create' do
         it 'displays error message' do
           fill_in 'comment_body', with: 'Some comment!'
           fill_in 'comment_email', with: 'john@example.org'
-          fill_in 'comment_url', with: 'http://example.org'
+          fill_in 'comment_url', with: 'https://example.org'
 
           uncheck 'not_human'
 
@@ -85,7 +85,7 @@ RSpec.describe Comment, '#create' do
         before do
           fill_in 'comment_body', with: 'Some comment!'
           fill_in 'comment_name', with: 'John'
-          fill_in 'comment_url', with: 'http://example.org'
+          fill_in 'comment_url', with: 'https://example.org'
 
           uncheck 'not_human'
 
@@ -101,7 +101,7 @@ RSpec.describe Comment, '#create' do
         before do
           fill_in 'comment_email', with: 'john@example.org'
           fill_in 'comment_name', with: 'John'
-          fill_in 'comment_url', with: 'http://example.org'
+          fill_in 'comment_url', with: 'https://example.org'
 
           uncheck 'not_human'
 
@@ -216,7 +216,7 @@ RSpec.describe Comment, '#create' do
         expect(page).to have_link 'Responder'
 
         # displays the commenter name
-        expect(page).to have_link CONFIG['author'], href: CONFIG['url_http']
+        expect(page).to have_link CONFIG['author'], href: CONFIG['url_https']
 
         # does not begins pending
         expect(page).not_to have_content 'pendente'

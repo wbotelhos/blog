@@ -89,7 +89,7 @@ class AssetExtractor
   end
 
   def get_url(value)
-    AssetUrl.new(CONFIG['url_http'], value).to_s
+    AssetUrl.new(CONFIG['url_https'], value).to_s
   end
 
   def join_path(*paths)

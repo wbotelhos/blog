@@ -15,15 +15,15 @@ RSpec.describe :menu do
   end
 
   it 'shows linkedin icon' do
-    expect(page).to have_link '', href: "http://linkedin.com/in/#{CONFIG['linkedin']}"
+    expect(page).to have_link '', href: "https://www.linkedin.com/in/#{CONFIG['linkedin']}"
   end
 
   it 'shows github icon' do
-    expect(page).to have_link '', href: "http://github.com/#{CONFIG['github']}"
+    expect(page).to have_link '', href: "https://github.com/#{CONFIG['github']}"
   end
 
   it 'shows twitter icon' do
-    expect(page).to have_link '', href: "http://twitter.com/#{CONFIG['twitter']}"
+    expect(page).to have_link '', href: "https://twitter.com/#{CONFIG['twitter']}"
   end
 
   it 'shows labs icon' do

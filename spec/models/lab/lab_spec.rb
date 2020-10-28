@@ -113,7 +113,7 @@ RSpec.describe Lab do
     let(:lab) { FactoryBot.build :lab }
 
     it 'return the online url of the url' do
-      expect(lab.url).to eq "#{CONFIG['url_http']}/#{lab.slug}"
+      expect(lab.url).to eq "#{CONFIG['url_https']}/#{lab.slug}"
     end
   end
 
@@ -121,7 +121,7 @@ RSpec.describe Lab do
     let(:lab) { FactoryBot.build :lab }
 
     it 'return the online url of the github' do
-      expect(lab.github).to eq "http://github.com/#{CONFIG['github']}/#{lab.slug}"
+      expect(lab.github).to eq "https://github.com/#{CONFIG['github']}/#{lab.slug}"
     end
   end
 
@@ -129,34 +129,34 @@ RSpec.describe Lab do
     let(:lab) { FactoryBot.build :lab }
 
     it 'return the github download url' do
-      expect(lab.download).to eq "http://github.com/#{CONFIG['github']}/#{lab.slug}/archive/#{lab.version}.zip"
+      expect(lab.download).to eq "https://github.com/#{CONFIG['github']}/#{lab.slug}/archive/#{lab.version}.zip"
     end
   end
 
   describe '.javascripts' do
     context 'with value' do
       context 'with single file' do
-        let(:lab) { FactoryBot.build :lab, js_import: 'http://example.org' }
+        let(:lab) { FactoryBot.build :lab, js_import: 'https://example.org' }
 
         it 'returns the urls wrapped with script tag' do
-          expect(lab.javascripts).to eq %(<script src="http://example.org"></script>)
+          expect(lab.javascripts).to eq %(<script src="https://example.org"></script>)
         end
       end
 
       context 'with multiple files' do
         context 'with spaces' do
-          let(:lab) { FactoryBot.create :lab, js_import: 'http://example.org, http://example.com' }
+          let(:lab) { FactoryBot.create :lab, js_import: 'https://example.org, https://example.com' }
 
           it 'returns the urls wrapped with script tag' do
-            expect(lab.javascripts).to eq %(<script src="http://example.org"></script><script src="http://example.com"></script>)
+            expect(lab.javascripts).to eq %(<script src="https://example.org"></script><script src="https://example.com"></script>)
           end
         end
 
         context 'without spaces' do
-          let(:lab) { FactoryBot.build :lab, js_import: 'http://example.org,http://example.com' }
+          let(:lab) { FactoryBot.build :lab, js_import: 'https://example.org,https://example.com' }
 
           it 'returns the urls wrapped with script tag' do
-            expect(lab.javascripts).to eq %(<script src="http://example.org"></script><script src="http://example.com"></script>)
+            expect(lab.javascripts).to eq %(<script src="https://example.org"></script><script src="https://example.com"></script>)
           end
         end
       end
@@ -210,27 +210,27 @@ RSpec.describe Lab do
   describe '.stylesheets' do
     context 'with value' do
       context 'with single file' do
-        let(:lab) { FactoryBot.build :lab, css_import: 'http://example.org' }
+        let(:lab) { FactoryBot.build :lab, css_import: 'https://example.org' }
 
         it 'returns the urls wrapped with link tag' do
-          expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org">)
+          expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="https://example.org">)
         end
       end
 
       context 'with multiple files' do
         context 'with spaces' do
-          let(:lab) { FactoryBot.create :lab, css_import: 'http://example.org, http://example.com' }
+          let(:lab) { FactoryBot.create :lab, css_import: 'https://example.org, https://example.com' }
 
           it 'returns the urls wrapped with link tag' do
-            expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org"><link rel="stylesheet" href="http://example.com">)
+            expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="https://example.org"><link rel="stylesheet" href="https://example.com">)
           end
         end
 
         context 'without spaces' do
-          let(:lab) { FactoryBot.build :lab, css_import: 'http://example.org,http://example.com' }
+          let(:lab) { FactoryBot.build :lab, css_import: 'https://example.org,https://example.com' }
 
           it 'returns the urls wrapped with link tag' do
-            expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="http://example.org"><link rel="stylesheet" href="http://example.com">)
+            expect(lab.stylesheets).to eq %(<link rel="stylesheet" href="https://example.org"><link rel="stylesheet" href="https://example.com">)
           end
         end
       end

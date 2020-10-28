@@ -20,7 +20,7 @@ class Lab < ActiveRecord::Base
   end
 
   def github
-    "http://github.com/#{CONFIG['github']}/#{slug}"
+    "https://github.com/#{CONFIG['github']}/#{slug}"
   end
 
   def javascripts
@@ -44,7 +44,7 @@ class Lab < ActiveRecord::Base
   end
 
   def url
-    "#{CONFIG['url_http']}/#{slug}"
+    "#{CONFIG['url_https']}/#{slug}"
   end
 
   private

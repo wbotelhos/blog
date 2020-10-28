@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe AssetUrl do
-  let(:base_url) { 'http://example.org' }
+  let(:base_url) { 'https://example.org' }
 
   describe '.to_s' do
     context 'with urls starting with http' do
-      let(:url) { 'http://example.org' }
+      let(:url) { 'https://example.org' }
 
       it 'returns the self url' do
         expect(described_class.new(base_url, url).to_s).to eq url

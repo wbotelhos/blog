@@ -22,7 +22,7 @@ RSpec.describe Comment do
         body:  'body',
         email: 'john@example.org',
         name:  'name',
-        url:   'http://example.org'
+        url:   'https://example.org'
       )
 
       comment.parent = comment

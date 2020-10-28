@@ -6,7 +6,7 @@ module ApplicationHelper
   end
 
   def github
-    "http://github.com/#{CONFIG['github']}"
+    "https://github.com/#{CONFIG['github']}"
   end
 
   def gravatar(email, options = {})
@@ -19,7 +19,7 @@ module ApplicationHelper
   end
 
   def linkedin
-    "http://linkedin.com/in/#{CONFIG['linkedin']}"
+    "https://www.linkedin.com/in/#{CONFIG['linkedin']}"
   end
 
   def media_slug(media, anchor = nil)
@@ -47,7 +47,7 @@ module ApplicationHelper
   end
 
   def twitter
-    "http://twitter.com/#{CONFIG['twitter']}"
+    "https://twitter.com/#{CONFIG['twitter']}"
   end
 
   def twitter_button(options = {})
@@ -66,8 +66,8 @@ module ApplicationHelper
   private
 
   def avatar_image(hash, options)
-    if Rails.env.production?
-      url = "http://www.gravatar.com/avatar/#{hash}?d=mm"
+    if ENV['RAILS_ENV'] == 'production'
+      url = "https://www.gravatar.com/avatar/#{hash}?d=mm"
       url << "&s=#{options[:size]}" if options[:size]
       url
     else

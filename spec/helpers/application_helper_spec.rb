@@ -2,59 +2,6 @@
 require 'digest/md5'
 
 RSpec.describe ApplicationHelper do
-  describe '#github' do
-    it 'builds the url' do
-      expect(helper.github).to eq "http://github.com/#{CONFIG['github']}"
-    end
-  end
-
-  describe '#gravatar' do
-    let(:email) { 'wbotelhos@example.com' }
-    let(:md5)   { Digest::MD5.hexdigest email }
-
-    context 'into production env' do
-      before { Rails.env = 'production' }
-
-      context 'with :size' do
-        it 'build an image with size' do
-          expect(helper.gravatar(email, size: 1)).to match %r(src="http://www\.gravatar\.com/avatar/#{md5}\?d=mm&amp;s=1")
-        end
-      end
-
-      context 'without :size' do
-        it 'build an image' do
-          expect(helper.gravatar(email)).to match %r(src="http://www\.gravatar\.com/avatar/#{md5}\?d=mm")
-        end
-      end
-    end
-
-    context 'outside production env' do
-      before { Rails.env = 'test' }
-
-      it 'build default image url' do
-        expect(helper.gravatar(email)).to match %r(src="/assets/avatar.jpg")
-      end
-    end
-
-    context 'without alt parameter' do
-      it 'builds the html with empty alt' do
-        expect(helper.gravatar(email)).to match 'alt=""'
-      end
-    end
-
-    context 'with alt parameter' do
-      it 'builds the html with alt' do
-        expect(helper.gravatar(email, alt: :alt)).to match 'alt="alt"'
-      end
-    end
-  end
-
-  describe '#linkedin' do
-    it 'builds the url' do
-      expect(helper.linkedin).to eq "http://linkedin.com/in/#{CONFIG['linkedin']}"
-    end
-  end
-
   describe '#media_slug' do
     let(:article) { FactoryBot.create :article, title: 'Some Title' }
 
@@ -89,21 +36,15 @@ RSpec.describe ApplicationHelper do
     end
   end
 
-  describe '#twitter' do
-    it 'builds the url' do
-      expect(helper.twitter).to eq "http://twitter.com/#{CONFIG['twitter']}"
-    end
-  end
-
   describe '#twitter_button' do
-    let(:button) { CGI.unescape helper.twitter_button(text: 'Some Text', url: 'http://wbotelhos.com') }
+    let(:button) { CGI.unescape helper.twitter_button(text: 'Some Text', url: 'https://www.wbotelhos.com') }
 
     it 'builds the right text' do
       expect(button).to match(/text="Some Text"/)
     end
 
     it 'builds the right url' do
-      expect(button).to match %r(url=http://wbotelhos.com)
+      expect(button).to match %r(url=https://www.wbotelhos.com)
     end
 
     it 'builds the right via' do

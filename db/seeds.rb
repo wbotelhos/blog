@@ -34,7 +34,7 @@ Hi! My name is **Washington Botelho** and this article is an example to introduc
 
 ### Article
 
-We are using the [Markdown](http://daringfireball.net/projects/markdown/ "Markdown") syntaxe with help of the [Redcarpet](https://github.com/tanoku/redcarpet "Redcarpet") and [Pygments.rb](https://github.com/tmm1/pygments.rb "Pygments.rb") to make it colorized.
+We are using the [Markdown](https://daringfireball.net/projects/markdown/ "Markdown") syntaxe with help of the [Redcarpet](https://github.com/tanoku/redcarpet "Redcarpet") and [Pygments.rb](https://github.com/tmm1/pygments.rb "Pygments.rb") to make it colorized.
 
 You can apply a Ruby *Syntax Highlighting* in an block like the following:
 
@@ -73,7 +73,7 @@ comment_1 = article.comments.create!(
   body:  "Hi Botelho,\nCould I use your blog?\n\nI really liked it!",
   email: 'glbenz@example.com',
   name:  'Gabriel Benz',
-  url:   'http://gabrielbenz.com'
+  url:   'https://gabrielbenz.com'
 )
 
 response_1 = article.comments.new(
@@ -81,7 +81,7 @@ response_1 = article.comments.new(
   email:     'wbotelhos@example.com',
   name:      'Washington Botelho',
   parent_id: comment_1.id,
-  url:       'https://wbotelhos.com'
+  url:       'https://www.wbotelhos.com'
 )
 response_1.author = true
 response_1.save!
@@ -90,7 +90,7 @@ comment_2 = article.comments.create!(
   body:  "Hi Washington,\nI would like to contribute to the blog, you agree Pull Requests?",
   email: 'danielfariati@example.com',
   name:  'Daniel Faria',
-  url:   'http://danielfariati.com.br'
+  url:   'https://danielfariati.com.br'
 )
 
 response2 = article.comments.create!(
@@ -98,7 +98,7 @@ response2 = article.comments.create!(
   email:     'wbotelhos@example.com',
   name:      'Washington Botelho',
   parent_id: comment_2.id,
-  url:       'https://wbotelhos.com'
+  url:       'https://www.wbotelhos.com'
 )
 response2.author = true
 response2.save!
@@ -108,5 +108,5 @@ article.comments.create!(
   email:     'danielfariati@example.com',
   name:      'Daniel Faria',
   parent_id: response2.id,
-  url:       'http://danielfariati.com.br'
+  url:       'https://danielfariati.com.br'
 )

@@ -4,7 +4,7 @@ FactoryBot.define do
     body             { 'body' }
     sequence(:email) { |i| "john#{i}@example.org" }
     sequence(:name)  { |i| "John #{i}" }
-    url              { 'http://example.org' }
+    url              { 'https://example.org' }
 
     factory :comment_answered do
       pending { false }

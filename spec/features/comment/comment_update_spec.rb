@@ -34,7 +34,7 @@ RSpec.describe Comment, '#update' do
       fill_in 'comment_body', with: 'new body'
       fill_in 'comment_email', with: 'new-john@example.org'
       fill_in 'comment_name', with: 'new name'
-      fill_in 'comment_url', with: 'http://example.org/new'
+      fill_in 'comment_url', with: 'https://example.org/new'
 
       uncheck 'comment_pending'
 
@@ -56,7 +56,7 @@ RSpec.describe Comment, '#update' do
       expect(page).to have_link 'Responder'
 
       # displays the commenter name
-      expect(page).to have_link 'new name', href: 'http://example.org/new'
+      expect(page).to have_link 'new name', href: 'https://example.org/new'
 
       # hides the pending message
       expect(page).not_to have_content 'pendente'

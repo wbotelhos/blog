@@ -78,7 +78,7 @@ RSpec.describe FeedsController, '#show' do
       <title>Washington Botelho</title>
       <description>Artigos sobre Ruby, Rails, Java, VRaptor, Python, jQuery, JavaScript, CSS e muito mais.</description>
       <language>pt-BR</language>
-      <link>http://wbotelhos.com</link>
+      <link>https://www.wbotelhos.com</link>
       <item>
         <title>The Title</title>
         <pubDate>Tue, 01 Jan 1991 00:00:00 -0200</pubDate>
