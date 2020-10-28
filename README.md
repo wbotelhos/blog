@@ -1,8 +1,9 @@
 # Blog on Rails
 
 [![CI](https://github.com/wbotelhos/danca/workflows/CI/badge.svg?)](https://github.com/wbotelhos/danca/actions?query=workflow%3ACI)
-[![Quality](https://api.codeclimate.com/v1/badges/77c48bc2ae425721e774/maintainability)](https://codeclimate.com/github/wbotelhos/blogy/maintainability)
-[![codecov](https://codecov.io/gh/wbotelhos/blogy/branch/master/graph/badge.svg?token=OexoxMXNTJ)](https://codecov.io/gh/wbotelhos/blogy)
+[![Maintainability](https://api.codeclimate.com/v1/badges/77c48bc2ae425721e774/maintainability)](https://codeclimate.com/github/wbotelhos/blogy/maintainability)
+[![codecov](https://codecov.io/gh/wbotelhos/blogy/branch/master/graph/badge.svg?token=VX93Oihxpz)](https://codecov.io/gh/wbotelhos/blogy)
+[![Patreon](https://img.shields.io/badge/donate-%3C3-brightgreen.svg)](https://www.patreon.com/wbotelhos)
 
 ## Application ENVs
 
