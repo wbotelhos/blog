@@ -27,6 +27,7 @@ end
 group :test do
   gem 'capybara-box', require: false
   gem 'codecov', require: false
+  gem 'env_mock', require: false
   gem 'factory_bot_rails'
   gem 'rack_session_access'
   gem 'rails-controller-testing'
