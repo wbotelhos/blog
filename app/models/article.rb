@@ -1,4 +1,4 @@
-class Article < ActiveRecord::Base
+class Article < ApplicationRecord
   attr_readonly :user_id
 
   belongs_to :user

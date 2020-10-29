@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   attr_reader :password
 
   has_many :articles, dependent: :nullify

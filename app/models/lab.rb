@@ -1,4 +1,4 @@
-class Lab < ActiveRecord::Base
+class Lab < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
 
   scope :by_created,    -> { order 'created_at desc' }
