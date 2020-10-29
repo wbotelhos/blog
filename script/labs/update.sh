@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd ~/workspace
 
 while read slug; do
