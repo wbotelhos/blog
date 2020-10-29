@@ -8,7 +8,7 @@ REPOSITORY=${REPOSITORY}
 TAG=v${TAG}
 
 docker build . -t ${REPOSITORY}:${TAG} \
-  --build-arg ASSETS_BUCKET={BUCKET_NAME} \
+  --build-arg ASSETS_BUCKET=${ASSETS_BUCKET} \
   --build-arg AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} \
   --build-arg AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 
