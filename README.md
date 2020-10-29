@@ -12,24 +12,17 @@ ASSET_HOST=https://{bucket_name}.s3[-{region}].amazonaws.com
 RAILS_MASTER_KEY={key}
 ```
 
-## Create Image
+## Making a Release
 
 ```sh
-ECR_URL={ecr_id}.dkr.ecr.{region}.amazonaws.com
-PROFILE={profile}
-
-AWS_PROFILE=${PROFILE} aws ecr get-login-password --region REGION | docker login --username AWS --password-stdin ${ECR_URL}
-
-REPOSITORY={repository}
-TAG=v{tag}
-
-docker build . -t ${REPOSITORY}:${TAG} \
-  --build-arg ASSETS_BUCKET={bucket_name} \
-  --build-arg AWS_ACCESS_KEY_ID={key_id} \
-  --build-arg AWS_SECRET_ACCESS_KEY={access_key}
-
-docker tag ${REPOSITORY}:${TAG} ${ECR_URL}/${REPOSITORY}:${TAG}
-docker push ${ECR_URL}/${REPOSITORY}:${TAG}
+ASSETS_BUCKET=... \
+AWS_ACCESS_KEY_ID=... \
+AWS_SECRET_ACCESS_KEY=... \
+ECR_ID=... \
+REGION=... \
+REPOSITORY=... \
+TAG=... \
+./script/ci/release.sh
 ```
 
 ## Run on Docker
