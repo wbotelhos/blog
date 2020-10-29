@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+puts "[seed] #{File.basename(__FILE__)}"
+
 @articles = {}
 
 body = <<~HEREDOC
@@ -33,7 +35,7 @@ body = <<~HEREDOC
 
   We can use HTML inside Markdown:
 
-  <div>This is a DIV element!</div>
+  <div style="background-color: pink; border-radius: 3; padding: 15px;">This is a DIV element!</div>
 
   ### Credentials
 

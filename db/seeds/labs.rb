@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+puts "[seed] #{File.basename(__FILE__)}"
+
 create_lab(
   analytics:   'UA-123-4',
   body:        "Usage: `$('div').raty();`",
