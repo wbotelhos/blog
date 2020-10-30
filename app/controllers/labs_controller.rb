@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LabsController < ApplicationController
   before_action :require_login, except: %i[index show]
   before_action :find, only: %i[edit export update]
@@ -100,7 +102,7 @@ class LabsController < ApplicationController
     }
 
     page = hash[:page] - 1
-    page = 0 if page < 0
+    page = 0 if page.negative?
 
     hash[:skip] = page * hash[:rows]
 

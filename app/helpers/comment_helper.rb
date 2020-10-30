@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CommentHelper
   def anchor(comment)
     "##{id_for comment}"
@@ -7,7 +9,7 @@ module CommentHelper
     if comment.url.present?
       url = comment.url
 
-      options.merge! target: :_blank
+      options[:target] = :_blank
     else
       url = 'javascript:void(0);'
     end
