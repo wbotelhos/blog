@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def errors_for(object, key)
     errors = object.errors.messages[key]
@@ -67,9 +69,11 @@ module ApplicationHelper
 
   def avatar_image(hash, options)
     if ENV['RAILS_ENV'] == 'production'
-      url = "https://www.gravatar.com/avatar/#{hash}?d=mm"
+      url = ["https://www.gravatar.com/avatar/#{hash}?d=mm"]
+
       url << "&s=#{options[:size]}" if options[:size]
-      url
+
+      url.join
     else
       'avatar.jpg'
     end
