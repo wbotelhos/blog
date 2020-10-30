@@ -11,36 +11,30 @@ RSpec.describe User do
 
   it { expect(FactoryBot.build(:user)).to validate_uniqueness_of(:email).case_insensitive }
 
-  context :create do
-    it 'creates a valid media' do
-      expect(User.new(
-               email:                 'john@example.org',
-               password:              'password',
-               password_confirmation: 'password'
-             )
-            ).to be_valid
-    end
+  it 'creates a valid media' do
+    expect(described_class.new(
+             email:                 'john@example.org',
+             password:              'password',
+             password_confirmation: 'password'
+           )
+          ).to be_valid
   end
 
-  context :format do
-    it 'validates the email format' do
-      expect(FactoryBot.build(:user, email: 'fail')).to be_invalid
-      expect(FactoryBot.build(:user, email: 'fail@')).to be_invalid
-      expect(FactoryBot.build(:user, email: 'fail@fail')).to be_invalid
-      expect(FactoryBot.build(:user, email: 'fail@fail.')).to be_invalid
+  it 'validates the email format' do
+    expect(FactoryBot.build(:user, email: 'fail')).to be_invalid
+    expect(FactoryBot.build(:user, email: 'fail@')).to be_invalid
+    expect(FactoryBot.build(:user, email: 'fail@fail')).to be_invalid
+    expect(FactoryBot.build(:user, email: 'fail@fail.')).to be_invalid
 
-      expect(FactoryBot.build(:user, email: 'ok@ok.ok')).to be_valid
-    end
+    expect(FactoryBot.build(:user, email: 'ok@ok.ok')).to be_valid
   end
 
-  context :confirmation do
-    it 'has a invalid one' do
-      expect(User.new(
-               email:                 'john@example.org',
-               password:              'password',
-               password_confirmation: 'password_wrong'
-             )
-            ).not_to be_valid
-    end
+  it 'has a invalid one' do
+    expect(described_class.new(
+             email:                 'john@example.org',
+             password:              'password',
+             password_confirmation: 'password_wrong'
+           )
+          ).not_to be_valid
   end
 end

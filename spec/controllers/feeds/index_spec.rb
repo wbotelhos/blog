@@ -57,9 +57,9 @@ RSpec.describe FeedsController, '#show' do
 
   it 'renders rss with markdown and syntax highlight' do
     body = <<~HEREDOC
-    # Code
+      # Code
 
-    `hello`
+      `hello`
     HEREDOC
 
     FactoryBot.create(:article,
@@ -72,28 +72,28 @@ RSpec.describe FeedsController, '#show' do
     get :index
 
     expect(response.body).to eq <<~HEREDOC
-  <?xml version="1.0" encoding="UTF-8"?>
-  <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <channel>
-      <title>Washington Botelho</title>
-      <description>Artigos sobre Ruby, Rails, Java, VRaptor, Python, jQuery, JavaScript, CSS e muito mais.</description>
-      <language>pt-BR</language>
-      <link>https://www.wbotelhos.com</link>
-      <item>
-        <title>The Title</title>
-        <pubDate>Tue, 01 Jan 1991 00:00:00 -0200</pubDate>
-        <link>http://test.host/the-title</link>
-        <guid isPermalink="true">http://test.host/the-title</guid>
-        <creator>User</creator>
-        <description>
-          <![CDATA[<h1>Code</h1>
+      <?xml version="1.0" encoding="UTF-8"?>
+      <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <channel>
+          <title>Washington Botelho</title>
+          <description>Artigos sobre Ruby, Rails, Java, VRaptor, Python, jQuery, JavaScript, CSS e muito mais.</description>
+          <language>pt-BR</language>
+          <link>https://www.wbotelhos.com</link>
+          <item>
+            <title>The Title</title>
+            <pubDate>Tue, 01 Jan 1991 00:00:00 -0200</pubDate>
+            <link>http://test.host/the-title</link>
+            <guid isPermalink="true">http://test.host/the-title</guid>
+            <creator>User</creator>
+            <description>
+              <![CDATA[<h1>Code</h1>
 
-  <p><code>hello</code></p>
-  ]]>
-        </description>
-      </item>
-    </channel>
-  </rss>
+      <p><code>hello</code></p>
+      ]]>
+            </description>
+          </item>
+        </channel>
+      </rss>
     HEREDOC
   end
 end

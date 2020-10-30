@@ -4,13 +4,13 @@ RSpec.describe HighlighterService, '#highlight' do
   context 'when using markdown' do
     let!(:text) do
       <<~HEREDOC
-      # Code
+        # Code
 
-      ```ruby
-      def say
-        print 'Hello World!'
-      end
-      ```
+        ```ruby
+        def say
+          print 'Hello World!'
+        end
+        ```
       HEREDOC
     end
 
