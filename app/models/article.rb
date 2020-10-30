@@ -14,9 +14,9 @@ class Article < ApplicationRecord
   scope :published,     -> { where 'published_at is not null and published_at <= ?', Time.current }
   scope :recents,       -> { limit 10 }
 
-  before_validation :generate_slug, if: ->(e) { e.title.present? }
+  before_validation :generate_slug, if: -> { title.present? }
 
-  validates :slug,  presence: true, if: ->(e) { e.title.present? }
+  validates :slug,  presence: true, if: -> { title.present? }
   validates :title, presence: true
   validates :title, uniqueness: { case_sensitive: false }
   validates :user,  presence: true
