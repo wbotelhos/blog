@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PasswordEncryptor
   def self.encrypt(password)
     salt = encryptor.hexdigest rand.to_s

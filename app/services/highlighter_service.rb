@@ -23,7 +23,7 @@ module HighlighterService
     Html.new(
       filter_html:     false,
       hard_wrap:       true,
-      link_attributes: { rel: 'nofollow' },
+      link_attributes: { rel: 'nofollow' }
     )
   end
 end

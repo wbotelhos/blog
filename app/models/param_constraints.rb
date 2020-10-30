@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ParamConstraints
   def matches?(request)
     is_lab? request.params[:slug]

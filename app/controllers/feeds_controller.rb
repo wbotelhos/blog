@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FeedsController < ApplicationController
   before_action { request.format = :rss }
 

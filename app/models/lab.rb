@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Lab < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
 

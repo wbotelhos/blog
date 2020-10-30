@@ -4,8 +4,8 @@ RSpec.describe CommentsController, '#create' do
   let!(:parameters) do
     {
       body:  'body',
-      email: "example@example.com",
-      name:  "name",
+      email: 'example@example.com',
+      name:  'name',
       url:   'https://www.example.com',
     }
   end

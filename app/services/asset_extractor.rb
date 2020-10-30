@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AssetExtractor
   def initialize(media, response)
     @html  = Nokogiri::HTML response.body

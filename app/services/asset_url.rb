@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AssetUrl
   def initialize(base_url, url)
     @base_url = base_url

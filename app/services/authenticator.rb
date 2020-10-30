@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Authenticator
   def self.authenticate(email, password)
     user = User.find_by email: email
