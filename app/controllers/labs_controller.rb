@@ -64,8 +64,8 @@ class LabsController < ApplicationController
     if @media.present?
       @comment       = @media.comments.new
       @root_comments = CommentPresenter.wrap(@media.comments.roots)
-
-      @lab = LabPresenter.new(@media)
+      @lab           = LabPresenter.new(@media)
+      @title         = @lab.page_title
 
       render layout: 'labs'
     else
