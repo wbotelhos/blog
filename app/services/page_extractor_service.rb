@@ -10,6 +10,7 @@ class PageExtractorService
   def extract_html
     content = rename_favicon(@html.to_s)
     content = rename_css(content)
+    content = rename_jquery(content)
     content = rename_js(content)
     content = rename_image(content)
     content = rename_plugin(content)
@@ -81,12 +82,18 @@ class PageExtractorService
     text.gsub(%r(raty/lib/images), 'images')
   end
 
+  def rename_jquery(text)
+    text
+      .sub(%r(raty/node_modules/jquery/dist/jquery(\.min)?\.js), '../node_modules/jquery/dist/jquery.min.js')
+      .sub(%r(https://.+/dist/jquery(\.min)?\.js), '../node_modules/jquery/dist/jquery.min.js')
+  end
+
   def rename_js(text)
     text.sub(%r(/assets/labs.+\.js), 'javascripts/labs.js')
   end
 
   def rename_plugin(text)
-    text.gsub(%r(#{@media.slug}/(.+)\.(css|js)), '../\1.\2')
+    text.gsub(%r(#{@media.slug}/(lib/.+)\.(css|js)), '../\1.\2')
   end
 
   private

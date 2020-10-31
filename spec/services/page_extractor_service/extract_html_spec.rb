@@ -10,7 +10,7 @@ RSpec.describe PageExtractorService, '#extract_html' do
       <link rel="stylesheet" media="screen" href="/assets/labs.debug-f20ed2ac2dc.css" />
 
       <script src="/assets/labs.debug-b8b2a61.js"></script>
-      <script src="slug/lib/jquery.slug.js"></script>
+      <script src="raty/node_modules/jquery/dist/jquery.min.js"></script><script src="slug/lib/jquery.slug.js"></script>
 
       $('#starHalf').raty({
         half:     true,
@@ -39,7 +39,7 @@ RSpec.describe PageExtractorService, '#extract_html' do
       <link rel="stylesheet" media="screen" href="stylesheets/labs.css">
 
       <script src="javascripts/labs.js"></script>
-      <script src="../lib/jquery.slug.js"></script>
+      <script src="../node_modules/jquery/dist/jquery.min.js"></script><script src="../lib/jquery.slug.js"></script>
       </head>
       <body><p>
 
