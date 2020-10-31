@@ -1,119 +1,120 @@
 # frozen_string_literal: true
 
 class AssetExtractor
-  def initialize(media, response)
-    @html  = Nokogiri::HTML response.body
+  def initialize(media, content, host)
+    @html  = Nokogiri::HTML(content)
     @media = media
+    @host  = host
   end
 
   def extract_html
-    destiny = join_path 'demo/index.html'
-    html    = @html.to_html
-    html    = fix_favicon html
-    html    = fix_lib_path html
-    html    = fix_public_path html
+    remove_elements
 
-    write_file destiny, html
+    content = rename_favicon(@html.to_s)
+    content = rename_css(content)
+    content = rename_js(content)
+    content = rename_image(content)
+    content = rename_plugin(content)
+    target  = join_paths('demo/index.html')
+
+    write_file(target, content)
   end
 
-  def extract(elements, path)
-    @html.css(elements).each do |tag|
-      attribute      = url_attribute tag
-      url            = get_url tag[attribute]
-      filename       = get_filename url
-      type           = expand_filename filename
-      folder         = [path, type].compact.join('/')
-      tag[attribute] = "#{folder}/#{filename}"
-      destiny        = join_path 'demo', folder, filename
+  def fetch(url)
+    Aitch.get(url).body.force_encoding('binary')
+  end
 
-      save_file! url, destiny, filename
+  def files_for_extraction(selector)
+    @html.css(selector).map do |tag|
+      attribute           = tag.name == 'link' ? 'href' : 'src'
+      url                 = get_url(tag[attribute])
+      filename, extension = filename_extension(url)
+      folder              = subfolder(extension)
+      target              = join_paths('demo', folder, filename)
+
+      { filename: filename, folder: folder, tag: tag, target: target, url: url }
     end
   end
 
-  def remove_elements
-    @html.at_css('form').remove
-    @html.at_css('meta[name="csrf-token"]').remove
-    @html.search('.reply').map(&:remove)
-    @html.search('//abbr').map(&:remove)
+  def filename_extension(url)
+    path       = URI.parse(url).path
+    extension  = File.extname(path)
+    basename   = File.basename(path)
+    name, hash = basename.split('-')
+
+    pure_name = "#{name.sub('.debug', '')}#{extension}" if hash
+
+    [pure_name, extension]
+  end
+
+  def join_paths(*paths)
+    Rails.root.join('public', @media.slug, paths.join('/'))
   end
 
   def process
-    extract 'link[href*="labs"] , script[src*="labs"]', nil
+    files_for_extraction('link[href*="labs"] , script[src*="labs"]').each do |data|
+      filename = data[:filename]
+      content  = Rails.application.assets[filename].source
+      content  = rename_font(content) if filename == 'labs.css'
 
-    remove_elements
+      write_file(data[:target], content)
+    end
 
     extract_html
   end
 
-  def save_file!(url, destiny, filename)
-    FileUtils.mkdir_p destiny.dirname
+  def rename_css(text)
+    text.sub(%r(/assets/labs.+\.css), 'stylesheets/labs.css')
+  end
 
-    body = Aitch.get(url).body.force_encoding('binary')
+  def rename_favicon(text)
+    text.sub(%r(/assets/favicon-.+\.ico), 'favicon.ico')
+  end
 
-    body = rename_fonts body if filename == 'labs.css'
+  def rename_font(text)
+    text
+      .gsub(%r(/assets/blogy-.+\.eot), '../fonts/blogy.eot')
+      .gsub(%r(/assets/blogy-.+\.svg), '../fonts/blogy.svg')
+      .gsub(%r(/assets/blogy-.+\.ttf), '../fonts/blogy.ttf')
+      .gsub(%r(/assets/blogy-.+\.woff), '../fonts/blogy.woff')
+  end
 
-    write_file destiny, body
+  def rename_image(text)
+    text.gsub(%r(raty/lib/images), 'images')
+  end
+
+  def rename_js(text)
+    text.sub(%r(/assets/labs.+\.js), 'javascripts/labs.js')
+  end
+
+  def rename_plugin(text)
+    text.gsub(%r(#{@media.slug}/(.+)\.(css|js)), '../\1.\2')
   end
 
   private
 
-  def expand_filename(filename)
-    match = filename.match(/labs.+(css|js)$/)
-
-    return nil if match.blank?
-
-    match.captures.first == 'css' ? 'stylesheets' : 'javascripts'
+  def get_url(url)
+    AssetUrl.new(@host, url).to_s
   end
 
-  def fix_favicon(html)
-    html.sub! '//blogy.s3.amazonaws.com/favicon.ico', 'favicon.ico'
+  def remove_elements
+    @html.at_css('form').remove
   end
 
-  def fix_lib_path(html)
-    html.gsub! 'lib/', '../lib/'
-    html.gsub! 'vendor/', '../vendor/'
+  def subfolder(extension)
+    {
+      '.css'  => 'stylesheets',
+      '.jpeg' => 'images',
+      '.jpg'  => 'images',
+      '.js'   => 'javascripts',
+      '.png'  => 'images',
+      '.svg'  => 'images',
+    }[extension]
   end
 
-  def fix_public_path(html)
-    html.gsub!(%r(raty/), '')
-  end
+  def write_file(target, content)
+    FileUtils.mkdir_p(target.dirname)
 
-  def get_filename(url)
-    filename  = url.split('/').last
-    name, md5 = filename.split '-'
-
-    if md5
-      extension = File.extname URI.parse(url).path
-      filename  = "#{name}#{extension}"
-    end
-
-    filename
-  end
-
-  def get_url(value)
-    AssetUrl.new(CONFIG['url_https'], value).to_s
-  end
-
-  def join_path(*paths)
-    Rails.root.join 'public', @media.slug, paths.join('/')
-  end
-
-  def rename_fonts(body)
-    body.gsub!('//blogy.s3.amazonaws.com/assets', '../fonts')
-
-    # "#{$1}.#{$2}" does not works
-    %w[eot svg ttf woff].each do |ext|
-      body.gsub!(/(blogy)-.+\.(#{ext})/, "blogy.#{ext}")
-    end
-
-    body
-  end
-
-  def url_attribute(tag)
-    tag.name == 'link' ? 'href' : 'src'
-  end
-
-  def write_file(destiny, content)
-    File.open(destiny, 'wb') { |f| f << content }
+    File.open(target, 'wb') { |f| f << content }
   end
 end

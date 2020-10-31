@@ -21,14 +21,16 @@ class LabsController < ApplicationController
   def edit; end
 
   def export
-    url      = "#{CONFIG['url_https']}/#{@media.slug}?offline"
-    response = Aitch.get url
+    @comment       = @media.comments.new
+    @root_comments = CommentPresenter.wrap(@media.comments.roots)
+    @title         = "#{@media.title} | #{@media.description}"
+    @lab           = LabPresenter.new(@media)
 
-    return unless response.success?
+    html = render(action: :show, layout: 'labs').to_str
 
-    AssetExtractor.new(@media, response).process
+    AssetExtractor.new(@media, html, root_url).process
 
-    render nothing: true
+    redirect_to @media, flash: t('.success')
   end
 
   def gridy

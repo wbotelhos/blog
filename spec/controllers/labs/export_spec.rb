@@ -1,0 +1,36 @@
+# frozen_string_literal: true
+
+RSpec.describe LabsController, '#export' do
+  context 'when is unlogged' do
+    it 'redirect' do
+      get :export, params: { id: 0 }
+
+      expect(response).to redirect_to login_path
+    end
+  end
+
+  context 'accessing the admin area' do
+      it 'redirect to the login page' do
+        post :create
+        expect(response).to redirect_to login_path
+      end
+
+      it 'redirect to the login page' do
+        get :edit, params: { id: 1 }
+        expect(response).to redirect_to login_path
+      end
+
+
+
+      it 'redirect to the login page' do
+        get :new
+        expect(response).to redirect_to login_path
+      end
+
+      it 'redirect to the login page' do
+        put :update, params: { id: 1 }
+        expect(response).to redirect_to login_path
+      end
+    end
+  end
+end
