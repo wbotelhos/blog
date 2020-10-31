@@ -16,6 +16,7 @@ RSpec.describe PageExtractorService, '#extract_html' do
       <script src="raty/node_modules/jquery/dist/jquery.min.js"></script><script src="slug/lib/jquery.slug.js"></script>
       </head>
       <body>
+      <a href="http://0.0.0.0:3000/slug">Title</a>
       <a class="media__edit" href="/labs/1/edit">Editar</a>
 
       $('#starHalf').raty({
@@ -50,6 +51,7 @@ RSpec.describe PageExtractorService, '#extract_html' do
       <script src="../node_modules/jquery/dist/jquery.min.js"></script><script src="../lib/jquery.slug.js"></script>
       </head>
       <body>
+      <a href="https://www.wbotelhos.com/slug">Title</a>
 
 
       $('#starHalf').raty({

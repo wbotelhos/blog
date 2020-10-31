@@ -1,5 +1,5 @@
 <div role="banner" class="header">
-  <%= link_to @media.title, slug_path(@media.slug), class: :header__title %>
+  <%= link_to @media.title, slug_url(@media.slug), class: :header__title %>
 
   <div class="header__subtitle">
     <%= @media.description %>

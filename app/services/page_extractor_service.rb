@@ -16,6 +16,7 @@ class PageExtractorService
     content = rename_js(content)
     content = rename_image(content)
     content = rename_plugin(content)
+    content = rename_host(content)
     target  = join_paths('demo/index.html')
 
     write_file(target, content)
@@ -82,6 +83,10 @@ class PageExtractorService
       .gsub(%r(/assets/blogy-.+\.svg), '../fonts/blogy.svg')
       .gsub(%r(/assets/blogy-.+\.ttf), '../fonts/blogy.ttf')
       .gsub(%r(/assets/blogy-.+\.woff), '../fonts/blogy.woff')
+  end
+
+  def rename_host(text)
+    text.gsub(%r(https?://(0.0.0.0|localhost):3000), CONFIG['url_https'])
   end
 
   def rename_image(text)
