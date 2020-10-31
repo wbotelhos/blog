@@ -23,7 +23,6 @@ class LabsController < ApplicationController
   def export
     @comment       = @media.comments.new
     @root_comments = CommentPresenter.wrap(@media.comments.roots)
-    @title         = "#{@media.title} | #{@media.description}"
     @lab           = LabPresenter.new(@media)
     html           = render(action: :show, layout: 'labs').to_str
 
@@ -67,7 +66,6 @@ class LabsController < ApplicationController
     if @media.present?
       @comment       = @media.comments.new
       @root_comments = CommentPresenter.wrap(@media.comments.roots)
-      @title         = "#{@media.title} | #{@media.description}"
 
       @lab = LabPresenter.new(@media)
 

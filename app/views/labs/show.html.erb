@@ -4,7 +4,7 @@
   <div class="article__body"><%= raw @lab.content %></div>
 </article>
 
-<%= render 'shared/share_it', text: "#{@media.title} - #{@media.description}" %>
+<%= render 'shared/share_it', text: @lab.page_title %>
 
 <%= render 'comments/comments' %>
 
