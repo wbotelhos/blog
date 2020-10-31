@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe AssetExtractor, '#rename_plugin' do
+RSpec.describe PageExtractorService, '#rename_plugin' do
   subject(:extractor) { described_class.new(media, content, 'http://0.0.0.0:3000') }
 
   let!(:content) { '<script src="slug/lib/jquery.slug.js"></script>' }

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe AssetExtractor, '#filename_extension' do
+RSpec.describe PageExtractorService, '#filename_extension' do
   subject(:extractor) { described_class.new(media, content, 'http://0.0.0.0:3000') }
 
   let!(:content) { '<html></html>' }

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe AssetExtractor, '#rename_js' do
+RSpec.describe PageExtractorService, '#rename_js' do
   subject(:extractor) { described_class.new(media, content, 'http://0.0.0.0:3000') }
 
   let!(:content) { '<script src="/assets/labs.debug-b8b2a61.js"></script>' }

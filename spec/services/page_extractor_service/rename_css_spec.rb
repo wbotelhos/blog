@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe AssetExtractor, '#rename_css' do
+RSpec.describe PageExtractorService, '#rename_css' do
   subject(:extractor) { described_class.new(media, content, 'http://0.0.0.0:3000') }
 
   let!(:content) { '<link rel="stylesheet" media="screen" href="/assets/labs.debug-f20ed2ac2d20c93.css" />' }

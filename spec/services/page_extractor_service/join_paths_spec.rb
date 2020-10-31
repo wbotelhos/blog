@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe AssetExtractor, '#join_paths' do
+RSpec.describe PageExtractorService, '#join_paths' do
   subject(:extractor) { described_class.new(media, html, 'http://0.0.0.0:3000') }
 
   let!(:html) { '<html></html>' }

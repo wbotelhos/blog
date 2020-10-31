@@ -25,12 +25,11 @@ class LabsController < ApplicationController
     @root_comments = CommentPresenter.wrap(@media.comments.roots)
     @title         = "#{@media.title} | #{@media.description}"
     @lab           = LabPresenter.new(@media)
+    html           = render(action: :show, layout: 'labs').to_str
 
-    html = render(action: :show, layout: 'labs').to_str
+    PageExtractorService.new(@media, html, root_url).process
 
-    AssetExtractor.new(@media, html, root_url).process
-
-    redirect_to @media, flash: t('.success')
+    redirect_to(@media, flash: t('.success'))
   end
 
   def gridy

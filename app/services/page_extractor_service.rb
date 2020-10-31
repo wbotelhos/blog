@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AssetExtractor
+class PageExtractorService
   def initialize(media, content, host)
     @html  = Nokogiri::HTML(content)
     @media = media
