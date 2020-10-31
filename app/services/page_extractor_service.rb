@@ -8,6 +8,8 @@ class PageExtractorService
   end
 
   def extract_html
+    remove_elements!
+
     content = rename_favicon(@html.to_s)
     content = rename_css(content)
     content = rename_jquery(content)
@@ -64,6 +66,10 @@ class PageExtractorService
 
   def rename_css(text)
     text.sub(%r(/assets/labs.+\.css), 'stylesheets/labs.css')
+  end
+
+  def remove_elements!
+    @html.at_css('.media__edit').remove
   end
 
   def rename_favicon(text)

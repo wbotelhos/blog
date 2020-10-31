@@ -5,12 +5,18 @@ RSpec.describe PageExtractorService, '#extract_html' do
 
   let!(:content) do
     <<~HEREDOC
+      <!DOCTYPE html>
+      <html>
+      <head>
       <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-2fd0d771aae7.ico">
 
       <link rel="stylesheet" media="screen" href="/assets/labs.debug-f20ed2ac2dc.css" />
 
       <script src="/assets/labs.debug-b8b2a61.js"></script>
       <script src="raty/node_modules/jquery/dist/jquery.min.js"></script><script src="slug/lib/jquery.slug.js"></script>
+      </head>
+      <body>
+      <a class="media__edit" href="/labs/1/edit">Editar</a>
 
       $('#starHalf').raty({
         half:     true,
@@ -19,6 +25,8 @@ RSpec.describe PageExtractorService, '#extract_html' do
         starOff:  'raty/lib/images/star-off.jpeg',
         starOn:   'raty/lib/images/star-on.png'
       });
+      </body>
+      </html>
     HEREDOC
   end
 
@@ -30,7 +38,7 @@ RSpec.describe PageExtractorService, '#extract_html' do
     extractor.extract_html
 
     expect(File.open('public/slug/demo/index.html').read).to eq <<~HEREDOC
-      <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+      <!DOCTYPE html>
       <html>
       <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -41,7 +49,8 @@ RSpec.describe PageExtractorService, '#extract_html' do
       <script src="javascripts/labs.js"></script>
       <script src="../node_modules/jquery/dist/jquery.min.js"></script><script src="../lib/jquery.slug.js"></script>
       </head>
-      <body><p>
+      <body>
+
 
       $('#starHalf').raty({
         half:     true,
@@ -50,7 +59,7 @@ RSpec.describe PageExtractorService, '#extract_html' do
         starOff:  'images/star-off.jpeg',
         starOn:   'images/star-on.png'
       });
-      </p></body>
+      </body>
       </html>
     HEREDOC
   end

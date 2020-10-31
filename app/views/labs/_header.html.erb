@@ -3,6 +3,6 @@
 
   <div class="header__subtitle">
     <%= @media.description %>
-    <%= link_to t(:edit), edit_lab_path(@media) if is_logged? %>
+    <%= link_to(t(:edit), edit_lab_path(@media), class: :media__edit) if is_logged? %>
   </div>
 </div>
