@@ -23,7 +23,7 @@ RSpec.describe Lab, '#show' do
   describe 'header' do
     it 'shows title' do
       within '.header' do
-        expect(page).to have_link lab.title, href: slug_lab_path(lab.slug)
+        expect(page).to have_link lab.title, href: slug_lab_url(lab.slug)
       end
     end
 

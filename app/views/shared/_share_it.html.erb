@@ -1,5 +1,5 @@
 <div class="share">
   <p class="share__title"><%= t 'share.title' %></p>
 
-  <%= twitter_button text: text, url: media_slug_url(@media) %>
+  <%= twitter_button text: text, url: slug_url(@media.slug, host: CONFIG['url_https'], port: nil) %>
 </div>
