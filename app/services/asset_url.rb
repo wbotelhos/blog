@@ -7,12 +7,9 @@ class AssetUrl
   end
 
   def to_s
-    if %r(\Ahttps?://)i.match?(@url)
-      @url
-    elsif @url.starts_with? '//'
-      "http:#{@url}"
-    else
-      File.join @base_url, @url
-    end
+    return @url           if %r(\Ahttps?://)i.match?(@url)
+    return "http:#{@url}" if @url.starts_with?('//')
+
+    File.join(@base_url, @url)
   end
 end
