@@ -19,8 +19,6 @@ RSpec.describe PageExtractorService, '#extract_html' do
         starOff:  'raty/lib/images/star-off.jpeg',
         starOn:   'raty/lib/images/star-on.png'
       });
-
-      <form></form>
     HEREDOC
   end
 
@@ -43,8 +41,7 @@ RSpec.describe PageExtractorService, '#extract_html' do
       <script src="javascripts/labs.js"></script>
       <script src="../lib/jquery.slug.js"></script>
       </head>
-      <body>
-      <p>
+      <body><p>
 
       $('#starHalf').raty({
         half:     true,
@@ -53,9 +50,7 @@ RSpec.describe PageExtractorService, '#extract_html' do
         starOff:  'images/star-off.jpeg',
         starOn:   'images/star-on.png'
       });
-
-      </p>
-      </body>
+      </p></body>
       </html>
     HEREDOC
   end

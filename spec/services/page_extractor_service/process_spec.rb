@@ -19,8 +19,6 @@ RSpec.describe PageExtractorService, '#process' do
         starOff:  'raty/lib/images/star-off.jpeg',
         starOn:   'raty/lib/images/star-on.png'
       });
-
-      <form></form>
     HEREDOC
   end
 

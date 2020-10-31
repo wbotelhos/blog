@@ -8,8 +8,6 @@ class PageExtractorService
   end
 
   def extract_html
-    remove_elements
-
     content = rename_favicon(@html.to_s)
     content = rename_css(content)
     content = rename_js(content)
@@ -95,10 +93,6 @@ class PageExtractorService
 
   def get_url(url)
     AssetUrl.new(@host, url).to_s
-  end
-
-  def remove_elements
-    @html.at_css('form').remove
   end
 
   def subfolder(extension)

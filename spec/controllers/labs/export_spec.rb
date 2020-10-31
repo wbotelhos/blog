@@ -9,28 +9,32 @@ RSpec.describe LabsController, '#export' do
     end
   end
 
-  context 'accessing the admin area' do
-      it 'redirect to the login page' do
-        post :create
-        expect(response).to redirect_to login_path
-      end
+  context 'when logged' do
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:lab) { FactoryBot.create(:lab) }
+    let!(:extractor) { instance_double('PageExtractorService') }
 
-      it 'redirect to the login page' do
-        get :edit, params: { id: 1 }
-        expect(response).to redirect_to login_path
-      end
+    before do
+      session[:user_id] = user.id
 
+      allow(PageExtractorService).to receive(:new).and_return(extractor)
+      allow(extractor).to receive(:process)
+    end
 
+    it 'heads ok' do
+      get :export, params: { id: lab }
 
-      it 'redirect to the login page' do
-        get :new
-        expect(response).to redirect_to login_path
-      end
+      expect(response.body).to   eq('')
+      expect(response.status).to be(200)
+    end
 
-      it 'redirect to the login page' do
-        put :update, params: { id: 1 }
-        expect(response).to redirect_to login_path
-      end
+    it 'executes the page extractor' do
+      allow(PageExtractorService).to receive(:new).and_return(extractor)
+      allow(extractor).to receive(:process)
+
+      get :export, params: { id: lab }
+
+      expect(extractor).to have_received(:process)
     end
   end
 end

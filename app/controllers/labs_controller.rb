@@ -21,14 +21,12 @@ class LabsController < ApplicationController
   def edit; end
 
   def export
-    @comment       = @media.comments.new
-    @root_comments = CommentPresenter.wrap(@media.comments.roots)
-    @lab           = LabPresenter.new(@media)
-    html           = render(action: :show, layout: 'labs').to_str
+    @lab = LabPresenter.new(@media)
+    html = render(action: :export, layout: 'labs').to_str
 
     PageExtractorService.new(@media, html, root_url).process
 
-    redirect_to(@media, flash: t('.success'))
+    head(:ok)
   end
 
   def gridy

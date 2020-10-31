@@ -1,8 +1,4 @@
-<div class="clearfix"></div>
-
-<article>
-  <div class="article__body"><%= raw @lab.content %></div>
-</article>
+<%= render 'content', lab: @lab %>
 
 <%= render 'shared/share_it', text: @lab.page_title %>
 
