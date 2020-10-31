@@ -20,6 +20,6 @@
   </div>
 
   <%= render 'labs/javascripts' %>
-  <%= render 'shared/analytics', code: @media.analytics %>
+  <%= render 'shared/analytics', code: @media.analytics if Rails.env.production? %>
 </body>
 </html>
