@@ -31,4 +31,12 @@ RSpec.describe LabsController, '#show' do
     expect(records[1]).to       eq comment_1
     expect(records[1].class).to eq CommentPresenter
   end
+
+  it 'sets the locale to en-US' do
+    I18n.locale = :'pt-BR'
+
+    get :show, params: { slug: lab.slug }
+
+    expect(I18n.locale).to eq :'en-US'
+  end
 end

@@ -36,5 +36,13 @@ RSpec.describe LabsController, '#export' do
 
       expect(extractor).to have_received(:process)
     end
+
+    it 'sets the locale to en-US' do
+      I18n.locale = :'pt-BR'
+
+      get :export, params: { id: lab }
+
+      expect(I18n.locale).to eq :'en-US'
+    end
   end
 end
