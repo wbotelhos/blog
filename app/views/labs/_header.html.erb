@@ -1,8 +1,0 @@
-<div role="banner" class="header">
-  <%= link_to @media.title, slug_url(@media.slug), class: :header__title %>
-
-  <div class="header__subtitle">
-    <%= @media.description %>
-    <%= link_to(t(:edit), edit_lab_path(@media), class: :media__edit) if is_logged? %>
-  </div>
-</div>

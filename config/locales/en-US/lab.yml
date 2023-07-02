@@ -1,4 +1,0 @@
-en-US:
-  lab:
-    download: 'Download v%{version}'
-    share_it: Share this project!

@@ -1,7 +1,0 @@
-<nav role="navigation" class="navigation">
-  <%= link_to '', @media.download, title: t('lab.download', version: @media.version), class: 'i-file-zip' %>
-  <%= link_to '', @media.github,   title: "Github <#{@media.github}>",                class: 'i-github', target: :blank %>
-  <%= link_to '', labs_url,        title: "Labs <#{labs_url}>",                       class: 'i-labs', target: :blank %>
-
-  <%= render 'shared/donation', product: @media.title %>
-</nav>
