@@ -1,0 +1,16 @@
+{{- define "content" -}}
+  <section class="articles">
+    {{- range .Site.RegularPages.GroupByDate "2006" -}}
+      <div class="articles__date">{{ .Key }}</div>
+
+      <ol>
+        {{- range .Pages -}}
+          <li>
+            <a class="articles__title" href="{{ .Permalink }}">{{ .Title }}</a>
+            <a class="articles__url" href="{{ .Permalink }}">{{ .Permalink }}</a>
+          </li>
+        {{- end -}}
+      </ol>
+    {{- end -}}
+  </section>
+{{- end -}}

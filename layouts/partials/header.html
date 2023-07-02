@@ -1,0 +1,12 @@
+<div role="banner" class="header">
+  <a class="header__title" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+  <div class="header__subtitle">{{ index (shuffle .Site.Params.Subtitles) 0 }}</div>
+</div>
+
+<nav role="navigation" class="menu">
+  {{- range .Site.Params.Menu -}}
+    {{- $image := print "images/" .name ".svg" -}}
+
+    <a href="{{ .url }}">{{- partial $image -}}</a>
+  {{- end -}}
+</nav>

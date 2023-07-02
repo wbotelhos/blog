@@ -1,0 +1,61 @@
+:not(pre) > code {
+  background-color: var(--color-code) !important;
+  color: var(--light-text-color);
+  padding: 1px 4px;
+}
+
+blockquote {
+  border-left: 2px solid var(--color-code);
+  color: grey;
+  padding-left: 1rem;
+  margin-left: 0;
+}
+
+code {
+  box-decoration-break: clone;
+  word-wrap: break-word;
+  font-size: 0.8em;
+}
+
+code,
+pre {
+  background-color: var(--color-code);
+  box-sizing: border-box;
+  color: white;
+}
+
+hr {
+  color: var(--color-code);
+  margin: 50px auto;
+}
+
+pre {
+  font-size: 0.95rem;
+  overflow: auto;
+  padding: 20px;
+}
+
+pre code {
+  font-size: 0.9em;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 30px 0;
+  text-align: left;
+  display: block;
+  overflow-x: auto;
+}
+
+table td {
+  border-bottom: 1px solid var(--color-code);
+}
+
+table td,
+table th {
+  padding: 1.4rem;
+}
+
+table thead {
+  background-color: var(--color-code);
+}

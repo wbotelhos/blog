@@ -1,0 +1,7 @@
+{{- define "content" -}}
+  <article class="article">
+    <h1 class="article__title">{{ .Title }}</h1>
+    <div class="article__date">{{ .Date.Format "Jan 02, 2006" }}</div>
+    <div class="article__body">{{- .Content -}}</div>
+  </article>
+{{- end -}}

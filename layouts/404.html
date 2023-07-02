@@ -1,0 +1,6 @@
+{{- define "content" -}}
+  <div class="not-found">
+    <div class="not-found__title">{{ i18n "not_found_title" }}</div>
+    <div class="not-found__subtitle">{{ i18n "go_back_to" }} <a href="{{ .Site.BaseURL }}">{{ i18n "home" }}</a>.</div>
+  </div>
+{{- end -}}

@@ -1,0 +1,52 @@
+baseURL: https://www.wbotelhos.com/
+defaultContentLanguage: en
+
+disableKinds:
+  - section
+  - taxonomy
+
+enableEmoji: true
+enableGitInfo: true
+enableRobotsTXT: true
+googleAnalytics: G-ST8ZREZG8G
+languageCode: en
+
+params:
+  avatarURL: https://avatars.githubusercontent.com/u/116234
+
+  menu:
+    - name: twitter
+      url: https://twitter.com/wbotelhos
+
+    - name: email
+      url: mailto:wbotelhos@gmail.com
+
+    - name: linkedin
+      url: https://www.linkedin.com/in/wbotelhos
+
+    - name: github
+      url: https://github.com/wbotelhos
+
+    - name: sponsor
+      url: https://github.com/sponsors/wbotelhos
+
+  metaDescription: Articles about Ruby, Rails, JavaScript and much more.
+
+  metaKeywords:
+    - elixir
+    - javascript
+    - rails
+    - react
+    - reactjs
+    - ruby
+    - rust
+    - typescript
+
+  subtitles:
+    - I'm not my code
+    - Love is the answer
+
+permalinks:
+  articles: ':title'
+
+title: Washington Botelho

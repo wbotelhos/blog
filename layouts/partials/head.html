@@ -1,0 +1,42 @@
+{{- $description := .Site.Params.MetaDescription -}}
+{{- $image := .Site.Params.AvatarURL -}}
+{{- $title := .Title | default .Site.Title -}}
+
+{{- $articleKeywords := .Params.tags | default (slice) -}}
+{{- $metaKeywords := .Site.Params.MetaKeywords | default (slice) -}}
+{{- $keywords := union $articleKeywords $metaKeywords -}}
+
+{{- hugo.Generator -}}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="{{ $description }}">
+<meta name="keywords" content='{{ delimit $keywords ", "}}'>
+
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:image" content="{{ absURL $image }}">
+<meta property="og:image:secure_url" content="{{ absURL $image }}">
+
+<meta property="twitter:domain" content="{{ .Permalink }}">
+<meta property="twitter:url" content="{{ .Permalink }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ absURL $image }}">
+
+<title>{{ $title }}</title>
+
+<link rel="canonical" href="{{ .Permalink }}" />
+
+{{- $code := resources.Get "css/code.css" | minify -}}
+{{- $main := resources.Get "css/main.css" | minify -}}
+{{- $normalize := resources.Get "css/normalize.css" | minify -}}
+
+<link rel="stylesheet" href="{{ $normalize.RelPermalink }}">
+<link rel="stylesheet" href="{{ $code.RelPermalink }}">
+<link rel="stylesheet" href="{{ $main.RelPermalink }}">
