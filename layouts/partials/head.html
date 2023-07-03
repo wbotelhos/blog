@@ -6,8 +6,6 @@
 {{- $metaKeywords := .Site.Params.MetaKeywords | default (slice) -}}
 {{- $keywords := union $articleKeywords $metaKeywords -}}
 
-{{- hugo.Generator -}}
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 

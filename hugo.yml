@@ -1,12 +1,10 @@
 baseURL: https://www.wbotelhos.com/
-defaultContentLanguage: en
+disableHugoGeneratorInject: true
 
 disableKinds:
   - section
   - taxonomy
 
-enableEmoji: true
-enableGitInfo: true
 enableRobotsTXT: true
 googleAnalytics: G-ST8ZREZG8G
 languageCode: en
