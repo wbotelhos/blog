@@ -220,7 +220,7 @@ defmodule I18nWithPhoenix.Plugs.Locale do
 end
 ```
 
-We called our Plug `Locale` and imported the `Plug.Conn` to make this module behave like a Plug. We need an initialize that will receive a default locale. Now we can plug it on our Route:
+We called our Plug `Locale` and imported the `Plug.Conn` to make this module behaves like a Plug. We need an initialize that will receive a default locale. Now we can plug it on our Route:
 
 ```ex
 # lib/i18n_with_phoenix_web/router.ex
@@ -239,16 +239,16 @@ Back to our Plug, we need to define the `call` method where we can set the desir
 @locales Gettext.known_locales(AppWeb.Gettext)
 
 def call(%Plug.Conn{params: %{"locale" => locale}} = conn, _default_locale) when locale in @locales do
-    set_locale(conn, locale)
-  end
+  set_locale(conn, locale)
+end
 
-  defp set_locale(conn, locale) do
-    Gettext.put_locale(I18nWithPhoenixWeb.Gettext, locale)
+defp set_locale(conn, locale) do
+  Gettext.put_locale(I18nWithPhoenixWeb.Gettext, locale)
 
-    conn
-    |> put_resp_cookie("locale", locale, max_age: :timer.hours(24) * 365)
-    |> assign(:locale, locale)
-  end
+  conn
+  |> put_resp_cookie("locale", locale, max_age: :timer.hours(24) * 365)
+  |> assign(:locale, locale)
+end
 ```
 
 Here we defined a variable holding all available locales defined in `config.ex` as `locales` and fetched by the `know_locales` method. With these values, we can make a guard clause and execute this `call` method only if the param `locale` is included on it, then calling the `set_locale`.
