@@ -19,19 +19,19 @@ Estar com o NGINX já funcionando. Se você ainda não sabe como fazer isso, lei
 
 Precisamos de alguma ferramenta para gerar uma sintáxe no qual é formada por um nome de usuário seguido de uma senha. Podemos fazer isso instalando a seguinte lib Apache Utils:
 
-```bash
+```sh
 sudo apt-get install apache2-utils
 ```
 
 Então iremos criar um arquivo chamado *.htpasswd* na raiz de onde se encontra o nosso NGINX instalado, no meu caso:
 
-```bash
+```sh
 sudo htpasswd -c /usr/local/nginx/current/.htpasswd blogy
 ```
 
 Basta confirmar a senha que deseja e pronto. O conteúdo fica algo como:
 
-```bash
+```sh
 blogy:$dez1$9nvpv2/2$P/ZqwOWOeCKqeu290zpNd/
 ```
 
@@ -41,14 +41,14 @@ Se você não quiser instalar a biblioteca para gerar tal conteúdo, você pode 
 
 Basicamente precisamos de dois comando:
 
-```bash
+```sh
 auth_basic 'Suas Credenciais';
 auth_basic_user_file /usr/local/nginx/current/.htpasswd;
 ```
 
 O primeiro comando é apenas uma mensagem que irá aparecer para o usuário. O segundo aponta para o arquivo de senha que criamos. Pegue este código e coloque no final da seção `location` principal do arquivo de configuração da sua aplicação contido na pasta *sites-enabled*:
 
-```bash
+```sh
 server {
   ...
 
@@ -62,7 +62,7 @@ server {
 
 Recarregue as configurações para que as alterações sejam aplicadas:
 
-```bash
+```sh
 sudo service nginx reload
 ```
 

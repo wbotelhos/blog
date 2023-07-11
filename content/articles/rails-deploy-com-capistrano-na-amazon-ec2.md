@@ -15,9 +15,10 @@ Criar uma aplicação Ruby on Rails e automatizar a publicação da mesma na Ama
 
 Iremos criar uma aplicação crua, somente com uma página inicial que execute algum código Ruby para vermos o Unicorn funcionando. Entre na pasta onde você costuma deixar o seus projetos (workspace) e execute:
 
-```ruby
+```rb
 rails new wbotelhos-com -STJ -d mysql
 ```
+
 `S`: não instala nada do [Sprockets](https://github.com/sstephenson/sprockets), já que não vamos usar [Asset Pipeline](http://guides.rubyonrails.org/asset_pipeline.html);
 `T`: não instala nada do [Test Unit](http://test-unit.rubyforge.org), até porque usaríamos o [RSpec](http://rspec.info) né?; :P
 `J`: não instala os arquivos JavaScripts de exemplo;
@@ -25,7 +26,7 @@ rails new wbotelhos-com -STJ -d mysql
 
 Mesmo com vários arquivos descartáveis no projeto criado, vamos seguir em frente e preencher o arquivo **Gemfile** com o seguinte conteúdo:
 
-```ruby
+```rb
 source 'https://rubygems.org'
 
 gem 'rails'
@@ -42,7 +43,7 @@ end
 
 Aqui declaramos as gems necessárias, onde o **Capistrano** será usado apenas em desenvolvimento e o **Unicorn** apenas em produção. Com isso podemos fazer o download dessas dependências:
 
-```ruby
+```rb
 bundle install
 ```
 
@@ -73,11 +74,11 @@ Para facilitar usamos um block chamado **default** como configuração padrão e
 
 Este arquivo é para conexão local e não possui informações do banco de dados de produção por motivos óbvios. O que fazemos é deixar um *database.yml* guardado na pasta *conf* no servidor e durante o deploy o copiamos para dentro da aplicação *current/config*. Conecte-se ao servidor e crie este arquivo:
 
-```bash
+```sh
 ssh -i ~/.ssh/wbotelhos.pem ubuntu@ec2-x-p-t-o.sa-east-1.compute.amazonaws.com
 ```
 
-```bash
+```sh
 vim /var/www/wbotelhos/config/database.yml
 ```
 
@@ -101,14 +102,14 @@ Para a instalação e configuração do MySQL, leia o artigo [Instalando e Confi
 
 Precisamos configurar o Capistrano localmente em nosso projeto. Para isso iremos acessar o projeto e instalar a gem:
 
-```bash
+```sh
 cd ~/workspace/wbotelhos-com
 gem install capistrano
 ```
 
 E então executar a task `capify` no diretório corrente para serem criados os arquivos de deploy:
 
-```bash
+```sh
 capify .
 # [add] writing './Capfile'
 # [add] writing './config/deploy.rb'
@@ -117,25 +118,25 @@ capify .
 
 O arquivo **deploy.rb** conterá todos os comandos do deploy que serão descritos a seguir. Primeiramente iremos carregar a gem do Capistrano:
 
-```ruby
+```rb
 require 'bundler/capistrano'
 ```
 
 Daremos um nome para a aplicação que por praticidade poderia ser o nosso domínio. Porém esta variável **application** será utilizada em outros lugares pegando este endereço para deploy. Como estamos usando um Public DNS, vamos utilizá-lo, caso contrário o deploy seria aqui neste blog #lol:
 
-```ruby
+```rb
 set :application, 'ec2-x-p-t-o.sa-east-1.compute.amazonaws.com '
 ```
 
 A cada deploy que é feito, os arquivos atuais do servidor podem ser versionados e guardados em caso de *rollback*, logo podemos decidir quantas versões iremos manter de backup:
 
-```ruby
+```rb
 set :keep_releases, 2
 ```
 
 Nós iremos utilizar o [Github](http://github.com) para manter nosso projeto, logo devemos indicar qual o endereço do nosso repositório e de qual branch será feito o download:
 
-```ruby
+```rb
 set :scm, :git
 set :repository, 'git@github.com:wbotelhos/wbotelhos-com.git'
 set :branch, 'master'
@@ -143,13 +144,13 @@ set :branch, 'master'
 
 Uma ótima opção referente ao Github que podemos adicionar é o **remote_chache**. Esta opção evita que seja feito o clone de todo o repositório a cada deploy. Ao invés disso, é feito apenas um *fetch* das alterações, deixando assim, o deploy mais rápido:
 
-```ruby
+```rb
 set :deploy_via, :remote_cache
 ```
 
 O usuário que irá executar os comandos no servidor será o já utilizando **ubuntu**, sendo que iremos evitar utilizar o comando **sudo**:
 
-```ruby
+```rb
 set :user, 'ubuntu'
 set :runner, 'ubuntu'
 set :group, 'ubuntu'
@@ -158,14 +159,14 @@ set :use_sudo, false
 
 Vamos criar duas variáveis indicando a pasta contendo toda os arquivos referente a aplicação e uma indicando onde estará a aplicação de produção:
 
-```ruby
+```rb
 set :deploy_to, '/var/www/wbotelhos'
 set :current, "#{deploy_to}/current"
 ```
 
 É possível mantermos nossa aplicação distribuida, utilizando a aplicação em um servidor e o banco de dados em outro, por exemplo. Porém nossa aplicação é centralizada apenas em um local, sendo assim, iremos utilizar o mesmo domínio, contido na variável `application`, nas três variáveis a seguir:
 
-```ruby
+```rb
 role :web, application
 role :app, application
 role :db,  application, primary: true
@@ -173,31 +174,31 @@ role :db,  application, primary: true
 
 Como o Github pedi para confirmarmos o host de conexão para que o mesmo fique no nosso **known host** e passar a ser confiável, vamos habilitar o **pseudo-tty** para que o host já seja aceito:
 
-```bash
+```sh
 default_run_options[:pty] = true
 ```
 
 Por fim precisamos fazer as configurações referente à autenticação (ssh). Como utilizamos uma chave privada para acessar a Amazon, iremos indicá-la para conseguirmos ter acesso ao servidor, no meu caso ela se encontra na pasta `.ssh`:
 
-```ruby
+```rb
 ssh_options[:keys] = '~/.ssh/wbotelhos.pem'
 ```
 
 Para ser possível baixarmos o código da aplicação precisamos da chave SSH cadastrada no Github. Quem faz a requisição do *clone* do repositório é o usuário ubuntu lá no servidor, e lá não temos tal chave, a temos apenas em nossa máquina de deploy. Para evitar a necessidade da cópia da chave local para o servidor existe uma opção chamada **forward_agent** que durante o deploy pega a chave local e a utiliza para requisitar o clone do repositório:
 
-```ruby
+```rb
 ssh_options[:forward_agent] = true
 ```
 
 Para verificar se sua chave esta configurada corretamente, execute:
 
-```bash
+```sh
 ssh -T git@github.com
 ```
 
 Se você estiver usando MacOSX, ao tentar fazer o deploy ao final deste artigo, obterá o seguinte erro:
 
-```bash
+```sh
 ** [forrostream.com :: out] Permission denied (publickey).
 ** [forrostream.com :: out] fatal: Could not read from remote repository.
 ** [forrostream.com :: out] Please make sure you have the correct access rights
@@ -206,7 +207,7 @@ Se você estiver usando MacOSX, ao tentar fazer o deploy ao final deste artigo, 
 
 Isso porque há um bug no Mac onde ele não reconhece a sua key local na keychain, tornando assim impossível o **forward_agent**. Mas graças a dica do mestre [Almir M3nd3s](https://twitter.com/m3nd3s), basta executar o comando a seguir para solucionar o problema:
 
-```bash
+```sh
 ssh-add ~/.ssh/id_rsa
 ```
 
@@ -218,14 +219,14 @@ No caso minha chave esta com o nome padrão, sendo assim nem precisaria de passa
 
 Com tudo configurado podemos criar as tarefas que executam o deploy. Inicialmente iremos executar o *setup* que monta a estrutura de pastas no servidor:
 
-```ruby
+```rb
 cap deploy:setup
 # command finished in --ms
 ```
 
 Assim teremos os seguintes diretórios criados:
 
-```
+```txt
 |── var
   └── www
     └── wbotelhos
@@ -248,7 +249,7 @@ As próprias pastas já se explicam. As pastas com asteríscos serão criadas po
 
 Agora vamos criar a task que manipula o Unicorn:
 
-```ruby
+```rb
 namespace :deploy do
   task :start do
     %w[config/database.yml].each do |path|
@@ -291,7 +292,7 @@ Antes ou depois de alguma tarefa, podemos adicionar *callbacks* utilizando a pal
 
 Agora podemos verificar se tudo foi configurado corretamente:
 
-```ruby
+```rb
 cap deploy:check
 # You appear to have all necessary dependencies installed
 ```
@@ -300,7 +301,7 @@ cap deploy:check
 
 Lembre-se que o código que será enviado para o servidor é o código que esta versionado no **master** do Github, então precisamos fazer o commit do nosso projeto e subí-lo no Github primeiro:
 
-```bash
+```sh
 git init
 git add .
 git commit -am 'first commit'
@@ -310,18 +311,18 @@ git push -u origin master
 
 E por fim, seguindo a dica do [Fillipe](http://www.wbotelhos.com/2012/11/20/rails-deploy-com-capistrano-na-amazon-ec2#comment-416 "Dica do Fillipe"), faremos o nosso primeiro deploy com o comando:
 
-```bash
+```sh
 cap deploy:cold
 ```
 
 O `:cold` faz tudo que o `cap deploy` faz além de verificar as configurações do banco de dados e roda as migrations. Para os demais deploy utilize apenas:
 
-```bash
+```sh
 cap deploy
 ```
 
 Agora acesse o seu DNS Public e curta a sua app!
 
-```bash
+```sh
 open http://ec2-x-p-t-o.sa-east-1.compute.amazonaws.com
 ```

@@ -15,7 +15,7 @@ Alterar o Timezone do Ubuntu para um específico
 
 Você pode verificar o seu timezone atual:
 
-```bash
+```sh
 cat /etc/timezone
 # America/New_York
 ```
@@ -26,26 +26,26 @@ Se no seu caso, igual o meu, você mora no Brasil (São Paulo), então você pre
 
 Você pode listar os grupos de timezone:
 
-```bash
+```sh
 ls /usr/share/zoneinfo
 ```
 
 São Paulo estará dentro de **America**, mesmo que intuitivamente pensemos estar em **Brazil**. Então liste os items:
 
-```bash
+```sh
 ls /usr/share/zoneinfo/America
 ```
 
 Você verá que existe a opção `Sao_Paulo`. Então bastaria alterar o conteúdo do arquivo `/etc/timezone` para `America/Sao_Paulo`, porém iremos fazer um link simbólico:
 
-```bash
+```sh
 sudo rm /etc/timezone
 sudo ln -s /usr/share/zoneinfo/America/Sao_Paulo /etc/timezone
 ```
 
 Para aplicar a nova configuração, execute:
 
-```bash
+```sh
 sudo dpkg-reconfigure --frontend noninteractive tzdata
 
 # Current default time zone: 'America/Sao_Paulo'

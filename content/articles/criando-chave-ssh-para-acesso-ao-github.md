@@ -15,7 +15,7 @@ Criar uma chave SSH para ser possível clonar um projeto do [Github](https://git
 
 Por padrão as [chaves RSA](http://pt.wikipedia.org/wiki/RSA) são criadas com criptografia de 2048 bits, logo iremos utilizar uma criptografia mais segura de 4096. Por padrão o nome da chave será `id_rsa`, porém podemos trocar esse nome usando a opção `-f` para indicar o caminho do arquivo. Além disso podemos adicionar um comentário que será adicionado no final da chave, utilizando a opção `-C`:
 
-```bash
+```sh
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -C jenkins@blog.com
 ```
 
@@ -25,7 +25,7 @@ Então será gerada a chave privada `~/.ssh/id_rsa` e a pública `~/.ssh/id_rsa.
 
 As chaves, assim como o diretório `~/.ssh` devem estar com as devidas permissões configuradas:
 
-```bash
+```sh
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/*
 ```
@@ -34,13 +34,13 @@ chmod 600 ~/.ssh/*
 
 O [SSH Agent](http://en.wikipedia.org/wiki/Ssh-agent) é um programa encarregado de guardas as nossas chaves privadas. Se ele não obtiver a chave consigo, mesmo que ela tenha sido gerada e esteja no diretório `~/.ssh`, poderá não ser reconhecida. Para verificar as chaves carregadas execute:
 
-```bash
+```sh
 ssh-add -l # -L também mostra o conteúdo.
 ```
 
 Se a chave que criamos não estiver carregada, teremos que adicioná-la:
 
-```bash
+```sh
 ssh-add ~/.ssh/id_rsa # o comando `ssh-add` por padrão adiciona `id_rsa`.
 ```
 
@@ -50,7 +50,7 @@ ssh-add ~/.ssh/id_rsa # o comando `ssh-add` por padrão adiciona `id_rsa`.
 
 Neste caso é necessário iniciar o agente:
 
-```bash
+```sh
 eval `ssh-agent`
 ```
 
@@ -60,7 +60,7 @@ Se preferir, adicione esse comando ao seu `~/.bashrc` ou `~/.bash_profile` para 
 
 Agora precisamos de deixar a chave pública no serviço que desejamos acesso, no caso o [http://github.com](https://github.com). Copie o conteúdo da chave pública:
 
-```bash
+```sh
 cat ~/.ssh/id_rsa.pub
 ```
 
@@ -77,13 +77,13 @@ Então acesse o menu *Deploy keys*, clique no botão *Add deploy key*, escreva u
 Vá na máquina onde se encontra a chave privada e execute o comando:
 
 
-```bash
+```sh
 git ls-remote git@github.com:wbotelhos/blog
 ```
 
 Se tudo estiver correto, serão listadas os SHA das suas branchs:
 
-```bash
+```sh
 cf0f5e487df1c8acaf21f58c5fdbfa0826f5f950	 HEAD
 cf0f5e487df1c8acaf21f58c5fdbfa0826f5f950	 refs/heads/master
 ```

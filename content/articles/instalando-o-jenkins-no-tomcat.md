@@ -27,7 +27,7 @@ O Jenkins, nada mais é do que um aplicação empacotado em um arquivo de distri
 
 Após copiar o arquivo `.war`, basta iniciar o Tomcat para ele "explodir" o `jenkins.war` e criar uma pasta de mesmo nome, `jenkins`:
 
-```bash
+```sh
 sudo service tomcat start
 ```
 

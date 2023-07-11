@@ -32,7 +32,7 @@ Clique no botão *Create Hosted Zone* para aparecer um painel na lateral direita
 
 Na listagem central selecione o domínio que acabou de criar e copie os endereços listados na seção *Delegations Set* listada no quadro lateral direito, algo como:
 
-```
+```sh
 ns-1395.awsdns-46.org
 ns-946.awsdns-54.net
 ns-1750.awsdns-26.co.uk
@@ -43,7 +43,7 @@ ns-26.awsdns-03.com
 
 Esses endereços são servidores de DNS, e são vários para podermos usá-los de backup caso um ou outro falhe. Por isso é importante sempre organizá-los na ordem crescente de latência. Para isso abra o console e *ping* cada um deles em uma aba e compare as latências, dai basta anotá-los:
 
-```
+```sh
 ping ns-1395.awsdns-46.org
 ping ns-946.awsdns-54.net
 ping ns-1750.awsdns-26.co.uk
@@ -52,7 +52,7 @@ ping ns-26.awsdns-03.com
 
 No meu caso obtive a seguinte ordem, anote!:
 
-```
+```txt
 ns-1395.awsdns-46.org
 ns-1750.awsdns-26.co.uk
 ns-946.awsdns-54.net

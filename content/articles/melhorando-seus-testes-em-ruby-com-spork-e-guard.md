@@ -19,7 +19,7 @@ O [Spork](https://github.com/sporkrb/spork "Spork") basicamente faz todo este ca
 
 Para manipular o Spork iremos utilizar a gem [guard-spork](https://github.com/guard/guard-spork "Guard Spork") que faz uma abstração pra gente:
 
-```ruby
+```rb
 group :development do
   gem 'guard-spork', '~> 1.4.0'
 end
@@ -27,13 +27,14 @@ end
 
 E então podemos iniciar a sua configuração:
 
-```bash
+```sh
 bundle install
 guard init spork
 ```
+
 Um arquivo chamado **Guardfile**, nascido da combinação Guard + Spork, será criado na raiz do projeto e explicado logo adiante:
 
-```ruby
+```rb
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
@@ -54,13 +55,13 @@ end
 
 O [Guard](https://github.com/guard/guard "Guard"), como o nome mesmo já sugere, é um camarada que fica vigiando alterações nos arquivos do SO que dispara ações onde podemos executar alguns eventos. No arquivo Guardfile o Guard "assistindo" alguns arquivos como:
 
-```ruby
+```rb
 watch('config/application.rb')
 ```
 
 Como esses *watcher* estão dentro do block `guard 'spork'`, quando algum dos arquivos descrito for alterado, o Spork será recarregado. Agora que já sabemos um pouco do Spork e do Guard, vamos personalizar o nosso Guardfile:
 
-```ruby
+```rb
 guard :spork, wait: 120, test_unit: false, cucumber: false, rspec_env: { 'RAILS_ENV' => 'test' } do
   watch(%r(^config/initializers/.+\.rb$))
   watch('config/application.rb')
@@ -77,13 +78,13 @@ No bloco `:spork` adicionamos algumas configurações:
 `cucumber`: não iremos gerenciar os testes de [Cucumber](https://github.com/cucumber/cucumber "Cucumber");
 `rspec_env`: dissemos ao Spork que durante os testes de RSpec o RAILS_ENV terá o valor "test". E fique atento a isto, pois se durante os testes de Cucumber, por exemplo, fizéssemos:
 
-```ruby
+```rb
 ENV['RAILS_ENV'] ||= 'cucumber'
 ```
 
 E na configuração do Spork colocássemos:
 
-```ruby
+```rb
 cucumber_env: { 'RAILS_ENV' => 'test' }
 ```
 
@@ -93,7 +94,7 @@ O reload do DRb, só será feito quando a alteração de um arquivo puder afetar
 
 Primeiramente vamos adicionar a gem [guard-rspec](https://github.com/guard/guard-rspec "Guard RSpec") no Gemfile:
 
-```ruby
+```rb
 group :development do
   gem 'guard-rspec', '~> 2.3.1'
 end
@@ -101,7 +102,7 @@ end
 
 E adicionar o bloco de configuração do RSpec no Guardfile:
 
-```ruby
+```rb
 guard :rspec, cli: '--drb --color --format doc', all_on_start: false, all_after_pass: false do
   watch(%r(^spec/.+_spec\.rb$))
   watch(%r(^app/models/(.+)\.rb$))  { |m| "spec/models/#{m[1]}" }
@@ -120,19 +121,19 @@ Neste block utilizamos a propriedade `cli` para dizer o que será automaticament
 
 E então fazermos alguns de-para de execução:
 
-```ruby
+```rb
 watch(%r(^spec/.+_spec\.rb$))
 ```
 
 Utilizamos [regex](http://en.wikipedia.org/wiki/Regular_expression "Regular Expression") para dizer que se qualquer arquivo que termine com **_spec.rb**  que esteja dentro da pasta **spec** for alterado o comando `rspec` será executado para este próprio arquivo. Alterações no arquivo *spec/article/validations_spec.rb* executaria o comando:
 
-```bash
+```sh
 rspec spec/article/validations_spec.rb --drb --color --format doc
 ```
 
 Podemos também rodar alguma classe de teste específica quando algum arquivo for alterado, não ficando preso na execução da própria classe de teste alterada:
 
-```ruby
+```rb
 watch(%r(^app/models/(.+)\.rb$)) { |m| "spec/features/#{m[1]}" }
 ```
 
@@ -140,7 +141,7 @@ Aqui qualquer arquivo alterado que termine com **.rb** e esteja dentro da pasta 
 
 Mas se quisermos rodar toda a bateria de teste podemos fazer assim:
 
-```ruby
+```rb
 watch('spec/spec_helper.rb') { 'spec' }
 ```
 
@@ -150,13 +151,13 @@ Com todas as regras do Guard configuradas, vamos configurar o que será carregad
 
 Vamos utilizar o Bootstrap do Spork para gerar as devidas configurações para gente:
 
-```bash
+```sh
 spork --bootstrap
 ```
 
 Agora vamos editar o *spec_helper.rb* e passar todo conteúdo exemplo que será carregado uma única vez para dentro do bloco **prefork**:
 
-```ruby
+```rb
 require 'rubygems'
 require 'spork'
 
@@ -181,7 +182,7 @@ end
 
 Os dois primeiros requires deve ficar fora dos blocos e estamos com o Spork configurado e pronto para ser testado, mas antes vamos ver qual o tempo atual dos nossos testes:
 
-```bash
+```sh
 time rspec
 
 # Finished in 47.03 seconds
@@ -194,7 +195,7 @@ time rspec
 
 Agora vamos subir o Spork executando:
 
-```bash
+```sh
 spork
 
 # Using RSpec
@@ -205,7 +206,7 @@ spork
 
 Sim, a aba do seu terminal ficará presa e o Spork ficará rodando na porta 8989. Repare que é digo que o block `prefork` foi carregado com sucesso. Então iremos abrir outra aba e executar novamente os testes, mas destava vez aproveitando o load do DRb utilizando o parâmetro `--drb`:
 
-```bash
+```sh
 time rspec spec --drb
 
 # Finished in 46.09 seconds
@@ -234,7 +235,7 @@ Utilizo Linux no trabalho e OS X em casa, mas se você alterna de ambiente muito
 
 **Linux**
 
-```ruby
+```rb
 group :development do
   gem 'rb-inotify', '~> 0.9.0', require: false
 end
@@ -242,7 +243,7 @@ end
 
 **OS X**
 
-```ruby
+```rb
 group :development do
   gem 'rb-fsevent', '~> 0.9.3', require: false
 end
@@ -250,7 +251,7 @@ end
 
 Agora instale as gems:
 
-```bash
+```sh
 bundle install
 ```
 
@@ -258,7 +259,7 @@ bundle install
 
 O inotify tem um limite de arquivos que o mesmo consegue monitorar, porém podemos aumentar esse limite com o seguinte comando:
 
-```bash
+```sh
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 ```
 
@@ -266,7 +267,7 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 
 Agora vamos subir o guard para ativar os nossos observadores:
 
-```bash
+```sh
 guard
 
 # 23:31:13 - INFO - Guard uses TerminalTitle to send notifications.
@@ -300,19 +301,19 @@ Para conhecer outros comandos execute:
 
 Um caso muito comum de acontecer é a não execução do Guard quando uma classe é alterada. Depois de algumas pesquisas o desenvolvedor constata que é problema de cache. Para resolver podemos fazer o reload das classes desejadas no bloco `each_run`:
 
-```ruby
+```rb
 Dir[Rails.root + 'app/**/*.rb'].each { |file| load file }
 ```
 
 E pra quem utiliza a gem [FactoryGirl](https://github.com/thoughtbot/factory_girl "Factory Girl"), chamar o método `reload` para recarregar as factories:
 
-```ruby
+```rb
 FactoryGirl.reload
 ```
 
 Outro problema também é o cache setado no arquivo *config/environments/test.rb*. Quando o Spork sobe o DRb ele seta uma variável de ambiente chamada **DRB** com o valor `'true'`, baseado nesse valor ativamos ou não o cache no ambiente de teste:
 
-```ruby
+```rb
 config.cache_classes = ENV['DRB'] != 'true'
 ```
 
@@ -322,7 +323,7 @@ Assim só iremos utilizar o cache se o Spork não estiver rodando. (:
 
 A primeira coisa que você irá perceber e se assustar é que ao alterarmos apenas uma linha de código todo o arquivo de teste mapeado para tal classe será executado. E se tivermos umas quantidade grande de testes, todos serão executados, mas as vezes queremos executar apenas um pequeno contexto. Para isso podemos utilizar a opção de filtro onde focamos o RSpec apenas em alguns testes. No *spec_helper.rb* adicione o seguinte block de código:
 
-```ruby
+```rb
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
   config.filter_run focus: true
@@ -332,7 +333,7 @@ end
 
 No primeiro comando habilitamos o uso de meta-dados nos blocos de testes, ou seja, podemos adicionar parâmetros que poderão fazer parte do bloco de teste:
 
-```ruby
+```rb
 it 'use metadata', some: 'metadata' do
   ...
 end
@@ -340,7 +341,7 @@ end
 
 Com isso habilitado podemos fazer um filtro de qual teste o Guard irá rodar baseado em um meta-dado de nossa escolha, que no caso será o símbolo `:focus`, ficando assim:
 
-```ruby
+```rb
 it 'run isolated', :focus do
   ...
 end
@@ -352,7 +353,7 @@ O próprio símbole é considerado `true`, logo o Guard irá rodar apenas os tes
 
 Repare que na primeira linha do output do comando `guard` é dito "Guard uses TerminalTitle to send notifications.", isso porque não temos nenhum API configurada para notificar as ações do Guard, logo isto será apenas escrito na aba do terminal, o que já é legal. Para termos uma pop up bonitinha, vamos utilizar a gem [ruby_gntp](https://github.com/snaka/ruby_gntp "Ruby GNTP"):
 
-```bash
+```sh
 group :development do
   gem 'ruby_gntp', '~> 0.3.4'
 end

@@ -16,13 +16,13 @@ Implement an OAuth Google logic to control the login in a Phoenix application. W
 
 First let's create the user table, via [migration](https://hexdocs.pm/ecto_sql/Ecto.Migration.html), to keep the login data:
 
-```elixir
+```ex
 mix ecto.gen.migration create_users
 ```
 
 It'll create a migration file called `priv/repo/migrations/*_create_users.exs`, open it and let's set the columns:
 
-```elixir
+```ex
 defmodule Bible.Repo.Migrations.CreateUsers do
   use Ecto.Migration
 
@@ -41,7 +41,7 @@ end
 
 We need to save the email, the provider that can be Google, Facebook and so one, the avatar image and the token to recognize the user related to the provider. Let's apply this migration:
 
-```elixir
+```ex
 mix ecto.migrate
 ```
 
@@ -49,7 +49,7 @@ mix ecto.migrate
 
 With a database table created, let's create the model to represent the user:
 
-```elixir
+```ex
 # lib/bible/user.ex
 
 defmodule Bible.User do
@@ -81,7 +81,7 @@ The `Ecto.Schema` can map the table data into the user model, the syntax is almo
 
 It's time to install the [Überauth](https://github.com/ueberauth/ueberauth) package, so we need to choose a provider, that in this case, we'll use the [Google](https://github.com/ueberauth/ueberauth_google) adding the dependencies in the `mix.exs` as the last entry into `deps` method:
 
-```elixir
+```ex
 # mix.exs
 
 defp deps do
@@ -93,7 +93,7 @@ end
 
 And you need to add the package as an extra application:
 
-```elixir
+```ex
 def application do
   [
     mod: {Bible.Application, []},
@@ -104,7 +104,7 @@ end
 
 And then install it:
 
-```elixir
+```ex
 mix deps.get
 ```
 
@@ -112,7 +112,7 @@ mix deps.get
 
 We need to create three routes through the `browser` pipeline that will be responsible for login, logout, and receive the provider callbacks, so create a new scope called `/auth`:
 
-```elixir
+```ex
 # lib/bible_web/router.ex
 
 scope "/auth", BibleWeb do
@@ -134,7 +134,7 @@ The controller responsible to keep this methods is the `AuthController`, it'll h
 
 The sign in method is responsible to receive the email and the provider to save or update the user in the database:
 
-```elixir
+```ex
 # lib/bible_web/controllers/auth_controller.ex
 
 defp signin(conn, changeset) do
@@ -168,7 +168,7 @@ When fail we set an error message and redirect to the home page.
 
 Every time you request the provider, it will respond to you into the callback route where we'll check what came inside the `conn.assigns` variable:
 
-```elixir
+```ex
 # lib/bible_web/controllers/auth_controller.ex
 
 def callback(%{assigns: assigns} = conn, _params) do
@@ -201,7 +201,7 @@ Or it can succeed and return all the attributes we need, if it happens, we build
 
 And finally, we need a method to sign out the user where we just drop de session data, flash and redirect to the home page:
 
-```elixir
+```ex
 # lib/bible_web/controllers/auth_controller.ex
 
 def signout(conn, _params) do
@@ -214,7 +214,7 @@ end
 
 Now just add the plugin the beginning of the controller to execute the auth in this controller:
 
-```elixir
+```ex
 defmodule BibleWeb.AuthController do
   use BibleWeb, :controller
 
@@ -231,7 +231,7 @@ end
 
 Now we need to configure the provider's credentials, put them before the `import_config` command:
 
-```elixir
+```ex
 # config/config.exs
 
 config :ueberauth, Ueberauth,
@@ -325,7 +325,7 @@ Just wrap the value into quotes.
 
 Now we can create the links for signin and signout. Since this links will be global, let's edit the layout file including the following block:
 
-```elixir
+```ex
 <%= if @current_user do %>
   <%= link "Signout", to: Routes.auth_path(@conn, :signout), method: :delete %>
 
@@ -341,7 +341,7 @@ We're using a variable called `@current_user` representing the user in session. 
 
 For `@current_user` be available in the view, we need to assign it to the `conn`. We'll do it via [Plug](https://hexdocs.pm/phoenix/plug.html), a kind of interceptor that is executed between the middleware of the request, for example.
 
-```elixir
+```ex
 # lib/bible/plugs/current_user.ex
 
 defmodule BibleWeb.Plugs.CurrentUser do
@@ -361,7 +361,7 @@ All Plugs has a `init`, that we just ignore, and a `call` method that will do wh
 We get the `current_user` from the session and assigns it to the `conn`, so it will be available as `@current_user` in the view.
 This Plug should be executed in all browser request, so add it in the final of the pipeline `:browser`:
 
-```elixir
+```ex
 # lib/bible_web/router.ex
 
 pipeline :browser do
@@ -375,7 +375,7 @@ end
 
 Everything is working, login, current user in the session but the user still can navigate through all pages. It happens because we're not verifying if the user is logged or not, we do it in the view but now we need to do it in the controllers given access or not to the methods. To do it we'll create another plug:
 
-```elixir
+```ex
 # lib/bible_web/router.ex
 
 defmodule BibleWeb.Plugs.Auth do
@@ -400,7 +400,7 @@ end
 This plug will check the assigned `current_user`, if it's `nil` we set a flash message and redirect to the home page halting the pipeline to avoid other plugs being running, or we just return `conn` letting the request pass through normally.
 Now we can plug it to the controller we want to controller the login:
 
-```elixir
+```ex
 # lib/bible_web/controllers/person_controller.ex
 
 defmodule BibleWeb.PersonController do

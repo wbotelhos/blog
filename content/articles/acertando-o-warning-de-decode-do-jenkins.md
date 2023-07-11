@@ -21,13 +21,13 @@ Essa mensagem de alerta, vem do container que estamos usando, o [Tomcat](http://
 
 Para resolver isso, basta dizer para o Tomcat usar UTF-8. edite o arquivo `server.xml` que se encontra no home do Tomcat. No meu caso:
 
-```bash
+```sh
 sudo vim /var/lib/tomcat/conf/server.xml
 ```
 
 Procure pelo bloco `Connector` da porta `8080`:
 
-```bash
+```sh
  <Connector port="8080" protocol="HTTP/1.1"
                connectionTimeout="20000"
                redirectPort="8443"
@@ -36,7 +36,7 @@ Procure pelo bloco `Connector` da porta `8080`:
 
 E adicione a propriedade `URIEncoding="UTF-8"`:
 
-```bash
+```sh
  <Connector port="8080" protocol="HTTP/1.1"
                connectionTimeout="20000"
                redirectPort="8443"

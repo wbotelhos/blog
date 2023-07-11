@@ -13,7 +13,7 @@ Instalar e configurar o MongoDB no sistema operacional Mac OS X.
 
 # Download
 
-```bash
+```sh
 mkdir ~/Development
 cd ~/Development
 curl -O http://downloads.mongodb.org/osx/mongodb-osx-x86_64-2.6.0.tgz
@@ -25,7 +25,7 @@ mv mongodb-osx-x86_64-2.6.0 mongodb
 
 Eu pessoalmente gosto de deixar todos os meus programas na pasta `~/Development`, assim posso fazer backup deles sem me esquecer de nada. Porém para não termos que sempre especificar o nome de usuário, pois estará na sua home, vamos criar um link simbólico no `/usr/local`, lugar comum para se deixar programas do usuário:
 
-```bash
+```sh
 sudo ln -s ~/Development/mongodb /usr/local/mongodb
 ```
 
@@ -33,19 +33,19 @@ sudo ln -s ~/Development/mongodb /usr/local/mongodb
 
 Por padrão o Mongo armazena os dados no diretório `/data/db`:
 
-```bash
+```sh
 sudo mkdir -p /data/db
 ```
 
 Para evitar o seguinte erro no futuro:
 
-```bash
+```sh
 Unable to create/open lock file: /data/db/mongod.lock
 ```
 
 Vamos atribuir o usuário corrente (`whoami`) como dono dessa pasta:
 
-```bash
+```sh
 sudo chown -R `whoami` /data
 ```
 
@@ -53,7 +53,7 @@ sudo chown -R `whoami` /data
 
 Dentro do diretório `/usr/local/mongodb/bin` há vários comandos nos quais podemos executar:
 
-```bash
+```sh
 bsondump
 mongo
 mongod
@@ -72,13 +72,13 @@ mongotop
 
 Para ser possível executar esses comando sem passar seu caminho completo, precisamos editar o arquivo `.bash_profile`:
 
-```bash
+```sh
 vim ~/.bash_profile
 ```
 
 E adicionar o caminho da pasta `bin` no `$PATH` do sistema:
 
-```bash
+```sh
 export MONGODB_HOME=/usr/local/mongodb
 export PATH=${PATH}:${MONGODB_HOME}/bin
 ```
@@ -87,13 +87,13 @@ Se já existir um *export* do `PATH`, basta adicionar o *path* do Mongo usando o
 
 Recarregue o arquivo:
 
-```bash
+```sh
 source ~/.bash_profile
 ```
 
 Agora podemos executar todos os comandos facilmente:
 
-```bash
+```sh
 mongo -version
 # MongoDB shell version: 2.6.0
 ```
@@ -102,13 +102,13 @@ mongo -version
 
 Podemos inicializar o Mongo, basta digitar `mongod`, de preferência com um `&` no final para evitarmos que ele morra se fecharmos a aba do terminal. Só que isso não o mantém rodando ao reiniciar a máquina. Podemos configurar sua inicialização automática criando um **launchd job**:
 
-```bash
+```sh
 sudo vim /Library/LaunchDaemons/mongodb.plist
 ```
 
 Com o seguinte conteúdo:
 
-```bash
+```sh
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 
@@ -139,19 +139,19 @@ Com o seguinte conteúdo:
 
 Repare que em uma linha indicamos que teremos uma *key* e logo em seguida dizemos qual o valor pra tal *key*. Obtendo algo como `RunAtLoad=true`. No caso do `ProgramArguments` passamos um *array* de comandos, sendo que a some deles separados por espaço, formará nosso comando final:
 
-```bash
+```sh
 /usr/local/mongodb/bin/mongod run --config /usr/local/mongodb/mongod.yml
 ```
 
 O interessante da inicialização é que podemos passar um arquivo de configuração contendo alguns comandos desejados. Vamos criar esse arquivo:
 
-```bash
+```sh
 vim /usr/local/mongodb/mongod.yml
 ```
 
 Com o conteúdo:
 
-```bash
+```sh
 processManagement:
   pidFilePath: '/var/run/mongodb.pid'
 
@@ -166,32 +166,32 @@ Acesse [http://docs.mongodb.org/manual/reference/configuration-options](http://d
 
 Agora vamos carregar o nosso job manualmente:
 
-```bash
+```sh
 sudo launchctl load /Library/LaunchDaemons/mongodb.plist
 ```
 
 Pronto, esta tudo configurado. Você já pode acessar seu banco:
 
-```bash
+```sh
 mongo
 ```
 
 Para listar os *schemas* existentes:
 
-```bash
+```sh
 show dbs
 # wbotelhos_development
 ```
 
 Usar um *schema*:
 
-```bash
+```sh
 use wbotelhos_development
 ```
 
 Para mostrar as *collections* do *schema*:
 
-```bash
+```sh
 show collections
 ```
 
@@ -199,7 +199,7 @@ show collections
 
 Para ver os dados de uma *collection*:
 
-```bash
+```sh
 db.articles.find().pretty()
 ```
 
@@ -207,7 +207,7 @@ db.articles.find().pretty()
 
 Para buscar um objeto específico:
 
-```bash
+```sh
 db.articles.find({ title: 'Sharding MongoDB' }).pretty()
 description: 'Sharding MongoDB' }).pretty()
 ```

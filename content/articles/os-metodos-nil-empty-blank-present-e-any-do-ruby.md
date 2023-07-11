@@ -16,7 +16,7 @@ Diferenciar o uso dos métodos `nil?`, `empty?`, `blank?`, `present?` e `any?` p
 
 Este é o mais simples dos métodos, pois ele simplesmente verifica se algo é nulo, onde apenas `nil` irá retornar `true`:
 
-```ruby
+```rb
 nil.nil? # true
 qualquer_outra_coisa.nil? # false
 ```
@@ -25,14 +25,15 @@ qualquer_outra_coisa.nil? # false
 
 A princípio este método é simples e até bem inteligente por verificar até se um hash esta vazio:
 
-```ruby
+```rb
 ''.empty? # true
 [].empty? # true
 {}.empty? # true
 ```
+
 Repare que uma string é vazia se não existir nada nela, nem mesmo espaços em branco, pois este método não faz um `trim` na string e é ai que começa a confusão, pois:
 
-```ruby
+```rb
 ' '.empty? # false
 [nil].empty? # false
 { key: nil }.empty? # false
@@ -42,7 +43,7 @@ Uma string com espaço, um array com um elemento, mesmo este sendo o próprio `n
 
 Precisamos ter cuidado para não utilizarmos o método `empty?` em objetos nulos:
 
-```ruby
+```rb
 nil.empty? # NoMethodError: undefined method `empty?` for nil:NilClass
 ```
 
@@ -54,7 +55,7 @@ cat != null && !cat.empty()
 
 E que a princípio não conseguimos escapar em Ruby:
 
-```ruby
+```rb
 !cat.nil? && !cat.empty?
 ```
 
@@ -64,7 +65,7 @@ Haveria algo que verifica se um objeto não é nulo e nem vazio para acabar com 
 
 Introduzido pelo [ActiveSupport](http://guides.rubyonrails.org/active_support_core_extensions.html "ActiveSupport"), este método faz o seu trabalho além de englobar os resultados do método `empty?`:
 
-```ruby
+```rb
 ' '.blank? # true
 nil.blank? # true
 false.blank? # true
@@ -87,7 +88,7 @@ false.blank? # true
 
 Sendo assim podemos refatoração as duas condicionais citadas anteriormente:
 
-```ruby
+```rb
 # !cat.nil? && !cat.empty?
 !cat.blank?
 ```
@@ -98,7 +99,7 @@ Mas não é legal comparações negativas e seria uma boa termos uma comparaçã
 
 Este método é simplesmente o negado do `blank?`:
 
-```ruby
+```rb
 def present?
   !blank?
 end
@@ -106,7 +107,7 @@ end
 
 Logo podemos refatorar o nosso método da seguinte forma:
 
-```ruby
+```rb
 # !cat.nil? && !cat.empty?
 cat.present?
 ```
@@ -117,13 +118,13 @@ Se você precisar retornar o próprio objeto, em uma condicional, se ele não fo
 
 Por fim temos um método para trabalhar em cima de arrays e hashes, no qual passamos um bloco para fazermos a condição:
 
-```ruby
+```rb
 ['cat'].any? { |item| item == 'cat' } # true
 ```
 
 Mas com frequência vemos o uso deste método sem a passagem do bloco, que faz o Ruby passar um bloco implícito com o próprio objeto que estamos aplicando o método: `{ |this| this }`. Sendo assim, se algo for retornado do array ou do hash receberemos `true`:
 
-```ruby
+```rb
 [''].any? # true
 [nil].any? # true
 { key: nil }.any? # true
@@ -137,6 +138,6 @@ Veja que o próprio conteúdo do objeto é analizado, logo o retorno de uma stri
 
 Vale lembrar que aqui temos o mesmo problema do `empty?`, onde devemos tomar cuidado com o nil:
 
-```bash
+```sh
 NoMethodError: undefined method `any?` for nil:NilClass
 ```

@@ -22,7 +22,7 @@ cd app
 
 And install Absinthe and Absinthe Plug used to work with Phoenix:
 
-```elixir
+```ex
 # mix.exs
 
 defp deps do
@@ -41,7 +41,7 @@ mix deps.get
 
 We need a connection to the database, so let's set the PG password blank:
 
-```elixir
+```ex
 # config/dev.exs
 
 config :app, App.Repo,
@@ -103,7 +103,7 @@ rm -rf test
 
 The `/api` route should forward the requests to Absinthe:
 
-```elixir
+```ex
 # lib/app/router.ex
 
 scope "/api" do
@@ -118,7 +118,7 @@ end
 Absinthe does not require a controller as an entry point like in Rails só the request just arrives in the Schema, the first place to receive the request and where we'll define everything:
 
 
-```elixir
+```ex
 # lib/app/graphql/schema.ex
 
 defmodule App.GraphQL.Schema do
@@ -137,7 +137,7 @@ Here we transform the module into an Absinthe Schema and import the two Types.
 
 GraphQL calls the models as Type, so usually, for each model, we create a Type in GraphQL with more or fewer fields than your model:
 
-```elixir
+```ex
 # lib/app/graphql/types/book.ex
 
 defmodule App.GraphQL.Types.Book do
@@ -155,13 +155,13 @@ end
 
 Here we have a Type representing the Book that will map the Book model. We call it an `object` and it exposes the model fields. Since we said we have `verses`, we need to add the relation on model:
 
-```elixir
+```ex
 has_many :verses, App.Documents.Verse
 ```
 
 Ok, we already have the Type, but how to list all those types? Well, we create an object that exposes the fields we want:
 
-```elixir
+```ex
 # lib/app/graphql/queries/book.ex
 
 object :book_queries do
@@ -171,7 +171,7 @@ end
 
 This object exposes the field `books` that return a list of books. Now we need to import this file and object in our schema, but since it's an object to query data, we create a new block where we can import this object as a field in Schema:
 
-```elixir
+```ex
 # lib/app/graphql/schema.ex
 
 import_types(GraphQL.Queries.Book)
@@ -185,7 +185,7 @@ It's allowed to write the objects directly inside the `query` block, but I recom
 
 For `Verse` we declare the type too, but not the query since we don't want query directly by Verse, but list it embedded in Book:
 
-```elixir
+```ex
 # lib/app/graphql/types/verse.ex
 
 defmodule App.GrapQL.Types.Verse do
@@ -204,7 +204,7 @@ end
 
 And the relation in the model:
 
-```elixir
+```ex
 belongs_to :book, App.Documents.Book
 ```
 
@@ -212,7 +212,7 @@ belongs_to :book, App.Documents.Book
 
 Let's populate our database to test the queries:
 
-```elixir
+```ex
 # priv/repo/seeds.exs
 
 alias App.Documents
@@ -313,7 +313,7 @@ The `query` block exposes the entry points to GraphQL, where we already have the
 
 The last query didn't work because we need to resolve how those books are returned, for that we can open a block and point the field to some method to resolve the query, there we can have arguments too:
 
-```elixir
+```ex
 # lib/app/graphql/queries/book.ex
 
 object :book_queries do
@@ -327,7 +327,7 @@ end
 
 Now the field `books` accepts a `limit` argument and resolve the query via our Resolver module:
 
-```elixir
+```ex
 # lib/app/graphql/resolvers/book.ex
 
 defmodule App.GraphQL.Resolvers.Book do
@@ -341,7 +341,7 @@ end
 
 The Resolver just proxy it to the Phoenix Context:
 
-```elixir
+```ex
 lib/app/documents.ex
 
 defmodule App.Documents do
@@ -394,7 +394,7 @@ Inside the method, we reduce the args composing the query and then we query all 
 
 GraphQL enables us to do nested queries navigating through the relations and as we saw, the resolvers can indicate to us how to do that. Let's create a query to get a single book:
 
-```elixir
+```ex
 # lib/app/graphql/types/book.ex
 
 object :book_queries do
@@ -410,7 +410,7 @@ end
 
 Then the resolver:
 
-```elixir
+```ex
 # lib/app/graphql/resolvers/book.ex
 
 def get_book(%{id: id}, _context) do
@@ -444,7 +444,7 @@ Cannot return null for non-nullable field
 
 It happens because we load the book, but not the verses relations. To fix it we can preload the verses:
 
-```elixir
+```ex
 def get_book!(id), do: Repo.get!(Book, id) |> Repo.preload(:verses)
 ```
 
@@ -478,7 +478,7 @@ Running the query again it works:
 
 Now it worked, but since we always preload the verses, even if you remove the verses node, when you search by a book, it'll still make a query to list verses. What we want is to fetch the verses only when we ask for them, so let's resolve the field verses inside the book type, so GraphQL won't try to get it from the self-model:
 
-```elixir
+```ex
 # lib/app/graphql/types/book.ex
 
 field :verses, list_of(:verse) do
@@ -490,7 +490,7 @@ end
 
 Pay attention that now we used the resolve with arity *3*, where the first argument is the parent (book) element. Let's create the resolver:
 
-```elixir
+```ex
 # lib/app/graphql/resolvers/verse.ex
 
 defmodule App.GraphQL.Resolvers.Verse do
@@ -504,7 +504,7 @@ end
 
 And create the method in Phoenix Context:
 
-```elixir
+```ex
 # lib/app/documents.ex
 
 def verses_for_book(book) do
@@ -536,7 +536,7 @@ I've already heard from a developer that he doesn't like GraphQL, that it's slow
 
 First, let's install it:
 
-```elixir
+```ex
 # mix.exs
 
 {:dataloader, "~> 1.0"}
@@ -544,7 +544,7 @@ First, let's install it:
 
 Dataloader needs a data source entry point, let's define it in Phoenix Context:
 
-```elixir
+```ex
 # lib/app/documents.ex
 
 def datasource() do
@@ -554,7 +554,7 @@ end
 
 This method will delegate to the method `query` with model name as first argument and a map of optional elements. Let's create a query method for Verse:
 
-```elixir
+```ex
 # lib/app/documents.ex
 
 defp query(Verse, %{scope: :book, limit: limit}) do
@@ -572,7 +572,7 @@ If no query matches we just return the queryable model with no changes in the "c
 
 Now in the Schema, we can register that data source:
 
-```elixir
+```ex
 # lib/app/graphql/schema.ex
 
 alias App.Documents
@@ -590,7 +590,7 @@ The context method is used to carry data to Absinthe, so we create a Dataloader,
 
 Now we prepend the Dataloader middleware into Absinthes's plugins:
 
-```elixir
+```ex
 # lib/app/graphql/schema.ex
 
 def plugins, do: [Absinthe.Middleware.Dataloader | Absinthe.Plugin.defaults()]
@@ -598,7 +598,7 @@ def plugins, do: [Absinthe.Middleware.Dataloader | Absinthe.Plugin.defaults()]
 
 And finally the funny part, we'll replace the resolver with Dataloader:
 
-```elixir
+```ex
 # lib/app/graphql/types/book.ex
 
 import Absinthe.Resolution.Helpers, only: [dataloader: 3]
@@ -616,7 +616,7 @@ Using `dataloader/3` we refer to the Dataloader registered as `Documents`, asks 
 
 Instead of importing all Types and Queries in your Schema, you can create a file, in the root of graphql folder, that imports all other files, and then in your Schema you import just this index file:
 
-```elixir
+```ex
 # lib/app/graphql/types.ex
 
 defmodule App.GraphQL.Typesdo
@@ -630,7 +630,7 @@ end
 
 ```
 
-```elixir
+```ex
 # lib/app/graphql/queries.ex
 
 defmodule App.GraphQL.Queries do
@@ -645,7 +645,7 @@ end
 
 And just update your Schema:
 
-```elixir
+```ex
 # lib/app/graphql/schema.ex
 
 import_types(GraphQL.Types)

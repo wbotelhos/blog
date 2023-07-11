@@ -20,7 +20,7 @@ Let's start understanding Kafka from the inner layer to the more external one.
 Like a database, in Kafka, you save your data and it's saved in a place called Partition.
 The partitions are identified by a number started from zero that grows in a sequential way, like the ID of your database:
 
-```
+```txt
 |---------------------|
 | 0 | 1 | 3 | ... | n |
 |---------------------|
@@ -31,13 +31,13 @@ The partitions are identified by a number started from zero that grows in a sequ
 Imagine a restaurant where the chef puts the meal inside a window then the waiter can get it and deliver it to the table on the north of the restaurant. After a while, the waiter comes back and gets another meal and delivery it to the table in the south.
 It can take some time! We can increase the speed by adding another waiter, so the first waiter gets the north's meal and the second waiter gets the south's meal. It'll increase the speed but the second waiter still needs to wait for the first one to get the meal to then arrive his time, like in a bank line:
 
-```
+```txt
 Window 1: Meal South | Meal North
 ```
 
 We can deliver the meals in parallel, for that we create more than one window (partition), so the waiter one and the waiter two can get the meal in the same time:
 
-```
+```txt
 Window 1: Meal North
 Window 2: Meal South
 ```
@@ -54,7 +54,7 @@ The name of the key is calculated in the same way, so if you have the same quant
 
 You may think that the meals could have an identification besides the key, so the waiters would know about the table by themself over by the window. Yes, it could, but here we have, sometimes, a hard understanding of the partition key, since we don't really want to know the exact partition since it goes to the same one always. Imagine the following situation:
 
-```
+```txt
 Partition Window 1: Meal South, Meal North
 Partition Window 2: Dessert North
 ```
@@ -62,7 +62,7 @@ Partition Window 2: Dessert North
 As you can see the North table would receive the Meal and so the Dessert, or even worse the Dessert and so the Meal in the same time, because both packages are the first in the partition and with two waiters they can do it in the same time, since now the Chef doesn't respect anymore the windows. The waiters just know that should send it to North. If we want to guarantee the order, we need to use partition key to have the following situation:
 
 
-```
+```txt
 Partition Window 1: Dessert North, Meal North
 Partition Window 2: Meal South
 ```
@@ -75,7 +75,7 @@ The Partition key is hashed with [MurmurHash](https://en.wikipedia.org/wiki/Murm
 
 All data in Kafka will be persisted, at least for a while, so you can replay it later. In the last example, after the waiter delivers the Meal, the offset started at zero was increased by one so the meal in position 0 was consumed and hidden, but the data will still be there. If for some reason the waiter left the meal falls we can resend the meal just by controlling the offset decreasing it by 1. It's powerful and can go back or forward. If you need to replay all the data from a specific day or position, you're in a good hand too:
 
-```
+```txt
 Partition Window 1: Dessert North (offset 1), Meal North (offset 0)
 Partition Window 2: Meal South (offset 0)
 ```
@@ -84,7 +84,7 @@ Partition Window 2: Meal South (offset 0)
 
 All Partitions live in a specific place called Topic. For our last example, we could group those partitions in a topic called Delivery, for example. We could have another topic called Meal Stock where other systems would get this data and decrease the stock-based in what meal was made and delivered:
 
-```
+```txt
 Topic Delivery -> |---------------------------------------------------------|
                   |Partition Window 1: Dessert North (offset 1), Meal North |
                   |Partition Window 2: Meal South (offset 0)                |
@@ -103,7 +103,7 @@ Be default the Producer does not choose which partition the message will be save
 
 Based on our restaurant example, the producer would be the chef that produces the meals and put them on the balcony (topic):
 
-```
+```txt
 Chef make Chicken -> Chicken is put into Window 1
 ```
 
@@ -116,7 +116,7 @@ If you add more consumers than the number of partitions, some consumer will be i
 
 Based on our restaurant example, the consumers are the waiters where each waiter will always get the meal from the same window:
 
-```
+```txt
 Window 1 with chicken <- Waiter gets the chicken
 ```
 
@@ -128,7 +128,7 @@ Usually, we have 3 brokers where one will be responsible to receive the write an
 
 Based on our restaurant example, the broker represents the restaurant itself. With more restaurants, more guarantee that the client will always ask for delivery even if some restaurant has a disaster, we have another restaurant to receive the request.
 
-```
+```txt
 Broker 0 NY ->|--------------------------------------------------------------------------------------------|
               | Producer Chef ->                                                                           |
               |   Topic Delivery -> |--------------------------------------------------------------------| |
@@ -173,7 +173,7 @@ Why do I need to use a group? A copy of each message is "sent" to each group, so
 
 Based on our restaurant example, if the restaurant always produces the same kind of food in a period frame, we could have a consumer group called morning, afternoon, and night. Each of these groups would serve the same cycle of food, but for different customers, like in an all-you-can-eat barbecue restaurant:
 
-```
+```txt
 Broker 0 NY ->|--------------------------------------------------------------------------------------------|
               | Producer Chef ->                                                                           |
               |   Topic Delivery -> |--------------------------------------------------------------------| |
@@ -198,7 +198,7 @@ Broker 0 NY ->|-----------------------------------------------------------------
 
 Kafka can indicate that the message was received successfully with a response as `ack` (acknowledge) and when this message is replicated to all ISR then we have the message's state called `committed` it indicates that is safe to be consumed since the message is stored in the replicas too. The follower's brokers will always consume the message from the Leader broke until the last offset to receive the `committed` state:
 
-```
+```txt
 Broker Leader 0 NY ->|---------------------------------------------------------------------------------------------|
                      | Producer Chef ->                                                                            |
                      |   Topic Delivery -> |---------------------------------------------------------------------| |

@@ -17,7 +17,7 @@ Configurar o ambiente para o RSpec e criar um modelo básico de organização do
 
 Vamos criar um projeto Rails exemplo para trabalharmos em cima dele. Execute:
 
-```bash
+```sh
 rails new iniciando-com-testes-ruby-usando-rspec -STJ
 ```
 
@@ -25,7 +25,7 @@ rails new iniciando-com-testes-ruby-usando-rspec -STJ
 `T`: não instala nada do [Test Unit](http://test-unit.rubyforge.org), pois vamos usar o [RSpec](http://rspec.info) né?; :P
 `J`: não instala os arquivos JavaScripts de exemplo.
 
-```bash
+```sh
 cd iniciando-com-testes-ruby-usando-rspec
 ```
 
@@ -35,17 +35,17 @@ Ok, já temos o projeto.
 
 É normal chamarmos os nossos testes de "specs", por isso deixamos todos os nossos testes dentro de uma pasta na raiz chamada `spec` no singular.
 
-```bash
+```sh
 mkdir spec
 ```
 
 Dentro desta pasta temos um arquivo especialmente para configurar os testes chamado `spec_helper.rb`, nele vamos fazer algumas configurações:
 
-```bash
+```sh
 touch spec/spec_helper.rb
 ```
 
-```ruby
+```rb
 ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path '../../config/environment', __FILE__
@@ -58,7 +58,7 @@ require 'rspec/rails'
 
 Como estamos usando o RSpec, devemos adicionar essa gem no Gemfile:
 
-```ruby
+```rb
 source 'https://rubygems.org'
 
 gem 'rails'
@@ -86,14 +86,14 @@ Declaramos a configuração de `development` como padrão e a reaproveitamos usa
 
 Vamos criar uma classe para o nosso exemplo:
 
-```bash
+```sh
 mkdir -p app/models
 touch app/models/article.rb
 ```
 
 É padrão termos um arquivo de teste para cada arquivo existente. O arquivo de testes deve estar dentro da pasta `spec` com o mesmo caminho que o arquivo a ser testado, porém com o sufixo `_spec`.
 
-```bash
+```sh
 mkdir -p spec/app/models
 touch    spec/app/models/article_spec.rb
 ```
@@ -102,7 +102,7 @@ Veja que o caminho é idêntico ao do modelo. Indicamos que este arquivo é de t
 
 O artigo terá um método que dirá qual a lingaguem tratada no artigo a partir do título:
 
-```ruby
+```rb
 class Article
   def self.language(title)
     return 'Ruby'   if title =~ /.*ruby.*/
@@ -120,11 +120,11 @@ Para bolarmos os teste devemos nos perguntar **o que o método deve fazer**, **e
 
 Para toda classe de teste, devemos carregar o arquivo `spec_helper.rb`, pois ele possui códigos necessários. Então descrevemos o que estamos testando:
 
-```bash
+```sh
 vi spec/app/models/article_spec.rb
 ```
 
-```ruby
+```rb
 require 'spec_helper'
 
 describe 'Article' do
@@ -133,7 +133,7 @@ end
 
 Para carregar o `spec_helper` não precisamos de dizer a extensão `.rb`. Logo em seguida utilizamos a palavra chave `describe` para **descrever** a classe `Article` que criamos. Da mesma forma que descrevemos um arquivo, descrevemos métodos que estão dentro desse arquivo. Podemos usar quantos `describe` quisermos:
 
-```ruby
+```rb
 require 'spec_helper'
 
 describe 'Article' do
@@ -144,7 +144,7 @@ end
 
 O teste em si fica dentro de um bloco de código chamado `it`, ficando:
 
-```ruby
+```rb
 require 'spec_helper'
 
 describe 'Article' do
@@ -161,7 +161,7 @@ end
 Agora sim o teste tem um comportamente. Mas há algo não muito legal; Repare que em ambas as *specs* descrevemos o que esperamos do teste e em qual situação a aplicação estará. Essas situação podem ser melhores contextualizadas utilizando a palavra chave `context`:
 
 
-```ruby
+```rb
 require 'spec_helper'
 
 describe 'Article' do
@@ -182,11 +182,11 @@ end
 Agora ficou mais fácil de ler, pois descrevemos o `Article` e o método `language` na situação onde temos a palavra "Ruby" ou "Python" no título e em cada um deles devemos ter um resultado específico. Veja que mudei o segundo describe para simplesmente o nome do método com um tralha (#) antes. Isso porque temos a opção de mostrar tudo que foi escrito nos `describe`, `context` e `it`. Na forma padrão, ao rodar os testes temos:
 
 
-```bash
+```sh
 rspec spec
 ```
 
-```bash
+```sh
 ..
 
 Finished in 0.00334 seconds
@@ -197,19 +197,19 @@ Os dois pontos, significa que temos dois testes. Ou seja, rodaram 2 testes (exam
 
 Para imprimir a forma descritiva, use a opção -f (--format) e passe o formato `d` (documentation):
 
-```bash
+```sh
 rspec spec --format documentation
 ```
 
 Ou a forma resumida:
 
-```bash
+```sh
 rspec spec -f d
 ```
 
 Então vemos a nossa descrição completa:
 
-```bash
+```sh
 Article
   #language
     when title is about Ruby
@@ -223,7 +223,7 @@ Finished in 0.00422 seconds
 
 Adicione o parâmetro `--color` para deixar a saída colorida. Se não quiser ficar fazendo isso para todo comando, basta criar um arquivo chamado `.rspec` com os parâmetros que você deseja na raiz do projeto:
 
-```bash
+```sh
 echo '--format documentation --colour' > .rspec
 ```
 
@@ -233,7 +233,7 @@ Este arquivo só valerá para o projeto corrente. Se ficar na sua *home* valerá
 
 As *expectations* são o que esperamos dos testes. Na versão mais antiga do RSpec, a palavra chave para "esperar" alguma coisa era `should`, nas atuais é `expect`. Dentro do `it` as fazemos:
 
-```ruby
+```rb
 it 'returns "Ruby"' do
   expect(Article.language 'Aprendendo Ruby').to eq 'Ruby'
 end
@@ -241,7 +241,7 @@ end
 
 Veja que dentro da *expectation* executamos o código processador, então esperamos que o resultado seja (`to`) igual (`eq`) a "Ruby". Fazemos o mesmo para o segundo teste:
 
-```ruby
+```rb
 it 'returns "Python"' do
   expect(Article.language 'Aprendendo Python').to eq 'Python'
 end
@@ -249,13 +249,13 @@ end
 
 E então rodamos todos:
 
-```ruby
+```rb
 rspec
 ```
 
 > Se estivermos na raiz do projeto, o comando `rspec`já sabe que deve procurar dentro da pasta `spec`, logo não é necessário especificar.
 
-```bash
+```sh
 Article
   #language
     when title is about Ruby
@@ -294,7 +294,7 @@ rspec ./spec/app/models/article_spec.rb:12 # Article#language when title is abou
 
 O código de erro do teste é bem descritivo:
 
-```bash
+```sh
 1) Article#language when title is about Ruby returns "Ruby"
 
 ...
@@ -309,23 +309,23 @@ Aqui a saída ficou bem clara, já que usamos os `describe` e `context` corretam
 
 Voltando no nosso código, podemos ver o problema:
 
-```ruby
+```rb
 return 'Ruby'   if title =~ /.*ruby.*/
 return 'Python' if title =~ /.*python.*/
 ```
 
 Estamos verificando somente com as letras minúsculas. Podemos melhorar isso dizendo para a [Expressão Regular](http://pt.wikipedia.org/wiki/Express%C3%A3o_regular) não distinguir maiúsculas e minúsculas passando o parâmetro `i` (insensitive)
 
-```ruby
+```rb
 return 'Ruby'   if title =~ /.*ruby.*/i
 return 'Python' if title =~ /.*python.*/i
 ```
 
-```bash
+```sh
 rspec
 ```
 
-```bash
+```sh
 Article
   #language
     when title is about Ruby
@@ -339,7 +339,7 @@ Finished in 0.00511 seconds
 
 Green! Nossos testes passaram. Agora vamos adicionar um último teste para o código nos dizer quando não encontrou uma linguagem de programação:
 
-```ruby
+```rb
 context 'when title is about an unknow language' do
   it 'returns a not found message' do
     expect(Article.language 'Aprendendo PHP').to eq 'Ops! Não é um artigo sobre programação.'
@@ -349,17 +349,17 @@ end
 
 Como utilizamos palavras acentuadas no arquivo, devemos declarar o seguinte código na primeira linha:
 
-```ruby
+```rb
 # coding: utf-8
 ```
 
 > Pode ser qualquer_coisa + coding: utf-8, ou seja: `enconding: utf-8`, `bolinhacoding: utf-8` e afins. Prefiro usar o mais curto.
 
-```ruby
+```rb
 rspec
 ```
 
-```bash
+```sh
  expected: "Ops! Não é um artigo sobre programação."
       got: nil
 
@@ -370,7 +370,7 @@ rspec ./spec/app/models/article_spec.rb:20 # Article#language when title is abou
 
 Bem, o nosso código esta retornando `nil` vamos consertar isso:
 
-```ruby
+```rb
 # coding: utf-8
 
 class Article
@@ -385,13 +385,13 @@ end
 
 Agora para rodarmos exatamente o teste que quebrou, copie as últimas saída do console, pois lá, se você reparar, terá o caminho do arquivo de teste e o número da linha no qual ele se encontra, assim você roda ele isoladamente:
 
-```bash
+```sh
 rspec ./spec/app/models/article_spec.rb:20 # Article#language when title is about an unknow language returns a not found message
 ```
 
 Se você copiar a linha toda, não tem problema, pois o restante é comentário por conta do `#`, assim o terminal ignora.
 
-```bash
+```sh
 Article
   #language
     when title is about Ruby
@@ -409,7 +409,7 @@ Green! Todos os nossos testes estão passando.
 
 Uma última melhoria que podemos fazer é evitar a repetição do nome da classe que estamos testando, no caso `Article`. Podemos fazer isso descrevendo o objeto `Article` mesmo, em vez de uma String 'Article' e usar essa referência:
 
-```ruby
+```rb
 describe Article do
   ...
   expect(described_class.language 'Aprendendo Ruby').to eq 'Ruby'

@@ -15,7 +15,7 @@ Translate and understand how translation in Phoenix works.
 
 Let's create a Phoenix project:
 
-```elixir
+```ex
 mix phx.new i18n_with_phoenix
 cd i18n_with_phoenix
 mix deps.get
@@ -26,7 +26,7 @@ mix ecto.create
 
 You can use the tag `gettext` providing the template with optional keys:
 
-```elixir
+```ex
 # lib/i18n_with_phoenix_web/templates/page/index.html.eex
 
 <%= gettext "Hello, %{name}!", name: "Botelho" %>
@@ -47,7 +47,7 @@ mix gettext.extract
 
 Now we have two files at `priv/gettext` like `config/locales` in [Rails](https://rubyonrails.org) but instead of `.yml` we use `.pot` where we'll keep the template `"Hello, %{name}!"`:
 
-```po
+```ex
 # priv/gettext/default.pot
 
 ## This file is a PO Template file.
@@ -76,7 +76,7 @@ You should always use the auto-extract unless you're using a dynamic translation
 
 > But wait! If it's a template, not a key, why do I need to supply a value for it? Ok, it's confusing, hold on a second...
 
-If a `msgid` has no `msgstr`, the template itself is used, it works like a default. You can think like this: `msgid` is the key, and `msgstr` is the value, but if the `msgstr` is empty then we'll use the key as the value. To be clear, another file for another language will use the same `msgid` with other `msgstr`. In the final, it's nice to use in this way because you refer to a string as a key instead of a key that can have any value inside there that you'll need to open the translation file to discover.
+If a `msgid` has no `msgstr`, the template itself is used, it works like a default. You can think like this: `msgid` is the key, and `msgstr` is the value, but if the `msgstr` is empty then we'll use the key as the value. To be clear, another file for another language will use the same `msgid` with other `msgstr`. In the final, it's nice to use it this way because you refer to a string as a key instead of a key that can have any value inside there that you'll need to open the translation file to discover.
 
 ## Merging Files
 
@@ -93,7 +93,7 @@ One new translation was merged on `priv/gettext/en/LC_MESSAGES/default.po`, sinc
 
 Let's check the content of `priv/gettext/en/LC_MESSAGES/default.po`:
 
-```elixir
+```ex
 ## "msgid"s in this file come from POT (.pot) files.
 ##
 ## Do not add, change, or remove "msgid"s manually here as
@@ -119,7 +119,7 @@ We have no error when the value is not defined, different from Rails, for exampl
 
 **Rails:**
 
-```ruby
+```rb
 I18n.t "missing.message", name: "Botelho"
 
 # "translation missing: en.missing.message"
@@ -127,7 +127,7 @@ I18n.t "missing.message", name: "Botelho"
 
 **Phoenix:**
 
-```elixir
+```ex
 gettext "Missing %{name}!", name: "Botelho"
 
 Missing Botelho!
@@ -149,7 +149,7 @@ mix gettext.merge priv/gettext --locale pt_BR
 
 Now we need to set the translation:
 
-```elixir
+```ex
 # priv/gettext/pt_BR/LC_MESSAGES/default.po
 
 msgid "Hello, %{name}!"
@@ -160,7 +160,7 @@ msgstr "Olá, %{name}!"
 
 We can change the default locale to `pt-BR`, or any other, and declare each locale that we support in `config/config.exs`:
 
-```elixir
+```ex
 config :i18n_with_phoenix, I18nWithPhoenix.Gettext, default_locale: "pt_BR", locales: ~w(pt_BR en)
 ```
 
@@ -170,7 +170,7 @@ The config is on our app `i18n_with_phoenix` key and we use the `I18nWithPhoenix
 
 Instead use `gettext` use `ngettext` that receives a singular text on the first param, a plural text on the second param, the counter number as the third param, and then the interpolation keys.
 
-```elxir
+```ex
 # lib/i18n_with_phoenix_web/templates/page/index.html.eex
 
 <%= ngettext "%{name} last login: 1 day!", "%{name} last login: %{count} days!", 2, name: "Botelho" %>
@@ -180,7 +180,7 @@ The number `2` is the value used as `count`. For the value `1`, the first argume
 
 Run `mix gettext.extract --merge` to extract and merge the PO files.
 
-```elixir
+```ex
 msgid "%{name} last login: %{count} day!"
 msgid_plural "%{name} last login: %{count} days!"
 msgstr[0] "%{name} último login: %{count} dia!"
@@ -193,14 +193,14 @@ Now we have the `msgid_plural` and the str for singular (1) and plural (2) situa
 
 Separate the translation files is good to organize the things. You can do it using the `dgettext`.
 
-```elixir
+```ex
 <%= dgettext "greetings", "Welcome back %{name}!", name: "Botelho" %>
 ```
 
-The first param is the domain name and after extract/merge a file called greetings.po with this translation will be created.
+The first param is the domain name and after extract/merge a file called `greetings.po` with this translation will be created.
 If you want to use the domain with the pluralization, just use the `dngettext`.
 
-```elixir
+```ex
 <%= dngettext "greetings", "Welcome back %{name} after 1 day!", "Welcome back %{name} after %{count} days!", 2, name: "Botelho" %>
 ```
 
@@ -210,7 +210,7 @@ To change between locales, you can use the plug [set_locale](https://github.com/
 
 We'll create a [Plug](https://hexdocs.pm/phoenix/plug.html#module-plugs):
 
-```elixir
+```ex
 # lib/i18n_with_phoenix_web/plugs/locale.ex
 
 defmodule I18nWithPhoenix.Plugs.Locale do
@@ -222,7 +222,7 @@ end
 
 We called our Plug `Locale` and imported the `Plug.Conn` to make this module behave like a Plug. We need an initialize that will receive a default locale. Now we can plug it on our Route:
 
-```elixir
+```ex
 # lib/i18n_with_phoenix_web/router.ex
 
 pipeline :browser do
@@ -235,7 +235,7 @@ Now every time the route pass through the `:browser` pipe this plug will be exec
 
 Back to our Plug, we need to define the `call` method where we can set the desired locale:
 
-```elixir
+```ex
 @locales Gettext.known_locales(AppWeb.Gettext)
 
 def call(%Plug.Conn{params: %{"locale" => locale}} = conn, _default_locale) when locale in @locales do
@@ -257,7 +257,7 @@ The method `set_locale` first uses `put_locale` to change the default locale of 
 
 When the locale is not valid this first `call` method won't be called, so we'll create another `call` method for invalid locations or for the case this param is not provided.
 
-```elixir
+```ex
 def call(conn, default_locale) do
   set_locale(conn, conn.cookies["locale"] || default_locale)
 end
@@ -265,7 +265,7 @@ end
 
 Here we try to fetch the cookie value and set it as the current locale, but if it's not present we set the default locale. The final Plug is:
 
-```elixir
+```ex
 defmodule I18nWithPhoenixWeb.Plugs.Locale do
   import Plug.Conn
 
@@ -294,7 +294,7 @@ end
 
 Now add the locales links on your code:
 
-```elixir
+```ex
 <a href="?locale=pt_BR">pt-BR</a>
 <a href="?locale=en">en</a>
 ```
@@ -305,7 +305,7 @@ When you click on this links the locale will change, so the translation.
 
 Ok, everything is good but the fact we're using only one file, called default, to hold all our translation. With a bigger system, things can become hard to maintain. But it's possible to separate the translation in domain:
 
- ```elixir
+ ```ex
 <%= dgettext("admin", "%{name}, logged as an Admin!", name: "Botelho") %>
 ```
 

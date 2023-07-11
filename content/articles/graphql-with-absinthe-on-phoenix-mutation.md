@@ -17,7 +17,7 @@ The Mutation works very similar to Query, it queries the data in the same way, b
 
 We need to import the mutations in the Schema:
 
-```elixir
+```ex
 # lib/app/graphql/schema.ex
 
 import_types(GraphQL.Mutations)
@@ -29,7 +29,7 @@ end
 
 The mutations files will contain the mutations:
 
-```elixir
+```ex
 # lib/app/graphql/mutations.ex
 
 defmodule App.GraphQL.Mutations do
@@ -43,7 +43,7 @@ end
 
 The mutation is called `create_book` and it receives `name` and `position` as arguments, returning a Book:
 
-```elixir
+```ex
 # lib/app/graphql/mutations/book.ex
 
 defmodule App.GraphQL.Mutations.Book do
@@ -65,7 +65,7 @@ end
 
 And the resolver will create the book and return it in case of success, but in case of error an `message` is added along a details key with a better explanation:
 
-```elixir
+```ex
 # lib/app/resolvers/books.ex
 
 alias App.GraphQL
@@ -83,7 +83,7 @@ end
 
 To extract the errors from the changeset we already have a method to do that it's the [traverse_errors/2](https://hexdocs.pm/ecto/Ecto.Changeset.html#traverse_errors/2):
 
-```elixir
+```ex
 # lib/app/graphql/errors.ex
 
 defmodule App.GraphQL.Errors do
@@ -128,7 +128,7 @@ Pay attention here because now we need to use the root key called `mutation`, wh
 
 Sometimes we need to create a record and some children of this record at the same time. We call these fields nested and Absinthe treats it like an `input_object` that is used as an argument of your Mutation:
 
-```elixir
+```ex
 # lib/app/graphql/mutations/book.ex
 
 field :create_book, :book do
@@ -140,7 +140,7 @@ end
 
 Now we have one extra argument called `verses` that is a list of `verse_create_inputs` that represents the allowed fields to be used in nested parameters:
 
-```elixir
+```ex
 # lib/app/graphql/types/verse.ex
 
 input_object :verse_create_inputs do
@@ -152,7 +152,7 @@ end
 
 You can't use referer a type in args, the args accepts this `input_object`. Finally, we need to enable the association of verses in the method that creates the book:
 
-```elixir
+```ex
 # lib/app/documents.ex
 
 def create_book(attrs \\ %{}) do

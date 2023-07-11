@@ -15,7 +15,7 @@ We'll create a stateful process and refactor it until gets the GenServer impleme
 
 The magic behind keeping state is to keep the code in a loop, so you can change the value and call itself again and again and again and...
 
-```elixir
+```ex
 defmodule GenericServer do
   def loop(state) do
     IO.puts("Listening with state: #{inspect(state)}")
@@ -36,14 +36,14 @@ This function will loop the process waiting for some message that can be matched
 
 Since `receive` blocks the process we'll start it in a new process different from terminal using `spawn` and initialize the state:
 
-```elixir
+```ex
 pid = spawn(GenericServer, :loop, [%{total: 0}])
 #PID<0.144.0>
 ```
 
 With PID `0.144.0` in hand we can send message to this process:
 
-```elixir
+```ex
 send(pid, {:call, self(), "Will match :call"})
 # #PID<0.141.0> sent "Will match :call"
 # Listening with state: %{total: 1}
@@ -53,7 +53,7 @@ We sent a message to process PID matching the block `:call` providing the termin
 
 Let's improve it and create a method to increment, decrement, and show:
 
-```elixir
+```ex
 defmodule GenericServer do
   def loop(state) do
     IO.puts("Listening with state: #{inspect(state)}")
@@ -84,7 +84,7 @@ end
 
 Only the `:result` block receives the caller's PID to have the opportunity to send the message back to the caller.
 
-```elixir
+```ex
 pid = spawn(GenericServer, :loop, [%{total: 0}])
 #PID<0.144.0>
 
@@ -109,7 +109,7 @@ Since we sent a message to the terminal, we can get the message in the mailbox a
 
 To avoid mix up the logic of the calculation with the logic to receive the messages, let's refactor and separate the calculation into two different handles, `call` that returns a response to the caller and `cast` that doesn't:
 
-```elixir
+```ex
 defmodule GenericServer do
   def loop(module, state) do
     IO.puts("Listening with state: #{inspect(state)}")
@@ -145,7 +145,7 @@ end
 
 The `receive` now listen to `call` and `cast` where `cast` will send a response back. We added the `module` variable to identify the module that has the handles. All handles return the state, isolating this state change logic.
 
-```elixir
+```ex
 pid = spawn(GenericServer, :loop, [GenericServer, %{total: 0}])
 # #PID<0.143.0>
 # Listening with state: %{total: 0}
@@ -165,7 +165,7 @@ Process.info(self(), :messages)
 
 It's not easy to remember the `send` syntax since we need to know the parameters order, só let's encapsulate the `send` calls:
 
-```elixir
+```ex
 defmodule GenericServer do
   def start(state \\ %{total: 0}) do
     spawn(__MODULE__, :loop, [__MODULE__, state])
@@ -231,7 +231,7 @@ Now we extract the method to execute `call` and `cast`, so the method `increment
 
 Pay attention that we have two process now, the PID for the spawned module and the PID of the module that ask for result. To communicate with `loop` method, we send message to spawned module that returns it in the `start` method:
 
-```elixir
+```ex
 pid = GenericServer.start()
 # Listening with state: %{total: 0}
 # #PID<0.155.0>
@@ -248,7 +248,7 @@ GenericServer.result(pid)
 
 Ok, keep the PID and pass it through methods is not cool, but necessary to keep the spawned process on track. We have a trick where we can give a name for the process so we can refer to it using just the name:
 
-```elixir
+```ex
 defmodule GenericServer do
   @name __MODULE__
 
@@ -318,7 +318,7 @@ end
 
 Now in the `start` method we register the PID as the name of the module, in this way we don't need to transport it, just refer to it globally to call `call` and `cast`:
 
-```elixir
+```ex
 pid = GenericServer.start()
 # Listening with state: %{total: 0}
 
@@ -334,7 +334,7 @@ GenericServer.result()
 
 And the last refactor is separate all server logic:
 
-```elixir
+```ex
 defmodule GenericServer do
   def start(module, state, options) do
     pid = spawn(__MODULE__, :loop, [module, state])
@@ -376,7 +376,7 @@ end
 
 From the client logic:
 
-```elixir
+```ex
 defmodule Counter do
   @name __MODULE__
 
@@ -412,7 +412,7 @@ defmodule Counter do
 end
 ```
 
-```elixir
+```ex
 pid = Counter.start()
 # #PID<0.159.0>
 # Listening with state: %{total: 0}
@@ -431,7 +431,7 @@ Done! We could create a stateful process from the scratch and understand how to 
 
 For our `call` callbacks we need to add one extra parameter called `from` in the second position. It'll contain the PID from the caller and unique identification of the request, but we won't use it. All callbacks must return a tuple over a single value. Since the call method needs to return a response, the first value of the tuple is `reply`, the second is the value we want to reply to the caller and the third is the state:
 
-```elixir
+```ex
   def handle_call(:result, _from, state) do
     {:reply, state, state}
   end
@@ -439,7 +439,7 @@ For our `call` callbacks we need to add one extra parameter called `from` in the
 
 For `cast` callback we don't have the `from` parameter, since we don't reply to the caller, so the first key of the tuple is `noreply` and the second is the state:
 
-```elixir
+```ex
   def handle_cast({:decrement, value}, state) do
     {:noreply, Map.put(state, :total, Map.get(state, :total) - value)}
   end
@@ -451,7 +451,7 @@ For `cast` callback we don't have the `from` parameter, since we don't reply to 
 
 GenServer has a couple of callbacks and we implemented two of them, but don't worry we already have generic callbacks implemented, we just need to use the module GenServer `use GenServer`:
 
-```elixir
+```ex
 defmodule Counter do
   use GenServer
 
@@ -491,7 +491,7 @@ end
 
 Let's test our GenServer, but now the return of the `start` will be a tuple too:
 
-```elixir
+```ex
 {:ok, pid} = Counter.start()
 # {:ok, #PID<0.159.0>}
 

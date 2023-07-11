@@ -19,19 +19,19 @@ Para criar a instância, siga o artigo [Amazon EC2 com Java, MySQL e Tomcat](htt
 
 Após logarmos no servidor com algo do tipo:
 
-```bash
+```sh
 ssh -i ~/.ssh/{{app_name}}.pem ubuntu@{{amazon_dns}}
 ```
 
 Vamos fazer download de um arquivo do projeto [Installer](https://github.com/wbotelhos/installers):
 
-```bash
+```sh
 wget https://raw.githubusercontent.com/wbotelhos/installers/master/amazon/init.sh
 ```
 
 E então, para preparar o ambiente com atualização das libs do Ubuntu e afins, vamos executar:
 
-```bash
+```sh
 chmod +x init.sh
 sudo ./init.sh
 ```
@@ -40,14 +40,14 @@ sudo ./init.sh
 
 Vamos executar a tarefa de instalação e ativação com a seguinte versão:
 
-```bash
+```sh
 ./git/git.sh activate 1.9.0
 ```
 
 ## Configuração de Path
 
 
-```bash
+```sh
 sudo ./amazon/path.sh
 ```
 
@@ -59,7 +59,7 @@ Se você já pensou no [RVM](https://rvm.io), sem problemas. Também utilizo o m
 
 Vamos executar a tarefa de instalação e ativação com a seguinte versão:
 
-```bash
+```sh
 sudo ./ubuntu/ruby/ruby.sh activate 2.1.2
 ```
 
@@ -67,13 +67,13 @@ sudo ./ubuntu/ruby/ruby.sh activate 2.1.2
 
 Ao fim, faça logout e reconecte-se ao servidor:
 
-```bash
+```sh
 exit
 ```
 
 Verifique se tudo deu certo:
 
-```bash
+```sh
 ruby -v
 # ruby 2.1.2p95 (2014-05-08 revision 45877) [x86_64-linux]
 ```
@@ -84,7 +84,7 @@ ruby -v
 
 O [RubyGems](http://rubygems.org) é um repositório de gems no qual iremos fazer o download automáticos das nossas gems. Para criar no home do usuário o arquivo de configuração `.gemrc`, execute:
 
-```bash
+```sh
 ./rubygems/rubygems.sh install
 ```
 
@@ -92,7 +92,7 @@ O [RubyGems](http://rubygems.org) é um repositório de gems no qual iremos faze
 
 O [Bundler](http://gembundler.com) é uma ferramenta para garantir a atualização correta das nossas gems, e iremos instalá-lo:
 
-```bash
+```sh
 ./bundler/bundler.sh install
 ```
 
@@ -109,20 +109,20 @@ Da mesma forma podemos adicionar ou remover módulos do NGINX, para isso, edite 
 
 Vamos executar a tarefa de instalação e ativação com a seguinte versão:
 
-```bash
+```sh
 ./nginx/nginx.sh activate 1.7.4
 ```
 
 Verifique se tudo deu certo:
 
-```bash
+```sh
 nginx -v
 # nginx version: nginx/1.7.4
 ```
 
 É possível ver as informações completas incluindo os módulos instalando utilizando o parâmetro `V`.
 
-```bash
+```sh
 nginx -V
 ```
 
@@ -132,7 +132,7 @@ Contendo as configurações básicas, todos se encontram na `./nginx` onde algun
 
 Para configurar tudo de forma automática, após você definir suas configurações, execute o seguinte *job*:
 
-```bash
+```sh
 ./nginx/nginx.sh configure
 ```
 
@@ -140,13 +140,13 @@ Para configurar tudo de forma automática, após você definir suas configuraç�
 
 Como podemos ter mais de um sistema rodando no mesmo NGINX, devemos criar um arquivo de configuração para cada um. Vamos criar um arquivo para o blog [wbotelhos.com](http://wbotelhos.com):
 
-```bash
+```sh
 sudo vim /etc/nginx/sites-enabled/wbotelhos.conf
 ```
 
 E colar a seguinte configuração:
 
-```bash
+```sh
 upstream app {
   server 127.0.0.1:5000;
   server 127.0.0.1:5001;
@@ -213,13 +213,13 @@ server {
 
 Você deve substituir o Public DNS **ec2-x-p-t-o.sa-east-1.compute.amazonaws.com** pelo DNS da instância que você criou:
 
-```bash
+```sh
 server_name ec2-x-p-t-o.sa-east-1.compute.amazonaws.com 0.0.0.0;
 ```
 
 E então estamos utilizando o diretório **wbotelhos**, no qual o *root* será o diretório público:
 
-```bash
+```sh
 root /var/www/wbotelhos/current/public;
 ```
 
@@ -227,13 +227,13 @@ root /var/www/wbotelhos/current/public;
 
 Vamos criar um arquivo de inicialização do Nginx utilizando o [Upstart](http://upstart.ubuntu.com):
 
-```bash
+```sh
 sudo vim /etc/init/nginx.conf
 ```
 
 O conteúdo será o seguinte:
 
-```bash
+```sh
 description 'nginx webserver'
 
 start on startup
@@ -246,7 +246,7 @@ exec /opt/local/sbin/nginx
 
 Vamos garantir que o nosso usuário tem acesso aos arquivos de configuração:
 
-```bash
+```sh
 sudo chown ubuntu:ubuntu /var/log/nginx/error.log
 sudo chown ubuntu:ubuntu /etc/nginx/nginx.conf
 ```
@@ -254,39 +254,39 @@ sudo chown ubuntu:ubuntu /etc/nginx/nginx.conf
 
 E então verificar se tudo esta correto:
 
-```bash
+```sh
 nginx -t
 ```
 
 Bem provável ser lançado algumas mensagens não positivas.
 
-```bash
+```sh
 nginx: [emerg] open() "/var/run/nginx.pid" failed (13: Permission denied)
 ```
 
 Ainda não há PID criado, pois não estamos rodando o NGINX, ignore e inicie o serviço:
 
-```bash
+```sh
 sudo start nginx
 # nginx start/running, process 23757
 ```
 
 Certifique-se que o serviço esta rodando:
 
-```bash
+```sh
 ps aux | grep nginx
 ```
 
 Para parar use o stop:
 
-```bash
+```sh
 sudo stop nginx
 # nginx stop/waiting
 ```
 
 E para reinicar use o restart:
 
-```bash
+```sh
 sudo restart nginx
 # nginx stop/waiting
 # nginx start/running, process 23757
@@ -294,7 +294,7 @@ sudo restart nginx
 
 Agora faça o teste acessando o DNS público pelo browser:
 
-```bash
+```sh
 open http://ec2-x-p-t-o.sa-east-1.compute.amazonaws.com
 # 404 Not Found --- nginx/1.5.8
 ```
@@ -305,11 +305,11 @@ open http://ec2-x-p-t-o.sa-east-1.compute.amazonaws.com
 
 Configurar o [Unicorn](http://unicorn.bogomips.org/) é bem simples. Ele é uma gem que declaramos no Gemfile do nosso projeto. Vamos criar o seu arquivo de inicialização:
 
-```bash
+```sh
 sudo vim /etc/init/unicorn.conf
 ```
 
-```bash
+```sh
 description 'unicorn server'
 
 pre-start script
@@ -334,17 +334,17 @@ Repare que já apontamos alguns caminhos como a pasta *current* que manterá a v
 
 Ainda não temos a pasta *wbotelhos* e nem a pasta *config*, então vamos criá-las:
 
-```bash
+```sh
 mkdir -p /var/www/wbotelhos/config
 ```
 
 E então podemos criar as configurações:
 
-```bash
+```sh
 vim /var/www/wbotelhos/config/unicorn.rb
 ```
 
-```bash
+```sh
 worker_processes 3
 
 listen 5000

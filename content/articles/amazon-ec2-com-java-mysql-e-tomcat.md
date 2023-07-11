@@ -95,7 +95,7 @@ Em seguida temos que associar este IP à nossa instância clicando no botão **A
 
 Nessas altura do campeonato o servidor já esta rodando e esperando você se conectar via SSH. Precisaremos mudar a permissão da chave privada, que deixaremos no home, e então usá-la com o IP que criamos:
 
-```bash
+```sh
 # ajusta a permissao da key.
 chmod 400 ~/mockr.pem
 # conecta ao servidor.
@@ -104,7 +104,7 @@ ssh -i ~/mockr.pem ec2-user@177.71.181.76
 
 Iremos confirmar (yes) a conexão e veremos possívelmente que há atualizações disponíveis:
 
-```bash
+```sh
 The authenticity of host 'ec2-177-71-181-76.sa-east-1.compute.amazonaws.com (177.71-181-76)' can't be established.
 RSA key fingerprint is 23:a1:de:08:42:fd:a1:08:ae:c4:23:f1:ed:0e:8f:42.
 Are you sure you want to continue connecting (yes/no)? yes
@@ -123,7 +123,7 @@ Run "sudo yum update" to apply all updates.
 
 Para executar a atualização executaremos o seguinte comando confirmando (y) a ação:
 
-```bash
+```sh
 # atualiza o sistema.
 sudo yum update
 ```
@@ -132,7 +132,7 @@ sudo yum update
 
 Bem, essa imagem que escolhemos vem com a OpenJDK 1.6.0_22 Runtime Environment, porém queremos a JDK full. Para verificar e escolher entre as versões já disponíveis execute o comando:
 
-```bash
+```sh
 # mostra as versoes disponiveis do java.
 sudo update-alternatives --config java
 ```
@@ -141,14 +141,14 @@ sudo update-alternatives --config java
 
 Acesse a página da [JDK7](http://www.oracle.com/technetwork/java/javase/downloads/java-se-jdk-7-download-432154.html), aceite o termo, localize a versão desejada e faça o download* para a sua máquina. Iremos utilizar aqui a versão no formato **.rpm**. Ao final do download devemos subir tal arquivo para o servidor com o comando:
 
-```bash
+```sh
 # copia o pacote rpm para o servidor no home do nosso usuario (ec2-user)
 scp -i ~/mockr.pem jdk-7-linux-i586.rpm ec2-user@ec2-177-71-181-76.sa-east-1.compute.amazonaws.com:/home/ec2-user
 ```
 
 Finalizando o upload vamos nos conectar ao servidor e separar um lugar para mantermos as apps:
 
-```bash
+```sh
 # conecta ao servidor.
 ssh -i ~/mockr.pem ec2-user@177.71.181.76
 # cria uma pasta para manter as apps.
@@ -161,7 +161,7 @@ mv ~/jdk-7-linux-i586.rpm ~/Development
 
 Agora vamos fazer a instalação com os seguintes comandos:
 
-```bash
+```sh
 # recebe permissao root.
 sudo su
 # executa o pacote.
@@ -177,11 +177,12 @@ alternatives --install /usr/bin/jar jar /usr/java/latest/bin/jar 20000
 
 Pronto, confirme a versão executando:
 
-```bash
+```sh
 # exibe a versao corrente do java.
 java -version
 ```
-```bash
+
+```sh
 java version "1.7.0"
 Java(TM) SE Runtime Environment (build 1.7.0-b147)
 Java HotSpot(TM) Client VM (build 21.0-b17, mixed mode, sharing)
@@ -191,14 +192,14 @@ Java HotSpot(TM) Client VM (build 21.0-b17, mixed mode, sharing)
 
 Para outras aplicações utilizarem o Java, se faz necessário a configuração do classpath. Existem arquivos no sistemas para esta finalidade como, por exemplo o **.bash_profile** que deverá ser editado:
 
-```bash
+```sh
 # abre o arquivo para edicao.
 vim ~/.bash_profile
 ```
 
 Ao abrir o arquivo, apague o conteúdo exemplo contido nele apertando várias vezes a letra 'd' do teclado. Em seguida aperte a letra 'i' para mudar para o modo de inserção e cole o seguinte código:
 
-```bash
+```sh
 # exporta a variavel JAVA_HOME com o caminho da JDK.
 export JAVA_HOME="/usr/java/latest"
 
@@ -208,7 +209,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 Para salvar o arquivo aperte 'esc', digite ':x' e aperte 'enter'.
 Este arquivo é lido toda vez que o nosso usuário é iniciado, logo precisamos forçar a leitura das novas configurações:
 
-```bash
+```sh
 # faz a leitura do arquivo.
 source ~/.bash_profile
 ```
@@ -217,7 +218,7 @@ source ~/.bash_profile
 
 Caso você já tenha avacalhado a sua chave de tanto trocá-la, receberá algo como:
 
-```bash
+```sh
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @  WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!  @
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -244,7 +245,7 @@ Para instalar a [JDK6](http://jdk6.java.net/download.html) fazemos os mesmo pass
 
 De alguma forma a Amazon esta falhando em fazer download do pacote Java diretamente para o servidor, por isso fizemos o download para a nossa máquina e depois o subimos. Porém a forma mais fácil de fazê-lo é utilizando o `curl`:
 
-```bash
+```sh
 curl http://www.java.net/download/jdk6/6u32/promoted/b03/binaries/jdk-6u32-ea-bin-b03-linux-amd64-29_feb_2012-rpm.bin > jdk6-rpm.bin
 ```
 
@@ -252,7 +253,7 @@ curl http://www.java.net/download/jdk6/6u32/promoted/b03/binaries/jdk-6u32-ea-bi
 
 O MySQL é relativamente simples, basta executar os seguintes comandos:
 
-```bash
+```sh
 # recebe permissao de root.
 sudo su
 # instala o pacote do mysql.
@@ -277,7 +278,7 @@ Durante o último comando serão pedidas algumas configurações:
 **Trocando a senha de um usuário:**
 Se você precisar trocar a senha do seu usuário, que digamos ser atualmente 'segredo', faça:
 
-```bash
+```sh
 mysqladmin -u root -p'segredo' password 'novo_segredo';
 ```
 
@@ -285,7 +286,7 @@ mysqladmin -u root -p'segredo' password 'novo_segredo';
 
 Precisamos de uma base de dados e por segurança um usuário com permissão somente sobre ela:
 
-```bash
+```sh
 # acessa o console do mysql, a senha sera pedida.
 mysql -u root -p
 # cria um novo schema.
@@ -298,13 +299,14 @@ grant all on mockr.* to 'mockr'@'localhost' identified by 'segredo';
 
 Para verificar os schemas existentes, execute o comando:
 
-```bash
+```sh
 show databases;
 ```
+
 <div style="color: #369; font: bold 16px arial; margin-bottom: 10px; margin-top: 25px;">Tomcat 7</div>
 Primeiramente pegue o link do pacote que você deseja no [site do Tomcat](http://tomcat.apache.org) e então execute:
 
-```bash
+```sh
 # acessa a pasta das nossas apps.
 cd ~/Development
 # faz o download do tomcat.
@@ -317,7 +319,7 @@ tar zxvf apache-tomcat-7.0.26.tar.gz
 
 Agora vamos adicioná-lo no classpath editando o **~/.bash_profile**:
 
-```bash
+```sh
 export JAVA_HOME="/usr/java/latest"
 export TOMCAT_HOME=/home/ec2-user/Development/apache-tomcat-7.0.26
 
@@ -326,7 +328,7 @@ export PATH=$PATH:$JAVA_HOME/bin:$TOMCAT_HOME/bin
 
 Execute o `source ~/.bash_profile` para reconhecimento das alterações e inicie o Tomcat. A seguir os comandos para manipulá-lo:
 
-```bash
+```sh
 # inicia o tomcat.
 $TOMCAT_HOME/bin/startup.sh
 # para o tomcat.
@@ -335,7 +337,7 @@ $TOMCAT_HOME/bin/shutdown.sh
 
 ### Removendo arquivos desnecessários
 
-```bash
+```sh
 # remove a pasta de documentos.
 rm -rf $TOMCAT_HOME/webapps/docs
 # remove a pasta com codigos de exemplo.
@@ -344,7 +346,7 @@ rm -rf $TOMCAT_HOME/webapps/examples
 
 Agora basta acessar o seu IP na porta 8080 para ver o servidor rodando:
 
-```
+```sh
 http://177.71.181.76:8080
 ```
 
@@ -354,14 +356,14 @@ http://177.71.181.76:8080
 
 Vamos criar um arquivo de inicialização/manipulação do Tomcat para que o mesmo suba junto com a nossa VM. Execute o seguinte comando:
 
-```bash
+```sh
 # prepara um novo arquivo.
 sudoedit /etc/init.d/tomcat
 ```
 
 E cole o código a seguir no mesmo:
 
-```bash
+```sh
 #!/bin/sh
 # Tomcat init script for Linux.
 #
@@ -393,7 +395,7 @@ exit $RETVAL
 
 Modifique as permissões deste script e o insira nos serviços:
 
-```bash
+```sh
 # tira a permissao de escrita do group e do other.
 sudo chmod go-w /etc/init.d/tomcat
 # adiciona o tomcat nos servicos de auto boot.
@@ -402,14 +404,14 @@ sudo chkconfig --add tomcat
 
 Para verificar se o serviço "tomcat" foi incluido execute:
 
-```bash
+```sh
 # mostra a lista dos servicos.
 chkconfig --list
 ```
 
 Agora você pode manipular o Tomcat como um serviço:
 
-```bash
+```sh
 # para o servidor.
 service tomcat stop
 # inicia o servidor.
@@ -422,7 +424,7 @@ service tomcat restart
 
 Veja que o servidor esta na porta 8080, mas o legal seria tê-lo na porta 80, evitando indicar tal. Para isso iremos executar alguns comandos do iptables que mantém suas configurações em **/etc/sysconfig/iptables**:
 
-```bash
+```sh
 # cria a roda da porta 80 para 8080.
 sudo iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
 # salva a rota.
@@ -433,7 +435,7 @@ sudo service iptables restart
 
 Por fim edite o arquivo **$TOMCAT_HOME/conf/server.xml** e adicione o atributo **proxyPort="80"** no seguinte ponto:
 
-```
+```xml
 <Connector port="8080" protocol="HTTP/1.1"
   connectionTimeout="20000"
   redirectPort="8443"

@@ -16,19 +16,19 @@ Criar um usuário em um determinado grupo
 
 Como listar:
 
-```bash
+```sh
 cat /etc/passwd
 ```
 
 Como criar:
 
-```bash
+```sh
 sudo adduser tomcat # também cria um grupo com o mesmo nome.
 ```
 
 Como apagar:
 
-```bash
+```sh
 sudo deluser tomcat --remove-home
 ```
 
@@ -36,31 +36,31 @@ sudo deluser tomcat --remove-home
 
 Como listar:
 
-```bash
+```sh
 cat /etc/group
 ```
 
 Como criar:
 
-```bash
+```sh
 sudo addgroup jenkins
 ```
 
 Como apagar:
 
-```bash
+```sh
 sudo delgroup jenkins
 ```
 
 # Usuário (existente) x Grupo (existente)
 
-```bash
+```sh
 sudo usermod -append --groups jenkins tomcat
 ```
 
 # Usuário (novo) x Grupo (existente)
 
-```bash
+```sh
 sudo adduser --ingroup jenkins tomcat
 ```
 
@@ -68,6 +68,6 @@ sudo adduser --ingroup jenkins tomcat
 
 Se por algum motivo você tenha um usuário sem o home, é possíve recriá-lo:
 
-```bash
+```sh
 /sbin/mkhomedir_helper tomcat
 ```

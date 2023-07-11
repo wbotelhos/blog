@@ -15,7 +15,7 @@ Mostrar como criar testes de unidade e testes funcionais utilizando o [RSpec](ht
 
 São testes pontuais, onde testamos apenas uma porção do código como, por exemplo, um simples método no qual verifica se há uma determinada palavra em um texto. Para exemplificarmos melhor, baixe o projeto do primeiro artigo, [https://github.com/wbotelhos/iniciando-com-testes-ruby-usando-rspec](https://github.com/wbotelhos/iniciando-com-testes-ruby-usando-rspec), e veja que o teste `#language` do arquivo `article_spec.rb` é um teste de unidade, já que testa apenas um pequeno método com uma única lógica de detectar palavras em uma frase:
 
-```ruby
+```rb
 describe '#language' do
   context 'when title is about Ruby' do
     it 'returns "Ruby"' do
@@ -27,7 +27,7 @@ end
 
 Vamos evoluir a nossa aplicação e adicionar alguns campos em nosso modelo com a seguinte migration `db/migrate/20140101000001_create_articles.rb`:
 
-```ruby
+```rb
 class CreateArticles < ActiveRecord::Migration
   def up
     create_table :articles do |t|
@@ -47,12 +47,13 @@ end
 
 E dizer que este modelo é persistível via [ActiveRecord](http://pt.wikipedia.org/wiki/Active_record) adicionando a herança:
 
-```ruby
+```rb
 class Article < ActiveRecord::Base
 ```
+
 E então aplicar essa migração:
 
-```ruby
+```rb
 # Remove as bases de dev, test e prod
 rake db:drop:all
 
@@ -74,7 +75,7 @@ Para isso iremos usar [TDD](http://pt.wikipedia.org/wiki/Test_Driven_Development
 
 - Se o título tiver espaço, o espaço será substituido por hífen;
 
-```ruby
+```rb
 it 'replaces the space' do
   expect(described_class.slug('a b')).to eq 'a-b'
 end
@@ -82,7 +83,7 @@ end
 
 - Se o título tiver letras maiúsculas, será substituidas por letras minúsculas.
 
-```ruby
+```rb
 it 'downcases all words' do
   expect(described_class.slug('AB')).to eq ('ab')
 end
@@ -90,7 +91,7 @@ end
 
 Ao rodarmos esses testes receberemos o erro `undefined method 'slug' for Article:Class`, porque ainda não temos o método `slug`. Então vamos cría-lo:
 
-```ruby
+```rb
 def self.slug(text)
   text.gsub /\s/, '-'
 end
@@ -98,7 +99,7 @@ end
 
 Rodando novamente, fizemos um teste passar, mas ainda não esta deixando tudo em letras minúsculas. Atualizando o método para o a seguir, teremos sucesso:
 
-```ruby
+```rb
 def self.slug(text)
   text.downcase.gsub /\s/, '-'
 end
@@ -112,7 +113,7 @@ São diferentes dos de unidade, **certificam que o programador esta fazendo o qu
 
 Vamos criar o *controller* do artigo com os métodos de salvar e listar:
 
-```ruby
+```rb
 class ArticlesController < ApplicationController
   def create
     @article = Article.new article_params
@@ -133,7 +134,7 @@ end
 
 E as duas páginas usadas por estes métodos:
 
-```bash
+```sh
 mkdir -p app/views/articles
 touch app/views/articles/index.html.erb
 touch app/views/articles/new.html.erb
@@ -141,7 +142,7 @@ touch app/views/articles/new.html.erb
 
 E por fim as rotas:
 
-```ruby
+```rb
 IniciandoComTestesDeUnidadeEFuncionaisUsandoRSpec::Application.routes.draw do
   resources :articles
 end
@@ -155,7 +156,7 @@ Para este método temos os seguintes requisitos:
 
 - Seja executado sem erros;
 
-```ruby
+```rb
 it 'executes successfully' do
   get :index
   expect(response).to be_successful
@@ -166,7 +167,7 @@ Para simular o acesso a este método que se chama `index` usamos o verbo `get`. 
 
 - Garantir que este método nos mande para a página correta.
 
-```ruby
+```rb
 it 'renders the index article page' do
   get :index
   expect(response).to render_template 'articles/index'
@@ -181,7 +182,7 @@ Para este método temos mais requisitos. Pensando no caminho feliz temos:
 
 - O artigo é salvo com sucesso;
 
-```ruby
+```rb
 it 'creates a new article' do
   expect {
     post :create, article: { title: 'The Title' }
@@ -194,7 +195,7 @@ Após executarmos o comando de salvar o artigo, experamos que a contagem `:count
 
 - Somos redirecionados para a listagem de artigos;
 
-```ruby
+```rb
 it 'redirects to listing page' do
   post :create, article: { title: 'The Title' }
 description: 'The Title' }
@@ -206,7 +207,7 @@ A rota `articles_url` nos manda para o método `index`, que é a listagem.
 
 - É enviado uma mensagem de sucesso para a tela.
 
-```ruby
+```rb
 it 'shows success message' do
   post :create, article: { title: 'The Title' }
 description: 'The Title' }
@@ -218,7 +219,7 @@ A mensagem de sucesso, contida na variável `notice` tem a descrição correta.
 
 Para fazermos o caminho triste, precisamos ter uma regra para levá-la a falha. Vamos dizer que o título do artigo seja obrigatório:
 
-```ruby
+```rb
 class Article < ActiveRecord::Base
   validates :title , presence: true
 ```
@@ -227,7 +228,7 @@ Então para o caminho triste, com o campo `title` nulo, temos:
 
 - Não é criado um artigo novo;
 
-```ruby
+```rb
 it 'does not save the record' do
   expect {
     post :create, article: { title: nil }
@@ -240,7 +241,7 @@ Ao salvar o artigo, não há alterações na contagem dos artigos, logo negamos 
 
 - A página do formulário de criação do artigo é re-renderizada;
 
-```ruby
+```rb
 it 're-renders the new page' do
   post :create, article: { title: nil }
 description: nil }
@@ -251,7 +252,7 @@ end
 
 - A mensagem de erro contida na variável `notice` é descrita corretamente.
 
-```ruby
+```rb
 it 'shows flash message' do
   post :create, article: { title: nil }
 description: nil }

@@ -16,7 +16,7 @@ Criar um projeto com a estrutura necessária para execução de testes JavaScrip
 
 Vamos criar um projetinho exemplo com os seguintes comandos:
 
-```bash
+```sh
 cd ~/workspace
 
 mkdir -p iniciando-com-testes-javascript-usando-jasmine/spec/lib
@@ -76,7 +76,7 @@ Com o seguinte conteúdo:
 
 Veja que o arquivo a ser testado é o `chat.js`. Vamos criá-lo:
 
-```bash
+```sh
 mkdir -p ../app/assets/javascripts
 touch ../app/assets/javascripts/chat.js
 ```
@@ -108,7 +108,7 @@ Antes de criamos os nossos primeiros testes, vamos analisar as lógicas contidas
 
 Agora vamos criar a classe de teste:
 
-```bash
+```sh
 touch chat_spec.js
 ```
 
@@ -160,7 +160,7 @@ Veja que o `chat.nickname` esta sendo passado para o `expect`, pois este attribu
 
 Para testarmos esse código, basta abrirmos o arquivo `run.html` para que o testes seja executado:
 
-```bash
+```sh
 open run.html
 ```
 

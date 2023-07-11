@@ -15,7 +15,7 @@ Fazer um stub do `current_user` em um helper.
 
 Tenho um método que retorna se o usuário logado é administrador ou não.
 
-```ruby
+```rb
 def admin?
   current_user.admin?
 end
@@ -25,7 +25,7 @@ end
 
 Saiba que é possível fazer o stub do `current_user` a partir do `helper`, não somente a partir do `controller`, ficando algo como:
 
-```ruby
+```rb
   allow(helper).to receive(:current_user) { User.new }
 ```
 
@@ -33,7 +33,7 @@ Saiba que é possível fazer o stub do `current_user` a partir do `helper`, não
 
 Sabendo disso teríamos:
 
-```ruby
+```rb
 describe '#admin?' do
   context 'when user is admin' do
     before do
@@ -51,13 +51,13 @@ end
 
 Ao rodarmos o teste, é dado que o método `current_user` é `undefined`:
 
-```bash
+```sh
 undefined local variable or method `current_user`
 ```
 
 Mas como se stubamos o `current_user`? É ai que acabamos quebrando a cabeça. Veja que o stub não foi feito direto no método, mas sim, pelo `helper`. Logo precisamos apenas fazer a chamada do método a partir do `helper` também, ficando:
 
-```ruby
+```rb
 expect(helper.admin?).to be_true
 ```
 

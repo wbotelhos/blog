@@ -15,7 +15,7 @@ Instalar e configurar o MySQL, assim como manipular alguns de seus comandos.
 
 Sem dúvidas no [Linux](http://en.wikipedia.org/wiki/Linux) o [apt-get](http://en.wikipedia.org/wiki/Advanced_Packaging_Tool) deixa tudo mais fácil, bastanto executar:
 
-```bash
+```sh
 sudo apt-get install mysql-client mysql-server libmysqlclient-dev
 ```
 
@@ -23,7 +23,7 @@ sudo apt-get install mysql-client mysql-server libmysqlclient-dev
 
 A distribuição da [Red Hat](http://en.wikipedia.org/wiki/Red_Hat) é manipulada via [yum](http://en.wikipedia.org/wiki/Yellowdog_Updater,_Modified):
 
-```bash
+```sh
 sudo yum install mysql mysql-server mysql-libs
 ```
 
@@ -31,7 +31,7 @@ sudo yum install mysql mysql-server mysql-libs
 
 No [MacOSX](http://pt.wikipedia.org/wiki/OS_X) também temos um facilitador de instações, chamado [Homebrew](http://brew.sh). Basta instalá-lo de acordo com o site e então executar:
 
-```bash
+```sh
 brew install mysql
 ```
 
@@ -39,7 +39,7 @@ brew install mysql
 
 Independente da distribuição, para configurar o MySQL utilizamos os mesmos passos:
 
-```bash
+```sh
 mysql_secure_installation
 ```
 
@@ -154,7 +154,7 @@ E então podemos executar nosso `SELECT`, `INSERT`, `UPDATE`, `DELETE` etc.
 
 Algo bem normal de fazermos em nosso servidor é a ação de backup que não passa de uma linha de comando:
 
-```bash
+```sh
 mysqldump -u root -p'my_password' my_schema > my_dump.sql
 ```
 
@@ -162,7 +162,7 @@ mysqldump -u root -p'my_password' my_schema > my_dump.sql
 
 O restore é bem simples também:
 
-```bash
+```sh
 mysql -u root -p'my_password' my_schema < my_dump.sql
 ```
 
