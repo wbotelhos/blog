@@ -36,7 +36,7 @@ mix ecto.migrate
 
 We need a User type:
 
-```ex
+```elixir
 # lib/app/graphql/types/user.ex
 
 defmodule App.GraphQL.Types.User do
@@ -50,7 +50,7 @@ end
 
 Import it in the types file:
 
-```ex
+```elixir
 # lib/app/graphql/types.ex
 
 import_types(Types.User)
@@ -60,7 +60,7 @@ import_types(Types.User)
 
 Ok, the user is done, now we can create a signup mutation:
 
-```ex
+```elixir
 # lib/app/graphql/mutations/session.ex
 
 defmodule App.GraphQL.Mutations.Session do
@@ -81,7 +81,7 @@ end
 
 This mutation contains a `signup` field that receives the email and password and returns a session to us. This session is the composition of the user data and a token to access the API:
 
-```ex
+```elixir
 # lib/app/graphql/types/session.ex
 
 defmodule App.GraphQL.Types.Session do
@@ -97,7 +97,7 @@ end
 
 Don't forget to register the mutation:
 
-```ex
+```elixir
 # lib/app/graphql/schema.ex
 
 import_fields(:session_mutations)
@@ -105,7 +105,7 @@ import_fields(:session_mutations)
 
 And then create the resolver:
 
-```ex
+```elixir
 # lib/app/graphql/resolvers/user.ex
 
 defmodule App.GraphQL.Resolvers.User do
@@ -128,7 +128,7 @@ end
 The method `create_user` of the Phoenix Context `Accounts` will create a user using the generated code that we've made. We need to hash the given password before saving the record inside the `changeset`:
 
 
-```ex
+```elixir
 # lib/app/accounts/user.ex
 
 def changeset(user, attrs) do
@@ -141,7 +141,7 @@ end
 
 After cast the password we call the `hash_password` to encrypt the `password`, which will be saved into `password_hash` field, that's why we validate the presence of this field. The method is that:
 
-```ex
+```elixir
 # lib/app/accounts/user.ex
 
 defp hash_password(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
@@ -157,7 +157,7 @@ Here we receive the changeset structure and get the password that has changed, w
 
 A token is an encoded string containing a serialized data that can be used to identify the user in a session or keep some session data. The most common way to keep this token is using the [JWT](https://jwt.io). Phoenix already has [a method](https://hexdocs.pm/phoenix/Phoenix.Token.html#module-example) to encode and decode the token:
 
-```ex
+```elixir
 # lib/app/auth_token.ex
 
 defmodule App.AuthToken do
@@ -206,7 +206,7 @@ Great, now we have a token to authenticate in the API. Before we continue we nee
 
 # Signin
 
-```ex
+```elixir
 # lib/app/graphql/mutations/session.ex
 
 field :signin, :session do
@@ -219,7 +219,7 @@ end
 
 The resolver:
 
-```ex
+```elixir
 # lib/app/graphql/resolvers/user.ex
 
 def signin(%{email: email, password: password}, _context) do
@@ -235,7 +235,7 @@ end
 
 And the Context method:
 
-```ex
+```elixir
 def authenticate(email, password) do
   User
   |> Repo.get_by(email: email)
@@ -254,7 +254,7 @@ mix ecto.gen.migration add_user_in_books
 code priv/repo/migrations/*_add_user_in_books.exs
 ```
 
-```ex
+```elixir
 defmodule App.Repo.Migrations.AddUserInBooks do
   use Ecto.Migration
 
@@ -268,7 +268,7 @@ end
 
 Let's add the user relation in the book model:
 
-```ex
+```elixir
 # lib/app/documents/book.ex
 
 belongs_to :user, App.Accounts.User
@@ -276,7 +276,7 @@ belongs_to :user, App.Accounts.User
 
 And in the book type:
 
-```ex
+```elixir
 # lib/app/graphql/types/book.ex
 
 field :user, non_null(:user)
@@ -284,7 +284,7 @@ field :user, non_null(:user)
 
 And the relation of books in the user model:
 
-```ex
+```elixir
 # lib/app/accounts/user.ex
 
 has_many :books, App.Documents.Book
@@ -292,7 +292,7 @@ has_many :books, App.Documents.Book
 
 And for the book creation, we'll receive the user owner of that book in the resolution parameter to pass it to the `create_book` method:
 
-```ex
+```elixir
 # lib/app/graphql/resolvers/book.ex
 
 def create_book(args, %{context: %{current_user: current_user}}) do
@@ -310,7 +310,7 @@ def create_book(args, %{context: %{current_user: current_user}}) do
 
 Now `create_book` receives a user inside the arguments to be associated to the book:
 
-```ex
+```elixir
 def create_book(attrs \\ %{}) do
   %Book{}
   |> Book.changeset(attrs)
@@ -326,7 +326,7 @@ Now everything about the user is connected and done.
 
 We have the token in the Headers but we needed to capture it to discover who is the user. For that, we can use a Plug to intercept all API requests and extract the user based on the token:
 
-```ex
+```elixir
 # lib/app/plugs/set_current_user.ex
 
 defmodule App.Plugs.SetCurrentUser do
@@ -362,7 +362,7 @@ This Plug gets the Authorization header, which must be written in lowercase, and
 
 Now let's active it:
 
-```ex
+```elixir
 # lib/app_web/router.ex
 
 pipeline :api do
@@ -378,13 +378,13 @@ Now all requests passing through the `:api` pipe will try to get the user via th
 
 Try to create a book with no Authorization header or with a wrong value and you'll receive:
 
-```ex
+```elixir
 no function clause matching in App.GraphQL.Resolvers.Book.create_book/2
 ```
 
 It happens because we're waiting for a user key inside the key context from the parameter `resolution`, the second one of our resolver:
 
-```ex
+```elixir
 # lib/app/graphql/resolvers/book.ex
 
 create_book(args, %{context: %{current_user: current_user}} = _resolution)
@@ -396,7 +396,7 @@ The `SetCurrentUser` module was responsible to set it inside the context.
 
 Ok, we're protected, but I don't want that my application raises an error when the user is not present, I just want to avoid the request. Good, we can do it, we can avoid the resolver execution using a middleware:
 
-```ex
+```elixir
 # lib/app/graphql/middlewares/authenticator.ex
 
 defmodule App.Middlewares.Authenticator do

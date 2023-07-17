@@ -62,7 +62,7 @@ elixir --version
 
 You save which Erlang and Elixir version you use in a file called `.tool-versions`, very similar the `.ruby-version` in Ruby world:
 
-```ex
+```elixir
 # .tool-versions
 
 elixir 1.12
@@ -112,7 +112,7 @@ services:
 
 Since we won't use a password in dev and test, let's set it to empty:
 
-```ex
+```elixir
 # config/dev.exs
 
 config :bible, Bible.Repo,
@@ -120,7 +120,7 @@ config :bible, Bible.Repo,
   password: "",
 ```
 
-```ex
+```elixir
 # config/test.exs
 
 config :bible, Bible.Repo,
@@ -165,7 +165,7 @@ mix phx.gen.html Persons Person persons name:string description:text
 
 Enable the CRUD routes adding the following code in the final of the block `scope "/", BibleWeb do`:
 
-```ex
+```elixir
 # lib/bible_web/router.ex
 
 scope "/", BibleWeb do
