@@ -277,7 +277,7 @@ def accept_connection(listen_socket) do
 end
 ```
 
-Now we're saying: "My current context (self()) will control the `client_socket` registered on this `pid`".
+Now we're saying: "My current context `self()` will control the `client_socket` registered on this `pid`".
 Try to call the endpoint error again and you have the crash followed by the console release:
 
 ```sh
@@ -288,7 +288,7 @@ curl http://localhost:4000/error
 
 # Conclusion
 
-It's very simple create a HTTP Server using Elixir, but it's just an example for you understand better how the things work.
+It's very simple create a HTTP Server using Elixir, but it's just an example for you understand better how the things work. In a real world you should use a battle tested server like [Cowboy](https://github.com/ninenines/cowboy).
 
 Repository: [https://github.com/wbotelhos/how-to-create-a-http-server-with-elixir](https://github.com/wbotelhos/how-to-create-a-http-server-with-elixir)
 
