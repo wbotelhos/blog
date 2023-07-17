@@ -20,7 +20,16 @@ brew update
 brew install asdf
 ```
 
-You need to teach asdf how install Erlang and Elixir adding some plugins on it:
+You need to teach asdf how install Erlang and Elixir adding some plugins on it. But before you install it, make sure you install [some dependencies](https://github.com/asdf-vm/asdf-erlang#osx) to give you more tools on the future:
+
+```sh
+brew install autoconf
+brew install openssl
+brew install wxwidgets
+brew install libxslt fop
+```
+
+Now go for it:
 
 ```sh
 asdf plugin add erlang
