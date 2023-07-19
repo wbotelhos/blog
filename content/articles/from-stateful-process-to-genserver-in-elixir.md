@@ -5,7 +5,7 @@ tags: ["elixir", "genserver", "stateful", "process"]
 title: "From Stateful Process to GenServer in Elixir"
 ---
 
-When we talk about Function Languages like Elixir we talk about our functions be pure, do not depend on external things so do not depend on something keep state. So if you need to keep state in Elixir, how can it be possible? Well, GenServer does, but we'll get there.
+When we talk about Functional Languages like Elixir we're talking about our functions being pure where the same input gives you the same output. We're talking about not depending on keeping state receiving different mutations. So if you need to keep the state in Elixir, how can it be done? Well, GenServer does, but we'll get there.
 
 # Goal
 
@@ -13,7 +13,7 @@ We'll create a stateful process and refactor it until gets the GenServer impleme
 
 # Loop
 
-The magic behind keeping state is to keep the code in a loop, so you can change the value and call itself again and again and again and...
+The magic behind keeping state is to keep the code in a loop, so you can change a provided value and call itself again and again and again and...
 
 ```elixir
 defmodule GenericServer do
@@ -24,7 +24,7 @@ defmodule GenericServer do
       {:call, caller, message} ->
         IO.puts("#{inspect(caller)} sent #{inspect(message)}")
 
-        new_state = Map.put(state, :total, Map.get(state, :total) + 1)
+        new_state = Map.put(state, :total, state[:total] + 1)
 
       loop(new_state)
     end
@@ -32,16 +32,16 @@ defmodule GenericServer do
 end
 ```
 
-This function will loop the process waiting for some message that can be matched with `{:call, caller, message}`. This match will increase the total key and this new map will be given to the loop again. If you do not call the loop again, the process will die.
+This function will loop the process and wait for some message that can be matched with `{:call, caller, message}`. This match will increase the total key and this new map will be given to the loop again. If you do not call the loop again, the process will die.
 
-Since `receive` blocks the process we'll start it in a new process different from terminal using `spawn` and initialize the state:
+Since `receive` blocks the process we'll start it in a new process different from the terminal using `spawn` and initialize the state:
 
 ```elixir
 pid = spawn(GenericServer, :loop, [%{total: 0}])
 #PID<0.144.0>
 ```
 
-With PID `0.144.0` in hand we can send message to this process:
+With PID `0.144.0` in hand we can send a message to this process:
 
 ```elixir
 send(pid, {:call, self(), "Will match :call"})
@@ -51,23 +51,21 @@ send(pid, {:call, self(), "Will match :call"})
 
 We sent a message to process PID matching the block `:call` providing the terminal PID `self()` as `0.141.0` and a message.
 
-Let's improve it and create a method to increment, decrement, and show:
+Let's improve it and create a method to increment, decrement, and display the result:
 
 ```elixir
 defmodule GenericServer do
   def loop(state) do
     IO.puts("Listening with state: #{inspect(state)}")
 
-    total = Map.get(state, :total)
-
     receive do
       {:decrement, value} ->
-        new_state = Map.put(state, :total, total - value)
+        new_state = Map.put(state, :total, state[:total] - value)
 
         loop(new_state)
 
       {:increment, value} ->
-        new_state = Map.put(state, :total, total + value)
+        new_state = Map.put(state, :total, state[:total] + value)
 
         loop(new_state)
 
@@ -105,9 +103,9 @@ flush
 # :ok
 ```
 
-Since we sent a message to the terminal, we can get the message in the mailbox and we can `flush` it too.
+Since we sent a message to the terminal, we can get the message in the mailbox. In the final we `flush` it to clear the messages.
 
-To avoid mix up the logic of the calculation with the logic to receive the messages, let's refactor and separate the calculation into two different handles, `call` that returns a response to the caller and `cast` that doesn't:
+To avoid mixing up the logic of the calculation with the logic to receive the messages, let's refactor and separate the calculation into two different handles: `call` that returns a response to the caller and `cast` that doesn't:
 
 ```elixir
 defmodule GenericServer do
@@ -134,16 +132,16 @@ defmodule GenericServer do
   end
 
   def handle_cast({:decrement, value}, state) do
-    Map.put(state, :total, Map.get(state, :total) - value)
+    Map.put(state, :total, state[:total] - value)
   end
 
   def handle_cast({:increment, value}, state) do
-    Map.put(state, :total, Map.get(state, :total) + value)
+    Map.put(state, :total, state[:total] + value)
   end
 end
 ```
 
-The `receive` now listen to `call` and `cast` where `cast` will send a response back. We added the `module` variable to identify the module that has the handles. All handles return the state, isolating this state change logic.
+The `receive` now listen to `call` and `cast` where `cast` won't send a response back. We added the `module` variable to identify the module that has the handles, in this case the main module itself. All handles return the state, isolating this state manipulation logic.
 
 ```elixir
 pid = spawn(GenericServer, :loop, [GenericServer, %{total: 0}])
@@ -163,7 +161,7 @@ Process.info(self(), :messages)
 # {:messages, [%{total: 5}]}
 ```
 
-It's not easy to remember the `send` syntax since we need to know the parameters order, só let's encapsulate the `send` calls:
+It's not easy to remember the `send` syntax since we need to know the order of the parameters, so let's encapsulate the `send` calls:
 
 ```elixir
 defmodule GenericServer do
@@ -218,18 +216,18 @@ defmodule GenericServer do
   end
 
   def handle_cast({:decrement, value}, state) do
-    Map.put(state, :total, Map.get(state, :total) - value)
+    Map.put(state, :total, state[:total] - value)
   end
 
   def handle_cast({:increment, value}, state) do
-    Map.put(state, :total, Map.get(state, :total) + value)
+    Map.put(state, :total, state[:total] + value)
   end
 end
 ```
 
 Now we extract the method to execute `call` and `cast`, so the method `increment`, `decrement`, and `result` can call them. Since now the module is the one that calls the `result` method, the `self()` PID will be the module's context, so to receive the result with no need to check the mailbox, we can add a `receive` and listen to this result.
 
-Pay attention that we have two process now, the PID for the spawned module and the PID of the module that ask for result. To communicate with `loop` method, we send message to spawned module that returns it in the `start` method:
+Pay attention that we have two processes now, the PID for the spawned module and the PID of the module that asks for the result. To communicate with `loop` method, we send a message to the spawned module that returns it in the `start` method:
 
 ```elixir
 pid = GenericServer.start()
@@ -246,7 +244,7 @@ GenericServer.result(pid)
 # Listening with state: %{total: 5}
 ```
 
-Ok, keep the PID and pass it through methods is not cool, but necessary to keep the spawned process on track. We have a trick where we can give a name for the process so we can refer to it using just the name:
+Ok, keeping the PID and passing it through methods is not cool, but necessary to keep the spawned process on track. We have a trick where we can give a name for the process so we can refer to it using just the name:
 
 ```elixir
 defmodule GenericServer do
@@ -307,16 +305,16 @@ defmodule GenericServer do
   end
 
   def handle_cast({:decrement, value}, state) do
-    Map.put(state, :total, Map.get(state, :total) - value)
+    Map.put(state, :total, state[:total] - value)
   end
 
   def handle_cast({:increment, value}, state) do
-    Map.put(state, :total, Map.get(state, :total) + value)
+    Map.put(state, :total, state[:total] + value)
   end
 end
 ```
 
-Now in the `start` method we register the PID as the name of the module, in this way we don't need to transport it, just refer to it globally to call `call` and `cast`:
+Now in the `start` method, we register the PID as the name of the module, in this way, we don't need to transport it, just refer to it globally to call `call` and `cast`:
 
 ```elixir
 pid = GenericServer.start()
@@ -339,7 +337,7 @@ defmodule GenericServer do
   def start(module, state, options) do
     pid = spawn(__MODULE__, :loop, [module, state])
 
-    Process.register(pid, Keyword.get(options, :name))
+    Process.register(pid, options[:name])
   end
 
   def loop(module, state) do
@@ -403,11 +401,11 @@ defmodule Counter do
   end
 
   def handle_cast({:decrement, value}, state) do
-    Map.put(state, :total, Map.get(state, :total) - value)
+    Map.put(state, :total, state[:total] - value)
   end
 
   def handle_cast({:increment, value}, state) do
-    Map.put(state, :total, Map.get(state, :total) + value)
+    Map.put(state, :total, state[:total] + value)
   end
 end
 ```
@@ -427,9 +425,9 @@ Counter.result()
 # Listening with state: %{total: 5}
 ```
 
-Done! We could create a stateful process from the scratch and understand how to send and receive messages between the process. Ok, but what is the relation of it to GenServer? Well, you just wrote a GenServer with a slight difference in the interface.
+Done! We could create a stateful process from scratch and understand how to send and receive messages between the process. Ok, but what is the relation of it to GenServer? Well, you just wrote a GenServer with a slight difference in the interface.
 
-For our `call` callbacks we need to add one extra parameter called `from` in the second position. It'll contain the PID from the caller and unique identification of the request, but we won't use it. All callbacks must return a tuple over a single value. Since the call method needs to return a response, the first value of the tuple is `reply`, the second is the value we want to reply to the caller and the third is the state:
+For our `call` callbacks we need to add one extra parameter called `from` in the second position. It'll contain the PID from the caller and the unique identification of the request, but we won't use it. All callbacks must return a tuple over a single value. Since the call method needs to return a response, the first value of the tuple is `reply`, the second is the value we want to reply to the caller and the third is the state:
 
 ```elixir
   def handle_call(:result, _from, state) do
@@ -441,11 +439,11 @@ For `cast` callback we don't have the `from` parameter, since we don't reply to 
 
 ```elixir
   def handle_cast({:decrement, value}, state) do
-    {:noreply, Map.put(state, :total, Map.get(state, :total) - value)}
+    {:noreply, Map.put(state, :total, state[:total] - value)}
   end
 
   def handle_cast({:increment, value}, state) do
-    {:noreply, Map.put(state, :total, Map.get(state, :total) + value)}
+    {:noreply, Map.put(state, :total, state[:total] + value)}
   end
 ```
 
@@ -476,15 +474,15 @@ defmodule Counter do
   # callback
 
   def handle_call(:result, _from, state) do
-    {:reply, Map.get(state, :total), state}
+    {:reply, state[:total], state}
   end
 
   def handle_cast({:decrement, value}, state) do
-    {:noreply, Map.put(state, :total, Map.get(state, :total) - value)}
+    {:noreply, Map.put(state, :total, state[:total] - value)}
   end
 
   def handle_cast({:increment, value}, state) do
-    {:noreply, Map.put(state, :total, Map.get(state, :total) + value)}
+    {:noreply, Map.put(state, :total, state[:total] + value)}
   end
 end
 ```
@@ -505,4 +503,10 @@ Counter.result()
 # %{total: 5}
 ```
 
-Congratulations! You now understand how a GenServer works under the roof. If you need to manipulate the initial state you can use the callback `init`. If you need to split the callback in two peace, you can add an extra `{:continue, value}` in the tuple return. If you want to hold a generic message use `handle_info`, manipulate something before a normal exit, `terminate`. To handle a change module version, `code_change`. To intercept the state result, `format_status`. You can find everything about GenServer [in the documentation](https://hexdocs.pm/elixir/1.12/GenServer.html).
+# Conclusion
+
+Congratulations! You now understand how a GenServer works under the roof. If you need to manipulate the initial state you can use the callback `init`. If you need to split the callback in two peace, you can add an extra `{:continue, value}` on the return of the tuple. If you want to hold a generic message use `handle_info`, manipulate something before a normal exit, `terminate`. To handle a change module version, `code_change`. To intercept the state result, `format_status`.
+
+You can find everything about GenServer [in the documentation](https://hexdocs.pm/elixir/1.12/GenServer.html).
+
+Any suggestion? Please, send me an email [here](mailto:wbotelhos@gmail.com).
