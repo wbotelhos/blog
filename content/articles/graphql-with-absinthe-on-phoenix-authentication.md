@@ -5,6 +5,8 @@ tags: ["elixir", "phoenix", "absinthe", "graphql", "authentication"]
 title: "GraphQL with Absinthe on Phoenix - Authentication"
 ---
 
+###### Updated at: Jul 24, 2023
+
 In the [last article](https://www.wbotelhos.com/graphql-with-absinthe-on-phoenix-mutation) about Mutation, we learned how to create records in an easy way, so now we have searches and insertions but we still do not control how the user access that API. For security reasons or just for control of access we need to implement the API Authentication where only logged users can access it.
 
 # Goal
@@ -178,7 +180,7 @@ In this case, we're creating a token containing the user's id with a default [Sa
 Let's execute the signup mutation:
 
 
-```json
+```gql
 mutation {
   signup(email: "wbotelhos@gmail.com", password: "password") {
     token
@@ -244,6 +246,20 @@ end
 ```
 
 The `check_pass` gets the property `password_hash` and compares it to the given password.
+
+You can signin like this:
+
+
+```gql
+mutation {
+  signin(email: "wbotelhos@gmail.com", password: "password") {
+    token
+    user {
+      email
+    }
+  }
+}
+```
 
 # User's book
 
@@ -374,6 +390,19 @@ end
 
 Now all requests passing through the `:api` pipe will try to get the user via the token.
 
+But since we refactored the code on the first article not using router anymore, this plug goes directly to the `Endpoint.ex` before the Absinthe plug:
+
+```elixir
+# lib/app_web/endpoint.ex
+
+defmodule AppWeb.Endpoint do
+  # ...
+
+  plug AppWeb.Plugs.SetCurrentUser
+  plug Absinthe.Plug, schema: App.GraphQL.Schema
+end
+```
+
 # Absinthe Resolution Parameter
 
 Try to create a book with no Authorization header or with a wrong value and you'll receive:
@@ -387,7 +416,7 @@ It happens because we're waiting for a user key inside the key context from the 
 ```elixir
 # lib/app/graphql/resolvers/book.ex
 
-create_book(args, %{context: %{current_user: current_user}} = _resolution)
+create_book(args, %{context: %{current_user: current_user}})
 ```
 
 The `SetCurrentUser` module was responsible to set it inside the context.
@@ -439,6 +468,29 @@ Try to create the book again and now an error message is returned:
 ```
 
 Middleware can be used to avoid some field access too, so you can return just a couple of data. By the way, remember always to put the middleware before the resolver, since it is executed from the top to the bottom.
+
+# CORS
+
+For sure you try to access this API from some different place than your own server and when you do it, you'll receive an error more less like this:
+
+```
+Access to fetch at 'http://localhost:4000/' from origin 'http://localhost:5173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+```
+
+To avoid it when can allow some domains access own server using the [CorsPlug](https://hexdocs.pm/cors_plug/readme.html). Add it on your `Endpoint` before the `SetCurrentUser`, since there is the place where we check the request headers:
+
+```elixir
+# lib/app_web/endpoint.ex
+
+defmodule AppWeb.Endpoint do
+  # ...
+  plug CORSPlug, origin: ~r/^https?:\/\/localhost:\d{4}$/
+  plug AppWeb.Plugs.SetCurrentUser
+  plug Absinthe.Plug, schema: App.GraphQL.Schema
+end
+```
+
+Here we're accepting all connections from `localhost` followed by an port of 4 numeric digits.
 
 # Conclusion
 
