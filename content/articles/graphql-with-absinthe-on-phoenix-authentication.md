@@ -445,3 +445,5 @@ Middleware can be used to avoid some field access too, so you can return just a 
 Authentication is very necessary to protect your API and you can use middleware to control how this access is made. In the next article, we'll learn about Subscription.
 
 Repository link: [https://github.com/wbotelhos/graphql-with-absinthe-on-phoenix](https://github.com/wbotelhos/graphql-with-absinthe-on-phoenix/tree/5bf2fde9397646fae0c847ed2f2e64327b61af63)
+
+Any suggestion? Please, send me an email [here](mailto:wbotelhos@gmail.com).

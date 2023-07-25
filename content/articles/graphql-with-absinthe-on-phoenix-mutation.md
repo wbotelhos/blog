@@ -5,6 +5,8 @@ tags: ["elixir", "phoenix", "mutation", "graphql", "absinthe"]
 title: "GraphQL with Absinthe on Phoenix - Mutation"
 ---
 
+###### Updated at: Jul 23, 2023
+
 In the [last article](https://www.wbotelhos.com/graphql-with-absinthe-on-phoenix-query-and-dataloader) about GraphQL, we learned how to create a Query and how to avoid N + 1. The systems need to fetch data but the most of time we need to create these data too and GraphQL has a mechanism called Mutation to do this job.
 
 # Goal
@@ -62,8 +64,7 @@ defmodule App.GraphQL.Mutations.Book do
 end
 ```
 
-
-And the resolver will create the book and return it in case of success, but in case of error an `message` is added along a details key with a better explanation:
+And the resolver will create the book and return it in case of success, but in case of error an `message` is added along with a `details` key with a better explanation:
 
 ```elixir
 # lib/app/resolvers/books.ex
@@ -81,7 +82,7 @@ def create_book(args, _context) do
 end
 ```
 
-To extract the errors from the changeset we already have a method to do that it's the [traverse_errors/2](https://hexdocs.pm/ecto/Ecto.Changeset.html#traverse_errors/2):
+Already exists a method to extract the errors from a changeset called [traverse_errors/2](https://hexdocs.pm/ecto/Ecto.Changeset.html#traverse_errors/2):
 
 ```elixir
 # lib/app/graphql/errors.ex
@@ -99,7 +100,7 @@ end
 
 Now let's create a book:
 
-```json
+```gql
 mutation {
   createBook(name: "Book Name", position: 4) {
     id
@@ -126,7 +127,7 @@ Pay attention here because now we need to use the root key called `mutation`, wh
 
 # Nested Fields
 
-Sometimes we need to create a record and some children of this record at the same time. We call these fields nested and Absinthe treats it like an `input_object` that is used as an argument of your Mutation:
+Sometimes we need to create a record and some children of this record at the same time. We call these fields as nested and Absinthe treats it like an `input_object` that is used as an argument of your Mutation:
 
 ```elixir
 # lib/app/graphql/mutations/book.ex
@@ -150,7 +151,7 @@ input_object :verse_create_inputs do
 end
 ```
 
-You can't use referer a type in args, the args accepts this `input_object`. Finally, we need to enable the association of verses in the method that creates the book:
+You can't referer to a type in the args, it accepts only `input_object`. Finally, we need to enable the association of verses in the method that creates the book:
 
 ```elixir
 # lib/app/documents.ex
@@ -167,7 +168,7 @@ Here we ask Ecto to cast the association verses and use the Verse changeset to d
 
 Let's try it:
 
-```json
+```gql
 mutation {
   createBook(name: "Números", position: 4, verses: [{chapter: 1, number: 1, body: "No segundo ano..."}, {chapter: 1, number: 2, body: "Levantai o censo..."}]) {
     id
@@ -214,3 +215,5 @@ mutation {
 Mutations are very similar to Queries, you can expose the allowed fields and even create nested records. In the next article, we'll see how to protect our API with authentication.
 
 Repository link: [https://github.com/wbotelhos/graphql-with-absinthe-on-phoenix](https://github.com/wbotelhos/graphql-with-absinthe-on-phoenix/tree/4575465b03045df4a34365c915213cd8ed5de2a3)
+
+Any suggestion? Please, send me an email [here](mailto:wbotelhos@gmail.com).

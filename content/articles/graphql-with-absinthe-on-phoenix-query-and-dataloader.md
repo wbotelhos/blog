@@ -5,6 +5,8 @@ tags: ["elixir", "absinthe", "graphql", "phoenix", "query", "dataloader"]
 title: "GraphQL with Absinthe on Phoenix - Query and Dataloader"
 ---
 
+###### Updated at: Jul 23, 2023
+
 One thing is true, [GraphQL](https://graphql.org) is here to stay. This query language is very useful since you can just declare the fields you can have, but choose what you want in each request. It'll avoid you to create combinations of logic that return fields for different purposes.
 
 # Goal
@@ -13,10 +15,10 @@ We'll learn how to use GraphQL on Phoenix with the help of [Absinthe](https://gi
 
 # Setup
 
-Let's create a Phoenix project, API like:
+Let's create a Phoenix project to be an API where we remove a couple of stuff not needed:
 
 ```sh
-mix phx.new app --no-html --no-webpack
+mix phx.new app --no-assets --no-dashboard --no-gettext --no-html --no-live --no-mailer
 cd app
 ```
 
@@ -28,7 +30,7 @@ And install Absinthe and Absinthe Plug used to work with Phoenix:
 defp deps do
   [
     {:absinthe, "~> 1.6"},
-    {:absinthe_plug, "~> 1.5"}
+    {:absinthe_plug, "~> 1.5"},
 ```
 
 And install it:
@@ -52,6 +54,8 @@ config :app, App.Repo,
 And create a [Docker Compose](https://docs.docker.com/compose) to run the PG on Docker:
 
 ```yml
+# docker-compose.yml
+
 version: "3.8"
 
 services:
@@ -59,7 +63,7 @@ services:
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
 
-    image: postgres:13-alpine
+    image: postgres:15-alpine
 
     ports:
       - 5432:5432
@@ -113,9 +117,33 @@ scope "/api" do
 end
 ```
 
+But since it'll be just an API, we can set the Absinthe plug directly on the bottom of the `Endpoint.ex`:
+
+```elixir
+defmodule AppWeb.Endpoint do
+  # ...
+
+  plug Plug.Session, @session_options
+  plug GraphqlWithAbsintheOnPhoenixWeb.Router
+  plug Absinthe.Plug, schema: GraphqlWithAbsintheOnPhoenix.GraphQL.Schema
+end
+```
+
+Now the requests will listen to the path `/` so we don't need the `router.ex` file anymore nor the file `lib/app_web.ex`:
+
+```sh
+rm lib/app_web/router.ex
+rm lib/app_web.ex
+```
+
+And finally let's clean some lines from `Endpoint.ex`:
+
+- Remove the router plug: `plug GraphqlWithAbsintheOnPhoenixWeb.Router`;
+- Remove the static plug: `Plug.plug Static, ....`
+
 # Schema
 
-Absinthe does not require a controller as an entry point like in Rails só the request just arrives in the Schema, the first place to receive the request and where we'll define everything:
+Absinthe does not require a controller as an entry point like in Rails so the request just arrives in the Schema, the first place to receive the request and where we'll define everything:
 
 
 ```elixir
@@ -153,7 +181,7 @@ defmodule App.GraphQL.Types.Book do
 end
 ```
 
-Here we have a Type representing the Book that will map the Book model. We call it an `object` and it exposes the model fields. Since we said we have `verses`, we need to add the relation on model:
+Here we have a Type representing the Book that will map the Book model. We call it an `object` and it exposes the fields of the model. Since we said we have `verses`, we need to add the relation on model:
 
 ```elixir
 has_many :verses, App.Documents.Verse
@@ -164,8 +192,12 @@ Ok, we already have the Type, but how to list all those types? Well, we create a
 ```elixir
 # lib/app/graphql/queries/book.ex
 
-object :book_queries do
-  field :books, list_of(:book)
+defmodule App.GraphQL.Queries.Book do
+  use Absinthe.Schema.Notation
+
+  object :book_queries do
+    field :books, list_of(:book)
+  end
 end
 ```
 
@@ -188,7 +220,7 @@ For `Verse` we declare the type too, but not the query since we don't want query
 ```elixir
 # lib/app/graphql/types/verse.ex
 
-defmodule App.GrapQL.Types.Verse do
+defmodule App.GraphQL.Types.Verse do
   use Absinthe.Schema.Notation
 
   object :verse do
@@ -270,17 +302,7 @@ alias App.Documents
     ]
   }
 ]
-|> Enum.each(fn attrs ->
-  {:ok, book} = Documents.create_book(attrs)
-
-  attrs
-  |> Map.get(:verses)
-  |> Enum.each(fn verse_attrs ->
-    verse_attrs
-    |> Map.put(:book_id, book.id)
-    |> Documents.create_verse()
-  end)
-end)
+|> Enum.each(&Documents.create_book/1)
 ```
 
 Ok, three books with each one containing 2 verses.
@@ -291,7 +313,7 @@ It's time to query our data, for this some people use [GraphiQL](https://github.
 
 The `query` block exposes the entry points to GraphQL, where we already have the object `book_queries`. If you try to run it, it won't work yet:
 
-```json
+```gql
 {
   books {
     id
@@ -316,6 +338,8 @@ The last query didn't work because we need to resolve how those books are return
 ```elixir
 # lib/app/graphql/queries/book.ex
 
+alias App.GraphQL.Resolvers
+
 object :book_queries do
   field :books, list_of(:book) do
     arg(:limit, :integer)
@@ -325,7 +349,7 @@ object :book_queries do
 end
 ```
 
-Now the field `books` accepts a `limit` argument and resolve the query via our Resolver module:
+Now the field `books` accept a `limit`` argument and resolve the query via our Resolver module:
 
 ```elixir
 # lib/app/graphql/resolvers/book.ex
@@ -342,7 +366,7 @@ end
 The Resolver just proxy it to the Phoenix Context:
 
 ```elixir
-lib/app/documents.ex
+# lib/app/documents.ex
 
 defmodule App.Documents do
   ...
@@ -354,9 +378,11 @@ defmodule App.Documents do
     query = from(Book)
 
     Enum.reduce(args, query, fn
-      {:limit, limit}, query -> from query, limit: ^limit
+      {:limit, limit}, query ->
+        from query, limit: ^limit
 
-      true, query -> query
+      true, query ->
+        query
     end)
     |> Repo.all()
   end
@@ -364,9 +390,9 @@ defmodule App.Documents do
   ...
 ```
 
-Inside the method, we reduce the args composing the query and then we query all records. Now the books query will work, since we've resolved the query:
+Inside the method, we reduce the args composing the query and then we query all records. Now the books query will work since we've resolved the query:
 
-```json
+```gql
 {
   books(limit: 1) {
     id
@@ -420,7 +446,7 @@ end
 
 Automatically we would like to return the Verses from the searched book like this:
 
-```json
+```gql
 {
   book(id: 1) {
     id
@@ -442,7 +468,7 @@ But it'll return an error:
 Cannot return null for non-nullable field
 ```
 
-It happens because we load the book, but not the verses relations. To fix it we can preload the verses:
+It happens because we load the book, but not the verse's relations. To fix it we can preload the verses:
 
 ```elixir
 def get_book!(id), do: Repo.get!(Book, id) |> Repo.preload(:verses)
@@ -481,11 +507,19 @@ Now it worked, but since we always preload the verses, even if you remove the ve
 ```elixir
 # lib/app/graphql/types/book.ex
 
+# ...
+
+alias App.GraphQL.Resolvers
+
+# ...
+
 field :verses, list_of(:verse) do
   arg(:limit, :integer)
 
-  resolve(&Resolvers.Verses.verse_for_book/3)
+  resolve(&Resolvers.Verse.verse_for_book/3)
 end
+
+# ...
 ```
 
 Pay attention that now we used the resolve with arity *3*, where the first argument is the parent (book) element. Let's create the resolver:
@@ -530,9 +564,9 @@ SELECT b0."id", b0."name", b0."position", b0."inserted_at", b0."updated_at" FROM
 
 # Dataloader
 
-As you could see, create the resolver is the way to conditionally load or not your relations, but it becomes hard to keep while your application grows. Most people end up dealing with it, but we still have a bad thing happening behind the scene, the *N + 1*.
+As you could see, creating the resolver is the way to conditionally load or not your relations, but it becomes hard to keep while your application grows. Most people end up dealing with it, but we still have a bad thing happening behind the scene, the *N + 1*.
 
-I've already heard from a developer that he doesn't like GraphQL, that it's slow because N + 1, but we have ways to avoid it. In the Rails world we have the [Batch Loader](https://github.com/exAspArk/batch-loader) and for Absinthe we have the [Dataloader](https://github.com/absinthe-graphql/dataloader).
+I've already heard from a developer that he doesn't like GraphQL, and that it's slow because N + 1, but we have ways to avoid it. In the Rails world, we have the [Batch Loader](https://github.com/exAspArk/batch-loader) and for Absinthe we have the [Dataloader](https://github.com/absinthe-graphql/dataloader).
 
 First, let's install it:
 
@@ -552,7 +586,7 @@ def datasource() do
 end
 ```
 
-This method will delegate to the method `query` with model name as first argument and a map of optional elements. Let's create a query method for Verse:
+This method will delegate to the method `query` with the model name as the first argument and a map of optional elements. Let's create a query method for Verse:
 
 ```elixir
 # lib/app/documents.ex
@@ -566,7 +600,7 @@ defp query(model, _) do
 end
 ```
 
-Very similar with method `verses_for_book` we identify the purpose of the query based on the key called `scope` (you can choose how you want to identify it), so here we saying: If we query Verse schema with key `scope: :book` we want to build the query like this.
+Very similar to the method `verses_for_book` we identify the purpose of the query based on the key called `scope` (you can choose how you want to identify it), so here we saying: If we query Verse schema with key `scope: :book` we want to build the query like this.
 
 If no query matches we just return the queryable model with no changes in the "criteria".
 
@@ -603,6 +637,8 @@ And finally the funny part, we'll replace the resolver with Dataloader:
 
 import Absinthe.Resolution.Helpers, only: [dataloader: 3]
 
+alias App.Documents
+
 field :verses, list_of(:verse) do
   arg(:limit, :integer)
 
@@ -610,16 +646,16 @@ field :verses, list_of(:verse) do
 end
 ```
 
-Using `dataloader/3` we refer to the Dataloader registered as `Documents`, asks for the `:verses` (Verse) relation, and provide the scope into `args` to identify the query in pattern match of `query/2` methods. A cool thing here is that `args` are merged with the args coming from the query, in this case, `limit`, so you don't need to explicitly pass it to args.
+Using `dataloader/3` we refer to the Dataloader registered as `Documents`, ask for the `:verses` (Verse) relation, and provide the scope into `args` to identify the query in pattern match of `query/2` methods. A cool thing here is that `args` are merged with the args coming from the query, in this case, `limit`, so you don't need to explicitly pass it to args.
 
 # Folder Organization
 
-Instead of importing all Types and Queries in your Schema, you can create a file, in the root of graphql folder, that imports all other files, and then in your Schema you import just this index file:
+Instead of importing all Types and Queries in your Schema, you can create a file, in the root of GraphQL folder, that imports all other files, and then in your Schema, you import just this index file:
 
 ```elixir
 # lib/app/graphql/types.ex
 
-defmodule App.GraphQL.Typesdo
+defmodule App.GraphQL.Types do
   use Absinthe.Schema.Notation
 
   alias App.GraphQL.Types
@@ -657,3 +693,5 @@ import_types(GraphQL.Queries)
 GraphQL saves us from code duplication with a modern query mechanism and for N + 1 we already have great tools to deal with it. In the next series of GraphQL will learn about Mutation.
 
 Repository link: [https://github.com/wbotelhos/graphql-with-absinthe-on-phoenix](https://github.com/wbotelhos/graphql-with-absinthe-on-phoenix/tree/18533cd267f8e08ae7e699018a554dbac855e716)
+
+Any suggestion? Please, send me an email [here](mailto:wbotelhos@gmail.com).
