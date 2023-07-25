@@ -39,7 +39,7 @@ asdf plugin add elixir
 Now install the last version of [Erlang](https://www.erlang.org/downloads) and install it globally:
 
 ```sh
-asdf install erlang 24.0
+KERL_BUILD_DOCS=yes asdf install erlang 24.0
 asdf global erlang 24.0
 ```
 
@@ -62,11 +62,11 @@ elixir --version
 
 You save which Erlang and Elixir version you use in a file called `.tool-versions`, very similar the `.ruby-version` in Ruby world:
 
-```elixir
-# .tool-versions
+Now creates a file to keep the version of the tools you'll use:
 
-elixir 1.12
-erlang 24.0
+```sh
+echo "erlang 26.0.2" >> .tool-versions
+echo "elixir 1.15" >> .tool-versions
 ```
 
 Our dependencies package manager calls [Hex](https://hex.pm) so let's install it:
